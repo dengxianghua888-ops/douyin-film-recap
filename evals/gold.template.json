@@ -1,0 +1,10 @@
+{
+  "case_id": "replace_with_case_id",
+  "source_sha256": "replace_with_actual_full_sha256",
+  "source_duration_sec": null,
+  "reviewers": [],
+  "key_facts": [],
+  "must_keep": [],
+  "forbidden_prepose": [],
+  "annotation_notes": "模板未完成，不能计入通过率。must_keep每项包含start/end/types/reason；key_facts需源证据；forbidden_prepose用事件ID。"
+}

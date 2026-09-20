@@ -1,0 +1,192 @@
+{
+  "$defs": {
+    "StoryEvent": {
+      "additionalProperties": true,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "story_order": {
+          "title": "Story Order",
+          "type": "number"
+        },
+        "reveal_order": {
+          "title": "Reveal Order",
+          "type": "number"
+        },
+        "participants": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Participants",
+          "type": "array"
+        },
+        "event": {
+          "title": "Event",
+          "type": "string"
+        },
+        "goal_before": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Goal Before",
+          "type": "object"
+        },
+        "state_change": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "State Change",
+          "type": "object"
+        },
+        "causes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Causes",
+          "type": "array"
+        },
+        "consequences": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Consequences",
+          "type": "array"
+        },
+        "source_spans": {
+          "items": {
+            "$ref": "#/$defs/TimeSpan"
+          },
+          "title": "Source Spans",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "confidence": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "event_id",
+        "story_order",
+        "reveal_order",
+        "event"
+      ],
+      "title": "StoryEvent",
+      "type": "object"
+    },
+    "TimeSpan": {
+      "additionalProperties": true,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        }
+      },
+      "required": [
+        "source_id",
+        "start",
+        "end"
+      ],
+      "title": "TimeSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "title_guess": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Title Guess"
+    },
+    "genres": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Genres",
+      "type": "array"
+    },
+    "main_plot": {
+      "title": "Main Plot",
+      "type": "string"
+    },
+    "themes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Themes",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/StoryEvent"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "arcs": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Arcs",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "confidence": {
+      "default": 0.5,
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    }
+  },
+  "required": [
+    "main_plot",
+    "events"
+  ],
+  "title": "StoryGraph",
+  "type": "object"
+}

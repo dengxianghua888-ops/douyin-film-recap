@@ -1,0 +1,475 @@
+{
+  "$defs": {
+    "OriginalCue": {
+      "additionalProperties": true,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "words": {
+          "items": {
+            "$ref": "#/$defs/TranscriptWord"
+          },
+          "title": "Words",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_id",
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "OriginalCue",
+      "type": "object"
+    },
+    "SourceInfo": {
+      "additionalProperties": true,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "fingerprint": {
+          "title": "Fingerprint",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "title": "Duration",
+          "type": "number"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        },
+        "fps": {
+          "exclusiveMinimum": 0,
+          "title": "Fps",
+          "type": "number"
+        },
+        "has_audio": {
+          "default": true,
+          "title": "Has Audio",
+          "type": "boolean"
+        },
+        "subtitle_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subtitle Path"
+        },
+        "order": {
+          "default": 0,
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_id",
+        "path",
+        "fingerprint",
+        "filename",
+        "duration",
+        "width",
+        "height",
+        "fps"
+      ],
+      "title": "SourceInfo",
+      "type": "object"
+    },
+    "StoryboardSegment": {
+      "additionalProperties": true,
+      "properties": {
+        "segment_id": {
+          "title": "Segment Id",
+          "type": "string"
+        },
+        "beat_id": {
+          "title": "Beat Id",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "voiceover",
+            "original"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "text_raw": {
+          "default": "",
+          "title": "Text Raw",
+          "type": "string"
+        },
+        "original_cues": {
+          "items": {
+            "$ref": "#/$defs/OriginalCue"
+          },
+          "title": "Original Cues",
+          "type": "array"
+        },
+        "original_cues_verified": {
+          "default": false,
+          "title": "Original Cues Verified",
+          "type": "boolean"
+        },
+        "visuals": {
+          "items": {
+            "$ref": "#/$defs/VisualReference"
+          },
+          "title": "Visuals",
+          "type": "array"
+        },
+        "audio_owner": {
+          "enum": [
+            "narration",
+            "original_dialogue",
+            "action_sound",
+            "ambience",
+            "music",
+            "silence"
+          ],
+          "title": "Audio Owner",
+          "type": "string"
+        },
+        "narration_job": {
+          "default": "none",
+          "enum": [
+            "none",
+            "context",
+            "causal_link",
+            "foreshadow",
+            "interpretation",
+            "transition"
+          ],
+          "title": "Narration Job",
+          "type": "string"
+        },
+        "mute_original": {
+          "default": true,
+          "title": "Mute Original",
+          "type": "boolean"
+        },
+        "planned_duration_sec": {
+          "exclusiveMinimum": 0,
+          "title": "Planned Duration Sec",
+          "type": "number"
+        },
+        "audio_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audio File"
+        },
+        "audio_source_duration_sec": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audio Source Duration Sec"
+        },
+        "audio_duration_sec": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audio Duration Sec"
+        },
+        "audio_speed": {
+          "default": 1.0,
+          "maximum": 2.0,
+          "minimum": 0.5,
+          "title": "Audio Speed",
+          "type": "number"
+        },
+        "tts_word_boundaries": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Tts Word Boundaries",
+          "type": "array"
+        },
+        "highlight_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Highlight Id"
+        },
+        "hook_preposed": {
+          "default": false,
+          "title": "Hook Preposed",
+          "type": "boolean"
+        },
+        "allow_reuse": {
+          "default": false,
+          "title": "Allow Reuse",
+          "type": "boolean"
+        },
+        "notes": {
+          "title": "Notes",
+          "type": "string"
+        },
+        "status": {
+          "default": "planned",
+          "enum": [
+            "planned",
+            "audio_ready",
+            "rendered",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "segment_id",
+        "beat_id",
+        "mode",
+        "title",
+        "text",
+        "visuals",
+        "audio_owner",
+        "planned_duration_sec",
+        "notes"
+      ],
+      "title": "StoryboardSegment",
+      "type": "object"
+    },
+    "TranscriptWord": {
+      "additionalProperties": true,
+      "properties": {
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "probability": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Probability"
+        },
+        "timing_source": {
+          "default": "unknown",
+          "enum": [
+            "asr",
+            "aligned",
+            "estimated",
+            "unknown"
+          ],
+          "title": "Timing Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "TranscriptWord",
+      "type": "object"
+    },
+    "VisualReference": {
+      "additionalProperties": true,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "purpose": {
+          "default": "",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "highlight_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Highlight Id"
+        },
+        "unit_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit Id"
+        },
+        "visual_role": {
+          "default": "context",
+          "enum": [
+            "direct_evidence",
+            "context",
+            "reaction",
+            "transition"
+          ],
+          "title": "Visual Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "start",
+        "end"
+      ],
+      "title": "VisualReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "project_name": {
+      "title": "Project Name",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceInfo"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "plan_fingerprint": {
+      "title": "Plan Fingerprint",
+      "type": "string"
+    },
+    "target_duration_sec": {
+      "title": "Target Duration Sec",
+      "type": "number"
+    },
+    "segments": {
+      "items": {
+        "$ref": "#/$defs/StoryboardSegment"
+      },
+      "title": "Segments",
+      "type": "array"
+    },
+    "output": {
+      "additionalProperties": true,
+      "title": "Output",
+      "type": "object"
+    }
+  },
+  "required": [
+    "project_name",
+    "sources",
+    "plan_fingerprint",
+    "target_duration_sec",
+    "segments"
+  ],
+  "title": "Storyboard",
+  "type": "object"
+}

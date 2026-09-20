@@ -1,0 +1,30 @@
+version: 1
+weights:
+  character_fact_causality_accuracy: 0.25
+  structure_reveal_emotional_arc: 0.20
+  picture_voiceover_alignment: 0.15
+  original_audio_and_performance: 0.15
+  cut_and_timeline_correctness: 0.10
+  pacing_and_information_density: 0.05
+  editability_and_recovery: 0.05
+  subtitle_voice_loudness: 0.05
+hard_failures:
+  - wrong_main_character
+  - fabricated_causal_claim
+  - major_spoiler_before_approved_reveal
+  - original_sentence_cut
+  - tts_truncated
+  - missing_audio_stream
+  - wrong_output_aspect
+metrics:
+  - process_success_rate
+  - content_success_rate
+  - first_pass_publishable_rate
+  - human_edit_minutes_per_published_minute
+  - character_or_causality_errors_per_minute
+  - original_fragment_rate
+  - shot_replacement_ratio
+  - average_rework_rounds
+  - first_preview_latency
+  - cost_per_source_minute
+  - resume_success_rate

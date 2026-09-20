@@ -1,0 +1,170 @@
+{
+  "$defs": {
+    "SceneSignals": {
+      "additionalProperties": true,
+      "properties": {
+        "motion": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Motion",
+          "type": "number"
+        },
+        "speech_density": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Speech Density",
+          "type": "number"
+        },
+        "shot_density": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Shot Density",
+          "type": "number"
+        },
+        "audio_energy": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Audio Energy"
+        }
+      },
+      "title": "SceneSignals",
+      "type": "object"
+    },
+    "SceneUnit": {
+      "additionalProperties": true,
+      "properties": {
+        "unit_id": {
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "shot_spans": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Shot Spans",
+          "type": "array"
+        },
+        "transcript": {
+          "default": "",
+          "title": "Transcript",
+          "type": "string"
+        },
+        "transcript_segments": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Transcript Segments",
+          "type": "array"
+        },
+        "frame_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Frame Paths",
+          "type": "array"
+        },
+        "contact_sheet_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Contact Sheet Path"
+        },
+        "signals": {
+          "$ref": "#/$defs/SceneSignals"
+        }
+      },
+      "required": [
+        "unit_id",
+        "source_id",
+        "start",
+        "end"
+      ],
+      "title": "SceneUnit",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "units": {
+      "items": {
+        "$ref": "#/$defs/SceneUnit"
+      },
+      "title": "Units",
+      "type": "array"
+    },
+    "source_fingerprints": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Source Fingerprints",
+      "type": "object"
+    },
+    "detector": {
+      "title": "Detector",
+      "type": "string"
+    },
+    "detector_params": {
+      "additionalProperties": true,
+      "title": "Detector Params",
+      "type": "object"
+    }
+  },
+  "required": [
+    "units",
+    "source_fingerprints",
+    "detector"
+  ],
+  "title": "SceneIndex",
+  "type": "object"
+}

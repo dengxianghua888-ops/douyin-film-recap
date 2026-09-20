@@ -1,0 +1,338 @@
+{
+  "$defs": {
+    "RecapBeat": {
+      "additionalProperties": true,
+      "properties": {
+        "beat_id": {
+          "title": "Beat Id",
+          "type": "string"
+        },
+        "function": {
+          "title": "Function",
+          "type": "string"
+        },
+        "event_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Event Ids",
+          "type": "array"
+        },
+        "change": {
+          "title": "Change",
+          "type": "string"
+        },
+        "audience_question_in": {
+          "title": "Audience Question In",
+          "type": "string"
+        },
+        "audience_question_out": {
+          "title": "Audience Question Out",
+          "type": "string"
+        },
+        "character_focus": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Character Focus",
+          "type": "array"
+        },
+        "preferred_highlights": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Preferred Highlights",
+          "type": "array"
+        },
+        "narration_job": {
+          "title": "Narration Job",
+          "type": "string"
+        },
+        "target_duration_sec": {
+          "exclusiveMinimum": 0,
+          "title": "Target Duration Sec",
+          "type": "number"
+        },
+        "target_original_sec": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Target Original Sec",
+          "type": "number"
+        }
+      },
+      "required": [
+        "beat_id",
+        "function",
+        "change",
+        "audience_question_in",
+        "audience_question_out",
+        "narration_job",
+        "target_duration_sec"
+      ],
+      "title": "RecapBeat",
+      "type": "object"
+    },
+    "RhythmProfile": {
+      "additionalProperties": true,
+      "properties": {
+        "tempo_intent": {
+          "default": "fast_but_legible",
+          "title": "Tempo Intent",
+          "type": "string"
+        },
+        "first_payoff_deadline_sec": {
+          "default": 6,
+          "title": "First Payoff Deadline Sec",
+          "type": "number"
+        },
+        "micro_cycle_sec": {
+          "default": [
+            12,
+            25
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Micro Cycle Sec",
+          "type": "array"
+        },
+        "reset_interval_sec": {
+          "default": [
+            45,
+            75
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Reset Interval Sec",
+          "type": "array"
+        },
+        "vo_chars_per_sec": {
+          "default": [
+            4.2,
+            5.2
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Vo Chars Per Sec",
+          "type": "array"
+        },
+        "shot_duration_sec": {
+          "additionalProperties": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Shot Duration Sec",
+          "type": "object"
+        },
+        "original_ratio": {
+          "default": [
+            0.25,
+            0.45
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Original Ratio",
+          "type": "array"
+        },
+        "max_original_over_15s": {
+          "default": 2,
+          "title": "Max Original Over 15S",
+          "type": "integer"
+        },
+        "breathing_slots": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Breathing Slots",
+          "type": "array"
+        },
+        "audio_switch_target_sec": {
+          "default": [
+            8,
+            20
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Audio Switch Target Sec",
+          "type": "array"
+        },
+        "tension_curve": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Tension Curve",
+          "type": "array"
+        }
+      },
+      "title": "RhythmProfile",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "viewer_promise": {
+      "title": "Viewer Promise",
+      "type": "string"
+    },
+    "pov": {
+      "title": "Pov",
+      "type": "string"
+    },
+    "main_spine": {
+      "title": "Main Spine",
+      "type": "string"
+    },
+    "hook_strategy": {
+      "title": "Hook Strategy",
+      "type": "string"
+    },
+    "hook_highlight_id": {
+      "title": "Hook Highlight Id",
+      "type": "string"
+    },
+    "target_duration_sec": {
+      "exclusiveMinimum": 0,
+      "title": "Target Duration Sec",
+      "type": "number"
+    },
+    "duration_mode": {
+      "title": "Duration Mode",
+      "type": "string"
+    },
+    "original_ratio_target": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Original Ratio Target",
+      "type": "number"
+    },
+    "ending_strategy": {
+      "title": "Ending Strategy",
+      "type": "string"
+    },
+    "reveal_strategy": {
+      "title": "Reveal Strategy",
+      "type": "string"
+    },
+    "beats": {
+      "items": {
+        "$ref": "#/$defs/RecapBeat"
+      },
+      "title": "Beats",
+      "type": "array"
+    },
+    "kill_list": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Kill List",
+      "type": "array"
+    },
+    "rhythm": {
+      "$ref": "#/$defs/RhythmProfile"
+    },
+    "risks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Risks",
+      "type": "array"
+    },
+    "confidence": {
+      "default": 0.5,
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "resolved_constraints": {
+      "additionalProperties": true,
+      "title": "Resolved Constraints",
+      "type": "object"
+    },
+    "content_unit": {
+      "default": "auto",
+      "title": "Content Unit",
+      "type": "string"
+    },
+    "editorial_brief": {
+      "additionalProperties": true,
+      "title": "Editorial Brief",
+      "type": "object"
+    }
+  },
+  "required": [
+    "viewer_promise",
+    "pov",
+    "main_spine",
+    "hook_strategy",
+    "hook_highlight_id",
+    "target_duration_sec",
+    "duration_mode",
+    "original_ratio_target",
+    "ending_strategy",
+    "reveal_strategy",
+    "beats",
+    "rhythm"
+  ],
+  "title": "RecapPlan",
+  "type": "object"
+}

@@ -1,0 +1,225 @@
+{
+  "$defs": {
+    "SceneAnalysisItem": {
+      "additionalProperties": true,
+      "properties": {
+        "unit_id": {
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "visible_facts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visible Facts",
+          "type": "array"
+        },
+        "dialogue_facts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Dialogue Facts",
+          "type": "array"
+        },
+        "characters": {
+          "items": {
+            "$ref": "#/$defs/SceneCharacterMention"
+          },
+          "title": "Characters",
+          "type": "array"
+        },
+        "events": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "relationships": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Relationships",
+          "type": "array"
+        },
+        "emotions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Emotions",
+          "type": "array"
+        },
+        "performance_moments": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Performance Moments",
+          "type": "array"
+        },
+        "candidate_highlights": {
+          "items": {
+            "$ref": "#/$defs/SceneHighlightHint"
+          },
+          "title": "Candidate Highlights",
+          "type": "array"
+        },
+        "scores": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Scores",
+          "type": "object"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        },
+        "confidence": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "unit_id"
+      ],
+      "title": "SceneAnalysisItem",
+      "type": "object"
+    },
+    "SceneCharacterMention": {
+      "additionalProperties": true,
+      "properties": {
+        "temporary_id": {
+          "title": "Temporary Id",
+          "type": "string"
+        },
+        "name_guess": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name Guess"
+        },
+        "visual_signature": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visual Signature",
+          "type": "array"
+        },
+        "confidence": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "temporary_id"
+      ],
+      "title": "SceneCharacterMention",
+      "type": "object"
+    },
+    "SceneHighlightHint": {
+      "additionalProperties": true,
+      "properties": {
+        "types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Types",
+          "type": "array"
+        },
+        "start_hint": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Hint"
+        },
+        "end_hint": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Hint"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "must_hear_original": {
+          "default": false,
+          "title": "Must Hear Original",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "types",
+        "reason"
+      ],
+      "title": "SceneHighlightHint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "provider": {
+      "title": "Provider",
+      "type": "string"
+    },
+    "model": {
+      "title": "Model",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/SceneAnalysisItem"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "unit_fingerprint": {
+      "title": "Unit Fingerprint",
+      "type": "string"
+    }
+  },
+  "required": [
+    "provider",
+    "model",
+    "items",
+    "unit_fingerprint"
+  ],
+  "title": "SceneAnalysisDocument",
+  "type": "object"
+}

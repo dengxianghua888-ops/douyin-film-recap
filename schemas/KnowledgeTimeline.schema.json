@@ -1,0 +1,86 @@
+{
+  "$defs": {
+    "KnowledgeState": {
+      "additionalProperties": true,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "audience_knows_before": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Audience Knows Before",
+          "type": "array"
+        },
+        "audience_knows_after": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Audience Knows After",
+          "type": "array"
+        },
+        "character_beliefs": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Character Beliefs",
+          "type": "object"
+        },
+        "reveal_sensitivity": {
+          "default": "medium",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Reveal Sensitivity",
+          "type": "string"
+        },
+        "allow_prepose": {
+          "default": false,
+          "title": "Allow Prepose",
+          "type": "boolean"
+        },
+        "reason": {
+          "default": "",
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id"
+      ],
+      "title": "KnowledgeState",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "states": {
+      "items": {
+        "$ref": "#/$defs/KnowledgeState"
+      },
+      "title": "States",
+      "type": "array"
+    }
+  },
+  "required": [
+    "states"
+  ],
+  "title": "KnowledgeTimeline",
+  "type": "object"
+}

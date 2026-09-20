@@ -1,0 +1,24 @@
+{
+  "_instructions": "Copy to output/review_evidence.json only when performing independent review. Use the full SHA256 of the actual final.mp4. After viewing/listening, replace each result with passed only if that check passed, name the reviewer, cite evidence, and record the genuinely checked intervals as [[start_seconds,end_seconds],...]. Intervals must cover the entire final artifact to complete this gate. A render success or an FFmpeg scan is not visual or listening review. Leave unperformed checks as not_reviewed. Never manufacture review records.",
+  "artifact_sha256": "<full-content SHA256 of final.mp4>",
+  "checks": [
+    {
+      "kind": "visual",
+      "result": "not_reviewed",
+      "method": "human_frame_review",
+      "reviewer": "<actual reviewer>",
+      "evidence": [],
+      "checked_ranges": [],
+      "notes": "Review the composed final picture, framing, captions, edits, and relevant story/visual agreement. Media-capable model review may use media_model_frame_review with recorded evidence."
+    },
+    {
+      "kind": "audio",
+      "result": "not_reviewed",
+      "method": "human_listen",
+      "reviewer": "<actual reviewer>",
+      "evidence": [],
+      "checked_ranges": [],
+      "notes": "Listen to the final mix, dialogue boundaries, narration tails and synchronization. A listening-capable model may use media_model_listen with recorded evidence."
+    }
+  ]
+}

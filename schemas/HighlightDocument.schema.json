@@ -1,0 +1,364 @@
+{
+  "$defs": {
+    "BoundaryQuality": {
+      "additionalProperties": true,
+      "properties": {
+        "entry_safe": {
+          "default": true,
+          "title": "Entry Safe",
+          "type": "boolean"
+        },
+        "exit_safe": {
+          "default": true,
+          "title": "Exit Safe",
+          "type": "boolean"
+        },
+        "sentence_complete": {
+          "default": true,
+          "title": "Sentence Complete",
+          "type": "boolean"
+        },
+        "action_complete": {
+          "default": true,
+          "title": "Action Complete",
+          "type": "boolean"
+        },
+        "entry_anchor": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entry Anchor"
+        },
+        "exit_anchor": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exit Anchor"
+        }
+      },
+      "title": "BoundaryQuality",
+      "type": "object"
+    },
+    "HighlightCandidate": {
+      "additionalProperties": true,
+      "properties": {
+        "highlight_id": {
+          "title": "Highlight Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "types": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Types",
+          "type": "array"
+        },
+        "characters": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Characters",
+          "type": "array"
+        },
+        "event_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Event Ids",
+          "type": "array"
+        },
+        "quote": {
+          "default": "",
+          "title": "Quote",
+          "type": "string"
+        },
+        "story_function": {
+          "title": "Story Function",
+          "type": "string"
+        },
+        "state_change": {
+          "default": "",
+          "title": "State Change",
+          "type": "string"
+        },
+        "must_hear_original": {
+          "default": false,
+          "title": "Must Hear Original",
+          "type": "boolean"
+        },
+        "boundary": {
+          "$ref": "#/$defs/BoundaryQuality"
+        },
+        "scores": {
+          "$ref": "#/$defs/HighlightScores"
+        },
+        "risks": {
+          "$ref": "#/$defs/HighlightRisks"
+        },
+        "evidence": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "confidence": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "final_score": {
+          "default": 0.0,
+          "title": "Final Score",
+          "type": "number"
+        },
+        "selected": {
+          "default": false,
+          "title": "Selected",
+          "type": "boolean"
+        },
+        "selection_reason": {
+          "default": "",
+          "title": "Selection Reason",
+          "type": "string"
+        },
+        "rejection_reason": {
+          "default": "",
+          "title": "Rejection Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "highlight_id",
+        "source_id",
+        "start",
+        "end",
+        "types",
+        "story_function"
+      ],
+      "title": "HighlightCandidate",
+      "type": "object"
+    },
+    "HighlightRisks": {
+      "additionalProperties": true,
+      "properties": {
+        "spoiler": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Spoiler",
+          "type": "number"
+        },
+        "context_dependency": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Context Dependency",
+          "type": "number"
+        },
+        "redundancy": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Redundancy",
+          "type": "number"
+        },
+        "unsafe_boundary": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Unsafe Boundary",
+          "type": "number"
+        }
+      },
+      "title": "HighlightRisks",
+      "type": "object"
+    },
+    "HighlightScores": {
+      "additionalProperties": true,
+      "properties": {
+        "story_significance": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Story Significance",
+          "type": "number"
+        },
+        "immediate_intensity": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Immediate Intensity",
+          "type": "number"
+        },
+        "performance_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Performance Value",
+          "type": "number"
+        },
+        "dialogue_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Dialogue Value",
+          "type": "number"
+        },
+        "visual_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Visual Value",
+          "type": "number"
+        },
+        "action_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Action Value",
+          "type": "number"
+        },
+        "emotion_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Emotion Value",
+          "type": "number"
+        },
+        "reveal_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Reveal Value",
+          "type": "number"
+        },
+        "suspense_value": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Suspense Value",
+          "type": "number"
+        },
+        "comedy_value": {
+          "default": 0.0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Comedy Value",
+          "type": "number"
+        },
+        "relationship_shift": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Relationship Shift",
+          "type": "number"
+        },
+        "state_change_strength": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "State Change Strength",
+          "type": "number"
+        },
+        "context_independence": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Context Independence",
+          "type": "number"
+        },
+        "genre_fit": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Genre Fit",
+          "type": "number"
+        },
+        "novelty": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Novelty",
+          "type": "number"
+        }
+      },
+      "title": "HighlightScores",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "genre_profile": {
+      "title": "Genre Profile",
+      "type": "string"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/HighlightCandidate"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "weights": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Weights",
+      "type": "object"
+    },
+    "source_fingerprints": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Source Fingerprints",
+      "type": "object"
+    }
+  },
+  "required": [
+    "genre_profile",
+    "candidates",
+    "weights",
+    "source_fingerprints"
+  ],
+  "title": "HighlightDocument",
+  "type": "object"
+}

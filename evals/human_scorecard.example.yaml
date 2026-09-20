@@ -1,0 +1,24 @@
+run_id: example
+reviewer: ""
+source_case: nonlinear_twist
+scores_1_to_5:
+  character_fact_causality_accuracy: null
+  structure_reveal_emotional_arc: null
+  picture_voiceover_alignment: null
+  original_audio_and_performance: null
+  cut_and_timeline_correctness: null
+  pacing_and_information_density: null
+  editability_and_recovery: null
+  subtitle_voice_loudness: null
+publishable_without_edit: false
+human_edit_minutes: null
+final_video_minutes: null
+shot_replacement_count: null
+total_shot_count: null
+errors:
+  identity: []
+  causality: []
+  spoiler: []
+  original_audio: []
+  timeline: []
+notes: ""

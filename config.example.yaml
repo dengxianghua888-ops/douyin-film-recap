@@ -1,0 +1,146 @@
+version: 1
+
+project:
+  language: zh-CN
+  platform: douyin
+  rights_confirmed: false
+  publish_mode: draft
+  context_file: null
+  # 可留空，系统会推断方案并落盘，不要求逐步确认。
+  editorial_brief:
+    narrative_question: ""
+    audience_knowledge: []
+    stance: ""
+    preserve: []
+    avoid_phrases: []
+    ending_payoff: ""
+    # preserve 尊重 knowledge_timeline；只有明确允许剧透才改为 allow。
+    spoiler_policy: preserve
+    spoiler_reason: ""
+
+models:
+  provider: openai_compatible
+  base_url_env: FILM_RECAP_BASE_URL
+  api_key_env: FILM_RECAP_API_KEY
+  llm_model: your-llm-model
+  vlm_model: your-vlm-model
+  timeout_sec: 180
+  max_retries: 3
+  temperature:
+    analysis: 0.1
+    creative: 0.45
+    qc: 0.0
+
+asr:
+  provider: faster_whisper
+  model: large-v3
+  device: auto
+  compute_type: auto
+  language: zh
+  prefer_sidecar_subtitle: true
+  prefer_embedded_subtitle: true
+  word_timestamps: true
+  beam_size: 5
+
+scene:
+  detector: scenedetect
+  content_threshold: 27.0
+  min_shot_sec: 0.45
+  min_unit_sec: 4.0
+  max_unit_sec: 16.0
+  sample_frames_per_unit: 3
+  contact_sheet_units: 8
+  max_scene_analysis_workers: 2
+
+story:
+  chunk_units: 32
+  character_confidence_threshold: 0.68
+  story_confidence_threshold: 0.72
+  allow_external_context: false
+
+highlight:
+  candidate_pool_size: 80
+  rerank_top_k: 36
+  final_pool_size: 24
+  min_confidence: 0.62
+  max_same_type_ratio: 0.45
+  max_same_character_ratio: 0.65
+  max_redundancy: 0.35
+  allow_hook_reuse: true
+  genre_profile: auto
+
+format:
+  # highlight=30–90秒；保留旧档位 short=3–6分钟、standard=6–10分钟、deep=10–20分钟。
+  # series 每次仍只制作一个 Part，不会自动编译多集分章成片。
+  duration_mode: auto
+  # 内容范围与时长独立：auto / scene / relationship / episode / film / series。
+  content_unit: auto
+  highlight_range_sec: [30, 90]
+  short_range_sec: [180, 360]
+  standard_range_sec: [360, 600]
+  deep_range_sec: [600, 1200]
+  # 以下未写入时自动采用题材 preset，再使用通用默认。
+  # 取消注释即视为用户明确覆盖，即使填入的值与默认相同。
+  # 旧版写全这些字段的配置继续保持原有数值。
+  # first_highlight_deadline_sec: 6
+  # original_ratio_range: [0.25, 0.45]
+  # original_clip_range_sec: [4.0, 12.0]
+  # max_original_over_15s: 2
+  # micro_cycle_sec: [12, 25]
+  # reset_interval_sec: [45, 75]
+  # vo_chars_per_sec: [4.2, 5.2]
+  default_ending: payoff
+  allow_cta: false
+  visual_pool_size: 160
+
+tts:
+  provider: edge_tts
+  voice: zh-CN-YunxiNeural
+  rate: "+10%"
+  pitch: "+0Hz"
+  volume: "+0%"
+  max_speedup: 1.08
+  min_speedup: 0.95
+
+render:
+  width: 1080
+  height: 1920
+  fps: 30
+  video_codec: libx264
+  crf: 19
+  preset: medium
+  audio_codec: aac
+  audio_bitrate: 192k
+  layout: safe_fit_blur
+  blur_sigma: 28
+  original_bed_db: -26
+  target_lufs: -14
+  true_peak_db: -1.5
+  subtitle_burn_in: true
+  subtitle_font: Noto Sans CJK SC
+  # 可选：显式字体文件绕过系统发现；subtitle_font 必须匹配字体内部家族名。
+  # subtitle_font_file: /path/to/NotoSansCJKsc-Regular.otf
+  # 或指定额外字体目录（与 subtitle_font_file 二选一）。不会安装/下载字体。
+  # subtitle_fonts_dir: /path/to/cjk-fonts
+  # 缺字即阻断渲染；可查 output/final.fonts.json，不能以 FFmpeg 退出码 0 代替字形正确。
+  subtitle_font_size: 62
+  subtitle_margin_v: 250
+  subtitle_max_chars_per_line: 16
+  subtitle_max_lines: 2
+  subtitle_outline: 3
+
+qc:
+  self_repair_rounds: 2
+  fail_on_sentence_cut: true
+  fail_on_tts_truncation: true
+  fail_on_missing_audio: true
+  allow_semantic_qc_failure: true
+  max_black_ratio: 0.02
+  max_silence_ratio: 0.18
+  duration_tolerance_sec: 1.2
+
+runtime:
+  cache: true
+  keep_debug_frames: true
+  max_parallel_ffmpeg: 2
+  stage_timeout_sec: 1800

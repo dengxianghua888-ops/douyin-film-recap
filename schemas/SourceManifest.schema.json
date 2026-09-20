@@ -1,0 +1,122 @@
+{
+  "$defs": {
+    "SourceInfo": {
+      "additionalProperties": true,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "fingerprint": {
+          "title": "Fingerprint",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "title": "Duration",
+          "type": "number"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        },
+        "fps": {
+          "exclusiveMinimum": 0,
+          "title": "Fps",
+          "type": "number"
+        },
+        "has_audio": {
+          "default": true,
+          "title": "Has Audio",
+          "type": "boolean"
+        },
+        "subtitle_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subtitle Path"
+        },
+        "order": {
+          "default": 0,
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_id",
+        "path",
+        "fingerprint",
+        "filename",
+        "duration",
+        "width",
+        "height",
+        "fps"
+      ],
+      "title": "SourceInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceInfo"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "rights_confirmed": {
+      "default": false,
+      "title": "Rights Confirmed",
+      "type": "boolean"
+    },
+    "publish_mode": {
+      "default": "draft",
+      "enum": [
+        "draft",
+        "publish"
+      ],
+      "title": "Publish Mode",
+      "type": "string"
+    },
+    "config_fingerprint": {
+      "title": "Config Fingerprint",
+      "type": "string"
+    }
+  },
+  "required": [
+    "sources",
+    "config_fingerprint"
+  ],
+  "title": "SourceManifest",
+  "type": "object"
+}

@@ -1,0 +1,71 @@
+version: 2
+cases:
+  - id: ensemble_identity
+    name: 多角色群像与相似人物
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - character_identity
+      - speaker_mapping
+      - relationship_changes
+      - no_identity_hallucination
+  - id: nonlinear_twist
+    name: 非线性叙事与终局反转
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - story_order_vs_reveal_order
+      - spoiler_control
+      - causal_accuracy
+      - truthful_hook
+  - id: dialogue_dense
+    name: 高对白密度冲突戏
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - sentence_boundaries
+      - original_dialogue_selection
+      - no_vo_duplication
+      - subtitle_alignment
+  - id: action_low_dialogue
+    name: 低对白动作与空间调度
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - action_completeness
+      - spatial_legibility
+      - action_sound_preservation
+      - motion_highlight_recall
+  - id: performance_driven
+    name: 微表情与演员表演驱动
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - reaction_shot_recall
+      - pause_and_silence
+      - performance_over_summary
+      - emotional_payoff
+  - id: multi_episode
+    name: 多集短剧与跨集因果
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - cross_episode_memory
+      - character_aliases
+      - event_continuity
+      - part_cliffhanger
+  - id: comedy_timing
+    name: 喜剧铺垫、包袱与反应
+    material: null
+    gold: null
+    status: awaiting_source_and_human_gold
+    tests:
+      - setup_payoff_reaction
+      - no_premature_vo_explanation
+      - reaction_boundary
