@@ -11,8 +11,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -26,4 +26,3 @@ jobs:
         run: pytest -q
       - name: Check fatal Python errors
         run: python -m ruff check src tests scripts --select F821,F822,F823,E9
-
