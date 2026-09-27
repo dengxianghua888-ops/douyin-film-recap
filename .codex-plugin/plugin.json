@@ -1,24 +1,24 @@
 {
   "name": "editing-skill-library",
   "version": "0.1.0",
-  "description": "General editing Skill routing with optional local runtime tools for Codex.",
+  "description": "供 AI Agent 使用的通用视频剪辑技能库，覆盖素材分析、剪辑构思与局部修改。",
   "author": {
     "name": "Editing Skill Library Project"
   },
   "skills": "./skills/",
   "interface": {
-    "displayName": "Editing Skill Library",
-    "shortDescription": "Route editing Skills with available tools",
-    "longDescription": "General editing Skills usable with the running Agent's editor tools, plus optional local dependency diagnosis and atomic runtime execution.",
-    "developerName": "Editing Skill Library Project",
+    "displayName": "剪辑技能库",
+    "shortDescription": "让 Agent 按场景理解素材、制定剪辑方案并执行修改",
+    "longDescription": "覆盖口播、影视解说、教程、访谈与 Vlog 等场景。运行 Agent 选择剪辑工具和模型，可选用本地执行器与 MCP 桥接。",
+    "developerName": "剪辑技能库项目",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
       "Write"
     ],
     "defaultPrompt": [
-      "List the available editing Skills and their boundaries.",
-      "Diagnose dependencies for this local Editing Skill Library."
+      "根据我的素材和目标，选择适合的剪辑 Skill 并制定方案。",
+      "检查当前任务所需的本地剪辑工具与依赖。"
     ]
   },
   "mcpServers": "./.mcp.json"

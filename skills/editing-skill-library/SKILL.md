@@ -3,7 +3,7 @@ name: editing-skill-library
 description: Route editing requests to the library's atomic and workflow Skills, using the agent's available editor tools or the optional local runtime with explicit result handoff.
 ---
 
-# Editing Skill Library gateway
+# 剪辑技能库入口
 
 Read [the registry](../../registry/skills.json) and [semantic router](../../registry/router.md) to choose an atomic or workflow Skill. Read its entry and the [capability handoff contract](../../contracts/capability-handoff.md). Use the running agent's available editor tool, MCP, CLI or local media tool if it can perform the declared action and return evidence for the result. A missing local runtime dependency does not make an equivalent editor capability unavailable.
 

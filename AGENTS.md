@@ -1,4 +1,4 @@
-# Editing Skill Library
+# 剪辑技能库
 
 - 从 `skills/editing-skill-library/SKILL.md`、`registry/router.md` 及对应场景入口开始。
 - 运行 Agent 选择编辑器、模型和 Provider；Skill 合同不要求固定宿主。
