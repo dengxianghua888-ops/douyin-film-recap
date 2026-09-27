@@ -1,0 +1,1501 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "original vlog/travel/event mechanisms; authored, not quality certified",
+  "styles": [
+    {
+      "id": "ordinary-ritual",
+      "name": "日常仪式",
+      "family": "生活",
+      "fit": "反复做的一件小事有完整过程",
+      "question": "熟悉动作里有什么值得停留？",
+      "selection": "起手、实际操作、微小变化、收拾结束",
+      "sequence": "准备→过程→完成→余味",
+      "audio": "保留器物、手部动作声，旁白少于动作信息",
+      "rhythm": "完整动作优先，重复仅保留变化",
+      "visual": "手和物体关系清楚，细节不丢动作主体",
+      "anti": "为造反转补写不存在的意外",
+      "example": "虚构例：冲一杯茶，等水和收杯都有作用",
+      "nearest": "区别于任务挑战，没有输赢目标也成立",
+      "effect_check": "能看懂仪式过程与细节，而非只有漂亮特写",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "small-mission",
+      "name": "一件小事",
+      "family": "生活",
+      "fit": "有具体可见目标与实际尝试",
+      "question": "今天想完成什么，后来怎样？",
+      "selection": "目标、准备、阻碍、尝试和真实结束",
+      "sequence": "出发点→尝试→调整→结果",
+      "audio": "保留说明目标的原话，关键操作声不盖掉",
+      "rhythm": "困难与解决分配空间，不必每步同长",
+      "visual": "目标物持续可辨，结果镜头不能被字幕遮住",
+      "anti": "把没有完成剪成成功",
+      "example": "虚构例：修抽屉还卡住，结尾保留现状",
+      "nearest": "区别于日常仪式，以目标推进",
+      "effect_check": "观众理解完成程度与具体代价",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "day-texture",
+      "name": "一天的质地",
+      "family": "生活",
+      "fit": "一天有不同时段的真实片段",
+      "question": "这一天的节奏怎样变化？",
+      "selection": "环境、工作/生活动作、间歇与结束",
+      "sequence": "早段状态→忙闲交替→夜间收束",
+      "audio": "让不同时间的声场有变化，非全程一首歌压平",
+      "rhythm": "忙段压缩、间歇留气口；时间跳转可见",
+      "visual": "光线和地点帮助定位，但不据此伪造拍摄时间",
+      "anti": "把多日素材当同一天不说明",
+      "example": "虚构例：出门、午间窗口、回家洗杯",
+      "nearest": "区别于事件流水账，组织时间触感",
+      "effect_check": "观众感到时段变化且没有错误时间暗示",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "quiet-company",
+      "name": "安静陪伴",
+      "family": "生活",
+      "fit": "活动平静，观看本身有价值",
+      "question": "怎样让观众愿意陪这一段？",
+      "selection": "连续行为、空间细节、自然停顿",
+      "sequence": "进入环境→陪伴动作→自然退出",
+      "audio": "同期环境主导，少量人物声保留语气",
+      "rhythm": "不强制钩子或快切，删除技术空白而非所有沉默",
+      "visual": "视线和动作保持方向，长镜头有观察对象",
+      "anti": "把无内容等待堆成所谓治愈",
+      "example": "虚构例：整理书架时保留挑书与迟疑",
+      "nearest": "区别于声音漫游，主体仍是人的陪伴",
+      "effect_check": "静段仍有可观察细节，观众不依赖旁白理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "ceramics-observation-01",
+          "variant": "quiet-company",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/result-current.json",
+            "sha256": "e88d1be0b6cd666a2bb77ce36e83fd1e85e3a3a0efe3101a702fb0cf2b2eb2b5"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/quiet-company/document-current.json",
+            "sha256": "db49097b5ec0c4981d711cc21d3ec8a196e184a7ca2aad60e8a6f66ce2e08f08"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/quiet-company/caption-render/captions/captioned.mp4",
+            "sha256": "4e7c9ecb4e5db8ffda12d0de9b3fd19e0d2291263cf30b8ea07996039d49d128"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/technical-readback.json",
+            "sha256": "3d2966858bcae9df28bfb8cafb251d896a20a619c1159c424ccb0536410cf96a"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/visual-review.json",
+            "sha256": "8aa3abe03fd04d5fda0f125f52b490b968a555d243b3c014ed9664567863417f"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/browser-current-01/result.json",
+            "sha256": "2b59c2b1bb8f628a21ca6bd067626c63e64f741c27f4b6f3f7c931df123f53fb"
+          },
+          "scope": "Already-edited pottery source, partial-process/person observations; same-work caption repair. Source soundtrack synchronization unknown.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "relationship-gesture",
+      "name": "关系小动作",
+      "family": "生活",
+      "fit": "两人或多人有真实互动和回应",
+      "question": "关系通过哪个具体动作显出来？",
+      "selection": "引子、动作、同期回应、后续",
+      "sequence": "互动背景→举动→回应→继续相处",
+      "audio": "保留语气与应答，不借别段笑声",
+      "rhythm": "反应留足，避免硬凑煽情慢放",
+      "visual": "人物与被作用对象同场建立关系",
+      "anti": "用陌生人镜头捏造亲密关系",
+      "example": "虚构例：递伞后等待对方跟上",
+      "nearest": "区别于人物成长，只呈现具体互动",
+      "effect_check": "观众能指出真实行为与回应，不被强加关系结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "before-after-context",
+      "name": "前后变化",
+      "family": "生活",
+      "fit": "有可比较的起点和终点",
+      "question": "变化具体发生在哪里？",
+      "selection": "前状态、关键过程、后状态与未变部分",
+      "sequence": "基线→行动→对比→限制",
+      "audio": "前后声音变化有真实依据，不能配假欢呼",
+      "rhythm": "过程保留足以解释结果的关键步骤",
+      "visual": "前后角度可比较，不以裁切夸大差别",
+      "anti": "省略条件变化冒充效果",
+      "example": "虚构例：收纳前后，同一柜子同一范围",
+      "nearest": "区别于任务挑战，以可比变化为核心",
+      "effect_check": "观众能辨认变化和比较条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "honest-failure",
+      "name": "不圆满的一天",
+      "family": "生活",
+      "fit": "尝试失败或目标改变有真实记录",
+      "question": "没完成之后发生了什么？",
+      "selection": "初始目标、问题、应对、未完成结果",
+      "sequence": "期待→落差→应对→开放结束",
+      "audio": "保留当事人真实态度，不替其写励志台词",
+      "rhythm": "失败过程不反复嘲弄，结尾允许停在现实",
+      "visual": "关键失败证据保留，不拼别人的反应",
+      "anti": "强行升华或假成功",
+      "example": "虚构例：出门遇雨取消野餐，回家处理食材",
+      "nearest": "区别于小事挑战，更关注改计划后的生活",
+      "effect_check": "失败真实，观众能理解选择变化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "object-thread",
+      "name": "物件线索",
+      "family": "生活",
+      "fit": "同一物件串起多个阶段",
+      "question": "这个东西连接了哪些时刻？",
+      "selection": "物件出现、使用者行动、状态变化",
+      "sequence": "首次出现→几次用途→变化或归位",
+      "audio": "物件实际声作为呼应，人物声音说明语境",
+      "rhythm": "每次重现带新信息，非机械重复",
+      "visual": "保证同一物件身份，不把相似物当同一个",
+      "anti": "仅凭外观认定私人纪念意义",
+      "example": "虚构例：一张车票从出发到夹进书中",
+      "nearest": "区别于日常仪式，物件跨段组织",
+      "effect_check": "物件线索可追踪，意义有行动或原话支撑",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "process-notebook",
+      "name": "过程手记",
+      "family": "生活",
+      "fit": "制作/学习有多个有意义步骤",
+      "question": "当事人怎样慢慢摸索？",
+      "selection": "初试、调整、局部进展、剩余问题",
+      "sequence": "提出问题→试做→比较→当前所得",
+      "audio": "原话与操作声帮助理解，后补说明标明",
+      "rhythm": "保留纠正过程，不只闪过成品",
+      "visual": "关键手部/工具可见，文字不挡操作",
+      "anti": "剪成专业教学却没有可复现依据",
+      "example": "虚构例：学做面包两次整形差异",
+      "nearest": "区别于教程，记录个人探索而非保证教学",
+      "effect_check": "观众理解探索路径及其局限",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "memory-letter",
+      "name": "写给某人的片段",
+      "family": "生活",
+      "fit": "有真实收件对象和作者表达",
+      "question": "作者想把哪些具体时刻留下？",
+      "selection": "与对象有关的事实、细节、已授权原话",
+      "sequence": "一个具体场景→数个关联时刻→当下表达",
+      "audio": "作者语言可用，不能代他人补写回应",
+      "rhythm": "情感从细节积累，不用音乐强迫高潮",
+      "visual": "日期和旧片标识清楚，回忆与现在区分",
+      "anti": "替当事人编经历或亲密承诺",
+      "example": "虚构例：给毕业同伴的共同工作片段",
+      "nearest": "区别于关系小动作，具有明确叙述对象",
+      "effect_check": "表达来自作者，素材与称谓对应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "space-discovery",
+      "name": "空间认识",
+      "family": "旅行",
+      "fit": "同一地点有多个互补视角",
+      "question": "观众怎样认识这个地方？",
+      "selection": "整体、侧面关系、内部或细节、收束视角",
+      "sequence": "建立对象→补充侧面→进入细节",
+      "audio": "以对应环境声为主，声桥不证明同时拍摄",
+      "rhythm": "每个视角给足辨认时间，再引入新空间信息",
+      "visual": "保留方位参照，视角切换不冒充行走路线",
+      "anti": "三机位拼成不存在的完整行程",
+      "example": "虚构例：瀑布正面、侧面、水幕后方",
+      "nearest": "区别于感官碎片，以空间理解为主",
+      "effect_check": "观众能区分视角及未知路线",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "vlog-style-trials-01",
+          "candidate": "space-source-sound",
+          "report": "evals/runs/vlog-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "place observation only, not personal vlog or event validation",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/vlog-style-trials-01/space-source-sound/render/captions/captioned.mp4",
+            "sha256": "ff17583a390573929e5c312e89774bfb8f87e59ac9804479e7e70bd9d591b4e0"
+          },
+          "version": "04f764c13b17fbd3882fcc6eab89b207a744aea514e60900e3b55e7873087cd3"
+        },
+        {
+          "trial": "vlog-style-trials-01",
+          "candidate": "space-sound-bridge",
+          "report": "evals/runs/vlog-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "place observation only, not personal vlog or event validation",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/vlog-style-trials-01/space-sound-bridge/render/captions/captioned.mp4",
+            "sha256": "9d772b15aed0a079660d2996ccb3185e4d85dee1a6d71bcc0d919133f754ac01"
+          },
+          "version": "71fe7b727971167843883f22f176cc2220a0823a771fff54b45c3e352b1f43fd"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "sensory-fragments",
+      "name": "感官碎片",
+      "family": "旅行",
+      "fit": "细节与材质比路线更突出",
+      "question": "哪些感官细节构成地点印象？",
+      "selection": "水光、表面、风、脚步等可见可听细节",
+      "sequence": "一个感官线索→对照细节→整体回望",
+      "audio": "环境声可跨切点，但非同期使用如实记录",
+      "rhythm": "长短由细节显现速度决定，不强制节拍",
+      "visual": "细节与整体至少一次对应，避免失去地点",
+      "anti": "把异地声冒充当前现场",
+      "example": "虚构例：根须、水雾、岩面再到瀑布全貌",
+      "nearest": "区别于空间认识，以感官联系组织",
+      "effect_check": "细节有来源，声画联系自然而不误导",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "vlog-style-trials-01",
+          "candidate": "sensory-fragments",
+          "report": "evals/runs/vlog-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "place observation only, not personal vlog or event validation",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/vlog-style-trials-01/sensory-fragments/render/captions/captioned.mp4",
+            "sha256": "b4b9940b62d7e005f4afc0b0af00b01f269664a8ceb4e4562ba20cd2f960bd59"
+          },
+          "version": "7a67e8f98cc5037789c9f42eb160d447ae140eae7b9bb3f365f71f1270c0956e"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "route-with-evidence",
+      "name": "有据行程",
+      "family": "旅行",
+      "fit": "有实际出发/移动/到达或可靠记录",
+      "question": "怎样到达，途中经过什么？",
+      "selection": "路标、交通转换、行进、到达与必要条件",
+      "sequence": "出发→节点→选择→抵达",
+      "audio": "交通和环境声保真，解释不覆盖路标信息",
+      "rhythm": "压缩等待需保留跳时事实",
+      "visual": "路线和箭头只用有证据的方位",
+      "anti": "凭景点名生成未经验证导航",
+      "example": "虚构例：从车站步行到入口，有实际转角镜头",
+      "nearest": "区别于空间认识，路线本身必须成立",
+      "effect_check": "观众不把推测线路当出行指引",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "one-place-stay",
+      "name": "在一处停留",
+      "family": "旅行",
+      "fit": "一个地点随观察有细微变化",
+      "question": "停久一点能发现什么？",
+      "selection": "固定空间、细节变化、偶发活动、离开前状态",
+      "sequence": "初见→停留→新发现→停留余味",
+      "audio": "连续环境声保留，音乐可不用",
+      "rhythm": "长段有观察任务，不用无变化镜头硬延时",
+      "visual": "固定参照让变化可比较",
+      "anti": "循环几秒伪装长时间记录",
+      "example": "虚构例：码头潮水与来往船只",
+      "nearest": "区别于一天质地，不跨多个地点/时段",
+      "effect_check": "观看能发现真实变化且时间省略透明",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "local-encounter",
+      "name": "旅途相遇",
+      "family": "旅行",
+      "fit": "有真实交流且可用完整语境",
+      "question": "这次相遇带来什么新认识？",
+      "selection": "相遇场景、双方原话、行动与结束",
+      "sequence": "地点背景→接触→交流→分别",
+      "audio": "尊重原语言和语气，听不清不编字幕",
+      "rhythm": "完整回应优先于风景插镜",
+      "visual": "说话者与反应归属清楚",
+      "anti": "把路人无关反应剪成对话",
+      "example": "虚构例：问路后当地人指出路牌",
+      "nearest": "区别于人物纪录，围绕一次相遇",
+      "effect_check": "交流意思和人物身份没有被改造",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "expectation-reality",
+      "name": "想象与现场",
+      "family": "旅行",
+      "fit": "出发预期和到场观察均有来源",
+      "question": "现场与期待哪里不同？",
+      "selection": "原先预期、实际看到的情况、作者回应",
+      "sequence": "期待→现场→差异→个人判断",
+      "audio": "区分出发前讲述和现场原声",
+      "rhythm": "差异留证，不反复夸大落差",
+      "visual": "前后画面条件可解释",
+      "anti": "用旧资料制造当天拥挤或无人",
+      "example": "虚构例：期待日出但云遮挡，仍看到山谷变化",
+      "nearest": "区别于失败日记，可无目标失败",
+      "effect_check": "差异真实，个人评价不变成普遍事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "practical-observation",
+      "name": "实用观察",
+      "family": "旅行",
+      "fit": "素材包含可核对设施和体验信息",
+      "question": "观众能据此了解什么具体条件？",
+      "selection": "入口、设施、限制标识、实际使用与日期",
+      "sequence": "问题→现场证据→适用条件→核验提示",
+      "audio": "解释清楚但不承诺当前政策",
+      "rhythm": "文字停留满足阅读，少做纯景填充",
+      "visual": "标牌和位置可读，日期来源明确",
+      "anti": "旧门票价格说成现在确定价格",
+      "example": "虚构例：记录2026年某日入口台阶情况",
+      "nearest": "区别于有据行程，不必给完整路线",
+      "effect_check": "观众知道观察时间与适用边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "weather-as-character",
+      "name": "天气推动",
+      "family": "旅行",
+      "fit": "天气实际影响行为或景象",
+      "question": "天气怎样改变体验？",
+      "selection": "天气迹象、原计划、实际应对、之后状态",
+      "sequence": "环境变化→行为改变→新的观察",
+      "audio": "真实雨风声；过强风噪明确质量问题",
+      "rhythm": "跟随变化速度，等待可跳时",
+      "visual": "衣物/地面/光线提供证据",
+      "anti": "生成暴雨替换真实晴天并当纪实",
+      "example": "虚构例：阵雨让游人改走屋檐下",
+      "nearest": "区别于感官碎片，有行为因果",
+      "effect_check": "天气与行动关系在素材里成立",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "time-return",
+      "name": "重访同一处",
+      "family": "旅行",
+      "fit": "同地不同时间有可靠来源",
+      "question": "再来时哪些改变了？",
+      "selection": "可比地点、旧记录、当下记录和变化细节",
+      "sequence": "旧时点→现在→相同/不同→个人结语",
+      "audio": "旧声/新声明确，避免伪同步",
+      "rhythm": "对应镜头成对，给比较时间",
+      "visual": "同一方位参照与日期标注",
+      "anti": "把不同地点相似景色说成重访",
+      "example": "虚构例：同一桥夏冬两个有日期镜头",
+      "nearest": "区别于前后变化，重点时间与地方",
+      "effect_check": "观众能确认可比对象及时间来源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "companion-perspective",
+      "name": "同行视角",
+      "family": "旅行",
+      "fit": "同行者实际参与并有差异体验",
+      "question": "同一段旅程对不同人意味着什么？",
+      "selection": "各自行动、真实反应、共同片段",
+      "sequence": "共同情境→各自关注→交汇",
+      "audio": "保留各人声音，不以一人旁白覆盖别人立场",
+      "rhythm": "视角切换有呼应，非平均露脸配额",
+      "visual": "角色关系以用户/素材证据为准",
+      "anti": "从陌生游客推断为同行者",
+      "example": "虚构例：一人拍建筑，一人观察街头表演",
+      "nearest": "区别于旅途相遇，关系持续贯穿",
+      "effect_check": "视角不同但人物表达和事实一致",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "detour-choice",
+      "name": "临时改道",
+      "family": "旅行",
+      "fit": "计划改变过程有真实证据",
+      "question": "为什么改变路线，后来怎样？",
+      "selection": "原意图、触发因素、实际选择和结果",
+      "sequence": "计划→变化→决定→新路径",
+      "audio": "保留作决定的原话或标明后补说明",
+      "rhythm": "选择处留空间，省掉无信息等待",
+      "visual": "旧/新地点清楚，不画不存在路径",
+      "anti": "把偶然素材剪成主动规划成功",
+      "example": "虚构例：店休后选择附近公园",
+      "nearest": "区别于天气推动，触发不限天气",
+      "effect_check": "改变理由和结果都有证据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "landscape-human-scale",
+      "name": "人与地方的尺度",
+      "family": "旅行",
+      "fit": "环境尺度与真实人物活动相互说明",
+      "question": "人怎样存在于这个空间？",
+      "selection": "环境全貌、人物活动、尺度参照和细节",
+      "sequence": "环境→人→关系→整体",
+      "audio": "环境声与人声保持自然远近感",
+      "rhythm": "广景给观察时间，人物动作不被切断",
+      "visual": "不通过合成/错误比例伪造尺度",
+      "anti": "陌生人当个人故事主角配内心旁白",
+      "example": "虚构例：巨岩下行人经过只作为尺度参照",
+      "nearest": "区别于同行视角，人物可只是环境角色",
+      "effect_check": "空间尺度可感，人物归属不虚构",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "planting-activity-01",
+          "variant": "landscape-human-scale",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/result-current.json",
+            "sha256": "b38cdb2b66cd97f06d16c1e0115364e070ba62e461fff7c5583c9cd970a3a2c7"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/landscape-human-scale/document-v1.json",
+            "sha256": "c917ba6b38bf775aa347b346c185eb83d63fc4b8a4d9e6ea0508dfdc258f4d4d"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/landscape-human-scale/render/captions/captioned.mp4",
+            "sha256": "873228d2fa3e1546a7684c30abc528bae7f61a1be80db3bf29d1e41cbf43c376"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/technical-readback.json",
+            "sha256": "0ef295c5da302d97df9218790c3d54aed4fd106c4463bd77da46e7c5d6048b7e"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/visual-review.json",
+            "sha256": "86f0c8c28c371d29162a297dbd60cfa35aa40feaf28551e33e8a1dbbfd9df3a2"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/browser-current-01/result.json",
+            "sha256": "4da5880ed918fa1fe069456916582013db0c8f20a3ee708b233ff3964aebc215"
+          },
+          "scope": "Activity fragments, declared participation windows, separate groups and unknown chronology. One version adds second source; not controlled same-material comparison.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "event-experience",
+      "name": "参与者体验",
+      "family": "活动",
+      "fit": "从到场到离场有实际参与过程",
+      "question": "参与一次活动是什么体验？",
+      "selection": "到场、参与、关键互动、结束感受",
+      "sequence": "进入→尝试→集中体验→离开",
+      "audio": "同期互动优先，舞台声不覆盖交谈",
+      "rhythm": "以体验节点组织，不等于日程表",
+      "visual": "舞台与参与空间关系明确",
+      "anti": "只剪主办方高光却声称个人体验",
+      "example": "虚构例：市集从排队到动手制作",
+      "nearest": "区别于活动总览，以参与者为中心",
+      "effect_check": "观众理解实际参与过程",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "event-chapters",
+      "name": "活动章节",
+      "family": "活动",
+      "fit": "多个环节有可核对顺序",
+      "question": "这场活动有哪些阶段？",
+      "selection": "准备、开场、主要环节、收尾",
+      "sequence": "按实际环节分章，允许明确省略",
+      "audio": "每章保留代表原声及空间差异",
+      "rhythm": "章内有重点，章间转换清晰",
+      "visual": "时间和环节标签真实，必要时标跳时",
+      "anti": "把不同场次拼成同一活动",
+      "example": "虚构例：公开工作坊签到、演示、实践、展示",
+      "nearest": "区别于参与者体验，主轴是活动结构",
+      "effect_check": "观众能复述阶段且识别省略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "behind-the-event",
+      "name": "幕后准备",
+      "family": "活动",
+      "fit": "有实际筹备、协作和上场过程",
+      "question": "看似自然的现场怎样准备出来？",
+      "selection": "准备任务、协作、问题处理、现场结果",
+      "sequence": "准备→压力点→协作→呈现",
+      "audio": "工作交流保留归属，不制造训斥",
+      "rhythm": "准备与结果呼应，失败不只作笑料",
+      "visual": "手部/工具/场地建立具体劳动",
+      "anti": "用工作人员随意镜头虚构事故",
+      "example": "虚构例：搭台调灯到开场一束灯亮起",
+      "nearest": "区别于过程手记，有公共呈现的对应结果",
+      "effect_check": "幕后工作与现场结果建立真实关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "collective-moment",
+      "name": "共同瞬间",
+      "family": "活动",
+      "fit": "多人真实参与同一时刻",
+      "question": "人群如何共同回应这一刻？",
+      "selection": "触发、集体行动、同期局部反应、结束",
+      "sequence": "触发→共同动作→局部细节→收束",
+      "audio": "保留同场真实声，不借别场欢呼",
+      "rhythm": "高潮前有铺垫，后有释放",
+      "visual": "不同角度时序可核对，反应不能错配",
+      "anti": "重复回放制造人数或热度",
+      "example": "虚构例：倒计时后同场放飞纸飞机",
+      "nearest": "区别于赛事高光，主轴共同参与",
+      "effect_check": "能辨认同一事件与真实集体反应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "planting-activity-01",
+          "variant": "collective-moment",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/result-current.json",
+            "sha256": "b38cdb2b66cd97f06d16c1e0115364e070ba62e461fff7c5583c9cd970a3a2c7"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/collective-moment/document-v1.json",
+            "sha256": "21abfae3c5e0487fdba4e65628d1030d71233ed6d1e71b1f8edaf24b54250199"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/collective-moment/render/captions/captioned.mp4",
+            "sha256": "36dd06d3f31915ccf1bbb594dca0be776842de4bd7d1d272397dbefe74b7577b"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/technical-readback.json",
+            "sha256": "0ef295c5da302d97df9218790c3d54aed4fd106c4463bd77da46e7c5d6048b7e"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/visual-review.json",
+            "sha256": "86f0c8c28c371d29162a297dbd60cfa35aa40feaf28551e33e8a1dbbfd9df3a2"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/planting-activity-01/browser-current-01/result.json",
+            "sha256": "4da5880ed918fa1fe069456916582013db0c8f20a3ee708b233ff3964aebc215"
+          },
+          "scope": "Activity fragments, declared participation windows, separate groups and unknown chronology. One version adds second source; not controlled same-material comparison.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "craft-at-event",
+      "name": "现场手艺",
+      "family": "活动",
+      "fit": "演示或手工有可见完整段落",
+      "question": "眼前的东西怎样被做出来？",
+      "selection": "材料、关键手法、成形、展示",
+      "sequence": "材料→变化→完成/未完成",
+      "audio": "器物与操作声优先，解释不冒专业断言",
+      "rhythm": "不在关键接触处切掉动作",
+      "visual": "手工具作品关系连续，标注不遮手",
+      "anti": "省略关键步骤仍说可照着学会",
+      "example": "虚构例：市集陶艺拉坯观察",
+      "nearest": "区别于软件教程，不保证全步骤教学",
+      "effect_check": "观众理解可见过程，知道省略范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "ceramics-observation-01",
+          "variant": "craft-at-event",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/result-current.json",
+            "sha256": "e88d1be0b6cd666a2bb77ce36e83fd1e85e3a3a0efe3101a702fb0cf2b2eb2b5"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/craft-at-event/document-current.json",
+            "sha256": "7b072a06afe6c34752b272f24c78c6c50e74b087f9f9ca75d1ba141e1927cadc"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/craft-at-event/caption-render/captions/captioned.mp4",
+            "sha256": "a871e5e3f45a0b3e47baf335fa4ff0131b9c7e8d8174b491ef0d5ca50dc7aaa5"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/technical-readback.json",
+            "sha256": "3d2966858bcae9df28bfb8cafb251d896a20a619c1159c424ccb0536410cf96a"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/visual-review.json",
+            "sha256": "8aa3abe03fd04d5fda0f125f52b490b968a555d243b3c014ed9664567863417f"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ceramics-observation-01/browser-current-01/result.json",
+            "sha256": "2b59c2b1bb8f628a21ca6bd067626c63e64f741c27f4b6f3f7c931df123f53fb"
+          },
+          "scope": "Already-edited pottery source, partial-process/person observations; same-work caption repair. Source soundtrack synchronization unknown.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "voices-of-event",
+      "name": "多声部现场",
+      "family": "活动",
+      "fit": "多个参与者有真实可用表达",
+      "question": "不同人如何描述同一活动？",
+      "selection": "问题语境、完整观点、差异和交集",
+      "sequence": "主题→不同声音→交集/分歧→开放收束",
+      "audio": "保留说话者归属，不能合成一致口径",
+      "rhythm": "观点完整优先，快切不吞限定",
+      "visual": "画面人物与声音对应或明确旁证",
+      "anti": "把一人声音配另一人造成错认",
+      "example": "虚构例：三位参加者对工作坊的不同收获",
+      "nearest": "区别于访谈导演，空间和活动穿插更多",
+      "effect_check": "观点差异可辨，非拼接共识",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "anticipation-wait",
+      "name": "等待发生",
+      "family": "活动",
+      "fit": "等待本身有可见变化和真实回报",
+      "question": "大家在等待什么？",
+      "selection": "准备、时间迹象、期待反应、实际发生/未发生",
+      "sequence": "等待对象→累积→发生或落空→余波",
+      "audio": "环境声与呼吸有作用，不把等待全填音乐",
+      "rhythm": "可压缩总等待，但保留真实时间省略",
+      "visual": "相同空间参照让变化成立",
+      "anti": "不同日期人群接成同一次等待",
+      "example": "虚构例：等花车经过，最后只到远处",
+      "nearest": "区别于共同瞬间，更关注发生之前",
+      "effect_check": "悬念兑现诚实，未发生也能结束",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "aftermath-traces",
+      "name": "散场之后",
+      "family": "活动",
+      "fit": "活动结束后的空间或人物有记录",
+      "question": "热闹过后留下什么？",
+      "selection": "末段、离场、整理、剩余痕迹",
+      "sequence": "最后时刻→人群减少→痕迹→收束",
+      "audio": "声音自然退去，清理声不被当噪声删光",
+      "rhythm": "节奏逐步放缓，空镜仍有对象",
+      "visual": "前后对应物件/空间明确",
+      "anti": "用别日空场伪造同场散去",
+      "example": "虚构例：桌上作品收走后留下纸屑",
+      "nearest": "区别于幕后准备，以余波为中心",
+      "effect_check": "结束有具体痕迹与时间关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "family-keepsake",
+      "name": "家庭纪念",
+      "family": "活动",
+      "fit": "家人授权素材与必保人物明确",
+      "question": "多年后想留住哪些具体时刻？",
+      "selection": "必保人、完整互动、仪式和自然细节",
+      "sequence": "场景建立→互动组→关键仪式→日常收尾",
+      "audio": "原话与声音身份优先，避免过度清除笑声",
+      "rhythm": "不按露脸时长平均，保护用户指定片段",
+      "visual": "称谓有依据，字幕尊重用户改稿",
+      "anti": "为煽情编亲属关系或已逝信息",
+      "example": "虚构例：生日吹蜡烛和之后分蛋糕",
+      "nearest": "区别于共同瞬间，更重私人保存需求",
+      "effect_check": "必保人物和互动完整，无错误称谓",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "accessible-recap",
+      "name": "清楚易读的回顾",
+      "family": "活动",
+      "fit": "观众需要理解环节且读屏负担应低",
+      "question": "没到现场的人能否看懂？",
+      "selection": "活动背景、代表环节、必要解释和结果",
+      "sequence": "一句背景→清楚分段→实际收束",
+      "audio": "人声清楚，解释与原话不互相抢夺",
+      "rhythm": "留字幕阅读时间，少并行信息",
+      "visual": "标签简短、对比足够、不盖手脸标牌",
+      "anti": "堆动效让信息更难读",
+      "example": "虚构例：社区活动回顾，交代各环节在做什么",
+      "nearest": "区别于章节版，优先理解与可读性",
+      "effect_check": "无需提前知道活动的人能复述核心过程",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "parallel-preparations",
+      "name": "并行准备",
+      "family": "活动",
+      "fit": "多个准备过程的时间关系可说明",
+      "question": "不同任务怎样汇合到同一现场？",
+      "selection": "各任务起点、关键变化、交接与共同结果",
+      "sequence": "任务A/B建立→交替推进→汇合",
+      "audio": "声音跨线须标清归属，不伪造对话",
+      "rhythm": "按真实进展切换，不强制制造倒计时压力",
+      "visual": "人物/空间标签帮助识别分线",
+      "anti": "没有同期证据却声称同时发生",
+      "example": "虚构例：布置与彩排分别完成后汇合",
+      "nearest": "区别于幕后准备，突出多线关系",
+      "effect_check": "观众分清不同任务和真实汇合点",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "performance-breath",
+      "name": "表演的呼吸",
+      "family": "活动",
+      "fit": "有完整表演段落及使用许可",
+      "question": "怎样保留表演自身的节奏？",
+      "selection": "起势、发展、关键段落、收束与同期反应",
+      "sequence": "随真实乐句/动作结构推进",
+      "audio": "原表演声连续，不能跨乐句任意拼接",
+      "rhythm": "切点服从动作落点和乐句，不按固定秒数",
+      "visual": "身体/器械全范围可见，反应镜头不吞关键动作",
+      "anti": "把残缺动作包装成完整表演",
+      "example": "虚构例：街头舞蹈一段起势到停住",
+      "nearest": "区别于音乐混剪，表演本身是主体",
+      "effect_check": "动作和声音段落完整，反应同期",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "small-observation",
+      "name": "微小发现",
+      "family": "生活",
+      "fit": "短素材里有一个可见新细节",
+      "question": "这一刻新发现了什么？",
+      "selection": "原先状态、发现线索、细节及反应或回看",
+      "sequence": "平常画面→注意到细节→看清→结束",
+      "audio": "真实细节声可突出，不能生成证据",
+      "rhythm": "短而完整，发现处给辨认时间",
+      "visual": "可用已有明确裁切放大，但不生成细节",
+      "anti": "从模糊影像编造不可见对象",
+      "example": "虚构例：窗沿新长一片叶，回到整株植物",
+      "nearest": "区别于感官碎片，以一次发现为单元",
+      "effect_check": "观众看得到所称发现而非只听旁白",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "personal-contrast",
+      "name": "两种生活节奏",
+      "family": "生活",
+      "fit": "两个有来源的状态可比较",
+      "question": "不同状态的生活节奏有什么差异？",
+      "selection": "可比动作、环境和人物表达",
+      "sequence": "状态A→状态B→对应细节→个人感受",
+      "audio": "各自声场保留差异，别混成一个现场",
+      "rhythm": "交替的每段带比较信息，避免机械轮转",
+      "visual": "日期/地点必要时注明，不制造普遍阶层结论",
+      "anti": "以个别人片段概括所有人的生活",
+      "example": "虚构例：作者工作日和休息日的早餐",
+      "nearest": "区别于前后变化，不要求单向改进",
+      "effect_check": "对比具体而有限，感受归属于作者",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "arrival-without-fiction",
+      "name": "诚实抵达",
+      "family": "旅行",
+      "fit": "有目的地画面但缺完整路途",
+      "question": "怎样进入这个地方而不补造行程？",
+      "selection": "可见入口/外观或直接目的地、真实细节",
+      "sequence": "直接建立地点→明确视角→观察→结束",
+      "audio": "可先入真实同地声音，说明非同期时不要装作脚步实录",
+      "rhythm": "短入场，不用虚构交通填时长",
+      "visual": "硬切可接受，避免假地图或生成路径",
+      "anti": "将库存公路镜头当本人路途",
+      "example": "虚构例：只有瀑布三视角，开场直接说同地观察",
+      "nearest": "区别于有据行程，主动缩小路线承诺",
+      "effect_check": "观众不误以为看到了真实完整抵达过程",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "shared-detail",
+      "name": "多人同一细节",
+      "family": "活动",
+      "fit": "不同参与者围绕同一对象有可见行为",
+      "question": "一个细节怎样串起现场的人？",
+      "selection": "共同对象、各人实际动作、交接或变化",
+      "sequence": "对象建立→不同参与→变化→回到对象",
+      "audio": "真实操作声和简短原话，避免跨人拼句",
+      "rhythm": "每次切人都增加对象信息",
+      "visual": "对象身份清晰，陌生人关系不补写",
+      "anti": "同类物件误当同一件传递",
+      "example": "虚构例：留言板逐渐增加不同人的便签",
+      "nearest": "区别于物件线索，发生在同场多人协作",
+      "effect_check": "对象变化与参与行为可追溯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    },
+    {
+      "id": "seasonal-walk",
+      "name": "季节漫步",
+      "family": "旅行",
+      "fit": "有同地季节迹象与实际观察",
+      "question": "季节通过哪些具体变化显现？",
+      "selection": "植物/光线/水位等可见迹象和人物活动",
+      "sequence": "空间建立→季节细节→行为→整体",
+      "audio": "保留当前实录环境，不把虫鸣素材当当地物种证据",
+      "rhythm": "细节停留满足观察，路线可不完整",
+      "visual": "不从滤镜推断季节，日期注明来源",
+      "anti": "生成雪景当当天实拍",
+      "example": "虚构例：秋叶地面与树冠，不推断具体天气预报",
+      "nearest": "区别于天气推动，关注季节迹象而非突发变化",
+      "effect_check": "季节表达有可见依据，日期未知如实保留",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "vlog-state-methods",
+        "travel-evidence-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "作品承诺与人物视角",
+        "实际来源/时间/地点范围",
+        "段落长度与必保镜头",
+        "同期/非同期声音及字幕表达"
+      ],
+      "compatibility": {
+        "requires": "素材能够支撑核心机制；用户原话、必须保留项与人工修改优先",
+        "avoid": "风格不能填补不存在的经历、路线、人物关系；缺实现不能声称已应用"
+      }
+    }
+  ]
+}

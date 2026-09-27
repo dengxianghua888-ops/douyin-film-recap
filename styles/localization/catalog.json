@@ -1,0 +1,1878 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "Localization mechanisms; each is a decision policy, not a language support certification",
+  "styles": [
+    {
+      "id": "faithful-observation",
+      "name": "克制观察译述",
+      "fit": "自然观察和画外描述",
+      "question": "哪些关系确实可见",
+      "selection": "保对象、位置与动作关系",
+      "sequence": "视角→对象→关系",
+      "audio": "译音只陈述源义",
+      "rhythm": "跟随观察停留",
+      "visual": "保留同一观察画面",
+      "anti": "为流畅添加路线或情绪",
+      "example": "水流、岩壁、枝叶分层而非旅人走近",
+      "nearest": "不同于陪伴口语，解释距离更克制",
+      "effect_check": "译文没有增加画外事实",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/localization-trials-01",
+          "current_result": "evals/runs/localization-trials-01/result-current.json",
+          "readback": "evals/runs/localization-trials-01/current-readback-02.json",
+          "semantic_review": "evals/runs/localization-trials-01/semantic-review-01.json",
+          "visual_review": "evals/runs/localization-trials-01/inspection/frame-review-01.json",
+          "scope": "AMI English scenario meeting to Chinese subtitles or authored Chinese nature narration to English captions/new TTS; limited actual cases",
+          "status": "technical-and-agent-semantic-and-sampled-visual",
+          "independent_effect": "NOT_RUN",
+          "full_listening": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "uncertainty-testimony",
+      "name": "不确定性保留",
+      "fit": "访谈和见证者估计",
+      "question": "原话确定到什么程度",
+      "selection": "保我认为、也许和来源归属",
+      "sequence": "主张与限定同窗",
+      "audio": "保犹豫功能，不模仿口癖",
+      "rhythm": "限定不能在剪切中消失",
+      "visual": "说话者标识清楚",
+      "anti": "把估计译成结论",
+      "example": "I think maybe译为我想可能",
+      "nearest": "不同于论点压缩，限定优先",
+      "effect_check": "逐命题确定性不升级",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/localization-trials-01",
+          "current_result": "evals/runs/localization-trials-01/result-current.json",
+          "readback": "evals/runs/localization-trials-01/current-readback-02.json",
+          "semantic_review": "evals/runs/localization-trials-01/semantic-review-01.json",
+          "visual_review": "evals/runs/localization-trials-01/inspection/frame-review-01.json",
+          "scope": "AMI English scenario meeting to Chinese subtitles or authored Chinese nature narration to English captions/new TTS; limited actual cases",
+          "status": "technical-and-agent-semantic-and-sampled-visual",
+          "independent_effect": "NOT_RUN",
+          "full_listening": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "condition-instruction",
+      "name": "条件先行指令",
+      "fit": "操作、安全和教程",
+      "question": "何时才执行动作",
+      "selection": "保前提、否定与结果",
+      "sequence": "条件→动作→结果",
+      "audio": "语调区分条件和命令",
+      "rhythm": "给观众判断条件时间",
+      "visual": "同步显示触发条件",
+      "anti": "只保动作丢适用范围",
+      "example": "仅在离线时点击重试",
+      "nearest": "不同于步骤口语，先验证适用性",
+      "effect_check": "用户不会在错误条件执行",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "attributed-argument",
+      "name": "归属清晰论证",
+      "fit": "会议和议题节目",
+      "question": "谁持有哪种观点",
+      "selection": "保主张、反驳与立场来源",
+      "sequence": "主张→回应→未决",
+      "audio": "声线不把两人融成一人",
+      "rhythm": "反对意见保持完整",
+      "visual": "人名和引用一致",
+      "anti": "把团队讨论译成团队决定",
+      "example": "有人建议25欧元但尚未批准",
+      "nearest": "不同于不确定保留，侧重多人归属",
+      "effect_check": "各命题可回到原发言人",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "terminology-led",
+      "name": "术语一致讲解",
+      "fit": "专业课程与系列教程",
+      "question": "一个词是否同一个概念",
+      "selection": "保概念定义与语境",
+      "sequence": "首现定义→固定称谓→应用",
+      "audio": "发音表贯穿",
+      "rhythm": "新术语首次留读音空间",
+      "visual": "首现原词与译名关联",
+      "anti": "多义词盲目全局替换",
+      "example": "track在音轨和追踪中分别处理",
+      "nearest": "不同于技术压缩，定义先于简短",
+      "effect_check": "术语统一但语境不串义",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "contrast-preserved",
+      "name": "比较边界保留",
+      "fit": "测评和数据解释",
+      "question": "比谁好以及条件是什么",
+      "selection": "保比较对象、范围、单位",
+      "sequence": "对象→条件→差异",
+      "audio": "重音不夸大差值",
+      "rhythm": "数字和限定同段",
+      "visual": "图表标签与译文一致",
+      "anti": "把相对改善写成绝对最佳",
+      "example": "比旧版快而非比所有产品快",
+      "nearest": "不同于市场适配，比较事实不动",
+      "effect_check": "基准与量级均保留",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "reveal-locked",
+      "name": "揭示顺序保护",
+      "fit": "剧情字幕与悬疑解说",
+      "question": "观众何时可知道答案",
+      "selection": "保指代模糊和线索位置",
+      "sequence": "疑问→线索→原定揭示",
+      "audio": "译声不提前点名",
+      "rhythm": "文字长度变化不抢揭示",
+      "visual": "字幕出点受剧情约束",
+      "anti": "为目标语清楚而提前公布身份",
+      "example": "he在揭示前不改写凶手姓名",
+      "nearest": "不同于延迟字幕，保护叙事知识",
+      "effect_check": "目标观众信息时点不越界",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "quote-distance",
+      "name": "引语距离",
+      "fit": "新闻引述与批评",
+      "question": "这是说话者还是编辑的判断",
+      "selection": "保引用范围和引述动词",
+      "sequence": "交代归属→引语→说明",
+      "audio": "旁白与引用有辨识",
+      "rhythm": "不把引用压成口号",
+      "visual": "引号和署名明确",
+      "anti": "把争议言论变旁白事实",
+      "example": "他声称而非事实是",
+      "nearest": "不同于观点归属，处理直接与间接引语",
+      "effect_check": "引述层级与源一致",
+      "family": "忠实与语义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "natural-clause",
+      "name": "自然句群",
+      "fit": "语义完整但直译生硬",
+      "question": "目标语如何自然推进",
+      "selection": "保完整命题，重组语序",
+      "sequence": "先自然主干再补限定",
+      "audio": "按目标语自然停顿",
+      "rhythm": "句群长度随思路",
+      "visual": "字幕按句法切分",
+      "anti": "逐词对应制造倒装",
+      "example": "把长定语移成后置短句",
+      "nearest": "不同于忠实观察，允许语序大改",
+      "effect_check": "流畅且信息清单无损",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "explicit-reference",
+      "name": "指代澄清",
+      "fit": "源语大量省略或代词",
+      "question": "观众是否知道所指",
+      "selection": "从已证上下文补必要指代",
+      "sequence": "对象建立后用代词",
+      "audio": "不重复播报专名",
+      "rhythm": "仅歧义处增加字词",
+      "visual": "与屏幕目标对应",
+      "anti": "用猜测填人物身份",
+      "example": "按钮已明确后this指此按钮",
+      "nearest": "不同于文化注释，只补上下文指代",
+      "effect_check": "消歧不增加事实",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "listener-steps",
+      "name": "口语化步骤",
+      "fit": "操作演示译配",
+      "question": "观众怎样跟得上",
+      "selection": "保动作和结果验证",
+      "sequence": "每步动作后等结果",
+      "audio": "短命令与解释分层",
+      "rhythm": "操作窗口不被译音挤占",
+      "visual": "沿用真实UI目标",
+      "anti": "把礼貌长句堆进短操作",
+      "example": "先选文件，再看右侧预览",
+      "nearest": "不同于条件指令，关注执行跟随",
+      "effect_check": "可边听边完成原步骤",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "restrained-companion",
+      "name": "陪伴式译述",
+      "fit": "生活记录与温和科普",
+      "question": "怎样保留说话者距离",
+      "selection": "保轻松语气和个人视角",
+      "sequence": "发现→描述→轻回应",
+      "audio": "自然轻声但不假装源音色",
+      "rhythm": "保留呼吸与环境空白",
+      "visual": "少量简洁字幕",
+      "anti": "把平静观察改励志文案",
+      "example": "看见一束光而非人生顿悟",
+      "nearest": "不同于自然句群，关注语气距离",
+      "effect_check": "关系和情绪强度不过度",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "technical-concision",
+      "name": "专业凝练",
+      "fit": "长技术解说空间不足",
+      "question": "哪些冗词可去而概念不丢",
+      "selection": "保定义、单位和步骤关系",
+      "sequence": "概念→必要机制→结果",
+      "audio": "清晰发音优先速度",
+      "rhythm": "允许术语处更慢",
+      "visual": "必要名词留屏",
+      "anti": "删条件换成不准确简称",
+      "example": "移除套话，保校准条件",
+      "nearest": "不同于术语一致，优化表达长度",
+      "effect_check": "凝练后仍能复现逻辑",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "rhetorical-repeat",
+      "name": "修辞重复",
+      "fit": "人物情绪或演说",
+      "question": "重复承担什么作用",
+      "selection": "保有意义重复及变化",
+      "sequence": "第一次信息→第二次情绪",
+      "audio": "强弱递进而非机械复制",
+      "rhythm": "保重复之间停顿",
+      "visual": "重复字幕不闪成噪声",
+      "anti": "自动去掉全部重复",
+      "example": "Never. Never.保留两次",
+      "nearest": "不同于论点压缩，重复是内容",
+      "effect_check": "原情绪递进仍可辨",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "humor-mechanism",
+      "name": "笑点机制迁移",
+      "fit": "轻喜剧和幽默知识",
+      "question": "笑点靠歧义还是反差",
+      "selection": "识别铺垫与包袱功能",
+      "sequence": "目标语铺垫→对应释放",
+      "audio": "保喜剧停顿",
+      "rhythm": "字幕不先露包袱",
+      "visual": "画面事实保持",
+      "anti": "编新事实强凑笑点",
+      "example": "语序重排使反差落在尾部",
+      "nearest": "不同于文化解释，追求同类喜剧作用",
+      "effect_check": "意思和笑点机制同时可说明",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "plain-language",
+      "name": "易懂表达",
+      "fit": "公众教育与非专业受众",
+      "question": "哪些概念需要展开",
+      "selection": "保核心概念，解释首次出现",
+      "sequence": "常见词→概念名→例子",
+      "audio": "清楚平实不幼稚化",
+      "rhythm": "给新概念理解时间",
+      "visual": "图示支持定义",
+      "anti": "把精确含义换成错误类比",
+      "example": "缓存解释为临时保存的数据",
+      "nearest": "不同于专业凝练，允许必要扩展",
+      "effect_check": "易懂且未改变技术关系",
+      "family": "目标语表达",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "meaningful-breaks",
+      "name": "句法断行",
+      "fit": "长译句和常规字幕",
+      "question": "哪里断开不割裂意思",
+      "selection": "保名词短语和否定搭配",
+      "sequence": "按意群分行分cue",
+      "audio": "源声保持",
+      "rhythm": "窗口来自实际句群",
+      "visual": "两行层次与安全区检查",
+      "anti": "拆开not和其谓语",
+      "example": "not available保持同一意群",
+      "nearest": "不同于短句凝练，不改文字意义",
+      "effect_check": "断行不制造短暂歧义",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "compact-subtitles",
+      "name": "凝练字幕",
+      "fit": "译文超出阅读窗口",
+      "question": "什么能短而意思不变",
+      "selection": "去冗余语法保信息锚点",
+      "sequence": "先保全→有据凝练→复核",
+      "audio": "保原声演出",
+      "rhythm": "读速profile明确单位",
+      "visual": "稳定字号不硬缩",
+      "anti": "为了达标删否定和数字",
+      "example": "由于这个原因译为因此",
+      "nearest": "不同于技术凝练，针对读屏负担",
+      "effect_check": "完整阅读且关键义不丢",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/localization-trials-01",
+          "current_result": "evals/runs/localization-trials-01/result-current.json",
+          "readback": "evals/runs/localization-trials-01/current-readback-02.json",
+          "semantic_review": "evals/runs/localization-trials-01/semantic-review-01.json",
+          "visual_review": "evals/runs/localization-trials-01/inspection/frame-review-01.json",
+          "scope": "AMI English scenario meeting to Chinese subtitles or authored Chinese nature narration to English captions/new TTS; limited actual cases",
+          "status": "technical-and-agent-semantic-and-sampled-visual",
+          "independent_effect": "NOT_RUN",
+          "full_listening": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "bilingual-paired",
+      "name": "双语对照",
+      "fit": "学习与对照审阅",
+      "question": "两种文字如何同义对应",
+      "selection": "按同一意义单元配对",
+      "sequence": "主语种在前，次语种在后",
+      "audio": "源声与主学习目标一致",
+      "rhythm": "共同窗口承受双语负担",
+      "visual": "一个cue双行避免轨重叠",
+      "anti": "照搬两套长字幕叠屏",
+      "example": "英文短句配同义中文短句",
+      "nearest": "不同于关键词保留，完整双语单元",
+      "effect_check": "两行对应且画面仍能看",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "term-first-caption",
+      "name": "术语双标",
+      "fit": "术语学习与软件教程",
+      "question": "哪些原词值得保留",
+      "selection": "仅保关键原词而非全句双语",
+      "sequence": "原词首现＋译义→后续简写",
+      "audio": "发音对应保留原词",
+      "rhythm": "首次延长阅读",
+      "visual": "术语靠近相关对象",
+      "anti": "每词双语堆满画面",
+      "example": "Cache缓存首次并列",
+      "nearest": "不同于双语对照，降低非关键词负担",
+      "effect_check": "术语可认且阅读压力可控",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "sdh-evidence",
+      "name": "声音信息字幕",
+      "fit": "有无障碍交付需求",
+      "question": "哪些非语音声音影响理解",
+      "selection": "取实际声音和说话者证据",
+      "sequence": "台词与相关声音按发生顺序",
+      "audio": "本地化声轨对应本地化字幕",
+      "rhythm": "不让音效说明抢台词",
+      "visual": "非语音用可辨括注",
+      "anti": "虚构音乐情绪和音效",
+      "example": "实际门铃响时标门铃声",
+      "nearest": "不同于翻译字幕，覆盖必要听觉信息",
+      "effect_check": "声音证据和标注逐项对应",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "delayed-reveal-caption",
+      "name": "分时揭示字幕",
+      "fit": "句尾反转和答案",
+      "question": "全文提前显示会破坏什么",
+      "selection": "保句尾信息释放",
+      "sequence": "前半→停顿→答案",
+      "audio": "跟随真实语音释放",
+      "rhythm": "拆cue但不闪读",
+      "visual": "不预显整句答案",
+      "anti": "固定整句字幕提前泄底",
+      "example": "不是他，是她分时出现",
+      "nearest": "不同于剧情知识锁，针对单句呈现",
+      "effect_check": "字幕不早于关键声画揭示",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "speaker-composite",
+      "name": "多人合成字幕",
+      "fit": "短暂重叠发言",
+      "question": "如何说明同时而非先后",
+      "selection": "保必要双方发言与ID",
+      "sequence": "同窗双标或明确择主",
+      "audio": "不把声音交叉排成轮流",
+      "rhythm": "共同显示窗口",
+      "visual": "单cue标说话人，当前无多字幕轨",
+      "anti": "为了排版改说话顺序",
+      "example": "A提出疑问，B同时否定",
+      "nearest": "不同于对话配音，解决视觉归属",
+      "effect_check": "谁说什么且是否重叠可辨",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "ui-anchored-subtitle",
+      "name": "界面对齐译字",
+      "fit": "英文界面的中文教程",
+      "question": "译名怎样指向实际按钮",
+      "selection": "保实际按钮原标签",
+      "sequence": "原标签→中文作用→结果",
+      "audio": "说到标签时画面可见",
+      "rhythm": "给定位按钮时间",
+      "visual": "避免遮操作区",
+      "anti": "把画面不存在的译名当按钮",
+      "example": "Export导出保持原标签",
+      "nearest": "不同于地区UI替换，不改变源画面",
+      "effect_check": "观众能找到实际操作对象",
+      "family": "字幕阅读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "offscreen-revoice",
+      "name": "画外旁白重配",
+      "fit": "讲解和图文旁白",
+      "question": "译声能否完整占据原窗口",
+      "selection": "保源义与观察次序",
+      "sequence": "按句群替换旁白",
+      "audio": "明确新音色，M&E独立保留",
+      "rhythm": "真实音频时长决定适配",
+      "visual": "画面可保持无口型需求",
+      "anti": "声轨替换冒充原音色",
+      "example": "中文瀑布旁白改英文自然稿",
+      "nearest": "不同于覆盖译述，源旁白不同时出现",
+      "effect_check": "声音完整、含义一致、无超时截尾",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/localization-trials-01",
+          "current_result": "evals/runs/localization-trials-01/result-current.json",
+          "readback": "evals/runs/localization-trials-01/current-readback-02.json",
+          "semantic_review": "evals/runs/localization-trials-01/semantic-review-01.json",
+          "visual_review": "evals/runs/localization-trials-01/inspection/frame-review-01.json",
+          "scope": "AMI English scenario meeting to Chinese subtitles or authored Chinese nature narration to English captions/new TTS; limited actual cases",
+          "status": "technical-and-agent-semantic-and-sampled-visual",
+          "independent_effect": "NOT_RUN",
+          "full_listening": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "source-led-overlay",
+      "name": "原声引入译述",
+      "fit": "采访和纪录片",
+      "question": "何时听到原说话者再译述",
+      "selection": "保身份感与关键原声",
+      "sequence": "原声开头→译音进入→留尾声",
+      "audio": "明确包络，原声不抢译声",
+      "rhythm": "译音留进入延迟",
+      "visual": "保真实人物表演",
+      "anti": "压低混音声称只消对白",
+      "example": "先听原话再进入中文译述",
+      "nearest": "不同于替换配音，保原声可辨片段",
+      "effect_check": "两语不争抢且信息完整",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "phrase-sync",
+      "name": "短语起止译配",
+      "fit": "可见讲解者但不改嘴",
+      "question": "何处需与手势和停顿同步",
+      "selection": "保短语意义与手势锚点",
+      "sequence": "动作前提→短语→结果",
+      "audio": "对齐起止不声称音素对齐",
+      "rhythm": "重录或改稿后测真实时长",
+      "visual": "保原人脸",
+      "anti": "句长一致宣称口型一致",
+      "example": "指向图表时对应术语出现",
+      "nearest": "不同于口型配音，不重建嘴部",
+      "effect_check": "手势与意思同步且听感自然",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "character-dialogue",
+      "name": "角色关系译配",
+      "fit": "叙事对话",
+      "question": "语气如何保人物关系",
+      "selection": "保称谓、权力和反应",
+      "sequence": "按原对话轮次",
+      "audio": "角色独立声线和表演方向",
+      "rhythm": "反应停顿不能随意填满",
+      "visual": "真实反应镜头不跨时伪造",
+      "anti": "全部角色一个通用广告腔",
+      "example": "亲疏称谓保关系变化",
+      "nearest": "不同于说话人ID，关注表演关系",
+      "effect_check": "人物立场和情绪不串位",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "pronunciation-led",
+      "name": "专名发音优先",
+      "fit": "专业名称与品牌",
+      "question": "哪个读音影响识别",
+      "selection": "保专名、缩写和数字读法",
+      "sequence": "先发音样本→句内合成",
+      "audio": "逐项听检而非拼写检查",
+      "rhythm": "难词不靠加速",
+      "visual": "字幕使用正式书写",
+      "anti": "英文拼写正确就算发音正确",
+      "example": "SQL读法按作品约定",
+      "nearest": "不同于术语表，检验实际声音",
+      "effect_check": "观众能听懂对应专名",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "lip-sync-performance",
+      "name": "可见口型译配",
+      "fit": "嘴部近景与角色表演",
+      "question": "口型和原意怎样同时成立",
+      "selection": "保语义和关键口部动作",
+      "sequence": "稿适配→真实服务→逐镜复核",
+      "audio": "音色与表演另检",
+      "rhythm": "真实时长加口部锚点",
+      "visual": "检查嘴眼脸与遮挡",
+      "anti": "用普通TTS冒充换嘴",
+      "example": "近景句末闭口另行检查",
+      "nearest": "不同于短语同步，需要真实画面处理",
+      "effect_check": "实际口型、人脸与意思都过验",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "real lip-sync provider unavailable"
+    },
+    {
+      "id": "music-effects-preserved",
+      "name": "环境与效果保留",
+      "fit": "译配中重要现场声音",
+      "question": "哪些非对白不可丢",
+      "selection": "保实际M&E或验过分离",
+      "sequence": "对白替换与环境连续",
+      "audio": "分轨混音检查空间感",
+      "rhythm": "译声间隙保必要环境",
+      "visual": "画面事件与音效同步",
+      "anti": "整轨静音假装去人声",
+      "example": "换旁白但保水声与脚步",
+      "nearest": "不同于原声覆盖，侧重非对白",
+      "effect_check": "声音事件未随对白一起消失",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "requires actual M&E or validated separation and final listening"
+    },
+    {
+      "id": "multi-voice-code-switch",
+      "name": "多人跨语切换",
+      "fit": "访谈夹外语和多人对话",
+      "question": "哪些语言本身有表达功能",
+      "selection": "保说话者及有意切语",
+      "sequence": "按原语用切换选择翻译",
+      "audio": "声线映射独立于语言",
+      "rhythm": "不把切语停顿抹平",
+      "visual": "必要标签解释语境",
+      "anti": "所有外语强改同一种音色",
+      "example": "引用英语术语保原音再解释",
+      "nearest": "不同于角色对话，处理语言身份",
+      "effect_check": "人物与切语功能保留",
+      "family": "声音与同步",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "locale-register",
+      "name": "地区语域",
+      "fit": "已知目标地区和受众",
+      "question": "亲疏正式程度如何合适",
+      "selection": "保说话关系与目的",
+      "sequence": "稳定称谓和礼貌层级",
+      "audio": "地区表达自然不刻板",
+      "rhythm": "按语域组织停顿",
+      "visual": "字形和标点对应locale",
+      "anti": "靠夸张方言制造地区感",
+      "example": "同一句按正式培训语气处理",
+      "nearest": "不同于陪伴风格，地区规范明确",
+      "effect_check": "语域一致且源立场不变",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "units-with-origin",
+      "name": "单位双值",
+      "fit": "科普与国际教程",
+      "question": "换单位会否损失精度",
+      "selection": "保原数值与转换依据",
+      "sequence": "原值→目标值或并列",
+      "audio": "说核心值，字幕补原值",
+      "rhythm": "数字给充足阅读",
+      "visual": "单位与数字不拆离",
+      "anti": "把货币换算当当地售价",
+      "example": "米制换英制记录舍入",
+      "nearest": "不同于比较保留，增加可追溯换算",
+      "effect_check": "换算正确且不暗改量级",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "cultural-footnote",
+      "name": "轻量文化注释",
+      "fit": "陌生文化物件与习俗",
+      "question": "缺什么知识才读懂",
+      "selection": "只补理解所需背景",
+      "sequence": "原称谓→短解释→继续",
+      "audio": "译者说明与原话分开",
+      "rhythm": "解释不压过叙事",
+      "visual": "小注释有阅读窗口",
+      "anti": "把注释塞进人物原话",
+      "example": "节日名保留并简释",
+      "nearest": "不同于文化重创，保源文化对象",
+      "effect_check": "理解提升且新增信息可辨",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "idiom-function",
+      "name": "习语功能",
+      "fit": "固定表达与比喻",
+      "question": "习语在这里表达何种态度",
+      "selection": "保语用功能和强度",
+      "sequence": "目标表达替代字面形象",
+      "audio": "语气力度不升级",
+      "rhythm": "不为解释破坏节奏",
+      "visual": "必要时保原比喻画面关系",
+      "anti": "字面翻译造成错误动作",
+      "example": "祝好运不译为真的折断腿",
+      "nearest": "不同于笑点机制，未必幽默",
+      "effect_check": "目标观众获得相同态度",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "brand-tone-adapt",
+      "name": "品牌语气适配",
+      "fit": "品牌既有授权表达",
+      "question": "语气如何当地自然",
+      "selection": "保功能、证据与承诺边界",
+      "sequence": "价值→证据→真实行动",
+      "audio": "依品牌约定的克制或活力",
+      "rhythm": "不自动广告加速",
+      "visual": "品牌字样和声明保护",
+      "anti": "加入本地优惠或保证",
+      "example": "优化CTA措辞不改优惠事实",
+      "nearest": "不同于直译保真，允许表达重创",
+      "effect_check": "品牌语气与事实均合规约定",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "screen-text-locale",
+      "name": "屏幕文字适配",
+      "fit": "可编辑图形与标题",
+      "question": "哪些屏幕文字阻碍理解",
+      "selection": "标题标签UI分开处理",
+      "sequence": "先核实际目标文案再替换",
+      "audio": "旁白与屏幕同一术语",
+      "rhythm": "长译字重新安排读屏",
+      "visual": "字体、RTL和几何实际验",
+      "anti": "字幕翻译当所有屏幕文字已译",
+      "example": "标题译长后调整文本框",
+      "nearest": "不同于UI锚定，实际修改画面文字",
+      "effect_check": "关键屏幕文字完整且未遮挡",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "names-and-honorifics",
+      "name": "姓名称谓体系",
+      "fit": "人物故事与剧集",
+      "question": "称谓揭示什么关系",
+      "selection": "保姓名、敬称与关系变化",
+      "sequence": "建立统一映射随剧情变化",
+      "audio": "发音与称谓一致",
+      "rhythm": "首次出现留辨识",
+      "visual": "字幕人名一致",
+      "anti": "全部称谓机械直译",
+      "example": "同一人正式与亲昵称呼区分",
+      "nearest": "不同于术语表，处理人际信息",
+      "effect_check": "人物可追踪且关系准确",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "market-context",
+      "name": "市场背景说明",
+      "fit": "旧资料面向新地区",
+      "question": "哪些事实只适用原市场",
+      "selection": "保原地原时并解释适用性",
+      "sequence": "原事实→适用边界→当地说明",
+      "audio": "说明不冒充源作者发言",
+      "rhythm": "关键限制不快速闪过",
+      "visual": "地区和日期随相关事实出现",
+      "anti": "自动把美元换当地价格",
+      "example": "旧售价标原市场日期",
+      "nearest": "不同于品牌改写，限定事实适用范围",
+      "effect_check": "观众不把旧市场事实当当前承诺",
+      "family": "地区与文化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "single-term-repair",
+      "name": "单术语修订",
+      "fit": "用户只改一个专名",
+      "question": "哪些出现处真属同一语义",
+      "selection": "定位指定意义和相关句",
+      "sequence": "改词→邻句核对→局部重导",
+      "audio": "仅受影响句重录",
+      "rhythm": "检查新词实际时长",
+      "visual": "保护其他手工字幕",
+      "anti": "全局同形替换误改别义",
+      "example": "只改产品名不改同形普通词",
+      "nearest": "不同于术语建立，保护现有成片",
+      "effect_check": "目标词修复且无关处不变",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "modality-repair",
+      "name": "限定与否定纠错",
+      "fit": "发现译义被强化",
+      "question": "哪处改变命题真假",
+      "selection": "回源修复否定和可能性",
+      "sequence": "源证据→纠正译文→关联声字",
+      "audio": "受影响配音同步修正",
+      "rhythm": "保护限定出现时间",
+      "visual": "相关字幕与图解一致",
+      "anti": "只改字幕不改错误配音",
+      "example": "must改回may的义务差异",
+      "nearest": "不同于首次忠实翻译，修复已交付错误",
+      "effect_check": "全部受影响载体同步纠正",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "reading-overflow-repair",
+      "name": "读屏超限修订",
+      "fit": "字幕密度过高",
+      "question": "哪里能降负担不损义",
+      "selection": "按意义区分冗词与锚点",
+      "sequence": "凝练→分段→可用窗口",
+      "audio": "源声保持除非明确译配",
+      "rhythm": "调整显式窗口后再测",
+      "visual": "不缩到不可读字号",
+      "anti": "删最后一句让指标通过",
+      "example": "长德语词导致换行重排",
+      "nearest": "不同于凝练风格，处理已观察失败",
+      "effect_check": "读屏改善且意义差异可追溯",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "voice-slot-repair",
+      "name": "配音超窗修订",
+      "fit": "真实声音超过时槽",
+      "question": "能改表达还是要改画面",
+      "selection": "保全部意义与保护时段",
+      "sequence": "测真实时长→改稿/录音→再测",
+      "audio": "不截尾不默认加速",
+      "rhythm": "保持自然停顿预算",
+      "visual": "确需延长则明确范围",
+      "anti": "假报音频时长以通过",
+      "example": "英文译稿比中文窗口长",
+      "nearest": "不同于短语同步，解决硬时长冲突",
+      "effect_check": "完整声音入槽且不损义",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "pronunciation-retake",
+      "name": "发音局部重录",
+      "fit": "听检发现一个专名错",
+      "question": "修读音会影响哪句",
+      "selection": "定位真实错误音频",
+      "sequence": "修发音规格→该句重录→听检",
+      "audio": "保其余合格声音",
+      "rhythm": "新时长重新绑定字幕",
+      "visual": "原画面和无关字不动",
+      "anti": "重新合成全片破坏好表演",
+      "example": "只重录品牌名称所在句",
+      "nearest": "不同于专名优先，基于已听错误",
+      "effect_check": "错误实际消失且衔接自然",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "source-change-propagation",
+      "name": "源稿变更传播",
+      "fit": "源字幕或剪辑更新",
+      "question": "哪些译文和时序已失效",
+      "selection": "按源ID版本定位依赖",
+      "sequence": "源变更→译义→声字→QC",
+      "audio": "复用未变句有效音频",
+      "rhythm": "移动与改义分开失效",
+      "visual": "检查所有受影响版本",
+      "anti": "旧QC继续绑定新成片",
+      "example": "原话从15改为50需声字都变",
+      "nearest": "不同于改译文，源版本已变",
+      "effect_check": "依赖失效范围完整且无过度重做",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "bilingual-priority-swap",
+      "name": "双语主次调整",
+      "fit": "更换学习主语言",
+      "question": "怎样改主次而不改意思",
+      "selection": "同一意义单元译文保持",
+      "sequence": "交换显示层级→复核阅读",
+      "audio": "原声是否变动单独决定",
+      "rhythm": "窗口不因顺序改变自动缩短",
+      "visual": "一个cue主次一致",
+      "anti": "交换字行顺手重新翻译",
+      "example": "中文在上改英文在上",
+      "nearest": "不同于双语建设，纯局部呈现变更",
+      "effect_check": "意思与声音保持且主次明确",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    },
+    {
+      "id": "locale-version-repair",
+      "name": "单地区版本修订",
+      "fit": "只改一个语言地区",
+      "question": "哪些版本继承哪些变化",
+      "selection": "定位地区覆盖与共享事实",
+      "sequence": "局部变更→本版验证→继承说明",
+      "audio": "不重录其他语种",
+      "rhythm": "仅本版时长重新检查",
+      "visual": "保其他版本人工改动",
+      "anti": "把一个地区用词推全语言",
+      "example": "只改加拿大法语称谓",
+      "nearest": "不同于批量生成，修订已有版本",
+      "effect_check": "目标版本正确且兄弟版本不变",
+      "family": "局部修改与迭代",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "localization-host",
+        "localization-audio",
+        "localization-text",
+        "localization-production"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标locale与语域",
+        "意义保护项与术语",
+        "字幕阅读profile",
+        "源声/译声分工",
+        "允许修改范围和实际时长"
+      ],
+      "compatibility": {
+        "requires": "源义与当前版本可回查；目标语和执行路径可用",
+        "avoid": "不以字面覆盖、测时或服务成功代替语义、听感和口型验证"
+      },
+      "execution_support": "explicit local compilation/rendering where fonts/voices support locale; language and effect unvalidated"
+    }
+  ]
+}

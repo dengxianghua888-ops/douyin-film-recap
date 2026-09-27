@@ -1,0 +1,77 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "whisperx-alignment",
+      "version": "2cfd7b7c5c7bba144954364db747319b50e8232b",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/m-bain__whisperX/2cfd7b7c5c7b/README.md",
+      "size": 15550,
+      "sha256": "d68ee671da04b2f2c8a1242bb129f4ac72ab6e42f8eb6ba8ef3e53c6d2c03a11",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/m-bain__whisperX.json",
+      "authority_sha256": "d10e41582dd5dc146de3698ea86db08a2a966ba7f43a31845a90882226ccb793",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "whisperx-alignment",
+      "version": "2cfd7b7c5c7bba144954364db747319b50e8232b",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/m-bain__whisperX/2cfd7b7c5c7b/whisperx/alignment.py",
+      "size": 22033,
+      "sha256": "346ac19053bd841bed1162b861d2d89efc0fe3aafc83b2493fb487fbc29c6239",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/m-bain__whisperX.json",
+      "authority_sha256": "d10e41582dd5dc146de3698ea86db08a2a966ba7f43a31845a90882226ccb793",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "whisperx-alignment",
+      "version": "2cfd7b7c5c7bba144954364db747319b50e8232b",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/m-bain__whisperX/2cfd7b7c5c7b/LICENSE",
+      "size": 1297,
+      "sha256": "cddc25bce26226b4a04ed12839d9006b7a4403da9020ef6428ef7282a6567441",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/m-bain__whisperX.json",
+      "authority_sha256": "d10e41582dd5dc146de3698ea86db08a2a966ba7f43a31845a90882226ccb793",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "whisperx-skill",
+      "version": "4cec485d4798675c0ccda54797f8dd47d19b84d1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__whisperx/4cec485d4798/SKILL.md",
+      "size": 25360,
+      "sha256": "f1e854755245ea6f77afac90d35cf40a61f920a9faecf9996bd0d0bc3cce3c21",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__whisperx.json",
+      "authority_sha256": "bc97ab2947ffdd9deb3d409fec0599f1f45c1ee6da30f6419e8f886c9de45e8e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "whisperx-skill",
+      "version": "4cec485d4798675c0ccda54797f8dd47d19b84d1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__whisperx/4cec485d4798/scripts/transcribe.py",
+      "size": 35363,
+      "sha256": "c622c3d9430e39cec5571a64ca8e0fb0909bb77e33a2f49dbe8acd13be1cfcc9",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__whisperx.json",
+      "authority_sha256": "bc97ab2947ffdd9deb3d409fec0599f1f45c1ee6da30f6419e8f886c9de45e8e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "whisperx-skill",
+      "version": "4cec485d4798675c0ccda54797f8dd47d19b84d1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__whisperx/4cec485d4798/LICENSE",
+      "size": 1066,
+      "sha256": "5c15d8edac86995b6ed8a020fce61639b6529d3520ab9ecd484e72a6104e800c",
+      "use": "method reference and critical review; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__whisperx.json",
+      "authority_sha256": "bc97ab2947ffdd9deb3d409fec0599f1f45c1ee6da30f6419e8f886c9de45e8e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream signature authentication"
+    }
+  ]
+}

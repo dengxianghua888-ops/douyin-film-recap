@@ -1,0 +1,29 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "jianshuo-multicam",
+      "version": "96a70558592d7e14fb90e25b07e569a3bfa02330",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/jianshuo__multicam-skill/96a70558592d/SKILL.md",
+      "sha256": "aea0d4371adf79a56e59b944f3f20402bda99eff54a3c1905eaa5459130144b6",
+      "size": 10708,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/jianshuo__multicam-skill.json",
+      "authority_sha256": "6358225da96eedd1feb135a420022e2ed231209a15c340c8103a7351826ce3da",
+      "use": "method reference for envelope coarse sync; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, no upstream signature; license not established, no source redistribution"
+    },
+    {
+      "source_id": "jianshuo-multicam",
+      "version": "96a70558592d7e14fb90e25b07e569a3bfa02330",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/jianshuo__multicam-skill/96a70558592d/scripts/sync.py",
+      "sha256": "da6d07d037d65d4b2fbd5ad71c65314075ceb335fbae0b83befc7565bc484553",
+      "size": 9013,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/jianshuo__multicam-skill.json",
+      "authority_sha256": "6358225da96eedd1feb135a420022e2ed231209a15c340c8103a7351826ce3da",
+      "use": "method reference for envelope coarse sync; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, no upstream signature; license not established, no source redistribution"
+    }
+  ]
+}

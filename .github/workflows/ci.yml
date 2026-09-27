@@ -8,14 +8,27 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  library:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - name: Check library structure
+        run: python scripts/verify_library.py structure
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workflows/raven-film-recap/douyin-film-recap
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
           cache: pip
+          cache-dependency-path: workflows/raven-film-recap/douyin-film-recap/pyproject.toml
       - name: Install FFmpeg and CJK font
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-cjk
       - name: Install package

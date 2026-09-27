@@ -1,0 +1,2131 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "original product/experience/brand mechanisms; authored, not quality certified",
+  "styles": [
+    {
+      "id": "action-proof",
+      "name": "操作本身作证",
+      "family": "产品",
+      "fit": "有连续操作和实际结果",
+      "question": "到底怎样完成这件事？",
+      "selection": "起始状态、关键动作、等待、实际结果",
+      "sequence": "对象→操作→结果→条件",
+      "audio": "操作原声优先，解释不抢关键声音",
+      "rhythm": "必要动作完整，等待可明确省略",
+      "visual": "手、控制件和结果同一对象可辨",
+      "anti": "跳剪当实时速度或遗漏步骤仍称教学",
+      "example": "虚构例：折叠车从展开到推行，不宣称耗时",
+      "nearest": "区别于结果先行，按操作因果展开",
+      "effect_check": "观众能指出动作如何产生可见结果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "commerce-style-trials-01",
+          "candidate": "action-proof",
+          "report": "evals/runs/commerce-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "one licensed product demonstration, not authentic UGC/brand acceptance",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/commerce-style-trials-01/action-proof/render/captions/captioned.mp4",
+            "sha256": "47c7d34ed9d2d2c7b86f338919cc1de653111a21a8e5e40dd536cc2353c99cce"
+          },
+          "version": "66f18d5c38f07247b48acf0f1ba8b923b76e49efe5089e260ed4a5c09b0174ae"
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "result-first",
+      "name": "先看可见结果",
+      "family": "产品",
+      "fit": "结果可以快速辨认且有过程可回溯",
+      "question": "这个状态是怎样得到的？",
+      "selection": "真实结果、对象初态、关键过程",
+      "sequence": "结果预览→说明回到起点→过程→结果语境",
+      "audio": "声音来源随重排注明，不借别处反应",
+      "rhythm": "开场短展示但不剥离限制",
+      "visual": "重现同一结果时避免当第二次试验",
+      "anti": "结果比真实测试更好看而替换素材",
+      "example": "虚构例：先展示车推行，再回看折叠",
+      "nearest": "区别于操作证据，先给观看问题",
+      "effect_check": "结果与后续过程属于同一对象，重排清楚",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "commerce-style-trials-01",
+          "candidate": "result-first",
+          "report": "evals/runs/commerce-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "one licensed product demonstration, not authentic UGC/brand acceptance",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/commerce-style-trials-01/result-first/render/captions/captioned.mp4",
+            "sha256": "86b96f6b8f35a665c98065f14aa01bae7b3b68e38be7ac0931325bb13c965974"
+          },
+          "version": "002f3fdf999b36dfae60754200adbfffe348f174fca4989e2ce57213e38eed09"
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "one-friction",
+      "name": "一个具体麻烦",
+      "family": "产品",
+      "fit": "素材记录实际场景困难和产品作用",
+      "question": "它解决哪个具体环节？",
+      "selection": "场景、障碍、使用动作、仍有的限制",
+      "sequence": "麻烦→尝试→变化→边界",
+      "audio": "保留实际使用说明，不虚构抱怨",
+      "rhythm": "困难只给理解所需时间，不夸大痛苦",
+      "visual": "问题与解决使用相同可比环境",
+      "anti": "凭无关人物表情制造痛点",
+      "example": "虚构例：桌面线材打结后用收纳夹固定",
+      "nearest": "区别于全功能介绍，只回应一个问题",
+      "effect_check": "能说出解决的环节及未解决部分",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "state-choice",
+      "name": "两种使用状态",
+      "family": "产品",
+      "fit": "同一对象有不同形态或用法",
+      "question": "什么状态适合什么动作？",
+      "selection": "各状态、切换动作、可见用途",
+      "sequence": "状态A→状态B→切换条件→选择",
+      "audio": "保留各状态的动作声，不用声音夸优劣",
+      "rhythm": "每个状态都有可辨完整动作",
+      "visual": "型号配件一致，必要时标不同条件",
+      "anti": "不同型号拼成一物多用",
+      "example": "虚构例：车折叠后推行与提起，两种状态",
+      "nearest": "区别于竞品比较，不判产品胜负",
+      "effect_check": "观众区分状态和转换条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "commerce-style-trials-01",
+          "candidate": "state-choice",
+          "report": "evals/runs/commerce-style-trials-01/result.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "one licensed product demonstration, not authentic UGC/brand acceptance",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/commerce-style-trials-01/state-choice/render/captions/captioned.mp4",
+            "sha256": "5c279ea6f4717655dda280b13dab8c0e648c93f6ba87a84baed501dd443f6fd0"
+          },
+          "version": "da16998ec51def2eea676216fd0bf340775481e37cec777c60a750df98ae8ba4"
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "feature-to-action",
+      "name": "功能落到动作",
+      "family": "产品",
+      "fit": "有规格和实际对应动作",
+      "question": "这一功能在使用时在哪里？",
+      "selection": "规格出处、对应部件、实际动作和范围",
+      "sequence": "功能问题→部件→动作→用途",
+      "audio": "短解释与操作声轮流承担信息",
+      "rhythm": "一项功能讲清再转下一项",
+      "visual": "文字靠近对应部件但不遮操作",
+      "anti": "规格词堆叠却没有对应画面",
+      "example": "虚构例：杯盖锁扣如何开合",
+      "nearest": "区别于操作证据，以功能到行动映射",
+      "effect_check": "每项文字能定位到真实动作",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "espresso-claims-01",
+          "variant": "feature-to-action",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/result-current.json",
+            "sha256": "529ca2ee044ae08caf3b0c4e6a048a04e6d1d16e0f3885dc8ad8e93706706836"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/feature-to-action/document-current.json",
+            "sha256": "14942e22fcec545b1a2f3da714d9668fb5c66ae5d99e3db5199fd85b83e5ea00"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/feature-to-action/operation-render/captions/captioned.mp4",
+            "sha256": "f87b95477cba0e02caf9c6d92c049d355389828f2f8ad415c8d92ab2808aa4c8"
+          },
+          "claim_ledger": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/claim-ledger.json",
+            "sha256": "1e8fb4029b36514c87517552978b580022012e36992a753d3b8dd5ebc18b5e6e"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/technical-readback.json",
+            "sha256": "4feb434de0da0656de1c3340c0a9eb4ef276741a0d0e21e370112632ff3138b0"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/visual-review.json",
+            "sha256": "3797dbbd0f979e61cde9a9e6a4b6df9fa265a8c1f9f9ba0ce72a0d0d56eec441"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/browser-current-01/result.json",
+            "sha256": "ce9e67364f9cecf5bd447d31e3dca3e8a4ea90d5caac1b2bb64953a12bd0d63a"
+          },
+          "scope": "Attributed source-author purpose and partial brewing demonstration. Feature work restored visible24–30s hand/control interval. No taste,pressure or machine-performance claim.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN",
+          "audio_limit": "Each current timeline-to-caption PCM exact; old/new feature first8s PCM strict identity failed and retained."
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "detail-and-whole",
+      "name": "细节回到整体",
+      "family": "产品",
+      "fit": "真实细节与整体可配对",
+      "question": "细节怎样影响实际使用？",
+      "selection": "整体、相关部位、使用动作、整体结果",
+      "sequence": "整体定位→细节→动作→回整体",
+      "audio": "细节声适度，不能后期造质量证据",
+      "rhythm": "特写留辨认时间不无尽循环",
+      "visual": "同款同侧部位可核对，数字裁切标明需要时",
+      "anti": "用生成纹理替换真实材质",
+      "example": "虚构例：背包扣具特写回到背负动作",
+      "nearest": "区别于材质感官，解释部位关系",
+      "effect_check": "细节不是无关美图且没有规格漂移",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "condition-led",
+      "name": "先讲适用条件",
+      "family": "产品",
+      "fit": "效果依赖场景且条件影响决策",
+      "question": "在什么条件下值得考虑？",
+      "selection": "条件、实际演示、成功及失败范围",
+      "sequence": "条件→演示→结果→不适用项",
+      "audio": "限定语保持完整，不被音乐压住",
+      "rhythm": "条件阅读时间足够，结果不过度重复",
+      "visual": "条件与结果共同可见或紧邻",
+      "anti": "限定藏片尾大字只喊绝对效果",
+      "example": "虚构例：平整桌面使用吸盘支架",
+      "nearest": "区别于限制先行，以适用范围组织",
+      "effect_check": "观众记得条件而非无条件承诺",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "case_id": "espresso-claims-01",
+          "variant": "condition-led",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/result-current.json",
+            "sha256": "529ca2ee044ae08caf3b0c4e6a048a04e6d1d16e0f3885dc8ad8e93706706836"
+          },
+          "document": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/condition-led/document-v1.json",
+            "sha256": "6ad760a2789fa3cbad89d7099fd3aee3eec5972a6ebb309264d9cdc82916c6c7"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/condition-led/render/captions/captioned.mp4",
+            "sha256": "2679cbeee89d027557ef1fefcedbf195b2f1205d4172536e12f473fc8da36f72"
+          },
+          "claim_ledger": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/claim-ledger.json",
+            "sha256": "1e8fb4029b36514c87517552978b580022012e36992a753d3b8dd5ebc18b5e6e"
+          },
+          "technical_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/technical-readback.json",
+            "sha256": "4feb434de0da0656de1c3340c0a9eb4ef276741a0d0e21e370112632ff3138b0"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/visual-review.json",
+            "sha256": "3797dbbd0f979e61cde9a9e6a4b6df9fa265a8c1f9f9ba0ce72a0d0d56eec441"
+          },
+          "browser": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/browser-current-01/result.json",
+            "sha256": "ce9e67364f9cecf5bd447d31e3dca3e8a4ea90d5caac1b2bb64953a12bd0d63a"
+          },
+          "scope": "Attributed source-author purpose and partial brewing demonstration. Feature work restored visible24–30s hand/control interval. No taste,pressure or machine-performance claim.",
+          "quality_status": "UNVALIDATED",
+          "independent_style": "NOT_RUN",
+          "audio_limit": "Each current timeline-to-caption PCM exact; old/new feature first8s PCM strict identity failed and retained."
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "honest-comparison",
+      "name": "条件明确的比较",
+      "family": "产品",
+      "fit": "有可比条件与可追溯两组素材",
+      "question": "差异究竟来自哪里？",
+      "selection": "两组同类任务、条件差异、测量依据",
+      "sequence": "条件→对应观察→差异→可比范围",
+      "audio": "原声处理一致，主观感受归属说话者",
+      "rhythm": "同一任务给相当辨认时间",
+      "visual": "不靠调色速度制造优劣；可顺序交替",
+      "anti": "把不同工况包装成公平测试",
+      "example": "虚构例：两个杯盖同水量倾倒观察",
+      "nearest": "区别于状态选择，比较不同方案",
+      "effect_check": "观众知道哪些可比、哪些不能下结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "limitation-first",
+      "name": "限制先说清",
+      "family": "产品",
+      "fit": "有真实不适用或失效情况",
+      "question": "谁可能不该选它？",
+      "selection": "限制、受限场景、仍能完成的用途",
+      "sequence": "限制→原因/条件→可用场景→选择",
+      "audio": "保留否定和程度词，非反讽抹掉问题",
+      "rhythm": "限制与优点都有理解空间",
+      "visual": "失败不夸大，成功不掩条件",
+      "anti": "把不支持功能说成故意高级",
+      "example": "虚构例：支架不能固定厚桌沿但可用薄桌",
+      "nearest": "区别于条件先行，先排除不适合用户",
+      "effect_check": "观众能判断自己是否属于不适用范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "unbox-to-use",
+      "name": "从开箱到使用",
+      "family": "产品",
+      "fit": "包装内容和首次使用有实拍",
+      "question": "拿到手后要经历哪些步骤？",
+      "selection": "包装、实物/配件、准备、首次动作",
+      "sequence": "打开→核对→准备→使用→实际感受",
+      "audio": "保留器物声与真实原话，不能补造惊喜",
+      "rhythm": "包装不吞主要使用段落",
+      "visual": "配件从盒到使用前后同一件",
+      "anti": "展示赠品却不说明非标配",
+      "example": "虚构例：桌灯开箱、接线到点亮",
+      "nearest": "区别于感官开箱，落到实际使用",
+      "effect_check": "观众分清包装、标配和必需准备",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "setup-reality",
+      "name": "真实上手门槛",
+      "family": "产品",
+      "fit": "安装/设置过程和完成条件有记录",
+      "question": "开始用之前要付出什么？",
+      "selection": "所需工具、步骤、等待、问题和首次运行",
+      "sequence": "准备→关键设置→处理问题→可用状态",
+      "audio": "指令与真实操作声清楚",
+      "rhythm": "不删除必需等待后宣称即开即用",
+      "visual": "保留配件/接口辨认，错误步骤不误导",
+      "anti": "遗漏外接配件仍称独立使用",
+      "example": "虚构例：键盘配对需切换模式",
+      "nearest": "区别于开箱，重心是准备成本",
+      "effect_check": "能判断开始使用的真实条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "care-after-use",
+      "name": "用完之后",
+      "family": "产品",
+      "fit": "清理、维护或收纳有真实素材",
+      "question": "便利是否延续到使用之后？",
+      "selection": "完成使用、拆卸、清洁/收纳、恢复",
+      "sequence": "使用结果→收尾步骤→维护点→下次状态",
+      "audio": "保留清理声，不将保养说明戏谑化",
+      "rhythm": "省略重复动作但不漏必要处理",
+      "visual": "材质/清洗限制来自说明，非猜测",
+      "anti": "擅自演示不适合的清洗方式",
+      "example": "虚构例：咖啡器具拆洗并晾干",
+      "nearest": "区别于功能演示，以后续负担为主",
+      "effect_check": "使用和维护成本都可理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "object-sound",
+      "name": "器物与声音",
+      "family": "产品",
+      "fit": "原声能体现真实可听动作",
+      "question": "这个物件怎样被触碰和使用？",
+      "selection": "开合、接触、旋转、放置和完成动作",
+      "sequence": "建立物件→几类触感动作→收束",
+      "audio": "同期器物声主导，不补声音当品质证据",
+      "rhythm": "动作声有间隔，避免无信息密集ASMR",
+      "visual": "真实微动作清楚，不以特写掩盖结构",
+      "anti": "录音增强后声称本来无噪",
+      "example": "虚构例：机械扣闭合与织物拉链",
+      "nearest": "区别于细节整体，以听觉组织",
+      "effect_check": "声音可归属动作，观众不误认为量化噪声测试",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "measurement-explained",
+      "name": "测量说清楚",
+      "family": "产品",
+      "fit": "有可靠量具、方法和完整记录",
+      "question": "这个数字怎样得来？",
+      "selection": "仪器、条件、测量过程、读数和误差",
+      "sequence": "问题→方法→结果→范围",
+      "audio": "数字与单位准确，口播不压量具提示",
+      "rhythm": "读数和方法留时间，不能只闪漂亮数",
+      "visual": "量具与对象关系可见，数据不后补伪造",
+      "anti": "单次值推成行业第一",
+      "example": "虚构例：称量含配件与不含配件的两次读数",
+      "nearest": "区别于可见动作，重点量化来源",
+      "effect_check": "观众能复述方法和数值适用范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "use-cycle",
+      "name": "一次使用周期",
+      "family": "产品",
+      "fit": "使用前中后有连续资料",
+      "question": "它怎样进入一件日常任务？",
+      "selection": "开始需求、准备、使用、收尾",
+      "sequence": "需要→取用→完成→归位",
+      "audio": "自然声与简短说明，保留非卖点动作",
+      "rhythm": "按任务变化推进而非所有功能平均展示",
+      "visual": "环境和状态不跨型号错配",
+      "anti": "未录结果靠库存镜头补成功",
+      "example": "虚构例：台灯从展开到阅读后收起",
+      "nearest": "区别于日常UGC，没有第一人称体验要求",
+      "effect_check": "整个任务成立且产品作用不过度夸大",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "first-impression",
+      "name": "第一次接触",
+      "family": "体验",
+      "fit": "真实初次接触有原话和反应",
+      "question": "第一眼与上手后有什么不同？",
+      "selection": "初始预期、接触、真实反应、暂时结论",
+      "sequence": "预期→试一下→反应→暂定判断",
+      "audio": "原话的犹豫和限定保留",
+      "rhythm": "不给未形成的结论强收尾",
+      "visual": "反应与物件同期或明确重组",
+      "anti": "初次演示剪成长期测评",
+      "example": "虚构例：第一次试握相机，手感评价归本人",
+      "nearest": "区别于使用日记，只有初次范围",
+      "effect_check": "观众不误以为长期验证",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "real-use-diary",
+      "name": "真实使用日记",
+      "family": "体验",
+      "fit": "多次实际使用记录有日期来源",
+      "question": "用过几次后判断怎么变化？",
+      "selection": "每次场景、变化、问题、本人复述",
+      "sequence": "初印象→几次使用→修正→当前看法",
+      "audio": "让实际用户表达变化，不替他下结论",
+      "rhythm": "时段选择有变化，不机械按天凑数",
+      "visual": "日期不从文件修改时间猜测",
+      "anti": "一日素材伪装用了一个月",
+      "example": "虚构例：同一背包三次通勤记录",
+      "nearest": "区别于第一次接触，有可核对纵向经验",
+      "effect_check": "结论随证据变化且范围清楚",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "skeptic-to-decision",
+      "name": "带疑问试用",
+      "family": "体验",
+      "fit": "真实疑虑与验证过程存在",
+      "question": "这个疑问能否被实际使用回答？",
+      "selection": "本人疑问、尝试、结果、仍未解项",
+      "sequence": "疑问→试用→观察→个人决定",
+      "audio": "保持原话，不把中立拼成强推荐",
+      "rhythm": "尝试时给证据空间而非只给表情",
+      "visual": "证据与具体问题一一对应",
+      "anti": "先写好满意结论再挑素材",
+      "example": "虚构例：担心收纳太麻烦，实际折叠后仍犹豫",
+      "nearest": "区别于限制先行，疑问属于具体使用者",
+      "effect_check": "疑问和结论可追溯，不必转为购买",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "keep-or-return",
+      "name": "留下还是退回",
+      "family": "体验",
+      "fit": "用户真实选择及理由明确",
+      "question": "这件物品为什么留下或离开？",
+      "selection": "需求、使用、冲突、真实决定",
+      "sequence": "原期待→使用差异→权衡→决定",
+      "audio": "保留多面意见，不能删不适合部分",
+      "rhythm": "权衡有必要细节，不拖成悬念诱导",
+      "visual": "退货/留下仅当实际发生或声明意向",
+      "anti": "演示者直接被编成真实购买者",
+      "example": "虚构例：杯子好清洗但太大，作者决定退回",
+      "nearest": "区别于疑问试用，收束为个人选择",
+      "effect_check": "观众理解个人判断而非普遍优劣",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "routine-integration",
+      "name": "放进我的日常",
+      "family": "体验",
+      "fit": "作者实际日常和原话有证据",
+      "question": "它有没有改变某个日常环节？",
+      "selection": "日常动作、产品加入点、实际变化",
+      "sequence": "原流程→使用环节→变化→日常继续",
+      "audio": "原话少而具体，环境声保留生活感",
+      "rhythm": "产品出现服从任务，不每秒强露脸",
+      "visual": "生活场景真实，人物关系不编造",
+      "anti": "生成厨房场景当真实家庭使用史",
+      "example": "虚构例：通勤时带折叠杯但不说人人必需",
+      "nearest": "区别于产品周期，重心个人习惯",
+      "effect_check": "观众看见具体变化且归属该人",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "mistake-and-learning",
+      "name": "用错后学会",
+      "family": "体验",
+      "fit": "真实误用、解释和修正有记录",
+      "question": "哪里容易误解，后来怎样处理？",
+      "selection": "误解、可见问题、正确依据、重试",
+      "sequence": "原做法→问题→理解→调整",
+      "audio": "不嘲讽用户，保留实际解释",
+      "rhythm": "错误短交代，正确步骤清楚",
+      "visual": "危险或错误做法不孤立展示成教程",
+      "anti": "编造事故制造反转",
+      "example": "虚构例：第一次没扣紧杯盖，按说明重装",
+      "nearest": "区别于门槛说明，有个人认知变化",
+      "effect_check": "能分辨错误与正确，而非只记戏剧效果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "own-words",
+      "name": "用本人的话",
+      "family": "体验",
+      "fit": "已有真实用户表达可使用",
+      "question": "对这个人最具体的感受是什么？",
+      "selection": "完整语义、条件、具体例子与原反应",
+      "sequence": "本人问题→原话→对应画面→保留余地",
+      "audio": "声音归属清楚，减少代述与口号",
+      "rhythm": "按说话意图断句，保留必要呼吸",
+      "visual": "B-roll不把他人体验嫁接给说话者",
+      "anti": "拼句形成原本没说过的推荐",
+      "example": "虚构例：用户说适合短途但背带勒肩",
+      "nearest": "区别于口播精剪，优先见证真实性",
+      "effect_check": "原话语义与态度保持",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "comment-response",
+      "name": "回答一个疑问",
+      "family": "体验",
+      "fit": "有真实问题或清楚标明策划问题",
+      "question": "观众最想问的这点能否被回答？",
+      "selection": "问题、对应演示、实际限制",
+      "sequence": "问题→可见回答→适用范围",
+      "audio": "回答自然，问题出处清楚",
+      "rhythm": "一问一答，不假互动拖时长",
+      "visual": "问题文字可读但不盖产品",
+      "anti": "虚构真实评论和用户名",
+      "example": "虚构例：策划问题是能否单手开盖",
+      "nearest": "区别于疑问试用，组织为面向观众回答",
+      "effect_check": "回答针对问题且不伪装用户反馈",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "two-person-perspective",
+      "name": "两个人的不同感受",
+      "family": "体验",
+      "fit": "两人真实使用或意见可区分",
+      "question": "同一物件为何让人不同选择？",
+      "selection": "各自需求、动作、原话、差异",
+      "sequence": "共同对象→观点A/B→差异原因→各自选择",
+      "audio": "声音不串人，不剪成不存在争执",
+      "rhythm": "不按平均时长牺牲完整观点",
+      "visual": "人物和使用条件清楚",
+      "anti": "把代言演员当随机用户测评",
+      "example": "虚构例：同一背包对不同身形体验不同",
+      "nearest": "区别于客观比较，不裁判普遍赢家",
+      "effect_check": "两个观点归属与条件完整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "sensory-reaction",
+      "name": "具体感受",
+      "family": "体验",
+      "fit": "真实感官描述与动作对应",
+      "question": "感受到底具体在哪里？",
+      "selection": "触碰、本人描述、对应可见细节",
+      "sequence": "接触→描述→细节→个人判断",
+      "audio": "原声和本人语言，不配夸张虚假反应",
+      "rhythm": "感受有停留但不重复形容词",
+      "visual": "看得到的与只能主观感受的分开",
+      "anti": "“我觉得轻”改成全网最轻",
+      "example": "虚构例：手握杯柄觉得圆润，仅属个人",
+      "nearest": "区别于器物声音，有明确感受主体",
+      "effect_check": "主观词始终归于本人",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "visual-use-story",
+      "name": "无口播使用片",
+      "family": "体验",
+      "fit": "动作足以说明过程，有真实人物使用",
+      "question": "不说卖点能否看懂用途？",
+      "selection": "进入场景、取物、动作、结果、离开",
+      "sequence": "动作链自然推进，必要处短标签",
+      "audio": "原声/授权音乐，不强加虚构第一人称",
+      "rhythm": "按动作落点，非每两秒必切",
+      "visual": "身体/产品关系清晰，静态也可服务理解",
+      "anti": "音乐把不完整动作遮掩成效果",
+      "example": "虚构例：收伞放包，进门取出晾开",
+      "nearest": "区别于产品周期，以人的动作与节奏组织",
+      "effect_check": "静音也能理解用途，不暗示虚假经验",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "outfit-choices",
+      "name": "穿搭中的选择",
+      "family": "体验",
+      "fit": "同一服饰鞋包有真实搭配与活动",
+      "question": "不同搭配怎样改变使用感受？",
+      "selection": "整体、细节、走动、本人选择",
+      "sequence": "一套建立→另一套对照→关键细节→选择",
+      "audio": "音乐或真实看法，不臆测舒适度",
+      "rhythm": "动作和场景切换有动机",
+      "visual": "左右件、尺寸、Logo和材质一致",
+      "anti": "生成上脚形变仍当真实穿着证明",
+      "example": "虚构例：同一外套两套实拍穿搭",
+      "nearest": "区别于状态选择，重心人和造型关系",
+      "effect_check": "风格可辨且产品没有变形或错款",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "expectation-adjusted",
+      "name": "预期被修正",
+      "family": "体验",
+      "fit": "原先想法和使用后变化都有来源",
+      "question": "原来以为怎样，实际发现怎样？",
+      "selection": "原预期、具体反例、新理解",
+      "sequence": "预期→观察→修正→仍未知",
+      "audio": "前后原话不脱离条件",
+      "rhythm": "修正处充分展示证据，不靠音效宣布",
+      "visual": "同一体验前后而非偷换人/型号",
+      "anti": "编造打脸前提提高戏剧性",
+      "example": "虚构例：以为难清洗，实际拆件比预期方便",
+      "nearest": "区别于带疑问试用，突出看法的改变",
+      "effect_check": "变化有对应经历，不包装普遍结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "gift-recipient",
+      "name": "礼物的接收者",
+      "family": "体验",
+      "fit": "送礼与接收者真实互动已授权",
+      "question": "礼物对接收者有什么具体意义？",
+      "selection": "选择缘由、交付、实际反应、使用",
+      "sequence": "缘由→递交→真实反应→使用或保留",
+      "audio": "本人声音，避免虚构感动台词",
+      "rhythm": "反应有呼吸，不反复消费情绪",
+      "visual": "人物关系由用户/素材明确",
+      "anti": "陌生人微笑当真实收礼推荐",
+      "example": "虚构例：朋友收到画具后一起试画",
+      "nearest": "区别于品牌关系，围绕具体接收经历",
+      "effect_check": "意义来自真实互动而非套词",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "craft-decisions",
+      "name": "工艺中的选择",
+      "family": "品牌",
+      "fit": "实际工序与选择理由有资料",
+      "question": "为什么这样做而不是另一种？",
+      "selection": "工序、可见取舍、制作者说明、结果",
+      "sequence": "问题→选择→动作→结果",
+      "audio": "工艺原声与短解释，避免空泛赞美",
+      "rhythm": "关键手法留完整观察时间",
+      "visual": "标注不遮工具与接触点",
+      "anti": "普通组装宣称祖传技艺",
+      "example": "虚构例：木件边缘打磨为何多一步",
+      "nearest": "区别于产品演示，主线生产选择",
+      "effect_check": "理念能落到具体工序和代价",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "founder-choice",
+      "name": "创始人的一次选择",
+      "family": "品牌",
+      "fit": "具体决定、语境和后果有来源",
+      "question": "哪次选择改变了做事方式？",
+      "selection": "真实问题、决定、过程、可核对后果",
+      "sequence": "语境→选择→代价→当前结果",
+      "audio": "本人原话优先，旁白不神化",
+      "rhythm": "选择前后有空间，不压成成功鸡汤",
+      "visual": "历史素材注明时期，演绎明确",
+      "anti": "编造创业挫折或因果",
+      "example": "虚构例：放弃某材料后重新做样品",
+      "nearest": "区别于品牌起源，只讲一个决定",
+      "effect_check": "观众记住具体选择而非头衔",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "values-in-action",
+      "name": "价值通过行为出现",
+      "family": "品牌",
+      "fit": "有实际行为与相应记录",
+      "question": "这句理念在什么行动里出现？",
+      "selection": "行动、对象、成本、实际范围",
+      "sequence": "具体场景→行动→影响→开放收束",
+      "audio": "少口号，让现场交流说明",
+      "rhythm": "行为比Logo得到更多必要时间",
+      "visual": "归属与范围真实，数据另验",
+      "anti": "拍垃圾桶就宣称零废弃",
+      "example": "虚构例：修补旧物的真实服务片段",
+      "nearest": "区别于宣言，要求已发生的行为",
+      "effect_check": "理念有具体支撑但不过度外推",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "material-journey",
+      "name": "材料到成品",
+      "family": "品牌",
+      "fit": "材料来源和工序身份可追溯",
+      "question": "一件东西经历了什么变化？",
+      "selection": "原料、关键转换、工序、成品",
+      "sequence": "材料→变化→成形→使用关联",
+      "audio": "工具和材料声形成节奏",
+      "rhythm": "每次变化提供新信息",
+      "visual": "同批/同类声明分清，来源不猜",
+      "anti": "库存矿山镜头当自家原料产地",
+      "example": "虚构例：可追踪布料经裁剪缝制成袋",
+      "nearest": "区别于工艺选择，主线物的转变",
+      "effect_check": "材料与产品关系真实可追溯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "service-moment",
+      "name": "服务发生的一刻",
+      "family": "品牌",
+      "fit": "真实服务接触与处理过程有许可",
+      "question": "品牌如何对待一个具体问题？",
+      "selection": "需求、沟通、处理、结果/未决",
+      "sequence": "问题→倾听→实际动作→状态",
+      "audio": "双方原话归属，隐私按授权范围处理",
+      "rhythm": "不为了节奏删客户关键需求",
+      "visual": "不泄露无关订单，结果不造满意",
+      "anti": "工作人员摆拍当真实客户解决案例",
+      "example": "虚构例：更换损坏扣件但仍需等待配件",
+      "nearest": "区别于客户成功，不强求成功闭环",
+      "effect_check": "服务态度通过可见处理体现",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "place-and-people",
+      "name": "地方与做事的人",
+      "family": "品牌",
+      "fit": "场所、人员与品牌关系明确",
+      "question": "这个地方怎样影响做法？",
+      "selection": "环境、具体工作、人与地方联系",
+      "sequence": "地方建立→人物工作→联系→回空间",
+      "audio": "保留真实方言/环境，翻译不改态度",
+      "rhythm": "环境镜头有信息，不纯旅游广告",
+      "visual": "产地与拍摄地分开，身份有据",
+      "anti": "异地漂亮景色冒原产地",
+      "example": "虚构例：海边作坊工人解释防潮收纳",
+      "nearest": "区别于材料旅程，关注空间与人",
+      "effect_check": "地方关系具体而不神秘化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "design-question",
+      "name": "一个设计问题",
+      "family": "品牌",
+      "fit": "问题、设计过程和方案有记录",
+      "question": "一个细节为什么长成现在这样？",
+      "selection": "需求、草稿/样件、试验、取舍",
+      "sequence": "问题→尝试→选择→当前方案",
+      "audio": "设计者原话，区分假设与实测",
+      "rhythm": "试验失败也保留有解释作用的部分",
+      "visual": "样机与量产版明确标识",
+      "anti": "概念图宣称已上市功能",
+      "example": "虚构例：杯柄空间与握持关系的样件比较",
+      "nearest": "区别于功能说明，关注形成过程",
+      "effect_check": "观众理解取舍与未解决问题",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "repair-and-return",
+      "name": "维修后的再使用",
+      "family": "品牌",
+      "fit": "真实维修与回用有证据",
+      "question": "怎样让一件物品继续被用？",
+      "selection": "损坏、诊断依据、维修、实际回用",
+      "sequence": "状态→处理→验证→回到使用",
+      "audio": "工具声和必要说明，不造安全认证",
+      "rhythm": "关键检验步骤完整",
+      "visual": "维修前后同物，配件替换标清",
+      "anti": "维修一次推成永久耐用",
+      "example": "虚构例：更换背包拉链后再次使用",
+      "nearest": "区别于用后维护，突出恢复价值",
+      "effect_check": "修了什么、恢复什么和仍有限制清楚",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "ordinary-workers",
+      "name": "普通工作者",
+      "family": "品牌",
+      "fit": "工作角色和本人表达有授权",
+      "question": "谁在完成那些常被忽略的事？",
+      "selection": "具体任务、协作、本人观点、结果",
+      "sequence": "任务进入→人和行动→协作→日常继续",
+      "audio": "本人声音，不替其编内心独白",
+      "rhythm": "留操作细节和自然停顿",
+      "visual": "真实角色与姓名用途明确",
+      "anti": "强煽情塑造未经本人表达的奉献",
+      "example": "虚构例：仓库人员核对与包装一笔订单",
+      "nearest": "区别于创始人选择，日常工作是主体",
+      "effect_check": "人不是品牌口号的道具",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "community-relationship",
+      "name": "长期关系的片段",
+      "family": "品牌",
+      "fit": "品牌与群体有实际往来记录",
+      "question": "关系通过哪些具体互动形成？",
+      "selection": "参与行为、双方声音、真实时间与范围",
+      "sequence": "一次互动→过去/后续关联→当下关系",
+      "audio": "多方声音保留差异，不假一致赞誉",
+      "rhythm": "互动完整，非密集笑脸拼贴",
+      "visual": "参加活动不自动等于支持品牌",
+      "anti": "把公益受助者当商业推荐者",
+      "example": "虚构例：维修工作坊与社区的几次记录",
+      "nearest": "区别于服务瞬间，关系跨多次往来",
+      "effect_check": "观众理解双方关系与表达边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "archive-and-now",
+      "name": "过去与现在对读",
+      "family": "品牌",
+      "fit": "有可核对历史与当前同一对象",
+      "question": "哪些改变了，哪些仍在？",
+      "selection": "历史出处、对应现状、真实变化",
+      "sequence": "过去→当前→对应细节→仍未知",
+      "audio": "历史声音/后补旁白分清",
+      "rhythm": "对照给辨認时间，不假跨时代对话",
+      "visual": "时间地点与产品版本可见",
+      "anti": "不同厂房冒同地升级前后",
+      "example": "虚构例：同一门店旧柜台与今天工作方式",
+      "nearest": "区别于起源故事，以可比变化组织",
+      "effect_check": "时间与对象不混淆，变化非单向赞美",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "brand-observation",
+      "name": "克制品牌观察",
+      "family": "品牌",
+      "fit": "真实对象/工作场景本身有表达力",
+      "question": "少说一点能否看出做事气质？",
+      "selection": "重复但有变化的行为、物件与空间",
+      "sequence": "进入→观察→微小变化→离开",
+      "audio": "环境声主导，旁白仅必要背景",
+      "rhythm": "允许安静，切点服从观察价值",
+      "visual": "品牌作为实际场景一部分",
+      "anti": "只套电影滤镜声称品牌精神",
+      "example": "虚构例：店员每天开店摆放器物",
+      "nearest": "区别于生活仪式，明确品牌工作语境",
+      "effect_check": "气质来自具体行为，不靠抽象标语",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "gigaset-observation-01",
+          "candidate": "brand-observation",
+          "report": "evals/runs/gigaset-observation-01/result-current.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Historical short factory observation with attributed special recording conditions; not routine sound, quality result, authentic UGC or independent brand acceptance.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/gigaset-observation-01/caption-render/captions/captioned.mp4",
+            "sha256": "dc6fe3292e9b0b441b90547c7a1bb8eb76514035b4bf7398fe9cd7cfa0a8f3fa"
+          },
+          "version": "2fb530c8b902e6a5a39e52a9feb69f8ba2616cf342ea2136840c7d6cd3e53c5b"
+        }
+      ],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "declared-manifesto",
+      "name": "明确的品牌主张",
+      "family": "品牌",
+      "fit": "用户确实要宣言且措辞有依据",
+      "question": "品牌承诺什么、尚在追求什么？",
+      "selection": "准确主张、对应行动或明确示意",
+      "sequence": "立场→行动例子→范围→承诺",
+      "audio": "语气由品牌选择，事实与愿景区分",
+      "rhythm": "语句有层次，镜头不机械逐字配",
+      "visual": "愿景文字不伪装已实现的指标",
+      "anti": "目标减排量剪成已完成成绩",
+      "example": "虚构例：宣布修理优先的服务方向并列范围",
+      "nearest": "区别于价值行为，表达可以面向未来",
+      "effect_check": "观众分清已经发生和正在承诺",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "product-in-culture",
+      "name": "物件与文化实践",
+      "family": "品牌",
+      "fit": "使用传统/习惯与品牌关系可核对",
+      "question": "物件怎样进入真实的文化活动？",
+      "selection": "具体活动、使用者、物件用途和语境",
+      "sequence": "实践建立→物件参与→人的选择→回实践",
+      "audio": "尊重原语言和音乐授权，不造代表性",
+      "rhythm": "让活动完整，不只取异域装饰",
+      "visual": "身份/地点/传统来源准确",
+      "anti": "一人素材代表整个文化认可品牌",
+      "example": "虚构例：某工作室在节庆制作中使用工具",
+      "nearest": "区别于地方人物，主线共同实践",
+      "effect_check": "文化主体和品牌位置分清，不冒背书",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "honest-improvement",
+      "name": "一次改进的记录",
+      "family": "品牌",
+      "fit": "旧问题、新方案及验证有资料",
+      "question": "具体改好了什么，还没解决什么？",
+      "selection": "旧状态、修改理由、新试验、未决",
+      "sequence": "问题→修改→再试→当前边界",
+      "audio": "研发原话保留不确定性",
+      "rhythm": "失败和重试有必要因果",
+      "visual": "同指标同条件，版本明确",
+      "anti": "一次样机成功宣称量产可靠",
+      "example": "虚构例：调整扣具后重测开合，寿命仍未知",
+      "nearest": "区别于设计问题，有明确前后迭代证据",
+      "effect_check": "改进范围与剩余问题都可说明",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "offer-with-context",
+      "name": "交易信息说清楚",
+      "family": "产品",
+      "fit": "用户提供可核对的当前报价和条件",
+      "question": "这个价格对应什么，谁适用？",
+      "selection": "商品版本、价格凭据、期限和适用条件",
+      "sequence": "对象→价格与条件→实际内容→用户选择",
+      "audio": "数字单位完整，不用急促声音催促",
+      "rhythm": "条件读得完，CTA按用户目标",
+      "visual": "币种规格/运费/赠品不能混写",
+      "anti": "虚构低价、倒计时或库存",
+      "example": "虚构例：指定日期套餐价，注明配件范围",
+      "nearest": "区别于产品证明，重心交易信息",
+      "effect_check": "观众准确理解报价内容且没有假紧迫",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "workflow-fit",
+      "name": "放进现有工作方式",
+      "family": "产品",
+      "fit": "有真实任务链和产品接入步骤",
+      "question": "换用它需要改变哪些习惯？",
+      "selection": "原流程、接入点、兼容条件、完成任务",
+      "sequence": "现有任务→接入→使用→前后衔接",
+      "audio": "保留交接说明，接口声音不当成功证据",
+      "rhythm": "衔接步骤有空间，非只秀成品",
+      "visual": "不同设备/附件和版本清楚",
+      "anti": "隐去必需配件宣称无缝兼容",
+      "example": "虚构例：读卡器接入摄影文件整理流程",
+      "nearest": "区别于上手门槛，重心上下游配合",
+      "effect_check": "观众能判断自己的条件是否匹配",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "small-specific-claim",
+      "name": "只说一个有据卖点",
+      "family": "产品",
+      "fit": "短时长只能讲清一个可证事实",
+      "question": "哪一个事实最值得被看见？",
+      "selection": "对象、唯一主张、直接证据、必要限制",
+      "sequence": "对象→证据→一句有限结论",
+      "audio": "避免连续喊卖点，原声/旁白择一主导",
+      "rhythm": "短但保留证据辨认时间",
+      "visual": "产品与主张对应部位清楚",
+      "anti": "短片字多堆成无法验证的承诺",
+      "example": "虚构例：展示瓶盖可单手打开，不外推防漏",
+      "nearest": "区别于具体麻烦，不一定有痛点故事",
+      "effect_check": "唯一主张有清楚证据和边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "experience-with-caveat",
+      "name": "喜欢但有保留",
+      "family": "体验",
+      "fit": "真实用户有正负并存表达",
+      "question": "为什么喜欢，却不推荐给所有人？",
+      "selection": "具体喜欢点、保留条件、个人使用背景",
+      "sequence": "感受→依据→保留→个人选择",
+      "audio": "否定、转折、程度词不删",
+      "rhythm": "两面意见各有完整语义",
+      "visual": "补充画面不掩盖不满表情或结果",
+      "anti": "只剪正面句当强推荐",
+      "example": "虚构例：觉得好看但不适合长时间背负",
+      "nearest": "区别于留下退回，不必给二元决定",
+      "effect_check": "观众理解复杂态度而非单向种草",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "hands-only-use",
+      "name": "只看手和物",
+      "family": "体验",
+      "fit": "已有手部使用实拍且无需见证口播",
+      "question": "动作能否代替讲解？",
+      "selection": "握持、操作、接触点、结果",
+      "sequence": "物件进入→手部动作→使用结果→收起",
+      "audio": "同期触碰声，必要时简短中性说明",
+      "rhythm": "手部关键动作保留完整",
+      "visual": "不靠裁脸伪装匿名真实评价",
+      "anti": "演员手演示配虚构本人使用经历",
+      "example": "虚构例：手部实拍装配笔尖并试写",
+      "nearest": "区别于器物声音，以动作理解为主",
+      "effect_check": "用途可懂且无虚假体验主体",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "brand-dialogue",
+      "name": "不同角色的真实对话",
+      "family": "品牌",
+      "fit": "内部/用户/设计者对话有授权与语境",
+      "question": "不同的人如何理解同一个选择？",
+      "selection": "完整问题、各方观点、交集和分歧",
+      "sequence": "问题→多方回答→具体行动→未决",
+      "audio": "保留说话者与意见归属，不造共识",
+      "rhythm": "观点有来回，不平均露脸拼贴",
+      "visual": "反应镜头同期，不配错表情",
+      "anti": "将质疑者剪成支持者",
+      "example": "虚构例：设计者和修理者讨论耐用与重量取舍",
+      "nearest": "区别于社区关系，以真实意见交换推进",
+      "effect_check": "分歧完整，品牌位置不过度美化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "object-over-time",
+      "name": "物件留下的时间",
+      "family": "品牌",
+      "fit": "同一物件多时段记录或磨损可见",
+      "question": "使用时间在物件上留下什么？",
+      "selection": "来源明确的旧貌/现貌、实际磨损、本人记忆",
+      "sequence": "当前痕迹→有据回看→具体使用→回现在",
+      "audio": "原声与记忆归属，不能替物件编历史",
+      "rhythm": "细节留辨认时间，避免强行怀旧",
+      "visual": "磨损不等于耐久指标，历史图注明来源",
+      "anti": "新物做旧伪装长期使用证明",
+      "example": "虚构例：作者保存的旧皮包与数年照片",
+      "nearest": "区别于历史现状，主角是同一物件经历",
+      "effect_check": "时间来源清楚，情感不变成性能保证",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "alternative-use-boundary",
+      "name": "另一种用法与边界",
+      "family": "产品",
+      "fit": "有真实替代用途且不违反已知使用限制",
+      "question": "这个用法在什么范围成立？",
+      "selection": "原用途、实际替代动作、限制与结果",
+      "sequence": "用途问题→实拍尝试→范围→选择",
+      "audio": "中性说明，不鼓励无依据危险改造",
+      "rhythm": "关键限制伴随演示，不能尾注带过",
+      "visual": "同物同配件，负载/条件不猜",
+      "anti": "演示危险改装并称官方支持",
+      "example": "虚构例：折叠车推行时承放原有包袋，不推断载重",
+      "nearest": "区别于多状态，强调用途的条件",
+      "effect_check": "观众知道是特定演示而非厂商通用承诺",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "quiet-recommendation",
+      "name": "克制的个人推荐",
+      "family": "体验",
+      "fit": "真实使用者愿意推荐且理由具体",
+      "question": "他愿意推荐给哪一种人？",
+      "selection": "本人需求、实用细节、限制、适合对象",
+      "sequence": "小经验→具体理由→适合/不适合→建议",
+      "audio": "原话口语，少口号，不伪造热情",
+      "rhythm": "让理由比CTA更充分",
+      "visual": "展示真实细节而非借名人或数据",
+      "anti": "没有经历却配我真心推荐",
+      "example": "虚构例：实际使用者只推荐给有同类桌面空间的人",
+      "nearest": "区别于具体主张，有真实推荐主体",
+      "effect_check": "推荐对象和依据明确，态度未夸大",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "brand-process-without-hero",
+      "name": "没有英雄的协作",
+      "family": "品牌",
+      "fit": "工作由多人交接且角色可核对",
+      "question": "一件事怎样被共同完成？",
+      "selection": "不同任务、交接、修正、实际产物",
+      "sequence": "任务→分工→交接→产物/未决",
+      "audio": "保留工作交流，不造齐声口号",
+      "rhythm": "按因果推进，非每人固定时长",
+      "visual": "交接对象一致，人物身份准确",
+      "anti": "把集体成果全部归创始人",
+      "example": "虚构例：设计、制作、检验三人完成样件",
+      "nearest": "区别于普通工作者，协作关系是主轴",
+      "effect_check": "观众能理解贡献和真实交接",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "packing-contents",
+      "name": "实际包含什么",
+      "family": "产品",
+      "fit": "包装内含和选配信息可核对",
+      "question": "买到的是哪些东西？",
+      "selection": "主件、标配、选配、组装后状态",
+      "sequence": "整体→逐项内容→关系→明确范围",
+      "audio": "名称与数量准确，不靠兴奋语气遮信息",
+      "rhythm": "每个部件有识别时间，重复小件可归组",
+      "visual": "配件分类与数量可見，版本一致",
+      "anti": "背景道具误当赠品",
+      "example": "虚构例：灯体、线材、底座与非附送支架分开",
+      "nearest": "区别于开箱到使用，解决内容范围",
+      "effect_check": "观众不会误解标配与选配",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "failure-with-context",
+      "name": "失败也保留语境",
+      "family": "体验",
+      "fit": "真实试用未达预期且条件有记录",
+      "question": "这次没成功能说明多少？",
+      "selection": "条件、尝试、失败、可能因素及未决",
+      "sequence": "条件→尝试→可见问题→有限结论",
+      "audio": "不删本人不确定性，不配嘲讽暗示",
+      "rhythm": "失败动作完整，不能循环制造频率",
+      "visual": "失败一次不外推全体产品",
+      "anti": "剪掉操作错误后宣称产品必坏",
+      "example": "虚构例：吸盘在粗糙面脱落，仅说明本次条件",
+      "nearest": "区别于限制先行，结论来自一段失败经历",
+      "effect_check": "失败被准确呈现且无过度归因",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    },
+    {
+      "id": "brand-promise-check",
+      "name": "承诺与实际并置",
+      "family": "品牌",
+      "fit": "已有承诺原文和当前行为资料",
+      "question": "做到了哪些，还有哪些待完成？",
+      "selection": "承诺出处、已做行动、未完成部分",
+      "sequence": "承诺→对应行动→差距→当前方向",
+      "audio": "引用准确，愿景与成绩分开",
+      "rhythm": "差距有空间，非只闪过小字",
+      "visual": "数值/日期/范围与来源一致",
+      "anti": "选择性剪掉未达部分包装全完成",
+      "example": "虚构例：承诺提供维修，已有城市与未覆盖城市并列",
+      "nearest": "区别于明确宣言，同时检视兑现范围",
+      "effect_check": "观众能区分已完成、部分完成、未来承诺",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "ugc-reference-methods",
+        "ugc-edit-methods",
+        "ugc-final-audio-review"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "主张与证据范围",
+        "个人表达/品牌语气",
+        "演示完整度与跳时说明",
+        "声音主线与字幕阅读时间"
+      ],
+      "compatibility": {
+        "requires": "素材支持主机制，型号/条件/经历不超出证据，用户原话与人工修改优先",
+        "avoid": "不以真实感演绎冒充真实体验；不以滤镜或版式替代机制；工具未实现的效果明确保留缺口"
+      }
+    }
+  ]
+}

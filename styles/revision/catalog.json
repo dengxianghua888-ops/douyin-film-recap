@@ -1,0 +1,379 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "local editorial treatments; inherit existing scene style, not independent full-film presets",
+  "styles": [
+    {
+      "id": "faithful-repair",
+      "name": "忠实修补",
+      "family": "保真修复",
+      "fit": "已有作品方向成立，用户指出局部错误或不自然",
+      "question": "怎样修正明确缺陷而保留原表达？",
+      "selection": "只选与缺陷直接相关的镜头/文字/声音；保留已有有效决定",
+      "sequence": "定位缺陷→最小修正→复核接点与保持项",
+      "audio": "原声音色、语气与其他音量不顺带改变",
+      "rhythm": "只调整问题处，不把整片统一快慢",
+      "visual": "维持既有构图和字幕规则，缺陷修正不变成全片换皮",
+      "anti": "借修一处重剪全片，或用包装掩盖事实问题",
+      "example": "虚构例：改正一句字幕错字，画面和配音不动",
+      "nearest": "与接点连贯相比不限声画接点；与风格统一相比不主动整饰",
+      "effect_check": "被指出的问题消失，冻结项逐项保持，整体表达未漂移",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "question-first",
+      "name": "问题前置",
+      "family": "开头组织",
+      "fit": "已有开头铺垫较长，观众不知道为何继续看",
+      "question": "先让观众带着哪个问题进入故事？",
+      "selection": "选有源依据的问题或异常，保留理解该问题的最少情境",
+      "sequence": "问题→必要情境→接回既有展开",
+      "audio": "旁白提出明确问题，不凭空制造危机或断言动机",
+      "rhythm": "减少无关背景，给问题被理解的时间",
+      "visual": "提示与画面证据同步，不提前暴露答案",
+      "anti": "把尚无依据的猜测写成事实；用强钩子破坏禁剧透",
+      "example": "虚构例：先展示任务失败现象，再接回操作过程",
+      "nearest": "与成果预览不同不先给出结果，张力来自未解决的问题",
+      "effect_check": "观众能说出问题，后文仍兑现同一问题且未被剧透",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "result-preview",
+      "name": "成果预览",
+      "family": "开头组织",
+      "fit": "允许先看效果，现有教程或演示开头缺目标感",
+      "question": "先看到什么结果能帮助理解后续过程？",
+      "selection": "只选真实结果的可理解片段，保留回到起点的提示",
+      "sequence": "效果预览→回到初始状态→既有过程",
+      "audio": "区分预览和当时完成，旁白不可把结果说成过程已发生",
+      "rhythm": "预览足以看清，不拖成第二个结尾",
+      "visual": "清楚标出效果预览或时间切换，界面结果与来源一致",
+      "anti": "把预览接进连续录屏冒充实时完成",
+      "example": "虚构例：先看最终报表，再回到导入数据的起点",
+      "nearest": "与问题前置相比给出承诺的形状，而非悬置答案",
+      "effect_check": "预览帮助定向，观众不会误解实际操作顺序",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "causal-bridge",
+      "name": "因果补桥",
+      "family": "结构修复",
+      "fit": "局部跳剪使人物行为或操作步骤难以理解",
+      "question": "缺了哪个前提才让下一段显得突然？",
+      "selection": "恢复必要动作/条件/证据，不补无关背景",
+      "sequence": "现有前段→最少因果桥→现有后段",
+      "audio": "优先真实台词或动作；必要新旁白只补可证实关系",
+      "rhythm": "因果桥给理解时间，预算从授权范围内调配",
+      "visual": "新增画面能解释关系，不用泛空镜冒充证据",
+      "anti": "编造动机连接不相干片段，或牺牲条件压时长",
+      "example": "虚构例：恢复权限设置，让随后导出成功可理解",
+      "nearest": "与回报补足相比修前提；与论证收紧相比可能增加时长",
+      "effect_check": "不借外部说明也能理解前后关系，新增内容有源依据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "performance-breath",
+      "name": "表演呼吸",
+      "family": "情绪表达",
+      "fit": "用户觉得太急，情绪由动作、反应或停顿承载",
+      "question": "哪一次反应需要真正被经历？",
+      "selection": "保留刺激、反应变化和落地；删覆盖同义表演的解释",
+      "sequence": "刺激→完整反应→沉默/动作→接回后段",
+      "audio": "原声呼吸和环境声保留；旁白不抢关键反应",
+      "rhythm": "局部舒展，与前后节奏形成有意义差异",
+      "visual": "保持连续表演空间，不机械慢放或重复帧延长",
+      "anti": "把所有静音都恢复，或用慢动作伪造情绪长度",
+      "example": "虚构例：人物听到消息后停住的手和随后动作一起保留",
+      "nearest": "与疏密节奏相比核心是特定表演信息，不是整体速度曲线",
+      "effect_check": "观众能指出状态变化，停顿不是没有内容的拖延",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "argument-tighten",
+      "name": "论证收紧",
+      "family": "信息表达",
+      "fit": "观点成立但例子重复、铺垫过多",
+      "question": "哪些表达重复，哪些限制绝不能丢？",
+      "selection": "保留主张、必要依据、条件和有效反例；去同义重复",
+      "sequence": "明确主张→必要理由→条件/反例→有限结论",
+      "audio": "沿用原声，不把口头限定剪成绝对断言",
+      "rhythm": "压重复，难点和限定留阅读/理解时间",
+      "visual": "字幕保护否定、比较对象、数字单位与引用归属",
+      "anti": "只留金句、删掉论据和例外，让观点变强",
+      "example": "虚构例：两个相同例子保留最清楚的一例，限制条件仍在",
+      "nearest": "与忠实修补相比可压缩结构，但不改观点强度",
+      "effect_check": "成片更清楚且原意相同，删减理由可按信息重复解释",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "evidence-clarity",
+      "name": "证据澄清",
+      "family": "信息表达",
+      "fit": "结论出现但支持它的画面、数据或操作结果难以看清",
+      "question": "观众能在哪里核验这句话？",
+      "selection": "保留证据本体、口径、时间/单位与限制；删重复赞词",
+      "sequence": "结论问题→证据窗口→解释→范围",
+      "audio": "旁白给出可核查描述，数值不超出源资料",
+      "rhythm": "证据出现时让声音和阅读错峰",
+      "visual": "聚焦完整字段和上下文，避免字幕盖住结果",
+      "anti": "把计数器动画当实际结果，用放大误导比较",
+      "example": "虚构例：延长报告结果页面并露出统计范围",
+      "nearest": "与因果补桥相比补证明强度，而非补事件前提",
+      "effect_check": "关键结论可回查，证据在最终输出可读且时间对应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "less-narration",
+      "name": "少说多看",
+      "family": "声画关系",
+      "fit": "旁白复述画面或掩盖原声",
+      "question": "哪些信息由画面或原声已经表达得更好？",
+      "selection": "移除重复旁白及对应字幕；保留必要身份/跳时说明",
+      "sequence": "建立情境→让动作/原声承担→必要时再解释",
+      "audio": "复核原声增益与避让窗口；有意义的声音不再被抢占",
+      "rhythm": "给画面读懂的时间，不以删音轨后空白长度当留白",
+      "visual": "画面必须自足；移除字幕不等于移除原片烧录文字",
+      "anti": "把全部解释删光导致指代/因果断裂，或压平MP4却声称无损分离",
+      "example": "虚构例：移除描述看得见的转身动作的一句旁白",
+      "nearest": "与表演呼吸相比主改声音信息分工，画面时间可以完全不动",
+      "effect_check": "关闭旁白仍理解场面，必要背景保留，关联字幕同步删除",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "selective-restore-02",
+          "status": "mechanism-and-technical-media-only",
+          "effect_validation": "UNVALIDATED",
+          "limits": [
+            "agent-authored edits, no native human takeover",
+            "no continuous semantic or human listening acceptance",
+            "selective-blend cross-candidate continuity not exercised",
+            "H264 differences include 24 frames before attribution onset"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "density-contrast",
+      "name": "疏密节奏",
+      "family": "节奏组织",
+      "fit": "局部均匀快或均匀慢，缺少事件重心",
+      "question": "哪段应压缩，哪段值得停下来？",
+      "selection": "保留关键变化，压缩已知过程，平衡局部预算",
+      "sequence": "较快建立→变化处减速→结果落地→接回",
+      "audio": "不靠统一倍速；声音桥需真实连续或明确编辑",
+      "rhythm": "按信息变化改变密度，节拍只是辅助",
+      "visual": "快段也不丢对象，慢段保留实际变化而非冻帧凑时长",
+      "anti": "每段都剪相同时长，或单纯多加切点制造节奏",
+      "example": "虚构例：缩短重复找文件过程，把时间留给第一次看到结果",
+      "nearest": "与表演呼吸相比允许同时压一处、放一处，主轴是段落重心",
+      "effect_check": "观众能感知重点，紧凑与舒展均有内容理由",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "gentle-entry",
+      "name": "温和入场",
+      "family": "语气与情绪",
+      "fit": "开头过于强推、夸张或判断先行",
+      "question": "怎样邀请观众进入，而不替他规定感受？",
+      "selection": "选择具体日常情境、可观察细节和开放问题，保留真实语气",
+      "sequence": "具体细节→轻问题→已有故事",
+      "audio": "降低额外强调，保留原声自然距离；不改原话假装温柔",
+      "rhythm": "较从容但不堆无信息长镜，具体变化推动进入",
+      "visual": "字幕少用强断言，画面不过度情绪符号化",
+      "anti": "删掉观点只剩模糊抒情，用煽情音乐冒充温柔",
+      "example": "虚构例：从一次真实操作困扰进入，而不以夸张失败标签开场",
+      "nearest": "与问题前置相比保留开放感，不追求强悬念压力",
+      "effect_check": "观众知道内容方向，同时没有被夸大的情绪和承诺强迫",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "local-tone-match",
+      "name": "局部风格接续",
+      "family": "风格统一",
+      "fit": "新补段与原作品声音、信息密度或镜头语法冲突",
+      "question": "补入内容如何像同一部作品的一部分？",
+      "selection": "保留新增段必要内容，调整其组织以接上既有约定",
+      "sequence": "识别原风格→适配新增段→前后衔接",
+      "audio": "匹配旁白职责与响度，不能仅靠同音色伪装一致",
+      "rhythm": "沿用该位置的段落功能和呼吸，不机械复制平均镜长",
+      "visual": "字体/构图只是基础，更检查信息何时揭示和原声何时接管",
+      "anti": "只套同款LUT和字卡就声称风格一致",
+      "example": "虚构例：在原声主导片里补一段背景，旁白只补缺项",
+      "nearest": "与局部融合相比目标是新段的表达一致性，不涉及跨候选选择",
+      "effect_check": "不看修改说明也能感知叙事与声音规则连续",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "payoff-repair",
+      "name": "回报补足",
+      "family": "结构修复",
+      "fit": "片段提出问题或开始动作，却在结果前结束",
+      "question": "这个局部承诺究竟有没有兑现？",
+      "selection": "恢复真实结果、反应或必要后果，不以旁白编结局",
+      "sequence": "已建立期待→行动/揭示→结果→短反应",
+      "audio": "让实际结果声画落地，必要尾音完整",
+      "rhythm": "结尾不匆忙，也不在同一落点反复结束",
+      "visual": "保留结果可辨识范围，署名/尾卡别盖住关键反馈",
+      "anti": "只增加一句总结代替原片结果，或承诺完整故事却停在悬念",
+      "example": "虚构例：补入完成操作后的文件打开验证",
+      "nearest": "与因果补桥相比补后果，不是补前提",
+      "effect_check": "陌生观众能说出发生了什么变化及结果，期待得到对应回应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "continuity-repair",
+      "name": "接点连贯",
+      "family": "保真修复",
+      "fit": "剪点出现残字、动作断裂或空间跳跃",
+      "question": "这个切点截断了哪条连续信息？",
+      "selection": "保留完整句尾/起音、动作方向、反应与空间锚点",
+      "sequence": "前段完整收束→合理切点→后段完整进入",
+      "audio": "使用真实声学边界证据，不凭字幕估计毫秒；不自动假造室内底噪",
+      "rhythm": "修边界优先于添加转场；实际呼吸不同不强行等间隔",
+      "visual": "检查眼神、手势、主体位置，不只看两张端点帧",
+      "anti": "对所有切点加淡化掩盖断句，把估算词时间当安全切点",
+      "example": "虚构例：给被截断的尾音留足时间，同时检查下一镜动作方向",
+      "nearest": "与忠实修补相比限定在声音/动作/空间连续性问题",
+      "effect_check": "连续观看听检无被切断的关键声画，未改范围保持",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "selective-blend",
+      "name": "局部融合",
+      "family": "版本采用",
+      "fit": "用户喜欢另一候选的一部分，但不想失去当前修改",
+      "question": "采用哪一段，如何与当前最新作品接上？",
+      "selection": "只取明确选择的候选范围，保留最新人工修订和现有其余内容",
+      "sequence": "核对候选与当前→取局部→重接上下文→验证保持项",
+      "audio": "选择对应真实音轨和字幕，不把候选整条声音覆盖当前",
+      "rhythm": "保持当前时间约束；若时长不同明确预算调整",
+      "visual": "候选效果须带实际操作参数与素材，不能只搬风格标签",
+      "anti": "用旧候选整版覆盖最新作品，或只复制画面遗漏字幕/声音",
+      "example": "虚构例：采用B版开头，保留当前C版手工改过的结尾字幕",
+      "nearest": "与局部风格接续相比核心是跨版本部分采用及最新状态保护",
+      "effect_check": "被选部分实际采用，其余当前改动保持，衔接内容和时间成立",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "selective-restore-02",
+          "status": "mechanism-and-technical-media-only",
+          "effect_validation": "UNVALIDATED",
+          "limits": [
+            "agent-authored edits, no native human takeover",
+            "no continuous semantic or human listening acceptance",
+            "selective-blend cross-candidate continuity not exercised",
+            "H264 differences include 24 frames before attribution onset"
+          ]
+        },
+        {
+          "trial": "cross-candidate-01",
+          "status": "field-adoption-and-conflict-protection-executed",
+          "effect_validation": "UNVALIDATED",
+          "results": "result-current.json",
+          "limitations": [
+            "agent-authored scenario, no native human edits",
+            "24 successful receipts and2 expected rejected commits",
+            "5 frozen timeline frames differ after lossy encoding; PCM strict equality failed",
+            "720 frozen frames identical in lossless diagnostic only",
+            "27 static frames reviewed, no continuous semantic or listening review"
+          ]
+        }
+      ]
+    }
+  ]
+}

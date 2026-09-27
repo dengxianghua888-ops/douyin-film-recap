@@ -1,0 +1,30 @@
+{
+  "schema": "research-source-reference/1",
+  "source_id": "minipaint-cross-input-boundaries",
+  "pinned_software": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/minipaint-capture-reference.json",
+    "sha256": "830b6d1f4e3372e8a5787dda597661a0dcdfd38ee867893a30df5af039e58ac8"
+  },
+  "predeclared_plan": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/raven-resize-boundaries/plan.json",
+    "sha256": "e971609ebbd0306a2e577950fab7cc15750a0055969035d417493826ed635aa8"
+  },
+  "capture": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-boundaries-01/result.json",
+    "sha256": "358d54594588445a0a6d90dc001c5d2ca92dad33f902985010df67f515b42015"
+  },
+  "artifact_readback": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-boundaries-01/artifact-readback.json",
+    "sha256": "a3cf5b84ce31d52cc3d9901a6dadc656ce62248f74f53223134f343a63c87fbf"
+  },
+  "visual_review": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-boundaries-01/visual-review.json",
+    "sha256": "0c4c953e79a44a63c3b56e14b9d004024b7eb4832d30f32ad261ba9ca824a193"
+  },
+  "use": "Bound teaching claims for portrait, uneven ratio, square, height-only, explicit dimensions, conflicting unit fields and missing parameters.",
+  "limits": [
+    "Same existing292source Git blobs; no extra archived Skill adoptions.",
+    "Three original calibration graphics are not natural-video content coverage.",
+    "No new edited lesson or independently validated style is claimed."
+  ]
+}

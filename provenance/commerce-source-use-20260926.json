@@ -1,0 +1,600 @@
+{
+  "schema": "commerce-source-use/1",
+  "task_id": "P-W09-D2",
+  "reviewed_by": "Stack Raven / internal independent read-only source-use review; M owns adoption",
+  "status": "PROPOSAL_NOT_APPLIED",
+  "old_method_lock": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/commerce-sources.lock.json",
+    "sha256": "f997571dad7ea028434e1ad8ad040c1db36e46d69c868f03a10c7282559a0a51",
+    "bytes": 7772,
+    "role": "unchanged_method_lock"
+  },
+  "scope": "Local adopted/excluded methods, archived source claims, actual historical media use and later technical derivatives; no publication rights certification",
+  "entries": [
+    {
+      "id": "M01-reference-methods",
+      "kind": "method-reference",
+      "problem": "如何按镜头功能组织商品证据而不复制身份/主张",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/SKILL.md",
+          "sha256": "c042a2181a198b7fc93975bb52f14e792501eea3f6c251b7cad964bfaec55a98",
+          "bytes": 20615,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/references/creative-qa.md",
+          "sha256": "c20fa9b6bef1a5867cde004a1783ddcdd953935dc825c228e719b30f6055dcb3",
+          "bytes": 5713,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/references/fashion-reels.md",
+          "sha256": "f2f1a9f75651a01cd792a2fd4d607197bbac456d0681b05115c5e4273f89cd65",
+          "bytes": 5132,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/LICENSE",
+          "sha256": "afe844836f8e867481e20030dbe5d16d2a9c274e9d5b451ff67772e3c04e0d93",
+          "bytes": 1064,
+          "role": "locked_method_or_license"
+        }
+      ],
+      "mechanism_or_observation": "注意力、镜头功能、证据顺序；产品身份与事实/说服分离",
+      "adopted_at": [
+        "workflows/raven-commerce-story/SKILL.md:12–24",
+        "workflows/raven-commerce-story/references/claims-and-truth.md:3–18",
+        "workflows/raven-commerce-story/references/editing-and-identity.md"
+      ],
+      "excluded_or_limited": "不继承9:16、固定切速、逐阶段批准、默认旁白或固定模型；上游样例非本库证据",
+      "adaptation_or_change": "原创规则/机制提炼；当前声明未复制来源代码",
+      "verification": "9文件旧锁及归档authority对账；读取相关原文定位；非全库抄袭扫描",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "M02-ugc-edit-methods",
+      "kind": "method-reference",
+      "problem": "同作修订时如何保留原话、位置及音轨关系",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/palmier-io__palmier-skills/040e82ffab6f/skills/ugc-editing/SKILL.md",
+          "sha256": "732b02a7efa504e1ebb5beb8b43b7d43f9f5c787a1f2439c47f0405ab5d024db",
+          "bytes": 10674,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/palmier-io__palmier-skills/040e82ffab6f/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "bytes": 11357,
+          "role": "locked_method_or_license"
+        }
+      ],
+      "mechanism_or_observation": "先读原话；源秒/工程帧分离；局部布局、B-roll音频与字幕串扰、修改后回读",
+      "adopted_at": [
+        "workflows/raven-commerce-story/SKILL.md:18–30",
+        "workflows/raven-commerce-story/references/editing-and-identity.md"
+      ],
+      "excluded_or_limited": "不继承狠剪、固定3–5秒换镜、先删字幕轨、竖屏；Palmier调用不算本机能力",
+      "adaptation_or_change": "改成Agent能力交接及当前作品读回约束，不移植Palmier服务",
+      "verification": "原文12/28/63/82/94/121/158等行与现行采纳位置静态比较",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "M03-final-audio-review",
+      "kind": "method-reference",
+      "problem": "怎样避免字幕正确却声音说错",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/skills/ads/packs/ugc-video-formats/review-ugc-render/SKILL.md",
+          "sha256": "b5f5b014adfeb5aef6a285216aae3fbc6e2bc4f2e841a9fd16ebb9875355a453",
+          "bytes": 4600,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/skills/ads/packs/ugc-video-formats/review-ugc-render/scripts/review_render.py",
+          "sha256": "39a33cf16a3a7cd58a7fab5eca20185c92bff7ea6fd9bfe27b9090c534ed7068",
+          "bytes": 16972,
+          "role": "locked_method_or_license"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/LICENSE",
+          "sha256": "9c05de6851e9b409f52b4fac51a37e740878be9fd482cbc020747e322a9ceca1",
+          "bytes": 1067,
+          "role": "locked_method_or_license"
+        }
+      ],
+      "mechanism_or_observation": "从实际最终音频回核原话",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/claims-and-truth.md:22",
+        "workflows/raven-commerce-story/references/evaluation.md"
+      ],
+      "excluded_or_limited": "英文数字token、品牌词过滤、no-script advisory pass不可当中文/品牌词通过门槛；未复制或运行其服务",
+      "adaptation_or_change": "保留听检职责，字幕覆盖独立且不认证声音",
+      "verification": "review_render.py:47,86–115实际源码已读；中文无词/剔除品牌的失败机制仅静态核对",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "M04-brand-story-comparison",
+      "kind": "excluded-comparison",
+      "problem": "品牌价值怎样落到行为，是否必须三幕/冲突/两秒钩子",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gabrielfloresemail01-collab__Higgsfield-x-Seedance-2.0/83dcb10ee38c/skills/12-brand-story/SKILL.md",
+          "sha256": "b20cbe6c7051f20cefb6bd5b2557ef5b7ffe4e682086e63c7564d1f9dab54264",
+          "bytes": 54805,
+          "role": "excluded_comparison_matches_existing_archive"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gabrielfloresemail01-collab__Higgsfield-x-Seedance-2.0/83dcb10ee38c/skills/12-brand-story/zh-CN/SKILL.md",
+          "sha256": "050687a17fa1fad1f352340b2f001d94122227b32fd88e3886db67cfe4ce2a9b",
+          "bytes": 54923,
+          "role": "excluded_comparison_matches_existing_archive"
+        }
+      ],
+      "mechanism_or_observation": "原文38–40两秒、106–110三幕、117–127真实性、141–144可见价值",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/source-fusion.md:11"
+      ],
+      "excluded_or_limited": "不采纳该来源模板、生成真实性、效果承诺或固定框架；未复制代码/媒体",
+      "adaptation_or_change": "本轮为旧简称补精确可复核文本出处；不将一般性可见行为观念升级为采用生成路线",
+      "verification": "两份文件与既有archive manifest匹配；不是首次hash冒历史验证",
+      "uncertainty": [
+        "旧source-fusion没有具体指向；本轮文本对应成立，但不追认旧审读者究竟读英文或zh-CN",
+        "存档仓库metadata.license=null；不作复制/分发许可结论"
+      ],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "S01-gigaset",
+      "kind": "media-and-author-attribution",
+      "problem": "工位声音是否日常、是否证明质量/协作/消费者见证",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-gigaset-inspection/source-api.json",
+          "sha256": "2b4e3240e0dcefc6c9008a02d03fd9da06c3aa698a10c9ae076419a83815ab01",
+          "bytes": 9384,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-gigaset-inspection/download.json",
+          "sha256": "2a2b9f40ae96655bd28fea2fc11d21dc79c3388ed842753dd5b03330f870f126",
+          "bytes": 1128,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-gigaset-inspection/source.webm",
+          "sha256": "9f1df90978a735f1836cf36777075e959bef20ba63b4546fb0feec38fb731dec",
+          "bytes": 2779506,
+          "role": "existing_media_hash_only"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/gigaset-observation-01/recording-context.json",
+          "sha256": "1d5e8242e65ae84d452e72d6ccb4831022eed8c6720ac3e66dd2d32c180195b3",
+          "bytes": 2761,
+          "role": "historical_linked_member"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/gigaset-observation-01/result-current.json",
+          "sha256": "79ee688ff090c93e2d93c5c0f71535e045bcefbabc18977b95cc16f480827494",
+          "bytes": 2705,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "Sounds of Changes及Kathinka Engels/Inke Pickhardt归属；作者称为录制开启touchtone；历史29.3秒观察作品",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/recording-context.md:3–26",
+        "styles/commerce/brand-observation.md",
+        "evals/runs/gigaset-observation-01/document-current.json"
+      ],
+      "excluded_or_limited": "不认证日常自然声、质检通过率/具体结果、工人身份、当前产线或本人体验",
+      "adaptation_or_change": "保留录制限定、连续观察与原音轨；历史字幕/证据窗口不得冒真人听检",
+      "verification": "原API摘句存在、源/文档/输出/绑定哈希对账；本轮无视觉/听觉重验",
+      "uncertainty": [
+        "元数据Permission=CC-BY4.0，LicenseShortName/URL=CC BY3.0；不擅选单版",
+        "description2018/date2010s/category2009冲突；日期未知",
+        "录制条件来自作者文字，不是本轮听到或独立事实认证"
+      ],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "S02-espresso",
+      "kind": "media-and-author-attribution",
+      "problem": "功能说明怎样附来源、范围和必要前置动作",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-espresso-routine/source-api.json",
+          "sha256": "85cc41190466bb2c853f8a9c30613b6d9aaa1250fc0244b90d8ea32a2372adbd",
+          "bytes": 7204,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-espresso-routine/download.json",
+          "sha256": "88807353910bb21389fad0cd5d8b124928ddf7206064600591e9a5dccdc872ff",
+          "bytes": 1021,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-espresso-routine/source.webm",
+          "sha256": "2a82dcd02ed7f606f94f78b0c282fc9c277002fc670a33eb245b969e844ad9f4",
+          "bytes": 20968658,
+          "role": "existing_media_hash_only"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/claim-ledger.json",
+          "sha256": "1e8fb4029b36514c87517552978b580022012e36992a753d3b8dd5ebc18b5e6e",
+          "bytes": 2547,
+          "role": "historical_linked_member"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/espresso-claims-01/result-current.json",
+          "sha256": "529ca2ee044ae08caf3b0c4e6a048a04e6d1d16e0f3885dc8ad8e93706706836",
+          "bytes": 6221,
+          "role": "text"
+        }
+      ],
+      "mechanism_or_observation": "Scott Schiller作者说明未拍研磨/布粉/压粉；无底手柄观察用途属作者说法；液流为历史抽样观察",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/demonstration-claims.md:3–32",
+        "styles/commerce/condition-led.md",
+        "styles/commerce/feature-to-action.md",
+        "evals/runs/espresso-claims-01/condition-led/document-v1.json",
+        "evals/runs/espresso-claims-01/feature-to-action/document-current.json"
+      ],
+      "excluded_or_limited": "不证明口感/压力/机器性能、未知产品型号、完整冲煮流程或作者口述体验",
+      "adaptation_or_change": "condition-led0–55.8；feature修回16–30操作后接30–55.8；旧33.8秒与新39.8秒保留，源55.8–55.858不声称全召回",
+      "verification": "来源api摘句/claim ledger/result及相关文件哈希相互绑定；非完整动作和听检",
+      "uncertainty": [
+        "CC BY2.0为已存Commons字段，非本次网络权利核验或发行许可",
+        "作者description有体验文字也不能替代本人原声",
+        "两种作品方法适配不等于效果合格"
+      ],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "S03-redmi",
+      "kind": "screened-not-adopted-for-testimony",
+      "problem": "review命名/无声操作是否可用作本人体验",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-redmi-lineageos/screening.json",
+          "sha256": "432b5cd838273308b76d88c8404ce62221177d1ace424ea66adaa46bf07e569c",
+          "bytes": 1872,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-redmi-lineageos/probe.json",
+          "sha256": "ae980be62ce0f59a7a0c8122b89d3e272788336fb45185e2a3e10a9e3fd494ff",
+          "bytes": 2065,
+          "role": "historical_linked_member"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/redmi-screening-01/asr-opening/receipt.json",
+          "sha256": "2c9a3619dc9ba7d51751876a4cdbe81ca0eb209b8b29ab0c7175d7941047b3c2",
+          "bytes": 2759,
+          "role": "historical_linked_member"
+        }
+      ],
+      "mechanism_or_observation": "已存probe只有video流；ASR请求错误而被ASR_AUDIO_STREAM_REQUIRED拒绝",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/recording-context.md:9–11,26"
+      ],
+      "excluded_or_limited": "不能补造口述或正负体验；仅可作历史操作候选",
+      "adaptation_or_change": "保留筛选失败作为选材边界；不计已验证风格",
+      "verification": "读取旧probe/FAILED receipt；现有源文件只核hash，不运行probe",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "S04-sony-fx6",
+      "kind": "metadata-only-exclusion",
+      "problem": "描述中的第一人称是否足够",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/commerce-experience-01/sony-fx6-api.json",
+          "sha256": "64641ff92e937378bc621c8e158bac4897e16db7b8963d94261e31d0ef2f66a7",
+          "bytes": 8887,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/commerce-experience-01/screening.json",
+          "sha256": "c7cc2939f532903ff707ed8333b4cda80674b9a5589dbd1a00eebe0108e58b2f",
+          "bytes": 1648,
+          "role": "text"
+        }
+      ],
+      "mechanism_or_observation": "存档分类Videos without audio，第一人称出现在SEO文字；作者署名Karl Weinreich",
+      "adopted_at": [
+        "workflows/raven-commerce-story/references/recording-context.md:9–11"
+      ],
+      "excluded_or_limited": "未下载；不认证口述和体验，不把频道署名推成人物身份",
+      "adaptation_or_change": "保留元数据筛选理由",
+      "verification": "存档API文本及screening对照",
+      "uncertainty": [
+        "LicenseReview仍是存档状态，当前网络状态未核"
+      ],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "S05-bpro",
+      "kind": "screened-not-qualified-testimony",
+      "problem": "是否补足真实本人正负/限定表达",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/source-locks.json",
+          "sha256": "9f111d7b79feaaa4afd6ae1c46622f7fee2ff5b79751df56f773db436d373177",
+          "bytes": 3470,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/candidate-register.json",
+          "sha256": "94e67dbdc73ce0ab8f979fe88a60705a00b6a9a5a51d0c7396c1543d75d85b5c",
+          "bytes": 3014,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/result.json",
+          "sha256": "d6024fd7a6e2abd73bed6c879bccfe2215e974df14185f5b9d307474ea535924",
+          "bytes": 2443,
+          "role": "original_task_input"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/candidate-bpro-240p.webm",
+          "sha256": "900b6a664b869778bd7562bb55a9653d8ba5f8408181d5cd27960fcd74131cac",
+          "bytes": 22020169,
+          "role": "historical_linked_member"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/candidate-bpro-asr/receipt.json",
+          "sha256": "77501574f87e87058c21570ee610269a67ef6b859841133a9ae0284a512ce3ac",
+          "bytes": 3257,
+          "role": "text"
+        }
+      ],
+      "mechanism_or_observation": "Andhisety Story; Commons review template records ChannelName=Andhisety Rofie and ChannelID=UCcDZ3AyMDlAmZcjzvej2gKQ",
+      "adopted_at": [
+        "styles/commerce/experience-with-caveat.md",
+        "styles/commerce/own-words.md"
+      ],
+      "excluded_or_limited": "同人正负/保留意见未建立；ASR序列化inf失败，残片不能作正式逐字稿或把孤立tidak拼成负评",
+      "adaptation_or_change": "不改两风格未验证状态；仅登记已完成筛选与原语言回听缺项",
+      "verification": "旧结果/登记/回执与本地已有材料身份核对；未重新搜索/听检",
+      "uncertainty": [
+        "来源许可仅按source-locks已有记录转述，未找到独立原页面快照作本轮复核，不把旧PASS/PENDING升级当前许可结论",
+        "频道/出镜上下文不要求强制实名，但原话/本人经历仍须实际依据"
+      ],
+      "distribution_or_truth_certified": false,
+      "stored_source_record": {
+        "candidate_id": "bpro-action-cam-review",
+        "commons_page_id": 75350001,
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Review_%26_Unboxing_Recommend_Action_Cam!_-_B-pro_5_Alpha_Edition_4K_Mark_II_S.webm",
+        "youtube_id": "B8ipO3etVzs",
+        "title": "Review & Unboxing Recommend Action Cam! - B-pro 5 Alpha Edition 4K Mark II S",
+        "creator_attribution": "Andhisety Story; Commons review template records ChannelName=Andhisety Rofie and ChannelID=UCcDZ3AyMDlAmZcjzvej2gKQ",
+        "license": "CC BY 3.0",
+        "license_url": "https://creativecommons.org/licenses/by/3.0",
+        "license_review": "License reviewed by YouTubeReviewBot; Commons wikitext records review date 2020-02-13",
+        "original_date": "2018-06-18",
+        "local_derivative": {
+          "path": "evals/parallel/w09-experience-20260922/candidate-bpro-240p.webm",
+          "sha256": "900b6a664b869778bd7562bb55a9653d8ba5f8408181d5cd27960fcd74131cac",
+          "bytes": 22020169,
+          "source_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/1/1a/Review_%26_Unboxing_Recommend_Action_Cam%21_-_B-pro_5_Alpha_Edition_4K_Mark_II_S.webm/Review_%26_Unboxing_Recommend_Action_Cam%21_-_B-pro_5_Alpha_Edition_4K_Mark_II_S.webm.240p.vp9.webm",
+          "duration_seconds": 471.785,
+          "streams": [
+            {
+              "index": 0,
+              "type": "video",
+              "codec": "vp9",
+              "width": 426,
+              "height": 240
+            },
+            {
+              "index": 1,
+              "type": "audio",
+              "codec": "opus",
+              "channels": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "S06-sony-ax700",
+      "kind": "screened-not-qualified-testimony",
+      "problem": "是否补足真实本人正负/限定表达",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/source-locks.json",
+          "sha256": "9f111d7b79feaaa4afd6ae1c46622f7fee2ff5b79751df56f773db436d373177",
+          "bytes": 3470,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/candidate-register.json",
+          "sha256": "94e67dbdc73ce0ab8f979fe88a60705a00b6a9a5a51d0c7396c1543d75d85b5c",
+          "bytes": 3014,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/result.json",
+          "sha256": "d6024fd7a6e2abd73bed6c879bccfe2215e974df14185f5b9d307474ea535924",
+          "bytes": 2443,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "Techcellent News",
+      "adopted_at": [
+        "styles/commerce/experience-with-caveat.md",
+        "styles/commerce/own-words.md"
+      ],
+      "excluded_or_limited": "存档LicenseReview待核；没有本地媒体，个人叙述及正负原话未锁定",
+      "adaptation_or_change": "不改两风格未验证状态；仅登记已完成筛选与原语言回听缺项",
+      "verification": "旧结果/登记/回执与本地已有材料身份核对；未重新搜索/听检",
+      "uncertainty": [
+        "来源许可仅按source-locks已有记录转述，未找到独立原页面快照作本轮复核，不把旧PASS/PENDING升级当前许可结论",
+        "频道/出镜上下文不要求强制实名，但原话/本人经历仍须实际依据"
+      ],
+      "distribution_or_truth_certified": false,
+      "stored_source_record": {
+        "candidate_id": "sony-fdr-ax700-review",
+        "commons_page_id": 146051043,
+        "commons_page": "https://commons.wikimedia.org/wiki/File:Sony_FDR-AX700_4K_HDR_Camcorder_Full_Review-_A_Tech_YouTuber%27s_Perspective.webm",
+        "youtube_id": "21AGbhpbYbk",
+        "title": "Sony FDR-AX700 4K HDR Camcorder Full Review: A Tech YouTuber's Perspective",
+        "creator_attribution": "Techcellent News",
+        "license_claim": "CC BY 3.0",
+        "license_review": "PENDING: Commons wikitext contains {{LicenseReview}} and category License review needed (video)",
+        "original_date": "2019-04-03",
+        "remote_media_observation": "Original metadata reports 309.341 seconds; remote ffprobe observed VP9 video plus stereo Opus audio. No local media was acquired."
+      }
+    },
+    {
+      "id": "S07-xiaomi-yu7",
+      "kind": "screened-not-qualified-testimony",
+      "problem": "是否补足真实本人正负/限定表达",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/source-locks.json",
+          "sha256": "9f111d7b79feaaa4afd6ae1c46622f7fee2ff5b79751df56f773db436d373177",
+          "bytes": 3470,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/candidate-register.json",
+          "sha256": "94e67dbdc73ce0ab8f979fe88a60705a00b6a9a5a51d0c7396c1543d75d85b5c",
+          "bytes": 3014,
+          "role": "text"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w09-experience-20260922/result.json",
+          "sha256": "d6024fd7a6e2abd73bed6c879bccfe2215e974df14185f5b9d307474ea535924",
+          "bytes": 2443,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "The Ride and Place",
+      "adopted_at": [
+        "styles/commerce/experience-with-caveat.md",
+        "styles/commerce/own-words.md"
+      ],
+      "excluded_or_limited": "存档LicenseReview待核；原始媒体4XX、字幕抓取无可用正文；没有本地媒体或已核口述",
+      "adaptation_or_change": "不改两风格未验证状态；仅登记已完成筛选与原语言回听缺项",
+      "verification": "旧结果/登记/回执与本地已有材料身份核对；未重新搜索/听检",
+      "uncertainty": [
+        "来源许可仅按source-locks已有记录转述，未找到独立原页面快照作本轮复核，不把旧PASS/PENDING升级当前许可结论",
+        "频道/出镜上下文不要求强制实名，但原话/本人经历仍须实际依据"
+      ],
+      "distribution_or_truth_certified": false,
+      "stored_source_record": {
+        "candidate_id": "xiaomi-yu7-review",
+        "commons_page_id": 171011069,
+        "commons_page": "https://commons.wikimedia.org/wiki/File:YU7_Review-_Xiaomi%E2%80%99s_$46,000_Electric_SUV_is_a_Stunner.webm",
+        "youtube_id": "kB4-zlhgu-w",
+        "title": "YU7 Review: Xiaomi's $46,000 Electric SUV is a Stunner",
+        "creator_attribution": "The Ride and Place",
+        "license_claim": "CC BY 3.0",
+        "license_review": "PENDING: Commons wikitext contains {{LicenseReview}} and category License review needed (video)",
+        "original_date": "2025-06-30",
+        "remote_media_observation": "Commons API reports 1196.088 seconds and video derivatives with Opus audio; original remote ffprobe returned a 4XX response. YouTube page exposed an English auto-caption track, but no caption text was accepted as evidence. No local media was acquired."
+      }
+    },
+    {
+      "id": "T01-espresso-audio-diagnosis",
+      "kind": "later-technical-use-not-new-content",
+      "problem": "原范围冻结为什么不能靠参数不变断言",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/espresso-pcm-diagnosis-20260923/result.json",
+          "sha256": "7808d5dbc4dd38cda5fe1a4ebc2b6df80a887736a7b5249eaea39a9f0c7ed5ea",
+          "bytes": 26137,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "历史前8秒AAC解码逐样本不相等，定位resample端点与AAC后续内容依赖",
+      "adopted_at": [
+        "evals/runs/espresso-claims-01/feature-to-action",
+        "strict_audio_freeze engineering evidence"
+      ],
+      "excluded_or_limited": "失败不被后来的MOV覆盖；差异不自动等于可听劣化",
+      "adaptation_or_change": "登记为同一espresso源的工程诊断用途，非新的商品/体验事实",
+      "verification": "只读历史结果；不重跑诊断或要求D2先成片通过",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "T02-i0-strict",
+      "kind": "later-technical-use-not-new-content",
+      "problem": "旧master当前helper验证/重建及精确39.8秒拒绝",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/iteration-20260924/I0-B/i0-20260924-b-01/result.json",
+          "sha256": "d82f7faa04e7701b02533c7198c6eb8d885721f565daa0671841e02dd949ea9e",
+          "bytes": 7953,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "复用原espresso作品/派生媒体做工程身份及交付机制研究；不产生新的商品主张",
+      "adopted_at": [
+        "evals/parallel/iteration-20260924/I0-B/i0-20260924-b-01/result.json"
+      ],
+      "excluded_or_limited": "不把隔离副本选择当原作品采纳；不消除旧AAC失败、39.8/39.808差额或真人/听检缺项",
+      "adaptation_or_change": "工程增量仅作为来源派生用途登记",
+      "verification": "只读已存结果；本D2不重新裁决其运行行为或W04出口",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "T03-i1-strict",
+      "kind": "later-technical-use-not-new-content",
+      "problem": "同一隔离Work副本select/read/restore/clear及篡改拒绝",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/iteration-20260924/I1-B/i1-20260924-b-02/result.json",
+          "sha256": "af8564e0d1d55ad8c8372d24ad04a511b8e45aea3ccf26bb88c3fbe7d5c1d66f",
+          "bytes": 12408,
+          "role": "original_task_input"
+        }
+      ],
+      "mechanism_or_observation": "复用原espresso作品/派生媒体做工程身份及交付机制研究；不产生新的商品主张",
+      "adopted_at": [
+        "evals/parallel/iteration-20260924/I1-B/i1-20260924-b-02/result.json"
+      ],
+      "excluded_or_limited": "不把隔离副本选择当原作品采纳；不消除旧AAC失败、39.8/39.808差额或真人/听检缺项",
+      "adaptation_or_change": "工程增量仅作为来源派生用途登记",
+      "verification": "只读已存结果；本D2不重新裁决其运行行为或W04出口",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    },
+    {
+      "id": "T04-c15-strict-readback",
+      "kind": "later-technical-use-not-new-content",
+      "problem": "后续W04-D7 K2当前工具链读回，同一espresso派生master",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/review-remediation-20260926/W04-D7-STRICT-READBACK/rem-20260926-c-15/result.json",
+          "sha256": "460705d8ce32d411344718c7c87629f66ed0fc626328f530f3757aeb46c4c02a",
+          "bytes": 974,
+          "role": "text"
+        }
+      ],
+      "mechanism_or_observation": "复用原espresso作品/派生媒体做工程身份及交付机制研究；不产生新的商品主张",
+      "adopted_at": [
+        "evals/parallel/review-remediation-20260926/W04-D7-STRICT-READBACK/rem-20260926-c-15/result.json"
+      ],
+      "excluded_or_limited": "不把隔离副本选择当原作品采纳；不消除旧AAC失败、39.8/39.808差额或真人/听检缺项",
+      "adaptation_or_change": "工程增量仅作为来源派生用途登记",
+      "verification": "只读已存结果；本D2不重新裁决其运行行为或W04出口",
+      "uncertainty": [],
+      "distribution_or_truth_certified": false
+    }
+  ],
+  "qualified_firsthand_mixed_testimony_candidates": 0,
+  "rights_rule": "Stored licenses/attribution are source records only. Hash consistency does not grant media/likeness/brand endorsement or certify any current distribution. No media or upstream code copied into this proposal.",
+  "claim_rule": "author_or_brand_statement != independent_fact; visible_recorded_action != universal_performance; description_or_ASR != verified_personal_voice",
+  "query_boundary": "552 development lines; not holdout. EC01–06 commercial rows are173–178, not535–540; refer to frozen D1 identities.",
+  "source_file_bindings": "Each entry embeds exact local refs; detailed comparison audit is retained in the independent review package."
+}

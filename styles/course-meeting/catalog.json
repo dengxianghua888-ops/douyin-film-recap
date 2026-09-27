@@ -1,0 +1,1032 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "course/meeting editorial mechanisms, authored not quality-certified",
+  "styles": [
+    {
+      "id": "disagreement-thread",
+      "name": "分歧脉络",
+      "family": "会议·协商",
+      "fit": "讨论有真实分歧且没有简单胜负",
+      "question": "各方分歧如何形成和变化？",
+      "selection": "保留共同问题、各方最强理由、质疑、回应与未决边界",
+      "sequence": "共同约束→方案分岔→相互回应→仍未解决之处",
+      "audio": "原话保留犹豫和否定，重叠发言不合成一致意见",
+      "rhythm": "以论证回合分段，关键反驳后留理解空间",
+      "visual": "说话人标签与议题提示，真实同期全景承接多人回应",
+      "anti": "用后来的点头给早先提案制造全票通过",
+      "example": "虚构例：新功能与低成本之争保留用户需求尚未验证的异议",
+      "nearest": "不同于决策纪要，它以未收敛的分歧为可用结果",
+      "effect_check": "观众能公平复述各方理由，能指出哪些事还没决定",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/course-meeting-trials-01",
+          "current_results": "result-after-visual-review.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "English scenario meeting only",
+            "declared RM clock, physical sync unverified",
+            "full listening and independent style review pending",
+            "third candidate visual-context correction preserved in work v2"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "decision-trace",
+      "name": "决策来路",
+      "family": "会议·协商",
+      "fit": "有明确决议且讨论提供决策理由",
+      "question": "这个决定为什么最终成立？",
+      "selection": "保留候选、约束、关键取舍及明确确认原话",
+      "sequence": "决策问题→备选→排除理由→确认→适用条件",
+      "audio": "确认句原声完整，不用旁白代替批准",
+      "rhythm": "论证可压缩，确认与条件留足",
+      "visual": "议题卡标记提议/修订/确认的状态变化",
+      "anti": "把沉默或主持人个人意见写成最终决定",
+      "example": "虚构例：负责人明确确认延期后才出现延期决定卡",
+      "nearest": "区别于分歧脉络，必须有源中明确收束",
+      "effect_check": "观众能区分提议与决定并找到确认者的原话",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      },
+      "text_evaluations": [
+        {
+          "run": "evals/runs/gpuweb-meeting-01",
+          "current_results": "result-current.json",
+          "status": "real-historical-minutes-notes-only",
+          "semantic_assessment": "agent-authored-and-reviewed-not-independent",
+          "limits": [
+            "Published English minutes to Chinese notes, not audio or native-host evidence",
+            "Two dates, selected topics only; no current specification or task dispatch claim",
+            "Literal source checks do not certify approval interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "action-handoff",
+      "name": "行动交接",
+      "family": "会议·落实",
+      "fit": "会议确有可追踪的承诺或分工",
+      "question": "会后谁做什么、依赖什么？",
+      "selection": "保留任务对象、负责人、期限和阻塞原话；未知项明确空缺",
+      "sequence": "任务目标→承诺→前置依赖→时间→待确认",
+      "audio": "承诺与限定由原声承担，信息卡不补造期限",
+      "rhythm": "每个任务独立成段，给阅读与记录时间",
+      "visual": "任务卡同步突出负责人和原话时间，可导航回源",
+      "anti": "依据职务猜负责人，把希望日期写成承诺期限",
+      "example": "虚构例：接口联调等待账号权限，交接卡保留阻塞",
+      "nearest": "区别于决策来路，围绕执行责任而非方案论证",
+      "effect_check": "观众能列出行动和缺项，不会执行未经承诺的任务",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      },
+      "text_evaluations": [
+        {
+          "run": "evals/runs/gpuweb-meeting-01",
+          "current_results": "result-current.json",
+          "status": "real-historical-minutes-notes-only",
+          "semantic_assessment": "agent-authored-and-reviewed-not-independent",
+          "limits": [
+            "Published English minutes to Chinese notes, not audio or native-host evidence",
+            "Two dates, selected topics only; no current specification or task dispatch claim",
+            "Literal source checks do not certify approval interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "issue-brief",
+      "name": "议题速览",
+      "family": "会议·导航",
+      "fit": "长会议包含多个可分开的议题",
+      "question": "缺席者如何快速找到要看的部分？",
+      "selection": "每议题保留问题、当前状态、代表证据与回看入口",
+      "sequence": "按议程或明确议题排序，每节问题→现状→证据",
+      "audio": "原声摘要片段保留语气，导航文字注明整理",
+      "rhythm": "议题之间明确停顿，节内压缩重复",
+      "visual": "章节导航与议题卡，不用连续滚动小字",
+      "anti": "用一句统一结论抹平议题各自状态",
+      "example": "虚构例：预算未定、排期已定分成两个章节",
+      "nearest": "区别于行动交接，覆盖议题状态并允许没有任务",
+      "effect_check": "观众能定位议题且不混淆已定和未定事项",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "constraint-first",
+      "name": "约束先行",
+      "family": "会议·权衡",
+      "fit": "方案被预算、时限、法规或技术条件约束",
+      "question": "哪些条件决定了方案空间？",
+      "selection": "先保留约束来源，再保留相关选项与可行性讨论",
+      "sequence": "硬条件→候选响应→代价→可放宽条件",
+      "audio": "数字保留说话者归属，外部事实另标待核",
+      "rhythm": "每个约束后留解释，避免快速数字轰炸",
+      "visual": "约束与选项并列卡，区分估计和确定值",
+      "anti": "将发言者估计剪成已验证数据或把软偏好当硬要求",
+      "example": "虚构例：遥控器售价约束与功能需求分别标为发言内容",
+      "nearest": "不同于决策来路，可在尚无决定时解释限制",
+      "effect_check": "观众能解释方案为何受限且知道条件可信度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/course-meeting-trials-01",
+          "current_results": "result-after-visual-review.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "English scenario meeting only",
+            "declared RM clock, physical sync unverified",
+            "full listening and independent style review pending",
+            "third candidate visual-context correction preserved in work v2"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "proposal-evolution",
+      "name": "提案演变",
+      "family": "会议·协商",
+      "fit": "方案在讨论中多次修改",
+      "question": "最终提案相对最初版本改了什么？",
+      "selection": "保留原提案、触发修改的反馈、各次有意义修订",
+      "sequence": "原提案→反馈→修订→当前版本",
+      "audio": "每次修订原话连同提出者，避免拼成单人独创",
+      "rhythm": "变化处停顿，未改变部分压缩",
+      "visual": "版本差异标注，只标已被明确改变的字段",
+      "anti": "把不同人的互斥方案自动合成已同意的新方案",
+      "example": "虚构例：先全功能后减为基础功能，保留是谁建议及是否采纳",
+      "nearest": "区别于决策来路，重点是内容变化而非批准结果",
+      "effect_check": "观众能还原提案版本和修改原因",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "assumption-audit",
+      "name": "假设核对",
+      "family": "会议·求证",
+      "fit": "讨论依赖未验证的用户、市场或技术假设",
+      "question": "哪些论据是事实，哪些只是猜想？",
+      "selection": "保留假设原话、证据请求、反证及验证办法",
+      "sequence": "关键主张→依据类型→质疑→待验证问题",
+      "audio": "保留可能、大概、我认为等限定词",
+      "rhythm": "主张与验证状态成对呈现",
+      "visual": "事实/经验/估计/待验证明确文字标识",
+      "anti": "为提高确定感去掉模态词或自行补研究数据",
+      "example": "虚构例：九成用户只用基础功能被标为某人的估计",
+      "nearest": "区别于分歧脉络，聚焦可验证性而非立场",
+      "effect_check": "观众不会把参与者估计当成真实调研结果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "risk-register",
+      "name": "风险与阻塞",
+      "family": "会议·落实",
+      "fit": "有失败条件、依赖或风险处置讨论",
+      "question": "什么可能让计划失败，如何应对？",
+      "selection": "风险情境、触发信号、影响、已有应对和未决处置",
+      "sequence": "目标→风险→影响链→应对→剩余风险",
+      "audio": "不加惊悚音效渲染发生概率",
+      "rhythm": "风险与应对配对，不能只剪吓人的句子",
+      "visual": "风险卡注明已发生/可能发生/未知",
+      "anti": "把假设风险当成已经发生的事故",
+      "example": "虚构例：发布可能被审批延迟，保留触发条件",
+      "nearest": "区别于行动交接，中心是条件和失效路径",
+      "effect_check": "观众能分清事实故障与潜在风险及其应对",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "options-comparison",
+      "name": "备选方案对照",
+      "family": "会议·权衡",
+      "fit": "讨论多个同目标的方案",
+      "question": "各方案分别牺牲和获得什么？",
+      "selection": "保留共同比较维度与各方有依据的优缺点",
+      "sequence": "目标和维度→逐项对照→取舍→未决",
+      "audio": "每项评价保留说话者，不替团队打总分",
+      "rhythm": "按维度成组而非按谁说话最多排序",
+      "visual": "并列卡允许未知单元格，证据链接逐项回源",
+      "anti": "为表格整齐补造缺失性能或成本",
+      "example": "虚构例：自建与采购只有成本有数据，维护栏写未知",
+      "nearest": "区别于约束先行，强调横向可比而不先排序",
+      "effect_check": "观众能说出真实已知差异与尚缺信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "customer-voice",
+      "name": "客户原话",
+      "family": "会议·研究",
+      "fit": "用户研究会或客户反馈讨论需要保护表达",
+      "question": "用户到底说了什么，团队如何理解？",
+      "selection": "保留客户原话、使用情境、追问及团队推断的分界",
+      "sequence": "使用场景→原话→追问→团队解释→待验证",
+      "audio": "客户原声优先，团队旁白不得冒充客户意图",
+      "rhythm": "情绪停顿保留，不把采访剪成广告",
+      "visual": "明确客户引用与团队解读两种字幕角色",
+      "anti": "把个别用户意见剪成全部用户需求",
+      "example": "虚构例：一位用户嫌按钮小，不等于所有人要触屏",
+      "nearest": "区别于访谈人物纪实，重点是研究证据与解释边界",
+      "effect_check": "观众能分清用户表达、样本范围和团队假设",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "retrospective-loop",
+      "name": "复盘闭环",
+      "family": "会议·学习",
+      "fit": "有目标、实际结果和原因讨论",
+      "question": "结果偏差如何变成可执行学习？",
+      "selection": "保留原目标、实际证据、不同归因与改进建议",
+      "sequence": "目标→结果→偏差→多种解释→下一次试验",
+      "audio": "数据由源材料支持，情绪与归因分开",
+      "rhythm": "先把结果讲清再转向原因，不急着定责",
+      "visual": "时间线与指标只采用已核证据",
+      "anti": "将时间先后当因果，把某人承认问题剪成全部责任",
+      "example": "虚构例：延期同时有范围变更和接口阻塞，保留两条线",
+      "nearest": "区别于风险与阻塞，围绕已经发生的结果学习",
+      "effect_check": "观众能区分事实偏差、原因假说和改进动作",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "role-perspectives",
+      "name": "角色视角",
+      "family": "会议·协商",
+      "fit": "不同角色关注点导致沟通错位",
+      "question": "各角色在保护什么目标？",
+      "selection": "保留角色的原话目标、约束与彼此理解的变化",
+      "sequence": "共同议题→角色关注→冲突点→可协调条件",
+      "audio": "用真实表达解释立场，不按职位刻板归因",
+      "rhythm": "每方至少保留能讲清依据的完整表达",
+      "visual": "角色标签来自源资料，未知身份用A/B",
+      "anti": "根据职务自动判断某人只关心成本或体验",
+      "example": "虚构例：工程和设计都提易用性，以原话显示差别",
+      "nearest": "区别于分歧脉络，组织轴是目标视角而非争论轮次",
+      "effect_check": "观众理解多方目标而非给人物贴敌我标签",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "open-question-ledger",
+      "name": "未决问题清单",
+      "family": "会议·导航",
+      "fit": "讨论没有足够证据形成决定",
+      "question": "下一次需要回答哪些问题？",
+      "selection": "保留问题、已有尝试、缺失证据和明确后续",
+      "sequence": "已知→未解问题→为何未解→需要的输入",
+      "audio": "疑问保留疑问语气，不配成笃定结论",
+      "rhythm": "每个问题独立留出思考空间",
+      "visual": "问题卡注明状态和已知信息，不填假答案",
+      "anti": "为使视频完整而编一个团队结论",
+      "example": "虚构例：是否需要联网取决于尚未做的用户调查",
+      "nearest": "区别于议题速览，以信息缺口作为组织单位",
+      "effect_check": "观众知道下一步该求证什么且不会误认已有答案",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/course-meeting-trials-01",
+          "current_results": "result-after-visual-review.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "English scenario meeting only",
+            "declared RM clock, physical sync unverified",
+            "full listening and independent style review pending",
+            "third candidate visual-context correction preserved in work v2"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      },
+      "text_evaluations": [
+        {
+          "run": "evals/runs/gpuweb-meeting-01",
+          "current_results": "result-current.json",
+          "status": "real-historical-minutes-notes-only",
+          "semantic_assessment": "agent-authored-and-reviewed-not-independent",
+          "limits": [
+            "Published English minutes to Chinese notes, not audio or native-host evidence",
+            "Two dates, selected topics only; no current specification or task dispatch claim",
+            "Literal source checks do not certify approval interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expert-qa",
+      "name": "专题问答",
+      "family": "会议·解释",
+      "fit": "分享会中提问和回答具有独立价值",
+      "question": "一个真实问题如何获得有边界的回答？",
+      "selection": "完整问题、回答理由、限定与必要追问",
+      "sequence": "问题→回答→例证→边界→仍有疑问",
+      "audio": "保留问答双方归属，不用配音补装原问题",
+      "rhythm": "删无关寒暄，保留让问题可理解的背景",
+      "visual": "问题卡对齐原话，不夸大答案承诺",
+      "anti": "将不同语境的回答拼给更刺激的问题",
+      "example": "虚构例：问如何处理小样本，回答仅适用于某实验条件",
+      "nearest": "区别于行动回顾，以解释价值而非任务承诺为目标",
+      "effect_check": "观众能准确复述问题和答案适用范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "concept-ladder",
+      "name": "概念阶梯",
+      "family": "课程·基础",
+      "fit": "零基础观众需要逐步建立概念",
+      "question": "观众需要先知道什么才能理解下一步？",
+      "selection": "保留定义、必要先修、最小例子和新旧概念连接",
+      "sequence": "已知经验→定义→例子→下一个概念",
+      "audio": "术语首次出现清楚，不能剪掉定义中的限制",
+      "rhythm": "每个新概念后留理解与读图时间",
+      "visual": "定义与实例相邻显示，避免堆满术语",
+      "anti": "先给高级结论再用字幕假装补齐全部基础",
+      "example": "虚构例：解释概率再讲条件概率，保留条件含义",
+      "nearest": "区别于速查复习，为首次学习建立依赖链",
+      "effect_check": "新观众能解释术语并理解下一节为什么成立",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "worked-example",
+      "name": "例题带学",
+      "family": "课程·推导",
+      "fit": "有完整问题、步骤和检验",
+      "question": "观众能照着解出相似问题吗？",
+      "selection": "题目条件、每个非平凡步骤、依据与答案检验",
+      "sequence": "题目→拆解→演算→校验→迁移提示",
+      "audio": "原声解释步骤理由，沉默计算可压缩但保留结果变化",
+      "rhythm": "难步骤慢，机械重复可快，阅读公式不加速",
+      "visual": "题目、当前步和上一关键步关系可见",
+      "anti": "只保留答案和花哨板书，删除为什么这样做",
+      "example": "虚构例：预算计算保留单位换算和结果验算",
+      "nearest": "区别于概念阶梯，以一个完整实例作为主线",
+      "effect_check": "观众能完成变式题而非只能复述答案",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "misconception-repair",
+      "name": "误区纠偏",
+      "family": "课程·辨析",
+      "fit": "素材明确展示错误理解及纠正依据",
+      "question": "错误为什么看似合理又在哪里失效？",
+      "selection": "常见错误、导致错误的假设、反例、修正结论",
+      "sequence": "错误猜想→检验→反例→正确边界",
+      "audio": "错误片段明确标记为待纠正，保留讲者自我修正",
+      "rhythm": "错误与纠正不要相隔到被误记，留比较时间",
+      "visual": "成对展示错因与改法，不能仅用红叉判错",
+      "anti": "裁掉纠正段造成传播错误知识",
+      "example": "虚构例：相关性不等于因果，保留反例",
+      "nearest": "区别于边界条件，以已有误解的修复为目标",
+      "effect_check": "观众既知道正确说法又能指出原推理错点",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "proof-chain",
+      "name": "推导证明",
+      "family": "课程·推导",
+      "fit": "理论、数学或机制说明重逻辑链",
+      "question": "结论依靠哪些前提和中间命题？",
+      "selection": "定义、假设、每个关键推导与适用域",
+      "sequence": "前提→中间命题→结论→边界",
+      "audio": "不以煽动旁白跳过证明，原声术语一致",
+      "rhythm": "按推理难度而非固定秒数切段",
+      "visual": "变量首次定义可回看，跨镜头公式一致",
+      "anti": "把直观类比当证明或删掉关键假设",
+      "example": "虚构例：保留独立性假设再推乘法公式",
+      "nearest": "区别于例题带学，中心是一般命题而非单题答案",
+      "effect_check": "观众能还原推导并识别改变前提会怎样",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "case-autopsy",
+      "name": "案例解剖",
+      "family": "课程·应用",
+      "fit": "实例有情境、选择和结果",
+      "question": "这次案例为什么如此发展？",
+      "selection": "场景条件、关键选择、反馈、结果及其他解释",
+      "sequence": "情境→决策点→结果→机制→可迁移范围",
+      "audio": "原始材料与讲者分析分别标识",
+      "rhythm": "决策前给观众理解条件的时间",
+      "visual": "资料画面不冒充现场实录，图解标为解释",
+      "anti": "用事后结果证明当时选择必然正确",
+      "example": "虚构例：一次产品失败保留当时信息限制",
+      "nearest": "区别于复盘闭环，面向教学迁移而非团队交接",
+      "effect_check": "观众能说明可迁移机制和不可照搬的条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/coscup-learning-01",
+          "current_results": "result-current.json",
+          "status": "real-chinese-learning-edition-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "Slide/ASR-informed selection, not certified dialogue",
+            "Same-work3-frame cut repair and chapter remapping",
+            "No full listening, independent learning/style or native-host acceptance"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "contrast-pair",
+      "name": "对照辨析",
+      "family": "课程·辨析",
+      "fit": "相近概念或方法容易混淆",
+      "question": "什么时候该用A而不是B？",
+      "selection": "共同问题、区分条件、成对例子和反例",
+      "sequence": "共同点→关键差异→对照案例→选择依据",
+      "audio": "术语完整，不通过不同配乐暗示价值高低",
+      "rhythm": "成对片段给相近阅读预算，复杂项可更长",
+      "visual": "统一维度并列，未知项保留",
+      "anti": "为了对称编造例子或把两种方法排成绝对优劣",
+      "example": "虚构例：比较准确率与召回率并保留使用场景",
+      "nearest": "区别于备选方案对照，以概念边界教学为目标",
+      "effect_check": "观众能正确判断新案例属于哪类",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "question-led-discovery",
+      "name": "问题驱动探索",
+      "family": "课程·探索",
+      "fit": "素材有真实提问、尝试和发现",
+      "question": "答案是怎样被发现的？",
+      "selection": "初始问题、有效尝试、失败原因和关键发现",
+      "sequence": "问题→猜想→试验→修正→解释",
+      "audio": "真实思考停顿适量保留，避免伪装发现顺序",
+      "rhythm": "疑问处留短思考时间，发现处讲足依据",
+      "visual": "过程线索可见，不提前在标题揭露全部答案",
+      "anti": "倒剪成功结果制造从未发生的试验过程",
+      "example": "虚构例：从错误参数试验找到原因，保留失败证据",
+      "nearest": "区别于误区纠偏，不预设一种常见错误作为中心",
+      "effect_check": "观众理解探索路径而非只记住最终答案",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "lab-demonstration",
+      "name": "实验与演示",
+      "family": "课程·实践",
+      "fit": "物理、技能或操作课有可见过程",
+      "question": "现象如何从操作条件产生？",
+      "selection": "准备、条件、关键动作、观察结果与异常",
+      "sequence": "条件→操作→现象→记录→解释",
+      "audio": "关键动作同期声与讲解避免互相遮盖",
+      "rhythm": "不可压掉短暂现象，等待可以标时压缩",
+      "visual": "近景看现象、全景交代装置关系，结果留足",
+      "anti": "把预先录好的成功画面接成一次实时实验",
+      "example": "虚构例：化学演示保留控制变量和异常反应说明",
+      "nearest": "区别于软件教程，覆盖物理现象和实验条件",
+      "effect_check": "观众能看到实际结果并知道重复实验的必要条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "boundary-conditions",
+      "name": "边界条件",
+      "family": "课程·辨析",
+      "fit": "原则容易被过度泛化",
+      "question": "这条结论何时成立，何时失效？",
+      "selection": "规则原话、成立假设、有效例子和失效反例",
+      "sequence": "规则→成立域→反例→更精确表述",
+      "audio": "条件句原声完整，不藏在快速小字里",
+      "rhythm": "反例给足理解时间，不当花絮掠过",
+      "visual": "条件与结论始终可关联回看",
+      "anti": "只剪最肯定的结论删掉但是和除非",
+      "example": "虚构例：某优化只适合小规模输入，保留规模边界",
+      "nearest": "区别于误区纠偏，不要求先有错误，只防止外推",
+      "effect_check": "观众不会把有条件结论当普遍规则",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "practice-pause",
+      "name": "练习停顿",
+      "family": "课程·练习",
+      "fit": "课程有可独立完成的题或观察任务",
+      "question": "观众是否真正尝试了再看答案？",
+      "selection": "题目、必要条件、思考提示和完整解答",
+      "sequence": "任务→留白/暂停提示→提示阶梯→解答→自检",
+      "audio": "练习时间可用静音或环境声，不旁白泄题",
+      "rhythm": "留白由题目难度决定，允许观众主动暂停",
+      "visual": "明确暂停点，答案不提前露出在画面或字幕",
+      "anti": "为快节奏把题目与答案无缝贴在一起",
+      "example": "虚构例：先判断两段代码结果，暂停后解释",
+      "nearest": "区别于例题带学，主动尝试是内容结构的一部分",
+      "effect_check": "观众能在答案出现前完成一次有效尝试",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "retrieval-review",
+      "name": "速查复习",
+      "family": "课程·复习",
+      "fit": "观众已学过，需要回忆和定位",
+      "question": "如何快速找回已学知识及使用条件？",
+      "selection": "概念提示、关键关系、易错边界与回看索引",
+      "sequence": "知识地图→提示→关键公式/步骤→易错点",
+      "audio": "精简重复讲解，但保留必要术语和条件",
+      "rhythm": "密度较高，阅读时间仍足够，不冒充零基础课",
+      "visual": "索引卡可跳转，公式字号适合目标画幅",
+      "anti": "删掉全部先修后仍向初学者宣称完整教学",
+      "example": "虚构例：考试复习只讲记忆触发点并附原课章节",
+      "nearest": "区别于概念阶梯，以已知为前提而非建立基础",
+      "effect_check": "已有基础的观众能快速定位并准确回忆条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/coscup-learning-01",
+          "current_results": "result-current.json",
+          "status": "real-chinese-learning-edition-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "Slide/ASR-informed selection, not certified dialogue",
+            "Same-work3-frame cut repair and chapter remapping",
+            "No full listening, independent learning/style or native-host acceptance"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "transfer-bridge",
+      "name": "迁移桥梁",
+      "family": "课程·应用",
+      "fit": "素材给出原例与不同情境下的应用",
+      "question": "学会的机制怎样迁移而不机械照搬？",
+      "selection": "原例机制、新情境差异、调整点和适用限制",
+      "sequence": "原例→抽取机制→新例→调整→不能迁移之处",
+      "audio": "明确哪些是讲者推断、哪些有实际结果",
+      "rhythm": "两情境转换处留理解桥接",
+      "visual": "并列显示保持项与变化项",
+      "anti": "只换题材名字便宣称方法通用",
+      "example": "虚构例：线下访谈方法迁移线上时保留信号缺失问题",
+      "nearest": "区别于案例解剖，至少比较两个不同情境",
+      "effect_check": "观众能说明迁移所需改变及不适用范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "process-map",
+      "name": "流程地图",
+      "family": "课程·应用",
+      "fit": "技能流程有分支、判断和返回路径",
+      "question": "观众下一步如何选择正确分支？",
+      "selection": "入口条件、步骤、分支依据、异常返回和完成条件",
+      "sequence": "全貌→主路径→分支→失败返回→终点",
+      "audio": "操作指令和解释分层，不同时塞入全部细节",
+      "rhythm": "主路径连贯，分支独立章节",
+      "visual": "流程图节点对应实际源片，当前步骤高亮",
+      "anti": "把有条件分支剪成所有人必须执行的顺序",
+      "example": "虚构例：排查网络按连接和权限分支，不全部重装",
+      "nearest": "区别于概念阶梯，以可执行决策路径为中心",
+      "effect_check": "观众面对不同输入能选正确分支",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    },
+    {
+      "id": "historical-development",
+      "name": "知识演进",
+      "family": "课程·背景",
+      "fit": "课程解释理论或技术如何随问题演变",
+      "question": "旧方法为什么被修订，新方法解决了什么？",
+      "selection": "旧问题、旧方法局限、新证据与更新后的解释",
+      "sequence": "当时问题→方法→暴露局限→新证据→修订",
+      "audio": "年代和人物来自材料，后见评价注明归属",
+      "rhythm": "转折由证据推进，不靠戏剧化配乐制造伟人叙事",
+      "visual": "时间线与概念变化分别可见",
+      "anti": "用当代知识嘲讽历史选择或捏造单一路线",
+      "example": "虚构例：从规则方法到统计方法保留各自适用时期与限制",
+      "nearest": "区别于推导证明，重点是问题与方法的历史变化",
+      "effect_check": "观众理解演进条件而非误以为旧方法毫无价值",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "inhai-video-highlight"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标受众及先修水平",
+        "时长与议题范围",
+        "原声解释与文字辅助的分工",
+        "理解停顿与读图时间"
+      ],
+      "compatibility": {
+        "requires": "来源归属与必要上下文；指定主要组织机制后再组合局部手法",
+        "avoid": "速查默认先修不得与零基础承诺混用；未决议题不得套已批准决定的收束"
+      }
+    }
+  ]
+}

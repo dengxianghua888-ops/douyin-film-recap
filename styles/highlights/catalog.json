@@ -1,0 +1,1121 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "sports/game/live event styles; authored not quality certified",
+  "styles": [
+    {
+      "id": "complete-possession",
+      "name": "完整回合",
+      "family": "体育",
+      "fit": "可见进攻发起和结束",
+      "question": "这次机会怎样形成并结束？",
+      "selection": "保留发起、关键配合、终结和实际结果",
+      "sequence": "空间建立→推进→关键动作→结果",
+      "audio": "现场声为主，解说不压过结果",
+      "rhythm": "随运动推进，不按音乐强切",
+      "visual": "球与主要参与者持续可见",
+      "anti": "把球接近篮筐剪成进球或删除未中结果",
+      "example": "虚构例：从抢断到上篮，落点是否入网仍须看清",
+      "nearest": "区别于瞬间回放，以完整事件为单位",
+      "effect_check": "观众能说清起因与可见结果，未见结果则标open",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "highlight-style-trials-01",
+          "candidate": "basketball-context",
+          "report": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Source does not establish a complete possession outcome.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/basketball-context/render/captions/captioned.mp4",
+            "sha256": "8ab2eca55e2378151d473cc2e39b985880466af37755f0a14337e1580286f607"
+          },
+          "version": "5a9b9ff3b2e070bb31983c7be69cbf43db8cc5214ce7257c40e2fa2913c1a6dc"
+        },
+        {
+          "trial": "penalty-save-01",
+          "candidate": "continuous-context",
+          "report": "evals/runs/penalty-save-01/result-current.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Same-source editorial contrast; continuous motion/listening, official ruling, independent style and native-host acceptance pending.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/penalty-save-01/continuous-context/render/captions/captioned.mp4",
+            "sha256": "6c2137360e59c894774ed73de6afe45dc72b267ce53ff41fb58a7cf9ad86d7cf"
+          },
+          "version": "bea14fc764912335faa3b66abd0a084810c66a2e220b057a0dc12fc67af463fe"
+        }
+      ],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "defensive-save",
+      "name": "防守救险",
+      "family": "体育",
+      "fit": "有阻断、扑救或防守协作",
+      "question": "危险怎样被化解？",
+      "selection": "先保留威胁与空间，再看防守动作和后续控制",
+      "sequence": "危险→判断→阻断→球权/安全状态",
+      "audio": "防守同期声音保留，不借欢呼",
+      "rhythm": "威胁建立充分，动作可正常速再回放",
+      "visual": "不只追球，交代防守者位置",
+      "anti": "把碰到球当成已经完成扑救",
+      "example": "虚构例：门将扑球后仍有补射，必须保留后续",
+      "nearest": "区别于进攻回合，价值来自风险消除",
+      "effect_check": "观众理解防守贡献且不会误判安全已确定",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "penalty-save-01",
+          "candidate": "defensive-save",
+          "report": "evals/runs/penalty-save-01/result-current.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Same-source editorial contrast; continuous motion/listening, official ruling, independent style and native-host acceptance pending.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/penalty-save-01/defensive-save/edit-render/captions/captioned.mp4",
+            "sha256": "d584f8bbf97c9cc477678abdc34f1b8045d478500dbcf30a8cf3a863f1610dfc"
+          },
+          "version": "8f1afa38d09356217d1eddeef32c9ce373d5ec465e478da83292da70a5264d40"
+        }
+      ],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "team-combination",
+      "name": "配合链条",
+      "family": "体育",
+      "fit": "传跑、掩护或协作形成机会",
+      "question": "不持球的人如何参与结果？",
+      "selection": "保留关键无球动作、传递和终结",
+      "sequence": "初始站位→配合触发→空间变化→结果",
+      "audio": "现场声承接动作，简短标注解释",
+      "rhythm": "关键站位留足，非关键运转压缩",
+      "visual": "全景保空间，特写不切断球与人的关系",
+      "anti": "只剪最后一人得分而把配合归为个人奇迹",
+      "example": "虚构例：掩护引开防守后队友出手",
+      "nearest": "区别于完整回合，突出多人协作机制",
+      "effect_check": "观众能指出至少一个非终结者的作用",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "technique-breakdown",
+      "name": "动作拆解",
+      "family": "体育",
+      "fit": "动作有可观察的技术阶段",
+      "question": "这个动作的关键控制点是什么？",
+      "selection": "准备、发力、接触、随动或落地",
+      "sequence": "先完整正常速度→分阶段解释→完整回看",
+      "audio": "原声或明确教学解释，不配伪现场点评",
+      "rhythm": "局部观察要有足够时间，慢放需真实能力",
+      "visual": "重点部位可见，标注不遮关节或球",
+      "anti": "从模糊帧推测肌肉/力量数据",
+      "example": "虚构例：投篮起手与随动，只描述可见姿态",
+      "nearest": "区别于战术空间，以单个动作机制为中心",
+      "effect_check": "观众理解可见动作，不把推断当测量",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "moment-replay",
+      "name": "瞬间回放",
+      "family": "体育",
+      "fit": "已有可独立辨认的关键动作",
+      "question": "哪个瞬间值得再看一次？",
+      "selection": "先交代事件，再重复真实同一动作",
+      "sequence": "原事件→明确回放→真实结果或结束",
+      "audio": "回放声处理有标识，不伪装第二次发生",
+      "rhythm": "重复次数服务观察，避免无意义循环",
+      "visual": "全程显示回放标签，正常速也可回放",
+      "anti": "回放计为第二次得分",
+      "example": "虚构例：一次传球原速看完，再回看脱手瞬间",
+      "nearest": "区别于动作拆解，可不讲原理，目标是看清瞬间",
+      "effect_check": "观众知道是同一事件并能辨认细节",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "highlight-style-trials-01",
+          "candidate": "basketball-replay",
+          "report": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Replay helps inspect the motion but small ball/rim details remain ambiguous.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/basketball-replay/render/captions/captioned.mp4",
+            "sha256": "0126781b481d682c6250ea67b83a33fd9f3ea7eae5b1fbf4dec59956fb05d903"
+          },
+          "version": "e05123f2860ada2aa849d170b14c69b93e0791d9bb061eb66b4d4029e0ffb159"
+        },
+        {
+          "trial": "high-jump-replay-01",
+          "candidate": "01/02",
+          "report": "evals/runs/high-jump-replay-01/result-current.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Visible approach-through-recovery and same-event replay are mechanically bound; official result, continuous motion, listening and independent style acceptance remain open.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/high-jump-replay-01/attempt-01/placement-render/captions/captioned.mp4",
+            "sha256": "bccc582d1565b6e0a0acfd7556b1cb4cbea19a5749211fe21843da90aec4f3e9"
+          },
+          "version": "1920fa786f8db324d249dde80016d1287b926483a98d1c9c0d22ce284c93a91a"
+        }
+      ],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "turning-point",
+      "name": "转折回顾",
+      "family": "体育",
+      "fit": "比赛有可核对的前后局势",
+      "question": "这个回合如何改变局面？",
+      "selection": "保留此前状态、关键事件、之后真实变化",
+      "sequence": "局势→转折→后续验证",
+      "audio": "解说原话与比分来源分开",
+      "rhythm": "前史简洁，转折和后果完整",
+      "visual": "比分、时间、回合身份可定位",
+      "anti": "把普通得分说成决定胜负，后续未验证",
+      "example": "虚构例：追分回合后仍输球，不写绝杀逆转",
+      "nearest": "区别于完整回合，必须比较前后局势",
+      "effect_check": "观众能确认转折程度与实际赛果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "rivalry-exchange",
+      "name": "攻防互答",
+      "family": "体育",
+      "fit": "双方有连续可比较的回应",
+      "question": "对手怎样适应彼此？",
+      "selection": "成对保留行动、回应、再调整",
+      "sequence": "首次策略→对手回应→新的变化",
+      "audio": "两方真实反应平衡，不贴敌我音效",
+      "rhythm": "以回合交换组织张弛",
+      "visual": "不同回合明确时间/比分，避免混为同时",
+      "anti": "不同比赛片段拼成同场对决",
+      "example": "虚构例：先突破后收缩防线，再出现外线机会",
+      "nearest": "区别于转折回顾，重策略互动不必有胜负翻转",
+      "effect_check": "观众公平理解双方调整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "training-progress",
+      "name": "训练变化",
+      "family": "体育",
+      "fit": "同类动作多次尝试且条件可比",
+      "question": "练习中具体改变了什么？",
+      "selection": "保留失败、调整依据和后续尝试",
+      "sequence": "第一次→反馈→调整→再次尝试",
+      "audio": "教练原话有来源，不编造指导",
+      "rhythm": "失败不快进成羞辱，关键调整留足",
+      "visual": "同角度或说明角度差异，避免视觉误导",
+      "anti": "用不同难度素材假装进步",
+      "example": "虚构例：同点位投篮前后比较，不宣称长期提高",
+      "nearest": "区别于动作拆解，中心是可见变化过程",
+      "effect_check": "观众能指出改变及比较局限",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "underdog-context",
+      "name": "弱势应对",
+      "family": "体育",
+      "fit": "有可证实的条件差异而非想象人设",
+      "question": "处于不利条件时采取了什么办法？",
+      "selection": "实际约束、应对动作和真实结果",
+      "sequence": "约束→策略→过程→结果",
+      "audio": "不使用悲情配乐替代事实",
+      "rhythm": "困难建立适量，避免夸张拖延",
+      "visual": "数据/比分注明来源，人物不被刻板标签化",
+      "anti": "凭年龄外表或装备判断强弱",
+      "example": "虚构例：少一人防守时改变站位，结果照实",
+      "nearest": "区别于转折回顾，关注约束下的选择",
+      "effect_check": "观众理解真实不利条件，不被虚构励志带偏",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "match-chapters",
+      "name": "赛事章节",
+      "family": "体育",
+      "fit": "多个真实事件需要压缩成可回看的记录",
+      "question": "如何保留比赛的基本进程？",
+      "selection": "关键事件、必要比分变化和争议更正",
+      "sequence": "按比赛时间推进，回放明确归属",
+      "audio": "现场和解说保留可理解片段",
+      "rhythm": "章间简洁，事件内保持完整",
+      "visual": "章节有事件ID和源时间，不重复计分",
+      "anti": "只拼所有进球而漏掉判罚取消",
+      "example": "虚构例：进球被取消，章节写判罚后状态",
+      "nearest": "区别于单回合，建立全局过程和导航",
+      "effect_check": "观众能理解比赛进程且计数无重复",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "game-engage-disengage",
+      "name": "交战来回",
+      "family": "游戏",
+      "fit": "有发起、资源交换和撤离/结束",
+      "question": "这场交战为何开始又怎样结束？",
+      "selection": "保留开团条件、关键资源、脱离或后续目标",
+      "sequence": "准备→发起→交战→脱离/结果",
+      "audio": "队伍语音与游戏声保持归属",
+      "rhythm": "关键技能交换不断裂，等待可压缩",
+      "visual": "HUD、地图和参与者可看清",
+      "anti": "把无击杀撤退当无价值或把击杀当比赛胜利",
+      "example": "虚构例：用关键技能逼退对方取得目标区",
+      "nearest": "区别于击杀集锦，事件可以零击杀结束",
+      "effect_check": "观众理解交战收益及代价",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "clutch-decision",
+      "name": "残局判断",
+      "family": "游戏",
+      "fit": "少人/资源不足时有可见选择",
+      "question": "玩家依据什么信息做决定？",
+      "selection": "保留已知信息、选择、执行与结果",
+      "sequence": "信息→犹豫/选择→行动→结果",
+      "audio": "脚步/提示声不被配乐盖住",
+      "rhythm": "决策前允许安静，执行处连贯",
+      "visual": "视野和HUD保留，不用上帝视角假装玩家早知",
+      "anti": "事后看到敌人位置便说玩家当时知道",
+      "example": "虚构例：只根据已听到的脚步选择路径",
+      "nearest": "区别于交战来回，聚焦信息受限下的个人选择",
+      "effect_check": "观众分清当时已知与事后信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "objective-trade",
+      "name": "资源交换",
+      "family": "游戏",
+      "fit": "团队让出一处以换取另一处目标",
+      "question": "看似损失换来了什么？",
+      "selection": "同时段多个目标、资源消耗与结果证据",
+      "sequence": "局势→选择交换→双方得失→后续",
+      "audio": "解释不超出画面/日志的已知事实",
+      "rhythm": "交叉段明确时间，不制造同时发生",
+      "visual": "地图目标与数值变化各自有来源",
+      "anti": "仅凭解说夸奖认定交换划算",
+      "example": "虚构例：放弃小目标换主目标，收益范围需核实",
+      "nearest": "区别于残局判断，组织轴是团队资源账",
+      "effect_check": "观众能复述交换双方并识别未验证收益",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "combo-readability",
+      "name": "连招可读",
+      "family": "游戏",
+      "fit": "动作连锁能从素材中辨认",
+      "question": "连续动作之间怎样衔接？",
+      "selection": "起手条件、关键衔接、对手反应和结束",
+      "sequence": "完整一遍→关键衔接回看→完整结果",
+      "audio": "按键/技能音保留，解释避让关键声音",
+      "rhythm": "不为卡点跳过衔接，变速需明确实现",
+      "visual": "标注只覆盖已知技能，不遮操作区",
+      "anti": "看不清仍补造按键顺序或技能名称",
+      "example": "虚构例：两次位移衔接的操作，未知按键不写",
+      "nearest": "区别于瞬间回放，重点是动作依赖关系",
+      "effect_check": "观众能看清衔接且未知细节不被装成事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "comeback-arc",
+      "name": "局势翻转",
+      "family": "游戏",
+      "fit": "有可核对的劣势和后续变化",
+      "question": "翻转由哪几次选择累积？",
+      "selection": "劣势证据、有效调整、关键回合和最终状态",
+      "sequence": "劣势→调整→阶段回报→实际结束",
+      "audio": "真实语音保留情绪变化，别移植欢呼",
+      "rhythm": "积累有张弛，不只连放最高峰",
+      "visual": "经济/分数数据同一时间基",
+      "anti": "中途领先就称最终逆转胜利",
+      "example": "虚构例：比分追回后仍未结束，标题只称追平",
+      "nearest": "区别于单场交战，以多事件的变化链为主",
+      "effect_check": "观众能指出翻转依据与真实终局",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "learning-from-failure",
+      "name": "失误复盘",
+      "family": "游戏",
+      "fit": "失误原因可从现场信息解释",
+      "question": "哪里出了问题，可以怎样验证？",
+      "selection": "当时信息、操作、后果及实际复盘",
+      "sequence": "情境→失误→后果→候选解释→下一次尝试",
+      "audio": "保留自我修正，不羞辱或移植笑声",
+      "rhythm": "失误正常速完整，解释再分段",
+      "visual": "把事实操作与推测原因分开标注",
+      "anti": "凭结果倒推玩家动机或确定唯一原因",
+      "example": "虚构例：技能未命中可能有视野因素，保留未知",
+      "nearest": "区别于训练变化，以一次失误的可解释性为中心",
+      "effect_check": "观众区分可见错误、原因猜想和改进建议",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "quiet-strategy",
+      "name": "安静策略",
+      "family": "游戏",
+      "fit": "慢节奏布局、运营或潜行有关键变化",
+      "question": "没有爆炸和击杀时发生了什么？",
+      "selection": "保留资源/位置变化、意图依据和延迟回报",
+      "sequence": "局面→布局→等待条件→兑现/未兑现",
+      "audio": "声音细节保留，不强加激昂配乐",
+      "rhythm": "允许等待，跨时间压缩要标明",
+      "visual": "地图/数值变化清楚，不能只用脸部反应",
+      "anti": "以音量低为由漏掉关键策略",
+      "example": "虚构例：资源调配数分钟后形成优势，因果仍待验证",
+      "nearest": "区别于残局判断，关注较长时间的布局",
+      "effect_check": "观众能解释策略变化而非只看静态地图",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "team-communication",
+      "name": "沟通协作",
+      "family": "游戏",
+      "fit": "真实语音与协同行动能对应",
+      "question": "一句沟通如何影响团队动作？",
+      "selection": "指令、确认、执行和结果，保留误解/纠正",
+      "sequence": "观察→呼叫→响应→协作→结果",
+      "audio": "说话人标签来源明确，重叠语音不合并成同意",
+      "rhythm": "按实际互动组织，不机械切脸",
+      "visual": "游戏画面与同期语音对齐，时钟已校准",
+      "anti": "把不同局语音拼成完美配合",
+      "example": "虚构例：先叫撤退后队友仍推进，保留分歧",
+      "nearest": "区别于资源交换，突出交流如何作用于行动",
+      "effect_check": "观众能定位真实呼叫与实际响应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "speedrun-attempt",
+      "name": "挑战尝试",
+      "family": "游戏",
+      "fit": "有明确挑战规则和可见起终点",
+      "question": "这一次尝试是否满足自己的规则？",
+      "selection": "规则、计时起点、关键阶段、失误与结束",
+      "sequence": "目标规则→尝试→关键转折→结果",
+      "audio": "原计时/游戏声保留，不用音乐切断计时证据",
+      "rhythm": "压缩非关键段须标明非连续，完整证据另保留",
+      "visual": "计时器、暂停和剪辑位置清楚",
+      "anti": "剪掉耗时后宣称完整用时纪录",
+      "example": "虚构例：节选速通只能作为精华，原计时全程另存",
+      "nearest": "区别于比赛回顾，核心是挑战规则与一次尝试",
+      "effect_check": "观众不会把剪辑时长当挑战耗时",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "world-discovery",
+      "name": "探索发现",
+      "family": "游戏",
+      "fit": "玩家探索产生新地点、机制或意外",
+      "question": "发现如何从探索过程产生？",
+      "selection": "目标、路径、线索、发现及实际反应",
+      "sequence": "探索意图→线索→接近→发现→理解",
+      "audio": "环境声和同期反应优先",
+      "rhythm": "允许接近过程，不抢先揭露体验目标",
+      "visual": "空间路线可辨，回放不伪装初见",
+      "anti": "把事后解说冒充玩家初次发现时想法",
+      "example": "虚构例：找到隐藏入口，保留线索和如何进入",
+      "nearest": "区别于安静策略，回报是认识变化而非胜率",
+      "effect_check": "观众理解发现过程和信息揭示顺序",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "highlight-style-trials-01",
+          "candidate": "lava-observe",
+          "report": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "Devtest demonstration, not competitive gameplay. Audio listening and complete motion review pending.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/lava-observe/revision-render/captions/captioned.mp4",
+            "sha256": "3bf88723469b3623a1c6436c1dbcf0c757aa2bf3d176255d94d62fe6b48ae3cf"
+          },
+          "version": "519cf55d35cd87d3a87a3186b477e179af25e381d3748b877bbfdc05d1e7be9b"
+        },
+        {
+          "trial": "highlight-style-trials-01",
+          "candidate": "lava-digest",
+          "report": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "limitation": "A shorter variant of one style, not an additional style or continuous simulation evidence.",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/lava-digest/revision-render/captions/captioned.mp4",
+            "sha256": "05bd9b5ebd00e701f17b9bc53924f45a6c5a7eca741332ba3f4281e29d2117cf"
+          },
+          "version": "6c2f8073ce11ab673d78b12fc310c2df3c5bdd5895bb478d5283c1d2b15461d1"
+        }
+      ],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-setup-payoff",
+      "name": "铺垫兑现",
+      "family": "直播",
+      "fit": "笑点/惊喜有具体前提和回应",
+      "question": "观众为什么会觉得这一刻有意思？",
+      "selection": "铺垫、误会或预期、兑现及同期反应",
+      "sequence": "前提→预期→变化→回应",
+      "audio": "原声语气与停顿保留，不加假笑",
+      "rhythm": "包袱前留必要停顿，兑现后不立刻截断",
+      "visual": "发言者与实际屏幕事件可对应",
+      "anti": "只留大笑不留原因",
+      "example": "虚构例：先承诺一次成功，随后真实失败形成反差",
+      "nearest": "区别于连续回调，只完成一个独立表达单元",
+      "effect_check": "没看过直播的人也能理解笑点且事实不被改写",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "callback-thread",
+      "name": "连续回调",
+      "family": "直播",
+      "fit": "同一梗跨时间多次演变",
+      "question": "重复出现如何产生新的意义？",
+      "selection": "第一次建立、后续有变化的回调和收束",
+      "sequence": "建立→变体→升级/反转→最后回收",
+      "audio": "各次原声保留，重复不剪成同一瞬间",
+      "rhythm": "时间跨度明确，重复次数服务变化",
+      "visual": "标明不同片段时间，不重复同一素材假装多次发生",
+      "anti": "搜到同一句就机械拼接成梗",
+      "example": "虚构例：每次预测都被意外打断，保留各次不同结果",
+      "nearest": "区别于铺垫兑现，以多次变化积累效果",
+      "effect_check": "观众能辨认每次回调的新信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-demo-evidence",
+      "name": "演示证据",
+      "family": "直播",
+      "fit": "主播实际展示产品、操作或实验",
+      "question": "演示真正发生了什么？",
+      "selection": "条件、操作、可见结果、失败和限定",
+      "sequence": "任务→操作→结果→解释/修正",
+      "audio": "话术与实际声音分开，不配造成功提示",
+      "rhythm": "结果给足停留，加载可标时压缩",
+      "visual": "操作界面/对象可读，不能用反应脸替代证据",
+      "anti": "剪掉失败只保留销售承诺冒充成功实测",
+      "example": "虚构例：连接失败后重试成功，保留失败条件",
+      "nearest": "区别于软件教程，不默认整理成完整教学课程",
+      "effect_check": "观众能区分演示证据、主播承诺和未验证效果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "chat-response",
+      "name": "观众问答",
+      "family": "直播",
+      "fit": "有真实可用聊天记录及同期回应",
+      "question": "主播在回答谁的什么问题？",
+      "selection": "问题原文/授权引用、时间、回应和必要追问",
+      "sequence": "问题→响应→解释→待解处",
+      "audio": "延迟校准后再配问题，不用相近词猜关联",
+      "rhythm": "问题留阅读时间，回答不截断条件",
+      "visual": "匿名化/身份按素材授权，聊天与字幕分层",
+      "anti": "伪造观众留言或把延迟回应配给别的问题",
+      "example": "虚构例：技术问答延迟十秒，依据真实记录对应",
+      "nearest": "区别于专题问答，额外要求平台聊天时钟校准",
+      "effect_check": "观众能确认问题与回应关系且无虚假互动",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-recovery",
+      "name": "现场补救",
+      "family": "直播",
+      "fit": "临场故障、失误后有实际应对",
+      "question": "主播怎样把问题处理下去？",
+      "selection": "问题出现、判断、尝试、结果与剩余限制",
+      "sequence": "故障→应对→试验→恢复/未恢复",
+      "audio": "保留现场紧张与解释，不借音效夸大事故",
+      "rhythm": "无效等待可压缩，关键排错步骤完整",
+      "visual": "明确哪些是当场动作，哪些是后补说明",
+      "anti": "把未修好的问题剪成完全恢复",
+      "example": "虚构例：麦克风问题部分改善，保留剩余噪声事实",
+      "nearest": "区别于失误复盘，侧重现场应对过程",
+      "effect_check": "观众理解实际恢复程度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-personality",
+      "name": "人物瞬间",
+      "family": "直播",
+      "fit": "人物表达通过具体选择或反应体现",
+      "question": "这一刻体现了怎样的表达方式？",
+      "selection": "实际语境、行动/原话、同期反应，不虚构动机",
+      "sequence": "情境→选择→表达→余味",
+      "audio": "语气、呼吸和停顿有意义时保留",
+      "rhythm": "不把沉默都剪掉，避免情绪过度包装",
+      "visual": "真实近景与行为对象建立关系",
+      "anti": "用一个片段给人物下永久人格结论",
+      "example": "虚构例：收到意外感谢后的停顿，不擅自解释内心",
+      "nearest": "区别于笑点结构，可以安静且无包袱",
+      "effect_check": "观众看到具体行为而非被强塞人设",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-topic-digest",
+      "name": "话题精华",
+      "family": "直播",
+      "fit": "多段讨论需要有主题地浓缩",
+      "question": "这个话题有哪些值得保留的观点？",
+      "selection": "问题、关键观点、例子、反例和限定",
+      "sequence": "主题问题→观点组→相互关系→当前结论",
+      "audio": "保留观点归属，主播引述不变成本人主张",
+      "rhythm": "观点间清楚换段，不靠快切抬密度",
+      "visual": "主题卡与原话对应，长观点有阅读空间",
+      "anti": "只摘刺激金句导致原意逆转",
+      "example": "虚构例：支持某做法但有前提，前提不能删",
+      "nearest": "区别于会议提炼，不追求团队决议或行动承诺",
+      "effect_check": "观众能复述观点和边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-performance",
+      "name": "表演段落",
+      "family": "直播",
+      "fit": "音乐、舞蹈或技能表演有完整段落",
+      "question": "哪一段表演具有独立的起承转合？",
+      "selection": "准备/起句、发展、关键动作、乐句/动作收束",
+      "sequence": "进入→发展→高潮→完成",
+      "audio": "保持原表演声音连续，许可不足不分发",
+      "rhythm": "按乐句和动作段落切，不以欢呼峰值切断",
+      "visual": "身体/工具关键范围完整，不能只拍脸",
+      "anti": "打断乐句或动作落地后却称完整表演",
+      "example": "虚构例：保留舞步起势与落地，不只重复腾空",
+      "nearest": "区别于人物瞬间，以表演结构为组织单位",
+      "effect_check": "观众能看到/听到完整表演段落",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-challenge",
+      "name": "直播挑战",
+      "family": "直播",
+      "fit": "有明确挑战目标和实际尝试",
+      "question": "挑战是否按所说条件完成？",
+      "selection": "规则、开始、尝试、关键偏差和结果",
+      "sequence": "条件→尝试→困难→结果→说明",
+      "audio": "原声规则保留，后补解释注明",
+      "rhythm": "压缩等待时保留计时变化，不能伪造连续性",
+      "visual": "计数与结果来源清楚，回放另标",
+      "anti": "剪掉失败尝试冒充一遍成功",
+      "example": "虚构例：连续命中挑战中断，诚实呈现重来",
+      "nearest": "区别于游戏速通，不限游戏但同样保护规则",
+      "effect_check": "观众能判断真实完成程度与剪辑省略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    },
+    {
+      "id": "live-session-arc",
+      "name": "一场直播的变化",
+      "family": "直播",
+      "fit": "长场次有可观察的目标与状态变化",
+      "question": "整场从开始到结束改变了什么？",
+      "selection": "开场目标、关键事件、情绪/认识变化和真实结束",
+      "sequence": "出发点→阶段变化→转折→收束",
+      "audio": "不同阶段声场差异保留合理过渡",
+      "rhythm": "大幅压缩时用章节解释跳时",
+      "visual": "时间章节与事件索引，避免多日素材混为一场",
+      "anti": "为了圆满结尾补造成功或借别场反应",
+      "example": "虚构例：挑战没完成但发现问题，结束保持开放",
+      "nearest": "区别于话题精华，以整场变化而非单主题论述为轴",
+      "effect_check": "观众理解整场发展且知道哪些阶段被省略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "stream-event-methods",
+        "dota-event-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "素材领域及规则",
+        "目标时长和事件范围",
+        "上下文与结果保留",
+        "回放次数与包装强度"
+      ],
+      "compatibility": {
+        "requires": "主风格机制明确；真实事件身份、结果和来源优先",
+        "avoid": "缺真实变速/跟踪能力时不声称已做慢放或智能构图；回放不得算新事件"
+      }
+    }
+  ]
+}

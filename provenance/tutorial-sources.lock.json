@@ -1,0 +1,65 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "demo-director",
+      "version": "544e910a8a63e9089f04e75588171e58ab099b2c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/crimeacs__product-demo-director/544e910a8a63/SKILL.md",
+      "size": 23888,
+      "sha256": "2ffc66891c3dea90219fd9129b7f8ec46148a1ee169a26350afe91ab3c6ffc3b",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/crimeacs__product-demo-director.json",
+      "authority_sha256": "21d93aeaa1f6a14da0aaf464a3fd5871f00d66ebc40a80d961aea516d26688b0",
+      "use": "method reference; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "demo-director",
+      "version": "544e910a8a63e9089f04e75588171e58ab099b2c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/crimeacs__product-demo-director/544e910a8a63/docs/EDITING.md",
+      "size": 23714,
+      "sha256": "08d07805773d0db4b46603a012806ef6292bc5d172411f8a61c1d6e1437a5200",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/crimeacs__product-demo-director.json",
+      "authority_sha256": "21d93aeaa1f6a14da0aaf464a3fd5871f00d66ebc40a80d961aea516d26688b0",
+      "use": "method reference; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "demo-director",
+      "version": "544e910a8a63e9089f04e75588171e58ab099b2c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/crimeacs__product-demo-director/544e910a8a63/LICENSE",
+      "size": 1074,
+      "sha256": "9c53b1803c7ab1cfc8b2f057261260c15d2b9549c3ea0d6e221099229b642ced",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/crimeacs__product-demo-director.json",
+      "authority_sha256": "21d93aeaa1f6a14da0aaf464a3fd5871f00d66ebc40a80d961aea516d26688b0",
+      "use": "method reference; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ultrademo",
+      "version": "818cd5d286ee0998e8a3f2591d445c121516734f",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/andrewluxem__ultrademo/818cd5d286ee/README.md",
+      "size": 11604,
+      "sha256": "f9b275d5f0c66a55669bd92aaac10203676fcb0376d5426d9bf16b2e46edb754",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/andrewluxem__ultrademo.json",
+      "authority_sha256": "60b2c76a7ee743029756832fa3ba8106c8944625044d16df3c2e329961e2c949",
+      "use": "method reference; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ultrademo",
+      "version": "818cd5d286ee0998e8a3f2591d445c121516734f",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/andrewluxem__ultrademo/818cd5d286ee/LICENSE",
+      "size": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/andrewluxem__ultrademo.json",
+      "authority_sha256": "60b2c76a7ee743029756832fa3ba8106c8944625044d16df3c2e329961e2c949",
+      "use": "method reference; original implementation, no copied source code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

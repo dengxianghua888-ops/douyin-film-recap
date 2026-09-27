@@ -1,0 +1,210 @@
+{
+  "schema": "distribution-notice-coverage/1",
+  "status": "NOTICES_PREPARED_NOT_PACKAGED",
+  "audit": {
+    "path": "evals/parallel/w02-distribution-rights-20260923/result.json",
+    "sha256": "5766f12ab97117e8087e3ebcfb5b39b31c0a3107d5d8b0de88936de585aa7da8"
+  },
+  "proposal": {
+    "path": "evals/parallel/w02-distribution-rights-20260923/attribution-proposal.json",
+    "sha256": "848b4931aacc4be049b2314395ffa1a020b013d78b36f72c6f9ff1fa87192dde"
+  },
+  "groups": [
+    {
+      "source": "S04",
+      "license": "MIT",
+      "notice": "provenance/distribution-notices/coscup-planetoid-MIT.txt",
+      "members": [
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/candidate/candidate.json",
+          "sha256": "514bfbc89ee58f85497e2a0de8ad572ea573bebaed18708ef1112130c1d8b01c",
+          "bytes": 9193,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/candidate/request.json",
+          "sha256": "7898166611e4a4c932bbe9dccd2dbc7a39e8636b72bf4d4a932dff7332cc03f9",
+          "bytes": 17013,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/document.json",
+          "sha256": "6a2b60a1763878398d670a1885d4fc7c432c7f9c131a7748ead56947ab878277",
+          "bytes": 8974,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/evidence/request.json",
+          "sha256": "9bc4617469588b646af67a14a946a41de8d2b7983a025406e32fa4cf20f4624b",
+          "bytes": 21236,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/fork/initialize/receipt.json",
+          "sha256": "b34d777584e8e3137e0e242f681f77dbb9e37c2dd3d62603fbb82b4ec8efa26d",
+          "bytes": 12981,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/fork/initialize/request.json",
+          "sha256": "87347ffa0cd4f67d7aa8fd919e2e4751baa9ad78b147000f4c2fa4f01584eac0",
+          "bytes": 9749,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/fork/initialize/work-state.json",
+          "sha256": "73730c3d71ca8a7e97988bc4e26dda170da2161052347f9b01f1b3dd1bd0ba8f",
+          "bytes": 9668,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/fork/receipt.json",
+          "sha256": "1035a8492123d9d14f9f93a1acfe96ce23960b35fa64fb1920910ac5f6c465f4",
+          "bytes": 17165,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/fork/variant-binding.json",
+          "sha256": "280ebc7f2a4c120033d7f7d2d8eb7c7cc90c0f87a04d47f5bb3d37051babe9cc",
+          "bytes": 13200,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/case-autopsy/render/rendered-document.json",
+          "sha256": "411610311a93ef84bad2bb363b459d0cbeb00c4e2a23a101f94407d92fc7c567",
+          "bytes": 8974,
+          "suffix": ".json"
+        },
+        {
+          "scope": "foundation49",
+          "path": "evals/runs/coscup-learning-01/retrieval-review/candidate/request.json",
+          "sha256": "0abecad89d4793fe7f248def4efbb34ff303c48c16080d5ffb4bf8cc2415a827",
+          "bytes": 15159,
+          "suffix": ".json"
+        }
+      ],
+      "scope": "Specific observed member identities only; recheck if included bytes change"
+    },
+    {
+      "source": "S01",
+      "license": "CC BY 4.0",
+      "notice": "provenance/distribution-notices/NOTICE.md",
+      "members": [
+        {
+          "scope": "portable892",
+          "path": "evals/research/ami-timing-01/publication.json",
+          "sha256": "90c404dd7df4a6a2179fe0a9e6e64f6c43c753f47c5e86e36ea3ed801c6a546b",
+          "bytes": 1282,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-explanation-comparison-01/result-current.json",
+          "sha256": "6459dc0aae7dd557553e734178d6654018c351aef2f1decf63419ae12eb723a3",
+          "bytes": 23803,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-explanation-comparison-01/semantic-counterexamples.json",
+          "sha256": "0773aa33075e2ef5f2934c3ef4ed2ea8d6e96df2189267e056bb12c17ef41ef2",
+          "bytes": 1421,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-explanatory-layer-02/result.json",
+          "sha256": "71631de811deb5be81caf0ca9142552858969827617a0f103dedbb0c8dcb628c",
+          "bytes": 7806,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/content-review.json",
+          "sha256": "4cb094395ca038c1f7044a1b73207d290e888348933c9745e00ee566a8060561",
+          "bytes": 4465,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/result.json",
+          "sha256": "7d09f52f00eed1c9a7866eb4637062930aa1e0d43f48a59727dffc186d5ff523",
+          "bytes": 5256,
+          "suffix": ".json"
+        },
+        {
+          "scope": "portable892",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/transcript.json",
+          "sha256": "f3232431612b77683c20b1890207657cca29fe537fd09439c642ac8ca6030f1d",
+          "bytes": 18508,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/research/ami-timing-01/publication.json",
+          "sha256": "90c404dd7df4a6a2179fe0a9e6e64f6c43c753f47c5e86e36ea3ed801c6a546b",
+          "bytes": 1282,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-explanation-comparison-01/result-current.json",
+          "sha256": "6459dc0aae7dd557553e734178d6654018c351aef2f1decf63419ae12eb723a3",
+          "bytes": 23803,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-explanation-comparison-01/semantic-counterexamples.json",
+          "sha256": "0773aa33075e2ef5f2934c3ef4ed2ea8d6e96df2189267e056bb12c17ef41ef2",
+          "bytes": 1421,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-explanatory-layer-02/result.json",
+          "sha256": "71631de811deb5be81caf0ca9142552858969827617a0f103dedbb0c8dcb628c",
+          "bytes": 7806,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/content-review.json",
+          "sha256": "4cb094395ca038c1f7044a1b73207d290e888348933c9745e00ee566a8060561",
+          "bytes": 4465,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/result.json",
+          "sha256": "7d09f52f00eed1c9a7866eb4637062930aa1e0d43f48a59727dffc186d5ff523",
+          "bytes": 5256,
+          "suffix": ".json"
+        },
+        {
+          "scope": "current-proposed-only",
+          "path": "evals/runs/ami-spontaneous-timing-correction-01/transcript.json",
+          "sha256": "f3232431612b77683c20b1890207657cca29fe537fd09439c642ac8ca6030f1d",
+          "bytes": 18508,
+          "suffix": ".json"
+        }
+      ],
+      "scope": "Specific observed member identities only; recheck if included bytes change"
+    }
+  ],
+  "limits": [
+    "Historical packages remain unchanged",
+    "No blanket source or full-library rights certification",
+    "AISHELL and other pending text uses are outside this notice acceptance"
+  ]
+}

@@ -1,0 +1,1762 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "non-fiction editorial mechanisms, not quality certification",
+  "styles": [
+    {
+      "id": "fact-brief",
+      "name": "事实简报",
+      "family": "新闻",
+      "fit": "事件身份与核心事实有可靠来源",
+      "question": "发生了什么，目前知道多少？",
+      "selection": "事件、时间、地点、核心变化及必要限定",
+      "sequence": "已知事实→关键画面→范围",
+      "audio": "只读已核实事实，原声另核归属",
+      "rhythm": "按信息单元停留，不追固定快剪",
+      "visual": "事件日期与资料属性可见",
+      "anti": "把历史发射剪成今日新闻",
+      "example": "虚构例：已核实的桥梁开放信息配当天实拍",
+      "nearest": "区别于时间线，先回答核心事实",
+      "effect_check": "观众能复述事件且不混淆发生日期",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": [
+        {
+          "trial": "documentary-style-trials-01",
+          "candidate": "fact-brief",
+          "report": "evals/runs/documentary-style-trials-01/result-after-observation-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/captioned.mp4",
+            "sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956"
+          },
+          "version": "b7df7c95040a22068bca0c529d646d2e8a13f4d362f1d513d4edefd3d3f9bef1",
+          "limitation": "same archival picture/audio, information organization only; no current news or portrait validation"
+        }
+      ]
+    },
+    {
+      "id": "chronology",
+      "name": "事件时间线",
+      "family": "新闻",
+      "fit": "各节点有可追溯时间",
+      "question": "变化按什么先后发生？",
+      "selection": "关键节点、时间证据、间隔和空白",
+      "sequence": "已知先后排列，未知位置保留",
+      "audio": "时间转折用短提示，不造连续现场声",
+      "rhythm": "长间隔允许略过但标明",
+      "visual": "事件时间优先，页面日期另列",
+      "anti": "用上传先后推断事件先后",
+      "example": "虚构例：道路封闭、抢修、恢复三个有据节点",
+      "nearest": "区别于事实简报，时间关系是主线",
+      "effect_check": "观众不会把跨天剪辑理解为几分钟内发生",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "verification-path",
+      "name": "核验路径",
+      "family": "新闻",
+      "fit": "存在待核问题与实际查证记录",
+      "question": "这条信息怎样得到确认？",
+      "selection": "原始说法、检索/查证步骤、有效证据、剩余疑问",
+      "sequence": "疑问→实际核验→有限结论",
+      "audio": "区分引述与编辑叙述",
+      "rhythm": "关键证据留阅读时间",
+      "visual": "显示来源身份与时间，不泄无关信息",
+      "anti": "假装打过电话或实地调查",
+      "example": "虚构例：旧视频通过建筑特征与原发布页定位",
+      "nearest": "区别于调查纪录，聚焦一条可检验信息",
+      "effect_check": "观众知道结论依赖什么证据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "claim-evidence",
+      "name": "说法与证据",
+      "family": "新闻",
+      "fit": "有可准确引用的说法及相关证据",
+      "question": "这项说法有多大支持？",
+      "selection": "原话范围、支持/反证、适用条件",
+      "sequence": "说法→对应证据→支持范围",
+      "audio": "原话保护否定和条件",
+      "rhythm": "反证不被压成闪过小字",
+      "visual": "引语与编辑判断采用明确归属",
+      "anti": "一个镜头被当作证明所有情况",
+      "example": "虚构例：某区域恢复供电与仍未恢复区域对照",
+      "nearest": "区别于核验路径，以主张对照而非调查过程组织",
+      "effect_check": "观众能区分声称与证实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "known-unknown",
+      "name": "已知与未决",
+      "family": "新闻",
+      "fit": "正在变化且证据不完整",
+      "question": "哪些已经知道，哪些还不能下结论？",
+      "selection": "可靠事实、明确未知、更新点",
+      "sequence": "已知→未决→后续可核证点",
+      "audio": "不确定语气保留，不配定罪暗示",
+      "rhythm": "未知有正常叙述空间",
+      "visual": "使用截至时刻，未知不等于不存在",
+      "anti": "把尚无消息写成已经失败",
+      "example": "虚构例：事件已发生，原因尚无可靠结论",
+      "nearest": "区别于当前快照，突出认识边界",
+      "effect_check": "观众不会把猜测记作结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "correction",
+      "name": "公开更正",
+      "family": "新闻",
+      "fit": "旧输出存在具体可确认错误",
+      "question": "哪里错了，正确说法是什么？",
+      "selection": "原错误对象、可信修正、影响范围",
+      "sequence": "更正先行→依据→范围",
+      "audio": "直接说明错误，不用模糊措辞遮掩",
+      "rhythm": "正确事实获得足够重复辨识",
+      "visual": "同步修正文案画面和导出",
+      "anti": "只改后台备注不改屏幕错误日期",
+      "example": "虚构例：把页面发布日期误写为事件日期后修正",
+      "nearest": "区别于变化更新，旧信息本身有误",
+      "effect_check": "当前输出及相关标题不再传播旧错误",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "conditions",
+      "name": "条件与例外",
+      "family": "新闻",
+      "fit": "政策或措施有明确适用条件",
+      "question": "这件事对谁在什么条件下成立？",
+      "selection": "对象、范围、生效期、例外、来源",
+      "sequence": "主要变化→适用条件→例外",
+      "audio": "保留条件连接词，不夸大适用面",
+      "rhythm": "规则与例子分段消化",
+      "visual": "限定与主张同窗或紧邻清晰显示",
+      "anti": "标题全员免费，限制只藏说明",
+      "example": "虚构例：只有特定日期和人群可预约",
+      "nearest": "区别于机制解释，重点适用边界",
+      "effect_check": "观众能正确判断自己是否适用",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "numbers",
+      "name": "数字的尺度",
+      "family": "新闻",
+      "fit": "数字、分母与口径均可追溯",
+      "question": "这个变化究竟多大？",
+      "selection": "数值、分母、单位、比较期、口径变化",
+      "sequence": "数值→尺度→同口径比较→限制",
+      "audio": "读清单位，不用夸张音效替代解释",
+      "rhythm": "给比较关系阅读时间",
+      "visual": "零点与坐标不误导，示意需标明",
+      "anti": "总量增长被写成人均增长",
+      "example": "虚构例：某月总量上涨但统计范围扩大",
+      "nearest": "区别于条件风格，重点量纲与比较",
+      "effect_check": "观众能复述数字对应的对象和时期",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "local-angle",
+      "name": "地方视角",
+      "family": "新闻",
+      "fit": "地方影响与人群有真实素材",
+      "question": "同一事件在这里意味着什么？",
+      "selection": "地理范围、实际影响、当地人有据表达",
+      "sequence": "地点→具体变化→人→区域边界",
+      "audio": "方言保留主体意思",
+      "rhythm": "空间建立先于抽象结论",
+      "visual": "现场与异地资料清楚区分",
+      "anti": "一个社区代表全国",
+      "example": "虚构例：站点调整改变一条通勤路线",
+      "nearest": "区别于后果追踪，空间限定是组织核心",
+      "effect_check": "影响范围不被外推",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "consequences",
+      "name": "后续影响",
+      "family": "新闻",
+      "fit": "有事件后的可观察变化",
+      "question": "事情发生后改变了什么？",
+      "selection": "已发生影响、相关人声音、仍待出现的结果",
+      "sequence": "事件简述→变化→有限归因",
+      "audio": "相关者表达与因果判断分开",
+      "rhythm": "后果得到主体篇幅",
+      "visual": "前后时期明确，其他因素不抹去",
+      "anti": "发生在之后就称由此导致",
+      "example": "虚构例：临时封路后商户调整营业时间",
+      "nearest": "区别于地方视角，可跨地点追踪结果",
+      "effect_check": "观众区分观察结果与因果推断",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "source-comparison",
+      "name": "来源分歧",
+      "family": "新闻",
+      "fit": "多个真正独立的来源有实质差异",
+      "question": "哪些信息一致，分歧在哪里？",
+      "selection": "来源身份、各自证据、分歧、独立性",
+      "sequence": "共同事实→关键差别→证据强弱",
+      "audio": "引用各自准确，不伪造双方对话",
+      "rhythm": "证据强弱决定篇幅而非机械平分",
+      "visual": "重复转载不列成多重印证",
+      "anti": "十个转载站当十位独立证人",
+      "example": "虚构例：两个当事人对发生时间表述不同",
+      "nearest": "区别于说法证据，重点来源间关系",
+      "effect_check": "观众理解分歧且不误信虚假平衡",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "mechanism-explainer",
+      "name": "机制解释",
+      "family": "新闻",
+      "fit": "规则或过程有可信资料",
+      "question": "为什么会这样运作？",
+      "selection": "条件、关键作用环节、可观察结果、适用范围",
+      "sequence": "现象→关键环节→结果→限制",
+      "audio": "旁白解释画面未直观展示的关系",
+      "rhythm": "按因果单元留理解时间",
+      "visual": "示意动画标示意，无工具则保留制作缺口",
+      "anti": "相关性包装成已证因果",
+      "example": "虚构例：公开规则说明预约排序过程",
+      "nearest": "区别于条件风格，重点作用过程",
+      "effect_check": "观众能解释机制且不把模型当实拍",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "ongoing-snapshot",
+      "name": "进展快照",
+      "family": "新闻",
+      "fit": "事件持续中且有明确截至时点",
+      "question": "截至现在进展到哪一步？",
+      "selection": "最近状态、已完成、仍在进行、待确认",
+      "sequence": "截至时间→现状→下一观察点",
+      "audio": "未来用计划或预计语气",
+      "rhythm": "集中展示最新有用变化",
+      "visual": "画面拍摄期与报道截至期不混",
+      "anti": "预计明日完成写成已经完成",
+      "example": "虚构例：修复完成一段，另一段尚在施工",
+      "nearest": "区别于已知未决，突出过程状态",
+      "effect_check": "观众知道报道时效与完成范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "bounded-eyewitness",
+      "name": "目击者视野",
+      "family": "新闻",
+      "fit": "有完整目击陈述与身份语境",
+      "question": "这个人亲眼看到的边界在哪里？",
+      "selection": "可见范围、本人原话、未看见部分、外部核验",
+      "sequence": "目击位置→观察→范围→已核对信息",
+      "audio": "第一人称准确，不替其补全推理",
+      "rhythm": "关键限定与原话一同保留",
+      "visual": "不把不相关画面剪作其视角",
+      "anti": "听说的内容剪成亲眼所见",
+      "example": "虚构例：窗边目击者只看见车辆停下",
+      "nearest": "区别于人物自述，目标是事件信息边界",
+      "effect_check": "观众区分目击、转述和猜测",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "change-since-update",
+      "name": "更新差异",
+      "family": "新闻",
+      "fit": "前后两次报道有明确版本",
+      "question": "上次之后新增了什么？",
+      "selection": "旧状态、新证据、变动及未变部分",
+      "sequence": "前次截至→新增→当前范围",
+      "audio": "不重复用旧悬念冒充新发展",
+      "rhythm": "新增信息优先",
+      "visual": "旧资料画面附时期，避免伪新鲜",
+      "anti": "重新配音的旧片声称最新现场",
+      "example": "虚构例：等待核验的地点现已获确认",
+      "nearest": "区别于更正，旧版本在当时可能成立",
+      "effect_check": "观众能指出真正新增的事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "field-dispatch",
+      "name": "现场观察札记",
+      "family": "新闻",
+      "fit": "现场身份与记录时点明确",
+      "question": "在这个位置可以观察到什么？",
+      "selection": "空间、动作、可听交流、观察限制",
+      "sequence": "进入现场→具体观察→可知边界",
+      "audio": "同期声有证据才称同期",
+      "rhythm": "为环境和动作留停顿",
+      "visual": "不跨地点拼成一个现场",
+      "anti": "配库音制造人群欢呼",
+      "example": "虚构例：车站入口实拍记录排队与引导",
+      "nearest": "区别于事实简报，以现场观察而非总览为主",
+      "effect_check": "观众能理解位置和视野范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "observational-sequence",
+      "name": "连续观察",
+      "family": "纪录",
+      "fit": "真实连续行为且源剪辑边界清楚",
+      "question": "不替观众解释时，行为本身呈现什么？",
+      "selection": "完整动作、等待、环境、自然变化",
+      "sequence": "按实际行为进程",
+      "audio": "可确认现场声优先，少解释",
+      "rhythm": "允许无戏剧性的等待",
+      "visual": "切点不伪造连续，必要跳时明确",
+      "anti": "已混剪档案被称为连续实录",
+      "example": "虚构例：固定机位记录修鞋的一次操作",
+      "nearest": "区别于流程，关注观看经验而非步骤教学",
+      "effect_check": "动作连续性和观察空间成立",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "process",
+      "name": "过程中的阻力",
+      "family": "纪录",
+      "fit": "过程与关键状态有素材",
+      "question": "一件事怎样被做出来？",
+      "selection": "目标、动作、实际阻力、处理、当前结果",
+      "sequence": "过程节点推进，可未完成",
+      "audio": "手法声与必要解释交替",
+      "rhythm": "卡住处不为爽感全部删掉",
+      "visual": "同一对象和阶段对应",
+      "anti": "另一次成功嫁接为本次结果",
+      "example": "虚构例：修复零件经历试装与返工",
+      "nearest": "区别于连续观察，可跨时段但重状态变化",
+      "effect_check": "观众理解实际付出和未解问题",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "place-history",
+      "name": "地方的时间层",
+      "family": "纪录",
+      "fit": "地方历史与当下位置有资料",
+      "question": "一个地方怎样变成现在这样？",
+      "selection": "有据历史、当前空间、居民表达、未决断层",
+      "sequence": "当下进入→历史层→回到空间",
+      "audio": "历史声不冒充当下现场",
+      "rhythm": "旧今对照留识别时间",
+      "visual": "同地与相似地点分清",
+      "anti": "旧城市照片当具体街口",
+      "example": "虚构例：厂房改作公共空间的不同阶段",
+      "nearest": "区别于档案今昔，地方作为主角",
+      "effect_check": "时期和空间关系可理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "archive-present",
+      "name": "档案与当下",
+      "family": "纪录",
+      "fit": "旧资料与当下存在可说明关联",
+      "question": "过去在今天留下了什么？",
+      "selection": "档案片段、当下痕迹、关系证据",
+      "sequence": "旧资料→当下对应→差异",
+      "audio": "跨时代声音可作桥但标明来源",
+      "rhythm": "匹配点服务含义而非纯炫技",
+      "visual": "时期与资料身份可见",
+      "anti": "相似动作暗示同一个人",
+      "example": "虚构例：旧车站影像与现存站台关系",
+      "nearest": "区别于地方史，可围绕制度或行为",
+      "effect_check": "观众识别联系和不可比较处",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "object-thread",
+      "name": "一件物的线索",
+      "family": "纪录",
+      "fit": "物品身份与流转路径有证据",
+      "question": "这件东西连接了哪些人和时间？",
+      "selection": "物的变化、实际持有人、流转、断点",
+      "sequence": "随物进入各段关系",
+      "audio": "各人声音保留各自时代语境",
+      "rhythm": "触感细节与信息推进交替",
+      "visual": "同款不等于同一件",
+      "anti": "找一件相似旧物冒充当年物证",
+      "example": "虚构例：有记录的手写信在两代间保存",
+      "nearest": "区别于材料旅程，物与人的关系为主",
+      "effect_check": "物件身份和流转空白清楚",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "soundscape",
+      "name": "声音里的地方",
+      "family": "纪录",
+      "fit": "环境声与空间关系已核实",
+      "question": "闭上眼能理解怎样的空间和节律？",
+      "selection": "代表性声源、空间远近、声音变化、少量视觉定位",
+      "sequence": "声音进入→声源关系→环境变化",
+      "audio": "同期与后制重组区分，不造现场事件",
+      "rhythm": "由声段呼吸决定切换",
+      "visual": "画面帮助定位，不能反证声音位置",
+      "anti": "库声当珍稀动物现场叫声",
+      "example": "虚构例：清晨集市各摊位逐渐开张",
+      "nearest": "区别于感官Vlog，声音关系承担纪录信息",
+      "effect_check": "听者可辨识空间关系且无虚假声源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "essay-argument",
+      "name": "影像论述",
+      "family": "纪录",
+      "fit": "明确观点与支撑/反例资料",
+      "question": "这些材料能支持怎样的思考？",
+      "selection": "论点、具体材料、反证、作者判断",
+      "sequence": "提出问题→材料展开→挑战→有限立场",
+      "audio": "作者声音明确为解释",
+      "rhythm": "让材料先有被理解的空间",
+      "visual": "类比不伪装为同一事件",
+      "anti": "漂亮空镜代替证据",
+      "example": "虚构例：通过多个有据空间讨论公共性",
+      "nearest": "区别于机制新闻，容纳作者思辨",
+      "effect_check": "观众区分事实和论述，并理解推理边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "investigative-trail",
+      "name": "调查线索",
+      "family": "纪录",
+      "fit": "真实调查过程及证据链可追踪",
+      "question": "沿着线索，问题如何变化？",
+      "selection": "起点、调查行动、证据、障碍、修正",
+      "sequence": "线索推进，允许初始假设被推翻",
+      "audio": "悬念不能扣住反证",
+      "rhythm": "关键核验优先于戏剧停顿",
+      "visual": "记录来源与取得方式",
+      "anti": "为反转延迟披露已知无辜证据",
+      "example": "虚构例：查找旧设施用途后推翻最初猜想",
+      "nearest": "区别于单条核验，跨多问题和过程",
+      "effect_check": "结论与调查范围一致",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "parallel-lives",
+      "name": "平行处境",
+      "family": "纪录",
+      "fit": "不同对象有独立且足够上下文",
+      "question": "相似问题下，人们怎样不同地生活？",
+      "selection": "各自目标、条件、行动与差别",
+      "sequence": "以共同问题交替，不造相遇",
+      "audio": "各线声音归属明确",
+      "rhythm": "每个人物有完整表达单元",
+      "visual": "并置非同期明确，不假对话",
+      "anti": "一个人的答案剪成另一个人的回应",
+      "example": "虚构例：两位异地照护者各自的一天",
+      "nearest": "区别于群像，以平行过程相互照见",
+      "effect_check": "观众能区分个体条件与共性",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "institution-system",
+      "name": "系统中的流转",
+      "family": "纪录",
+      "fit": "流程、角色与实际运行有资料",
+      "question": "事情怎样穿过一个组织？",
+      "selection": "输入、角色、交接、规则、例外",
+      "sequence": "随一次流转看不同节点",
+      "audio": "角色原话解释权限边界",
+      "rhythm": "交接和等待都有意义",
+      "visual": "不泄无关个人资料",
+      "anti": "个别失误直接归为制度必然",
+      "example": "虚构例：一份申请在可公开流程中流转",
+      "nearest": "区别于个人工作日，重点系统关系",
+      "effect_check": "观众理解角色依赖而非只记住某个人",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "changing-perspective",
+      "name": "判断如何改变",
+      "family": "纪录",
+      "fit": "创作者有真实前后认识与新证据",
+      "question": "哪条证据改变了原先看法？",
+      "selection": "初始假设、挑战、新材料、当前判断",
+      "sequence": "原看法→遭遇→修正",
+      "audio": "原先误解与当前认识明确分层",
+      "rhythm": "转变有依据，不靠音乐突变",
+      "visual": "旧错误呈现时附纠正语境",
+      "anti": "故意编初始误会制造成长",
+      "example": "虚构例：档案让作者修正对建筑用途的猜测",
+      "nearest": "区别于调查线索，认识变化是叙述中心",
+      "effect_check": "观众能指出改变判断的具体证据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "absence-record",
+      "name": "缺席的记录",
+      "family": "纪录",
+      "fit": "缺失本身可说明且不填补为事实",
+      "question": "我们没有留下什么，能知道多少？",
+      "selection": "现存痕迹、已查范围、缺失、不同解释",
+      "sequence": "痕迹→寻找→空白→有限认识",
+      "audio": "安静可承载缺席，不伪造故人声音",
+      "rhythm": "给未知留空间",
+      "visual": "空镜是当下观察，不扮历史证据",
+      "anti": "查无档案即宣称从未发生",
+      "example": "虚构例：一张照片缺少日期与姓名",
+      "nearest": "区别于未决结尾，缺失材料即中心对象",
+      "effect_check": "观众知道查证范围与不能确定的事",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "return",
+      "name": "重返",
+      "family": "纪录",
+      "fit": "同地/同人的先前资料与此次访问有依据",
+      "question": "回来之后，哪些改变，哪些仍在？",
+      "selection": "旧状态、此次进入、变化、持续关系",
+      "sequence": "过去锚点→重返→发现→离开",
+      "audio": "旧声与当下声身份清楚",
+      "rhythm": "重遇不强制煽情",
+      "visual": "旧今无法同位则不装精确对照",
+      "anti": "摆拍重逢当第一次相见",
+      "example": "虚构例：毕业多年后回到原教室",
+      "nearest": "区别于档案今昔，重访行为驱动叙事",
+      "effect_check": "变化通过具体观察出现",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "unresolved",
+      "name": "开放的现在",
+      "family": "纪录",
+      "fit": "行动真实仍未完成",
+      "question": "停在这里，故事仍在继续什么？",
+      "selection": "已发生努力、当前状态、真实未知",
+      "sequence": "推进→停在有意义的当下",
+      "audio": "不配成功宣告或虚构结局",
+      "rhythm": "结尾给状态而非硬反转",
+      "visual": "未来愿望与已发生分清",
+      "anti": "片尾补一句最终成功却无资料",
+      "example": "虚构例：修复仍等缺失零件",
+      "nearest": "区别于已知未知新闻，情境和人的持续行动为主",
+      "effect_check": "未完成有内容而非随意戛然而止",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "archive-close-reading",
+      "name": "档案细读",
+      "family": "纪录",
+      "fit": "档案可定位且有需要辨析的声画细节",
+      "question": "这一小段资料展示了什么，又没证明什么？",
+      "selection": "具体帧、原始编排、来源描述、可见与未知",
+      "sequence": "定位资料→观察细节→解释边界",
+      "audio": "原声可保留或明确移除，未听不得引述",
+      "rhythm": "给画面细节足够观看时间",
+      "visual": "说明原片已剪辑、时间来源与重放",
+      "anti": "把资料片秒数当事件真实耗时",
+      "example": "虚构例：发射混剪中机位切换与升空画面",
+      "nearest": "区别于历史总览，以一个资料对象为中心",
+      "effect_check": "观众分清可见事实、来源说明和推断",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": [
+        {
+          "trial": "documentary-style-trials-01",
+          "candidate": "archive-close-reading",
+          "report": "evals/runs/documentary-style-trials-01/result-after-observation-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/captioned.mp4",
+            "sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61"
+          },
+          "version": "f87c2ecb4edd68b8433e3a59d1c0d19fe2d369df0564aa0c38b938a3419d682b",
+          "limitation": "same archival picture/audio, information organization only; no current news or portrait validation"
+        }
+      ]
+    },
+    {
+      "id": "choices-cost",
+      "name": "选择与代价",
+      "family": "纪录",
+      "fit": "有真实选择、条件与后果",
+      "question": "做出这项选择意味着放弃什么？",
+      "selection": "可选条件、实际决定、付出、当前结果",
+      "sequence": "处境→选择→代价→余波",
+      "audio": "本人解释优先，不编内心",
+      "rhythm": "决定前后都留语境",
+      "visual": "备选方案存在须有证据",
+      "anti": "把无奈处境包装成自由选择",
+      "example": "虚构例：维修与更换之间有成本记录的决定",
+      "nearest": "区别于人物决定，允许群体与制度为主体",
+      "effect_check": "观众理解取舍而非简单赞颂",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "workday",
+      "name": "一个工作日",
+      "family": "人物",
+      "fit": "同一人物的日常任务有真实素材",
+      "question": "他的一天被什么事情组成？",
+      "selection": "任务、转换、协作、休息、未完事项",
+      "sequence": "按真实日程或明确重组",
+      "audio": "本人声音与工作声并重",
+      "rhythm": "留普通重复，不只高光",
+      "visual": "跨日拼接明确为日常组合",
+      "anti": "多日工作冒充一天连续发生",
+      "example": "虚构例：图书管理员上架与读者咨询",
+      "nearest": "区别于群体系统，个人日常体验为中心",
+      "effect_check": "观众认识具体劳动而非只记职业标签",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "decision",
+      "name": "一次决定",
+      "family": "人物",
+      "fit": "本人决定与处境有资料",
+      "question": "为什么在那时选择这样做？",
+      "selection": "条件、本人表述、行动、实际后果",
+      "sequence": "处境→决定→行动→现状",
+      "audio": "引用本人解释，不替写心理",
+      "rhythm": "关键犹疑保留但不故意拖长",
+      "visual": "过去与现在言论分时标记",
+      "anti": "后来成功倒推当时必然正确",
+      "example": "虚构例：手艺人选择修旧机器而非换新",
+      "nearest": "区别于纪录代价，以人物动机的有据表达为中心",
+      "effect_check": "人物选择保有复杂性",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "relationship",
+      "name": "关系中的人",
+      "family": "人物",
+      "fit": "双方互动与关系身份有依据",
+      "question": "他在与谁的相处中显露自己？",
+      "selection": "双方动作、倾听、分歧、日常照应",
+      "sequence": "具体互动→关系纹理→余波",
+      "audio": "双方表达不剪成单方服务",
+      "rhythm": "给回应和停顿真实时间",
+      "visual": "非同期反应不能冒充即时",
+      "anti": "不相关笑容配成赞同",
+      "example": "虚构例：师徒处理一处不同看法",
+      "nearest": "区别于对话，关系可主要靠行为呈现",
+      "effect_check": "双方都有主体性且关系不被虚构",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "voice-led",
+      "name": "由自己的话带路",
+      "family": "人物",
+      "fit": "有完整且可保留语义的自述",
+      "question": "这个人怎样讲自己的生活？",
+      "selection": "本人原话、对应动作、必要语境",
+      "sequence": "按自述内在关系组织",
+      "audio": "本人的语气与停顿为骨架",
+      "rhythm": "不为整齐删犹豫或条件",
+      "visual": "画面不强迫原话变成相反意思",
+      "anti": "拼词合成当事人没说过的立场",
+      "example": "虚构例：修理工讲为何保存旧工具",
+      "nearest": "区别于自述边界，以声音结构为首要机制",
+      "effect_check": "听者能感到其表达方式而非编辑代言",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "contradiction",
+      "name": "并存的两面",
+      "family": "人物",
+      "fit": "多面表达都真实且有语境",
+      "question": "看似矛盾的两面怎样共存？",
+      "selection": "两种处境、行为、原话、不同时间",
+      "sequence": "一面→另一面→共同处境",
+      "audio": "不嘲讽地剪成自打脸",
+      "rhythm": "两面均有上下文",
+      "visual": "立场变化与不同条件分清",
+      "anti": "删条件制造言行不一",
+      "example": "虚构例：喜欢独处也珍惜协作",
+      "nearest": "区别于冲突戏剧，不强求解决矛盾",
+      "effect_check": "观众理解复杂性而非认定虚伪",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "learning",
+      "name": "学习的过程",
+      "family": "人物",
+      "fit": "可见练习与反馈有时间关系",
+      "question": "一个人怎样逐渐掌握一点东西？",
+      "selection": "起点、尝试、反馈、变化、仍不会部分",
+      "sequence": "尝试→反馈→再试→当前能力",
+      "audio": "保留学习者自己的理解",
+      "rhythm": "失败不被无限循环羞辱",
+      "visual": "不同难度或任务不作假比较",
+      "anti": "找高手镜头冒充学生进步",
+      "example": "虚构例：学习者调整握笔后继续练习",
+      "nearest": "区别于课程，人物学习经历而非标准教学为主",
+      "effect_check": "进步具体且范围真实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "memory-archive",
+      "name": "记忆与留存",
+      "family": "人物",
+      "fit": "个人回忆与可用档案可区分",
+      "question": "记忆与留下的材料怎样相互照见？",
+      "selection": "本人回忆、档案、吻合和差异",
+      "sequence": "回忆进入→材料回应→差异保留",
+      "audio": "回忆明确为本人叙述",
+      "rhythm": "回忆停顿与资料阅读兼顾",
+      "visual": "不确定日期不补成确定",
+      "anti": "回忆自动当作独立证实事实",
+      "example": "虚构例：家人记得的搬家年份与信件记录不同",
+      "nearest": "区别于档案细读，以记忆者为主体",
+      "effect_check": "观众理解记忆价值与证据边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "role-change",
+      "name": "身份转换",
+      "family": "人物",
+      "fit": "前后角色与转变过程有依据",
+      "question": "换了角色后，他怎样重新安排生活？",
+      "selection": "旧职责、新要求、具体适应、持续部分",
+      "sequence": "旧状态→过渡→新日常",
+      "audio": "不强制励志旁白",
+      "rhythm": "过渡过程不被一句话抹去",
+      "visual": "称谓与时期对应",
+      "anti": "仅换服装便宣称职业转型",
+      "example": "虚构例：退休教师参与社区辅导",
+      "nearest": "区别于一次决定，重点新角色的实际生活",
+      "effect_check": "变化通过行动被理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "person-and-places",
+      "name": "人和几个地方",
+      "family": "人物",
+      "fit": "人物与各空间的真实联系明确",
+      "question": "哪些地方构成了这个人的生活？",
+      "selection": "空间用途、人物动作、移动关系、记忆",
+      "sequence": "随空间切换展开人物面向",
+      "audio": "各地声景与人物表达相接",
+      "rhythm": "建立空间再切细节",
+      "visual": "拍摄地不自动是故乡",
+      "anti": "漂亮陌生房间冒充本人住处",
+      "example": "虚构例：家、作坊、市场构成一天范围",
+      "nearest": "区别于工作日，可以跨时间而以空间为线索",
+      "effect_check": "观众理解人与空间的具体联系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "hands-craft",
+      "name": "手上的经验",
+      "family": "人物",
+      "fit": "动作细节与本人技艺有真实素材",
+      "question": "经验怎样体现在手的动作里？",
+      "selection": "接触点、力度/顺序可见变化、本人解释",
+      "sequence": "动作进入→细节→选择→人",
+      "audio": "工具声不随意错配，解释适量",
+      "rhythm": "关键手法不切碎",
+      "visual": "手部属于本人，替身/演示另标",
+      "anti": "普通动作被神秘化为独家秘技",
+      "example": "虚构例：修表者调整一个小零件",
+      "nearest": "区别于产品工艺，人的经验为主角",
+      "effect_check": "细节让人被理解而非只制造质感",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "collective-portrait",
+      "name": "群像",
+      "family": "人物",
+      "fit": "多人物素材与共同处境足够",
+      "question": "这群人共享什么，又各自不同什么？",
+      "selection": "每人独特行动、共同问题、协作或差异",
+      "sequence": "共同处境→个人段落→关系",
+      "audio": "避免所有声音剪成一致宣言",
+      "rhythm": "弱势或少言者不只作背景",
+      "visual": "姓名/角色/观点准确归属",
+      "anti": "把不同人半句话拼成共同承诺",
+      "example": "虚构例：几位志愿者各自处理不同任务",
+      "nearest": "区别于平行处境，可有真实共同关系",
+      "effect_check": "观众认得个体而非只记群体标签",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "quiet-detail",
+      "name": "一个小细节",
+      "family": "人物",
+      "fit": "小动作真实且有足够上下文",
+      "question": "一个普通细节怎样让人可感？",
+      "selection": "习惯动作、所处情境、有限本人表达",
+      "sequence": "细节进入→语境→再次看细节",
+      "audio": "轻量原声，不强加宏大内心旁白",
+      "rhythm": "允许细节展开而非快速点到",
+      "visual": "不反复放大造成病理暗示",
+      "anti": "抖手被擅自解释为焦虑症",
+      "example": "虚构例：整理工具前把一把旧尺放回原处",
+      "nearest": "区别于手艺，细节不必是专业技能",
+      "effect_check": "细节有具体意义而不过度心理化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "self-narrative-with-limits",
+      "name": "自述与边界",
+      "family": "人物",
+      "fit": "本人自述与可核事实需要分层",
+      "question": "他怎样理解自己，旁人能确认多少？",
+      "selection": "本人表达、独立资料、无法核实部分",
+      "sequence": "自述→对应材料→保留差异",
+      "audio": "自我评价明确归属于本人",
+      "rhythm": "不同证据不为戏剧硬冲撞",
+      "visual": "称赞和指控均不自动认证",
+      "anti": "当事人说业内第一就作客观标题",
+      "example": "虚构例：本人说一次经历改变了自己",
+      "nearest": "区别于声音带路，重点自我理解与核证边界",
+      "effect_check": "观众区分本人视角和编辑事实断言",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "dialogue",
+      "name": "对话显影",
+      "family": "人物",
+      "fit": "双方真实对话与问答语境可用",
+      "question": "人在真实回应中呈现什么？",
+      "selection": "问题、回答、追问、沉默、条件",
+      "sequence": "沿有意义的问答推进",
+      "audio": "连续原声和说话人归属优先",
+      "rhythm": "反应停顿不挪到另一个问题",
+      "visual": "切机位不能制造未发生的回应",
+      "anti": "不同采访拼成两人对话",
+      "example": "虚构例：父女谈及同一旧事的不同记忆",
+      "nearest": "区别于机位访谈，以人物认识而非导演覆盖为主",
+      "effect_check": "对话关系和原话含义保持",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "farewell-without-fiction",
+      "name": "有依据的告别",
+      "family": "人物",
+      "fit": "确有离别事件及相关许可素材",
+      "question": "这次告别留下了什么？",
+      "selection": "实际告别、共同经历、本人表达、当下余波",
+      "sequence": "当下告别→有据回望→留下之物",
+      "audio": "不合成故人遗言或未经表达心声",
+      "rhythm": "留停顿，不靠煽情堆叠",
+      "visual": "旧照日期与关系有据，隐私按授权",
+      "anti": "不相关哭泣冒充送别现场",
+      "example": "虚构例：同事退休前整理工作台",
+      "nearest": "区别于重返，以离开和持续关系为中心",
+      "effect_check": "情感来自真实关系而非伪造遗言",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    },
+    {
+      "id": "unfinished-effort",
+      "name": "还在做的人",
+      "family": "人物",
+      "fit": "本人行动仍进行且无已证结果",
+      "question": "没有结局时，努力怎样被看见？",
+      "selection": "具体尝试、障碍、现在计划、日常持续",
+      "sequence": "一次尝试→障碍→继续的行动",
+      "audio": "不预言成功，也不判为失败",
+      "rhythm": "结尾停在可理解的持续动作",
+      "visual": "计划明确未来态",
+      "anti": "只有愿望却写已实现目标",
+      "example": "虚构例：修复师仍在寻找合适零件",
+      "nearest": "区别于开放纪录，持续行动者本人是中心",
+      "effect_check": "观众知道他正在做什么与仍未做到什么",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "provenance_type": "original-editorial-synthesis",
+      "source_ids": [
+        "documentary-quote-methods",
+        "documentary-research-methods",
+        "documentary-sound-methods",
+        "documentary-archive-methods"
+      ],
+      "adjustable": [
+        "叙述视角与证据范围",
+        "原话/旁白/环境声比例按内容决定",
+        "时间跨度与资料标识",
+        "信息密度和观看停留"
+      ],
+      "compatibility": {
+        "requires": "来源与时间可追溯；人物、原话、用户手改和交付范围优先",
+        "avoid": "不以滤镜定义风格；不为叙事补造事实；未实现的地图/生成/分屏能力保留缺项"
+      },
+      "real_media_evaluations": []
+    }
+  ]
+}

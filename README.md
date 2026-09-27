@@ -1,194 +1,101 @@
-# Douyin Film Recap
+# Editing Skill Library · 剪辑 Skill 库
 
-> 把一部电影或一集剧，变成有证据、可修改、能交付的中文影视解说。
+**让剪辑 Agent 按创作意图工作，并把每次修改的范围、依据和结果讲清楚。**
 
-`douyin-film-recap` 是一个开源 Agent Skill 与本地制作流水线，面向 Codex、Claude Code、Cursor 等 Agent 环境。它从字幕、镜头和原片证据出发，完成故事理解、高光召回、解说方案、可编辑分镜、旁白、字幕、竖屏渲染和质量检查。
+面向剪辑 Agent 开发者的通用 Skill 库。把素材分析、内容取舍、剪辑方案和局部修改组织成可读的操作协议，供运行中的 Agent 结合自己的剪辑工具执行；附带一个可选的 Python 本地执行器与 MCP 桥接入口。
 
-它追求的不是把剧情摘要铺满画面，而是让旁白、原声、动作、表演和停顿各自承担合适的任务。
+**当前为实验性源码预览。** Skill 定义和部分执行路径已实现，完整用户链、创作效果与真实编辑器安装仍在验证。先读下面的使用入口与[开发状态](docs/development-status.md)，再决定接入范围。
 
-![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
-![License MIT](https://img.shields.io/badge/License-MIT-2ea44f)
-![Version](https://img.shields.io/badge/version-0.2.0-8A2BE2)
-![Tests](https://img.shields.io/badge/tests-80%20passed-brightgreen)
+本项目沿用原 `douyin-film-recap` 仓库与版本历史。原 v0.2.0 影视解说 Skill 已并入[影视解说子集](workflows/raven-film-recap/douyin-film-recap/README.md)，通用库成为当前顶层入口。原 Python 包仍为 0.2.0；仓库源码预览版本为 `v0.3.0-alpha.1`。
 
-## 它能做什么
+## 从一句剪辑需求，到可检查的修改
 
-| 阶段 | 能力 | 主要产物 |
-|---|---|---|
-| 理解素材 | 字幕 / ASR、镜头索引、人物、事件、因果、揭示顺序 | Transcript、Scene Index、Story Graph |
-| 找到戏眼 | 召回冲突、动作、台词、表演、情绪、反转、喜剧和关系变化 | 高光候选与保留理由 |
-| 设计讲法 | 主线、钩子、Beat、剧透策略、旁白与原声分工 | Recap Plan |
-| 编译分镜 | 为每段旁白绑定真实镜头，为原声保留完整动作与句界 | Storyboard、可读脚本 |
-| 生成成片 | 分段 TTS、竖屏适配、原声底音、中文字幕、FFmpeg 渲染 | MP4、SRT、预览 |
-| 验证交付 | 来源、时间、帧率、编码、字幕、实际消费镜头和视听证据 | EDL、QC、交付报告 |
+常见需求并不只是“剪短一点”：
 
-可以只运行到任意阶段。找高光不必生成配音，只要方案不必渲染成片。
+- “去掉这段口误，保留完整观点和自然停顿。”
+- “这段教程操作讲得太快，补足关键步骤，别改变操作顺序。”
+- “只改这句字幕，保留我刚调好的位置和其他片段。”
+
+本库把这些需求拆成三件事：复杂 Skill 判断如何剪；原子 Skill 描述明确操作和约束；执行后读回作品，区分候选结果、实际采用与最终交付。上面的句子是使用场景示例，不是已完成案例。
 
 ```mermaid
 flowchart LR
-    A[影片 / 剧集 / 字幕] --> B[镜头与对白索引]
-    B --> C[人物 · 事件 · 因果]
-    C --> D[多类型高光]
-    D --> E[主线与 Beat]
-    E --> F[可编辑 Storyboard]
-    F --> G[TTS · 原声 · 字幕]
-    G --> H[竖屏成片]
-    H --> I[EDL · QC · 交付报告]
+    U[创作者的需求与现有作品] --> A[运行中的 Agent]
+    A --> W[复杂 Skill：内容与剪辑判断]
+    W --> S[原子 Skill：操作与边界]
+    S --> E[Agent 选择的剪辑工具]
+    S --> R[可选本地执行器]
+    E --> V[读回作品与检查结果]
+    R --> V
+    V --> A
+    A --> C[创作者预览与采用]
 ```
 
-## 为什么值得用
+## 库里有什么
 
-### 1. 先理解故事，再动剪刀
+| 层次 | 内容 | 用途 |
+|---|---|---|
+| 原子 Skill | 34 项操作定义 | 测量、转写、字幕、时间线、音频与交付等明确任务 |
+| 复杂 Skill | 16 条工作流 | 口播、教程、解说等场景中的选段、结构与表达判断 |
+| 风格参考 | 实验性风格卡与索引 | 辅助选择和比较表达方式；效果尚未全面验证 |
+| 合同与路由 | 输入、保护范围、版本、证据与交接约定 | 帮助 Agent 选择能力，并保留不能确定的部分 |
+| 可选执行层 | 本地 Python runtime、MCP 桥接、1 个 Agent 适配入口 | 为已有操作提供可检查的本地执行路径 |
 
-系统分开记录源素材时间、故事发生顺序、原片揭示顺序和成片时间。人物身份、关系、关键因果和钩子都必须能回到素材证据，减少悬疑片提前泄底、群像人物混淆和“旁白自己编动机”。
+34 + 16 + 1 是注册条目数，不能解释为 51 项能力已全部验收。目录和条目见 [registry/skills.json](registry/skills.json)。
 
-### 2. 高光不只是音量峰值
+本次迁移后，影视解说子集的 80 项原回归全部通过，通用库结构与 MCP 读取检查通过；它们不替代实际剪辑效果验证。详见[发布检查范围](docs/verification-v0.3.md)。
 
-它会寻找动作和冲突，也会寻找演员表演、反应、沉默、喜剧节奏、人物选择、关系变化与道德代价。每个候选都保留上下文、最小完整边界、剧透风险和取舍理由。
+## 两种接入方式
 
-### 3. 原片负责出刀，旁白负责连接
+### 直接让 Agent 读取 Skill
 
-旁白压缩背景、跳时和重复过程；原片保留无法被复述替代的台词、动作、停顿与情绪。普通配画也必须来自已分析镜头，不能在宽泛时间范围里“猜一个画面”。
+从 [Skill 入口](skills/editing-skill-library/SKILL.md)开始，再读取[语义路由](registry/router.md)与匹配的 Skill。Agent 按[能力交接合同](contracts/capability-handoff.md)，选择它已经能调用的 MCP、CLI、编辑器插件或媒体工具。
 
-### 4. 能恢复，也能让人接手
+Skill 层不要求指定生成模型或 Provider。模型调用、费用、凭据和工具连接由运行中的 Agent 管理。ChatCut、剪映或自己的剪辑 Agent 都属于适配目标；当前仓库不承诺这些编辑器已经接通或完成兼容验收。
 
-流水线有阶段缓存和输入指纹。改字幕会让相关下游失效，改一段旁白只重做受影响内容，人工修改过的 Storyboard 可以继续使用。`edit_decision_list.json` 记录最终真正消费的源片范围。
+### 试用可选的本地执行层
 
-### 5. 不把能播放当成已经做好
-
-质量状态分为 `PASSED`、`DEGRADED`、`BLOCKED`。文件存在、FFmpeg 返回 0 或模型说“看起来不错”，都不能代替画面与声音检查。没有独立视听证据时，成片不会被标成完整通过。
-
-## 5 分钟开始
-
-### 1. 安装
+先取得仓库，再执行只读检查：
 
 ```bash
 git clone https://github.com/dengxianghua888-ops/douyin-film-recap.git
 cd douyin-film-recap
-
-python -m venv .venv
-source .venv/bin/activate       # Windows: .venv\Scripts\activate
-pip install -e ".[all]"
 ```
 
-系统还需要 FFmpeg / ffprobe。烧录字幕时，FFmpeg 必须包含 `libass`，并提供可读取的中文字体。
-
-### 2. 注册为 Agent Skill
+在仓库根目录执行：
 
 ```bash
-python scripts/install_skill.py --agent codex
-# 也支持 --agent claude 或 --agent cursor
+python3 scripts/verify_library.py structure
+python3 scripts/install_doctor.py --root "$PWD"
 ```
 
-### 3. 配置模型
+第一条检查目录结构、注册关系与本地链接；第二条报告当前机器的依赖。检查通过不等于作品效果通过，缺少某个本地依赖也不代表 Agent 无法调用其他等价工具。
 
-```bash
-cp config.example.yaml config.yaml
-cp .env.example .env
-```
+需要 MCP 时，可把 `python3 /absolute/path/to/editing-skill-library/scripts/mcp_server.py` 配置为客户端的 stdio 服务。桥接提供 `list_skills`、`diagnose_installation`、`run_operation`。实际执行还要设置独占的 `EDITING_SKILL_WORK_ROOT`；读取与列举 Skill 无须 API Key。详见[本地接入说明](docs/local-setup.md)。
 
-在 `.env` 中设置 OpenAI-compatible LLM / VLM 服务：
+## 这轮源码主要改进
 
-```dotenv
-FILM_RECAP_BASE_URL=https://your-endpoint.example/v1
-FILM_RECAP_API_KEY=replace-me
-```
+- 音视频使用共同来源时间基准；增加长音频处理与中断回收的技术验证。
+- 区分普通内容保护与严格来源／PCM 冻结，避免用一个“保护”词覆盖不同承诺。
+- 改善候选、采用和作品版本检查，减少局部修改覆盖用户已有状态的风险。
+- 调整宿主、Provider 与依赖边界，让通用 Skill 和可选本地实现各自承担明确职责。
 
-再在 `config.yaml` 中选择模型、ASR、TTS、目标时长、画幅和素材权利确认。
+当前源码仍有已知边界，尤其是部分输入的帧时长、严格音频 helper 的可迁移安装，以及真人修改后的完整作品链。详见[开发状态](docs/development-status.md)。
 
-### 4. 检查环境并运行
+## 目录导航
 
-```bash
-python -m douyin_film_recap doctor --config config.yaml
+`atomic/` 原子 Skill · `workflows/` 场景工作流 · `styles/` 风格参考 · `contracts/` 交接协议 · `runtime/` 可选执行器 · `registry/` 路由与注册 · `provenance/` 来源记录
 
-python -m douyin_film_recap run "/path/to/movie.mp4" \
-  --work-dir "./work/movie-demo" \
-  --config config.yaml
-```
+历史评测中的原视频、音频、模型、字体、内部调度记录与本机二进制均不随仓库提供。部分历史证据链接转向[证据范围说明](docs/evidence-scope.md)，不应理解为公共仓库已提供完整复现材料。
 
-只想先看高光：
+## 原影视解说用户迁移
 
-```bash
-python -m douyin_film_recap run "/path/to/movie.mp4" \
-  --work-dir "./work/movie-demo" \
-  --config config.yaml \
-  --until highlights
-```
+原安装与运行流程收在 `workflows/raven-film-recap/douyin-film-recap/`，先进入该目录再运行 `pip install`、安装脚本或原 CLI。该子集仍按原 MIT 许可提供；其 Storyboard 流水线与通用 WorkDocument 执行器并非相同协议，不会自动互换已有工程。详见[迁移说明](docs/migration-v0.3.md)。
 
-修改分镜后，从配音继续：
+## 使用与参与
 
-```bash
-python -m douyin_film_recap run "/path/to/movie.mp4" \
-  --work-dir "./work/movie-demo" \
-  --config config.yaml \
-  --from-stage tts
-```
+先用一段有权使用的素材验证一个明确任务，保留原作品；记录实际请求、版本、结果和未满足的条件。欢迎通过 Issue 提交最小可复现问题或适配观察，避免上传凭据和未获授权的素材。
 
-## 内容模式
+本仓库目前没有统一的软件授权许可。部分参考和改写材料带有独立条件，含 CC BY-NC 与 CC BY-SA；公开可读不等于整库可任意商用。使用前请读[许可与来源说明](LICENSES.md)。
 
-| 模式 | 建议时长 | 适用内容 |
-|---|---:|---|
-| `highlight` | 30–90 秒 | 一个名场面、表演或动作高潮 |
-| `short` | 3–6 分钟 | 单集、单线、强高光内容 |
-| `standard` | 6–10 分钟 | 大多数电影与电视剧单集 |
-| `deep` | 10–20 分钟 | 复杂悬疑、群像、长程剧情 |
-| `auto` | 自动选择 | 根据人物、事件、反转和素材长度决定 |
-
-内容单位与时长分开。你可以讲一个场景、一段关系、一集、全片或一个系列 Part，也可以用 `project.editorial_brief` 指定核心问题、叙述立场、观众知识、必须保留内容和剧透策略。
-
-## 交付物
-
-完整运行会保留：
-
-```text
-state.json                         断点与阶段状态
-07_highlight_candidates.json       高光与证据
-08_recap_plan.json                 主线、钩子与 Beat
-09_storyboard.json                 唯一剪辑执行依据
-output/final.mp4                   最终视频
-output/preview.mp4                 预览视频
-output/master.srt                  成片字幕
-output/edit_decision_list.json     实际消费镜头
-output/delivery_report.md          质量与交付边界
-```
-
-## 验证状态
-
-v0.2.0 已完成 80 项自动测试，并用真实 FFmpeg 对合成素材验证导入、竖屏渲染、原声与旁白混音、中文字幕和 EDL。测试不调用付费模型，也不上传影片。
-
-真实长片的故事、人物、高光和审美质量仍需要合法素材与人工金标评测。项目不会把合成回归说成生产级内容质量。完整边界见 [VERIFICATION.md](VERIFICATION.md)。
-
-## 项目结构
-
-```text
-douyin-film-recap/
-├── SKILL.md                 Agent 入口与阶段路由
-├── src/douyin_film_recap/   本地运行时
-├── references/              故事、高光、节奏、QC 协议
-├── schemas/                 结构化产物 Schema
-├── evals/                   内容评测模板与就绪检查
-├── tests/                   确定性与 FFmpeg 回归
-└── scripts/                 安装、Schema 与评测工具
-```
-
-## 参与贡献
-
-欢迎提交 Issue、改进文档、增加 Provider、补充合法评测案例或修复运行时问题。开始前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
-尤其欢迎这几类贡献：
-
-- 更可靠的人物身份与非线性叙事理解
-- 不同题材的高光与节奏评测
-- 中文字体、ASR、TTS 和跨平台兼容
-- 可回放、可比较的真实内容金标
-
-## 边界
-
-- 只处理你有权使用的素材；项目不提供影片下载、去水印、版权规避或自动发布能力。
-- 生成技术不自动授予发布或商业化权利。
-- 项目不承诺流量、爆款或免人工复核。
-- 当前为可安装、可继续开发的 MVP，不是无人值守的内容工厂。
-
-## License
-
-[MIT](LICENSE)
+如果这套拆解方法对你有用，可以 Star 收藏；关注后续版本可选择 Watch → Releases。

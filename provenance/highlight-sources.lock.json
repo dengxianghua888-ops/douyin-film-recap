@@ -1,0 +1,89 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "stream-event-methods",
+      "version": "0053b89dc2c5be5ac4c0e9e805fdec5fa95cd787",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/SKILL.md",
+      "sha256": "fff9d11a40aa139738b855e4430966c3c12cd47e6d53e34045352d1a978dfe9c",
+      "size": 9792,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json",
+      "authority_sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "stream-event-methods",
+      "version": "0053b89dc2c5be5ac4c0e9e805fdec5fa95cd787",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/scripts/score_energy.py",
+      "sha256": "b79d38cfe438e87dfdba8091581bda162ac089d1df100b3fb563a4e85aa3fa46",
+      "size": 3935,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json",
+      "authority_sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "stream-event-methods",
+      "version": "0053b89dc2c5be5ac4c0e9e805fdec5fa95cd787",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/highlight-reel-builder/SKILL.md",
+      "sha256": "261f43865c4acfaee60b007523fb1e0df24d47f17aea3ab8fc60ab91a475a98c",
+      "size": 5980,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json",
+      "authority_sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "dota-event-methods",
+      "version": "23992b85b4864180a078eb27bc4e0ea47e120339",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/src/services/analyzers/fight_detector.py",
+      "sha256": "f192f670cf399680f024126452c8ebd06b32243d01741f957042a1ee07aea612",
+      "size": 16943,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json",
+      "authority_sha256": "9edd6655ead44e373c8acbe40b69724e12c5ed35386325db3a57daf68927f888",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "dota-event-methods",
+      "version": "23992b85b4864180a078eb27bc4e0ea47e120339",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/LICENSE",
+      "sha256": "9a7c606e1627ecaef5bffc73b1550545579720c61e6dea9d9ae6e000b327b888",
+      "size": 1068,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json",
+      "authority_sha256": "9edd6655ead44e373c8acbe40b69724e12c5ed35386325db3a57daf68927f888",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "highlight-signal-comparison",
+      "version": "5ee2f600355940c925aa1be7adbc69e09b438404",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/SKILL.md",
+      "sha256": "c2987db0b65d692bcf326c25aefc34d909de83a4e673e942d0059f3a5f281ff0",
+      "size": 7208,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json",
+      "authority_sha256": "daad00d4267a702b5f0008364d1e5530dbcd35c4a83e9ccb2dbe709cf6cb2019",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "highlight-signal-comparison",
+      "version": "5ee2f600355940c925aa1be7adbc69e09b438404",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/scripts/find_highlights.py",
+      "sha256": "22a0a51c1317a644b147b9f92378260d4123c5c034ab33878857cac139b70550",
+      "size": 25683,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json",
+      "authority_sha256": "daad00d4267a702b5f0008364d1e5530dbcd35c4a83e9ccb2dbe709cf6cb2019",
+      "use": "method analysis including rejected heuristics; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

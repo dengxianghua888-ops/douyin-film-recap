@@ -1,0 +1,822 @@
+{
+  "schema": "batch-source-use/1",
+  "marker": "W16-D2-SOURCE-20260926-01",
+  "task_id": "P-W16-D2",
+  "reviewer": "cross_task_contract / Stack Raven, named static local source/use review",
+  "scope": "D2 only; adopted/excluded source identity and actual local use; no current media or distribution certification",
+  "original_lock": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/batch-sources.lock.json",
+    "sha256": "73eaedef7b86cbb8b1d93ca7e9f6e91921d1792408b1ee8590fcf80592ed3738",
+    "bytes": 7527,
+    "scope": "current small text readback; baseline newly established unless independently matched below"
+  },
+  "original_lock_unchanged": true,
+  "method_file_count": 9,
+  "method_repository_groups": 4,
+  "rows": [
+    {
+      "id": "METHOD-batch-portrait",
+      "type": "method_synthesis",
+      "problem": "分镜与字幕/主体关系的可审查裁切计划",
+      "source_version": "c60753daded5543ea9e81375f04a543aef550945",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/partyfly__wowclip/c60753daded5/references/portrait-reframe.md",
+          "sha256": "1a768089732d4f094806f3a0d265d6c2cb0385043e2d55261d5d4f605ef3386c",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/partyfly__wowclip.json"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/partyfly__wowclip/c60753daded5/LICENSE",
+          "sha256": "6a907bcd790748f968cb095c731a2480f731b000e226c4ac077f78695d50388f",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/partyfly__wowclip.json"
+        }
+      ],
+      "source_lines": "portrait-reframe.md:3,29-51,55-66",
+      "advantage": "shot-scoped coordinates and subtitle/source binding",
+      "adopted_at": "workflows/raven-multiplatform-batch/references/framing-and-text.md:3-7",
+      "excluded_or_adapted": "拒绝自动脸居中、无脸即丢片和忽略嵌入证据画面；本库静态crop不冒追踪",
+      "change": "independent local prose/contract synthesis; no third-party source text or code added by this proposal",
+      "verification": "9-file lock/current/archive identity verified; named static use review, not execution or exhaustive code-copy forensics",
+      "license_as_archived": "MIT as archived root LICENSE; copyright WowClip contributors",
+      "distribution_scope": "record only; code/media/font/tool members each require use-specific distribution decision"
+    },
+    {
+      "id": "METHOD-batch-repurpose",
+      "type": "method_synthesis",
+      "problem": "同一事实核心到每版用途与表达",
+      "source_version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/skills/cross-platform-repurposing/references/repurposing-model.md",
+          "sha256": "2684bee0b720539ae939a109b76c469cea3e13af79e0d60afb969b93ae81ad09",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/skills/cross-platform-repurposing/references/platform-transforms.md",
+          "sha256": "7e5b6a223e63ad1a235c9249687b36697ae2cd2a7fe94695ecb02d895d52419e",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/LICENSE",
+          "sha256": "0da5befdfbe93f4dd08098d43fcd115c8455ae4fef7672f800e761e843727c13",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json"
+        }
+      ],
+      "source_lines": "repurposing-model.md:23-47; platform-transforms.md:3-9",
+      "advantage": "core truth/brand guardrails vs hook/format/length",
+      "adopted_at": "workflows/raven-multiplatform-batch/references/editorial-adaptation.md:3-7; variant-family.md:3-7",
+      "excluded_or_adapted": "editorial atom不是操作原子；不强制每平台重写，不采算法降权/标签/产量结论",
+      "change": "independent local prose/contract synthesis; no third-party source text or code added by this proposal",
+      "verification": "9-file lock/current/archive identity verified; named static use review, not execution or exhaustive code-copy forensics",
+      "license_as_archived": "MIT as archived root LICENSE; copyright Frank Heijdenrijk",
+      "distribution_scope": "record only; code/media/font/tool members each require use-specific distribution decision"
+    },
+    {
+      "id": "METHOD-batch-crop",
+      "type": "method_synthesis",
+      "problem": "按真实镜头决定保全或构图",
+      "source_version": "48c6663e42d96cb94943925f94622da97666f5e5",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/kitcut-hq__kitcut/48c6663e42d9/scripts/auto-reframe.py",
+          "sha256": "111ff41b3c34538234a7ee1da1527ba5603bce104dd71ff98290651d10529ebf",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/kitcut-hq__kitcut.json"
+        }
+      ],
+      "source_lines": "auto-reframe.py:5-29,83-106,212-216",
+      "advantage": "static/pan/pad distinction and no-face uncertainty",
+      "adopted_at": "workflows/raven-multiplatform-batch/references/framing-and-text.md:3-7",
+      "excluded_or_adapted": "所选本库本地实现仅明确静态crop/scale/pad；其他Agent工具需独立核真实追踪能力；Haar最大脸不是身份/发声认证；不复制脚本",
+      "change": "independent local prose/contract synthesis; no third-party source text or code added by this proposal",
+      "verification": "9-file lock/current/archive identity verified; named static use review, not execution or exhaustive code-copy forensics",
+      "license_as_archived": "archive has no root license; method study only, no code distribution assertion",
+      "distribution_scope": "record only; code/media/font/tool members each require use-specific distribution decision"
+    },
+    {
+      "id": "METHOD-batch-recovery",
+      "type": "method_synthesis",
+      "problem": "固定输入、产物和可恢复索引分开",
+      "source_version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/cloud/checkpoint.py",
+          "sha256": "d9e1755b764fae51a41d2dfdf59b1f03613f9523fc713ad33e1277592b7a4ce4",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/cloud/queue.py",
+          "sha256": "f3cac14f3a0c93728ed80a8a8f1061488221c4b9c3f38e391bd5d1916030cd49",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/LICENSE",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "archive_manifest": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json"
+        }
+      ],
+      "source_lines": "checkpoint.py:14-20,64-132; queue.py:234-240,313-353,1075-1096",
+      "advantage": "checkpoint separation, atomic replacement, bounded orphan recovery",
+      "adopted_at": "workflows/raven-multiplatform-batch/references/batch-execution.md:3-9; runtime/batch_ops.py:97-134,138-263",
+      "excluded_or_adapted": "请求字段含路径fingerprint不是媒体字节哈希；旧类注释不能覆盖同版本start实际恢复；本地恢复不证明远端/收费服务状态",
+      "change": "independent local prose/contract synthesis; no third-party source text or code added by this proposal",
+      "verification": "9-file lock/current/archive identity verified; named static use review, not execution or exhaustive code-copy forensics",
+      "license_as_archived": "AGPL-3.0-or-later as archived pyproject:13; root AGPLv3 text separately locked",
+      "distribution_scope": "record only; code/media/font/tool members each require use-specific distribution decision"
+    },
+    {
+      "id": "MEDIA-AMI",
+      "type": "inherited_media_and_annotation_use",
+      "problem": "两种会议画幅保留关系、条件与字幕归属",
+      "source_version": {
+        "license_page": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/license.html",
+          "sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6",
+          "bytes": 30267,
+          "scope": "current small text readback; baseline newly established unless independently matched below"
+        },
+        "download_manifest": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/download-manifest.json",
+          "sha256": "8f6ea409662d8616bda30f535f898ae971802f44352909425a944bb7552cca73",
+          "bytes": 5071,
+          "scope": "current small text readback; baseline newly established unless independently matched below"
+        },
+        "media_hash_record": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/source-readback.json",
+          "sha256": "0078cafadd44887b12b32b72152ab3087b6618366d32848d5ed5488347c8544c",
+          "bytes": 3023,
+          "scope": "current small text readback; baseline newly established unless independently matched below"
+        }
+      },
+      "adopted_at": [
+        "meeting-wide",
+        "meeting-portrait"
+      ],
+      "actual_use": "AMI IS1000a.C.rm and Mix-Headset.rm 1380.28–1400.08; A/B manual annotation→Agent/W15 translated display subtitles; visible source credit inserted; no new ASR/translation by W16",
+      "excluded_or_adapted": "scenario discussion is not an approved team decision or current market price; same publisher timebase is not physical listening certification",
+      "license_as_archived": "AMI archived license.html names CC BY4.0; applies to source material, not project/font/tool rights",
+      "verification": "bound parent/child documents and source descriptors read now; current media bytes not hashed, playback not performed"
+    },
+    {
+      "id": "MEDIA-KAWAIDA",
+      "type": "inherited_still_derived_media",
+      "problem": "自然材料横竖完整版与明确单镜短版",
+      "source_version": {
+        "archived_sources": [
+          {
+            "source": {
+              "file": "front.webm",
+              "bytes": 3520704,
+              "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+              "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Front_view_video_of_Kawaida_Waterfall%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+              "page": "https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm",
+              "metadata": "front.webm.metadata.json",
+              "metadata_sha256": "72214741624a64f71fe5b22b9ec8972e519a7bd624084db9b5464ce935c18352",
+              "license": "CC BY 4.0",
+              "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "date": "2026-04-04",
+              "scope": "first acquisition baseline"
+            },
+            "artist_as_archived": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "source": "commons-desc-page"
+            },
+            "license_as_archived": {
+              "value": "CC BY 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            }
+          },
+          {
+            "source": {
+              "file": "side.webm",
+              "bytes": 2424824,
+              "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+              "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Side_view_video_of_Kawaida_Waterfall_cascading%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+              "page": "https://commons.wikimedia.org/wiki/File:Side_view_video_of_Kawaida_Waterfall_cascading,_Cianda,_Kiambu_County.webm",
+              "metadata": "side.webm.metadata.json",
+              "metadata_sha256": "3626185cbffacc584ab3ded0e00e5b422a99c1122d59ecc10a51da2d797a8241",
+              "license": "CC BY 4.0",
+              "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "date": "2026-04-04",
+              "scope": "first acquisition baseline"
+            },
+            "artist_as_archived": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "source": "commons-desc-page"
+            },
+            "license_as_archived": {
+              "value": "CC BY 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            }
+          },
+          {
+            "source": {
+              "file": "behind.webm",
+              "bytes": 1842135,
+              "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+              "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Video_from_behind_Kawaida_Waterfall_through_hanging_roots%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+              "page": "https://commons.wikimedia.org/wiki/File:Video_from_behind_Kawaida_Waterfall_through_hanging_roots,_Kiambu_County.webm",
+              "metadata": "behind.webm.metadata.json",
+              "metadata_sha256": "4daf159d1fa438901a500da453960cbe325c26a27b19838f8c7786694253179b",
+              "license": "CC BY 4.0",
+              "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "date": "2026-04-04",
+              "scope": "first acquisition baseline"
+            },
+            "artist_as_archived": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+              "source": "commons-desc-page"
+            },
+            "license_as_archived": {
+              "value": "CC BY 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            }
+          }
+        ],
+        "W14_use_companion": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/generation-source-use-20260926.json",
+          "sha256": "c181f2313cc10c061698369198b99b99b9d876c3a8ae437a4480a609b513261b",
+          "bytes": 39666,
+          "scope": "current small text readback; baseline newly established unless independently matched below"
+        }
+      },
+      "adopted_at": [
+        "nature-portrait",
+        "nature-landscape",
+        "nature-short-square"
+      ],
+      "actual_use": "Lebu Ayiga three source videos→selected still frames→W14 authored crop motion/still hold→W15 English replacement narration→W16 explicit geometry; front short retains only complete front observation, omits entire side/behind with corresponding text/audio",
+      "excluded_or_adapted": "not continuous filmed action, reconstructed physical route, three-view summary, or actual generated moving subject; source author is not author of Agent narration",
+      "license_as_archived": "per-file metadata and download manifest record CC BY4.0 and Lebu Ayiga; local archived statements only, no current rights/issuance signoff",
+      "verification": "small source metadata hashes match download baseline; source/output media stat only"
+    },
+    {
+      "id": "TEXT-VOICE-W15",
+      "type": "inherited_language_and_synthetic_voice",
+      "problem": "每版语言、标题与声音归属不混写",
+      "source_version": {
+        "voice_fit_result": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-voice-fit-01/result.json",
+          "sha256": "1f0992ff70d8ad6a35abbfeb18370cfa50995ca21bba5f573e8b41d1852640e2",
+          "bytes": 1089,
+          "scope": "current small text readback; baseline newly established unless independently matched below"
+        },
+        "voice": "Samantha",
+        "rate": 180,
+        "origin": "agent-authored en-US translation of W14 authored Chinese narration; synthetic replacement voice, no cloning/lip sync"
+      },
+      "adopted_at": "nature full versions retain front/side/behind English TTS; short retains front; meeting subtitles inherit W15 zh compact review",
+      "actual_use": "W16 layout/scope adaptation, no new language authoring; English narration/captions with protected Chinese title/credit is not all-text English localization",
+      "excluded_or_adapted": "not original field sound, source-author testimony, voice cloning or lipsync; synthetic voice listening remains NOT_RUN",
+      "verification": "request/text/translation/compiled-map file readback; no TTS call or audio review",
+      "distribution_scope": "record local use; no blanket TTS voice/model/output or font redistribution approval"
+    },
+    {
+      "id": "FONT-LOCAL",
+      "type": "local_dependency_and_copied_member",
+      "problem": "五版实际烧录字体与发行边界",
+      "source_version": {
+        "font": {
+          "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec"
+        }
+      },
+      "actual_use": "Arial Unicode MS /System/Library/Fonts/Supplemental/Arial Unicode.ttf referenced by all five documents; local caption render receipts list font/output artifacts",
+      "adopted_at": "caption_style and each historical captions/fonts/specified.ttf where recorded",
+      "excluded_or_adapted": "source/media CC license does not license font redistribution; a file path or historical SHA is not a font entitlement",
+      "verification": "recorded font identity plus current stat only; no new font hashing or system modification",
+      "distribution_scope": "if final package contains font or samples, review exactly those members under REL-RIGHTS; not required to redistribute font for method-only D2"
+    },
+    {
+      "id": "LOCAL-BATCH-HISTORY",
+      "type": "historical_execution_background",
+      "problem": "批恢复采用机制有真实失败背景且不冒远端状态",
+      "source_version": {
+        "batch-first": {
+          "receipt": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/batch-first/receipt.json",
+            "sha256": "c89621617001a944c87c4a04f45f7665386eedb0b97dcff372453dbb8a9a64e5",
+            "bytes": 7739,
+            "scope": "current small text readback; baseline newly established unless independently matched below"
+          },
+          "operation_status": "SUCCEEDED",
+          "batch_status": "PARTIAL",
+          "jobs": [
+            {
+              "id": "meeting-wide",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-wide/attempt-0001/receipt.json",
+              "receipt_sha256": "84f23b8e72eef54d92e1600d3783f6653d0996a3f8421fdb0bd96a6f4640cf4a",
+              "error": null
+            },
+            {
+              "id": "meeting-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "e08637125d671c4c2195a83340bc6e3ee7da7779f2e0e5ef39ca8eefa2297379",
+              "error": null
+            },
+            {
+              "id": "nature-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "3510a4005fc9766cafbf87db533dc2080c7fb328e0adcbb68d496c8f034cc0ea",
+              "error": null
+            },
+            {
+              "id": "nature-landscape",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-landscape/attempt-0001/receipt.json",
+              "receipt_sha256": "2dfb23f21ce474563a7b16a4fc511eb2d22a1bcab521a4134a7d7df7bb43985f",
+              "error": null
+            },
+            {
+              "id": "nature-short-square",
+              "status": "FAILED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-short-square/attempt-0001/receipt.json",
+              "receipt_sha256": "e9263580a46ffc4018325a47d9478b96e61e77b8eaad86374952cdef45d3830d",
+              "error": "SOURCE_NOT_FOUND: ${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-short-square/isolated-front.mp4"
+            }
+          ],
+          "attempt_count": 5
+        },
+        "batch-retry": {
+          "receipt": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/batch-retry/receipt.json",
+            "sha256": "f8d95383212d37222b43437e8b66aa1ad9329b4a70cf50f3d495677651d7df33",
+            "bytes": 7772,
+            "scope": "current small text readback; baseline newly established unless independently matched below"
+          },
+          "operation_status": "SUCCEEDED",
+          "batch_status": "RENDERED",
+          "jobs": [
+            {
+              "id": "meeting-wide",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-wide/attempt-0001/receipt.json",
+              "receipt_sha256": "84f23b8e72eef54d92e1600d3783f6653d0996a3f8421fdb0bd96a6f4640cf4a",
+              "error": null
+            },
+            {
+              "id": "meeting-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "e08637125d671c4c2195a83340bc6e3ee7da7779f2e0e5ef39ca8eefa2297379",
+              "error": null
+            },
+            {
+              "id": "nature-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "3510a4005fc9766cafbf87db533dc2080c7fb328e0adcbb68d496c8f034cc0ea",
+              "error": null
+            },
+            {
+              "id": "nature-landscape",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-landscape/attempt-0001/receipt.json",
+              "receipt_sha256": "2dfb23f21ce474563a7b16a4fc511eb2d22a1bcab521a4134a7d7df7bb43985f",
+              "error": null
+            },
+            {
+              "id": "nature-short-square",
+              "status": "RENDERED",
+              "attempt": 2,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-short-square/attempt-0002/receipt.json",
+              "receipt_sha256": "9339737e4f87ed6d9b79cf5803c05eb76e45b6e96831c0bb8369736cff4a3627",
+              "error": null
+            }
+          ],
+          "attempt_count": 6
+        },
+        "batch-reuse": {
+          "receipt": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/batch-reuse/receipt.json",
+            "sha256": "f542982eb2502c0f7d0a39c88d92a9fb1d9f43113bffe4a063e11cc1c85b36a3",
+            "bytes": 7742,
+            "scope": "current small text readback; baseline newly established unless independently matched below"
+          },
+          "operation_status": "SUCCEEDED",
+          "batch_status": "RENDERED",
+          "jobs": [
+            {
+              "id": "meeting-wide",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-wide/attempt-0001/receipt.json",
+              "receipt_sha256": "84f23b8e72eef54d92e1600d3783f6653d0996a3f8421fdb0bd96a6f4640cf4a",
+              "error": null
+            },
+            {
+              "id": "meeting-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/meeting-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "e08637125d671c4c2195a83340bc6e3ee7da7779f2e0e5ef39ca8eefa2297379",
+              "error": null
+            },
+            {
+              "id": "nature-portrait",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-portrait/attempt-0001/receipt.json",
+              "receipt_sha256": "3510a4005fc9766cafbf87db533dc2080c7fb328e0adcbb68d496c8f034cc0ea",
+              "error": null
+            },
+            {
+              "id": "nature-landscape",
+              "status": "RENDERED",
+              "attempt": 1,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-landscape/attempt-0001/receipt.json",
+              "receipt_sha256": "2dfb23f21ce474563a7b16a4fc511eb2d22a1bcab521a4134a7d7df7bb43985f",
+              "error": null
+            },
+            {
+              "id": "nature-short-square",
+              "status": "RENDERED",
+              "attempt": 2,
+              "receipt": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/render-queue/jobs/nature-short-square/attempt-0002/receipt.json",
+              "receipt_sha256": "9339737e4f87ed6d9b79cf5803c05eb76e45b6e96831c0bb8369736cff4a3627",
+              "error": null
+            }
+          ],
+          "attempt_count": 6
+        },
+        "first_failure": {
+          "status": "FAILED",
+          "error": "SOURCE_NOT_FOUND: ${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-short-square/isolated-front.mp4",
+          "cause": "intentional task-owned source rename, evidenced by build_batch_trials.py:53-77; not spontaneous production or remote failure"
+        }
+      },
+      "actual_use": "five target historical queue: first4 success+1 injected missing source; retry only failed item adds attempt2; subsequent run retains6 attempts; portrait later seq2 is separate reviewed queue",
+      "excluded_or_adapted": "no remote publishing/costly-service retry inferred; prepare/status/RENDERED do not prove creative or current-code acceptance",
+      "verification": "actual prior receipts read now; no business runtime replay"
+    },
+    {
+      "id": "LATER-INCREMENTS",
+      "type": "scoped_later_engineering_context",
+      "problem": "来源融合不把后续工具变化重写成旧媒体新验收",
+      "source_version": [
+        "evals/parallel/w16-target-framing-20260923/result.json",
+        "evals/parallel/w16-contract-closure-20260923/result.json",
+        "evals/parallel/review-remediation-20260926/RC-INTEGRATE/rem-20260926-m-final-34/REPORT.md",
+        "evals/parallel/review-remediation-20260926/RC-INTEGRATE/rem-20260926-m-final-35/REPORT.md"
+      ],
+      "actual_use": "bounded framing and D4 contracts are historical evidence; batch audio_backend request/identity propagation and current streaming default have separate later adoption",
+      "excluded_or_adapted": "original five targets are not newly rendered with stream-v5; no new external method/media acquisition in this D2 audit; helper/binary source/license/platform belong to actual distribution members",
+      "verification": "read-only current accepted report scope; do not reopen resolved D4 solely on module SHA"
+    },
+    {
+      "id": "VARIANT-meeting-wide",
+      "type": "actual_variant_use",
+      "problem": "固定父身份到本版使用",
+      "source_version": {
+        "parent_store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/work.sqlite",
+        "parent_work_id": "w15-ami-subtitles",
+        "parent_sequence": 4,
+        "parent_version": "af2a64d3f9db63bc93b2fbde558219d29ac71c9f52cf415351802bb8b3c23192",
+        "parent_document_sha256": "0b16f995a31903007341016e33baa3285e7ffecc1946ce6cfe142b046080cddb"
+      },
+      "adopted_at": {
+        "store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/meeting-wide/work.sqlite",
+        "sequence": 1,
+        "version": "99fee34c9cb03b9a9398bdb50fe4b5a4d7a670d8cab4c2335f0fd4f948bf7d9c",
+        "document_file": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/meeting-wide/document.json",
+          "sha256": "53af52ec9be935292e01620113370d2804115c62eb6bd4b8d8e3ee4aedafa2c8"
+        },
+        "canonical_document_digest_from_historical_readback": "52ea172ad2525711f9529e33df2a66ccfd054603f3526ddc55150c3dcb2a76d6"
+      },
+      "actual_use": {
+        "canvas": [
+          1280,
+          720
+        ],
+        "frames": 495,
+        "duration": 19.8,
+        "captions": {
+          "c1": {
+            "clip_id": "budget",
+            "end": 3.59,
+            "start": 0.0,
+            "text": "AMI IS1000a · CC BY 4.0\nB：记住，这是25欧元的产品。"
+          },
+          "c2": {
+            "clip_id": "budget",
+            "end": 11.08,
+            "start": 3.59,
+            "text": "B：花哨的功能，我认为可以省去。"
+          },
+          "c3": {
+            "clip_id": "budget",
+            "end": 16.37,
+            "start": 11.08,
+            "text": "B：25欧元，期待普通一些、\nA：嗯。"
+          },
+          "c4": {
+            "clip_id": "budget",
+            "end": 19.76,
+            "start": 16.37,
+            "text": "B：但功能良好、易用的遥控器。\nA：嗯。"
+          }
+        },
+        "attribution": "AMI Meeting Corpus / IS1000a / CC BY 4.0 / https://groups.inf.ed.ac.uk/ami/corpus/ / excerpts, subtitles and compression; no endorsement",
+        "omissions": []
+      },
+      "excluded_or_adapted": [
+        "current runtime render success",
+        "full viewing/listening",
+        "real manual edit",
+        "device/platform safety",
+        "NLE roundtrip",
+        "distribution approval"
+      ],
+      "verification": "current document/receipt small bytes equal historical SHA; output SHA is historical and current stat only"
+    },
+    {
+      "id": "VARIANT-meeting-portrait",
+      "type": "actual_variant_use",
+      "problem": "固定父身份到本版使用",
+      "source_version": {
+        "parent_store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/work.sqlite",
+        "parent_work_id": "w15-ami-subtitles",
+        "parent_sequence": 4,
+        "parent_version": "af2a64d3f9db63bc93b2fbde558219d29ac71c9f52cf415351802bb8b3c23192",
+        "parent_document_sha256": "0b16f995a31903007341016e33baa3285e7ffecc1946ce6cfe142b046080cddb"
+      },
+      "adopted_at": {
+        "store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/meeting-portrait/work.sqlite",
+        "sequence": 2,
+        "version": "60fde5e413e885f48d33deb62c3d1b248d44d38d2e679b198f453d46fca8b25d",
+        "document_file": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/reviewed-layout/document.json",
+          "sha256": "f9a42e8677844b5dd17c9701b0d7d9faad28e6a89fc657fc2cbd838c07ae7f2f"
+        },
+        "canonical_document_digest_from_historical_readback": "d09e578b932fd633af666cf4b04ba874df05fc5cadcf8f92fdc2a330735ebcd2"
+      },
+      "actual_use": {
+        "canvas": [
+          720,
+          1280
+        ],
+        "frames": 495,
+        "duration": 19.8,
+        "captions": {
+          "c1": {
+            "clip_id": "budget",
+            "end": 3.59,
+            "start": 0.0,
+            "text": "AMI IS1000a · CC BY 4.0\nB：记住，这是25欧元的产品。"
+          },
+          "c2": {
+            "clip_id": "budget",
+            "end": 11.08,
+            "start": 3.59,
+            "text": "B：花哨的功能，我认为可以省去。"
+          },
+          "c3": {
+            "clip_id": "budget",
+            "end": 16.37,
+            "start": 11.08,
+            "text": "B：25欧元，期待普通一些、\nA：嗯。"
+          },
+          "c4": {
+            "clip_id": "budget",
+            "end": 19.76,
+            "start": 16.37,
+            "text": "B：但功能良好、易用的遥控器。\nA：嗯。"
+          }
+        },
+        "attribution": "AMI Meeting Corpus / IS1000a / CC BY 4.0 / https://groups.inf.ed.ac.uk/ami/corpus/ / excerpts, subtitles and compression; no endorsement",
+        "omissions": []
+      },
+      "excluded_or_adapted": [
+        "current runtime render success",
+        "full viewing/listening",
+        "real manual edit",
+        "device/platform safety",
+        "NLE roundtrip",
+        "distribution approval"
+      ],
+      "verification": "current document/receipt small bytes equal historical SHA; output SHA is historical and current stat only"
+    },
+    {
+      "id": "VARIANT-nature-portrait",
+      "type": "actual_variant_use",
+      "problem": "固定父身份到本版使用",
+      "source_version": {
+        "parent_store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/work.sqlite",
+        "parent_work_id": "w15-nature-narration",
+        "parent_sequence": 3,
+        "parent_version": "0f99100d761c6b7c3b2456424517d26b9f14eab39973b1d4a1aa706ab670091d",
+        "parent_document_sha256": "fc8972a8e7446df1f94436d784951cc58e979a9a653c4a35d288e07d657e94f0"
+      },
+      "adopted_at": {
+        "store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-portrait/work.sqlite",
+        "sequence": 1,
+        "version": "885f5c68844b1565b241e07250f092e291040a83d37f2e38b8c8bd0f5d70df54",
+        "document_file": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-portrait/document.json",
+          "sha256": "54b606a2cb42b4a1bc9bca08c69c911d6108c09d2b9dafa5bc2ad487c49dc5b9"
+        },
+        "canonical_document_digest_from_historical_readback": "1166fe8281f2ff09d706c19e58b361465a5c4fe147a7cf45aa121d38bac15f1e"
+      },
+      "actual_use": {
+        "canvas": [
+          576,
+          1024
+        ],
+        "frames": 490,
+        "duration": 19.6,
+        "captions": {
+          "behind-narration": {
+            "clip_id": "behind",
+            "end": 5.301958,
+            "start": 0.4,
+            "text": "Roots hang before the falling water.\nLight shines through to the ground below."
+          },
+          "front-narration": {
+            "clip_id": "front",
+            "end": 8.021833,
+            "start": 3.2,
+            "text": "Take in the whole waterfall and pool,\nthen focus on where the water lands."
+          },
+          "side-narration": {
+            "clip_id": "side",
+            "end": 4.692854,
+            "start": 0.4,
+            "text": "From the side, the water, rock face,\nand leaves form distinct layers."
+          },
+          "title": {
+            "clip_id": "front",
+            "end": 3,
+            "start": 0,
+            "text": "静图观察 · 非连续录像\nLebu Ayiga · CC BY 4.0"
+          }
+        },
+        "attribution": "Lebu Ayiga / Kawaida Waterfall / CC BY 4.0 / https://creativecommons.org/licenses/by/4.0/ / frames extracted, local crop animation, Chinese authored narration and captions; no endorsement",
+        "omissions": []
+      },
+      "excluded_or_adapted": [
+        "current runtime render success",
+        "full viewing/listening",
+        "real manual edit",
+        "device/platform safety",
+        "NLE roundtrip",
+        "distribution approval"
+      ],
+      "verification": "current document/receipt small bytes equal historical SHA; output SHA is historical and current stat only"
+    },
+    {
+      "id": "VARIANT-nature-landscape",
+      "type": "actual_variant_use",
+      "problem": "固定父身份到本版使用",
+      "source_version": {
+        "parent_store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/work.sqlite",
+        "parent_work_id": "w15-nature-narration",
+        "parent_sequence": 3,
+        "parent_version": "0f99100d761c6b7c3b2456424517d26b9f14eab39973b1d4a1aa706ab670091d",
+        "parent_document_sha256": "fc8972a8e7446df1f94436d784951cc58e979a9a653c4a35d288e07d657e94f0"
+      },
+      "adopted_at": {
+        "store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-landscape/work.sqlite",
+        "sequence": 1,
+        "version": "2eca8d223391b0387f3d0124c73e21027aa816c14eb01b251d34ea040157dede",
+        "document_file": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-landscape/document.json",
+          "sha256": "5533374b8ba51a887e54c18451053aa8edb037bf9e9392158b09bedb8247c786"
+        },
+        "canonical_document_digest_from_historical_readback": "073891591609e134b635349c6ff1e11a45913692ff7aaf4beebf12b98fdd4c3e"
+      },
+      "actual_use": {
+        "canvas": [
+          960,
+          540
+        ],
+        "frames": 490,
+        "duration": 19.6,
+        "captions": {
+          "behind-narration": {
+            "clip_id": "behind",
+            "end": 5.301958,
+            "start": 0.4,
+            "text": "Roots hang before the falling water.\nLight shines through to the ground below."
+          },
+          "front-narration": {
+            "clip_id": "front",
+            "end": 8.021833,
+            "start": 3.2,
+            "text": "Take in the whole waterfall and pool,\nthen focus on where the water lands."
+          },
+          "side-narration": {
+            "clip_id": "side",
+            "end": 4.692854,
+            "start": 0.4,
+            "text": "From the side, the water, rock face,\nand leaves form distinct layers."
+          },
+          "title": {
+            "clip_id": "front",
+            "end": 3,
+            "start": 0,
+            "text": "静图观察 · 非连续录像\nLebu Ayiga · CC BY 4.0"
+          }
+        },
+        "attribution": "Lebu Ayiga / Kawaida Waterfall / CC BY 4.0 / https://creativecommons.org/licenses/by/4.0/ / frames extracted, local crop animation, Chinese authored narration and captions; no endorsement",
+        "omissions": []
+      },
+      "excluded_or_adapted": [
+        "current runtime render success",
+        "full viewing/listening",
+        "real manual edit",
+        "device/platform safety",
+        "NLE roundtrip",
+        "distribution approval"
+      ],
+      "verification": "current document/receipt small bytes equal historical SHA; output SHA is historical and current stat only"
+    },
+    {
+      "id": "VARIANT-nature-short-square",
+      "type": "actual_variant_use",
+      "problem": "固定父身份到本版使用",
+      "source_version": {
+        "parent_store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/work.sqlite",
+        "parent_work_id": "w15-nature-narration",
+        "parent_sequence": 3,
+        "parent_version": "0f99100d761c6b7c3b2456424517d26b9f14eab39973b1d4a1aa706ab670091d",
+        "parent_document_sha256": "fc8972a8e7446df1f94436d784951cc58e979a9a653c4a35d288e07d657e94f0"
+      },
+      "adopted_at": {
+        "store": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-short-square/work.sqlite",
+        "sequence": 1,
+        "version": "c678a1a0cb75c2470d30a2b2b90a7a244ee9afc7e9cab295c0153d67b6f16a8f",
+        "document_file": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/nature-short-square/document.json",
+          "sha256": "344659f7ff8acbacdb288b61e1095c7a1a7ef66c1df5242683bdd4916f1665db"
+        },
+        "canonical_document_digest_from_historical_readback": "249c506ff8c06e38e4a1a54f671f29dbdfc0f862d582f9896a0ff81f2cb5744e"
+      },
+      "actual_use": {
+        "canvas": [
+          640,
+          640
+        ],
+        "frames": 214,
+        "duration": 8.56,
+        "captions": {
+          "front-narration": {
+            "clip_id": "front",
+            "end": 8.021833,
+            "start": 3.2,
+            "text": "Take in the whole waterfall and pool,\nthen focus on where the water lands."
+          },
+          "title": {
+            "clip_id": "front",
+            "end": 3,
+            "start": 0,
+            "text": "静图观察 · 非连续录像\nLebu Ayiga · CC BY 4.0"
+          }
+        },
+        "attribution": "Lebu Ayiga / Kawaida Waterfall / CC BY 4.0 / https://creativecommons.org/licenses/by/4.0/ / frames extracted, local crop animation, Chinese authored narration and captions; no endorsement",
+        "omissions": [
+          "side entire 5.2s viewpoint and associated narration/caption",
+          "behind entire 5.84s viewpoint and associated narration/caption"
+        ]
+      },
+      "excluded_or_adapted": [
+        "current runtime render success",
+        "full viewing/listening",
+        "real manual edit",
+        "device/platform safety",
+        "NLE roundtrip",
+        "distribution approval"
+      ],
+      "verification": "current document/receipt small bytes equal historical SHA; output SHA is historical and current stat only"
+    }
+  ],
+  "license_boundary": "All license statements are attributed to pinned local archive; no online re-verification or legal/distribution conclusion. Actual font/tool/media inclusion remains REL-RIGHTS.",
+  "verification_refs": {
+    "method_readback": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w16-source-review-01/method-lock-readback.json",
+    "material_readback": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w16-source-review-01/material-use-readback.json",
+    "source_review": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w16-source-review-01/source-review.md"
+  },
+  "not_run": [
+    "FFmpeg/ffprobe/DSP",
+    "business runtime or old script",
+    "new render/ASR/TTS/model",
+    "complete viewing/listening",
+    "real user/device/host",
+    "independent query/effect",
+    "publishing or permission confirmation"
+  ]
+}

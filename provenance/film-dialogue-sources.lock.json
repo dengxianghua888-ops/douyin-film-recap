@@ -1,0 +1,53 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "tos-case-study",
+      "version": "acquisition-4cc40b488e1e2a74",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/studio.html",
+      "size": 55051,
+      "sha256": "44268375aeadcf79e82e5447c560e5fe76129f517035079000c98ed937e3b842",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/research-acquisition.json",
+      "authority_sha256": "4cc40b488e1e2a740cbb3a5ffdd1ff02f314549861827d10cafddfd0ca2c8bfe",
+      "verification": "matches acquisition baseline recorded earlier in this batch",
+      "use": "worked film case and subtitle counterexamples; not third-party implementation or listening evidence",
+      "trust_limit": "first-acquisition SHA256 baseline, not historical upstream SHA256 or signature"
+    },
+    {
+      "source_id": "tos-case-study",
+      "version": "acquisition-4cc40b488e1e2a74",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/xiph-readme.txt",
+      "size": 343,
+      "sha256": "3622773b7986ac4f4807352b94c111670ac5f888b558f6f70f95c0b7d253aba1",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/research-acquisition.json",
+      "authority_sha256": "4cc40b488e1e2a740cbb3a5ffdd1ff02f314549861827d10cafddfd0ca2c8bfe",
+      "verification": "matches acquisition baseline recorded earlier in this batch",
+      "use": "worked film case and subtitle counterexamples; not third-party implementation or listening evidence",
+      "trust_limit": "first-acquisition SHA256 baseline, not historical upstream SHA256 or signature"
+    },
+    {
+      "source_id": "tos-case-study",
+      "version": "acquisition-977d8a1adf9359e4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/TOS-en.srt",
+      "size": 4764,
+      "sha256": "ce9578f6fe098a5821045a38884b229160f9e7ba27890448a92f5be330c6e6fe",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/subtitles-acquisition.json",
+      "authority_sha256": "977d8a1adf9359e461bf0af382d21dbb6b57e0e1f91a3e28cd3e9fe7916050b3",
+      "verification": "matches acquisition baseline recorded earlier in this batch",
+      "use": "worked film case and subtitle counterexamples; not third-party implementation or listening evidence",
+      "trust_limit": "first-acquisition SHA256 baseline, not historical upstream SHA256 or signature"
+    },
+    {
+      "source_id": "tos-case-study",
+      "version": "acquisition-977d8a1adf9359e4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/TOS-CH.srt",
+      "size": 4945,
+      "sha256": "456152557f85f5874ec7c96c99a68ff05c325013972ca059b193f0d93f036d45",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/tears-of-steel/subtitles-acquisition.json",
+      "authority_sha256": "977d8a1adf9359e461bf0af382d21dbb6b57e0e1f91a3e28cd3e9fe7916050b3",
+      "verification": "matches acquisition baseline recorded earlier in this batch",
+      "use": "worked film case and subtitle counterexamples; not third-party implementation or listening evidence",
+      "trust_limit": "first-acquisition SHA256 baseline, not historical upstream SHA256 or signature"
+    }
+  ]
+}

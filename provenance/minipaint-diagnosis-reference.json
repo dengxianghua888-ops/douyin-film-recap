@@ -1,0 +1,25 @@
+{
+  "schema": "research-source-reference/1",
+  "source_id": "minipaint-controlled-parameter-case",
+  "pinned_software": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/minipaint-capture-reference.json",
+    "sha256": "830b6d1f4e3372e8a5787dda597661a0dcdfd38ee867893a30df5af039e58ac8"
+  },
+  "capture": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-resize-diagnosis-capture-01/result.json",
+    "sha256": "f9ecf701e9295c7491ee4a17abfe2d96dbc29ba1e2ab322592df34234e69a454"
+  },
+  "artifact_readback": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-resize-diagnosis-capture-01/artifact-readback.json",
+    "sha256": "973fe759187f28d36ea2f37fa0d89c5a80dce9d5d19a7c4fdc718d11e924667b"
+  },
+  "trial": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/result.json",
+    "sha256": "91d3ed0703aff6a5643c9764be5cfd9b813e4ac31507ba5db68107086cd0fa01"
+  },
+  "use": "Fixed-version same-input repeated A, reset, single Height-field intervention B, saved artifacts and reopen verification. Deliberately staged goal/parameter mismatch, not an application defect.",
+  "limits": [
+    "Reuses existing 292 Git blobs; adds zero archive source adoptions.",
+    "Current single-case reproduction does not validate learner outcomes or all software."
+  ]
+}

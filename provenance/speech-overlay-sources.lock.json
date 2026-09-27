@@ -1,0 +1,17 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "chatcut-speech-overlay",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/talking-head-guide/references/b-roll.md",
+      "size": 6408,
+      "sha256": "cdda44c1801075de4daaa9c328ab13051bff80db10da6aee1c93ebd369f1ea54",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "use": "method reference only; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

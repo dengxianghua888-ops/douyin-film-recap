@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "music-cache-contract",
+      "version": "07437f60257a578745262359753bfccce337510c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/src/agent/skills/music-intelligence/SKILL.md",
+      "size": 4565,
+      "sha256": "415969ecd8cc45c06fd03468e8f97129f56c188704587ace4d1b0a1d55373219",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/0xsline__OpenChatCut.json",
+      "authority_sha256": "a91d5a26de2a7c9b92dcd3891ee5d85fce3bd6e7d5d7f91c0de204cb971e2f37",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-cache-contract",
+      "version": "07437f60257a578745262359753bfccce337510c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/LICENSE",
+      "size": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/0xsline__OpenChatCut.json",
+      "authority_sha256": "a91d5a26de2a7c9b92dcd3891ee5d85fce3bd6e7d5d7f91c0de204cb971e2f37",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-grid-methods",
+      "version": "c204b3c7579af6eff2226db64aac71292a58950d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/scripts/analyze-beatgrid.py",
+      "size": 24210,
+      "sha256": "acc14ffbbbcfb59fbe89a6886380d584df07a14205b1a299f424810bc85baed0",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/heygen-com__hyperframes.json",
+      "authority_sha256": "b481b8d22236d9e28620861012f2143fcb472825e8409b084e97568ff545d91e",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-grid-methods",
+      "version": "c204b3c7579af6eff2226db64aac71292a58950d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/references/montage.md",
+      "size": 3215,
+      "sha256": "ebff415eb7b169050cedf24072f912cffe1f0b4b3fbfe09f57c59f5689515633",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/heygen-com__hyperframes.json",
+      "authority_sha256": "b481b8d22236d9e28620861012f2143fcb472825e8409b084e97568ff545d91e",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-grid-methods",
+      "version": "c204b3c7579af6eff2226db64aac71292a58950d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/LICENSE",
+      "size": 10763,
+      "sha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/heygen-com__hyperframes.json",
+      "authority_sha256": "b481b8d22236d9e28620861012f2143fcb472825e8409b084e97568ff545d91e",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-editorial-methods",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/post-production/editing-montage/SKILL.md",
+      "size": 30783,
+      "sha256": "c1cc77a249f5607d11ab4b562a3982dfc61583a5f79dfbcc3755550fcc5cfe1a",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-editorial-methods",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/music-supervision-scoring/SKILL.md",
+      "size": 22194,
+      "sha256": "b6c94b209dd9da72a2e8a5d8bffebfe72463654a3bf633ea7792037dd6c7a124",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-editorial-methods",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/content-formats/music-video-production/SKILL.md",
+      "size": 27649,
+      "sha256": "dfd52094281fed5abde64d03637032420d5fb1e4e6e543ce3bcf0c41bdf83185",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    },
+    {
+      "source_id": "music-editorial-methods",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/LICENSE",
+      "size": 1093,
+      "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "use": "method study and critical comparison; original implementation, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authenticity"
+    }
+  ]
+}

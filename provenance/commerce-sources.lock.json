@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "ugc-reference-methods",
+      "version": "6b8607142382fbe363622b59fdb0bed7ddfe2500",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/SKILL.md",
+      "size": 20615,
+      "sha256": "c042a2181a198b7fc93975bb52f14e792501eea3f6c251b7cad964bfaec55a98",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/TuolaGe__reference-led-ugc-product-video.json",
+      "authority_sha256": "f6f7e1f8d0ec1e7ee272c675799080960c5b0c56582be7c8a4cc26849e962b86",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-reference-methods",
+      "version": "6b8607142382fbe363622b59fdb0bed7ddfe2500",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/references/creative-qa.md",
+      "size": 5713,
+      "sha256": "c20fa9b6bef1a5867cde004a1783ddcdd953935dc825c228e719b30f6055dcb3",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/TuolaGe__reference-led-ugc-product-video.json",
+      "authority_sha256": "f6f7e1f8d0ec1e7ee272c675799080960c5b0c56582be7c8a4cc26849e962b86",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-reference-methods",
+      "version": "6b8607142382fbe363622b59fdb0bed7ddfe2500",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/references/fashion-reels.md",
+      "size": 5132,
+      "sha256": "f2f1a9f75651a01cd792a2fd4d607197bbac456d0681b05115c5e4273f89cd65",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/TuolaGe__reference-led-ugc-product-video.json",
+      "authority_sha256": "f6f7e1f8d0ec1e7ee272c675799080960c5b0c56582be7c8a4cc26849e962b86",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-reference-methods",
+      "version": "6b8607142382fbe363622b59fdb0bed7ddfe2500",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/TuolaGe__reference-led-ugc-product-video/6b8607142382/LICENSE",
+      "size": 1064,
+      "sha256": "afe844836f8e867481e20030dbe5d16d2a9c274e9d5b451ff67772e3c04e0d93",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/TuolaGe__reference-led-ugc-product-video.json",
+      "authority_sha256": "f6f7e1f8d0ec1e7ee272c675799080960c5b0c56582be7c8a4cc26849e962b86",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-edit-methods",
+      "version": "040e82ffab6f616aec5d1ed4541a1d0260a95613",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/palmier-io__palmier-skills/040e82ffab6f/skills/ugc-editing/SKILL.md",
+      "size": 10674,
+      "sha256": "732b02a7efa504e1ebb5beb8b43b7d43f9f5c787a1f2439c47f0405ab5d024db",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/palmier-io__palmier-skills.json",
+      "authority_sha256": "8930e6d3b13d819f5a1bd64d7dab3fbc4e76fa605e5be17580b938bae91d0938",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-edit-methods",
+      "version": "040e82ffab6f616aec5d1ed4541a1d0260a95613",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/palmier-io__palmier-skills/040e82ffab6f/LICENSE",
+      "size": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/palmier-io__palmier-skills.json",
+      "authority_sha256": "8930e6d3b13d819f5a1bd64d7dab3fbc4e76fa605e5be17580b938bae91d0938",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-final-audio-review",
+      "version": "e1592ee2bdc563e3aa6e36b308bcd88f393e3817",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/skills/ads/packs/ugc-video-formats/review-ugc-render/SKILL.md",
+      "size": 4600,
+      "sha256": "b5f5b014adfeb5aef6a285216aae3fbc6e2bc4f2e841a9fd16ebb9875355a453",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/gooseworks-ai__goose-skills.json",
+      "authority_sha256": "863c6ecbebfe013f271709e9be1c01fe14008ef28fa276be3f8338288d4d4a83",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-final-audio-review",
+      "version": "e1592ee2bdc563e3aa6e36b308bcd88f393e3817",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/skills/ads/packs/ugc-video-formats/review-ugc-render/scripts/review_render.py",
+      "size": 16972,
+      "sha256": "39a33cf16a3a7cd58a7fab5eca20185c92bff7ea6fd9bfe27b9090c534ed7068",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/gooseworks-ai__goose-skills.json",
+      "authority_sha256": "863c6ecbebfe013f271709e9be1c01fe14008ef28fa276be3f8338288d4d4a83",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "ugc-final-audio-review",
+      "version": "e1592ee2bdc563e3aa6e36b308bcd88f393e3817",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/gooseworks-ai__goose-skills/e1592ee2bdc5/LICENSE",
+      "size": 1067,
+      "sha256": "9c05de6851e9b409f52b4fac51a37e740878be9fd482cbc020747e322a9ceca1",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/gooseworks-ai__goose-skills.json",
+      "authority_sha256": "863c6ecbebfe013f271709e9be1c01fe14008ef28fa276be3f8338288d4d4a83",
+      "use": "method-reference and failure analysis; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

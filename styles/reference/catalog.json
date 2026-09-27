@@ -1,0 +1,1545 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "reference-to-target mechanisms, not automatic style presets or quality claims",
+  "styles": [
+    {
+      "id": "question-release",
+      "name": "问题与释放",
+      "family": "叙事迁移",
+      "fit": "参考用问题等待答案",
+      "question": "什么信息让观众继续看",
+      "selection": "目标真实问题、线索、答案",
+      "sequence": "问题→逐步证据→可证答案",
+      "audio": "声音不抢先揭示",
+      "rhythm": "等待长度适配素材",
+      "visual": "不照抄具体场景",
+      "anti": "把参考反转当目标事实",
+      "example": "构造例：从折叠细节到最终可推行状态",
+      "nearest": "不同于结果先行，答案后置",
+      "effect_check": "答案有铺垫且真实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "proof-ladder",
+      "name": "证据阶梯",
+      "family": "叙事迁移",
+      "fit": "参考用逐层证明建立相信",
+      "question": "目标有哪些逐级证据",
+      "selection": "现象、演示、限制、结果",
+      "sequence": "主张→证据递增→边界",
+      "audio": "原话与真实操作声为证",
+      "rhythm": "每层获得被理解时间",
+      "visual": "结果可回到目标来源",
+      "anti": "借参考数据替目标背书",
+      "example": "构造例：材料对比再到实际操作",
+      "nearest": "不同于问题释放，重点建立可信度",
+      "effect_check": "观众知道为何相信与不能推断什么",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "consequence-first",
+      "name": "结果先行适配",
+      "family": "叙事迁移",
+      "fit": "参考先给结果再解释",
+      "question": "目标可先展示什么结果",
+      "selection": "真实结果与关键过程",
+      "sequence": "结果→过程→限制",
+      "audio": "配音不重复刚看到内容",
+      "rhythm": "压等待保必要步骤",
+      "visual": "标明回看而非伪时序",
+      "anti": "别的成功画面充目标结果",
+      "example": "构造例：先见折好车再回操作",
+      "nearest": "不同于问题释放，先兑现承诺",
+      "effect_check": "回溯清楚且不误导",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "person-choice",
+      "name": "人物选择线",
+      "family": "叙事迁移",
+      "fit": "参考围绕人物取舍",
+      "question": "目标人物实际选择了什么",
+      "selection": "目标、障碍、选择、后果",
+      "sequence": "选择前→选择→代价",
+      "audio": "保留原话和真实停顿",
+      "rhythm": "节奏跟选择变化",
+      "visual": "不凭表情编心理",
+      "anti": "把参考悲剧套到无关人物",
+      "example": "构造例：修理还是替换的真实讨论",
+      "nearest": "不同于情绪弧线，选择有事实依据",
+      "effect_check": "人物动机可回源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "parallel-question",
+      "name": "并行问题",
+      "family": "叙事迁移",
+      "fit": "参考两条线互相解释",
+      "question": "两条目标线有何共同问题",
+      "selection": "两条独立但可比较证据",
+      "sequence": "A提出→B照见→回A",
+      "audio": "来源各自清晰",
+      "rhythm": "切换改变理解才发生",
+      "visual": "并列不假同时",
+      "anti": "不同日期剪成正在互相回应",
+      "example": "构造例：设计讨论与实际使用各自注明时间",
+      "nearest": "不同于主题意象，跨线有明确问题",
+      "effect_check": "观众不会误认时空关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "open-ending",
+      "name": "开放结尾",
+      "family": "叙事迁移",
+      "fit": "参考以未完状态收束",
+      "question": "目标真实结束边界在哪里",
+      "selection": "阶段结果与仍未决事项",
+      "sequence": "推进→当前状态→留问题",
+      "audio": "原声尾部完整",
+      "rhythm": "末镜留观察时间",
+      "visual": "不补造成功结论",
+      "anti": "素材没结果却用胜利音乐认证成功",
+      "example": "构造例：岩浆仍扩散时注明未结束",
+      "nearest": "不同于悬念钩子，不承诺后续揭晓",
+      "effect_check": "结束有边界且未决真实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "rhythm-contour",
+      "name": "节奏轮廓",
+      "family": "时间迁移",
+      "fit": "参考稀密起伏可辨",
+      "question": "哪些段落承担快慢变化",
+      "selection": "信息负担相近的目标单元",
+      "sequence": "按作用重建稀密弧线",
+      "audio": "音乐和语义共同约束",
+      "rhythm": "不逐镜比例复制",
+      "visual": "画内运动计入密度",
+      "anti": "只复制平均镜长",
+      "example": "构造例：三段细节后宽景长持",
+      "nearest": "不同于精确切点，迁移整体轮廓",
+      "effect_check": "变化与内容转折对应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "long-take-attention",
+      "name": "长镜注意力",
+      "family": "时间迁移",
+      "fit": "参考少切但画内有变化",
+      "question": "目标长持时观众看什么",
+      "selection": "连续动作与变化",
+      "sequence": "建立规则→微变→退出",
+      "audio": "连续声景支撑停留",
+      "rhythm": "退出点由变化完成决定",
+      "visual": "拒绝定格冒长镜",
+      "anti": "静止素材硬拉到参考长度",
+      "example": "构造例：水流观察迁移到岩浆扩散",
+      "nearest": "不同于慢节奏标签，明确画内过程",
+      "effect_check": "能指出长持中的新信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "burst-and-rest",
+      "name": "短簇与停留",
+      "family": "时间迁移",
+      "fit": "参考短镜成簇后释放",
+      "question": "目标哪些信息可聚集",
+      "selection": "可快速读懂细节与一个承接镜",
+      "sequence": "短簇→停留→新段",
+      "audio": "不以爆音制造力度",
+      "rhythm": "短镜仍有最小可读时间",
+      "visual": "视觉复杂镜不硬快切",
+      "anti": "每镜0.3秒不管动作",
+      "example": "构造例：工具细节后保完整制作过程",
+      "nearest": "不同于节奏轮廓，以局部簇为单位",
+      "effect_check": "疏密变化可感且能读懂",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "ending-weight",
+      "name": "尾段重量",
+      "family": "时间迁移",
+      "fit": "参考用结尾停留改变感受",
+      "question": "目标最后值得停在哪",
+      "selection": "结果、余势、开放状态",
+      "sequence": "推进→落定→退出",
+      "audio": "保真实尾音",
+      "rhythm": "尾段比例只是候选",
+      "visual": "终点有信息可看",
+      "anti": "照抄40%尾镜却无内容",
+      "example": "构造例：折好后推行几步再结束",
+      "nearest": "不同于开放结尾，不要求未决",
+      "effect_check": "结尾获得完成感或有意余韵",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "elastic-beats",
+      "name": "弹性段落",
+      "family": "时间迁移",
+      "fit": "目标比参考长短差异大",
+      "question": "哪些作用保留哪些可省",
+      "selection": "必要段落和可缩辅段",
+      "sequence": "按作用重新配时",
+      "audio": "话和乐句不被同比压缩",
+      "rhythm": "单元可合并但不破逻辑",
+      "visual": "段落有真实锚点",
+      "anti": "全片速度统一乘比例",
+      "example": "构造例：30秒参考适配为90秒教学",
+      "nearest": "不同于轮廓，解决长度变换",
+      "effect_check": "时长变化后内容仍完整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "intentional-offset",
+      "name": "有意错拍",
+      "family": "时间迁移",
+      "fit": "参考声画有可解释偏离",
+      "question": "错位怎样服务目标",
+      "selection": "明确动作、声音锚点",
+      "sequence": "建立同步→偏离→回收",
+      "audio": "音点版本与方向明确",
+      "rhythm": "偏差是设计非算法误差",
+      "visual": "动作落点与切镜分开",
+      "anti": "错点后才解释为艺术",
+      "example": "构造例：音乐更快但画面跨拍停留",
+      "nearest": "不同于节奏轮廓，声画相位主导",
+      "effect_check": "偏离有作用且可辨",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "spatial-reveal",
+      "name": "遮蔽到开阔",
+      "family": "构图迁移",
+      "fit": "参考从限制视野到空间展开",
+      "question": "目标怎样真实打开视域",
+      "selection": "局部、遮挡、宽阔关系",
+      "sequence": "限制→准备→打开",
+      "audio": "声音可连续但不造同地",
+      "rhythm": "打开后留辨认时间",
+      "visual": "宽景与局部关系须证实",
+      "anti": "假地点拼成同一次抵达",
+      "example": "构造例：根系后水幕到正面瀑布",
+      "nearest": "不同于问题释放，作用是空间可见性",
+      "effect_check": "开阔感成立且空间关系诚实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "scale-dialogue",
+      "name": "尺度对话",
+      "family": "构图迁移",
+      "fit": "参考远近镜互相解释",
+      "question": "目标哪组尺度互补",
+      "selection": "全貌、关键局部、关系",
+      "sequence": "全→近→回全或反向",
+      "audio": "声音不因景别机械跳变",
+      "rhythm": "复杂细节多留读图时间",
+      "visual": "局部属于目标对象",
+      "anti": "不相干细节冒充结构证据",
+      "example": "构造例：车轮锁扣与整车折叠状态",
+      "nearest": "不同于开阔，远近反复互证",
+      "effect_check": "能理解局部用途与整体",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "negative-space-grammar",
+      "name": "负空间语法",
+      "family": "构图迁移",
+      "fit": "参考以空白和小主体组织注意",
+      "question": "哪里可留空而不丢内容",
+      "selection": "主体出入、空处变化",
+      "sequence": "建立空处→主体变化→退出",
+      "audio": "环境声或低干扰音乐",
+      "rhythm": "停留有变化而非空等",
+      "visual": "裁切不牺牲动作",
+      "anti": "裁掉关键手部只求留白",
+      "example": "构造例：稳定宽景中的人物动作",
+      "nearest": "不同于长镜，构图关系主导",
+      "effect_check": "空处有作用且主体可读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "motion-direction",
+      "name": "方向接力",
+      "family": "构图迁移",
+      "fit": "参考运动在切点延续",
+      "question": "目标动势可否接续",
+      "selection": "明确方向与动作阶段",
+      "sequence": "动作A→方向相容的B",
+      "audio": "同期关系需区分",
+      "rhythm": "切在可感方向而非固定秒",
+      "visual": "不伪造连续真实事件",
+      "anti": "左右冲突当动感",
+      "example": "构造例：向右推车接同向水流作为联想",
+      "nearest": "不同于动作匹配，方向是主关系",
+      "effect_check": "运动顺且不误导因果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "shape-rhyme",
+      "name": "形状押韵",
+      "family": "构图迁移",
+      "fit": "参考以形似产生联系",
+      "question": "目标有哪些可见形状关系",
+      "selection": "圆、线、框、重复纹理",
+      "sequence": "建立形状→换对象→变形",
+      "audio": "音乐只辅助辨认",
+      "rhythm": "给观众看出关联时间",
+      "visual": "不声称不同物同一身份",
+      "anti": "随机镜头靠标题硬解释",
+      "example": "构造例：车轮和涟漪形成圆形联想",
+      "nearest": "不同于色彩桥，几何主导",
+      "effect_check": "不用说明也可看到联系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "depth-layers",
+      "name": "景深层次",
+      "family": "构图迁移",
+      "fit": "参考用前中后景组织视线",
+      "question": "目标素材是否真实有层次",
+      "selection": "前景遮挡、主体、背景关系",
+      "sequence": "进入层次→发现主体→观察背景",
+      "audio": "音场不伪造空间距离",
+      "rhythm": "画内关系替代过多切镜",
+      "visual": "不宣称后期改变真实焦距",
+      "anti": "裁切当虚化镜头效果",
+      "example": "构造例：根系前景与后方水幕",
+      "nearest": "不同于负空间，纵深组织主导",
+      "effect_check": "层次可读而非画面杂乱",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "continuous-score",
+      "name": "连续配乐骨架",
+      "family": "声音迁移",
+      "fit": "参考音乐跨镜保持连贯",
+      "question": "目标怎样建立连续声音线",
+      "selection": "可用完整曲段与视觉单元",
+      "sequence": "沿音乐段落组织画面",
+      "audio": "独立全局轨，切画不碎曲",
+      "rhythm": "保护乐句/尾响",
+      "visual": "不复制未获用的参考音乐",
+      "anti": "从参考直接扒曲填成片",
+      "example": "构造例：用自有配乐重建连续节奏",
+      "nearest": "不同于节奏轮廓，音乐是时间骨架",
+      "effect_check": "曲段完整且不抢内容",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "source-voice-lead",
+      "name": "原声驱动",
+      "family": "声音迁移",
+      "fit": "参考靠原话/现场声推进",
+      "question": "目标什么原声有表达价值",
+      "selection": "真实语句、动作声、环境",
+      "sequence": "原声提出→画面支持→继续",
+      "audio": "声音所有权明确",
+      "rhythm": "给原话完整时长",
+      "visual": "B-roll与话语关系真实",
+      "anti": "把别人的台词配给目标人物",
+      "example": "构造例：折叠声引出工具动作",
+      "nearest": "不同于连续配乐，目标原声主导",
+      "effect_check": "原声清晰且推动内容",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "sound-before-image",
+      "name": "先声后画",
+      "family": "声音迁移",
+      "fit": "参考声音提前引出下一景",
+      "question": "目标声音能否先建立问题",
+      "selection": "下一段真实声音及可理解过渡",
+      "sequence": "声先进入→画面解释",
+      "audio": "来源/提前量明确",
+      "rhythm": "提前不破前段完整表达",
+      "visual": "不把不同步嘴型留在画面",
+      "anti": "无关呼喊引出假反应",
+      "example": "构造例：水声先起再见水帘",
+      "nearest": "不同于方向接力，声音负责过渡",
+      "effect_check": "观众顺利理解声源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "image-before-sound",
+      "name": "先画后声",
+      "family": "声音迁移",
+      "fit": "参考画面先到、旧声延续",
+      "question": "目标可否保留旧句再进入新景",
+      "selection": "完整旧原话与新支撑画面",
+      "sequence": "画面换→旧句完成→新声",
+      "audio": "旧声尾句完整",
+      "rhythm": "避免语义错配",
+      "visual": "不把旧句归给新人物",
+      "anti": "切到另一人仍当他在说话",
+      "example": "构造例：讨论原话延续到真实产品细节",
+      "nearest": "不同于先声，旧音负责完整性",
+      "effect_check": "原话自然且归属清楚",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "silence-as-turn",
+      "name": "安静转折",
+      "family": "声音迁移",
+      "fit": "参考在关键处撤去声音",
+      "question": "目标安静由什么内容支持",
+      "selection": "转折前后真实状态",
+      "sequence": "有声→安静→重新进入",
+      "audio": "安静设计不掩饰缺轨",
+      "rhythm": "画面在安静中仍有变化",
+      "visual": "不用假静音制造事实",
+      "anti": "普通人被惊悚静音暗示危险",
+      "example": "构造例：活动后看空场真实环境",
+      "nearest": "不同于负空间，声场变化主导",
+      "effect_check": "安静有意义而非播放故障",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "distance-in-sound",
+      "name": "声音距离",
+      "family": "声音迁移",
+      "fit": "参考通过远近感引导观看",
+      "question": "目标素材能支持何种声场",
+      "selection": "同期近声、远环境与人物",
+      "sequence": "近→远或相反",
+      "audio": "不由画面距离猜造声源",
+      "rhythm": "少量变化服务空间",
+      "visual": "无混响能力不声称真实模拟",
+      "anti": "只降音量称空间重建",
+      "example": "构造例：保留水流近远录音差异",
+      "nearest": "不同于声桥，距离关系主导",
+      "effect_check": "声音关系可信且未过度推断",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "restrained-palette",
+      "name": "克制色域",
+      "family": "色彩迁移",
+      "fit": "参考减少竞争色形成秩序",
+      "question": "目标哪些颜色必须保真",
+      "selection": "代表高光、肤色、商品色、暗部",
+      "sequence": "先归一化→有限look→逐镜复核",
+      "audio": "色彩比较固定音量声音",
+      "rhythm": "不以变暗等同电影感",
+      "visual": "显式LUT强度与来源",
+      "anti": "皮肤灰掉仍称高级",
+      "example": "构造例：降低风景杂色竞争但保水和绿植辨识",
+      "nearest": "不同于单色，仍保颜色关系",
+      "effect_check": "主体层次更清楚且保关键色",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "reference-trials-01",
+          "role": "monochrome reference adapted to 18 percent RGB saturation with timing/audio preserved",
+          "report": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/current-readback.json",
+          "frame_review": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/inspection/frame-review-01.json",
+          "status": "technical-and-sampled-frame-evidence-only",
+          "independent_effect": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "warm-cool-balance",
+      "name": "冷暖关系",
+      "family": "色彩迁移",
+      "fit": "参考冷暖对照可辨",
+      "question": "目标什么区域承担冷暖关系",
+      "selection": "光源、主体与背景",
+      "sequence": "确认原色→建立有限对照",
+      "audio": "声音不作为色彩效果证据",
+      "rhythm": "比较固定帧与曝光条件",
+      "visual": "不套橙青到所有肤色",
+      "anti": "背景变青就叫同款",
+      "example": "构造例：暖室内与冷窗外保真实关系",
+      "nearest": "不同于克制色域，关系而非低饱和主导",
+      "effect_check": "冷暖有层次不失肤色",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "highlight-softness",
+      "name": "高光柔和",
+      "family": "色彩迁移",
+      "fit": "参考明部过渡柔和",
+      "question": "目标源是否保留高光信息",
+      "selection": "高亮边界与中间调",
+      "sequence": "确认信息→调整曲线→对照",
+      "audio": "音轨不变用于视觉控制",
+      "rhythm": "同一帧比较",
+      "visual": "剪白细节无法由LUT恢复",
+      "anti": "过曝白块套LUT称恢复",
+      "example": "构造例：水帘明部压缩而保纹理",
+      "nearest": "不同于冷暖，明部过渡主导",
+      "effect_check": "亮处有层次且不脏灰",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "shadow-detail",
+      "name": "暗部可读",
+      "family": "色彩迁移",
+      "fit": "参考暗而有层次",
+      "question": "目标暗部有什么可见信息",
+      "selection": "阴影纹理和重要主体",
+      "sequence": "识别暗部→保可读→控制黑位",
+      "audio": "不配音暗示未见对象",
+      "rhythm": "慢镜不掩盖不可见",
+      "visual": "噪声与细节分开",
+      "anti": "压黑主体说高级",
+      "example": "构造例：根系内侧仍可见结构",
+      "nearest": "不同于柔高光，暗部信息主导",
+      "effect_check": "看得到需要看的内容",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "monochrome-purpose",
+      "name": "有目的的单色",
+      "family": "色彩迁移",
+      "fit": "参考单色强调形态或资料感",
+      "question": "去色对目标有何作用",
+      "selection": "纹理、明暗、结构",
+      "sequence": "保持结构→去色→核对信息",
+      "audio": "音乐不得伪历史出处",
+      "rhythm": "不因单色自动改慢",
+      "visual": "原色承担语义时禁用",
+      "anti": "交通/图表色编码被抹掉",
+      "example": "构造例：机械结构用单色突出关系",
+      "nearest": "不同于克制色域，明确去掉色相信息",
+      "effect_check": "结构增强而无语义损失",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "color-continuity",
+      "name": "跨镜颜色连续",
+      "family": "色彩迁移",
+      "fit": "参考镜间光色协调",
+      "question": "目标镜间差异是否应保留",
+      "selection": "同场景不同镜头和真实光变",
+      "sequence": "逐镜基准→协调→整体复看",
+      "audio": "原声连续不证明同场景",
+      "rhythm": "校正与look分开",
+      "visual": "不同时间光线不全抹平",
+      "anti": "统一LUT强行掩盖现场变化",
+      "example": "构造例：同地三角度绿植不过度跳变",
+      "nearest": "不同于单look，镜间关系主导",
+      "effect_check": "连续自然且保时空信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "quiet-type",
+      "name": "安静文字",
+      "family": "文字迁移",
+      "fit": "参考少字且不抢主体",
+      "question": "目标最少需要写什么",
+      "selection": "标题、必要事实、归属",
+      "sequence": "必要时出现→读完→退出",
+      "audio": "文字不重复旁白全部内容",
+      "rhythm": "按真实阅读窗口",
+      "visual": "大小位置按目标分辨率",
+      "anti": "照抄小字造成不可读",
+      "example": "构造例：瀑布标题保留而不加营销文案",
+      "nearest": "不同于章节卡，局部层级主导",
+      "effect_check": "信息够用且不抢画面",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "argument-titles",
+      "name": "论点标题",
+      "family": "文字迁移",
+      "fit": "参考以文字解释结构",
+      "question": "目标哪些概念需外显",
+      "selection": "有证据的论点和限定",
+      "sequence": "问题标题→证据→范围",
+      "audio": "不将个人观点写成事实",
+      "rhythm": "留读完限定词时间",
+      "visual": "显著性不删语义",
+      "anti": "大字只写结论不写条件",
+      "example": "构造例：预算建议标个人建议",
+      "nearest": "不同于安静文字，论证结构主导",
+      "effect_check": "标题准确且帮助理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "chapter-breath",
+      "name": "章节呼吸",
+      "family": "文字迁移",
+      "fit": "参考章节组织清晰",
+      "question": "目标何处真正换问题",
+      "selection": "主题边界与必要标记",
+      "sequence": "完成前段→章标→新段",
+      "audio": "声桥可连接而不假连续",
+      "rhythm": "章标不机械每十秒",
+      "visual": "字体替代有来源",
+      "anti": "随便换镜就插章卡",
+      "example": "构造例：定义到应用用一次段落标记",
+      "nearest": "不同于论点标题，结构分界主导",
+      "effect_check": "观众定位清楚且不卡顿",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "evidence-labels",
+      "name": "证据标签",
+      "family": "文字迁移",
+      "fit": "参考靠来源/身份提升理解",
+      "question": "目标最需说明什么边界",
+      "selection": "来源、时间、说话人、示意身份",
+      "sequence": "画面与相应标签同窗",
+      "audio": "声音归属单独核验",
+      "rhythm": "标签够读不遮核心",
+      "visual": "署名不能被风格抹去",
+      "anti": "资料画面被标现场实拍",
+      "example": "构造例：档案发射片标1969资料画面",
+      "nearest": "不同于论点标题，证据身份主导",
+      "effect_check": "观众不会误判来源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "kinetic-with-limit",
+      "name": "文字运动适配",
+      "family": "文字迁移",
+      "fit": "参考文字运动服务语义",
+      "question": "目标运动是否有必要与能力",
+      "selection": "重点词、段落进入与阅读",
+      "sequence": "进入→稳定阅读→退出",
+      "audio": "运动不打断原话",
+      "rhythm": "频率服从阅读",
+      "visual": "无动效能力则明确方案状态",
+      "anti": "静态字幕冒充同款动效",
+      "example": "构造例：关键数字进入后停稳供读",
+      "nearest": "不同于安静文字，运动有明确角色",
+      "effect_check": "实际运动可见且读得完",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "brand-with-voice",
+      "name": "品牌与个人表达",
+      "family": "文字迁移",
+      "fit": "参考品牌识别强",
+      "question": "哪些规范可用而不覆盖本人",
+      "selection": "合法品牌色字与本人语气",
+      "sequence": "统一基础→保个人例外",
+      "audio": "不强换个人声音",
+      "rhythm": "一致性不机械模板",
+      "visual": "品牌与作者来源分别记录",
+      "anti": "个人作品被默认广告化",
+      "example": "构造例：统一字幕基线但保原口语",
+      "nearest": "不同于安静文字，约束来自明确品牌规则",
+      "effect_check": "规范一致且人仍像自己",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "axis-separated",
+      "name": "分维度融合",
+      "family": "融合适配",
+      "fit": "用户提供多个参考",
+      "question": "每个参考负责哪一维",
+      "selection": "各参考明确机制与目标锚点",
+      "sequence": "A叙事+B声音+C文字",
+      "audio": "冲突优先内容与用户约束",
+      "rhythm": "不平均镜长",
+      "visual": "图色字各自核对",
+      "anti": "三种风格全强度叠加",
+      "example": "构造例：纪录叙事加克制字幕与连续配乐",
+      "nearest": "不同于主辅，分工按维度",
+      "effect_check": "每项来源可解释且不打架",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "reference-trials-01",
+          "role": "structure and palette revised separately",
+          "report": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/current-readback.json",
+          "frame_review": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/inspection/frame-review-01.json",
+          "status": "technical-and-sampled-frame-evidence-only",
+          "independent_effect": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "primary-accent",
+      "name": "主机制与辅机制",
+      "family": "融合适配",
+      "fit": "参考多特征但目标需聚焦",
+      "question": "哪个机制决定整片",
+      "selection": "主要组织规则与有限辅段",
+      "sequence": "主规则持续→局部变奏→回主",
+      "audio": "辅声不抢主要表达",
+      "rhythm": "强调时段有边界",
+      "visual": "辅效果不能淹没主体",
+      "anti": "把每个特色都堆上",
+      "example": "构造例：长镜观察中只一次图形呼应",
+      "nearest": "不同于分维度，主次按时间与作用",
+      "effect_check": "整体一致且局部有变化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "counter-reference",
+      "name": "反向借鉴",
+      "family": "融合适配",
+      "fit": "用户喜欢部分参考但明确反感另一部分",
+      "question": "保留什么并故意偏离什么",
+      "selection": "被认可机制和排除项",
+      "sequence": "建立共同点→主动变形",
+      "audio": "音乐可沿用结构但不同质感",
+      "rhythm": "明确偏离不算失败",
+      "visual": "把不相似解释清楚",
+      "anti": "未实现后才称反向风格",
+      "example": "构造例：保空间揭示但不用快切和强音效",
+      "nearest": "不同于主辅，差异本身是目标",
+      "effect_check": "符合指定喜恶而非机械像",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "material-led-adapt",
+      "name": "素材主导替换",
+      "family": "融合适配",
+      "fit": "参考特征缺目标素材支持",
+      "question": "用什么实现同一作用",
+      "selection": "能承担相同功能的真实材料",
+      "sequence": "参考作用→目标替代→检查",
+      "audio": "声音可替代视觉提示需真实",
+      "rhythm": "不按原镜头长度硬套",
+      "visual": "缺航拍可用地面宽景但说明不同",
+      "anti": "生成不存在事件冒充素材",
+      "example": "构造例：用地面全景实现空间打开",
+      "nearest": "不同于分维度，素材可行性主导",
+      "effect_check": "作用近似且不造事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "reference-trials-01",
+          "role": "product result-first to nature whole-first with incompatible causal relation omitted",
+          "report": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/current-readback.json",
+          "frame_review": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/inspection/frame-review-01.json",
+          "status": "technical-and-sampled-frame-evidence-only",
+          "independent_effect": "NOT_RUN"
+        }
+      ],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "local-adoption",
+      "name": "局部采用",
+      "family": "融合适配",
+      "fit": "用户只要某一段同款",
+      "question": "哪段开放哪些冻结",
+      "selection": "选区内机制及衔接",
+      "sequence": "局部改变→与原作衔接",
+      "audio": "无关音轨冻结",
+      "rhythm": "出入点重核",
+      "visual": "不能扩大成全片换风格",
+      "anti": "改开头把后段字幕全换",
+      "example": "构造例：只学前五秒，其余保留",
+      "nearest": "不同于主辅，由用户范围决定",
+      "effect_check": "目标段改善且其他保持",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    },
+    {
+      "id": "profile-distill",
+      "name": "个人规则沉淀",
+      "family": "融合适配",
+      "fit": "多次作品已显示稳定偏好",
+      "question": "什么可以跨作品复用",
+      "selection": "被实际采用的规则与例外",
+      "sequence": "多个案例→共同规则→新片验证",
+      "audio": "个人声音与品牌目标分开",
+      "rhythm": "不从一次参考推永久偏好",
+      "visual": "去掉项目路径和固定素材",
+      "anti": "把一条时间线复制成个人风格",
+      "example": "构造例：沉淀保原声和克制字幕的常用规则",
+      "nearest": "不同于单次适配，跨作品可迁移",
+      "effect_check": "新素材仍有效且允许例外",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "reference-mechanisms",
+        "reference-observation",
+        "reference-color"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "迁移维度与强度",
+        "目标素材可行性",
+        "主风格和冻结范围",
+        "观察证据与不确定性",
+        "时间/颜色/声音约束"
+      ],
+      "compatibility": {
+        "requires": "参考观察有证据，目标素材可承担机制；用户显式要求优先",
+        "avoid": "不从统计推出效果，不默认复制参考资产，不以风格卡冒充已执行操作"
+      }
+    }
+  ]
+}

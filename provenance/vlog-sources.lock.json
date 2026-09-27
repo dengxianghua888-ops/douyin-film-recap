@@ -1,0 +1,77 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "vlog-state-methods",
+      "version": "6a0eb52a71ebf9a33b59b59f68ab36d5a937d155",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/iamcrisiloveyoutoo-commits__vlog-jianying-one-stop/6a0eb52a71eb/SKILL.md",
+      "size": 20028,
+      "sha256": "96b66230ab06cfa542090f83cdb9a4b85c3bec7cdc554405878516328ba4c19e",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/iamcrisiloveyoutoo-commits__vlog-jianying-one-stop.json",
+      "authority_sha256": "01de6c61dbdfcf17079835908af8a82aa12f9c413d20d9719d30849d1a167091",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "vlog-state-methods",
+      "version": "6a0eb52a71ebf9a33b59b59f68ab36d5a937d155",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/iamcrisiloveyoutoo-commits__vlog-jianying-one-stop/6a0eb52a71eb/references/coverage-and-matching.md",
+      "size": 7938,
+      "sha256": "8f7b532402cae2c23179b7f00d70dabf67dd17007afca93131f15236e0a58124",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/iamcrisiloveyoutoo-commits__vlog-jianying-one-stop.json",
+      "authority_sha256": "01de6c61dbdfcf17079835908af8a82aa12f9c413d20d9719d30849d1a167091",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "travel-evidence-methods",
+      "version": "5b2466e09314677f2a175237a0db491e5ebed30c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/Aanlifire__social-media-automation-skills/5b2466e09314/openclaw-trip-video-skills/travel-video-editing-plan/SKILL.md",
+      "size": 2508,
+      "sha256": "810b65b79cfa112a19f95948a96f84720c5a4e5c2a60fc3ad8ea46f93d18b4ff",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/Aanlifire__social-media-automation-skills.json",
+      "authority_sha256": "d25e83f7e94fca982ece6f57d0e7916a767d9b2f7f4947b4df948771302e4786",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "travel-evidence-methods",
+      "version": "5b2466e09314677f2a175237a0db491e5ebed30c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/Aanlifire__social-media-automation-skills/5b2466e09314/openclaw-trip-video-skills/travel-video-editing-plan/references/render-contract.md",
+      "size": 595,
+      "sha256": "fe691589c9f71822476110903539da39212d9d256f9d604f1c59edd5221917d0",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/Aanlifire__social-media-automation-skills.json",
+      "authority_sha256": "d25e83f7e94fca982ece6f57d0e7916a767d9b2f7f4947b4df948771302e4786",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "travel-evidence-methods",
+      "version": "5b2466e09314677f2a175237a0db491e5ebed30c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/Aanlifire__social-media-automation-skills/5b2466e09314/openclaw-trip-video-skills/travel-video-fact-check/SKILL.md",
+      "size": 2758,
+      "sha256": "1f3195e88358e899efe9ca8d471e83d11325699d7527484796bec8c713929206",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/Aanlifire__social-media-automation-skills.json",
+      "authority_sha256": "d25e83f7e94fca982ece6f57d0e7916a767d9b2f7f4947b4df948771302e4786",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "travel-evidence-methods",
+      "version": "5b2466e09314677f2a175237a0db491e5ebed30c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/Aanlifire__social-media-automation-skills/5b2466e09314/openclaw-trip-video-skills/travel-video-fact-check/references/source-policy.md",
+      "size": 923,
+      "sha256": "b77d3f8fa358cc9e6add9a33e284b2b835adee0015d0d7c36f94f9ea68f4779f",
+      "use": "method-reference; no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/Aanlifire__social-media-automation-skills.json",
+      "authority_sha256": "d25e83f7e94fca982ece6f57d0e7916a767d9b2f7f4947b4df948771302e4786",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    }
+  ]
+}

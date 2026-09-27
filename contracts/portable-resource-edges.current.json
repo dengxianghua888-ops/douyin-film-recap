@@ -1,0 +1,305 @@
+{
+  "schema": "portable-resource-edges/1",
+  "basis_distribution_policy": "evals/evidence/distribution-policy-v2-20260923.json",
+  "sources": [
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/index-v2.html",
+      "sha256": "810da56be8112e97ac9c02c33f7351e354d15209737a1e1536ee663d1e0d37f3",
+      "closure_status": "closed",
+      "edges": [
+        {
+          "reference": "README-v2.md",
+          "target": {
+            "path": "evals/parallel/w02-listening-review-20260923/README-v2.md",
+            "sha256": "a84e961294192e9743ff38c7a481ce7b48d07b5519ed3fd7fd4a7b0826ec562c"
+          },
+          "decision": "bundle"
+        },
+        {
+          "reference": "binding-manifest-v2.json",
+          "target": {
+            "path": "evals/parallel/w02-listening-review-20260923/binding-manifest-v2.json",
+            "sha256": "7a60215d623fcf1b1dce39a93227c81dfa4c3fad64a4bd04ef78c3f90975f1b0"
+          },
+          "decision": "bundle"
+        },
+        {
+          "reference": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "target": {
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          },
+          "decision": "external",
+          "reason": "Public attribution link; remote content is not bundled or availability verified"
+        },
+        {
+          "reference": "https://www.openslr.org/111/",
+          "target": {
+            "url": "https://www.openslr.org/111/"
+          },
+          "decision": "external",
+          "reason": "Public attribution link; remote content is not bundled or availability verified"
+        },
+        {
+          "reference": "review-spec.json",
+          "target": {
+            "path": "evals/parallel/w02-listening-review-20260923/review-spec.json",
+            "sha256": "0ad33032791b45735c93762fa1834a749835db137d5f9a2f6828bfadbddf6b5b"
+          },
+          "decision": "bundle"
+        },
+        {
+          "reference": "review-v2.js",
+          "target": {
+            "path": "evals/parallel/w02-listening-review-20260923/review-v2.js",
+            "sha256": "30a491c0c425b10e95da7f57705dac57696d82e63cce789922a50b948342a5f8"
+          },
+          "decision": "bundle"
+        }
+      ]
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/index.html",
+      "sha256": "e8f594022d2c7f1c19c112d493f58df4ffe3ce5f0541c18a39aa3cc88462c5b6",
+      "closure_status": "closed",
+      "edges": [
+        {
+          "reference": "README.md",
+          "target": {
+            "path": "evals/parallel/w02-spontaneous-speech-20260923/README.md",
+            "sha256": "65598a37dc9c818a27726ea28d9cfffd78a9290bf87319443e64c9733616b3c2"
+          },
+          "decision": "bundle"
+        },
+        {
+          "reference": "candidate-selection.json",
+          "target": {
+            "path": "evals/parallel/w02-spontaneous-speech-20260923/candidate-selection.json",
+            "sha256": "75230766d1af671c1899a49b7faa9dec6311fa643dd54cdae14655532b5239e5"
+          },
+          "decision": "bundle"
+        },
+        {
+          "reference": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "target": {
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          },
+          "decision": "external",
+          "reason": "Public attribution link; remote content is not bundled or availability verified"
+        },
+        {
+          "reference": "https://www.openslr.org/111/",
+          "target": {
+            "url": "https://www.openslr.org/111/"
+          },
+          "decision": "external",
+          "reason": "Public attribution link; remote content is not bundled or availability verified"
+        },
+        {
+          "reference": "source-lock.json",
+          "target": {
+            "path": "evals/parallel/w02-spontaneous-speech-20260923/source-lock.json",
+            "sha256": "206ae9e25044628bfe3eefe579c0533723cfd7e7bd99e90bc984e892f51bd65a"
+          },
+          "decision": "bundle"
+        }
+      ],
+      "dynamic_calls": [
+        {
+          "expression": "url",
+          "proof": {
+            "kind": "source_literal_set",
+            "literal": "[['source','source/first-100s-channel0.wav',binding.source.sha256],['candidate','retained-complete-units.wav',binding.candidate.sha256]]",
+            "references": [
+              "source/first-100s-channel0.wav",
+              "retained-complete-units.wav"
+            ],
+            "binding": {
+              "path": "evals/parallel/w02-spontaneous-speech-20260923/candidate-selection.json",
+              "sha256": "75230766d1af671c1899a49b7faa9dec6311fa643dd54cdae14655532b5239e5"
+            },
+            "binding_keys": [
+              "source",
+              "candidate"
+            ]
+          },
+          "targets": [
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/source/first-100s-channel0.wav",
+                "sha256": "989c8ab7e827b0121e0be00c74dc4b5e7067d665a774cafae34b1fed263e4d82"
+              },
+              "decision": "external",
+              "reason": "Historical review audio remains outside text bundle; no offline playback claim"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/retained-complete-units.wav",
+                "sha256": "7a2b4a97ede8c120457f82bd4bf43d1eca2c1963b23549d655385c0b504bec6f"
+              },
+              "decision": "external",
+              "reason": "Historical review audio remains outside text bundle; no offline playback claim"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/coscup-qwen-windows-01/index.html",
+      "sha256": "95aff76016956c69164d2d593142a9209c8d2cd52e47e76b5e13abab27c18a4b",
+      "closure_status": "closed",
+      "edges": [
+        {
+          "reference": "../coscup-asr-02/recognition-input.wav",
+          "target": {
+            "path": "evals/runs/coscup-asr-02/recognition-input.wav",
+            "sha256": "47719363f408dcb1ecc407102949c1aa0e73239b4677a64b1494f00e515f90b1"
+          },
+          "decision": "forbidden",
+          "reason": "COSCUP recording rights and offline redistribution not cleared in this candidate"
+        }
+      ]
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/review-v2.js",
+      "sha256": "30a491c0c425b10e95da7f57705dac57696d82e63cce789922a50b948342a5f8",
+      "closure_status": "closed",
+      "edges": [],
+      "dynamic_calls": [
+        {
+          "expression": "url",
+          "proof": {
+            "kind": "json_binding_set",
+            "binding": {
+              "path": "evals/parallel/w02-listening-review-20260923/binding-manifest-v2.json",
+              "sha256": "7a60215d623fcf1b1dce39a93227c81dfa4c3fad64a4bd04ef78c3f90975f1b0"
+            },
+            "collections": [
+              "media",
+              "source_records"
+            ],
+            "singletons": [
+              "review_spec"
+            ]
+          },
+          "targets": [
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/retained-complete-units.wav",
+                "sha256": "7a2b4a97ede8c120457f82bd4bf43d1eca2c1963b23549d655385c0b504bec6f"
+              },
+              "decision": "external",
+              "reason": "Historical audio or source annotation retained outside text bundle; no offline review claim"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/source/first-100s-channel0.wav",
+                "sha256": "989c8ab7e827b0121e0be00c74dc4b5e7067d665a774cafae34b1fed263e4d82"
+              },
+              "decision": "external",
+              "reason": "Historical audio or source annotation retained outside text bundle; no offline review claim"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/result.json",
+                "sha256": "7d225ac74a48532a13c0d9c8d03c58b62be27abfc0033fbbaca3680b426c1bb6"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/source-lock.json",
+                "sha256": "206ae9e25044628bfe3eefe579c0533723cfd7e7bd99e90bc984e892f51bd65a"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/candidate-selection.json",
+                "sha256": "75230766d1af671c1899a49b7faa9dec6311fa643dd54cdae14655532b5239e5"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/rejected-shortening.json",
+                "sha256": "8390accd8dcbc159c012d7acb64f49e6bedb0a4ffc49791f4217debfa6fdd7d6"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/source/M_R003S01C01.TextGrid",
+                "sha256": "f2c05fd5c3125f59cac2de7a5e5b9a6dec26a7b5f53f4abd443731c667bb32e5"
+              },
+              "decision": "external",
+              "reason": "Historical audio or source annotation retained outside text bundle; no offline review claim"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/source/first-110s-annotations.json",
+                "sha256": "ebb30b63159e88144cb928eb12831e2de8083ec50735d81e1b2de167636f8d08"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/README.md",
+                "sha256": "65598a37dc9c818a27726ea28d9cfffd78a9290bf87319443e64c9733616b3c2"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-spontaneous-speech-20260923/verification.json",
+                "sha256": "2026f1113124008b6e61673b14368952488fd13da1661cc798e5adc9cfb132d1"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/SKILL.md",
+                "sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/semantic-editing.md",
+                "sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/repairs-and-retakes.md",
+                "sha256": "a782e2e0f8337d8956f5af2d63ec8bc57e140deadaf6b8e1aba7423cabbf6e10"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/evaluation.md",
+                "sha256": "0dc9698518795f5039917579d2e592d3fa69234d9b4c24565ab76ff53b97746f"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/contracts/editorial-contract.md",
+                "sha256": "36cc09fa82126f14a8046cacc229810b22391906d2b205667a3cbbb7c306313f"
+              },
+              "decision": "bundle"
+            },
+            {
+              "target": {
+                "path": "evals/parallel/w02-listening-review-20260923/review-spec.json",
+                "sha256": "0ad33032791b45735c93762fa1834a749835db137d5f9a2f6828bfadbddf6b5b"
+              },
+              "decision": "bundle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

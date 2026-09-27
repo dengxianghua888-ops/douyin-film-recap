@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "generation-storyboard",
+      "version": "a529df80920bb3162f91f7df71c03a2abeb66232",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/agentara__skills/a529df80920b/skills/aigc/video-storyboard/SKILL.md",
+      "size": 15410,
+      "sha256": "8677b67defe936545217c5a7004566b9da26b873ae8084d82897463f7f9e2dd8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/agentara__skills.json",
+      "authority_sha256": "aabd4291711f1138ac259e9f1ace42838aa19a787e28f2d0aacb3003b11d1e20",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-storyboard",
+      "version": "a529df80920bb3162f91f7df71c03a2abeb66232",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/agentara__skills/a529df80920b/LICENSE",
+      "size": 1065,
+      "sha256": "d823edd9d34324f0cecd19ab4beda0033c0cb53eadb3954947dcfa428beb66e8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/agentara__skills.json",
+      "authority_sha256": "aabd4291711f1138ac259e9f1ace42838aa19a787e28f2d0aacb3003b11d1e20",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-av-script",
+      "version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/skills/scripting-and-storyboarding/SKILL.md",
+      "size": 8516,
+      "sha256": "30de1a740651159e37781372ee771fec72515322550f6c84a130dbe0d90b33f9",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json",
+      "authority_sha256": "5d0efbfd2343ec21b55deafb107e7e470324d0cc0c50e0a010cd6d25ff28393f",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-av-script",
+      "version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/LICENSE",
+      "size": 1074,
+      "sha256": "0da5befdfbe93f4dd08098d43fcd115c8455ae4fef7672f800e761e843727c13",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json",
+      "authority_sha256": "5d0efbfd2343ec21b55deafb107e7e470324d0cc0c50e0a010cd6d25ff28393f",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-service",
+      "version": "eaa2325426fd1f362ac35fc492676bc2c6a95fe1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/google-gemini__gemini-skills/eaa2325426fd/skills/gemini-omni-flash-api/SKILL.md",
+      "size": 25791,
+      "sha256": "5ec057f58398c846e41210c6416341fc6a8052763c1b9feef55f3652defdd220",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/google-gemini__gemini-skills.json",
+      "authority_sha256": "5628994899bb5553b4dfdb1ecce5ae60a6bf3b4116d11613e8d368bebc82e172",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-service",
+      "version": "eaa2325426fd1f362ac35fc492676bc2c6a95fe1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/google-gemini__gemini-skills/eaa2325426fd/skills/gemini-omni-flash-api/scripts/video/generate_video.py",
+      "size": 32350,
+      "sha256": "a9ae6c57c3fed2c5de0a8752f5e7ec34f0fd3c3e596e98a2d6bf7278498e918b",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/google-gemini__gemini-skills.json",
+      "authority_sha256": "5628994899bb5553b4dfdb1ecce5ae60a6bf3b4116d11613e8d368bebc82e172",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-service",
+      "version": "eaa2325426fd1f362ac35fc492676bc2c6a95fe1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/google-gemini__gemini-skills/eaa2325426fd/LICENSE",
+      "size": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/google-gemini__gemini-skills.json",
+      "authority_sha256": "5628994899bb5553b4dfdb1ecce5ae60a6bf3b4116d11613e8d368bebc82e172",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-frame-motion",
+      "version": "bbb139d5ba3709b1ffeb27184e9579c681230a08",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/remotion-dev__skills/bbb139d5ba37/skills/remotion-markup/images.md",
+      "size": 1466,
+      "sha256": "3a82065698ad8d4818164882212215dfe4dc78f00145c87f47513a691550b72b",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/remotion-dev__skills.json",
+      "authority_sha256": "5fe74712d92e54531d3039b33a23fd9d146cac962bddb937947e2adcf524331b",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "generation-frame-motion",
+      "version": "bbb139d5ba3709b1ffeb27184e9579c681230a08",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/remotion-dev__skills/bbb139d5ba37/skills/remotion-markup/timing.md",
+      "size": 3315,
+      "sha256": "48047e758b96aea519916479ede62b832bf51f982924978e091c37f569ab4bac",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/remotion-dev__skills.json",
+      "authority_sha256": "5fe74712d92e54531d3039b33a23fd9d146cac962bddb937947e2adcf524331b",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    }
+  ]
+}

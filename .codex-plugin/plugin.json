@@ -1,0 +1,25 @@
+{
+  "name": "editing-skill-library",
+  "version": "0.1.0",
+  "description": "General editing Skill routing with optional local runtime tools for Codex.",
+  "author": {
+    "name": "Editing Skill Library Project"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Editing Skill Library",
+    "shortDescription": "Route editing Skills with available tools",
+    "longDescription": "General editing Skills usable with the running Agent's editor tools, plus optional local dependency diagnosis and atomic runtime execution.",
+    "developerName": "Editing Skill Library Project",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "List the available editing Skills and their boundaries.",
+      "Diagnose dependencies for this local Editing Skill Library."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

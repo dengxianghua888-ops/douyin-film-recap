@@ -1,0 +1,924 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "interview/multicam editorial methods; authored, not quality-certified",
+  "styles": [
+    {
+      "id": "complete-conversation",
+      "name": "完整对话",
+      "family": "连续交流",
+      "fit": "问答自然推进且观众重视完整语境",
+      "question": "如何让观众跟完整场有效交流？",
+      "selection": "保留问题、回答、追问及必要指代，去除技术中断和无关等待",
+      "sequence": "沿真实话轮推进，长话题分章",
+      "audio": "连续节目声，保留具有回应意义的短语",
+      "rhythm": "长回答允许长镜头，不以固定切换频率制造忙碌",
+      "visual": "发言者为主，双人景承接交流，真实同期反应补关系",
+      "anti": "为了清爽删掉限制条件或未解的反问",
+      "example": "虚构例：保留创业者回答失败原因后的主持人澄清",
+      "nearest": "相较观点浓缩优先完整话轮而非最短结论",
+      "effect_check": "观众能复述问答关系，听不到为了换镜头造成的声场跳变",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/interview-style-trials-02",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "publisher declared RM clock, physical lip sync unverified",
+            "no full listening",
+            "low resolution source",
+            "same-work caption repair verified"
+          ]
+        },
+        {
+          "run": "evals/runs/interview-overlap-repair-01",
+          "current_result": "evals/runs/interview-overlap-repair-01/result-current.json",
+          "status": "same-work-speaker-window-repair-static-reviewed",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "Only explicit aligned display timing repaired; no physical lip-sync or full listening.",
+            "Three original works nowv3; unselected state and decoded audio retained.",
+            "Single-lane main line moves when response row appears.",
+            "All style outcomes remain unvalidated."
+          ]
+        },
+        {
+          "run": "evals/runs/cloke-interview-trials-01",
+          "current_result": "evals/runs/cloke-interview-trials-01/result-current.json",
+          "status": "real-edited-master-candidate-with-explicit-later-context",
+          "quality_acceptance": "NOT_RUN",
+          "material_family": "Royal Society real science interview; distinct from AMI role-play meeting",
+          "mechanism": "Continuous four-question dialogue",
+          "limits": [
+            "Published edited master, not raw camera sync evidence",
+            "Raw ASR REVIEW_REQUIRED with10 invalid word spans; no dialogue subtitles manufactured",
+            "Dependency omission rejected, but semantic judgement is agent-authored and not certified by hearing",
+            "Same-work label repair preserves source cuts and decoded audio",
+            "No full listening, lip sync, independent style or native-host acceptance"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "thesis-evidence",
+      "name": "论点与证据",
+      "family": "观点表达",
+      "fit": "嘉宾有明确判断且提供例证",
+      "question": "这项观点凭什么成立？",
+      "selection": "保留论点、关键案例和适用条件，去除同义重复",
+      "sequence": "问题→判断→证据→边界",
+      "audio": "重点原话承担论证，不加旁白替嘉宾下结论",
+      "rhythm": "结论紧、证据留足理解时间、限定句不加速掠过",
+      "visual": "关键措辞近景，证据物和同期倾听承接",
+      "anti": "只留金句删掉反例，把经验剪成普遍规律",
+      "example": "虚构例：定价建议后保留只适用于早期客户的限定",
+      "nearest": "相较短答卡以证据链为最小单位，可以跨多个话轮",
+      "effect_check": "观众能说出结论及支撑证据，不会误以为无条件适用",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "idea-duel",
+      "name": "观点交锋",
+      "family": "讨论张力",
+      "fit": "双方确有实质分歧和回应",
+      "question": "分歧究竟在哪，双方回应了什么？",
+      "selection": "成对保留主张、反驳与回应，包含对方最强理由",
+      "sequence": "共同问题→分歧→互答→当前结果",
+      "audio": "重叠语音保留可辨的真实竞争，不能制造打断",
+      "rhythm": "随论证回合推进，反驳后留反应而非无限抢切",
+      "visual": "发言与真实倾听切换，重叠时回双人景",
+      "anti": "把不同时间的激烈语气拼成争吵",
+      "example": "虚构例：先增长还是先盈利的争论，保留双方对约束的回应",
+      "nearest": "相较分歧保留更强调回合动态，不能牺牲立场公平",
+      "effect_check": "观众能公平复述双方论据，并分清真实回合顺序",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "reflective-portrait",
+      "name": "人物内省",
+      "family": "人物叙事",
+      "fit": "访谈有选择、犹豫和价值变化",
+      "question": "这个人如何理解自己的选择？",
+      "selection": "保留具体经历、犹豫、修正与关系细节，压缩履历罗列",
+      "sequence": "一个选择→经历→当下回看",
+      "audio": "原声、呼吸和沉默承担情绪，音乐不得替人物定性",
+      "rhythm": "情绪处放慢，普通背景适度压缩",
+      "visual": "表情与手部有证据地停留，避免空泛煽情素材",
+      "anti": "删掉不确定措辞，把复杂人物剪成励志口号",
+      "example": "虚构例：离职决定中的犹豫与后来重新理解",
+      "nearest": "相较口述历史重当下自我理解而非外部事件编年",
+      "effect_check": "人物复杂性得到保留，关键沉默能解释其作用",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "oral-history",
+      "name": "口述历史",
+      "family": "人物叙事",
+      "fit": "参与者回忆长期事件，时间与记忆可靠性重要",
+      "question": "发生过什么，哪些是回忆而非已证事实？",
+      "selection": "保留时间锚点、亲历边界、记忆不确定与矛盾",
+      "sequence": "事件顺序或明确回忆章节→当事人回看",
+      "audio": "口述为主，资料注释区别回忆与核验",
+      "rhythm": "重要时间关系留理解窗口，不追求每句爆点",
+      "visual": "人物叙述与有来源的资料分清，资料图标记年代",
+      "anti": "把模糊记忆改成确定日期，混用不同时期反应",
+      "example": "虚构例：一位工程师回忆项目起步，承认月份记不清",
+      "nearest": "相较亲历证言覆盖更长历史过程，记忆与资料层次更显式",
+      "effect_check": "观众知道哪些亲历、哪些转述、哪些时间仍不确定",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "experiential-witness",
+      "name": "亲历证言",
+      "family": "事实叙事",
+      "fit": "受访者讲述具体事件的自身经历",
+      "question": "他亲眼经历了什么，能证明到哪里？",
+      "selection": "保留位置、感知、动作、后果，区别听说与亲见",
+      "sequence": "在场条件→事件→行动→影响",
+      "audio": "克制原声，不用惊悚声效增强未证实部分",
+      "rhythm": "顺事件变化推进，冲击处不机械加速",
+      "visual": "以证言画面为主，说明性素材明确标识",
+      "anti": "把后来听到的信息剪成当时看到的事实",
+      "example": "虚构例：值班人员描述报警、检查和后续获知的信息",
+      "nearest": "相较口述历史聚焦单次事件的证据边界",
+      "effect_check": "源对照无证据等级升级，叙述仍具有事件完整性",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "investigation-followup",
+      "name": "追问求证",
+      "family": "事实叙事",
+      "fit": "问题需要澄清且素材有实际追问",
+      "question": "一个模糊回答如何被追问成可检验信息？",
+      "selection": "保留问题、回避或不确定、追问、证据和仍未解决处",
+      "sequence": "问题→回答→核对矛盾→追问→有限结论",
+      "audio": "问题与回答都保留，旁白只注明来源",
+      "rhythm": "追问形成节奏，回答间不虚造审讯停顿",
+      "visual": "双方及真实证据交替，避免夸张反应误导",
+      "anti": "删掉回答解释，靠长沉默暗示心虚",
+      "example": "虚构例：对销量口径从订单追问到退款后的实际交付",
+      "nearest": "相较观点交锋重事实可检验性而非立场辩论",
+      "effect_check": "观众知道哪些问题得到回答、哪些仍没有证据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "socratic-learning",
+      "name": "问答带学",
+      "family": "知识表达",
+      "fit": "主持人从初学者疑问推进概念",
+      "question": "观众如何从不懂走到能解释？",
+      "selection": "保留误解、澄清、例子和理解确认，压缩专家术语堆叠",
+      "sequence": "直觉问题→解释→反例→重新表述",
+      "audio": "提问是教学支架，不能只保留专家独白",
+      "rhythm": "新概念给反应窗口，重复解释逐步压缩",
+      "visual": "解释时发言者，困惑和确认用同期反应，必要图示",
+      "anti": "删掉问题使答案失去指代，或把困惑者剪成笑料",
+      "example": "虚构例：从为什么降价未必增收问到弹性条件",
+      "nearest": "相较技术深谈为初学者构建概念阶梯",
+      "effect_check": "新观众能用自己的话解释核心概念与限制",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "practitioner-case",
+      "name": "实战案例复盘",
+      "family": "知识表达",
+      "fit": "嘉宾有具体项目、选择及结果",
+      "question": "他在什么条件下做了什么，后来如何？",
+      "selection": "保留背景约束、决策、执行、结果及反思",
+      "sequence": "情境→选项→行动→结果→复盘",
+      "audio": "原声区分当时判断和事后解释",
+      "rhythm": "在转折和证据处停留，惯常过程压缩",
+      "visual": "人物与实际案例材料搭配，材料来源可追溯",
+      "anti": "只留成功结果，删掉投入成本和失败条件",
+      "example": "虚构例：活动报名低时改渠道，保留样本量限制",
+      "nearest": "相较论点证据关注一次行动链而非抽象主张",
+      "effect_check": "观众可追踪因果主张且不会误把相关当证明",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "technical-deep-dive",
+      "name": "专业深谈",
+      "family": "知识表达",
+      "fit": "受众有基础，需要机制、参数和权衡",
+      "question": "机制如何运行，边界在哪里？",
+      "selection": "保留定义、假设、推导、反例和参数依据",
+      "sequence": "共同问题→机制→细节→权衡→开放问题",
+      "audio": "原声技术词准确，字幕术语统一，不靠缩写装专业",
+      "rhythm": "概念密度高处降低视觉切换，留思考与图示时间",
+      "visual": "发言者、板书/实物和图示按解释对象切换",
+      "anti": "为短平快删掉前提，或字幕改写术语造成误解",
+      "example": "虚构例：分布式缓存一致性访谈保留失败场景",
+      "nearest": "相较问答带学默认受众具备基础，允许较长推导",
+      "effect_check": "目标受众能核对论证链，关键条件没有丢失",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "roundtable-map",
+      "name": "圆桌观点地图",
+      "family": "多人讨论",
+      "fit": "多人围绕一个主题提出不同观察",
+      "question": "每个人贡献了哪一块，关系如何？",
+      "selection": "保留独特观点及必要回应，减少重复赞同",
+      "sequence": "总问题→多视角→交叉回应→观点地图",
+      "audio": "多声部归属清楚，不能把多个回答揉成统一口径",
+      "rhythm": "话轮长度按信息贡献分配，不按平均出镜配额",
+      "visual": "首次发言给身份与空间，交叉时用全景重建关系",
+      "anti": "剪成轮流念稿，忽略谁在回应谁",
+      "example": "虚构例：设计、销售、工程分别解释上线风险",
+      "nearest": "相较主题拼接保留同场互动及回应关系",
+      "effect_check": "观众能把观点正确归到各参与者，并理解相互关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/interview-style-trials-02",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "publisher declared RM clock, physical lip sync unverified",
+            "no full listening",
+            "low resolution source",
+            "same-work caption repair verified"
+          ]
+        },
+        {
+          "run": "evals/runs/interview-overlap-repair-01",
+          "current_result": "evals/runs/interview-overlap-repair-01/result-current.json",
+          "status": "same-work-speaker-window-repair-static-reviewed",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "Only explicit aligned display timing repaired; no physical lip-sync or full listening.",
+            "Three original works nowv3; unselected state and decoded audio retained.",
+            "Single-lane main line moves when response row appears.",
+            "All style outcomes remain unvalidated."
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "consensus-evolution",
+      "name": "共识形成",
+      "family": "多人讨论",
+      "fit": "讨论实际产生了方案修正或共同决定",
+      "question": "大家怎样从不同意见走到这项决定？",
+      "selection": "保留初始意见、约束提出、让步、修正和明确确认",
+      "sequence": "分歧→新证据→修改方案→确认与保留意见",
+      "audio": "确认语句与提出者归属保留，不替人宣布一致",
+      "rhythm": "关键转向前后留上下文，普通重复可删",
+      "visual": "全景承接群体变化，提出约束者与确认者有镜头",
+      "anti": "只保留最终方案，假装所有人一开始就同意",
+      "example": "虚构例：从豪华功能讨论到受预算限制的基础版本",
+      "nearest": "相较实战复盘重现场共同决策形成过程",
+      "effect_check": "源对照能指出每次方案变化由谁、因何发生",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "disagreement-preserved",
+      "name": "保留分歧",
+      "family": "多人讨论",
+      "fit": "对话结束仍有不一致，不能强求统一",
+      "question": "哪些地方达成一致，哪些仍不同？",
+      "selection": "保留最清晰分歧、共同前提、无法化解的理由",
+      "sequence": "问题→各自证据→交集→未决边界",
+      "audio": "语气不被音乐操纵，不给某方配讽刺音效",
+      "rhythm": "留双方完整解释，不以胜负结尾强行收束",
+      "visual": "平等呈现有效发言，真正反应与全景保持关系",
+      "anti": "用点头或一句嗯剪成对方接受主张",
+      "example": "虚构例：隐私与便利讨论最终保留不同价值排序",
+      "nearest": "相较观点交锋更重未解决边界而非回合张力",
+      "effect_check": "观众不会误判已达成共识或某方认输",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "collective-energy",
+      "name": "群聊现场感",
+      "family": "多人讨论",
+      "fit": "熟人群谈有交叉、接梗与共同记忆",
+      "question": "如何保留多人一起想到和笑出的现场？",
+      "selection": "保留有信息的叠话、接续和共同反应，压缩无关混乱",
+      "sequence": "沿真实互动节奏组织若干完整话题",
+      "audio": "多声同时出现仍辨主信息，不能硬切成轮流独白",
+      "rhythm": "接话速度由现场决定，笑声不一律截断",
+      "visual": "多人景承接交互，近景用于明确焦点",
+      "anti": "虚构反应顺序，靠密切镜头制造热闹",
+      "example": "虚构例：团队回忆一次共同出差，彼此补充细节",
+      "nearest": "相较圆桌地图重共同叙述的互动感，信息地图可简化",
+      "effect_check": "观众知道谁接了谁的话，现场感没有牺牲可懂度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "contemplative-dialogue",
+      "name": "留白对谈",
+      "family": "关系表达",
+      "fit": "谈话包含沉思、情绪加工和慢节奏交流",
+      "question": "哪些没说完的时间也是表达？",
+      "selection": "保留有意义停顿、目光变化和自我修正，去除技术空等",
+      "sequence": "问题→思考→表达→相互消化",
+      "audio": "空间底声稳定，沉默不默认配煽情音乐",
+      "rhythm": "允许长镜头和非均匀停顿，区分等待与沉思",
+      "visual": "适度远景和真实倾听，不用随机空镜填满沉默",
+      "anti": "把所有停顿拉长追求文艺，或删掉每个呼吸",
+      "example": "虚构例：受访者谈一次艰难和解，回答前停顿",
+      "nearest": "相较人物内省重两人共同思考的过程，未必有传记线",
+      "effect_check": "观众能理解留白用途，长段并非无信息拖延",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "comic-timing",
+      "name": "对谈喜剧节拍",
+      "family": "关系表达",
+      "fit": "源对话本身有包袱、误会和回应",
+      "question": "笑点的铺垫、落点和反应是否完整？",
+      "selection": "保留真实铺垫、措辞、停顿、揭示与笑后余味",
+      "sequence": "铺垫→预期→偏转→同期反应",
+      "audio": "不盖住包袱关键词，笑声可延续画面切点",
+      "rhythm": "切点随笑点落下与反应，不按统一快剪",
+      "visual": "必要时守住讲述者到包袱落地，再切真实反应",
+      "anti": "从别处搬笑声，删语境把善意玩笑剪成羞辱",
+      "example": "虚构例：嘉宾讲错路线，朋友补一句形成真实反转",
+      "nearest": "相较群聊现场感每个笑点有完整结构，不只是多人热闹",
+      "effect_check": "不看标题也能理解笑点，源对照没有伪造回应",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "relational-listening",
+      "name": "倾听中的关系",
+      "family": "关系表达",
+      "fit": "对话价值在两人理解、误解和修复",
+      "question": "关系怎样通过倾听发生变化？",
+      "selection": "保留关键表达及同期倾听、打断、澄清和修复",
+      "sequence": "表达→被理解或误读→回应→关系变化",
+      "audio": "听者短回应保留其功能，发言声音可跨反应镜头",
+      "rhythm": "反应不必即时切，给观众观察的时间",
+      "visual": "倾听镜头须同一时刻，双人景呈现距离与姿态",
+      "anti": "用无关点头制造认同或以沉默证明冷漠",
+      "example": "虚构例：搭档解释分工矛盾后另一人澄清本意",
+      "nearest": "相较留白对谈重点是关系转折而非思考速度",
+      "effect_check": "观众看见关系变化的真实依据而非剪辑暗示",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "artifact-led",
+      "name": "实物引导访谈",
+      "family": "现场证据",
+      "fit": "受访者展示作品、旧物或资料并讲述",
+      "question": "这件东西如何打开话题并支撑回忆？",
+      "selection": "保留物件身份、可见细节、讲述与相关事实",
+      "sequence": "物件出现→细节→故事→回看物件",
+      "audio": "声音连接人物与物件，手部动作和操作声保留",
+      "rhythm": "物件关键细节留辨认时间，故事段按内容推进",
+      "visual": "用同期物件镜头和人物表情，补拍资料明确区分",
+      "anti": "把相似替代物拍成原物，或细节未显示就旁白断言",
+      "example": "虚构例：设计师拿早期原型解释按钮变更",
+      "nearest": "相较过程示范物件用于证据与回忆，不要求完整操作步骤",
+      "effect_check": "观众能识别物件及它与叙述的证据关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "process-demonstration",
+      "name": "边做边谈",
+      "family": "现场证据",
+      "fit": "受访者在制作、操作或演示中解释",
+      "question": "动作和解释怎样共同证明方法？",
+      "selection": "保留起始状态、关键动作、解释和可见结果",
+      "sequence": "目标→动作→问题/解释→结果",
+      "audio": "操作声与话语避免互盖，重做明确说明",
+      "rhythm": "动作结果不可因话说完就提前切断",
+      "visual": "全景定位，手部/操作特写说明，回人物处理判断",
+      "anti": "剪掉失败步骤假装一次成功，错配动作与说明",
+      "example": "虚构例：咖啡师边调研磨边说明萃取结果",
+      "nearest": "相较实物访谈强调动态方法和动作结果的连续性",
+      "effect_check": "观众能对应每个解释与动作，结果出现时机真实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "place-immersive",
+      "name": "在场访谈",
+      "family": "现场证据",
+      "fit": "谈话发生在有意义的地点且现场影响内容",
+      "question": "这段话为什么在这里说？",
+      "selection": "保留空间定位、现场声音、人物与环境互动",
+      "sequence": "到达/定位→场景触发话题→经历与当下",
+      "audio": "环境声作为现场证据，不能让音乐抹平地点",
+      "rhythm": "移动和观察留必要时间，信息段可紧凑",
+      "visual": "人与环境同框、真实观察细节与当时反应",
+      "anti": "用异地空镜冒充现场或伪造环境声事件",
+      "example": "虚构例：维修人员在旧车间讲当年工作方式",
+      "nearest": "相较人物内省环境是叙述条件，不只是装饰空镜",
+      "effect_check": "观众理解地点如何影响故事，空间关系连贯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "chronology-to-lesson",
+      "name": "经历到经验",
+      "family": "人物叙事",
+      "fit": "嘉宾经历多个阶段且有后续反思",
+      "question": "一条经验如何从具体过程长出来？",
+      "selection": "保留关键阶段、失败尝试、变化及经验适用条件",
+      "sequence": "起点→尝试→挫折→调整→经验",
+      "audio": "原声区分当时与后来，旁白仅补时间跳跃",
+      "rhythm": "普通过程压缩，决定转向与结果留足",
+      "visual": "人物为轴，有来源的时间标记连接阶段",
+      "anti": "先给成功金句再删除所有失败，制造事后必然",
+      "example": "虚构例：从首次招人失误到形成面试准则",
+      "nearest": "相较实战案例可跨多个经历阶段，经验形成是主线",
+      "effect_check": "观众能说明经验来自哪些事件以及不能套用的条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "short-answer-card",
+      "name": "单问题短答",
+      "family": "短内容",
+      "fit": "一个回答可独立理解且有明确受众问题",
+      "question": "最短多长还能完整回答这个问题？",
+      "selection": "保留问题或等价题卡、核心回答与必要限定",
+      "sequence": "问题→回答→必要例子/限定",
+      "audio": "源原话为主，不拼词重造更强表态",
+      "rhythm": "开头快速到问题，结尾不截尾音和结论",
+      "visual": "稳定发言镜头，反应只在增加理解时使用",
+      "anti": "金句脱离问题、只留极端说法吸引点击",
+      "example": "虚构例：如何准备首次面试，保留行业条件",
+      "nearest": "相较论点证据面向一个独立短问题，不组织多轮论证",
+      "effect_check": "脱离原长片观看仍能正确理解意思与边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "run": "evals/runs/interview-style-trials-02",
+          "status": "candidate-rendered-partial-frame-review",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "publisher declared RM clock, physical lip sync unverified",
+            "no full listening",
+            "low resolution source",
+            "same-work caption repair verified"
+          ]
+        },
+        {
+          "run": "evals/runs/interview-overlap-repair-01",
+          "current_result": "evals/runs/interview-overlap-repair-01/result-current.json",
+          "status": "same-work-speaker-window-repair-static-reviewed",
+          "quality_acceptance": "NOT_RUN",
+          "limits": [
+            "Only explicit aligned display timing repaired; no physical lip-sync or full listening.",
+            "Three original works nowv3; unselected state and decoded audio retained.",
+            "Single-lane main line moves when response row appears.",
+            "All style outcomes remain unvalidated."
+          ]
+        },
+        {
+          "run": "evals/runs/cloke-interview-trials-01",
+          "current_result": "evals/runs/cloke-interview-trials-01/result-current.json",
+          "status": "real-edited-master-candidate-with-explicit-later-context",
+          "quality_acceptance": "NOT_RUN",
+          "material_family": "Royal Society real science interview; distinct from AMI role-play meeting",
+          "mechanism": "Selected capability question and later timescale/flash-flood limit, with disclosed intervening omission",
+          "limits": [
+            "Published edited master, not raw camera sync evidence",
+            "Raw ASR REVIEW_REQUIRED with10 invalid word spans; no dialogue subtitles manufactured",
+            "Dependency omission rejected, but semantic judgement is agent-authored and not certified by hearing",
+            "Same-work label repair preserves source cuts and decoded audio",
+            "No full listening, lip sync, independent style or native-host acceptance"
+          ]
+        }
+      ],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "multi-viewpoint-theme",
+      "name": "主题并置",
+      "family": "主题组织",
+      "fit": "多个问题或多次访谈围绕同一主题",
+      "question": "不同经历如何照亮同一个问题？",
+      "selection": "保留每段原始问题、语境和独特贡献",
+      "sequence": "主题问题→不同视角→呼应或差异→有限总结",
+      "audio": "多时空声段明确过渡，不伪造互相回应",
+      "rhythm": "由主题关联推进，段间给语境提示",
+      "visual": "身份/录制背景可辨，非同期素材不作为即时反应",
+      "anti": "将不同日期回答拼成同场辩论或集体共识",
+      "example": "虚构例：三位从业者分别谈第一次失败",
+      "nearest": "相较圆桌地图允许跨会话，必须明确不是现场互动",
+      "effect_check": "观众不会把并置误解为当面回应，观点语境完整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    },
+    {
+      "id": "executive-brief",
+      "name": "决策简报",
+      "family": "主题组织",
+      "fit": "长讨论需供决策者快速了解选项和未决项",
+      "question": "现在要决定什么，证据和风险是什么？",
+      "selection": "保留目标、选项依据、约束、负责人原话和未决风险",
+      "sequence": "决策问题→选项/证据→取舍→下一步状态",
+      "audio": "不代替参与者宣布决策，未定用原话明确",
+      "rhythm": "高信息密度但关键数字/条件给阅读时间",
+      "visual": "发言归属、证据图与简洁条目配合",
+      "anti": "把建议剪成已批准承诺，删掉风险换取简短",
+      "example": "虚构例：发布讨论保留测试未完成和负责人建议",
+      "nearest": "相较共识形成聚焦结果供决策使用，可不展开全部互动过程",
+      "effect_check": "观众明确哪些已决定、哪些只是建议、还缺什么依据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-multicam",
+        "chatcut-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "目标时长与话题范围",
+        "停顿保留强度",
+        "反应/全景的用途比例（不设统一配额）",
+        "文字包装密度"
+      ],
+      "compatibility": {
+        "requires": "观点归属、真实同期反应、连续节目声始终优先",
+        "avoid": "互相冲突的叙事目标不可静默混合；先选主风格再借局部手法"
+      }
+    }
+  ]
+}

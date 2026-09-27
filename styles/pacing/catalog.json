@@ -1,0 +1,1657 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "pacing decision mechanisms; no creative certification",
+  "styles": [
+    {
+      "id": "claim-chain",
+      "name": "论证骨架",
+      "family": "信息压缩",
+      "fit": "有明确观点与必要前提",
+      "question": "什么使结论成立",
+      "selection": "论点、必要证据、限制条件",
+      "sequence": "前提→证据→结论",
+      "audio": "原话强度不改",
+      "rhythm": "省重复解释不省逻辑",
+      "visual": "显示真实证据",
+      "anti": "删例外制造绝对结论",
+      "example": "构造例：保留小样本限制再讲结果",
+      "nearest": "不同于主题收窄，原问题范围不变",
+      "effect_check": "能复述因果和适用边界",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "scope-narrow",
+      "name": "主题收窄",
+      "family": "信息压缩",
+      "fit": "允许缩小本版回答的问题",
+      "question": "这版只回答哪件事",
+      "selection": "一个主题的前提与结论",
+      "sequence": "声明范围→必要讨论→边界",
+      "audio": "保留完整发言单元",
+      "rhythm": "移除整条旁支，不碎剪原句",
+      "visual": "标题说明本版范围",
+      "anti": "省去反方却仍称完整争论",
+      "example": "构造例：仅保留需求与预算讨论",
+      "nearest": "不同于论证骨架，明确减少主题",
+      "effect_check": "观众知道本版未覆盖的议题",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "pacing-trials-01",
+          "candidates": [
+            "meeting/compact"
+          ],
+          "result": "result-frame-clock.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "effect_validation": "UNVALIDATED",
+          "limitations": [
+            "English scenario meeting and short waterfall footage only",
+            "full viewing/listening/independent effect/native host NOT_RUN",
+            "nature compact historical binding scope-narrow is not evidence of semantic topic narrowing; excluded from that card evaluation"
+          ]
+        }
+      ],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "example-pivot",
+      "name": "一个例子讲透",
+      "family": "信息压缩",
+      "fit": "多个例子重复同一机制",
+      "question": "哪个例子最能承担解释",
+      "selection": "代表案例及不可替代例外",
+      "sequence": "问题→例子过程→迁移条件",
+      "audio": "完整关键原话",
+      "rhythm": "压数量保案例内部过程",
+      "visual": "过程和结果都看见",
+      "anti": "只留最戏剧化却不典型案例",
+      "example": "构造例：三次相同操作保留一例与例外提示",
+      "nearest": "不同于结果先行，例子本身承担解释",
+      "effect_check": "能迁移且不误会普适性",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "redundancy-fold",
+      "name": "重复信息折叠",
+      "family": "信息压缩",
+      "fit": "多段真正表达相同事实",
+      "question": "重复是否带来了变化",
+      "selection": "首个清楚表达及后续修正",
+      "sequence": "首次表达→变化点",
+      "audio": "不删纠正、加强或反讽",
+      "rhythm": "减语义重复而非重复字",
+      "visual": "保留新的证据角度",
+      "anti": "把更正当重复删除",
+      "example": "构造例：重复定义删一遍但保留修正条件",
+      "nearest": "不同于主题收窄，信息集合保留",
+      "effect_check": "变化信息无损",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "condition-anchor",
+      "name": "条件锚定",
+      "family": "信息压缩",
+      "fit": "条件句决定主张成立",
+      "question": "哪些词不能丢",
+      "selection": "如果、除非、仅限、可能及完整句",
+      "sequence": "条件→建议→例外",
+      "audio": "语气与否定完整",
+      "rhythm": "在条件单元外压缩",
+      "visual": "字幕不把条件挤出屏",
+      "anti": "截掉如果留下肯定承诺",
+      "example": "构造例：若用户需要联网才考虑IP功能",
+      "nearest": "不同于一般论证，条件强度为主",
+      "effect_check": "复述不扩大承诺",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "question-answer",
+      "name": "问答闭合",
+      "family": "信息压缩",
+      "fit": "回答依赖具体问题",
+      "question": "这个答复在回答什么",
+      "selection": "提问对象与完整回答",
+      "sequence": "问题→答复→必要追问",
+      "audio": "保留说话人及停顿功能",
+      "rhythm": "删闲聊不换问题",
+      "visual": "标签不误导答复归属",
+      "anti": "把另一问题的回答拼过来",
+      "example": "构造例：保留被问到的版本号与回复",
+      "nearest": "不同于反方保留，不要求争论",
+      "effect_check": "观众理解答复范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "countercase-keep",
+      "name": "保留反例",
+      "family": "信息压缩",
+      "fit": "结论存在重要反方或异常",
+      "question": "什么限制主结论",
+      "selection": "主张、最强反例、真实回应",
+      "sequence": "主张→反例→回应或未决",
+      "audio": "不削弱反方语气",
+      "rhythm": "各方按解释需求分配",
+      "visual": "反应镜头不造赞同",
+      "anti": "只剪弱反对制造轻松胜利",
+      "example": "构造例：压短讨论仍保留尚未发明的质疑",
+      "nearest": "不同于条件锚定，独立反方有席位",
+      "effect_check": "能公平复述分歧",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "result-backtrace",
+      "name": "结果回溯",
+      "family": "信息压缩",
+      "fit": "结果可先展示而无剧透限制",
+      "question": "先看结果后需补哪些步骤",
+      "selection": "结果、关键路径、失败限制",
+      "sequence": "结果→如何做到→适用边界",
+      "audio": "避免旁白重复结果画面",
+      "rhythm": "缩短未知等待保留理解步骤",
+      "visual": "结果必须真来自过程",
+      "anti": "别的成功素材冒充结果",
+      "example": "构造例：先看修复前后再回关键操作",
+      "nearest": "不同于案例解释，先兑现观众目标",
+      "effect_check": "跟得上且结果有来源",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "natural-turn",
+      "name": "自然轮次",
+      "family": "对话呼吸",
+      "fit": "真实对话节奏有价值",
+      "question": "哪里是说话的自然单位",
+      "selection": "完整轮次和有用接话",
+      "sequence": "按问答轮次保留",
+      "audio": "听呼吸尾音与接话",
+      "rhythm": "只压冗余轮次间隔",
+      "visual": "同期反应不随意借用",
+      "anti": "每个换气都删除",
+      "example": "构造例：访谈删设备等待保留回答前思考",
+      "nearest": "不同于语义停顿，轮次是主单位",
+      "effect_check": "没有抢话和机械跳切",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "thought-pause",
+      "name": "思考停顿",
+      "family": "对话呼吸",
+      "fit": "停顿承担选择或犹豫",
+      "question": "沉默是否改变下一句理解",
+      "selection": "选择前后及真实停顿",
+      "sequence": "问题→思考→回答",
+      "audio": "保留现场音，不补假心声",
+      "rhythm": "停顿长短由行为和含义决定",
+      "visual": "微表情需连续语境",
+      "anti": "无声即无用而全部删除",
+      "example": "构造例：承认错误前保留真实犹豫",
+      "nearest": "不同于自然轮次，句内也可留",
+      "effect_check": "能感到思考而非卡顿",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "breath-reset",
+      "name": "段落换气",
+      "family": "对话呼吸",
+      "fit": "信息密集需认知恢复",
+      "question": "观众何时需要消化",
+      "selection": "段落末句与下一主题起点",
+      "sequence": "密集解释→短恢复→新问题",
+      "audio": "留自然尾音和环境底",
+      "rhythm": "停顿放在意群边界",
+      "visual": "允许稳定画面承载恢复",
+      "anti": "每句固定插半秒空白",
+      "example": "构造例：公式推导后留看图再讲应用",
+      "nearest": "不同于思考停顿，面向观众理解",
+      "effect_check": "记住内容且节奏不断裂",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "hesitation-honesty",
+      "name": "保留不确定性",
+      "family": "对话呼吸",
+      "fit": "犹豫体现真实主张强度",
+      "question": "哪些不流利有内容",
+      "selection": "可能、估计、自我修正",
+      "sequence": "估计→修正→边界",
+      "audio": "保留关键语气不贴完美口播",
+      "rhythm": "只删无义复起候选",
+      "visual": "字幕不抹去不确定措辞",
+      "anti": "剪成从未表达的确定结论",
+      "example": "构造例：I think保留在个人预算建议中",
+      "nearest": "不同于条件锚定，表达状态也受保护",
+      "effect_check": "判断强度与原话一致",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "overlap-fairness",
+      "name": "重叠发言公平",
+      "family": "对话呼吸",
+      "fit": "多人同时发言",
+      "question": "怎样不制造话语胜负",
+      "selection": "各方可辨观点与轮次",
+      "sequence": "维持真实重叠或明确整理",
+      "audio": "独立轨可用才调平衡",
+      "rhythm": "不靠剪掉反方制造顺畅",
+      "visual": "镜头不把沉默者当答复者",
+      "anti": "将接话剪成打断或同意",
+      "example": "构造例：意见交叉时保留完整关键句",
+      "nearest": "不同于自然轮次，重叠是难点",
+      "effect_check": "各方观点可辨且不造因果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "comic-delay",
+      "name": "笑点延迟",
+      "family": "对话呼吸",
+      "fit": "真实铺垫和包袱可辨",
+      "question": "包袱前后分别留多久",
+      "selection": "预期、意外、原反应",
+      "sequence": "铺垫→延迟→包袱→余韵",
+      "audio": "原声笑声有据",
+      "rhythm": "不抢答案不给固定停顿",
+      "visual": "真实反应有时间关系",
+      "anti": "别处笑声制造被嘲笑",
+      "example": "构造例：回答前一瞬停顿保留反差",
+      "nearest": "不同于思考停顿，服务幽默预期",
+      "effect_check": "能理解包袱且不恶意歪曲",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "intimate-distance",
+      "name": "亲近留时",
+      "family": "对话呼吸",
+      "fit": "人物愿意展示的细节充足",
+      "question": "哪些瞬间值得陪伴",
+      "selection": "具体动作和真实言语",
+      "sequence": "靠近→停留→小变化",
+      "audio": "轻声细节可听，不强煽情",
+      "rhythm": "少切但仍有变化",
+      "visual": "保护人物边界",
+      "anti": "长时间脆弱特写只为煽情",
+      "example": "构造例：整理物件时把一句话完整听完",
+      "nearest": "不同于思考停顿，陪伴关系主导",
+      "effect_check": "情绪来自内容且不拖滞",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "action-whole",
+      "name": "动作完整",
+      "family": "动作过程",
+      "fit": "起势到结果有连续证据",
+      "question": "动作最小完整单元多长",
+      "selection": "准备、作用、结果",
+      "sequence": "准备→接触→结果",
+      "audio": "动作声与画面保持",
+      "rhythm": "压动作之间等待",
+      "visual": "关键接触和结果不遮",
+      "anti": "切在碰撞瞬间丢结果",
+      "example": "构造例：投篮出手到落框保留",
+      "nearest": "不同于结果回溯，动作顺序保持",
+      "effect_check": "观众能判断真正结果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "process-ellipsis",
+      "name": "过程省略",
+      "family": "动作过程",
+      "fit": "重复过程可省且状态有据",
+      "question": "哪些阶段可跳而不造假",
+      "selection": "初态、代表过程、末态",
+      "sequence": "初态→明确省略→结果",
+      "audio": "不造连续声误导实时性",
+      "rhythm": "压重复工序保状态变化",
+      "visual": "必要时标明时间跳跃",
+      "anti": "隐去关键步骤却称可跟做",
+      "example": "构造例：搅拌多分钟取开始和状态变化",
+      "nearest": "不同于动作完整，允许省略过程",
+      "effect_check": "省略可知且结果可信",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "anticipation-room",
+      "name": "蓄势空间",
+      "family": "动作过程",
+      "fit": "准备决定动作力量",
+      "question": "落点为何有重量",
+      "selection": "起势、距离、迟疑、落点",
+      "sequence": "等待→加速→落定",
+      "audio": "声音蓄积和落点来源明确",
+      "rhythm": "扩准备不乱慢放",
+      "visual": "留空间判断方向",
+      "anti": "只延长无关开场",
+      "example": "构造例：跳跃前保留观察与起跑",
+      "nearest": "不同于思考停顿，身体动作期待主导",
+      "effect_check": "动作更有力量且无赘余",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "consequence-hold",
+      "name": "结果停留",
+      "family": "动作过程",
+      "fit": "结果需要被看清",
+      "question": "动作之后留下什么",
+      "selection": "落定状态、反馈、真实余波",
+      "sequence": "动作→结果→观察",
+      "audio": "尾响不提前截断",
+      "rhythm": "结果读懂才切",
+      "visual": "展示实际输出或状态",
+      "anti": "只在操作瞬间闪结果",
+      "example": "构造例：按钮点击后保留成功反馈",
+      "nearest": "不同于蓄势，扩展发生在结果后",
+      "effect_check": "观众能确认发生了什么",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "skill-detail",
+      "name": "技艺细读",
+      "family": "动作过程",
+      "fit": "细节决定技艺理解",
+      "question": "哪里值得放大注意",
+      "selection": "手部、工具、接触过程",
+      "sequence": "整体→关键过程→整体",
+      "audio": "现场细声真实可辨",
+      "rhythm": "复杂细节长持，熟悉动作压缩",
+      "visual": "画面需能看清关键部位",
+      "anti": "无工具支持却宣称光流慢放",
+      "example": "构造例：雕刻转角保留连续手部动作",
+      "nearest": "不同于动作完整，强调学习观察",
+      "effect_check": "看懂技术且不失整体",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "error-recovery",
+      "name": "失误到恢复",
+      "family": "动作过程",
+      "fit": "失败与补救构成内容",
+      "question": "错在哪、如何恢复",
+      "selection": "失误前提、结果、真实修复",
+      "sequence": "尝试→失败→调整→再试",
+      "audio": "不拼假成功反馈",
+      "rhythm": "失败不循环羞辱",
+      "visual": "状态变化真实可追",
+      "anti": "只留成功造成轻易完成假象",
+      "example": "构造例：软件误选后返回修复",
+      "nearest": "不同于过程省略，失败不可省",
+      "effect_check": "理解恢复路径",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "spatial-arrival",
+      "name": "空间抵达",
+      "family": "空间观察",
+      "fit": "素材存在可证方位关系",
+      "question": "观众怎样知道到了哪里",
+      "selection": "入口、过渡、位置关系、全貌",
+      "sequence": "进入→建立位置→细节",
+      "audio": "环境声保真实来源",
+      "rhythm": "给位置建立时间",
+      "visual": "不同地点不假连续",
+      "anti": "随机近景接远景伪同地",
+      "example": "构造例：门口到室内全貌",
+      "nearest": "不同于尺度观察，以进入关系主导",
+      "effect_check": "方向清楚而非素材堆砌",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "scale-observe",
+      "name": "尺度观察",
+      "family": "空间观察",
+      "fit": "全景细节能相互解释",
+      "question": "局部与整体如何互证",
+      "selection": "局部纹理、关系、宽景",
+      "sequence": "细节→关系→全貌或反向",
+      "audio": "声景不自动跨地点",
+      "rhythm": "复杂画面留观察时间",
+      "visual": "图像身份可溯源",
+      "anti": "细节不属此处却当证据",
+      "example": "构造例：瀑布根系侧面到开阔水帘",
+      "nearest": "不同于抵达，不声称行走路线",
+      "effect_check": "看懂空间层次",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "pacing-trials-01",
+          "candidates": [
+            "nature/baseline"
+          ],
+          "result": "result-frame-clock.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "effect_validation": "UNVALIDATED",
+          "limitations": [
+            "English scenario meeting and short waterfall footage only",
+            "full viewing/listening/independent effect/native host NOT_RUN",
+            "nature compact historical binding scope-narrow is not evidence of semantic topic narrowing; excluded from that card evaluation"
+          ]
+        }
+      ],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "micro-change",
+      "name": "微变长持",
+      "family": "空间观察",
+      "fit": "画内持续变化可观看",
+      "question": "长镜头中什么在变",
+      "selection": "水纹、光影、视线和小动作",
+      "sequence": "稳定→察觉变化→退出",
+      "audio": "真实连续环境声或明确配乐",
+      "rhythm": "由变化决定退出点",
+      "visual": "不冻结帧冒充长镜",
+      "anti": "一张图拉长说在观察",
+      "example": "构造例：水流穿过根系的持续运动",
+      "nearest": "不同于尺度观察，单一视角内部变化",
+      "effect_check": "能指出停留中的发现",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "negative-space-rest",
+      "name": "空处休息",
+      "family": "空间观察",
+      "fit": "空处具明确关系或变化",
+      "question": "少信息怎样仍有内容",
+      "selection": "负空间与主体出入",
+      "sequence": "密集段→空处→重新进入",
+      "audio": "环境细声或音乐余音",
+      "rhythm": "留白有位置和作用",
+      "visual": "主体小仍须可辨",
+      "anti": "黑场填时长称高级",
+      "example": "构造例：离开人群后看一段空路",
+      "nearest": "不同于微变长持，密疏对照主导",
+      "effect_check": "停顿有恢复作用",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "reaction-context",
+      "name": "反应语境",
+      "family": "空间观察",
+      "fit": "真实同期反应可证",
+      "question": "对方怎样接住这一刻",
+      "selection": "引发事件、真实反应、后续",
+      "sequence": "事件→反应→继续",
+      "audio": "同期声和身份核查",
+      "rhythm": "反应读懂再切",
+      "visual": "不借用别次表情",
+      "anti": "用别时点头制造同意",
+      "example": "构造例：提问后真实倾听和答复",
+      "nearest": "不同于亲近留时，关系时序主导",
+      "effect_check": "反应不被误读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "ambient-transition",
+      "name": "环境过渡",
+      "family": "空间观察",
+      "fit": "相邻段需要重新定位",
+      "question": "声音怎样带观众换空间",
+      "selection": "实际环境特征和过渡画面",
+      "sequence": "旧空间→过渡→新空间",
+      "audio": "声桥须有叙事许可",
+      "rhythm": "不把过渡等同冗余",
+      "visual": "地点变化明确",
+      "anti": "跨地点声桥伪装现场连续",
+      "example": "构造例：室内安静到室外水声",
+      "nearest": "不同于抵达，主要靠声音和留时",
+      "effect_check": "空间转换自然且诚实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "phrase-preserve",
+      "name": "乐句保留",
+      "family": "声音组织",
+      "fit": "音乐段落已可靠确认",
+      "question": "压缩画面如何保护音乐句子",
+      "selection": "可跨拍持续的视觉段",
+      "sequence": "乐句推进→段落变化",
+      "audio": "冻结完整乐句和尾响",
+      "rhythm": "画面可稀密，音乐不碎切",
+      "visual": "切镜不等于动作踩点",
+      "anti": "每波峰都剪音乐",
+      "example": "构造例：快音乐下长持水流",
+      "nearest": "不同于固定音乐预算，音乐句法主导",
+      "effect_check": "音乐完整且画面有关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "voice-priority",
+      "name": "原话让位关系",
+      "family": "声音组织",
+      "fit": "音乐影响表达清晰",
+      "question": "哪里要把注意还给说话者",
+      "selection": "关键原话和必要画面",
+      "sequence": "音乐铺垫→原话→恢复",
+      "audio": "明确duck/退出并听检",
+      "rhythm": "给原话完整表达时长",
+      "visual": "字幕不遮关键证据",
+      "anti": "仅加大总音量解决掩蔽",
+      "example": "构造例：产品真实测评时暂退音乐",
+      "nearest": "不同于声桥，声音所有权为主",
+      "effect_check": "听得清且变化不突兀",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "sound-bridge-time",
+      "name": "声音桥接压缩",
+      "family": "声音组织",
+      "fit": "画面可省但声音需连续",
+      "question": "能否保原话压画面过程",
+      "selection": "连续原话和支撑镜头",
+      "sequence": "原声连续→视觉省略→重新对齐",
+      "audio": "独立音轨保持身份",
+      "rhythm": "画面省略不掐语句",
+      "visual": "B-roll不得假举证",
+      "anti": "嘴仍在画面却失去同步",
+      "example": "构造例：连续讲解配实际操作结果",
+      "nearest": "不同于过程省略，音频决定时间骨架",
+      "effect_check": "原话完整且声画无误导",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "music-density-release",
+      "name": "稀密释放",
+      "family": "声音组织",
+      "fit": "音乐和素材可支持对比",
+      "question": "怎样变松而不变曲速",
+      "selection": "密集细节、宽景和余势",
+      "sequence": "密→疏→留尾",
+      "audio": "同曲速，按实际乐段组织",
+      "rhythm": "少切但保画内活动",
+      "visual": "宽景必须有观看价值",
+      "anti": "全片机械放慢一倍",
+      "example": "构造例：三个细节后看完整空间",
+      "nearest": "不同于微变长持，段落密度对照主导",
+      "effect_check": "释放可感且不空",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "acoustic-tail",
+      "name": "声尾完整",
+      "family": "声音组织",
+      "fit": "语尾、混响或动作声有价值",
+      "question": "声音结束比画面晚多久",
+      "selection": "原话尾音、环境衰减",
+      "sequence": "事件→尾响→下一段",
+      "audio": "声尾长度由真实录音判断",
+      "rhythm": "不硬套淡出秒数",
+      "visual": "画面可提前切但不误导源",
+      "anti": "为时长掐掉最后一个词",
+      "example": "构造例：关门后保留房间回响",
+      "nearest": "不同于乐句保留，局部声学边界主导",
+      "effect_check": "没有残句或突兀断尾",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "silence-contrast",
+      "name": "寂静对照",
+      "family": "声音组织",
+      "fit": "安静服务段落意义",
+      "question": "静下来的时候看什么",
+      "selection": "声音退出前后内容",
+      "sequence": "有声→安静观察→再进入",
+      "audio": "静音与真实低环境声区分",
+      "rhythm": "安静不自动删",
+      "visual": "画面继续有意义",
+      "anti": "音轨缺失被当艺术处理",
+      "example": "构造例：热闹活动后真实空场",
+      "nearest": "不同于空处休息，声音对照主导",
+      "effect_check": "安静像选择而非故障",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "reading-window",
+      "name": "阅读窗口",
+      "family": "约束分配",
+      "fit": "字幕或图表读不完",
+      "question": "信息何时真正被读完",
+      "selection": "完整字幕/图表与解释",
+      "sequence": "出现→阅读→关键变化",
+      "audio": "避免同时引入新口头信息",
+      "rhythm": "按内容和受众验证，不固定字秒",
+      "visual": "移动背景适当减干扰",
+      "anti": "硬目标下字幕闪过",
+      "example": "构造例：复杂表格多留解释时间",
+      "nearest": "不同于段落换气，视觉阅读为主",
+      "effect_check": "读者能提取信息",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "frozen-head",
+      "name": "冻结开头再分配",
+      "family": "约束分配",
+      "fit": "用户已精修开头",
+      "question": "怎样只改后段",
+      "selection": "冻结开头、可变后段",
+      "sequence": "开头不动→后段重新配时",
+      "audio": "开头声轨字幕也检查",
+      "rhythm": "后段承担时长变化",
+      "visual": "冻结输出帧及内容",
+      "anti": "只保文字却改开头镜长",
+      "example": "构造例：用户片头四秒不变压后面",
+      "nearest": "不同于固定总长，局部保护主导",
+      "effect_check": "保护项字节与时间保持",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "fixed-score",
+      "name": "固定配乐预算",
+      "family": "约束分配",
+      "fit": "音乐版本位置被锁定",
+      "question": "画面如何适配不动的音乐",
+      "selection": "可用视角、动作和音点",
+      "sequence": "沿音乐长度分配视觉",
+      "audio": "音频源、trim、offset均冻结",
+      "rhythm": "画面伸缩不改曲子",
+      "visual": "新增视角不编空间关系",
+      "anti": "缩短画面时自动截曲尾",
+      "example": "构造例：同17秒音乐把快切改长持",
+      "nearest": "不同于乐句保留，明确工程冻结主导",
+      "effect_check": "音乐不变且画面完整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "fixed-duration-wave",
+      "name": "等时长重分配",
+      "family": "约束分配",
+      "fit": "总长度必须不变",
+      "question": "从哪里借时间给哪里",
+      "selection": "低效等待与需观察段",
+      "sequence": "一处缩短→另一处增加",
+      "audio": "受影响轨道明确重映射",
+      "rhythm": "净帧数变化为零",
+      "visual": "不是插空帧补平",
+      "anti": "延长后直接超时",
+      "example": "构造例：省两秒等待给结果图",
+      "nearest": "不同于主题压缩，固定总帧数",
+      "effect_check": "既达到局部目标又守时长",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "protected-dissent",
+      "name": "异议时间席位",
+      "family": "约束分配",
+      "fit": "用户明确反对意见不得删",
+      "question": "谁的观点不能因赶时被挤掉",
+      "selection": "各方主张和相互回应",
+      "sequence": "保持议题完整再压外围",
+      "audio": "保护原话不替说话者概括",
+      "rhythm": "分配不等于各方机械等秒",
+      "visual": "归属标签明确",
+      "anti": "短版只剩多数意见",
+      "example": "构造例：两分钟仍留完整反例回应",
+      "nearest": "不同于反例机制，用户保护约束主导",
+      "effect_check": "异议可被理解并追溯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "soft-target-honesty",
+      "name": "软目标弹性",
+      "family": "约束分配",
+      "fit": "用户说大约而非硬截止",
+      "question": "多几秒是否更完整",
+      "selection": "必要边界与目标附近可行剪点",
+      "sequence": "接近目标→自然收束",
+      "audio": "原话不因凑秒截尾",
+      "rhythm": "报告合理偏差及原因",
+      "visual": "完整结尾有可见依据",
+      "anti": "把大约一分钟当60.000硬切",
+      "example": "构造例：保尾句成63秒并说明",
+      "nearest": "不同于固定总长，完整性可胜软秒数",
+      "effect_check": "偏差有价值且符合指令",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "context-restore",
+      "name": "上下文恢复",
+      "family": "舒展补足",
+      "fit": "短版丢了理解所需内容",
+      "question": "补回什么才能讲清楚",
+      "selection": "原版前提、反方、回应",
+      "sequence": "背景→核心→补回的关系",
+      "audio": "原话原速，不合成没说过的话",
+      "rhythm": "新增时长承担新理解",
+      "visual": "新增内容标明真实来源",
+      "anti": "把无关闲聊当上下文",
+      "example": "构造例：预算短版补回未来功能争议",
+      "nearest": "不同于自然长持，增加语义单元",
+      "effect_check": "能理解之前误解的问题",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "pacing-trials-01",
+          "candidates": [
+            "meeting/expanded"
+          ],
+          "result": "result-frame-clock.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "effect_validation": "UNVALIDATED",
+          "limitations": [
+            "English scenario meeting and short waterfall footage only",
+            "full viewing/listening/independent effect/native host NOT_RUN",
+            "nature compact historical binding scope-narrow is not evidence of semantic topic narrowing; excluded from that card evaluation"
+          ]
+        }
+      ],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "precondition-return",
+      "name": "前置步骤恢复",
+      "family": "舒展补足",
+      "fit": "教程观众无法复现",
+      "question": "缺哪一步使操作失效",
+      "selection": "准备状态、权限、输入条件",
+      "sequence": "准备→操作→验证",
+      "audio": "解释不与操作矛盾",
+      "rhythm": "给关键前提足够辨认时间",
+      "visual": "可见真实界面版本",
+      "anti": "添漂亮B-roll代替缺步骤",
+      "example": "构造例：补回导入数据和列格式检查",
+      "nearest": "不同于上下文恢复，操作可复现主导",
+      "effect_check": "观众能完成任务",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "comparison-room",
+      "name": "比较留时",
+      "family": "舒展补足",
+      "fit": "前后/两方案需来回看",
+      "question": "观众如何认出差异",
+      "selection": "可比条件、结果与限制",
+      "sequence": "A→B→明确比较",
+      "audio": "音量/速度可比不偏袒",
+      "rhythm": "比较窗口不被快切抢走",
+      "visual": "标明版本与同条件边界",
+      "anti": "不同曝光被当调色效果",
+      "example": "构造例：同素材两种切点留足观察",
+      "nearest": "不同于阅读窗口，需要跨对象比较",
+      "effect_check": "能指出真实差异",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    },
+    {
+      "id": "source-handle-return",
+      "name": "恢复源余量",
+      "family": "舒展补足",
+      "fit": "选段两端有真实可用余量",
+      "question": "哪一端缺准备或收束",
+      "selection": "原切点前后连续素材",
+      "sequence": "恢复准备或尾部→衔接",
+      "audio": "声画同源关系重核",
+      "rhythm": "不超源、不重复帧",
+      "visual": "检查源内已有切镜",
+      "anti": "源已结束却冻结末帧冒充延长",
+      "example": "构造例：瀑布片段恢复连续观察两秒",
+      "nearest": "不同于上下文恢复，不增加独立论点",
+      "effect_check": "延长是连续内容而非填充",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "pacing-reference",
+        "silence-review",
+        "silence-detection",
+        "pacing-measurement"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "pacing-trials-01",
+          "candidates": [
+            "nature/expanded"
+          ],
+          "result": "result-frame-clock.json",
+          "status": "candidate-rendered-partial-frame-review",
+          "effect_validation": "UNVALIDATED",
+          "limitations": [
+            "English scenario meeting and short waterfall footage only",
+            "full viewing/listening/independent effect/native host NOT_RUN",
+            "nature compact historical binding scope-narrow is not evidence of semantic topic narrowing; excluded from that card evaluation"
+          ]
+        }
+      ],
+      "adjustable": [
+        "硬/软时长和范围",
+        "最小完整内容单元",
+        "原风格与用户保护项",
+        "增加时间对应的内容",
+        "声画锚点及阅读窗口"
+      ],
+      "compatibility": {
+        "requires": "素材真实支持该机制；显式用户约束与题材事实优先",
+        "avoid": "不机械倍速、删静音或重复填时长；未实现操作不以参数冒充"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1704 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "music-led mechanisms, no creative certification",
+  "styles": [
+    {
+      "id": "sparse-pulse",
+      "name": "稀疏脉冲",
+      "family": "节奏",
+      "fit": "可确认少量音乐锚点且镜头可停留",
+      "question": "怎样只响应有分量的音乐点？",
+      "selection": "能跨多个脉冲持续观看的动作或空间",
+      "sequence": "少量关键点换镜，其间让画内运动继续",
+      "audio": "音乐连续，锚点先听证",
+      "rhythm": "剪切留空，不填每拍",
+      "visual": "切镜与动作落点分别记录",
+      "anti": "每个波峰都切一次",
+      "example": "构造例：三段瀑布视角在选定音点交替",
+      "nearest": "区别于乐句长镜，仍以脉冲选择为依据",
+      "effect_check": "切点有辨识度，未切的拍不显拖沓",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "music-style-trials-01",
+          "candidate": "sparse-pulse",
+          "report": "evals/runs/music-style-trials-01/result-after-typography-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "version": "2c9d4aaff5f3d091163331ca6fce6ccb199c8ca14d0ceff011c701280d83e3d1",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-style-trials-01/sparse-pulse/revision-render/captions/captioned.mp4",
+            "sha256": "37be07d07ff1aa7ac3def8db5f6f3cdbde7d83e97d740c9d55904fcd52649d16"
+          },
+          "limitation": "music candidate points not confirmed beats; full viewing/listening, performance/lyrics/full-song unvalidated"
+        }
+      ],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "phrase-hold",
+      "name": "乐句长镜",
+      "family": "节奏",
+      "fit": "乐句或较宽声段可辨且镜头内容足够",
+      "question": "让画面怎样随一口音乐呼吸？",
+      "selection": "可完整观看的长动作和空间变化",
+      "sequence": "段落转折换视角，句内不追小节拍",
+      "audio": "保留音乐呼吸和尾音",
+      "rhythm": "一镜承载一段体验，不固定秒数",
+      "visual": "音乐转折与画面信息完成兼顾",
+      "anti": "把平均每四秒误称每乐句",
+      "example": "构造例：一段树影变化跨越多个音符",
+      "nearest": "区别于稀疏脉冲，乐句整体而非点为单位",
+      "effect_check": "观众感到段落形状而非机械等长",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "anticipation-hit",
+      "name": "准备与落点",
+      "family": "节奏",
+      "fit": "真实动作准备/接触/余势完整",
+      "question": "如何让期待先到、动作落在音乐点？",
+      "selection": "动作起势、可见落点、后续余势",
+      "sequence": "准备提前→落点同步→余势保留",
+      "audio": "声音点具体到版本和时间",
+      "rhythm": "不因下一拍切掉完成感",
+      "visual": "落点是源内动作，不一定是切镜",
+      "anti": "镜头切准了但动作晚半秒",
+      "example": "构造例：球触地对齐明确音点",
+      "nearest": "区别于硬切脉冲，主要同步画内动作",
+      "effect_check": "原速下动作与声音关系可感",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "cut-on-release",
+      "name": "在余势里切",
+      "family": "节奏",
+      "fit": "动作或音乐有可辨收束",
+      "question": "落点之后何时换镜最舒服？",
+      "selection": "落点与释放后空隙",
+      "sequence": "先让动作落定再切下一关系",
+      "audio": "保留撞击/尾音，必要声桥",
+      "rhythm": "切在释放而非总抢强点",
+      "visual": "余势不是多余尾巴",
+      "anti": "击球接触瞬间切走失去力量",
+      "example": "构造例：舞步落地后转到下一镜",
+      "nearest": "区别于准备落点，切镜发生在余势",
+      "effect_check": "动作既完成又不粘滞",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "syncopated-reply",
+      "name": "切分回应",
+      "family": "节奏",
+      "fit": "实际切分关系或明确非正拍点可用",
+      "question": "画面如何回应偏离主拍的声音？",
+      "selection": "能表达错落/跳跃而不丢内容的镜头",
+      "sequence": "正拍建立→偏拍回应→适时回稳",
+      "audio": "先核弱起与切分，不用最大音量判",
+      "rhythm": "错落有规则但不全片炫技",
+      "visual": "切分点仍受动作完整性约束",
+      "anti": "把算法误差包装成切分风格",
+      "example": "构造例：主脉冲长持后在切分音换景",
+      "nearest": "区别于反拍，跟的是音乐实际重音组织",
+      "effect_check": "偏移听起来有意图而非失误",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "offbeat-counterpoint",
+      "name": "反节奏",
+      "family": "节奏",
+      "fit": "声画都能独立成立且用户要张力",
+      "question": "不跟音乐切时怎样仍保持关系？",
+      "selection": "持续运动与明确反向节奏的画面",
+      "sequence": "先建关系→有意偏离→再呼应",
+      "audio": "连续音乐保持参照",
+      "rhythm": "偏离幅度与时段有设计",
+      "visual": "反节奏可不切镜，不靠任意乱序",
+      "anti": "所有误点都解释为艺术",
+      "example": "构造例：轻快音乐下缓慢机械动作",
+      "nearest": "区别于切分回应，视觉主动不跟音乐点",
+      "effect_check": "观众感到张力且无失控感",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "density-wave",
+      "name": "密度起伏",
+      "family": "节奏",
+      "fit": "素材可支持稀密变化",
+      "question": "怎样形成聚集与释放？",
+      "selection": "低/高画内信息量和不同持镜长度",
+      "sequence": "稀→密→留白，或按实际音乐变形",
+      "audio": "音乐层次变化决定可选关系",
+      "rhythm": "剪速与画内运动综合控制",
+      "visual": "同样镜长也可有密度差",
+      "anti": "全片越来越快没有出口",
+      "example": "构造例：远景长持后几个细节再回远景",
+      "nearest": "区别于速度坡道，不必变速",
+      "effect_check": "密段有力量，疏段有必要",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "double-time-perception",
+      "name": "倍拍感",
+      "family": "节奏",
+      "fit": "音乐稳定且可确认基础脉冲",
+      "question": "怎样增加视觉速度而不改音乐？",
+      "selection": "能短持仍读懂的简洁镜头",
+      "sequence": "原密度建立→细分响应→恢复",
+      "audio": "原曲不变速",
+      "rhythm": "短段细分，不强制整曲加倍",
+      "visual": "阅读与动作保护优先",
+      "anti": "把BPM识别翻倍当曲子真的变快",
+      "example": "构造例：副段用更多切点回应细分音",
+      "nearest": "区别于密度波，明确相对基础脉冲的细分",
+      "effect_check": "观众感到速度变化且音乐仍连贯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "half-time-weight",
+      "name": "半拍重量",
+      "family": "节奏",
+      "fit": "素材适合长持且音乐仍有流动",
+      "question": "怎样让快音乐显得更沉着？",
+      "selection": "具有持续动作或重量感的镜头",
+      "sequence": "跨拍持镜，少数重处换镜",
+      "audio": "曲速保持，选择较疏视觉响应",
+      "rhythm": "不是简单延长所有镜头",
+      "visual": "慢持仍需内容，不用冻结伪长镜",
+      "anti": "为了慢感擅自把音乐降速",
+      "example": "构造例：快速钢琴上保留长段水流",
+      "nearest": "区别于乐句长镜，重在相对脉冲的疏回应",
+      "effect_check": "沉着成立而非图像掉队",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "stop-and-resume",
+      "name": "停顿再启动",
+      "family": "节奏",
+      "fit": "音乐或已授权音编存在有效停顿",
+      "question": "如何让停下也成为节奏？",
+      "selection": "可停留的视觉状态和再启动动作",
+      "sequence": "推进→停顿→新动作启动",
+      "audio": "真实音乐停顿保留残响边界",
+      "rhythm": "停顿长度由语义和音乐决定",
+      "visual": "停画/静止镜头不是同一操作",
+      "anti": "擅自掐断完整乐句造停顿",
+      "example": "构造例：音乐休止处停在空空间再进入人",
+      "nearest": "区别于声音抽离，停顿带重新启动",
+      "effect_check": "再启动获得动力且没有事故感",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "fill-to-change",
+      "name": "过门转场",
+      "family": "节奏",
+      "fit": "实际过门与段落变化可辨",
+      "question": "怎样让过门准备下一种画面关系？",
+      "selection": "过渡动作、空间入口、新母题",
+      "sequence": "旧段余势→过门准备→新段出现",
+      "audio": "不把所有密集音当鼓花",
+      "rhythm": "过门内可少切，为下一段蓄力",
+      "visual": "新段有明确变化",
+      "anti": "每个音符都配闪白",
+      "example": "构造例：走向门口后在段落变化时见室外",
+      "nearest": "区别于强点揭示，强调过渡过程",
+      "effect_check": "转折既被准备又有新意",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "unmetered-breath",
+      "name": "自由速度呼吸",
+      "family": "节奏",
+      "fit": "无稳定拍网或明显rubato",
+      "question": "没有等拍网时怎样剪？",
+      "selection": "能承接声音长短和质感的镜头",
+      "sequence": "按听到的句意/衰减/进入组织",
+      "audio": "不强制BPM或四拍网格",
+      "rhythm": "局部呼吸优先于等距点",
+      "visual": "完整动作与声音转折协商",
+      "anti": "自由独奏被量化成均匀卡点",
+      "example": "构造例：独奏停顿时保持人物视线",
+      "nearest": "区别于常规乐句，承认不规则时间",
+      "effect_check": "音乐自由度保留，视觉不僵硬",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "graphic-rhyme",
+      "name": "图形押韵",
+      "family": "母题",
+      "fit": "形状/构图关联可见且不误导身份",
+      "question": "不同物怎样在画面里押韵？",
+      "selection": "圆形、线条、负空间等明确关系",
+      "sequence": "建立形状→换对象保持关系→变化",
+      "audio": "音乐可作换形锚点",
+      "rhythm": "给相似性被识别的时间",
+      "visual": "相似不是同物，空间可跳转但不假连续",
+      "anti": "只因都很漂亮就乱接",
+      "example": "构造例：车轮圆形接水面涟漪",
+      "nearest": "区别于同色串联，主要关系是几何",
+      "effect_check": "观众能看出联系而非靠说明",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "motion-relay",
+      "name": "运动接力",
+      "family": "母题",
+      "fit": "动作方向和阶段可对应",
+      "question": "运动怎样穿过不同镜头？",
+      "selection": "启动、位移、接触、接续的方向信息",
+      "sequence": "一个运动引出下一个",
+      "audio": "音乐支持接力而不盖现场必要声",
+      "rhythm": "切在运动可延续处",
+      "visual": "方向变化有目的，别造真实连续事件",
+      "anti": "左右方向混乱却称动势延续",
+      "example": "构造例：扫过镜头的枝叶接向同侧水流",
+      "nearest": "区别于动作同步，镜头之间的动势为主",
+      "effect_check": "接力清楚且不凭空制造因果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "motif-return",
+      "name": "母题返回",
+      "family": "母题",
+      "fit": "至少一个可识别视觉母题有变化",
+      "question": "同一个画面回来后多了什么？",
+      "selection": "母题首次、别的关系、母题变化",
+      "sequence": "A→展开→A的变体",
+      "audio": "音乐重复与画面重复可呼应或错开",
+      "rhythm": "返回不等于填时长",
+      "visual": "同源重用须明确，变化可来自上下文",
+      "anti": "原片重复三遍却宣称三个事件",
+      "example": "构造例：水流正面→近侧→再回正面",
+      "nearest": "区别于循环，返回改变理解",
+      "effect_check": "观众认出母题并感觉新关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "music-style-trials-01",
+          "candidate": "motif-return",
+          "report": "evals/runs/music-style-trials-01/result-after-typography-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "version": "2518c005686b15ce5048bea36aac1c237a52077886d863bc65f6f17ce87e6f91",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-style-trials-01/motif-return/revision-render/captions/captioned.mp4",
+            "sha256": "21d4bad58553f37ab12d712f4dca88dcd67303347d52821b6cd0b26329fd2b3a"
+          },
+          "limitation": "music candidate points not confirmed beats; full viewing/listening, performance/lyrics/full-song unvalidated"
+        }
+      ],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "scale-expansion",
+      "name": "尺度展开",
+      "family": "母题",
+      "fit": "远中近素材确有空间关系或明确联想",
+      "question": "怎样从细节打开一个世界？",
+      "selection": "局部、局部关系、全貌",
+      "sequence": "细节→关系→空间展开",
+      "audio": "声音层次或进入支撑打开",
+      "rhythm": "全貌需要足够停留",
+      "visual": "同地与联想性跨地分开",
+      "anti": "陌生远景冒充细节所在场景",
+      "example": "构造例：水滴纹理到瀑布整体",
+      "nearest": "区别于景别摆动，单向揭示空间",
+      "effect_check": "展开有发现而非纯拉远",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "scale-contraction",
+      "name": "向细节收拢",
+      "family": "母题",
+      "fit": "全景与细节有可理解关系",
+      "question": "怎样从世界走向一个触点？",
+      "selection": "空间、局部、关键细节",
+      "sequence": "宽→窄→停在细节",
+      "audio": "声音可逐渐减少层次但不必降音量",
+      "rhythm": "收束让最后细节读得出",
+      "visual": "不要无故裁掉必要动作",
+      "anti": "只有放大像素却称发现新细节",
+      "example": "构造例：市场全景收至手上的旧票",
+      "nearest": "区别于尺度展开，终点是集中注意",
+      "effect_check": "注意焦点明确且尾部不空",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "color-thread",
+      "name": "色彩线索",
+      "family": "母题",
+      "fit": "源内有实际可匹配色彩关系",
+      "question": "颜色怎样引导观看而非替代故事？",
+      "selection": "同色/互补/渐变关系与有用内容",
+      "sequence": "色彩引路→对比→回收",
+      "audio": "颜色变化可回应音色变化",
+      "rhythm": "色块识别与主体观察兼顾",
+      "visual": "不自动重调肤色/品牌色",
+      "anti": "给所有镜头同滤镜叫色彩叙事",
+      "example": "构造例：红伞、红门、红果依次形成线索",
+      "nearest": "区别于图形押韵，色彩为主连接",
+      "effect_check": "观众感到线索且内容不被色彩牺牲",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "texture-weave",
+      "name": "纹理编织",
+      "family": "母题",
+      "fit": "纹理细节有可见变化",
+      "question": "触感怎样与音乐质地相互回应？",
+      "selection": "颗粒、水纹、织物、金属等有关系细节",
+      "sequence": "纹理建立→对照→重组",
+      "audio": "音色而非只强拍作参考",
+      "rhythm": "微观运动需要观看时间",
+      "visual": "近景身份不过度推断",
+      "anti": "无关噪点滤镜充当材质观察",
+      "example": "构造例：细水丝与叶脉交织",
+      "nearest": "区别于同色，关注表面与触感",
+      "effect_check": "视听质感有联系而非随机素材堆积",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "spatial-orbit",
+      "name": "空间环游",
+      "family": "母题",
+      "fit": "多视角可建空间或明确为视角集合",
+      "question": "观众怎样围绕一个主体认识空间？",
+      "selection": "前后侧与遮挡关系",
+      "sequence": "建立→换侧→看另一关系→回锚点",
+      "audio": "连续音轨维持总体体验",
+      "rhythm": "先辨方向再加密",
+      "visual": "无路径不宣称真实环绕拍摄",
+      "anti": "三个地点拼成同一物体四周",
+      "example": "构造例：同瀑布多个可确认视角",
+      "nearest": "区别于旅游路线，强调观察位置关系",
+      "effect_check": "视角变化可理解且无伪路线",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "symmetry-break",
+      "name": "秩序与破格",
+      "family": "母题",
+      "fit": "存在可建立的对称/重复关系",
+      "question": "何时打破秩序才有力量？",
+      "selection": "规律性画面与一处有效差异",
+      "sequence": "建立规律→累积→破格→余波",
+      "audio": "音乐变化可支持或反向强调",
+      "rhythm": "先让规律成立再破",
+      "visual": "差异要可见，不只标题说破格",
+      "anti": "开头即乱序而宣称打破秩序",
+      "example": "构造例：连续窗格后出现一扇敞窗",
+      "nearest": "区别于母题返回，核心是规律破坏",
+      "effect_check": "观众能识别被打破的期待",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "paired-worlds",
+      "name": "两个世界",
+      "family": "母题",
+      "fit": "两组素材各自明确且有对照依据",
+      "question": "两种状态怎样互相照见？",
+      "selection": "各组代表镜头和共同连接点",
+      "sequence": "A/B交替→关系加深→并置收束",
+      "audio": "声音统一或有意对照",
+      "rhythm": "两边各有观看空间",
+      "visual": "不是伪造同时或地点相邻",
+      "anti": "城市乡村剪成同一路径",
+      "example": "构造例：机械重复与自然水流交替",
+      "nearest": "区别于平行纪录，以音乐联想为主",
+      "effect_check": "对照主题具体而非二元刻板印象",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "object-transformation",
+      "name": "物的变奏",
+      "family": "母题",
+      "fit": "同一物或明确同类有多种状态",
+      "question": "一个对象能显出多少不同面向？",
+      "selection": "形态、用途、角度和可证状态变化",
+      "sequence": "熟悉→变化→陌生化→再识别",
+      "audio": "音乐变奏呼应状态变化",
+      "rhythm": "每次变化有辨识时间",
+      "visual": "同物/同类/生成变形分清",
+      "anti": "生成物身份漂移说成真实变化",
+      "example": "构造例：同一把伞从收起到撑开再看内部",
+      "nearest": "区别于工艺过程，不强求制作因果",
+      "effect_check": "变化有主题，物的身份不混乱",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "negative-space",
+      "name": "留白的主体",
+      "family": "母题",
+      "fit": "空处和微小变化有观察价值",
+      "question": "少展示怎样仍让人想看？",
+      "selection": "空间空白、远处动作、出现与消失",
+      "sequence": "空→微变→出现→再空",
+      "audio": "音乐细节成为注意力的一半",
+      "rhythm": "允许长停，不用假黑帧填充",
+      "visual": "主体小仍需有意义可见",
+      "anti": "看不清就解释成高级留白",
+      "example": "构造例：空桥上一个人缓慢经过",
+      "nearest": "区别于自由呼吸，视觉空白是核心",
+      "effect_check": "留白有张力而非缺素材",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "visual-call-response",
+      "name": "画面问答",
+      "family": "母题",
+      "fit": "成对动作/形态存在清晰回应",
+      "question": "一个镜头提出的问题由谁回应？",
+      "selection": "启动/回应、张/合、入/出的关联",
+      "sequence": "A提出→B回应→变体",
+      "audio": "音乐问答可以呼应但不必须同形",
+      "rhythm": "回应有间隔和落点",
+      "visual": "联想不造真实互相反应",
+      "anti": "不同期笑脸冒充现场回应",
+      "example": "构造例：枝条抬起后另一景中帘子落下",
+      "nearest": "区别于运动接力，回应可逆向或静态",
+      "effect_check": "配对可读且不被误认真实因果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "constellation",
+      "name": "意象星座",
+      "family": "母题",
+      "fit": "多组意象有一个可说明共同问题",
+      "question": "分散镜头如何构成一个想法？",
+      "selection": "非字面同义而互补的意象",
+      "sequence": "锚点意象→关联扩展→回收",
+      "audio": "音乐提供持续世界感",
+      "rhythm": "每次跳跃留联想空间",
+      "visual": "不能只堆奇异画面",
+      "anti": "随机素材蒙太奇靠文案强行解释",
+      "example": "构造例：门、倒影、远灯围绕离开组织",
+      "nearest": "区别于字面歌词配图，以跨对象联想为主",
+      "effect_check": "观众形成可讨论的关系而非完全失焦",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "quiet-build",
+      "name": "克制蓄积",
+      "family": "情绪",
+      "fit": "素材与音乐可逐步增加信息",
+      "question": "怎样不靠轰炸也能变强？",
+      "selection": "小变化、期待、层次增加、有限释放",
+      "sequence": "少量进入→积累→一个有效变化",
+      "audio": "音色/层次变化优先于单纯增音量",
+      "rhythm": "增加不必缩短每镜",
+      "visual": "先留辨识空间再加密",
+      "anti": "全程慢镜头却没有任何积累",
+      "example": "构造例：从一股细流扩展到整个落水面",
+      "nearest": "区别于密度波，持续情绪累积为主",
+      "effect_check": "转折得到准备且无强煽情",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "release-wide",
+      "name": "释放到开阔",
+      "family": "情绪",
+      "fit": "前段局促和后段开阔有素材",
+      "question": "打开的瞬间为什么成立？",
+      "selection": "限制感、等待、空间打开",
+      "sequence": "收紧→打开→允许停留",
+      "audio": "音乐释放与画面可同向或延迟",
+      "rhythm": "打开后不立刻再碎切",
+      "visual": "开阔不是必须无人机镜头",
+      "anti": "第一秒已全景仍宣称结尾揭示全貌",
+      "example": "构造例：通道细节后见宽阔水面",
+      "nearest": "区别于尺度展开，以情绪释放为中心",
+      "effect_check": "观众感到松开而非仅换景",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "music-style-trials-01",
+          "candidate": "release-wide",
+          "report": "evals/runs/music-style-trials-01/result-after-typography-revision.json",
+          "status": "real-candidate-degraded",
+          "effect_validation": "UNVALIDATED",
+          "version": "39528588093d536029e6c45b292b6b18b93044984035ff9f383ea39ea6dbd671",
+          "current_video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-style-trials-01/release-wide/revision-render/captions/captioned.mp4",
+            "sha256": "92e452adcf81b8bfc72d6cbe4c6cd8d1312c99898ffe8a29f2376c95623c6add"
+          },
+          "limitation": "music candidate points not confirmed beats; full viewing/listening, performance/lyrics/full-song unvalidated"
+        }
+      ],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "restrained-intimacy",
+      "name": "贴近而不煽情",
+      "family": "情绪",
+      "fit": "人物细节/关系真实且许可充分",
+      "question": "如何靠距离和时间让人靠近？",
+      "selection": "本人动作、微表情、关系细节",
+      "sequence": "靠近→停留→小变化",
+      "audio": "不给本人未表达心理配独白",
+      "rhythm": "保留自然停顿",
+      "visual": "不放大脆弱镜头制造猎奇",
+      "anti": "库哭声与无关镜头拼出悲伤",
+      "example": "构造例：整理旧衣时停在手部动作",
+      "nearest": "区别于人物小细节，以音乐和距离共同组织",
+      "effect_check": "情绪来自行为而非音乐强迫",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "playful-offset",
+      "name": "轻巧错位",
+      "family": "情绪",
+      "fit": "动作与音乐反差可读且不伤事实",
+      "question": "怎样让错位有幽默感？",
+      "selection": "可完整识别的意外、停顿、反应",
+      "sequence": "建立预期→轻微错位→回收",
+      "audio": "音点可略先或后，但明确设计",
+      "rhythm": "给笑点理解和余韵",
+      "visual": "不利用断章取义羞辱人物",
+      "anti": "动作失败反复播成能力标签",
+      "example": "构造例：庄重旋律下伞突然翻转的真实片段",
+      "nearest": "区别于反节奏，目标是具体幽默",
+      "effect_check": "错位可感且没有恶意误导",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "uneasy-stillness",
+      "name": "不安的静止",
+      "family": "情绪",
+      "fit": "静景/慢变化可承载悬置",
+      "question": "不快切怎样制造紧张？",
+      "selection": "空间、等待、局部异常、未决",
+      "sequence": "建立稳定→轻微异动→悬置",
+      "audio": "不安来自声画关系，不乱加警报",
+      "rhythm": "长持中有变化和期待",
+      "visual": "不把无辜人物配乐暗示为危险事实",
+      "anti": "惊悚音效包装普通采访者",
+      "example": "构造例：空走廊尽头灯光变化",
+      "nearest": "区别于留白，情绪指向悬置",
+      "effect_check": "紧张成立且不伪造事实指控",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "warm-accumulation",
+      "name": "温度累积",
+      "family": "情绪",
+      "fit": "真实生活细节可相互支持",
+      "question": "哪些小事共同形成温暖？",
+      "selection": "照应、手作、等候、自然交流",
+      "sequence": "具体细节逐渐积累→普通继续",
+      "audio": "避免每镜都用煽情重音",
+      "rhythm": "轻缓但有变化",
+      "visual": "人物关系不得猜造",
+      "anti": "陌生人同框就写家人团聚",
+      "example": "构造例：递工具、留位置、收拾桌面的互动",
+      "nearest": "区别于品牌暖片，无口号和强转化",
+      "effect_check": "温暖来自具体关系而非滤镜",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "bittersweet-duality",
+      "name": "苦甜并置",
+      "family": "情绪",
+      "fit": "素材同时有得到与失去的依据",
+      "question": "相反感受怎样共存？",
+      "selection": "快乐时刻、代价、余波、持续联系",
+      "sequence": "亮面→另一面→保留双重感受",
+      "audio": "音乐可与表面情绪形成层次",
+      "rhythm": "不以快慢机械划悲喜",
+      "visual": "不剪掉语境来造伤感",
+      "anti": "喜悦采访被拼成告别悲剧",
+      "example": "构造例：搬新家与空旧屋有真实关联",
+      "nearest": "区别于两个世界，以同一经历的双面为主",
+      "effect_check": "两种感受都成立而非强行反转",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "memory-fragments",
+      "name": "记忆碎片",
+      "family": "情绪",
+      "fit": "时间跨越明确且素材身份可追溯",
+      "question": "零散回看怎样仍有情感线？",
+      "selection": "反复物件、片段动作、有据时空锚点",
+      "sequence": "碎片联想→母题连接→当下收束",
+      "audio": "音乐提供连续但不伪同期",
+      "rhythm": "不必线性，但关键身份清楚",
+      "visual": "旧新影像分时，不能造未曾发生经历",
+      "anti": "换复古滤镜冒充历史素材",
+      "example": "构造例：几年旅行中的同一窗边视角",
+      "nearest": "区别于星座意象，实际记忆对象是核心",
+      "effect_check": "碎而不散，观众知道何种回望",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "emotional-reframe",
+      "name": "同景异感",
+      "family": "情绪",
+      "fit": "同一组图像能支持不同解释且不歪曲事实",
+      "question": "换音乐关系后，同一画面感觉怎样改变？",
+      "selection": "可多义但身份事实稳定的镜头",
+      "sequence": "保持画面作控制，比较声画关系",
+      "audio": "曲段/音量/留白变化记录",
+      "rhythm": "别把响度优势当风格胜出",
+      "visual": "非虚构人物的判断暗示需要谨慎",
+      "anti": "把差音乐响度当更有感染力",
+      "example": "构造例：同一雨景配疏密不同曲段",
+      "nearest": "区别于母题变奏，是明确对照实验",
+      "effect_check": "比较能指出改变来自哪里",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "open-tail",
+      "name": "余韵收尾",
+      "family": "情绪",
+      "fit": "音乐有可用尾部且视觉不必封闭结局",
+      "question": "最后留下什么继续回响？",
+      "selection": "完成动作后的状态、可持续空间",
+      "sequence": "抵达→留余势→自然退出",
+      "audio": "不强截尾音，淡出按实际任务决定",
+      "rhythm": "结尾停留有内容",
+      "visual": "不编故事最终结果",
+      "anti": "硬加成功口号覆盖开放状态",
+      "example": "构造例：水继续流动，音乐尾句结束",
+      "nearest": "区别于循环结尾，接受终止与余韵",
+      "effect_check": "结束有边界而非被截断",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "performance-continuity",
+      "name": "表演连续性",
+      "family": "表演",
+      "fit": "真实表演与节目声同步可核验",
+      "question": "怎样突出表演而不破坏它？",
+      "selection": "完整乐句/舞句、真实机位、必要反应",
+      "sequence": "沿表演结构切换观察位置",
+      "audio": "节目声连续，不以现场杂声代替母版",
+      "rhythm": "技艺动作保留准备与收尾",
+      "visual": "嘴/手/乐器同期实查",
+      "anti": "用另一段弹奏画面假同步",
+      "example": "构造例：双机位保留同次钢琴表演",
+      "nearest": "区别于访谈导演，音乐表演句法主导",
+      "effect_check": "表演可信完整而不只是切点准确",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "instrument-dialogue",
+      "name": "乐器对话",
+      "family": "表演",
+      "fit": "乐器角色与同期画面可辨",
+      "question": "听到的声部怎样在画面中接力？",
+      "selection": "实际进入声部、协作、整体",
+      "sequence": "独奏进入→回应声部→合奏",
+      "audio": "真实节目轨，别每换人换录音",
+      "rhythm": "给声部交接完整句子",
+      "visual": "无鼓段不误称鼓手正在打该音",
+      "anti": "仅凭画面有吉他就判当前吉他声",
+      "example": "构造例：弦乐对答时换到对应演奏者",
+      "nearest": "区别于画面问答，需要声部身份依据",
+      "effect_check": "声画归属明确且可感协作",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "dance-phrase",
+      "name": "舞句完整",
+      "family": "表演",
+      "fit": "舞蹈动作单元与音乐关系可核验",
+      "question": "怎样让身体的句子被看完整？",
+      "selection": "起势、重心变化、落地、转换",
+      "sequence": "按舞句和空间关系组织",
+      "audio": "音乐版本与排练/演出一致",
+      "rhythm": "不为每拍切割身体表达",
+      "visual": "身体关键部位与着地可见",
+      "anti": "脚步高潮时裁掉脚",
+      "example": "构造例：旋转到停住保留完整身体",
+      "nearest": "区别于动作落点，整组编舞表达优先",
+      "effect_check": "观众读懂身体句法",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "rehearsal-to-stage",
+      "name": "排练到呈现",
+      "family": "表演",
+      "fit": "排练/正式表演身份与关系真实",
+      "question": "成形前后的变化是什么？",
+      "selection": "尝试、反馈、同段呈现、残留差异",
+      "sequence": "排练问题→练习→正式片段",
+      "audio": "不同录音版本标清，不强造连续",
+      "rhythm": "练习与成果都获得必要篇幅",
+      "visual": "别把不同曲目冒同段进步",
+      "anti": "摆拍失误当真实成长",
+      "example": "构造例：同一舞段在排练室和舞台呈现",
+      "nearest": "区别于人物学习，以同段表演前后为主",
+      "effect_check": "变化具体且无假成功叙事",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "lyric-image",
+      "name": "歌词意象",
+      "family": "表演",
+      "fit": "可靠歌词与时间且适合意象关系",
+      "question": "画面怎样回应词义而不逐字图解？",
+      "selection": "关键意象、情境、非字面呼应",
+      "sequence": "按完整语义句展开",
+      "audio": "保留歌词原意和实际入点",
+      "rhythm": "文字阅读不被拍点切碎",
+      "visual": "不把歌词当歌手真人经历",
+      "anti": "歌词写离开就随机每句配一扇门",
+      "example": "构造例：相同影子关系回应距离意象",
+      "nearest": "区别于星座意象，歌曲词义提供骨架",
+      "effect_check": "词义与画面互补而非互相重复",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "lyric-negative-space",
+      "name": "留给词的画面",
+      "family": "表演",
+      "fit": "歌词文本已审校且观众需读",
+      "question": "怎样让画面支持阅读和聆听？",
+      "selection": "低干扰背景、必要段落变化",
+      "sequence": "句子读完再换主要视觉",
+      "audio": "原唱/翻译与版本清楚",
+      "rhythm": "字幕长度按阅读调整，不逐拍闪",
+      "visual": "文字与主体争夺注意要实查",
+      "anti": "字幕快闪却声称完整传意",
+      "example": "构造例：长句配稳定背景，句间换景",
+      "nearest": "区别于歌词意象，阅读优先",
+      "effect_check": "观众可跟上完整句义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "visualizer-world",
+      "name": "持续的视觉世界",
+      "family": "表演",
+      "fit": "单一视觉系统有持续变化能力",
+      "question": "不频繁切镜怎样陪伴一首歌？",
+      "selection": "稳定世界、细微变化、段落对应",
+      "sequence": "建立规则→变化→归位或退出",
+      "audio": "音乐是主体，画面不喧宾夺主",
+      "rhythm": "可持续不等于静止填时长",
+      "visual": "未实现动画不能以参数声明已做",
+      "anti": "一张图加进度条就称丰富视觉化",
+      "example": "构造例：水面持续纹理随段落换观察尺度",
+      "nearest": "区别于乐句长镜，世界规则持续而非按句切镜",
+      "effect_check": "有陪伴感且久看不失焦",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "seam-conscious-loop",
+      "name": "循环接缝",
+      "family": "表演",
+      "fit": "用户明确要循环且音画有可衔接端点",
+      "question": "回到开始时怎样避免一次明显重启？",
+      "selection": "相容的首尾状态与音乐边界",
+      "sequence": "一轮变化→返回可接状态",
+      "audio": "检查和声/尾响/音色，零交叉不够",
+      "rhythm": "尾部为回归准备",
+      "visual": "循环重复不算多个事件",
+      "anti": "只有视频循环但音乐突然断开",
+      "example": "构造例：可循环水纹段配已验证音乐循环",
+      "nearest": "区别于母题返回，循环接缝就是交付要求",
+      "effect_check": "多轮原速播放首尾自然",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "voice-break",
+      "name": "原声介入",
+      "family": "表演",
+      "fit": "一段真实原声对作品有表达价值",
+      "question": "何时让人物或现场打断音乐？",
+      "selection": "可理解原话/动作声及前后语境",
+      "sequence": "音乐推进→原声介入→按意义回音乐",
+      "audio": "明确降低/退出音乐，保护原话",
+      "rhythm": "不把一句话压到一个拍",
+      "visual": "来源与同期关系清楚",
+      "anti": "无关欢呼配成表演成功反应",
+      "example": "构造例：排练一句真实提示后回演奏",
+      "nearest": "区别于停顿再启动，原声信息推动段落",
+      "effect_check": "原声可理解且音乐恢复有意义",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    },
+    {
+      "id": "ensemble-space",
+      "name": "合奏空间",
+      "family": "表演",
+      "fit": "成员、位置与节目声关系明确",
+      "question": "怎样看见一起演奏而非孤立特写？",
+      "selection": "全景关系、实际协作、必要细节",
+      "sequence": "整体→声部/互动→回整体",
+      "audio": "统一节目声，空间声有据",
+      "rhythm": "整体关系建立后再加密",
+      "visual": "独立机位同步先核验",
+      "anti": "非同期点头剪成默契反应",
+      "example": "构造例：四重奏全景与真实对视配合",
+      "nearest": "区别于乐器对话，人与空间协作主导",
+      "effect_check": "观众既听声部又理解群体关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "music-cache-contract",
+        "music-grid-methods",
+        "music-editorial-methods"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "音乐主线/视觉主线",
+        "乐段与点位的可靠程度",
+        "画内运动与切镜密度",
+        "准备/落点/余势",
+        "音乐冻结与源声保留"
+      ],
+      "compatibility": {
+        "requires": "当前具体音轨版本与素材支持机制；用户手改、原话和冻结项优先",
+        "avoid": "不把能量峰/等距网格当已证音乐结构；不为卡点编造动作/同期；未有工具的效果保留缺项"
+      }
+    }
+  ]
+}

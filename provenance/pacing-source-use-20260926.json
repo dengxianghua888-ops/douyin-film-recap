@@ -1,0 +1,1343 @@
+{
+  "task_id": "P-W12-D2",
+  "scope": "内部具名静态来源用途审查提案，待M裁决；无新效果、真人或发行信用",
+  "formal_baseline": {
+    "ledger": {
+      "path": "evals/evidence/portfolio-ledger-v0.33.json",
+      "sha256": "ae1f4a855d4301139d20b7a4a0536cf1e5fa9bfdd7417b98940a47ab1ebe5f12",
+      "bytes": 192423
+    },
+    "D2": "reviewed"
+  },
+  "direct_method_claims": [
+    {
+      "id": "pacing-reference",
+      "problem": "信息负担与目标预算先于镜长",
+      "source": {
+        "version": "9e73275b35e827b8f7af4bca900790909d86e63e",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/feicaiclub__video-spec-builder/9e73275b35e8/references/pacing-rules.md",
+            "sha256": "b95f11227f5cc64dcdfd71804ca3d0394f0a1a31bc5240d1bd1a8fe987cfe455",
+            "bytes": 12174
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/feicaiclub__video-spec-builder/9e73275b35e8/LICENSE",
+            "sha256": "91cc0112294b9c9a1d8bf74b5d60fa22239b3958403deb6c8eaa931e7f3cb257",
+            "bytes": 1067
+          }
+        ]
+      },
+      "adopted": [
+        "逐单元列职责和时长预算",
+        "显式记录节奏安排"
+      ],
+      "excluded": [
+        "平台禁止慢节奏",
+        "固定镜长/刺激钩子/留白比例",
+        "重叠转场和插入转场混用时长减法"
+      ],
+      "adoption_locations": [
+        "workflows/raven-pacing-restructure/references/brief-and-budget.md",
+        "workflows/raven-pacing-restructure/references/compression.md"
+      ],
+      "adaptation": "复杂层判断并输出显式参数/停止点；方法改写和反例研究，原锁声明未复制源代码",
+      "license_as_recorded": "MIT",
+      "license_scope": "该归档组；不覆盖AMI/AISHELL/瀑布/字体或R01工具",
+      "source_anchors": [
+        {
+          "needle": "信息密度",
+          "lines": [
+            9,
+            167,
+            300
+          ]
+        },
+        {
+          "needle": "转场总时长",
+          "lines": [
+            95,
+            96
+          ]
+        },
+        {
+          "needle": "抖音不允许慢节奏",
+          "lines": [
+            19,
+            277
+          ]
+        }
+      ]
+    },
+    {
+      "id": "silence-review",
+      "problem": "删除停顿前可审读并可撤销",
+      "source": {
+        "version": "93dd0010cf9dec2c8a76cfb35a8346fcf52ed292",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/craftled__openklip/93dd0010cf9d/web/lib/cleanup-silence.ts",
+            "sha256": "d3e9f6adc097d452e1b9cea8163c5349d2ca27f5786ab77593dc14de85bee506",
+            "bytes": 3876
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/craftled__openklip/93dd0010cf9d/LICENSE",
+            "sha256": "491565c0771ab813f5cf3c9731e4bfa2eb83a0035c47319f5fe660fa18708a95",
+            "bytes": 1066
+          }
+        ]
+      },
+      "adopted": [
+        "候选前后上下文窗口",
+        "padding与目标对象",
+        "撤销对象思想"
+      ],
+      "excluded": [
+        "estimated saved seconds判断无用停顿",
+        "slug和范围缓存等同源版本绑定",
+        "源Editor API与源码复制"
+      ],
+      "adoption_locations": [
+        "workflows/raven-pacing-restructure/references/compression.md",
+        "workflows/raven-pacing-restructure/references/timing-and-state.md"
+      ],
+      "adaptation": "复杂层判断并输出显式参数/停止点；方法改写和反例研究，原锁声明未复制源代码",
+      "license_as_recorded": "MIT",
+      "license_scope": "该归档组；不覆盖AMI/AISHELL/瀑布/字体或R01工具",
+      "source_anchors": [
+        {
+          "needle": "peakWindowForCandidate",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "needle": "keepPadSec",
+          "lines": [
+            49,
+            52,
+            53,
+            92,
+            94,
+            95,
+            130,
+            132
+          ]
+        },
+        {
+          "needle": "buildBulkSilenceUndoSnapshot",
+          "lines": [
+            109
+          ]
+        },
+        {
+          "needle": "peaksCacheKey",
+          "lines": [
+            135
+          ]
+        }
+      ]
+    },
+    {
+      "id": "silence-detection",
+      "problem": "静音数值作为候选，不作为词界",
+      "source": {
+        "version": "83c5ff6006dd79918e8395ef58cfcb4600c21db5",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maddexritter-rgb__vibe-editing/83c5ff6006dd/plugins/vibe-editing/skills/edit/scripts/silence_map.py",
+            "sha256": "143367fa327ec889a18bb7fcd2a08a53a77ed021351105828e645db5b1cb37cd",
+            "bytes": 2194
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maddexritter-rgb__vibe-editing/83c5ff6006dd/LICENSE",
+            "sha256": "715ce1fd7613cc462c35c3993448fdd2ecf7f14df176675133d31c3159900a46",
+            "bytes": 1069
+          }
+        ]
+      },
+      "adopted": [
+        "显式阈值/最短长度/时间区间"
+      ],
+      "excluded": [
+        "不检查ffmpeg返回码",
+        "zip漏掉未配对尾静音",
+        "40ms普遍安全切点",
+        "无声等于无语义"
+      ],
+      "adoption_locations": [
+        "workflows/raven-pacing-restructure/references/compression.md",
+        "workflows/raven-pacing-restructure/references/evaluation.md"
+      ],
+      "adaptation": "复杂层判断并输出显式参数/停止点；方法改写和反例研究，原锁声明未复制源代码",
+      "license_as_recorded": "MIT",
+      "license_scope": "该归档组；不覆盖AMI/AISHELL/瀑布/字体或R01工具",
+      "source_anchors": [
+        {
+          "needle": "subprocess.run",
+          "lines": [
+            23
+          ]
+        },
+        {
+          "needle": "zip(starts, ends)",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "needle": "default=0.04",
+          "lines": [
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pacing-measurement",
+      "problem": "描述统计与内容效果分开",
+      "source": {
+        "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/content_quality/pacing.py",
+            "sha256": "9f975c2ab05054ac24b0791c51fa1a81901c801e7dd48b6e49b3bd1b321b46b8",
+            "bytes": 5072
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/LICENSE",
+            "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+            "bytes": 34523
+          }
+        ]
+      },
+      "adopted": [
+        "pause density和时长分布可描述",
+        "样本不足返回unavailable"
+      ],
+      "excluded": [
+        "固定理想区间作审美标尺",
+        "熵更大必然节奏更好",
+        "固定合成分数作为风格验收"
+      ],
+      "adoption_locations": [
+        "workflows/raven-pacing-restructure/references/evaluation.md"
+      ],
+      "adaptation": "复杂层判断并输出显式参数/停止点；方法改写和反例研究，原锁声明未复制源代码",
+      "license_as_recorded": "AGPL-3.0-or-later",
+      "license_scope": "该归档组；不覆盖AMI/AISHELL/瀑布/字体或R01工具",
+      "source_anchors": [
+        {
+          "needle": "n < 2",
+          "lines": [
+            12,
+            13,
+            104
+          ]
+        },
+        {
+          "needle": "DEFAULT_IDEAL_PAUSE_LO",
+          "lines": [
+            31,
+            84
+          ]
+        },
+        {
+          "needle": "score = 0.5",
+          "lines": [
+            135
+          ]
+        }
+      ]
+    }
+  ],
+  "inherited_reference_uses": [
+    {
+      "id": "film-dialogue",
+      "lock": {
+        "path": "provenance/film-dialogue-sources.lock.json",
+        "sha256": "e0ff9569d2668dc4021643b9f253266feae82b2354bf8868ec818a96f6822eb8",
+        "bytes": 3513
+      },
+      "members": [
+        {
+          "path": "evals/assets/tears-of-steel/studio.html",
+          "sha256": "44268375aeadcf79e82e5447c560e5fe76129f517035079000c98ed937e3b842",
+          "bytes": 55051
+        },
+        {
+          "path": "evals/assets/tears-of-steel/xiph-readme.txt",
+          "sha256": "3622773b7986ac4f4807352b94c111670ac5f888b558f6f70f95c0b7d253aba1",
+          "bytes": 343
+        },
+        {
+          "path": "evals/assets/tears-of-steel/TOS-en.srt",
+          "sha256": "ce9578f6fe098a5821045a38884b229160f9e7ba27890448a92f5be330c6e6fe",
+          "bytes": 4764
+        },
+        {
+          "path": "evals/assets/tears-of-steel/TOS-CH.srt",
+          "sha256": "456152557f85f5874ec7c96c99a68ff05c325013972ca059b193f0d93f036d45",
+          "bytes": 4945
+        }
+      ],
+      "adopted_use": "完整表达与声画分工；不是W12实际消费影视原片/字幕的记录",
+      "excluded": "不复制为本次音视频或源码，不重做该包全量来源/效果/权利审查"
+    },
+    {
+      "id": "speech",
+      "lock": {
+        "path": "provenance/speech-sources.lock.json",
+        "sha256": "f0cf129fbabb2879c4677c576ed90467fadba2f405ec9de47be42bb39cb6dfcb",
+        "bytes": 3409
+      },
+      "members": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/talking-head-guide/SKILL.md",
+          "sha256": "0faa69a19d80614d27598bcbe717571b0969c6f52cd94da7acbd6716d3d7a056",
+          "bytes": 25068
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/SKILL.md",
+          "sha256": "bf514b4369775735cd5f975befdf6bf305291f56287692a9532f3cdf171c0c67",
+          "bytes": 6227
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/references/03-判定.md",
+          "sha256": "2cdd9f0f9b94295e446c020dd744c830d14831809ff3444b1c6271425430333c",
+          "bytes": 2932
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/references/08-验收.md",
+          "sha256": "34e109bfc56afeca5a25485965a36f611eaed373957dbf900378599bd500daa8",
+          "bytes": 1662
+        }
+      ],
+      "adopted_use": "NG/重复/限定语与切点核对方法；不把已存在稿件变成核准词界",
+      "excluded": "不复制为本次音视频或源码，不重做该包全量来源/效果/权利审查"
+    },
+    {
+      "id": "music",
+      "lock": {
+        "path": "provenance/music-sources.lock.json",
+        "sha256": "1a8e84c49fac1e07ce715157ec180625fe3f4992c24fa6ac71bc4ad2b60417c5",
+        "bytes": 8059
+      },
+      "members": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/src/agent/skills/music-intelligence/SKILL.md",
+          "sha256": "415969ecd8cc45c06fd03468e8f97129f56c188704587ace4d1b0a1d55373219",
+          "bytes": 4565
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/LICENSE",
+          "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+          "bytes": 34523
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/scripts/analyze-beatgrid.py",
+          "sha256": "acc14ffbbbcfb59fbe89a6886380d584df07a14205b1a299f424810bc85baed0",
+          "bytes": 24210
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/references/montage.md",
+          "sha256": "ebff415eb7b169050cedf24072f912cffe1f0b4b3fbfe09f57c59f5689515633",
+          "bytes": 3215
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/LICENSE",
+          "sha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8",
+          "bytes": 10763
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/post-production/editing-montage/SKILL.md",
+          "sha256": "c1cc77a249f5607d11ab4b562a3982dfc61583a5f79dfbcc3755550fcc5cfe1a",
+          "bytes": 30783
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/music-supervision-scoring/SKILL.md",
+          "sha256": "b6c94b209dd9da72a2e8a5d8bffebfe72463654a3bf633ea7792037dd6c7a124",
+          "bytes": 22194
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/content-formats/music-video-production/SKILL.md",
+          "sha256": "dfd52094281fed5abde64d03637032420d5fb1e4e6e543ce3bcf0c41bdf83185",
+          "bytes": 27649
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/LICENSE",
+          "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+          "bytes": 1093
+        }
+      ],
+      "adopted_use": "版本失效、独立音乐轨与音乐呼吸；不继承强拍/乐句/自动模型能力",
+      "excluded": "不复制为本次音视频或源码，不重做该包全量来源/效果/权利审查"
+    }
+  ],
+  "ami": {
+    "identity": "AMI Meeting Corpus / IS1000a; English scenario product-design meeting, role/speaker letters not verified real-world roles",
+    "source_work_lock": {
+      "path": "evals/parallel/w12-pacing-20260922/source-work-lock.json",
+      "sha256": "02dfcdc0a2c2a12382586c9c25deb4ec03ff1a40f2c9bdddc37d7330fa33f0ef",
+      "bytes": 5676
+    },
+    "content_judgment": {
+      "path": "evals/parallel/w12-pacing-20260922/content-protection-judgment.json",
+      "sha256": "e3bd02aafad7b8e8fdb819e7e6939575d6f3b97a9aac0e45a5eedfb93efa78f0",
+      "bytes": 5821
+    },
+    "annotation_sources": [
+      {
+        "path": "evals/assets/ami-is1000a/annotations/words/IS1000a.A.words.xml",
+        "sha256": "f065db34e9fed74c00135fea4d47f9f1e7e0f42e77e36cc78371e253c1088020",
+        "bytes": 43858
+      },
+      {
+        "path": "evals/assets/ami-is1000a/annotations/words/IS1000a.B.words.xml",
+        "sha256": "c3f6bc40aab864f46ca27a5763d87b617b1ce08096d6e7fb327aed947195989f",
+        "bytes": 157282
+      },
+      {
+        "path": "evals/assets/ami-is1000a/annotations/words/IS1000a.C.words.xml",
+        "sha256": "cc76fe065ee1b79bce28830172513fd54110f4d3e95ce5676db26ca652212c7f",
+        "bytes": 58103
+      },
+      {
+        "path": "evals/assets/ami-is1000a/annotations/words/IS1000a.D.words.xml",
+        "sha256": "15f4817b9bda95a5d97d597811c404e0d2643d338267daef29fa00a5502d9cc3",
+        "bytes": 49770
+      }
+    ],
+    "source_media": [
+      {
+        "path": "evals/assets/ami-is1000a/rm-reference/IS1000a.C.rm",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/rm-reference/IS1000a.C.rm",
+        "sha256_as_recorded": "ee8cfb18523a8cf3d7cd71ca332a4236b4ac4ae5aad97b3122e658bd9f2155bf",
+        "expected_bytes": 10220415,
+        "current_stat_bytes": 10220415,
+        "current_mtime_ns": 1789918522429680960,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/parallel/w12-pacing-20260922/source-work-lock.json"
+        ],
+        "uses": [
+          "historical media identity only"
+        ]
+      },
+      {
+        "path": "evals/assets/ami-is1000a/rm-reference/IS1000a.Mix-Headset.rm",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/rm-reference/IS1000a.Mix-Headset.rm",
+        "sha256_as_recorded": "bace306780376fe526a207d1fe1d3f62079bfd77cf5d1bd6afd0887257c61c5d",
+        "expected_bytes": 3308596,
+        "current_stat_bytes": 3308596,
+        "current_mtime_ns": 1789918589298591904,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/parallel/w12-pacing-20260922/source-work-lock.json"
+        ],
+        "uses": [
+          "historical media identity only"
+        ]
+      }
+    ],
+    "use": "wide C.rm picture and separate Mix-Headset.rm audio; publisher A/B/C/D word XML supplies declared content labels and intervals; no new transcript or listening",
+    "units": [
+      {
+        "id": "basic",
+        "speaker": "C",
+        "kind": "proposal",
+        "source_interval": [
+          1295.62,
+          1309.85
+        ],
+        "protected_meaning": "Current/common functions include volume, channels and teletext.",
+        "required_markers": [
+          "usual ones",
+          "volume",
+          "channel",
+          "teletext"
+        ]
+      },
+      {
+        "id": "future",
+        "speaker": "C",
+        "kind": "proposal",
+        "source_interval": [
+          1309.85,
+          1328.37
+        ],
+        "protected_meaning": "Future functions are presented as possibilities and examples, including a personal video recorder.",
+        "required_markers": [
+          "might",
+          "For example",
+          "personal video recorder"
+        ]
+      },
+      {
+        "id": "objection",
+        "speaker": "A",
+        "kind": "objection",
+        "source_interval": [
+          1328.61,
+          1331.37
+        ],
+        "protected_meaning": "A objects that the team cannot design for something not yet invented.",
+        "required_markers": [
+          "can't really",
+          "hasn't been invented yet"
+        ]
+      },
+      {
+        "id": "response",
+        "speaker": "C",
+        "kind": "response",
+        "source_interval": [
+          1331.49,
+          1337.52
+        ],
+        "protected_meaning": "C responds that the personal video recorder and related functions are already emerging.",
+        "required_markers": [
+          "coming up",
+          "actually",
+          "personal video recorder"
+        ]
+      },
+      {
+        "id": "requirements",
+        "speaker": "D",
+        "kind": "prerequisite-proposal",
+        "source_interval": [
+          1349.56,
+          1367.05
+        ],
+        "protected_meaning": "Before choosing functionality, user requirements must be known; internet/TV-over-IP is proposed only if users need it.",
+        "required_markers": [
+          "first before",
+          "user requirements",
+          "if they need internet",
+          "would be able",
+          "propose"
+        ]
+      },
+      {
+        "id": "main-controls",
+        "speaker": "A",
+        "kind": "speaker-estimate",
+        "source_interval": [
+          1367.4,
+          1379.69
+        ],
+        "protected_meaning": "The ninety/ninety-nine-percent usage figure remains A's estimate, followed by the proposal that main controls be obvious and easy to use.",
+        "required_markers": [
+          "Ninety percent",
+          "ninety nine percent",
+          "fancy things as well",
+          "main controls",
+          "easy to use"
+        ]
+      },
+      {
+        "id": "budget",
+        "speaker": "B",
+        "kind": "constraint-and-proposal",
+        "source_interval": [
+          1380.28,
+          1400.04
+        ],
+        "protected_meaning": "B cites the 25 Euro unit and personally suggests omitting very fancy functions while expecting a normal, good, user-friendly remote.",
+        "required_markers": [
+          "twenty five Euro",
+          "can leave that out",
+          "I think",
+          "you expect",
+          "user friendly"
+        ]
+      }
+    ],
+    "decisions": [
+      {
+        "stage": "baseline",
+        "question": "What proposals, disagreement, requirements, main-control estimate and budget advice appear in the selected discussion?",
+        "required_units": [
+          "basic",
+          "future",
+          "objection",
+          "response",
+          "requirements",
+          "main-controls",
+          "budget"
+        ],
+        "intentionally_omitted_units": [],
+        "content_change": "reference version; includes additional transition talk after response that is not declared as a protected unit",
+        "acceptance_basis": "all seven declared units occur with speaker, source interval and dependency records"
+      },
+      {
+        "stage": "compact",
+        "question": "What do participants say about user requirements, ordinary controls and the 25 Euro budget?",
+        "required_units": [
+          "requirements",
+          "main-controls",
+          "budget"
+        ],
+        "intentionally_omitted_units": [
+          "basic",
+          "future",
+          "objection",
+          "response"
+        ],
+        "content_change": "scope narrows away the future-function dispute; it does not claim to summarize the complete meeting or preserve all disagreement",
+        "acceptance_basis": "the complete conditional requirements unit, A-attributed estimate and B-attributed personal budget advice remain; their source audio, captions and evidence occurrences are retained"
+      },
+      {
+        "stage": "expanded",
+        "question": "What future-function proposal was disputed, how was it answered, and how does that sit beside requirements, main controls and budget?",
+        "required_units": [
+          "basic",
+          "future",
+          "objection",
+          "response",
+          "requirements",
+          "main-controls",
+          "budget"
+        ],
+        "intentionally_omitted_units": [],
+        "content_change": "restores the basic-to-future-to-objection-to-response chain from source time 1295.60-1337.56, while leaving the unrelated 1337.56-1349.52 transition out",
+        "acceptance_basis": "the four-unit dispute chain is restored with dependencies intact; compact-required requirements/budget clips, audio tracks and captions remain structurally identical"
+      }
+    ],
+    "dependencies": [
+      {
+        "unit": "future",
+        "requires": "basic",
+        "relation": "context"
+      },
+      {
+        "unit": "objection",
+        "requires": "future",
+        "relation": "context"
+      },
+      {
+        "unit": "response",
+        "requires": "objection",
+        "relation": "context"
+      },
+      {
+        "unit": "main-controls",
+        "requires": "requirements",
+        "relation": "context"
+      },
+      {
+        "unit": "budget",
+        "requires": "requirements",
+        "relation": "context"
+      }
+    ],
+    "not_used": "closeups and AVI/WAV acquired elsewhere are not the declared W12 picture/audio carriers; no Chinese or full-meeting claim",
+    "limits": [
+      "SMIL begin=0 is publisher placement, not measured lip sync",
+      "90/99 percent remains speaker A estimate, budget remains B personal advice",
+      "short version explicitly omits whole future/objection/response chain; restored chain must include each dependency",
+      "four-second captions do not supply word cuts/readability",
+      "old non-CFR outputs preserved; corrected six frame-clock outputs separately bound, no fresh effect pass"
+    ],
+    "license_as_recorded": "CC BY 4.0, corpus and annotations; cached license active text states this, old noncommercial terms are HTML-commented",
+    "notice_sources": [
+      {
+        "path": "evals/assets/ami-is1000a/license.html",
+        "sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6",
+        "bytes": 30267
+      },
+      {
+        "path": "evals/assets/ami-is1000a/README.md",
+        "sha256": "48fc966ef8f9278c31d207859ba2d4c2292ba6b4d3e85ee7a7c70e1ff6978919",
+        "bytes": 2065
+      }
+    ]
+  },
+  "aishell": {
+    "identity": "AISHELL-4 M_R003S01C01 / OpenSLR111 / publisher speaker label001-M; not a verified occupation",
+    "source_and_units": {
+      "path": "evals/parallel/w12-chinese-pacing-20260923/source-and-units.json",
+      "sha256": "a5be71606e6baaf7d84d3a8fa3d33639d04aa916dfb8c902b4e09516cedc4a2e",
+      "bytes": 3327
+    },
+    "source": {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/source/first-100s-channel0.wav",
+      "sha256": "989c8ab7e827b0121e0be00c74dc4b5e7067d665a774cafae34b1fed263e4d82",
+      "bytes": 3200044
+    },
+    "textgrid": {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/source/M_R003S01C01.TextGrid",
+      "sha256": "f2c05fd5c3125f59cac2de7a5e5b9a6dec26a7b5f53f4abd443731c667bb32e5",
+      "bytes": 183681
+    },
+    "publisher_units": [
+      {
+        "speaker_label": "001-M",
+        "interval_index": 12,
+        "start": 56.83589,
+        "end": 66.56186,
+        "text": "咱嗯有没有要套探讨的，包括就是<sil>就是那个招生招生，这次就是<$>也是",
+        "id": "u12",
+        "source_start_sample": 909374,
+        "source_end_sample": 1064990,
+        "sample_count": 155616,
+        "duration_seconds": 9.726,
+        "text_identity": "unchanged publisher annotation; <sil> and <$> are annotation marks, not certified spoken words",
+        "timing_identity": "published utterance interval; not word alignment, not locally listened edge"
+      },
+      {
+        "speaker_label": "001-M",
+        "interval_index": 14,
+        "start": 66.57687,
+        "end": 75.30274,
+        "text": "呃，中途咱有的幼儿园以小学有转幼儿园啦，中途咱要招一批呃<sil>",
+        "id": "u14",
+        "source_start_sample": 1065229,
+        "source_end_sample": 1204844,
+        "sample_count": 139615,
+        "duration_seconds": 8.7259375,
+        "text_identity": "unchanged publisher annotation; <sil> and <$> are annotation marks, not certified spoken words",
+        "timing_identity": "published utterance interval; not word alignment, not locally listened edge"
+      },
+      {
+        "speaker_label": "001-M",
+        "interval_index": 16,
+        "start": 75.30774,
+        "end": 83.52856,
+        "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+        "id": "u16",
+        "source_start_sample": 1204923,
+        "source_end_sample": 1336457,
+        "sample_count": 131534,
+        "duration_seconds": 8.220875,
+        "text_identity": "unchanged publisher annotation; <sil> and <$> are annotation marks, not certified spoken words",
+        "timing_identity": "published utterance interval; not word alignment, not locally listened edge"
+      }
+    ],
+    "original_request": {
+      "path": "evals/parallel/w12-chinese-pacing-20260923/development-request.json",
+      "sha256": "0c3e5fb688499d246d105794dc19ed524d80ea694567bad7b569d66b8cc4e72a",
+      "bytes": 1811
+    },
+    "alternative_request": {
+      "path": "evals/parallel/w12-chinese-pacing-20260923/alternative-request.json",
+      "sha256": "051d8100e1b28ffac99551497adc9f656a4becf27b5bae99db023aedbf7ec99a",
+      "bytes": 977
+    },
+    "adopted_use": "Agent-authored development request; whole-unit scope narrowing and degree/quantity/causal-negative preservation; no fabricated if/then mechanism",
+    "refusal_preserved": {
+      "original_hard_seconds": 15,
+      "continuous_required_samples": 271228,
+      "continuous_seconds": 16.95175,
+      "complete_unit_union_samples": 271149,
+      "complete_unit_union_seconds": 16.9468125,
+      "original_satisfied": false,
+      "runtime_semantic_rejection": false
+    },
+    "alternative": {
+      "budget_seconds": 18,
+      "output": {
+        "path": "evals/parallel/w12-chinese-pacing-20260923/extract-alternative-01/audio.wav",
+        "sha256": "c151d6174de586860413df6c1b464bcaf8e697429ae705ef5447963fce9499c7",
+        "bytes": 542534
+      },
+      "sample_range": [
+        1065229,
+        1336457
+      ],
+      "result_evidence": {
+        "path": "evals/parallel/w12-chinese-pacing-20260923/verification.json",
+        "sha256": "7f6793a18f39ece70ccb8adf894b7dad71f82cb96e2ec2514efd5d79fcb828ba",
+        "bytes": 2064
+      },
+      "source_pcm_exact_subset": "historical verification only; not recomputed in this review",
+      "human_acceptance": false
+    },
+    "not_adopted": [
+      "word boundaries/actual spoken correction",
+      "speed change/denoise/TTS/internal splice",
+      "new Work or real user edit",
+      "same-source historical exact PCM means any later retime is sample-frozen"
+    ],
+    "license_as_recorded": "CC BY-SA 4.0 for source excerpts and specifically declared case teaching contributions; not entire software/library",
+    "old_material_coverage": {
+      "path": "evals/parallel/w12-chinese-pacing-20260923/material-coverage.json",
+      "sha256": "85385960b32eef16ca1518d424b6b78d3b04f23fe62c77f7da2c5cffb6416703",
+      "bytes": 5177
+    },
+    "old_shared_coverage": {
+      "existing_file": {
+        "path": "workflows/raven-pacing-restructure/references/evaluation.md",
+        "sha256": "4f3b1872fb303d88b543b1533dbaf62e83164b4228ceaff3108f5975136e25b9",
+        "bytes": 3643
+      },
+      "old_prefix_preserved": true,
+      "region_range": [
+        2493,
+        3643
+      ],
+      "actual_region_sha256": "29b952302842aefdec7509ce4e6624dd2dfbcaf9383dfddf3ca64b79a8d36307",
+      "expected_region_sha256": "29b952302842aefdec7509ce4e6624dd2dfbcaf9383dfddf3ca64b79a8d36307",
+      "scope": "existing AISHELL teaching paragraph only; original notice/coverage unchanged"
+    },
+    "limits": [
+      "acquisition only first16MiB archive, complete target TextGrid and partial FLAC; fixed first100s channel0 PCM used",
+      "all three units are publisher text, not this review listening",
+      "old 15s request explicitly requires original speed; later optional speed support cannot reverse its failure",
+      "18s alternative never means human accepted new budget"
+    ]
+  },
+  "nature_and_decision_closure": {
+    "sources": [
+      {
+        "file": "front.webm",
+        "bytes": 3520704,
+        "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Front_view_video_of_Kawaida_Waterfall%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "page": "https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm",
+        "metadata": "front.webm.metadata.json",
+        "metadata_sha256": "72214741624a64f71fe5b22b9ec8972e519a7bd624084db9b5464ce935c18352",
+        "license": "CC BY 4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+        "date": "2026-04-04",
+        "scope": "first acquisition baseline"
+      },
+      {
+        "file": "side.webm",
+        "bytes": 2424824,
+        "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Side_view_video_of_Kawaida_Waterfall_cascading%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "page": "https://commons.wikimedia.org/wiki/File:Side_view_video_of_Kawaida_Waterfall_cascading,_Cianda,_Kiambu_County.webm",
+        "metadata": "side.webm.metadata.json",
+        "metadata_sha256": "3626185cbffacc584ab3ded0e00e5b422a99c1122d59ecc10a51da2d797a8241",
+        "license": "CC BY 4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+        "date": "2026-04-04",
+        "scope": "first acquisition baseline"
+      },
+      {
+        "file": "behind.webm",
+        "bytes": 1842135,
+        "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Video_from_behind_Kawaida_Waterfall_through_hanging_roots%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "page": "https://commons.wikimedia.org/wiki/File:Video_from_behind_Kawaida_Waterfall_through_hanging_roots,_Kiambu_County.webm",
+        "metadata": "behind.webm.metadata.json",
+        "metadata_sha256": "4daf159d1fa438901a500da453960cbe325c26a27b19838f8c7786694253179b",
+        "license": "CC BY 4.0",
+        "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+        "date": "2026-04-04",
+        "scope": "first acquisition baseline"
+      }
+    ],
+    "actual_source_and_audio": "three Kawaida views by Lebu Ayiga, CC BY4.0; each shot retains its own camera sound, no synchronous-camera/continuous-trip claim",
+    "source_uses": [
+      {
+        "id": "nature-authority",
+        "head": 4,
+        "clips": [
+          {
+            "end": 4,
+            "gain_db": 0,
+            "id": "opening",
+            "mute": false,
+            "source_id": "front",
+            "start": 0
+          },
+          {
+            "end": 5,
+            "gain_db": 0,
+            "id": "side",
+            "mute": false,
+            "source_id": "side",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "gain_db": 0,
+            "id": "inside",
+            "mute": false,
+            "source_id": "behind",
+            "start": 0
+          }
+        ],
+        "store": {
+          "path": "evals/runs/pacing-trials-01/nature/work.sqlite",
+          "sha256": "59571f7755bf3f9f8b3cbc95612bc142e37e3356eae54f5f292479f74a201084",
+          "bytes": 40960
+        }
+      },
+      {
+        "id": "nature-isolated-decision",
+        "head": 7,
+        "clips": [
+          {
+            "end": 4,
+            "gain_db": 0,
+            "id": "opening",
+            "mute": false,
+            "source_id": "front",
+            "start": 0
+          },
+          {
+            "end": 3,
+            "gain_db": 0,
+            "id": "side",
+            "mute": false,
+            "source_id": "side",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "gain_db": 0,
+            "id": "inside",
+            "mute": false,
+            "source_id": "behind",
+            "start": 0
+          }
+        ],
+        "store": {
+          "path": "evals/parallel/w12-decision-closure-20260923/isolated-work.sqlite",
+          "sha256": "d3747bf04a811577d4643dd9a7263dff88530fd5c2ba43c7e0c3fe274641b2e4",
+          "bytes": 65536
+        }
+      }
+    ],
+    "decision_result": {
+      "path": "evals/parallel/w12-decision-closure-20260923/result.json",
+      "sha256": "95b465bc98f50deb9adffaf370d03fdec004245acb15c92e53d2e8051b797aa7",
+      "bytes": 2125
+    },
+    "branch_matrix": {
+      "path": "evals/parallel/w12-decision-closure-20260923/branch-matrix.json",
+      "sha256": "30bc42ab7605fe9b7c6b11954200f25d694366933d434d676bad07dba11b09fc",
+      "bytes": 39564
+    },
+    "branches": [
+      {
+        "id": "B01",
+        "declared_branch": "已有作品节奏 / 精确操作 / 故事重讲路由",
+        "evidence_level": "PROTOCOL_REVIEW"
+      },
+      {
+        "id": "B02",
+        "declared_branch": "ANALYZE 只分析",
+        "evidence_level": "DEVELOPMENT_BEHAVIOR"
+      },
+      {
+        "id": "B03",
+        "declared_branch": "PLAN 只方案",
+        "evidence_level": "DEVELOPMENT_BEHAVIOR"
+      },
+      {
+        "id": "B04",
+        "declared_branch": "EDITABLE 候选先不采纳",
+        "evidence_level": "DEVELOPMENT_BEHAVIOR"
+      },
+      {
+        "id": "B05",
+        "declared_branch": "PRODUCE 制作",
+        "evidence_level": "HISTORICAL_EXECUTION_REUSED"
+      },
+      {
+        "id": "B06",
+        "declared_branch": "REVISION 基于当前作品局部改动",
+        "evidence_level": "CURRENT_RUNTIME_EXECUTION"
+      },
+      {
+        "id": "B07",
+        "declared_branch": "局部恢复",
+        "evidence_level": "CURRENT_RUNTIME_EXECUTION"
+      },
+      {
+        "id": "B08",
+        "declared_branch": "整版恢复与局部恢复分流",
+        "evidence_level": "PROTOCOL_REVIEW_AND_PARTIAL_EXECUTION"
+      },
+      {
+        "id": "B09",
+        "declared_branch": "压缩：收窄问题而不删成立条件",
+        "evidence_level": "CONTENT_REVIEW_AND_HISTORICAL_EXECUTION"
+      },
+      {
+        "id": "B10",
+        "declared_branch": "压缩：重复/限定/否定/程度保护",
+        "evidence_level": "CONTENT_REVIEW_AND_CURRENT_EXECUTION_REUSED"
+      },
+      {
+        "id": "B11",
+        "declared_branch": "压缩：旁支/等待/自然边界",
+        "evidence_level": "PROTOCOL_REVIEW_AND_REPRESENTATIVE_CONTENT"
+      },
+      {
+        "id": "B12",
+        "declared_branch": "舒展：恢复论证前提、异议与回应",
+        "evidence_level": "CONTENT_REVIEW_AND_HISTORICAL_EXECUTION"
+      },
+      {
+        "id": "B13",
+        "declared_branch": "舒展：真实源余量与观察窗口",
+        "evidence_level": "CURRENT_RUNTIME_EXECUTION"
+      },
+      {
+        "id": "B14",
+        "declared_branch": "舒展：无尾巴/定格/回放/生成/循环",
+        "evidence_level": "PROTOCOL_REVIEW"
+      },
+      {
+        "id": "B15",
+        "declared_branch": "硬时长冲突",
+        "evidence_level": "COMPLEX_LAYER_REFUSAL"
+      },
+      {
+        "id": "B16",
+        "declared_branch": "软目标或替代预算",
+        "evidence_level": "PROTOCOL_REVIEW_AND_ALTERNATIVE_EXECUTION"
+      },
+      {
+        "id": "B17",
+        "declared_branch": "原话逐词剪与字幕分箱",
+        "evidence_level": "PROTOCOL_REVIEW_AND_WHOLE_UNIT_CHOICE"
+      },
+      {
+        "id": "B18",
+        "declared_branch": "跨轮保护及映射重排",
+        "evidence_level": "PROTOCOL_REVIEW"
+      },
+      {
+        "id": "B19",
+        "declared_branch": "内容依赖拒绝",
+        "evidence_level": "HISTORICAL_REFUSAL_REUSED"
+      },
+      {
+        "id": "B20",
+        "declared_branch": "冻结内容/相对顺序/绝对位置/总时长",
+        "evidence_level": "PROTOCOL_REVIEW_AND_CURRENT_EXECUTION"
+      },
+      {
+        "id": "B21",
+        "declared_branch": "音乐冻结/绝对与相对锚点/卡点",
+        "evidence_level": "PROTOCOL_REVIEW_AND_HISTORICAL_REFUSAL"
+      },
+      {
+        "id": "B22",
+        "declared_branch": "主风格与节奏机制分离",
+        "evidence_level": "PROTOCOL_REVIEW_AND_CURRENT_EXECUTION"
+      },
+      {
+        "id": "B23",
+        "declared_branch": "候选采纳与差异审读",
+        "evidence_level": "CURRENT_RUNTIME_EXECUTION"
+      },
+      {
+        "id": "B24",
+        "declared_branch": "版本冲突与重建",
+        "evidence_level": "CURRENT_RUNTIME_EXECUTION"
+      },
+      {
+        "id": "B25",
+        "declared_branch": "时钟、字幕/声音映射与失效",
+        "evidence_level": "PROTOCOL_REVIEW_AND_CURRENT_EXECUTION"
+      },
+      {
+        "id": "B26",
+        "declared_branch": "精确变速/光流/不支持原生状态",
+        "evidence_level": "PROTOCOL_CORRECTION_REQUIRED"
+      },
+      {
+        "id": "B27",
+        "declared_branch": "完整听看/内容/技术分级交付",
+        "evidence_level": "PROTOCOL_REVIEW_AND_EXPLICIT_LIMITS"
+      }
+    ],
+    "adopted_use": "27 historical decision/protocol branches; isolated same-id history4→7 supports candidate stop/adopt/CAS conflict/rebuild/local restore; all new events are Agent,14s is engineering plan only",
+    "old_vs_current": "B01/B26 old no-speed wording remains historical; current explicit0.5–2 support and ordinary/strict split are separate current implementation/entry bindings, not a rewrite of old protocol outcome",
+    "limits": [
+      "original nature authority remains seq4; isolated seq7 is not adoption into it",
+      "scope/privacy/real user event not inferred from author field",
+      "no new render or 14s media",
+      "old runtime identity not current D3/D4/D7 recertification"
+    ]
+  },
+  "ordinary_retime_increment": {
+    "current_shared_module": {
+      "path": "runtime/evidence_ops.py",
+      "sha256": "a34c6b48caad2f7a94291b7f59fd1b89dcccd670211228825305786c2964414e",
+      "bytes": 14970
+    },
+    "matched_candidate": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/ordinary-protection-retime-candidate-01/rebase-current-01/candidate/runtime/evidence_ops.py",
+      "sha256": "a34c6b48caad2f7a94291b7f59fd1b89dcccd670211228825305786c2964414e",
+      "bytes": 14970
+    },
+    "candidate_report": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/ordinary-protection-retime-candidate-01/REPORT.md",
+      "sha256": "e07b938eb4952f9d00bf3e94bb3905a9dddc20099186b1fb3130a38bfefda5ae",
+      "bytes": 6287
+    },
+    "controlled_verification": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/ordinary-protection-retime-candidate-01/rebase-current-01/execution-01/verification.json",
+      "sha256": "3df9623a9e4a03af9ce38891cd8b8f41b57b67e73000b32a532da72b8373e69d",
+      "bytes": 51668
+    },
+    "checks_as_reported": [
+      17,
+      17
+    ],
+    "scope": "Actual rebased normalization/evidence/revision/SQLite; controlled metadata and observed/playback intervals, no packet/container/media truth.",
+    "adopted_use": "actual shared module matches rebased candidate; exact current entry/document added hunks read back. Ordinary persistence retains original source with authorized clip/evidence_mapping and rational unit/order/dependency mapping.",
+    "hunk_readbacks": [
+      {
+        "target": {
+          "path": "workflows/raven-pacing-restructure/SKILL.md",
+          "sha256": "9768b23b84b9a8cc2c2fd4f5f41735d2820e3e50459e5808d866e95504178665",
+          "bytes": 5020
+        },
+        "added_hunks_present": true,
+        "hunk_count": 1
+      },
+      {
+        "target": {
+          "path": "workflows/raven-vlog-journey/SKILL.md",
+          "sha256": "5f2fa5dfce97fcf1d4c68f2cd677167eff15a0cc4359b8133e0ca7f054d8fbdb",
+          "bytes": 4323
+        },
+        "added_hunks_present": true,
+        "hunk_count": 1
+      },
+      {
+        "target": {
+          "path": "workflows/raven-event-highlights/SKILL.md",
+          "sha256": "1dd89c080ba7a259b07a8a1b3505cbbf7ca32a5e94a8a2016be6304e68d945e8",
+          "bytes": 4803
+        },
+        "added_hunks_present": true,
+        "hunk_count": 1
+      },
+      {
+        "target": {
+          "path": "contracts/highlight-contract.md",
+          "sha256": "32837a51173961a6c2fa64e6b61d94e12abaf47b857dc220f48fb5e4b67d1416",
+          "bytes": 4424
+        },
+        "added_hunks_present": true,
+        "hunk_count": 1
+      }
+    ],
+    "excluded": [
+      "public strict evidence-plan/event compile with retimed carrier remains rejected",
+      "no SOURCE COMPLETE or sample/pixel freeze",
+      "no semantic/music/Chinese/acoustic acceptance",
+      "no withdrawal of protection or new source to bypass",
+      "no W12-D3 closure merely from the adopted module"
+    ]
+  },
+  "r01_increment": {
+    "shared_adoption_record": {
+      "path": "evals/parallel/review-remediation-20260926/RC-INTEGRATE/rem-20260926-m-final-33/REPORT.md",
+      "sha256": "f908d232ddc5e43a3a15f4ba639a35d20add02a557f230d2edee5754ed2f0be7",
+      "bytes": 644
+    },
+    "later_fivefile_record": {
+      "path": "evals/parallel/review-remediation-20260926/RC-INTEGRATE/rem-20260926-m-final-34/REPORT.md",
+      "sha256": "2be868469dcfa20bbe1bf6d8156747efc3523e185ec09cb8e34690789b1586e7",
+      "bytes": 612
+    },
+    "adopted_boundary": "m-final-33 earlier explicit optional f32 R3 adoption is preserved as history; m-final-35 has now adopted stream-v5 as the local development default when effective non1x audio is consumed. Current shared2s/60f receipt is separately bound; ordinary coarse clocks do not gain strict precision.",
+    "isolated_streaming_refs": [
+      {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/r01-streaming-implementation-01/media-verification.json",
+        "sha256": "fa20d3b707294dc45afa81d6debbec493ca77ee09d2db944db19988f9857c77a",
+        "bytes": 553
+      },
+      {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/r01-streaming-implementation-01/ordinary-assurance-clarification.json",
+        "sha256": "fecb3123077cfffcece2d2903bc8346329d67fbdc5599221032b9bff47be2ee2",
+        "bytes": 550
+      },
+      {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/r01-streaming-implementation-01/batch-cancel-checks/verification.json",
+        "sha256": "bd2893c8daaf007fff44747917dc738f7dffc75caba1b9c4e92b3f873920a53b",
+        "bytes": 727
+      },
+      {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/r01-streaming-implementation-01/build-receipt.json",
+        "sha256": "8665e75eb6ad06163e21f2b8345fe7e32da55f9246ce280e6f092fd09486f66e",
+        "bytes": 1579
+      },
+      {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/r01-streaming-implementation-01/build-resource-receipt.json",
+        "sha256": "8665e75eb6ad06163e21f2b8345fe7e32da55f9246ce280e6f092fd09486f66e",
+        "bytes": 1579
+      }
+    ],
+    "streaming_status": "adopted into current local development shared runtime by m-final-35; installed shared default short chain verified2s/60frames; not release, acoustic/listening or full R01 acceptance",
+    "streaming_observed_scope": "short default and synthetic stereo1670s half-speed plus one actual short batch/reuse; RUNNING recovery state controlled and helper cancel controlled. No complex-acoustic long clip or full hearing claim.",
+    "assurance_limit": "ordinary observed/group-playback continuous intersection with head/tail bounds; gaps/barriers reject and COARSE_UNPROVEN remains; not strict SOURCE or frozen samples",
+    "tool_source": "Rubber Band4.0.0 source README/header states GPLv2-or-later or separately acquired commercial terms; system Accelerate dependency is not a generic host requirement",
+    "not_adopted": [
+      "official macOS CLI was not executed after signature failure",
+      "no commercial authorization purchase or binary redistribution approval",
+      "40ms developmental diagnostic budget is not a product gate",
+      "default streaming candidate does not retroactively solve original15s request"
+    ],
+    "current_development_adoption": {
+      "record": {
+        "path": "evals/parallel/review-remediation-20260926/RC-INTEGRATE/rem-20260926-m-final-35/development-adoption.json",
+        "sha256": "74c7ded84b4ffb8e577dee0d28abfdcbeab204187a65fc4d30124c3cbfe50449",
+        "bytes": 2801
+      },
+      "shared_files": [
+        {
+          "path": "runtime/editing_runtime.py",
+          "sha256": "1586f240e0449803318eb5f287758418220915541a11874c3072863bbafadd6e",
+          "bytes": 75884
+        },
+        {
+          "path": "runtime/dependency_discovery.py",
+          "sha256": "8cb10036fee0b11c91714ea9ff31d10b25e9aaecb7a4043e5ca16300cbea9141",
+          "bytes": 35171
+        },
+        {
+          "path": "runtime/rubberband-offline-f32-stream-v5",
+          "sha256": "0e5a32ef52c02ad1372b3d91c9ce63cf7c359428c527c6b41c35017864ca8e96",
+          "bytes": 393152
+        },
+        {
+          "path": "runtime/rubberband_stream.cpp",
+          "sha256": "c9ed3faf611fa6115c7104a11199dfd9f95134c730246c1084e854e2f414ed28",
+          "bytes": 13236
+        }
+      ],
+      "decision": "ADOPTED_LOCAL_DEVELOPMENT_NOT_RELEASE",
+      "R01_status": "OPEN",
+      "formal_credit": false
+    },
+    "installed_shared_short_readback": {
+      "verification": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/stream-installed-readback-01/verification.json",
+        "sha256": "bdef8a7a318766ab38ae3715119a33c70f4b668c31279a2bea111792d735e570",
+        "bytes": 202
+      },
+      "receipt": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/stream-installed-readback-01/run/receipt.json",
+        "sha256": "29f5c2bba9e692ae2aea5cfe5eeebfc05c9f96db227232ea459c962e08d8f6c1",
+        "bytes": 25434
+      },
+      "scope": "current shared default short real media chain only",
+      "decoded_frames": 60,
+      "duration_seconds": 2.0,
+      "formal_credit": false
+    }
+  },
+  "actual_members_and_rights": {
+    "font_copies": [
+      {
+        "path": "evals/runs/pacing-trials-01/meeting/baseline-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/meeting/baseline-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941940744842152,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/meeting/baseline-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      },
+      {
+        "path": "evals/runs/pacing-trials-01/meeting/compact-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/meeting/compact-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941947474557353,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/meeting/compact-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      },
+      {
+        "path": "evals/runs/pacing-trials-01/meeting/expanded-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/meeting/expanded-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941956186555231,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/meeting/expanded-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      },
+      {
+        "path": "evals/runs/pacing-trials-01/nature/baseline-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/nature/baseline-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941960090976517,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/nature/baseline-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      },
+      {
+        "path": "evals/runs/pacing-trials-01/nature/compact-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/nature/compact-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941962542115546,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/nature/compact-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      },
+      {
+        "path": "evals/runs/pacing-trials-01/nature/expanded-clock-render/captions/fonts/specified.ttf",
+        "absolute_path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/pacing-trials-01/nature/expanded-clock-render/captions/fonts/specified.ttf",
+        "sha256_as_recorded": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+        "expected_bytes": 23278008,
+        "current_stat_bytes": 23278008,
+        "current_mtime_ns": 1789941965194116766,
+        "basis": "historical SHA reused; current existence/size only, full content NOT_REHASHED",
+        "authority": [
+          "evals/runs/pacing-trials-01/nature/expanded-clock-render/captions/receipt.json"
+        ],
+        "uses": [
+          "actual font copy in historical current-render directory; license not established"
+        ]
+      }
+    ],
+    "font_license": "actual six frame-clock render directories contain specified.ttf; historical receipt identity reused/current presence-size checked, redistribution basis unverified",
+    "method_media_tool_separation": "direct method licenses, AMI CC BY4.0, AISHELL material-scope CC BY-SA4.0, Kawaida CC BY4.0, font rights and Rubber Band/tool distribution are separate",
+    "media_identity_policy": "baseline.json current hashes are actual small file/SQLite bytes; inherited-media.json lists reused media/font SHA records with current stat only; no broad media hash/decode"
+  },
+  "notices": {
+    "proposed_path": "provenance/distribution-notices/w12-source-use-20260926-NOTICE.md",
+    "old_notices_unchanged": true
+  },
+  "no_new_credit": [
+    "strict SOURCE",
+    "sample/pixel freeze",
+    "Chinese acoustic/semantic correctness",
+    "full listening/style/D5",
+    "true-user/D6",
+    "independent holdout",
+    "release rights/distribution"
+  ]
+}

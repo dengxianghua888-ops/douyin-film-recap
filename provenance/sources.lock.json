@@ -1,0 +1,173 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/SKILL.md",
+      "size": 8846,
+      "sha256": "4d741dd8e4c70598447a0b2a1773787e47e4497bb812baeb6fd873b66348e58e",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/AGENTS.md",
+      "size": 1015,
+      "sha256": "838c9dbe29a50316150e4f2e5b99bda487ca48a760e6e760376e3827eafde754",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/LICENSE",
+      "size": 1056,
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/VERIFICATION.md",
+      "size": 2198,
+      "sha256": "ca25c9c78910a08ef9f8bf9b8b5cab25669ede9aa975312c66ac416711552bd5",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/00_content_contract.md",
+      "size": 3803,
+      "sha256": "768bd9f9e8982b21c6990919d1c6a552c1d82c3e02f530af9bd35effe6d85196",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/01_highlight_taxonomy.md",
+      "size": 7967,
+      "sha256": "14e207960c6557019cf06dbedf7cb2f993a2531813a63ee0100a6ff97697e1f6",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/02_douyin_format_playbook.md",
+      "size": 6966,
+      "sha256": "fbf2ed8850a707ca74a86dca680bfa61d1f29b95d8e9692d217a4b4041def135",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/03_story_understanding.md",
+      "size": 4526,
+      "sha256": "b5752d3fb36fd18ada20a9bee9dabb89780746c9032bab0aa714b9e0ae6a1c2b",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/04_rhythm_protocol.md",
+      "size": 3485,
+      "sha256": "519ce2abd2ed19393cb579f6ee1fb23b4acbd65d24cf59630587903b21ca3388",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "local-film-recap",
+      "version": "0.2.0",
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/references/05_quality_gates.md",
+      "size": 3259,
+      "sha256": "9c12cdb89ae4118b4cee66436ace7596a7c3fe51035b1ae4c4ffb50079a94111",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/PACKAGE_MANIFEST.json",
+      "authority_sha256": "fd06df31cc9624a1bff67e3207d790a3479e5576b1c0691be0af83b214f4888e",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "zenstory-recap",
+      "version": "2b63290c41dbdec9f332062e7532d2f4c26e481c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zenstory-ai__video-recap-skills/2b63290c41db/skills/video-recap/SKILL.md",
+      "size": 12492,
+      "sha256": "217913bc6f9e47e01fd5e32154e126f8abec7aaee52f3525982bece01e3c0abc",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zenstory-ai__video-recap-skills.json",
+      "authority_sha256": "349e0117fc10650d26134b0039ff0951ce215bce579476ac940cdce8b6b6a877",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "zenstory-recap",
+      "version": "2b63290c41dbdec9f332062e7532d2f4c26e481c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zenstory-ai__video-recap-skills/2b63290c41db/skills/video-cut/SKILL.md",
+      "size": 6060,
+      "sha256": "6ac561990a6eb89da6023f3df3136f96160b89927247530e733e384d76e97116",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zenstory-ai__video-recap-skills.json",
+      "authority_sha256": "349e0117fc10650d26134b0039ff0951ce215bce579476ac940cdce8b6b6a877",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "zenstory-recap",
+      "version": "2b63290c41dbdec9f332062e7532d2f4c26e481c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zenstory-ai__video-recap-skills/2b63290c41db/skills/video-recap/references/creative-editing-playbook.md",
+      "size": 12407,
+      "sha256": "dbf367620a250b542bfcb9faeba6fdc4d752f029ef46978cec1b0ae770ed912c",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zenstory-ai__video-recap-skills.json",
+      "authority_sha256": "349e0117fc10650d26134b0039ff0951ce215bce579476ac940cdce8b6b6a877",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    },
+    {
+      "source_id": "zenstory-recap",
+      "version": "2b63290c41dbdec9f332062e7532d2f4c26e481c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zenstory-ai__video-recap-skills/2b63290c41db/skills/video-cut/scripts/cut_contract.py",
+      "size": 19327,
+      "sha256": "81ad6426d32f64eb41f9510d9a9dbf1f2335442af90718521d6136c9a751f493",
+      "use": "method-reference; original library implementation, no source code copied",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zenstory-ai__video-recap-skills.json",
+      "authority_sha256": "349e0117fc10650d26134b0039ff0951ce215bce579476ac940cdce8b6b6a877",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency; not upstream signature authentication"
+    }
+  ]
+}

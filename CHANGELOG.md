@@ -1,32 +1,11 @@
 # Changelog
 
-## 0.2.0 · 2026-09-20
+## v0.3.0-alpha.1 · 2026-09-28
 
-- Fixed sidecar episode matching, subtitle input invalidation, downstream cache receipts and nested work/source paths.
-- Split long shots into bounded analysis windows; preserved original shot provenance.
-- Added hook eligibility, evidence-backed visual selection, editorial brief and resolved genre constraints.
-- Verified hook use and timing against actually consumed source spans, rejecting unsupported highlight labels.
-- Added the distinct 30–90s highlight mode without changing existing duration aliases.
-- Added original-cue source timing, word-timing provenance, exact consumed-span EDL and segment TTS caching.
-- Bound source identities and final QC evidence; added FPS, codec, subtitle and burn-in validation.
-- Added explicit subtitle font loading and blocking checks for missing glyphs reported by libass.
-- Separated automated media checks from independent rendered-picture/listening evidence.
-- Reorganized both Skill entrypoints around shared creative rules, scoped delivery and editable handoff.
-- Added regression tests and explicit benchmark readiness; no claim of a completed real-film quality benchmark.
+- 将通用剪辑 Skill 库设为仓库顶层，纳入 34 个原子 Skill、16 条复杂工作流及可选 Agent 适配入口。
+- 原 v0.2.0 影视解说项目并入 `workflows/raven-film-recap/douyin-film-recap/`；保留运行时代码、测试、Schema、安装器与 MIT 许可。
+- 提供可选本地执行器与 MCP 桥接，以及共同来源时钟、音频处理、局部候选／采用／版本检查等当前源码改进。
+- 新增面向用户的 README、接入与迁移说明、开发边界和宣传文案。
+- 这是源码预览；不是全场景、真人用户链、编辑器兼容或全库效果验收。
 
-
-## 0.1.0 · 2026-08-23
-
-Initial runnable release.
-
-- Added an Agent Skill contract for automatic Douyin-style film and TV recaps.
-- Added subtitle-first ingest with local ASR fallback.
-- Added scene detection, batched representative-frame extraction and contact sheets.
-- Added hierarchical story understanding with character, event and knowledge timelines.
-- Added genre-adaptive multi-type high-light recall and VLM reranking.
-- Added recap planning, executable Storyboard generation and narration compression.
-- Added Edge TTS word boundaries, bounded playback-rate fitting and output-timeline subtitles.
-- Added original-audio segments, optional ducked source beds under narration and parallel FFmpeg rendering.
-- Added 9:16 safe-fit rendering, EDL output, stage caching, resume and deterministic quality gates.
-- Added semantic QC as advisory only, with `PASSED`, `DEGRADED`, and `BLOCKED` delivery states.
-- Added schemas, evaluation rubric, installation helper and automated tests.
+旧版详细变化见[影视解说 Changelog](workflows/raven-film-recap/douyin-film-recap/CHANGELOG.md)。原 `v0.2.0` 标签和发行包保持不变。

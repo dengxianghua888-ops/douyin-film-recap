@@ -1,0 +1,1779 @@
+{
+  "schema": "course-meeting-adopted-source-use/1",
+  "package": "W06",
+  "cell": "D2",
+  "scope": "Local adopted/excluded method/material/source use only; not independent semantics, D4 execution or G7 issuance.",
+  "historical_method_lock": {
+    "path": "provenance/course-meeting-sources.lock.json",
+    "sha256": "c3ed46c78391dc90938016cd2e28d8a4e5a82f65b69c41b074c365212e10ea98"
+  },
+  "claims": [
+    {
+      "id": "METHOD-01",
+      "claim": "全片时间索引、分场景输出、显式clip plan、可回源回顾页",
+      "decision": "adopt-method",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/SKILL.md",
+            "sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1"
+          },
+          "lines": [
+            18,
+            50
+          ],
+          "text": "2. Inspect the source video.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py probe <video> --output <workdir>/metadata.json`.\n   - Use duration, dimensions, and stream metadata to choose frame sampling and clip limits.\n\n3. Extract analysis inputs.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py extract-audio <video> --output <workdir>/audio.wav` for transcription.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py sample-frames <video> --output-dir <workdir>/frames --interval 30` for visual review.\n   - Lower `--interval` to 5-15 seconds for sports, demos, UI walkthroughs, or visually dense videos.\n\n4. Build a timestamped index.\n   - Transcribe audio with the available speech or multimodal model.\n   - Review sampled frames and key visual changes.\n   - Merge transcript and visual observations into the JSON shape described in `references/analysis-schema.md`.\n\n5. Select outputs by scenario.\n   - `highlight`: choose moments with strong technical value, clear conclusions, demos, audience reaction, or shareable explanation.\n   - `meeting`: choose decisions, blockers, owners, action items, risks, and unresolved questions.\n   - `course`: segment by knowledge point and produce navigable timestamps.\n   - `live`: identify event spikes, major actions, crowd reactions, key commentary, score changes, and turning points.\n   - `report`: produce an executive summary, claims to verify, key data, and evidence timestamps.\n\n6. Validate the model plan.\n   - Save the model output to `<workdir>/clip_plan.json`.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py validate-plan <workdir>/clip_plan.json`.\n   - Fix invalid times, overlapping clips, missing titles, or clips shorter than 3 seconds.\n\n7. Cut clips and generate subtitles.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py cut <video> --plan <workdir>/clip_plan.json --output-dir <workdir>/clips`.\n   - The script writes MP4 clips plus sidecar SRT files when subtitle entries are present.\n\n8. Generate a recap page.\n   - Run `python3 <skill_dir>/scripts/video_highlight.py page --plan <workdir>/clip_plan.json --clips-dir <workdir>/clips --source-video <video> --copy-media --output <workdir>/site/index.html`.\n   - The page uses a watch layout: main player on the left, scrollable highlight playlist with video previews on the right, and current clip details under the player."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/references/analysis-schema.md",
+            "sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06"
+          },
+          "lines": [
+            1,
+            45
+          ],
+          "text": "# Analysis Schema\n\nUse this reference when preparing prompts, validating model output, or extending the skill to a new video scenario.\n\n## Strict JSON Shape\n\n```json\n{\n  \"scenario\": \"highlight\",\n  \"source_title\": \"Talk or video title\",\n  \"summary\": \"One paragraph summary of the whole source video.\",\n  \"segments\": [\n    {\n      \"start\": 0,\n      \"end\": 120,\n      \"title\": \"Opening and context\",\n      \"summary\": \"What happens in this time range.\",\n      \"visuals\": [\"speaker on stage\", \"architecture diagram\"],\n      \"topics\": [\"agent workflow\", \"video analysis\"],\n      \"importance\": 3\n    }\n  ],\n  \"highlights\": [\n    {\n      \"start\": 305.2,\n      \"end\": 365.8,\n      \"title\": \"Agent completes the first end-to-end cut\",\n      \"summary\": \"The speaker shows the long-video workflow completing analysis, clipping, subtitles, and recap page generation.\",\n      \"reason\": \"Clear end-to-end proof point with visible output.\",\n      \"score\": 92,\n      \"tags\": [\"demo\", \"workflow\"],\n      \"quote\": \"The agent has now generated the first highlight clip.\",\n      \"takeaways\": [\"The workflow can run end to end.\", \"The result is ready for a recap page.\"],\n      \"subtitles\": [\n        {\n          \"start\": 305.2,\n          \"end\": 309.7,\n          \"text\": \"The agent has now generated the first highlight clip.\"\n        }\n      ]\n    }\n  ],\n  \"report\": {\n    \"key_points\": [\"Main conclusion\"],\n    \"claims_to_verify\": ["
+        }
+      ],
+      "permitted_review_scope": "W06方法设计；不复制/执行上游脚本来充当本库当前实现证明",
+      "excluded_or_unverified": [
+        "稀疏截图不证明全片理解",
+        "上游演示/宣传布局不列发行成员"
+      ],
+      "license_or_use_boundary": "MIT仅归属于该固定方法源文件；本报告只核方法采用，不作全库原创性/代码相似性审计。"
+    },
+    {
+      "id": "METHOD-02",
+      "claim": "时间/标题/分数验证不认证决定或知识依赖；cut未传入时长；字幕未约束片尾",
+      "decision": "exclude-implementation-shortcuts",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/scripts/video_highlight.py",
+            "sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e"
+          },
+          "lines": [
+            176,
+            215
+          ],
+          "text": "def validate_plan_data(plan, duration=None):\n    errors = []\n    scenario = plan.get(\"scenario\")\n    if scenario and scenario not in SCENARIOS:\n        errors.append(f\"scenario must be one of {sorted(SCENARIOS)}\")\n    highlights = get_highlights(plan)\n    if not highlights:\n        errors.append(\"highlights is empty\")\n    last_end = -1.0\n    for index, item in enumerate(highlights, start=1):\n        prefix = f\"highlight {index}\"\n        try:\n            start = parse_time(item.get(\"start\"))\n            end = parse_time(item.get(\"end\"))\n        except Exception as exc:\n            errors.append(f\"{prefix}: invalid start/end: {exc}\")\n            continue\n        if end <= start:\n            errors.append(f\"{prefix}: end must be greater than start\")\n        if end - start < 3:\n            errors.append(f\"{prefix}: duration is shorter than 3 seconds\")\n        if duration is not None and end > duration:\n            errors.append(f\"{prefix}: end exceeds video duration\")\n        if start < last_end:\n            errors.append(f\"{prefix}: overlaps previous highlight\")\n        last_end = max(last_end, end)\n        if not str(item.get(\"title\", \"\")).strip():\n            errors.append(f\"{prefix}: missing title\")\n        if not str(item.get(\"summary\", \"\")).strip():\n            errors.append(f\"{prefix}: missing summary\")\n        score = item.get(\"score\", 0)\n        try:\n            score = float(score)\n            if score < 0 or score > 100:\n                errors.append(f\"{prefix}: score must be 0-100\")\n        except Exception:\n            errors.append(f\"{prefix}: score must be numeric\")\n    return errors\n\n"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/scripts/video_highlight.py",
+            "sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e"
+          },
+          "lines": [
+            298,
+            334
+          ],
+          "text": "def write_srt(path, subtitles, clip_start):\n    lines = []\n    for index, sub in enumerate(subtitles, start=1):\n        start = parse_time(sub.get(\"start\")) - clip_start\n        end = parse_time(sub.get(\"end\")) - clip_start\n        text = str(sub.get(\"text\", \"\")).strip()\n        if not text or end <= 0:\n            continue\n        lines.extend([\n            str(index),\n            f\"{format_timestamp(max(0, start))} --> {format_timestamp(max(0, end))}\",\n            text,\n            \"\",\n        ])\n    if lines:\n        path.write_text(\"\\n\".join(lines), encoding=\"utf-8\")\n\n\ndef cmd_validate_plan(args):\n    plan = load_plan(args.plan)\n    duration = parse_time(args.duration) if args.duration else None\n    errors = validate_plan_data(plan, duration=duration)\n    if errors:\n        for error in errors:\n            print(f\"ERROR: {error}\")\n        raise SystemExit(1)\n    print(\"Plan is valid\")\n\n\ndef cmd_cut(args):\n    plan = load_plan(args.plan)\n    errors = validate_plan_data(plan)\n    if errors:\n        for error in errors:\n            print(f\"ERROR: {error}\")\n        raise SystemExit(1)\n    out = Path(args.output_dir)"
+        }
+      ],
+      "permitted_review_scope": "保留已述缺口作为不照搬理由",
+      "excluded_or_unverified": [
+        "没有执行上游代码或复现其媒体行为"
+      ],
+      "license_or_use_boundary": "固定来源只读方法审查。"
+    },
+    {
+      "id": "METHOD-03",
+      "claim": "上游已有风险与未决，W06新增的是更细证据状态、作用对象、缺席与责任期限分证",
+      "decision": "correct-attribution",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/SKILL.md",
+            "sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1"
+          },
+          "lines": [
+            31,
+            37
+          ],
+          "text": "\n5. Select outputs by scenario.\n   - `highlight`: choose moments with strong technical value, clear conclusions, demos, audience reaction, or shareable explanation.\n   - `meeting`: choose decisions, blockers, owners, action items, risks, and unresolved questions.\n   - `course`: segment by knowledge point and produce navigable timestamps.\n   - `live`: identify event spikes, major actions, crowd reactions, key commentary, score changes, and turning points.\n   - `report`: produce an executive summary, claims to verify, key data, and evidence timestamps."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/SKILL.md",
+            "sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1"
+          },
+          "lines": [
+            74,
+            79
+          ],
+          "text": "- Target 3-8 highlights for a 1-2 hour video.\n- Keep clips between 20 and 120 seconds unless the user asks for a different format.\n- Leave 1-3 seconds of context before and after a clip when it improves readability.\n- Prefer exact timestamps from transcript alignment over inferred frame timestamps.\n- For technical talks, give demos, architecture explanations, surprising results, and final takeaways higher scores.\n- For meetings, avoid promotional language. Preserve decisions, owners, deadlines, and open questions."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/references/analysis-schema.md",
+            "sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06"
+          },
+          "lines": [
+            101,
+            105
+          ],
+          "text": "`meeting` scoring:\n\n- Decisions and owner-bound action items score highest.\n- Risks, blockers, deadlines, and unresolved questions are useful.\n- Casual discussion without a decision should stay in segments."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/meeting-records.md",
+            "sha256": "8027d818d0303d15e4352c26710c9fbf51961fddb160e5061731293143bbd531"
+          },
+          "locator": "判断对象要比状态标签更具体"
+        }
+      ],
+      "permitted_review_scope": "纠正融合文案隐含对比",
+      "excluded_or_unverified": [
+        "不声称上游完全忽视未决或普通讨论"
+      ],
+      "license_or_use_boundary": "方法归因，无新增第三方源码。"
+    },
+    {
+      "id": "LOCAL-01",
+      "claim": "采用教程显式依赖与证据窗口，不将每个课程知识点变成UI before/action/result",
+      "decision": "adopt-with-exclusion",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-software-tutorial/SKILL.md",
+            "sha256": "6a84296fa3f82bd69ef2bf384358899842729c7f95011c7caf1312df4254b02d"
+          },
+          "lines": [
+            34,
+            44
+          ],
+          "text": "## 编译与画面处理\n\n在TaskSpec与教学计划中保留可审阅的决策记录：原Query或实际上下文来路、模式与停止条件、目标约束、机制选择与排除、步骤因果依据、源/输出时间映射和下一原子所需显式参数。已有记录可引用，不重复抄写；历史原Query未保留就明确缺项，不补造。提前展示的结果单独标“效果预览”，随后回到真实起点；预览不充当该步骤已经执行成功的证据。\n\n将选段写入 ExecutionPlan，关键步骤填写 before/action/result 证据窗口、context_id、requires、阅读时长；调用 [tutorial-plan-compile](../../atomic/tutorial-plan-compile/SKILL.md)。合理的结果预览可以单独作为“效果预览”开场，不能伪装为当时执行成功。编译通过不证明标注真实，复杂层仍核对结果文案及源画面。\n\n将编译计划、字幕、音轨、解释图层和教学决定放入[WorkDocument](../../contracts/work-contract.md)。新作品只初始化一次；已有作品先用[work-version](../../atomic/work-version/SKILL.md) read读取当前头，把计划合入当前文档，再用[timeline-revise](../../atomic/timeline-revise/SKILL.md)生成精确scope候选并commit；通过[work-render](../../atomic/work-render/SKILL.md)导出指定版本。独立片段试验可用[timeline-render](../../atomic/timeline-render/SKILL.md)，其成功不表示当前作品已更新。不同教学组织需保留父版时，用[work-variant-create](../../atomic/work-variant-create/SKILL.md)派生，而不是重建同名孤立作品。\n\n放大或框选时由本层决定上下文保留范围，再调用 [screen-focus](../../atomic/screen-focus/SKILL.md)。静态聚焦不自动产生运动；多个区域需要切片分别处理并登记派生源，必要时保留全画面定位，避免跳切让观众失去方向。\n\n源片先聚焦时沿用源时间；先剪辑再聚焦时使用成片时间。任何派生文件都重新登记哈希，不能把源片哈希套在新文件上。根据实际字号、视窗尺寸、字幕遮挡检查最终画面；横转竖不能机械 center-crop。"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/content-protocol.md",
+            "sha256": "ac6e55b132e1e50290c9d88dc2db51fd3b15a4faea2378639abfc685a0d87e34"
+          },
+          "locator": "课程：教学闭包"
+        }
+      ],
+      "permitted_review_scope": "跨本库方法融合",
+      "excluded_or_unverified": [
+        "课程效果、先修完整性由内容/人评另核"
+      ],
+      "license_or_use_boundary": "当前本库文件首次冻结，不伪称初始版本已核。"
+    },
+    {
+      "id": "LOCAL-02",
+      "claim": "采用连续节目音源、发言归属与源/会话/输出坐标区分",
+      "decision": "adopt-method",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-interview-multicam/SKILL.md",
+            "sha256": "f9c7e183b62054fc47440c613e7cd1cddba792edb9f50aac9dd49a29325cf60a"
+          },
+          "lines": [
+            16,
+            22
+          ],
+          "text": "先区分独立相机原片、单机连续录像与已剪节目母版。只有独立记录需要建立同步映射；母版节选沿用其既有声画，不能从其中拆出伪同步机位。母版剪辑与跨话轮限定的做法见 [母版节选及回答依赖](references/master-excerpts.md)。\n\n已有作品先用 [work-version](../../atomic/work-version/SKILL.md) read 获取权威版本和人工修改，不能重建工程覆盖。以当前素材、访谈目标、受众、时长和保留条件选择主风格；非关键风格缺项先作合理选择，无法确认人物身份或素材是否同一事件时保留不确定性。\n\n## 同步与人物证据\n\n用 [media-inspect](../../atomic/media-inspect/SKILL.md) 固定各相机/录音的源身份，建立会话与分段清单。依据 [同步与导演规则](references/director-and-sync.md)，将“录到同一事件”与“时间偏移多少”分开确认。相同口头禅或音乐不能证明同时录制。"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-interview-multicam/SKILL.md",
+            "sha256": "f9c7e183b62054fc47440c613e7cd1cddba792edb9f50aac9dd49a29325cf60a"
+          },
+          "lines": [
+            30,
+            42
+          ],
+          "text": "按 [风格索引](../../styles/interview/index.md) 选主风格和兼容声画手法。保留问题—回答关系、限定条件、否定、引用归属、必要反问与观点修正；先确定保留对话及节目声音，再安排画面。不要把“嗯”“对”都当废话，听检它是否表达赞同、插话或修正。\n\n制作 director-plan：每段 session 起止、实际发言者、保留理由、对应问题/上下文、每个镜头用途、节目音源、主风格及可改变范围。短回应不必立即切机位；反应镜头必须来自同一真实时刻，蒙太奇或回顾用法明确标识且不伪装为即时反应。没有合适近景时允许全景承载表达。\n\n相机选择依据说话、倾听、互动、证据物、空间定位和技术可用性；不机械按人脸最大、音量最大或每隔几秒切换。审美选择归本层，不能把这些启发式藏入同步原子。\n\n## 编译、修改与交付\n\n用 [multicam-plan-compile](../../atomic/multicam-plan-compile/SKILL.md) 生成 work-document 与映射，原子合同见 [多机位合同](../../contracts/multicam-contract.md)。新作品初始化一次；已有作品把新计划合入当前文档，仅在明确范围调用 [timeline-revise](../../atomic/timeline-revise/SKILL.md) 并提交，保留手工字幕与音轨。\n\n对于已剪母版，用明确源区间建立执行计划即可，不制造同步测量。复杂层为重要回答声明原问题、条件、反例和后文修正，用 [evidence-plan-compile](../../atomic/evidence-plan-compile/SKILL.md) 验证这些单元在当前作品中仍完整可追溯；映射通过不等于语义与听感通过。硬时长容不下必要限定时保留失败并调整选题范围，不静默删掉依赖后再求通过。\n\n节目字幕以实际使用的录音/源时间映射到 segment 输出时间，再锚定作品片段；画面切换不能让同一句字幕消失或重复。具体算术示例见同步与导演规则。不得用相机剪辑表直接映射未列入 picture sources 的独立录音字幕。"
+        }
+      ],
+      "permitted_review_scope": "会议剪辑保真方法",
+      "excluded_or_unverified": [
+        "已剪母版不冒充独立相机",
+        "图片不证明声学同步"
+      ],
+      "license_or_use_boundary": "当前本库文件首次冻结。"
+    },
+    {
+      "id": "LOCAL-03",
+      "claim": "采用原声完整性、上下文、同作局部修改与计划执行分离，排除竖屏/悬疑默认",
+      "decision": "adopt-with-exclusion",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/SKILL.md",
+            "sha256": "4d741dd8e4c70598447a0b2a1773787e47e4497bb812baeb6fd873b66348e58e"
+          },
+          "lines": [
+            25,
+            44
+          ],
+          "text": "## 创作目标与约束\n\n核心协议见 [创作与接管协议](references/00_content_contract.md)。必须做到：\n\n- 人物、关系、事件与因果可回到源片证据；外部剧情资料只辅助，不能覆盖素材。\n- 分开源片、故事发生、原片揭示与成片四条时间轴。钩子服从已选剧透策略，不能用最高分自动替代可前置资格。\n- 高光包括冲突、反击、动作、台词、表演、情绪、揭示、悬念、喜剧、奇观、人物选择与关系变化；只保留对当前作品有用的类型，不追求凑齐分类。\n- VO 压缩背景、跳时和过程；原片保留完整台词、动作、反应、停顿与视听价值。VO 不抢下一段最强台词，不重复刚说完的事实。\n- 镜头用途清晰：直接举证、上下文、反应或转场。普通 VO 配画从已分析单元选择，不凭事件宽时间范围编造画面。\n- 保护源素材与用户已修改片段；局部修改只重做受影响内容。新任务可建工作副本，恢复同一作品不应反复从头生成。\n\n## 输入与默认值\n\n优先从现有上下文获取：素材范围、内容单位、核心问题/视角、目标时长、画幅、剧透策略、旁白偏好、必须保留片段和交付对象。可选 `project.editorial_brief` 记录明确的创作意图，不要求用户填表。\n\n- 缺省画幅：1080×1920、30fps；横屏优先 `safe_fit_blur`，保护关系、动作空间和关键道具。\n- 内容单位与时长分开：`highlight` 为 30–90 秒；保留既有 `short` 3–6 分钟、`standard` 6–10 分钟、`deep` 10–20 分钟的兼容语义。实际配置以 `config.example.yaml` 为准。\n- 题材默认值是可调整建议。优先级为用户显式设置 > 题材预设 > 通用默认；规划和 QC 读取同一份已解析约束。\n- 多集可作为同一作品分析；当前本地运行一次交付一个成片/Part。用户要求每集分别制作时，逐集建独立工作目录，不合成一条后宣称批量完成。\n- 输入字幕优先精确同名。允许明确语言后缀，歧义必须暴露，不能把相邻集字幕当成当前集。字幕变化属于输入变化。"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/SKILL.md",
+            "sha256": "4d741dd8e4c70598447a0b2a1773787e47e4497bb812baeb6fd873b66348e58e"
+          },
+          "lines": [
+            55,
+            59
+          ],
+          "text": "先按当前交付模式检查必要能力。完整制作需要 FFmpeg/ffprobe、配置的 LLM/VLM、字幕或 ASR、TTS；烧录字幕需要 libass。缺失能力如实阻断或降级，不静默替换 Provider。\n\n恢复沿用原工作目录。源视频、字幕、可信上下文或有效配置改变时失效相应结果；上游重算后不能沿用旧的下游 QC。人工编辑中间文件后明确从受影响的下游阶段继续，例如修改 Storyboard 文案后 `--from-stage tts`，保留已修改的 Storyboard。\n\n`09_storyboard.json` 是剪辑执行依据；其中素材身份必须与已索引清单一致。运行状态、阶段快照和最终文件校验不能代替用户创作决策，也不能把旧 QC 绑定到新文件。"
+        }
+      ],
+      "permitted_review_scope": "仅本地内容协议方法参考",
+      "excluded_or_unverified": [
+        "不搬用其运行环境/provider约束到W06",
+        "不把本地参考文件纳入可分发包"
+      ],
+      "license_or_use_boundary": "本机Skill当前文本首次冻结；许可与分发未在此建立。"
+    },
+    {
+      "id": "COSCUP-01",
+      "claim": "指定Commons1080p派生录像用于中文技术讲座的本地选段及机制分析",
+      "decision": "adopt-material",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source.webm",
+            "sha256": "d26b1058bd392db0653cebcb97d911f8277b34c8b69332169d255d931e9fd26f"
+          },
+          "locator": "source seconds 518.8–719.2; learning537–718.5"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source-api.json",
+            "sha256": "b0080ea8167bfe2fd89ede5fe140b8b168a6841027b99d093c4d4217978324bd"
+          },
+          "locator": "/query/pages/125053296/videoinfo/0/extmetadata"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source.json",
+            "sha256": "74f7b187c728c5f68c81dbd7db4773dbc672176fad51fcb08d225dda53726eab"
+          },
+          "locator": "/verification"
+        }
+      ],
+      "permitted_review_scope": "本地研究/既有派生候选；记录演讲者Hong-I Hsu、上传署名Wikidata Taiwan及变更",
+      "excluded_or_unverified": [
+        "首采d26 SHA不是出版方原视频SHA1",
+        "公开和CC BY元数据不自动清算投影内第三方图/字体或整库商业发行"
+      ],
+      "license_or_use_boundary": "已归档API标为CC BY4.0且AttributionRequired=true；具体分发成员、署名/变更/嵌入成员由G7复核。"
+    },
+    {
+      "id": "COSCUP-02",
+      "claim": "讲义支持名称一笔仍是推定、3.5万为请求数量、一次仅限特定查询；不替代原声",
+      "decision": "adopt-context-not-transcript",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/slides.md",
+            "sha256": "f7d90e04c98e086de033707e41049223f6f5e57d9b546e81748595ade1a3826b"
+          },
+          "lines": [
+            284,
+            320
+          ],
+          "text": "## 多資料源整合\n\n嘗試方法1：鄉鎮名稱作為關鍵字\n* 鄉鎮名稱作為關鍵字，但 Wikidata 結果只有一筆，推測是對應的。\n* 但是如果多筆結果，就無法直接確認，需要人工確認的步驟\n\n---\n\n關鍵字搜尋策略：\n1. 台、臺異體字\n2. 市+區+里\n3. 模糊、精準搜尋\n\n---\n\n以康寧里為例\n1. `台北市內湖區康寧里`\n2. `\"台北市內湖區康寧里\"` (加上雙引號精準搜尋)\n3. `\"臺北市內湖區康寧里\"` (加上雙引號精準搜尋)\n4. `臺北市內湖區康寧里`\n5. `康寧里`\n\n---\n\n❗\n解決方案衍生新的問題：\n* 7,000 筆村里 (逐漸增加) \n  x 5 種關鍵字搜尋策略組合\n* API 查詢數量太高 (3.5 萬次+) \n\n\n---\n\n嘗試方法2：以 WikiData 資料為主\n* 標示沒有 WikiData ID 的村里代碼\n* 使用 WikiData Query Service 直接查詢村里\n* API 查詢次數：1 次"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/page.html",
+            "sha256": "7b3bb1820deb9ca2eae17ae63df2163f9368c462a0bba8aa3b99180c07a1d0a0"
+          },
+          "locator": "HTML publish-page snapshot; extraction.json maps to slides.md"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/extraction.json",
+            "sha256": "f15233b8d0e7489d7ed58165ac111d443de7ea3baf58a015753776d79c99de65"
+          },
+          "locator": "/limits"
+        }
+      ],
+      "permitted_review_scope": "术语辅助与编辑者有归属的解释",
+      "excluded_or_unverified": [
+        "2026取得当前页未独立认证2022历史版本",
+        "讲义不是逐字稿",
+        "未找到整份讲义/第三方截图的专门再发行许可"
+      ],
+      "license_or_use_boundary": "本地参考快照；不将代码MIT扩展到幻灯片图像，不自动纳入发行包。"
+    },
+    {
+      "id": "COSCUP-03",
+      "claim": "ASR仅保留噪声观察，当前两学习版没有出版字幕轨",
+      "decision": "adopt-observation-only",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/request.json",
+            "sha256": "910221cce55c42df1ea9e922668664a7924cffd614ec281e64c4748ebbccdaf5"
+          },
+          "locator": "/source,/start,/end,/model_lock,/environment_lock"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/raw-observation.json",
+            "sha256": "21b2088459e86398b26b3da8572c54fef3b20ed051974dd1efb7390edc9ca03a"
+          },
+          "locator": "/recognition_accuracy=NOT_VERIFIED;/acoustic_alignment=MODEL_ONLY"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+            "sha256": "6a2b60a1763878398d670a1885d4fc7c432c7f9c131a7748ead56947ab878277"
+          },
+          "locator": "/captions = {}"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/edge-revision-01/document.json",
+            "sha256": "57b1e77984d9c4fcd8a3fb36217443be287c868e027275841b76f85a42a0dc9a"
+          },
+          "locator": "/captions = {}"
+        }
+      ],
+      "permitted_review_scope": "筛选上下文与不确定边界提示",
+      "excluded_or_unverified": [
+        "未验证逐字内容、说话人或声学边界",
+        "未用讲义文字覆盖ASR或伪造准确字幕"
+      ],
+      "license_or_use_boundary": "原媒体归属继续继承，模型/环境仅追溯现有观察；不宣称当前模型运行或整模型发行许可。"
+    },
+    {
+      "id": "COSCUP-04",
+      "claim": "投影裁切派生与当前学习版保留源→派生→输出映射",
+      "decision": "adopt-derived-material",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/request.json",
+            "sha256": "adb2bb5dbf515f3cf6d5b6d82e830adcee49ca672ae79e2f30b7b6d9e962fb9e"
+          },
+          "locator": "/source,/crop,/output"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/receipt.json",
+            "sha256": "144b4fea2285db783f539154496db6f5927878dda5bbc3503fff2ecdfdd4d5d1"
+          },
+          "locator": "/result/time_mapping,/artifacts"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+            "sha256": "6a2b60a1763878398d670a1885d4fc7c432c7f9c131a7748ead56947ab878277"
+          },
+          "locator": "/sources,/notes/projection_derivation"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/edge-revision-01/document.json",
+            "sha256": "57b1e77984d9c4fcd8a3fb36217443be287c868e027275841b76f85a42a0dc9a"
+          },
+          "locator": "/notes/editorial/selected_source_ranges"
+        }
+      ],
+      "permitted_review_scope": "本地作品派生与学习页源映射",
+      "excluded_or_unverified": [
+        "未重跑媒体或重验当前运行时成片",
+        "旧技术通过不表示听感/学习效果"
+      ],
+      "license_or_use_boundary": "派生仍继承原录像及内嵌成员限制；切段/裁切/叠层变更须标明。"
+    },
+    {
+      "id": "COSCUP-05",
+      "claim": "历史代码仅为署名参考，当前卡只显示SPARQL第2/3/7行，不是恢复原投影片或重现查询",
+      "decision": "adopt-code-excerpt",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+            "sha256": "cbe269a7d35c5872c30457b02f17eb8a119b06f25ca04f644f3be7376c0968ee"
+          },
+          "locator": "/commit,/files,/query,/relationship"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/WikidataClass.php",
+            "sha256": "7884587fa7e32b451b2e6f06fd42a5bee92b31838a1d05d4532be137e35bf594"
+          },
+          "lines": [
+            35,
+            61
+          ],
+          "text": "        $sparqlQueryString = <<< 'SPARQL'\nSELECT DISTINCT ?village_code ?town ?townLabel ?townDescription ?village ?villageLabel ?villageDescription ?startdate ?enddate ?start2 ?end2 ?new ?newLabel ?new2 ?osm_id ?coordinate WHERE {\n  ?village wdt:P31 wd:Q7930614;\n    (wdt:P131+) wd:Q865.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE], zh-tw, zh\". }\n  OPTIONAL { ?village wdt:P402 ?osm_id. }\n  OPTIONAL { ?village wdt:P625 ?coordinate. }\n  OPTIONAL { ?village wdt:P5020 ?village_code. }\n  OPTIONAL { ?village wdt:P131 ?town. }\n  OPTIONAL { ?village wdt:P571 ?startdate. }\n  OPTIONAL { ?village wdt:P576 ?enddate. }\n  OPTIONAL {\n    ?village p:P31 _:b0.\n    _:b0 pq:P580 ?start2.\n  }\n  OPTIONAL {\n    ?village p:P31 _:b1.\n    _:b1 pq:P582 ?end2.\n  }\n  OPTIONAL { ?village wdt:P1366 ?new. }\n  OPTIONAL {\n    ?village p:P1366 _:b2.\n    _:b2 pq:P585 ?new2.\n  }\n}\nORDER BY (?village_code)\nSPARQL;"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/query.sparql",
+            "sha256": "656f28872812996916878b52f1e738af4f4a1d53fd8e16b68b2d05112aa5ff8d"
+          },
+          "lines": [
+            1,
+            25
+          ],
+          "text": "SELECT DISTINCT ?village_code ?town ?townLabel ?townDescription ?village ?villageLabel ?villageDescription ?startdate ?enddate ?start2 ?end2 ?new ?newLabel ?new2 ?osm_id ?coordinate WHERE {\n  ?village wdt:P31 wd:Q7930614;\n    (wdt:P131+) wd:Q865.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE], zh-tw, zh\". }\n  OPTIONAL { ?village wdt:P402 ?osm_id. }\n  OPTIONAL { ?village wdt:P625 ?coordinate. }\n  OPTIONAL { ?village wdt:P5020 ?village_code. }\n  OPTIONAL { ?village wdt:P131 ?town. }\n  OPTIONAL { ?village wdt:P571 ?startdate. }\n  OPTIONAL { ?village wdt:P576 ?enddate. }\n  OPTIONAL {\n    ?village p:P31 _:b0.\n    _:b0 pq:P580 ?start2.\n  }\n  OPTIONAL {\n    ?village p:P31 _:b1.\n    _:b1 pq:P582 ?end2.\n  }\n  OPTIONAL { ?village wdt:P1366 ?new. }\n  OPTIONAL {\n    ?village p:P1366 _:b2.\n    _:b2 pq:P585 ?new2.\n  }\n}\nORDER BY (?village_code)"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+            "sha256": "6a2b60a1763878398d670a1885d4fc7c432c7f9c131a7748ead56947ab878277"
+          },
+          "locator": "/notes/code_reference"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/LICENSE",
+            "sha256": "18307dcfb6f9c25054e5d0d8f98dad02193424b7aae4800bf573104604344667"
+          },
+          "locator": "MIT full notice; exact copy at provenance/distribution-notices/coscup-planetoid-MIT.txt"
+        }
+      ],
+      "permitted_review_scope": "历史15a5c9代码和精简显示卡；原full query-reference卡仅历史，当前使用code-excerpt及其still-motion",
+      "excluded_or_unverified": [
+        "未运行SPARQL",
+        "不能凭像素相似认证原讲义逐字符相等",
+        "代码MIT不授予讲义图像许可"
+      ],
+      "license_or_use_boundary": "核历史MIT版权planetoid及notice字节相等；具体代码摘录/图卡发行需携notice，系统字体文件不据此分发。"
+    },
+    {
+      "id": "COSCUP-06",
+      "claim": "学习页与两种编排是编辑者任务设计与派生演示",
+      "decision": "adopt-local-method",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/learning-editions.md",
+            "sha256": "92804f56ed45b6e84709b3a87e89c34ba9719c4e57d5c1d14e095e372196879e"
+          },
+          "locator": "先确定学习任务，再压缩；可选学习页生成器"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/editorial-declarations.json",
+            "sha256": "7aa50f73f44c5b973d91062f50ec53a1ac5d7f0fd97a40fa5500ecc58133b8fd"
+          },
+          "locator": "/interpretation,/review_preserves,/code_policy"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/result-current.json",
+            "sha256": "c3bec4fea6d49875fa0bbf47e9a7fcc6f8d02de3735bb9f80281bd7ffe95d7e3"
+          },
+          "locator": "/limits,/results/*/listening"
+        }
+      ],
+      "permitted_review_scope": "案例解剖与已有基础者复习；章节链接按成片映射",
+      "excluded_or_unverified": [
+        "浏览器交互不证明学习效果",
+        "没有字幕真值/零基础完整教程/现场软件重演"
+      ],
+      "license_or_use_boundary": "原创提示与公开引用分别标注；不随页面默认打包讲义快照或原素材。"
+    },
+    {
+      "id": "AMI-01",
+      "claim": "官方RM音视频与SMIL共同零点只作出版方时间声明",
+      "decision": "adopt-declared-clock-material",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+            "sha256": "75376f7b9e959abf3135cc97e52846e770262400e98f45b35d4d0497ed526000"
+          },
+          "locator": "/bound_sources,/declarations,/scope"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/download-manifest.json",
+            "sha256": "8f6ea409662d8616bda30f535f898ae971802f44352909425a944bb7552cca73"
+          },
+          "locator": "/license,/files/license.html"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/license.html",
+            "sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6"
+          },
+          "locator": "archived AMI corpus licensing page"
+        }
+      ],
+      "permitted_review_scope": "本地情景会议方法试验；来源SHA和原注释分列",
+      "excluded_or_unverified": [
+        "不是实际音画同步/声学误差测量",
+        "不是现实组织批准或商业会议"
+      ],
+      "license_or_use_boundary": "归档Corpus许可声明CC BY4.0，具体发行包与署名/肖像/内嵌成员仍须按实际成员检查。"
+    },
+    {
+      "id": "AMI-02",
+      "claim": "官方词注释支持当前标注来路，不证明原话听检或估计数值是真实研究",
+      "decision": "adopt-annotation-context",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/editorial-units.json",
+            "sha256": "fb86e1842a8dca502e97f9af2c2c2327218f964c80982db2fe3c8267263c634f"
+          },
+          "locator": "/units,/semantic_basis,/prohibited_inferences"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.A.words.xml",
+            "sha256": "f065db34e9fed74c00135fea4d47f9f1e7e0f42e77e36cc78371e253c1088020"
+          },
+          "locator": "word IDs with publisher starttime/endtime, selected1295.62–1494.83 source seconds"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.B.words.xml",
+            "sha256": "c3f6bc40aab864f46ca27a5763d87b617b1ce08096d6e7fb327aed947195989f"
+          },
+          "locator": "word IDs with publisher starttime/endtime, selected1295.62–1494.83 source seconds"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.C.words.xml",
+            "sha256": "cc76fe065ee1b79bce28830172513fd54110f4d3e95ce5676db26ca652212c7f"
+          },
+          "locator": "word IDs with publisher starttime/endtime, selected1295.62–1494.83 source seconds"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.D.words.xml",
+            "sha256": "15f4817b9bda95a5d97d597811c404e0d2643d338267daef29fa00a5502d9cc3"
+          },
+          "locator": "word IDs with publisher starttime/endtime, selected1295.62–1494.83 source seconds"
+        }
+      ],
+      "permitted_review_scope": "为提议/异议/估计、源字幕映射登记来源；非批准结论",
+      "excluded_or_unverified": [
+        "字幕/标注不等于完整听检",
+        "角色头衔不等于具体承诺"
+      ],
+      "license_or_use_boundary": "注释与音视频分别继承既有采集锁；不把全部Corpus打包授权作为本地D2前置或既成事实。"
+    },
+    {
+      "id": "AMI-03",
+      "claim": "结束投影片显示角色分工与30分钟后开会，需与角色表相互回源",
+      "decision": "adopt-bounded-visual-context",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/visual-context-observation.json",
+            "sha256": "dce7442acba39fb06cfa7e1177780bac22d61380ec8b00d33ce0cbe28ce77b85"
+          },
+          "locator": "/observed_text,/source_seconds=1485.36,/role_mapping"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/open-question-ledger-59.png",
+            "sha256": "22719e1b76e89ef7a520058c1e26b1e1e997ebf8ff1a39aadb296f1b83bd1e12"
+          },
+          "locator": "Displayed Closing slide, visual readback in this review; output59s is historical screenshot identity, not fresh seek proof"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/corpusResources/meetings.xml",
+            "sha256": "8ab6cdcf03ed863e839418f31c7380392397a2eed892d73b9bc1b438c7ec520a"
+          },
+          "lines": [
+            3,
+            7
+          ],
+          "text": "   <meeting nite:id=\"meet_1\" type=\"scenario\" observation=\"IS1000a\" name=\"AMI scenario meeting\" dateOnly=\"29-10-2004\" startTime=\"10h46\" description=\"AMI scenario Hub -- meeting \" duration=\"1490\" visibility=\"seen\" seen_type=\"training\" k10=\"1\" k5=\"1\">\n      <speaker nite:id=\"IS1000a_4\" channel=\"3\" nxt_agent=\"D\" camera=\"Closeup4\" global_name=\"MIO016\" role=\"ID\"/>\n      <speaker nite:id=\"IS1000a_2\" channel=\"1\" nxt_agent=\"B\" camera=\"Closeup2\" global_name=\"MIO082\" role=\"PM\"/>\n      <speaker nite:id=\"IS1000a_1\" channel=\"0\" nxt_agent=\"A\" camera=\"Closeup1\" global_name=\"FIE081\" role=\"ME\"/>\n      <speaker nite:id=\"IS1000a_3\" channel=\"2\" nxt_agent=\"C\" camera=\"Closeup3\" global_name=\"MIO050\" role=\"UI\"/>"
+        }
+      ],
+      "permitted_review_scope": "纠正仅从转写缺词推断未分派任务；D=ID/C=UI/A=ME为情景角色映射",
+      "excluded_or_unverified": [
+        "低清单帧不证明持续可读或完整听检",
+        "30分钟后开会不等于每任务绝对deadline",
+        "不是现实组织承诺"
+      ],
+      "license_or_use_boundary": "静帧源于已绑定AMI媒体；完整分发仍逐成员判断。"
+    },
+    {
+      "id": "GPUWEB-01",
+      "claim": "两次会议固定版本与原文行作为notes-only材料，不生成媒体或派单",
+      "decision": "adopt-text-source",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+            "sha256": "08ee060994f70c38baf3ecb5094700b4468c8ddf924ff980bfb344c4b3db469d"
+          },
+          "locator": "/commit,/sources,/license,/verification"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/gpuweb-meeting-01/brief-spec-v2.json",
+            "sha256": "80f0773ca04be46ad07a537c34c59918c0583a896b58cb3bc6210c332af0eda8"
+          },
+          "locator": "/delivery=notes-only,/as_of,/scope"
+        }
+      ],
+      "permitted_review_scope": "截至2022-11-15的所选12条记录/15引文；按历史日期/对象整理",
+      "excluded_or_unverified": [
+        "无录音时间不造秒数",
+        "未验证法定人数、后续实施、当前规范",
+        "公开wiki不等于可全量发行"
+      ],
+      "license_or_use_boundary": "既有锁未识别独立wiki许可；完整快照仅本地研究、不入发布包，必要摘录/原创整理及具体分发边界由G7审查。"
+    },
+    {
+      "id": "GPU-RECORD-rename-initial",
+      "claim": "原提议将 .sig 改成 .frac，.exp 保持；动机是用 fraction / exponent 帮助记忆。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            187,
+            188
+          ],
+          "text": "    * Rename { .sig, .exp } -> { .frac, .exp }  \n    * Prompted by the fact we can document the mnemonic “fraction and exponent”, and it really is a fraction."
+        }
+      ],
+      "permitted_review_scope": "这是议题起点，不是最终采用的字段名。",
+      "excluded_or_unverified": [
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-rename-final",
+      "claim": "纪要明确写出共识为 { .fract, .exp }，沿用已有结构中的 fract 拼写。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            192,
+            199
+          ],
+          "text": "* AB: We have another struct with ‘fract’ and ‘whole’\n* KG: ‘fract’ and ‘exp’?\n* AB: fine\n* KG: Let’s be consistent with our previous decision, and use consistent names between all our structs\n* DG: Was this an HLSL vs GLSL distinction?\n* AB: Most other languages use a pointer output argument\n* KG: HLSL is ‘frac’, GLSL is ‘fract’\n* Current practice in the spec is ‘fract’, so we should use that consistently"
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            200,
+            201
+          ],
+          "text": "* **Consensus: { .fract, .exp }**\n* **If anyone wants to s/fract/frac/, file a new issue.**"
+        }
+      ],
+      "permitted_review_scope": "只描述本次命名共识；不证明规范已合并、实现已上线。",
+      "excluded_or_unverified": [
+        "把前面的 .frac 提议当最终决定会出错。若再改 fract 为 frac，记录要求另开议题。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-nan-direction",
+      "claim": "纪要记录 Mozilla、Google、Apple 的发言支持使用 indeterminate values；主持人提出按此表述。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            164,
+            171
+          ],
+          "text": "* KG: Mozilla’s consensus was, let’s take in the direction of using the things called “indeterminate values’\n* AB: Google is also happy with that\n* &lt;TENSE SILENCE>\n* KG: unknown\n* KG: **Let’s use “indeterminate values”,** and if that is not the consensus. . .\n* DG: Apple would be happy with that also\n* AB: Okay, **we’ll back out the acosh or whatever, and just make everything say the right stuff**\n* DG: sounds okay"
+        }
+      ],
+      "permitted_review_scope": "本项是对记录中明确赞同的编辑者概括，不推断所有参与者都投了赞成票。",
+      "excluded_or_unverified": [
+        "中间的沉默不是赞同证据；这里依据其前后的明确表态。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-nan-followup",
+      "claim": "AB 用“we’ll”表示将撤回相关 acosh 修改并统一表述。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            170,
+            170
+          ],
+          "text": "* AB: Okay, **we’ll back out the acosh or whatever, and just make everything say the right stuff**"
+        }
+      ],
+      "permitted_review_scope": "保留原记录的集体措辞，不把发言者自动等同唯一执行负责人。",
+      "excluded_or_unverified": [
+        "所选记录没有明确执行团队名单或完成期限；也没有本批执行完成证据。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-special-first",
+      "claim": "名称与语法仍有分歧；先前粗略共识受到解析前瞻问题的挑战，主持人决定继续讨论。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            150,
+            157
+          ],
+          "text": "* BC: min vs lowest is tricky and really does mix people up. Rust’s min is different than c++’s min. \n* AB: Not fond of the :: syntax, since we don’t use that anywhere else in the language\n* KG: We kind of had consensus on the syntax, so my proposal was more about the names, fit into whatever syntax was agreed upon (e.g. max&lt;T>, min&lt;T>, and minPositive&lt;T>)\n* AB: Template style works for bitcast because it’s a keyword - it doesn’t work for other identifiers that could be redefined\n* KG: We had a rough consensus on using brackets - did that break?\n* AB: Yes, I think so - [since last meeting,] DN thought it was going to require too much lookahead to use angle brackets on ordinary identifiers\n* (DG: Does the IEEE standard give these values names?)\n* KG:** Tabled for more discussion.**"
+        }
+      ],
+      "permitted_review_scope": "不能摘取“曾有粗略共识”就宣布语法已定。",
+      "excluded_or_unverified": [
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-special-next",
+      "claim": "下一次会议继续讨论点号和命名；lowest/highest 与 min/max 偏好仍不同，记录再次暂缓。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            148,
+            157
+          ],
+          "text": "* DN: Against proposal that adds new keywords. So angle bracket thing.\n* DN: Solution shape is likely i32.lowest i32.highest.  \n* BC: Against using underscored-names.\n* BC: James internally wondered if   array-type.length might be another kind of thing that fits under this.  Would be happier with type.member rather than underscores.\n* KG: Can do dots.  \n* DN: Think highest and lowest, not smallest subnormal smallest normal.\n* KG: Arg is to make people see the contrast. Prefer min and max\n* BC: Prefer lowest and highest to avoid ambiguities across different languages.\n* KG: Don’t like to type long names like lowest and highest.  And we have min and max functions. Don’t want to do better than rust here.\n* **_Table it for now._**"
+        }
+      ],
+      "permitted_review_scope": "状态只覆盖这两次会议的所选证据，不能推断议题此后一直未解决。",
+      "excluded_or_unverified": [
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-trapping-open",
+      "claim": "原负责人未准备好提案，会议询问是否有人接手，随后暂缓。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            178,
+            180
+          ],
+          "text": "* KG: “trapping behavior” is a slightly misleading name\n* KG: MM didn’t have proposals put together before he left - does Apple have anyone to pick up the baton?\n* DG: **Let’s table for now**"
+        }
+      ],
+      "permitted_review_scope": "没有从这段记录中确认新的接手人。",
+      "excluded_or_unverified": [
+        "被询问的机构或在场发言者不因此成为已承诺的负责人。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-broadcast-process",
+      "claim": "记录明确的决定是继续线下讨论；此前提出“可以写成提案”和两种版本的想法。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+            "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae"
+          },
+          "lines": [
+            276,
+            279
+          ],
+          "text": "* KG: I could write that up as a proposal\n* AB: Just the one version, or rename and have both versions?\n* KG: Have both versions\n* **Decision: continue to discuss offline**"
+        }
+      ],
+      "permitted_review_scope": "这是后续讨论方式的决定，不是两个技术版本已获批准。",
+      "excluded_or_unverified": [
+        "“I could write”保留为意向，不单独生成 KG 已承诺交付的任务。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-broadcast-update",
+      "claim": "下一次会议中，DN 明确表示会修改 uniformity 规则，并指出应加入 collective operations 列表。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            183,
+            187
+          ],
+          "text": "* KG: What caused us to drop the ability to load from other address spaces? Why is it only workgroup now?\n* DN: If you have multiple workgroups in flight, you can’t guarantee that they won’t race on other address spaces. Metal doesn’t have any way to prevent that. Restricting it to workgroup ensures that that won’t happen. Synchronization picture is much clearer.\n* KG: Main concern was that this solves the issue for compute shaders with workgroup memory, but not other use cases that need the storage address class. But apparently it’s harder to get guarantees about that from the underlying implementation.\n* JP: If you really need other address classes, you could pass it through workgroup memory\n* KG: But I’m interested in fragment shaders."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            192,
+            196
+          ],
+          "text": "* KG: I like workgroupUniformLoad\n* KG: It seems like Google’s feelings have evolved, so the PR needs to be updated?\n* DN: Yes, and I’ll make sure to amend the uniformity rules\n* KG: It should also be explicit that workgroupUniformLoad requires uniform control flow, like barriers do\n* DN: This will need to be added to the collective operations list. The uniformity chapter lists the things that require uniformity"
+        }
+      ],
+      "permitted_review_scope": "记录中的技术讨论限定 workgroup 范围并要求 uniform control flow；不能扩展为支持所有地址空间的承诺。",
+      "excluded_or_unverified": [
+        "是否实际提交或合并不在本批证据范围内；下次会议时间不是任务截止时间。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-override-consensus",
+      "claim": "纪要对缩小接口中 override 声明集合记录了共识，讨论包括静态使用及其传递闭包。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            164,
+            166
+          ],
+          "text": "* JP: currently every single pipeline override is in the shader interface for any shader I make. So when I create the pipeline, I have to supply override values for too many  values that are not relevant to the pipeline.\n* JP: Need wordsmithign to get the transitivie closure of override decls statically used, and attributes, and array types.\n* JB: Consistent with decision to be able to put lots of things in the same module."
+        },
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            167,
+            167
+          ],
+          "text": "* **_Consensus to do this.  (Recognizing Microsoft and Apple are not present but usually are)._**"
+        }
+      ],
+      "permitted_review_scope": "共识记录同时注明 Microsoft 与 Apple 缺席，不能写成所有通常参与机构一致批准。",
+      "excluded_or_unverified": [
+        "未核验组织法定人数规则，也未证明后续实现或规范合并。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-optout-proposal",
+      "claim": "记录呈现多种立场。JB 提议 v1 先有局部机制，全局机制若考虑也应在其后评估。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            217,
+            221
+          ],
+          "text": "* KG: If the opt-out is local, then it doesn’t blindly apply to other areas of the code that were working, or to new code that you introduce. A shader-wide opt-out covers up too much, and people lose the benefit of the analysis when they’re not expecting to.\n* DN: I’d like to pursue both options.\n* KG: I’d rather have name mangling and detailed opt-outs than a global opt-out.\n* DN: The SPIR-V -> WGSL conversion can just spew the local opt-outs everywhere, it’s not pretty but the output isn’t beautiful anyway.\n* JB: Let’s agree that we want something local in v1, and that the global opt-out, if it ever happens, will only happen after we also have something more local, and can decide if we care about a global opt-out at all"
+        }
+      ],
+      "permitted_review_scope": "保留为发言者的收束提议；所选行没有独立的明确通过标记，不把“Let’s agree”自动升级为正式决定。",
+      "excluded_or_unverified": [
+        "没有宣布“全局 opt-out 永不支持”，也没有宣布已经获批。",
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    },
+    {
+      "id": "GPU-RECORD-date-not-deadline",
+      "claim": "所选段落只明确了 11 月 22 日的下一次会议，并提醒提交先前承诺的 PR；各项任务的责任与期限仍需逐项核对。",
+      "decision": "adopt-bounded-record",
+      "evidence": [
+        {
+          "file": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+            "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b"
+          },
+          "lines": [
+            239,
+            241
+          ],
+          "text": "* Next week: (**APAC**!) Tuesday, November 22, **4-5pm** (America/Los_Angeles)\n* **Write any PRs you’ve promised!**\n    * There are no other v1.0 issues outstanding (other than the ones on this agenda!) that are not blocked awaiting proposals."
+        }
+      ],
+      "permitted_review_scope": "这段没有给每项 PR 指定负责人或明确到期日，不把日程抄成所有行动的期限。",
+      "excluded_or_unverified": [
+        "事实/实施和组织授权没有因此得到独立核验；null责任期限仅表示所选证据未明确。"
+      ],
+      "license_or_use_boundary": "同GPUWEB-01；不将文本来源借用当正式组织决议认证。"
+    }
+  ],
+  "source_members": [
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+      "sha256": "c3ed46c78391dc90938016cd2e28d8a4e5a82f65b69c41b074c365212e10ea98",
+      "bytes": 3532,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/SKILL.md",
+      "sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1",
+      "bytes": 7327,
+      "kind": "external-method-source",
+      "historical_checks": [
+        {
+          "expected_sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Existing acquisition manifest consistency, not signed publisher authenticity."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+      "sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+      "bytes": 4060,
+      "kind": "historical-acquisition-record",
+      "historical_checks": [
+        {
+          "expected_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/scripts/video_highlight.py",
+      "sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e",
+      "bytes": 35439,
+      "kind": "external-method-source",
+      "historical_checks": [
+        {
+          "expected_sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Existing acquisition manifest consistency, not signed publisher authenticity."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/references/analysis-schema.md",
+      "sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06",
+      "bytes": 3810,
+      "kind": "external-method-source",
+      "historical_checks": [
+        {
+          "expected_sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Existing acquisition manifest consistency, not signed publisher authenticity."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/LICENSE",
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "bytes": 1056,
+      "kind": "external-method-source",
+      "historical_checks": [
+        {
+          "expected_sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/course-meeting-sources.lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Existing acquisition manifest consistency, not signed publisher authenticity."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+      "sha256": "424f3c380d398914bc93e40cafec9be351d1a2af6ddac805ea09c85a3e349773",
+      "bytes": 2740,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source.webm",
+      "sha256": "d26b1058bd392db0653cebcb97d911f8277b34c8b69332169d255d931e9fd26f",
+      "bytes": 362932877,
+      "kind": "source",
+      "historical_checks": [
+        {
+          "expected_sha256": "d26b1058bd392db0653cebcb97d911f8277b34c8b69332169d255d931e9fd26f",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "d26b1058bd392db0653cebcb97d911f8277b34c8b69332169d255d931e9fd26f",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/request.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Rechecked against existing local record; first-acquisition baseline is not an independently published derivative digest."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source.json",
+      "sha256": "74f7b187c728c5f68c81dbd7db4773dbc672176fad51fcb08d225dda53726eab",
+      "bytes": 1817,
+      "kind": "source_metadata",
+      "historical_checks": [
+        {
+          "expected_sha256": "74f7b187c728c5f68c81dbd7db4773dbc672176fad51fcb08d225dda53726eab",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Rechecked against existing local record; first-acquisition baseline is not an independently published derivative digest."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/publication.json",
+      "sha256": "f4d6a34c74f4b9253ff29eb2e9723039cbe5d5fed455e76d6684e20d3fcf7832",
+      "bytes": 796,
+      "kind": "slide_publication",
+      "historical_checks": [
+        {
+          "expected_sha256": "f4d6a34c74f4b9253ff29eb2e9723039cbe5d5fed455e76d6684e20d3fcf7832",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Rechecked against existing local record; first-acquisition baseline is not an independently published derivative digest."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/slides.md",
+      "sha256": "f7d90e04c98e086de033707e41049223f6f5e57d9b546e81748595ade1a3826b",
+      "bytes": 8107,
+      "kind": "slides",
+      "historical_checks": [
+        {
+          "expected_sha256": "f7d90e04c98e086de033707e41049223f6f5e57d9b546e81748595ade1a3826b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "f7d90e04c98e086de033707e41049223f6f5e57d9b546e81748595ade1a3826b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/extraction.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Rechecked against existing local record; first-acquisition baseline is not an independently published derivative digest."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/raw-observation.json",
+      "sha256": "21b2088459e86398b26b3da8572c54fef3b20ed051974dd1efb7390edc9ca03a",
+      "bytes": 605487,
+      "kind": "asr_candidate",
+      "historical_checks": [
+        {
+          "expected_sha256": "21b2088459e86398b26b3da8572c54fef3b20ed051974dd1efb7390edc9ca03a",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/source-evidence.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Rechecked against existing local record; first-acquisition baseline is not an independently published derivative digest."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source-api.json",
+      "sha256": "b0080ea8167bfe2fd89ede5fe140b8b168a6841027b99d093c4d4217978324bd",
+      "bytes": 3944,
+      "kind": "local-document",
+      "historical_checks": [
+        {
+          "expected_sha256": "b0080ea8167bfe2fd89ede5fe140b8b168a6841027b99d093c4d4217978324bd",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-coscup-wikidata/source.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/page.html",
+      "sha256": "7b3bb1820deb9ca2eae17ae63df2163f9368c462a0bba8aa3b99180c07a1d0a0",
+      "bytes": 52167,
+      "kind": "slide-html-snapshot",
+      "historical_checks": [
+        {
+          "expected_sha256": "7b3bb1820deb9ca2eae17ae63df2163f9368c462a0bba8aa3b99180c07a1d0a0",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/publication.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "7b3bb1820deb9ca2eae17ae63df2163f9368c462a0bba8aa3b99180c07a1d0a0",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/extraction.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "First acquisition snapshot 2026-09-21; reported timestamp is not independent 2022 version proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-slides-01/extraction.json",
+      "sha256": "f15233b8d0e7489d7ed58165ac111d443de7ea3baf58a015753776d79c99de65",
+      "bytes": 717,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/request.json",
+      "sha256": "910221cce55c42df1ea9e922668664a7924cffd614ec281e64c4748ebbccdaf5",
+      "bytes": 930,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/models/faster-whisper-small/model-lock.json",
+      "sha256": "af654b8b3a199361cf72add14a7b9c382ac842413294e2abe4ed64f904ba9e8b",
+      "bytes": 3030,
+      "kind": "local-document",
+      "historical_checks": [
+        {
+          "expected_sha256": "af654b8b3a199361cf72add14a7b9c382ac842413294e2abe4ed64f904ba9e8b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/request.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/models/faster-whisper-small/environment-lock.json",
+      "sha256": "521499741b52c3617bc0dc00a3ef01de231063e54bcbc70a5423a4f7200cc8d5",
+      "bytes": 687049,
+      "kind": "local-document",
+      "historical_checks": [
+        {
+          "expected_sha256": "521499741b52c3617bc0dc00a3ef01de231063e54bcbc70a5423a4f7200cc8d5",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-asr-03/request.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/request.json",
+      "sha256": "adb2bb5dbf515f3cf6d5b6d82e830adcee49ca672ae79e2f30b7b6d9e962fb9e",
+      "bytes": 441,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/receipt.json",
+      "sha256": "144b4fea2285db783f539154496db6f5927878dda5bbc3503fff2ecdfdd4d5d1",
+      "bytes": 3833,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/context/render/timeline/preview.mp4",
+      "sha256": "fbf642e502ef443f21dafbe8ff17812974fea668d15c8100165f02b569d02a57",
+      "bytes": 83331998,
+      "kind": "derived-media",
+      "historical_checks": [
+        {
+          "expected_sha256": "fbf642e502ef443f21dafbe8ff17812974fea668d15c8100165f02b569d02a57",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/request.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/focused.mp4",
+      "sha256": "acc5ef1e096b7f11002374ccee5af12711f7844f3ae3d5578be19043c854db83",
+      "bytes": 65661451,
+      "kind": "derived-media",
+      "historical_checks": [
+        {
+          "expected_sha256": "acc5ef1e096b7f11002374ccee5af12711f7844f3ae3d5578be19043c854db83",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/projection-source/receipt.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+      "sha256": "6a2b60a1763878398d670a1885d4fc7c432c7f9c131a7748ead56947ab878277",
+      "bytes": 8974,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/edge-revision-01/document.json",
+      "sha256": "57b1e77984d9c4fcd8a3fb36217443be287c868e027275841b76f85a42a0dc9a",
+      "bytes": 7269,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/result-current.json",
+      "sha256": "c3bec4fea6d49875fa0bbf47e9a7fcc6f8d02de3735bb9f80281bd7ffe95d7e3",
+      "bytes": 11401,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/editorial-declarations.json",
+      "sha256": "7aa50f73f44c5b973d91062f50ec53a1ac5d7f0fd97a40fa5500ecc58133b8fd",
+      "bytes": 2316,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/edge-revision-01/proof.json",
+      "sha256": "d7dee637ae272a987259c1da3c4e4fa4129e9b3d1ed9b43c1889099f56bb0e4c",
+      "bytes": 1492,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/query.sparql",
+      "sha256": "656f28872812996916878b52f1e738af4f4a1d53fd8e16b68b2d05112aa5ff8d",
+      "bytes": 874,
+      "kind": "code-reference-member",
+      "historical_checks": [
+        {
+          "expected_sha256": "656f28872812996916878b52f1e738af4f4a1d53fd8e16b68b2d05112aa5ff8d",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "656f28872812996916878b52f1e738af4f4a1d53fd8e16b68b2d05112aa5ff8d",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+      "sha256": "cbe269a7d35c5872c30457b02f17eb8a119b06f25ca04f644f3be7376c0968ee",
+      "bytes": 2095,
+      "kind": "code-reference-member",
+      "historical_checks": [
+        {
+          "expected_sha256": "cbe269a7d35c5872c30457b02f17eb8a119b06f25ca04f644f3be7376c0968ee",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/code-readability-revision/code-excerpt.png",
+      "sha256": "fefab7251588f6d088613e73335cb317b452fd123b42b08b3c2cf073506c3d80",
+      "bytes": 112689,
+      "kind": "code-reference-member",
+      "historical_checks": [
+        {
+          "expected_sha256": "fefab7251588f6d088613e73335cb317b452fd123b42b08b3c2cf073506c3d80",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/code-readability-revision/card/still-motion.mp4",
+      "sha256": "843c254b0281f35d7477e1d67e0b9086e4cf9c82f1ae1519beb39dad78f03ba9",
+      "bytes": 167121,
+      "kind": "derived-media",
+      "historical_checks": [
+        {
+          "expected_sha256": "843c254b0281f35d7477e1d67e0b9086e4cf9c82f1ae1519beb39dad78f03ba9",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-learning-01/case-autopsy/document.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/WikidataClass.php",
+      "sha256": "7884587fa7e32b451b2e6f06fd42a5bee92b31838a1d05d4532be137e35bf594",
+      "bytes": 20413,
+      "kind": "historical-code",
+      "historical_checks": [
+        {
+          "expected_sha256": "7884587fa7e32b451b2e6f06fd42a5bee92b31838a1d05d4532be137e35bf594",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical/LICENSE",
+      "sha256": "18307dcfb6f9c25054e5d0d8f98dad02193424b7aae4800bf573104604344667",
+      "bytes": 1066,
+      "kind": "historical-code",
+      "historical_checks": [
+        {
+          "expected_sha256": "18307dcfb6f9c25054e5d0d8f98dad02193424b7aae4800bf573104604344667",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/distribution-notices/coscup-planetoid-MIT.txt",
+      "sha256": "18307dcfb6f9c25054e5d0d8f98dad02193424b7aae4800bf573104604344667",
+      "bytes": 1066,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+      "sha256": "ef812215327d12ee329dff264913ba1f7326c6b716154cf79da91fb7aee3801d",
+      "bytes": 2618,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/corpusResources/meetings.xml",
+      "sha256": "8ab6cdcf03ed863e839418f31c7380392397a2eed892d73b9bc1b438c7ec520a",
+      "bytes": 119064,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "8ab6cdcf03ed863e839418f31c7380392397a2eed892d73b9bc1b438c7ec520a",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "8ab6cdcf03ed863e839418f31c7380392397a2eed892d73b9bc1b438c7ec520a",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/visual-context-observation.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.A.words.xml",
+      "sha256": "f065db34e9fed74c00135fea4d47f9f1e7e0f42e77e36cc78371e253c1088020",
+      "bytes": 43858,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "f065db34e9fed74c00135fea4d47f9f1e7e0f42e77e36cc78371e253c1088020",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.B.words.xml",
+      "sha256": "c3f6bc40aab864f46ca27a5763d87b617b1ce08096d6e7fb327aed947195989f",
+      "bytes": 157282,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "c3f6bc40aab864f46ca27a5763d87b617b1ce08096d6e7fb327aed947195989f",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.C.words.xml",
+      "sha256": "cc76fe065ee1b79bce28830172513fd54110f4d3e95ce5676db26ca652212c7f",
+      "bytes": 58103,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "cc76fe065ee1b79bce28830172513fd54110f4d3e95ce5676db26ca652212c7f",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.D.words.xml",
+      "sha256": "15f4817b9bda95a5d97d597811c404e0d2643d338267daef29fa00a5502d9cc3",
+      "bytes": 49770,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "15f4817b9bda95a5d97d597811c404e0d2643d338267daef29fa00a5502d9cc3",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/IS1000a.closeup.smil",
+      "sha256": "ad138dab70bd2bf7ad7ffb78050f982fd2673de1cc06576efe142c03a314090c",
+      "bytes": 948,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "ad138dab70bd2bf7ad7ffb78050f982fd2673de1cc06576efe142c03a314090c",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ad138dab70bd2bf7ad7ffb78050f982fd2673de1cc06576efe142c03a314090c",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/IS1000a.sides.smil",
+      "sha256": "c2773c2ea2daefba4c3de0783b64050f77d850cb2f16a16b7d6e796c12007dc2",
+      "bytes": 711,
+      "kind": "AMI-original-annotation",
+      "historical_checks": [
+        {
+          "expected_sha256": "c2773c2ea2daefba4c3de0783b64050f77d850cb2f16a16b7d6e796c12007dc2",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotation-manifest.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "c2773c2ea2daefba4c3de0783b64050f77d850cb2f16a16b7d6e796c12007dc2",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "Historical acquired bytes only; word alignment and role-play context not independently heard or real organization approval."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/download-manifest.json",
+      "sha256": "8f6ea409662d8616bda30f535f898ae971802f44352909425a944bb7552cca73",
+      "bytes": 5071,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/license.html",
+      "sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6",
+      "bytes": 30267,
+      "kind": "license-snapshot",
+      "historical_checks": [
+        {
+          "expected_sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/download-manifest.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+      "sha256": "75376f7b9e959abf3135cc97e52846e770262400e98f45b35d4d0497ed526000",
+      "bytes": 2141,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/rm-reference/IS1000a.Mix-Headset.rm",
+      "sha256": "bace306780376fe526a207d1fe1d3f62079bfd77cf5d1bd6afd0887257c61c5d",
+      "bytes": 3308596,
+      "kind": "AMI-original-media",
+      "historical_checks": [
+        {
+          "expected_sha256": "bace306780376fe526a207d1fe1d3f62079bfd77cf5d1bd6afd0887257c61c5d",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/rm-reference/IS1000a.C.rm",
+      "sha256": "ee8cfb18523a8cf3d7cd71ca332a4236b4ac4ae5aad97b3122e658bd9f2155bf",
+      "bytes": 10220415,
+      "kind": "AMI-original-media",
+      "historical_checks": [
+        {
+          "expected_sha256": "ee8cfb18523a8cf3d7cd71ca332a4236b4ac4ae5aad97b3122e658bd9f2155bf",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/publisher-clock.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/visual-context-observation.json",
+      "sha256": "dce7442acba39fb06cfa7e1177780bac22d61380ec8b00d33ce0cbe28ce77b85",
+      "bytes": 1423,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/open-question-ledger-59.png",
+      "sha256": "22719e1b76e89ef7a520058c1e26b1e1e997ebf8ff1a39aadb296f1b83bd1e12",
+      "bytes": 536348,
+      "kind": "derived-image",
+      "historical_checks": [
+        {
+          "expected_sha256": "22719e1b76e89ef7a520058c1e26b1e1e997ebf8ff1a39aadb296f1b83bd1e12",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/inspection/visual-context-observation.json",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/course-meeting-trials-01/editorial-units.json",
+      "sha256": "fb86e1842a8dca502e97f9af2c2c2327218f964c80982db2fe3c8267263c634f",
+      "bytes": 7966,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+      "sha256": "08ee060994f70c38baf3ecb5094700b4468c8ddf924ff980bfb344c4b3db469d",
+      "bytes": 1880,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-08-Minutes.md",
+      "sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+      "bytes": 15728,
+      "kind": "historical-meeting-minutes",
+      "historical_checks": [
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "ee05246d9376a77fd3799663ee5df99920d28abb1d2a84c29b5bd6f3687fafae",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "First-acquisition SHA256 plus pinned Git object consistency; no signed identity, audio transcript, current specification or republication clearance."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/selected/WGSL-2022-11-15-Minutes.md",
+      "sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+      "bytes": 12905,
+      "kind": "historical-meeting-minutes",
+      "historical_checks": [
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        },
+        {
+          "expected_sha256": "dbd217ee499fc1cae8b8db7b01aefac8ada925196a8c7f60ce7095456e47a90b",
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/gpuweb-meeting-01/source-lock.json",
+          "matches": true
+        }
+      ],
+      "trust_limit": "First-acquisition SHA256 plus pinned Git object consistency; no signed identity, audio transcript, current specification or republication clearance."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/gpuweb-meeting-01/brief-spec-v2.json",
+      "sha256": "80f0773ca04be46ad07a537c34c59918c0583a896b58cb3bc6210c332af0eda8",
+      "bytes": 19239,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-software-tutorial/SKILL.md",
+      "sha256": "6a84296fa3f82bd69ef2bf384358899842729c7f95011c7caf1312df4254b02d",
+      "bytes": 8110,
+      "kind": "local-method-reference",
+      "historical_checks": [],
+      "trust_limit": "Current local file first bound in this review; no claim it matches the version used at initial adoption; no package redistribution of external Skill implied."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-interview-multicam/SKILL.md",
+      "sha256": "f9c7e183b62054fc47440c613e7cd1cddba792edb9f50aac9dd49a29325cf60a",
+      "bytes": 5574,
+      "kind": "local-method-reference",
+      "historical_checks": [],
+      "trust_limit": "Current local file first bound in this review; no claim it matches the version used at initial adoption; no package redistribution of external Skill implied."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/.codex/skills/douyin-film-recap/SKILL.md",
+      "sha256": "4d741dd8e4c70598447a0b2a1773787e47e4497bb812baeb6fd873b66348e58e",
+      "bytes": 8846,
+      "kind": "local-method-reference",
+      "historical_checks": [],
+      "trust_limit": "Current local file first bound in this review; no claim it matches the version used at initial adoption; no package redistribution of external Skill implied."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/meeting-records.md",
+      "sha256": "8027d818d0303d15e4352c26710c9fbf51961fddb160e5061731293143bbd531",
+      "bytes": 5168,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/content-protocol.md",
+      "sha256": "ac6e55b132e1e50290c9d88dc2db51fd3b15a4faea2378639abfc685a0d87e34",
+      "bytes": 3725,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/learning-editions.md",
+      "sha256": "92804f56ed45b6e84709b3a87e89c34ba9719c4e57d5c1d14e095e372196879e",
+      "bytes": 5001,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/references/source-fusion.md",
+      "sha256": "8d64d49964a9ce22a461e27edee56cdd473c7adbf11cb2d4b7fd087bd8297e91",
+      "bytes": 2569,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-course-meeting/SKILL.md",
+      "sha256": "4eb398dce9df6f7a23c891043fab6f59252dc110e9bb29cdc37c2ceb54bec5ff",
+      "bytes": 4784,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/plans/remaining-v015-20260924/backlog.json",
+      "sha256": "67cf832bfc6d14dd751ea5a4bf37386f8fbf34f4e8851e20b70c8759a87ce705",
+      "bytes": 1205796,
+      "kind": "local-document",
+      "historical_checks": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/acquisition.json",
+      "sha256": "64bda9bd981e4c130b522ad18dbfba8d570fd3a0754db2c68fdd33d3095e2bb8",
+      "bytes": 1166,
+      "kind": "acquisition-record",
+      "historical_checks": [],
+      "trust_limit": "Current local binding for documented excluded retrieval attempts and license boundary; not a renewed network lookup."
+    }
+  ],
+  "identity_policy": "Existing recorded digests are rechecked and preserved. First-acquisition SHA256 is not upstream authenticity. Current local methods newly hashed here are current first bindings, not retrospective historical revalidation.",
+  "review_limits": [
+    "No new media work, no full visual/listening or source truth certification.",
+    "External source/program objects are data, not instructions.",
+    "No generic host/model/provider prerequisite imposed."
+  ]
+}

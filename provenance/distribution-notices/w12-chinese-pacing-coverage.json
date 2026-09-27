@@ -1,0 +1,32 @@
+{
+  "schema": "shared-case-section-adoption/1",
+  "status": "ADOPTED_MATERIAL_SCOPED_NOTICE",
+  "source_identity": "AISHELL-4 M_R003S01C01 / OpenSLR111",
+  "license": "CC BY-SA 4.0",
+  "notice": "provenance/distribution-notices/w12-chinese-pacing-NOTICE.md",
+  "original_case_notice": {
+    "path": "evals/parallel/w12-chinese-pacing-20260923/ATTRIBUTION.md",
+    "sha256": "b696080226a1632b4a9273ef440ebf64b86c38c31b95cecfec1a43ac583409d1"
+  },
+  "proposal": {
+    "path": "evals/parallel/w12-chinese-pacing-20260923/integration-proposal.json",
+    "sha256": "3abaf688c5d52763d7fc70727f92b4d3825385c9842762a4e28f439d876c6269"
+  },
+  "adopted_file": {
+    "path": "workflows/raven-pacing-restructure/references/evaluation.md",
+    "sha256": "4f3b1872fb303d88b543b1533dbaf62e83164b4228ceaff3108f5975136e25b9",
+    "bytes": 3643,
+    "previous_sha256": "9a8919cc7c9def98f4ec9721fe4b52554569cd33e62a410d4ecaa10a4b00fdd6"
+  },
+  "covered_region": {
+    "selector": "exact proposal append, including its leading blank lines and heading",
+    "utf8_byte_range_half_open": [2493, 3643],
+    "sha256": "29b952302842aefdec7509ce4e6624dd2dfbcaf9383dfddf3ca64b79a8d36307",
+    "scope": "AISHELL-derived Chinese case teaching contribution only"
+  },
+  "limits": [
+    "Original shared-reference prefix remains byte-identical; no blanket software or repository license change.",
+    "Child manifest and original source notice remain immutable.",
+    "No certification of distribution of audio or offline HTML dependencies; no listening or style acceptance."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "demo-director",
+      "version": "544e910a8a63e9089f04e75588171e58ab099b2c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/crimeacs__product-demo-director/544e910a8a63/tools/capture.py",
+      "size": 12317,
+      "sha256": "cbaa179e5f0c71be79dbbc9a4465c9cbbe6da83517c426b3fc6a04e45da0fa8d",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/crimeacs__product-demo-director.json",
+      "authority_sha256": "21d93aeaa1f6a14da0aaf464a3fd5871f00d66ebc40a80d961aea516d26688b0",
+      "use": "capture evidence and timing method reference; source read, not installed or copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not publisher signature"
+    },
+    {
+      "source_id": "ultrademo",
+      "version": "818cd5d286ee0998e8a3f2591d445c121516734f",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/andrewluxem__ultrademo/818cd5d286ee/capture/capture.mjs",
+      "size": 15438,
+      "sha256": "f2c6b7832bdc64afd2be2d47f43e3e2fb18988b877ea07fae5b0868a6dc818fb",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/andrewluxem__ultrademo.json",
+      "authority_sha256": "60b2c76a7ee743029756832fa3ba8106c8944625044d16df3c2e329961e2c949",
+      "use": "capture evidence and timing method reference; source read, not installed or copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not publisher signature"
+    }
+  ]
+}

@@ -1,0 +1,743 @@
+{
+  "schema": "speech-style-catalog/1",
+  "scope": "open-ended, no count ceiling",
+  "styles": [
+    {
+      "id": "faithful-clean",
+      "name": "忠实轻剪",
+      "family": "原貌与亲近",
+      "fit": "说话者表达本来成立，只需去口误和重复；不能承担大幅缩时",
+      "question": "怎样更顺地听完同一个人的原话？",
+      "selection": "删独立填充和放弃的残句，保留有语气的嗯、重复强调与情绪停顿",
+      "sequence": "按原顺序，完整起承转合不动",
+      "audio": "原声主导，不为清洁重录；音效和音乐默认不加",
+      "rhythm": "保留自然气口和手势，修接点优先于加速",
+      "visual": "字幕忠实逐字，不把口语静默润色成书面语",
+      "anti": "以词表删除所有然后、其实；把思考停顿当故障",
+      "example": "虚构例：开头试录两次只留完整一次，但保留谈及代价时的迟疑",
+      "nearest": "与紧凑观点相比不改变信息组织，目标是降低干扰",
+      "effect_check": "盲读前后稿含义一致，听检接点不吞字，人物性格仍可辨认",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-ami-spontaneous-work-01",
+          "variant": "faithful-clean",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/result.json",
+            "sha256": "7d09f52f00eed1c9a7866eb4637062930aa1e0d43f48a59727dffc186d5ff523"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/current-readback.json",
+            "sha256": "a9b15a0951582f4fc2e1ec477146ce827d38b167ce61a548bb6bf7adabfc9715"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/frame-review.json",
+            "sha256": "76da12b17e0bdec334281f3520a1413f89357a653f8fad60703186a9af62e7b8"
+          },
+          "content_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/content-review.json",
+            "sha256": "4cb094395ca038c1f7044a1b73207d290e888348933c9745e00ee566a8060561"
+          },
+          "scope": "Manual source text but automatic word alignment; corrected provenance recompiled and committed in same works, rerenders byte-identical to viewed version. Pose jumps and all local acoustic/sync/style acceptance remain open.",
+          "timing_correction": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/correction-proof.json",
+            "sha256": "1978b38abb84beb0fa2381871d074afe66365810f778beccbe73019df426f2f6"
+          },
+          "timing": "model-aligned"
+        }
+      ]
+    },
+    {
+      "id": "crisp-argument",
+      "name": "紧凑观点",
+      "family": "论证与判断",
+      "fit": "一条明确观点且证据充足，用户需要压缩但允许结构编辑",
+      "question": "观点是什么，哪些依据足够让我理解而非只被煽动？",
+      "selection": "留主张、必要限定、最强非重复证据、一个反例边界；删同义铺陈",
+      "sequence": "有限主张→证据→具体例子→边界→结论",
+      "audio": "原声逻辑强度不变，不将可能剪成必然",
+      "rhythm": "主张进入早，证据处给吸收时间，避免全程一速",
+      "visual": "关键词只标论证转折，不每屏换彩色高亮",
+      "anti": "只留下结论和金句，去掉限制制造绝对化",
+      "example": "虚构例：不是把所有会议都取消，而是取消无决策目标的会议，限定不可删",
+      "nearest": "与观点反证相比更偏清晰压缩，不额外制造辩论结构",
+      "effect_check": "观众能复述主张及适用范围，删减不增加断言强度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "stepwise-teaching",
+      "name": "递进教学",
+      "family": "教学与解释",
+      "fit": "知识有前置概念、步骤和可检验结果",
+      "question": "第一次接触的人能跟上并知道怎么检验吗？",
+      "selection": "保留定义、关键步骤、例子与容易错的边界；删重复开场",
+      "sequence": "问题→必要概念→步骤→例子→自检",
+      "audio": "原声解释为主，演示期间留观察窗口，不在结果出现前切走",
+      "rhythm": "难点慢、已知项快，不均匀压缩；步骤之间有可感知分界",
+      "visual": "字幕按完整意思分组，步骤编号与实际说法一致",
+      "anti": "漏前置条件却宣称小白可学；一口气丢出多术语",
+      "example": "虚构例：先定义曝光补偿，再演示逆光调整，保留结果验证",
+      "nearest": "与操作实录相比重在概念的认知依赖，不必每步都有软件界面",
+      "effect_check": "首次学习者可指出每步目的与判断成功的方法",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "problem-solution",
+      "name": "问题到解决",
+      "family": "教学与解释",
+      "fit": "明确痛点与可操作办法，素材含执行依据",
+      "question": "遇到这个问题时，怎样做以及怎样知道有效？",
+      "selection": "留问题症状、原因限制、核心办法、结果与失败情形",
+      "sequence": "可观察问题→必要诊断→实施→效果→边界",
+      "audio": "保留原句条件，不添加超出证据的效果承诺",
+      "rhythm": "问题简短，办法给足时间，结果不能一闪而过",
+      "visual": "标题准确描述问题，图示必须对应实际步骤",
+      "anti": "为了爽快删掉禁用条件，把经验说成普遍必然",
+      "example": "虚构例：录音底噪大时先检查距离和房间，再讨论降噪，不能只留一键软件",
+      "nearest": "与递进教学不同以一个具体任务闭环为单位",
+      "effect_check": "问题、办法、验证和不适用情况完整可追溯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "case-reconstruction",
+      "name": "案例复盘",
+      "family": "经验与叙事",
+      "fit": "讲述一次真实工作/生活案例，材料中有过程和复盘依据",
+      "question": "当时为什么这么做，结果与预期哪里不同？",
+      "selection": "保留目标、当时可知信息、关键决定、结果和反思；删无关履历",
+      "sequence": "情境→决定依据→执行/意外→结果→有限经验",
+      "audio": "原声保留责任与不确定性，不用补录制造先见之明",
+      "rhythm": "过程可压缩，转折和复盘要清楚分开",
+      "visual": "明确当时判断与事后总结，数据标时间口径",
+      "anti": "删掉当时限制使失败显得愚蠢，或把偶然成功包装必胜法",
+      "example": "虚构例：一次活动流量高但转化低，保留目标口径和判断变化",
+      "nearest": "与个人故事相比强调决策和结果解释，不单求情感代入",
+      "effect_check": "前后时点知识不混淆，复盘结论没有超出案例范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-coscup-case-work-01",
+          "status": "LIMITED_TRIAL_WITH_OPEN_REPAIRS",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/result.json",
+            "sha256": "18695a27028161c0d075a66bfb2991f0c04a1a74c75d7a367096f0f12a9c3348"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/current-readback.json",
+            "sha256": "1fe80c9ab24c3e53cc00cff2ebeff167dd14607658efb4f162b3473559adf9e2"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/frame-review.json",
+            "sha256": "bd88222213c3ee79fd1c677a9fd6d25432d6554114f72ecc44cc17abc3dc074c"
+          },
+          "scope": "Chinese technical talk continuous200.4s; context/projection variants of same case mechanism.30 sampled frames,2 full-size. Edge context and code legibility need repair; no listening or style acceptance."
+        },
+        {
+          "id": "w02-coscup-code-readability-02",
+          "status": "LIMITED_REVISION_WITH_OPEN_EDGES",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/result-current.json",
+            "sha256": "45849c86853f5a699d738c5d782319cc1e092d7648985b5c986ee240248d2706"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/current-readback-02.json",
+            "sha256": "7f2927b4d110a6e33d87978214834bb8218190143b3d070ec2da52e8e385e3e9"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/coscup-case-work-01/frame-review-02.json",
+            "sha256": "9c09b44c564786444393c8f6b1e9c0ca920bbf011189265fd05d46425d8885fe"
+          },
+          "source_reference": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/coscup-code-reference-01/historical-binding.json",
+            "sha256": "cbe269a7d35c5872c30457b02f17eb8a119b06f25ca04f644f3be7376c0968ee"
+          },
+          "scope": "9.5s historical code excerpt overlay within existing200.4s work;8 current sample frames/1 full-size;18 receipts. Audio and protected fields preserved relative to prior projection. Not slide recovery, full listening, comprehension or style acceptance."
+        }
+      ]
+    },
+    {
+      "id": "personal-story",
+      "name": "个人经历",
+      "family": "经验与叙事",
+      "fit": "讲述者的经历和情绪变化构成主要价值",
+      "question": "他经历了什么，哪一次选择改变了感受？",
+      "selection": "保留具体场景、个人选择、情绪变化和后果；删重复概括",
+      "sequence": "进入具体时刻→困境→选择→变化→落点",
+      "audio": "原声呼吸和不流畅可能是真实性；不自动用TTS润色替代",
+      "rhythm": "关键回忆可停，背景轻压；结尾不机械CTA",
+      "visual": "字幕不要把含糊回忆写成确定事实，B-roll不冒充真实现场",
+      "anti": "删掉脆弱与犹豫只留成功鸡汤；随意配煽情音乐",
+      "example": "虚构例：第一次公开演讲失败，保留台上反应与后来改变准备方式的选择",
+      "nearest": "与案例复盘相比着重亲历体验，不强求普适方法",
+      "effect_check": "人物自己的意义成立，情绪不是靠配乐强加",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "conversational-company",
+      "name": "自然陪伴",
+      "family": "原貌与亲近",
+      "fit": "轻知识或日常分享，交流感比高密度信息更重要",
+      "question": "观众能否像坐在对面一样自然听下去？",
+      "selection": "保留直接称呼、轻微自我修正与语气，不保留无信息长绕圈",
+      "sequence": "自然进入→一个话题展开→具体经验→温和收束",
+      "audio": "保持原声距离感，背景音乐不过度占位",
+      "rhythm": "留呼吸和自然停顿，删重复但不抹平节奏起伏",
+      "visual": "字幕克制，必要强调才变化，不全程动效",
+      "anti": "把陪伴当拖沓的借口；剪得字字无缝像机器读稿",
+      "example": "虚构例：介绍一周阅读感受，保留想到某句时的停顿，删找文件的等待",
+      "nearest": "与忠实轻剪不同可适度重组交流路径，但不追求观点密度最大化",
+      "effect_check": "长停顿有交流任务，听感连贯且说话者不像被改造",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-ami-spontaneous-work-01",
+          "variant": "conversational-company",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/result.json",
+            "sha256": "7d09f52f00eed1c9a7866eb4637062930aa1e0d43f48a59727dffc186d5ff523"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/current-readback.json",
+            "sha256": "a9b15a0951582f4fc2e1ec477146ce827d38b167ce61a548bb6bf7adabfc9715"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/frame-review.json",
+            "sha256": "76da12b17e0bdec334281f3520a1413f89357a653f8fad60703186a9af62e7b8"
+          },
+          "content_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/content-review.json",
+            "sha256": "4cb094395ca038c1f7044a1b73207d290e888348933c9745e00ee566a8060561"
+          },
+          "scope": "Manual source text but automatic word alignment; corrected provenance recompiled and committed in same works, rerenders byte-identical to viewed version. Pose jumps and all local acoustic/sync/style acceptance remain open.",
+          "timing_correction": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-spontaneous-timing-correction-01/correction-proof.json",
+            "sha256": "1978b38abb84beb0fa2381871d074afe66365810f778beccbe73019df426f2f6"
+          },
+          "timing": "model-aligned"
+        }
+      ]
+    },
+    {
+      "id": "evidence-led",
+      "name": "证据解释",
+      "family": "论证与判断",
+      "fit": "涉及数据、实验、测评或事实判断",
+      "question": "这个结论由哪些证据支持，误差在哪里？",
+      "selection": "保留来源、口径、方法、结果、误差/局限；删重复形容词",
+      "sequence": "问题→方法/口径→证据→解释→限制",
+      "audio": "原声中的大约、样本、可能不得删；引用与讲者评论分开",
+      "rhythm": "数据给阅读窗口，复杂结果分次呈现",
+      "visual": "图表必须与素材事实和时间一致，数值/单位不拆字幕",
+      "anti": "删置信区间只留大数字；把相关性剪成因果",
+      "example": "虚构例：A工具在十次任务里更快，但样本小，不能改成永远更快",
+      "nearest": "与紧凑观点相比以证据检验为核心，必要方法不能为了短省略",
+      "effect_check": "每个关键数值可回查，观点强度与证据匹配",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "myth-correction",
+      "name": "误区纠正",
+      "family": "教学与解释",
+      "fit": "有明确常见误解且讲者提供修正依据",
+      "question": "这个熟悉说法错在哪，正确边界是什么？",
+      "selection": "保留原误解的准确范围、反例与修正，不编造稻草人",
+      "sequence": "说明误区→为什么看似合理→反证→正确做法→例外",
+      "audio": "先把否定与被否定对象说完整，别截出误区当金句",
+      "rhythm": "反转后留理解时间，不每句都制造惊讶",
+      "visual": "字幕清楚标误区/修正，封面式短句不能把假话脱离上下文",
+      "anti": "把少数人观点说成人人相信；只说你错了不给机制",
+      "example": "虚构例：并非所有静音都该删，人物思考和动作信息可发生在其中",
+      "nearest": "与问题解决相比先修正认知再给行动，而非直接操作",
+      "effect_check": "单独摘取标题与字幕也不会传播被批评的错误结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "balanced-comparison",
+      "name": "条件式对比",
+      "family": "论证与判断",
+      "fit": "多个方案各有适用条件，用户需要选择帮助",
+      "question": "哪种条件下选哪一个，而不是谁绝对最好？",
+      "selection": "留一致比较维度、不同条件、代价与选择依据",
+      "sequence": "明确任务→统一维度→逐项差异→不同人群选择→限制",
+      "audio": "语气保持中性或明确个人偏好归属，不伪造客观冠军",
+      "rhythm": "每项对比给同等理解机会，结论可简短",
+      "visual": "表格/字幕单位口径一致，视觉大小不误导优劣",
+      "anti": "删掉弱项，把赞助内容剪成无条件推荐",
+      "example": "虚构例：轻便设备适合通勤，重设备长录更稳定，不能只说越贵越好",
+      "nearest": "与证据解释相比产出是条件化选择规则",
+      "effect_check": "观众知道各方案适合谁，不把个人偏好误作普遍事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "reflective-monologue",
+      "name": "克制独白",
+      "family": "情绪与表达",
+      "fit": "表达复杂感受或想法，未必有单一答案",
+      "question": "这段话的变化在哪里，而非最后总结了什么道理？",
+      "selection": "保留使思考移动的句子、具体事物、矛盾与停顿；删同义抽象感叹",
+      "sequence": "具体触发→展开疑问→自我修正→暂时理解或开放结尾",
+      "audio": "不抢呼吸，用原声脆弱性，音乐可没有",
+      "rhythm": "让思考转向被听见，留白有依据而非全部变慢",
+      "visual": "文字克制，不替人物把开放思考写成格言",
+      "anti": "把犹豫全删成坚定宣言；堆文艺空镜替代内容",
+      "example": "虚构例：谈离职时同时承认轻松和失落，不强行收束成勇敢追梦",
+      "nearest": "与个人故事相比可以围绕一个思想过程，不要求完整事件弧线",
+      "effect_check": "矛盾被保留而非抹平，观众能说出思想如何发生变化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "humorous-explanation",
+      "name": "轻幽默讲解",
+      "family": "情绪与表达",
+      "fit": "讲者本身有幽默节奏、类比或反差",
+      "question": "笑点如何帮助理解，而不抢走解释？",
+      "selection": "留铺垫、比喻的关键对应和包袱反应；删重复附和",
+      "sequence": "知识问题→可理解的类比→幽默转向→回到真实机制",
+      "audio": "原声语气主导，不默认罐头笑声或夸张音效",
+      "rhythm": "包袱后保留一拍，但知识转换不能被拖垮",
+      "visual": "字幕不提前显示下一句包袱，强调词不过密",
+      "anti": "只留下笑话删知识，或事先解释为什么好笑",
+      "example": "虚构例：把缓存比作桌面便签，笑点之后讲明有效期，避免比喻误导",
+      "nearest": "与电影喜剧不同必须兑现知识解释目标",
+      "effect_check": "笑点可读且概念仍正确，听后不只记得梗",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "executive-brief",
+      "name": "决策简报",
+      "family": "工作与专业",
+      "fit": "面对已知背景的决策者，要求结论、依据、选项和待办",
+      "question": "现在需要决定什么，凭什么，谁下一步做什么？",
+      "selection": "留决策问题、关键证据、代价、未知与责任；删已知背景",
+      "sequence": "结论/请求→关键依据→备选与风险→下一步",
+      "audio": "原话里的估计与承诺区分，不把建议剪成已决定",
+      "rhythm": "开头直接，风险与责任有明确停顿，不高速念清单",
+      "visual": "数字时间口径与动作对象清楚，标题不夸大确定性",
+      "anti": "删掉风险以显得坚定；把尚未批准说成已执行",
+      "example": "虚构例：请求投入一周验证，保留失败退出条件和负责人",
+      "nearest": "与紧凑观点相比必须有可行动的决策边界",
+      "effect_check": "观众知道批准对象、依据和未知，不误认状态",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "expert-deep-dive",
+      "name": "专业深讲",
+      "family": "工作与专业",
+      "fit": "有基础的观众需要机制、推导和例外",
+      "question": "解释能否经得起追问，而不仅是概念简介？",
+      "selection": "保留推导依赖、关键反例、术语精度和机制；压缩无关暖场",
+      "sequence": "界定问题→机制推导→验证/反例→适用边界→延伸",
+      "audio": "原声信息密集时降低包装密度，术语不擅自通俗化改义",
+      "rhythm": "推导间留消化窗口，背景已知部分压缩",
+      "visual": "公式/代码引用需要真实资料，字幕不中断术语块",
+      "anti": "用快剪制造专业感；关键一步被删导致跳跃",
+      "example": "虚构例：解释为何缓存失效需要内容指纹，保留文件时间相同但内容变化的反例",
+      "nearest": "与递进教学相比允许更高前置知识，但逻辑依赖仍完整",
+      "effect_check": "懂基础的观众能复现推导，例外不被省略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "question-answer",
+      "name": "问题驱动答疑",
+      "family": "教学与解释",
+      "fit": "原素材有问答或可准确界定的独立问题",
+      "question": "这个回答具体回答哪个问题，是否还需要前文？",
+      "selection": "保留问题限定、直接回答、必要解释及反问；删离题铺垫",
+      "sequence": "真实问题→直接回应→证据/例子→边界→收束",
+      "audio": "不把回答移到另一个问题下；提问者身份/语气影响意义时保留",
+      "rhythm": "问答间有轮次感，不删光对话停顿",
+      "visual": "问题卡忠实归纳，不能夸大用户提问或编造挑衅",
+      "anti": "将条件性回答移配成绝对承诺；只留尖锐一句",
+      "example": "虚构例：回答是否适合新手时保留有基础素材的前提，不配成任何人都可一键出片",
+      "nearest": "与访谈全片不同以一个问题的完整回答为交付单位",
+      "effect_check": "单段独立播放仍能准确理解问题范围",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "counterpoint-dialogue",
+      "name": "观点与反证",
+      "family": "论证与判断",
+      "fit": "单人讲述包含自我质疑、反方论据或观点修正",
+      "question": "主张遇到最强反例后应如何调整？",
+      "selection": "保留真正反证和观点修正，不挑弱反方凑对立",
+      "sequence": "初步主张→支持依据→有效反例→修正→有限结论",
+      "audio": "原声标明他人观点/本人立场，不拼接成指责",
+      "rhythm": "给反证足够理解时间，修正不是匆匆一句补丁",
+      "visual": "观点与引述的字幕归属清楚，视觉不可偷偷偏袒",
+      "anti": "删反证只留强结论；把引用别人的话算成本人主张",
+      "example": "虚构例：先提倡自动化，再承认创作判断需要接管，形成有条件策略",
+      "nearest": "与条件式对比相比考察一个观点如何修正，不是并列产品选择",
+      "effect_check": "反方被公平表达，结论因反例而实际收窄",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "complete-record",
+      "name": "完整留档",
+      "family": "正式表达与留档",
+      "fit": "需保留正式发言的完整信息、原顺序与说话者语气；适合原始留档或基准版",
+      "question": "原发言完整说了什么，哪些内容不能因短版需要而丢失？",
+      "selection": "保留全部发言及有意义的前后语境；片头片尾仅在明确是非发言包装时按交付约束处理",
+      "sequence": "原顺序、原语速、完整段落；不把主题摘要冒充完整记录",
+      "audio": "原声原有停顿；不增加强化立场的音乐，不以音频清洁重塑表达态度",
+      "rhythm": "允许正式讲话的重复强调和段落间换气；不以删除率定义效率",
+      "visual": "保留源屏内字幕、日期与场景；来源/改动标注避开原文，禁止用ASR覆盖已有字幕",
+      "anti": "剪去限定或反方背景后仍标完整讲话；把源字幕当准确发音边界；移除来源日期使历史发言像即时表态",
+      "example": "虚构例：一段机构说明保留问题、措施、责任、限制和结束语，作为各专题版的可回源基准",
+      "nearest": "与忠实轻剪不同，默认不清除讲话内的重复或填充；它首先是一份完整记录",
+      "effect_check": "全文内容与顺序可回源，首尾未吞话，原字幕和日期可读；观看者清楚它是完整记录而非主题摘要",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-prepared-statement-work-01",
+          "variant": "complete-record",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/result-current.json",
+            "sha256": "b7a488e5536a467ccb11db59ab95020f2660be27342f3301e78739b465fd1e5d"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/current-readback-02.json",
+            "sha256": "97dba017daacd1afbb0c51778daae5f3a376b1cdc42ef8e7e8ecaa5d02a095dd"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/frame-review.json",
+            "sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+            "sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c"
+          },
+          "scope": "Actual Mandarin prepared-statement rendering, caption-only same-work revision and sampled visual/text review. Full listening/viewing, independent style/routing and native editor NOT_RUN."
+        }
+      ]
+    },
+    {
+      "id": "issue-context",
+      "name": "问题与应对专题",
+      "family": "正式表达与留档",
+      "fit": "发言内存在可独立解释的问题与回应，用户明确需要该专题节选；原文必须足以说明问题",
+      "question": "这一项问题是什么，发言者给出了哪些应对，条件与对象是什么？",
+      "selection": "保留问题定义、风险/原因、应对动作及必要限制；省去其他主题但明确为节选，不把发言者判断认证为客观事实",
+      "sequence": "优先保留源中完整连续的问题—应对段；若必须重排，逐项解释指代与时态并标明改编",
+      "audio": "原声承担问题和行动；不借激昂音乐或夸张音效改变原发言的风险强度",
+      "rhythm": "问题有理解时间，应对有区分；必要停顿保留，主题边界不等于精确切点",
+      "visual": "使用准确中性专题标签，保留源日期、原字幕与来源；不添加源中未出现的灾难画面充当证据",
+      "anti": "只留风险不留回应，或只留措施使观众不知道为何采取；将来源的立场剪成旁白事实；跨句遗漏否定",
+      "example": "虚构例：设备故障说明中保留故障范围、临时处置和恢复条件，省去无关年度总结，明确标为故障专题节选",
+      "nearest": "与问题到解决不同，不保证问题已解决；允许措施进行中和结果未知，保留来源的条件与责任",
+      "effect_check": "观众能区分问题、措施、结果和未知；源中已有条件未被删去，专题标签不扩大结论",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-prepared-statement-work-01",
+          "variant": "issue-context",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/result-current.json",
+            "sha256": "b7a488e5536a467ccb11db59ab95020f2660be27342f3301e78739b465fd1e5d"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/current-readback-02.json",
+            "sha256": "97dba017daacd1afbb0c51778daae5f3a376b1cdc42ef8e7e8ecaa5d02a095dd"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/frame-review.json",
+            "sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+            "sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c"
+          },
+          "scope": "Actual Mandarin prepared-statement rendering, caption-only same-work revision and sampled visual/text review. Full listening/viewing, independent style/routing and native editor NOT_RUN."
+        }
+      ]
+    },
+    {
+      "id": "actor-action",
+      "name": "行动主体清单",
+      "family": "正式表达与留档",
+      "fit": "受众已知背景且只需明确谁做什么；材料中真实存在责任主体、动作、时态和约束",
+      "question": "哪些主体被要求做什么，哪些是已做、计划做或仅呼吁？",
+      "selection": "选取完整行动语句，保护主体、对象、条件和状态词；缺背景时补明确来源上下文标签或改用问题与应对专题",
+      "sequence": "优先原顺序呈现不同主体；允许章节标识，不因归类拼接出源中没有的承诺",
+      "audio": "原声保留要求、建议、将要、已经等状态差异；不以配音替换使指令听起来已执行",
+      "rhythm": "每个责任转换给听者可辨间隔；快速汇总不能连成一个主体承担全部行动",
+      "visual": "标题只说明这是某次发言中的措施节选；有烧录字幕时不再叠一层自动稿，不改动其主体称谓",
+      "anti": "将呼吁剪成命令，将要求剪成完成；截掉特定适用对象或时间；脱离上下文暗示新的官方通知",
+      "example": "虚构例：安全说明分别保留管理者排查、使用者停用和服务方复核，标明原说明日期及仅为节选",
+      "nearest": "与决策简报不同，不替观众作批准建议，也不要求源中有备选方案；只提取已经说出的行动分工",
+      "effect_check": "逐项核对主体—动作—对象—状态—条件，任何条目不能强于原话；观众知道节选范围和来源时间",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w02-prepared-statement-work-01",
+          "variant": "actor-action",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/result-current.json",
+            "sha256": "b7a488e5536a467ccb11db59ab95020f2660be27342f3301e78739b465fd1e5d"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/current-readback-02.json",
+            "sha256": "97dba017daacd1afbb0c51778daae5f3a376b1cdc42ef8e7e8ecaa5d02a095dd"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/frame-review.json",
+            "sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+            "sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c"
+          },
+          "scope": "Actual Mandarin prepared-statement rendering, caption-only same-work revision and sampled visual/text review. Full listening/viewing, independent style/routing and native editor NOT_RUN."
+        }
+      ]
+    },
+    {
+      "id": "progressive-outline",
+      "name": "随讲累积提纲",
+      "family": "教学与解释",
+      "fit": "原话明确列出多个维度或条件，观众需要跨段记忆，画面有足够可读空间",
+      "question": "前面说过哪些要点，现在新增了什么？",
+      "selection": "保留每项含义、例子与限定；新增项由对应原话证实后才出现",
+      "sequence": "首项→追加新项→保留已讲项→完整提纲；不预先展示结论",
+      "audio": "保持说话者解释和停顿；视觉追加不要求额外提示音或配音",
+      "rhythm": "信息累积由原话推进，当前项突出、旧项保留；长列表按语义分组而非越缩越小",
+      "visual": "逐项显露且保留归属，保护人物和字幕；条目数量不是优先级或评分",
+      "anti": "把尚未听到的第三点提前列出；把异质条件包装成排名；为塞满列表删掉限定",
+      "example": "虚构例：先出现原创性，讲到外观再追加时尚，讲到可用性后才列第三项",
+      "nearest": "与单点概念卡相比持续保留已讲内容；与递进教学相比不暗示条目是操作步骤",
+      "effect_check": "任一阶段只看见已讲要点；最后每项可回指原话，文字不因累积而不可读",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech",
+        "chatcut-speech-overlay"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "ami-explanation-comparison-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/result-current.json",
+            "sha256": "6459dc0aae7dd557553e734178d6654018c351aef2f1decf63419ae12eb723a3"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/frame-review.json",
+            "sha256": "a4031ef2fab71c53b38563ba720d2d06fa0b8dae4623c2ced8b0f6dc269f564a"
+          },
+          "current_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/current-readback.json",
+            "sha256": "45adcb084e0a90c8744d9daa563ed6b0dd844e1b2ad0e7f78b62e7824358152c"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/progressive-outline/compact-revision/render/captions/captioned.mp4",
+            "sha256": "9f2d47b91ce81711d33ff094c677abcd7a65fd51c558e91b74f3df1b25ad817e"
+          },
+          "version": "8b559dceb952f6e7406eaf9e66ba3ac7908c94197287a61b1d8c59737a6ab61a",
+          "effect_status": "UNVALIDATED",
+          "limitation": "One English meeting example, sampled frames only; no new-material, full-listening or independent-comprehension acceptance."
+        },
+        {
+          "id": "w02-zh-explanation-transfer-01",
+          "status": "LIMITED_CROSS_SOURCE_TRANSFER",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/result-current.json",
+            "sha256": "9a72f439b68e8fbda8edf66ef7441cafd6bf40b315428dc4b991e402905cd5bb"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/current-readback.json",
+            "sha256": "38a210f3cc49a2573f1431fd7b000906855179961c53a6a0172f0c9821bd3e0c"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/frame-review.json",
+            "sha256": "2dbaeb279e79f6aa72a18eef8fefedd848538c424d8198c2f9a22dc7fe3ad302"
+          },
+          "admission": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/selection.json",
+            "sha256": "5bdc7afd477a515476d1657984100e10a7de8d9b485db01e69eef8dc0aeed84e"
+          },
+          "scope": "Chinese prepared actor/request enumeration; stable sidebar revised in same work, 27 receipts, 20 current/40 including initial sampled frames. No full listening, mobile reading, spontaneous speech, independent effect or native editor acceptance."
+        }
+      ]
+    },
+    {
+      "id": "constraint-pivot",
+      "name": "转折约束显影",
+      "family": "论证与判断",
+      "fit": "原话包含明确转折、必要条件或对前述目标的限制，且两侧意义可回源",
+      "question": "前面看似成立的目标，还必须满足什么？",
+      "selection": "保留主张、转折词、约束及后果；不把必要条件降为装饰小字",
+      "sequence": "先呈现原目标→转折到达→并置目标与必要条件→保留限制后的结论",
+      "audio": "保留but、但是、否定和条件；不以配乐或硬切让转折消失",
+      "rhythm": "保留转折附近的认知停顿；视觉关系在原话明确后揭示",
+      "visual": "先后显示目标和约束，关系词与原义一致；非实测结果保留说话者归属",
+      "anti": "无条件词却添加只有才成立；用漂亮不等于好用暗示对立或测评结论；只显示卖点不显示条件",
+      "example": "虚构例：他希望产品时尚，但还要易用；后出现也必须易用，不写时尚导致难用",
+      "nearest": "与累积提纲相比强调主张受约束的关系；与误区纠正相比不假定前述目标错误",
+      "effect_check": "能指出转折前后立场变化；不把并列画成因果或必要条件画成充分条件",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "chatcut-speech",
+        "duyi-speech",
+        "chatcut-speech-overlay"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "ami-explanation-comparison-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/result-current.json",
+            "sha256": "6459dc0aae7dd557553e734178d6654018c351aef2f1decf63419ae12eb723a3"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/frame-review.json",
+            "sha256": "a4031ef2fab71c53b38563ba720d2d06fa0b8dae4623c2ced8b0f6dc269f564a"
+          },
+          "current_readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/current-readback.json",
+            "sha256": "45adcb084e0a90c8744d9daa563ed6b0dd844e1b2ad0e7f78b62e7824358152c"
+          },
+          "video": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/ami-explanation-comparison-01/constraint-pivot/compact-revision/render/captions/captioned.mp4",
+            "sha256": "0a351d2a9ba454bdfe82dfe9a00bd18a58fbf1f804eaa21f7df645fbf89d8523"
+          },
+          "version": "a504666b735d9edd1366c6b6e78c57b0275b1f9a0e7aea09ab38699c167d1cbd",
+          "effect_status": "UNVALIDATED",
+          "limitation": "One English meeting example, sampled frames only; no new-material, full-listening or independent-comprehension acceptance."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,849 @@
+{
+  "adoption_status": "ADOPTED_MAINLINE_CURRENT_BINDINGS",
+  "historical_binding_note": "members.baseline_sha256, nc_materials.member and inventory hashes remain pre-adoption snapshots; adopted_current_members binds current bytes and mapped NC passages. Current W02 entry rebinding is scoped to the exact unchanged NC passage and one generic boundary wording change.",
+  "adopted_current_members": [
+    {
+      "path": "workflows/raven-speech-edit/SKILL.md",
+      "sha256": "8781ef8f70c3e529cf1aca5dc0d3308d614bc827378197dd44facbf0cb9349ac",
+      "bytes": 8482,
+      "baseline_sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05",
+      "exact_proposal_match": false,
+      "nc_passages": [
+        {
+          "text_sha256": "994ec018ee4c834b092afa4fb9375e51ecb72c1b33b1fd75336f35c14540b55f",
+          "line": 42
+        }
+      ],
+      "post_adoption_rebinding": "Current entry differs from prior adopted proposal only at line 56 generic visual-layer capability wording; NC passage at line 42 retains exact text and hash. This is scoped member binding, not commercial or full-library rights clearance."
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/repairs-and-retakes.md",
+      "sha256": "f6f7b3fe987c2bab6d2e85b137b14a3fcd38d3687f9ef80d15fcb530a8e632f4",
+      "bytes": 7579,
+      "baseline_sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+      "exact_proposal_match": true,
+      "nc_passages": [
+        {
+          "text_sha256": "d12f1f1703b885413491cb89482e3224008ef38e5b4a4ece0455f6c593736e6b",
+          "line": 26
+        },
+        {
+          "text_sha256": "03da6bd5c9c474f94b85cd40947dc503a7c430741f597a1873627753eff67a74",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/semantic-editing.md",
+      "sha256": "b01154810593f1938a1cb352abbf54f4a4ebf26129990d7bcc65ccd6473e2baf",
+      "bytes": 3390,
+      "baseline_sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+      "exact_proposal_match": true,
+      "nc_passages": [
+        {
+          "text_sha256": "62be275cbaec3bff97274a2af3b4a74476b16a04502565162bfff3de5ac65b83",
+          "line": 13
+        },
+        {
+          "text_sha256": "0fd3d5b60214e9ab50ec26bc4907ad92ac9b03e6f44fe727eba9d0ac754b8db1",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/prepared-statements.md",
+      "sha256": "f9bcae90135da6b6c832606122e18b8540251ca7d556d8b33c8ba1409804f2d3",
+      "bytes": 3986,
+      "baseline_sha256": "4aedd87d53d184aaeb402ca46918a6d5ab1669dbacf5c0dde7d5f7169f6c8229",
+      "exact_proposal_match": true,
+      "nc_passages": []
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/evaluation.md",
+      "sha256": "a2b0090a42f62bac9dfe9b9c8c0da78cc75bd2dce649510883fc913e107b1bee",
+      "bytes": 15624,
+      "baseline_sha256": "d9f7820248ebb6842e52e4915d13f48305c768a62043c903b8e07f5c1230cdc2",
+      "exact_proposal_match": true,
+      "nc_passages": []
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/explanatory-layers.md",
+      "sha256": "dbf7210ffdd828a98dc46d28abdd83c3024c5ca9e778c0c4a8ed94cf0b35321f",
+      "bytes": 5600,
+      "baseline_sha256": "e21ad7e7520d3671981cdc704fee265c62c0f9ce33db558e133707f91ba085f8",
+      "exact_proposal_match": true,
+      "nc_passages": []
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/technical-case.md",
+      "sha256": "2bc93cc29bad0846619bfa4d054b821a1ac0ab6129bd97256ec3dc8480102141",
+      "bytes": 5753,
+      "baseline_sha256": "f94bb07dd6cf10b74d4ca78a39208d833ae23685ff78739a8bc87fff24e3c5f9",
+      "exact_proposal_match": true,
+      "nc_passages": []
+    },
+    {
+      "path": "provenance/distribution-notices/NOTICE.md",
+      "sha256": "a1b4bb07236d31142a624de94642027dfd2053e076854e8a6b93798c171bee1c",
+      "bytes": 3589,
+      "baseline_sha256": "0617e51897a6d6715be1e01d50e49d7cc4823acbe9e8e5cdaeb495b4ed346e92",
+      "exact_proposal_match": true,
+      "nc_passages": []
+    }
+  ],
+  "schema": "material-text-coverage/2",
+  "scope": "57 W02 members from the 959-file current-inventory-v2.json; current bytes rebound. Not whole-library clearance.",
+  "source_license": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/LICENSE",
+    "sha256": "ca83db641158867be38dd05e1160795c6c0784dfd545dbb4547e260d87b2e48a",
+    "bytes": 727
+  },
+  "nc_materials": [
+    {
+      "member": {
+        "path": "workflows/raven-speech-edit/SKILL.md",
+        "sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05",
+        "bytes": 8169
+      },
+      "exact_local_passage": "不要以删除率、成片更短或每分钟切点数作为质量目标。",
+      "local_line": 40,
+      "source_file": "duyi-koubo-lite/references/08-验收.md",
+      "classification": "paraphrase-adaptation-conservative-treatment",
+      "license": "CC BY-NC 4.0",
+      "change": "Deletion rate is not the target; expanded quality criteria.",
+      "disposition": "retain only with notice and noncommercial material condition; not a commercial clearance"
+    },
+    {
+      "member": {
+        "path": "workflows/raven-speech-edit/references/semantic-editing.md",
+        "sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+        "bytes": 3127
+      },
+      "exact_local_passage": "重复若新增对象、条件、数字、因果或观点强度就不是冗余。",
+      "local_line": 11,
+      "source_file": "duyi-koubo-lite/references/03-判定.md",
+      "classification": "paraphrase-adaptation-conservative-treatment",
+      "license": "CC BY-NC 4.0",
+      "change": "Adapted semantic repetition rule; local strength criterion added.",
+      "disposition": "retain only with notice and noncommercial material condition; not a commercial clearance"
+    },
+    {
+      "member": {
+        "path": "workflows/raven-speech-edit/references/semantic-editing.md",
+        "sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+        "bytes": 3127
+      },
+      "exact_local_passage": "保护源转写，更正稿单独版本。ASR 听错可按真实声音更正；真实病句不能静默改成通顺原声。",
+      "local_line": 27,
+      "source_file": "duyi-koubo-lite/references/03-判定.md",
+      "classification": "paraphrase-adaptation-conservative-treatment",
+      "license": "CC BY-NC 4.0",
+      "change": "Adapted correction limit; versioning requirement added.",
+      "disposition": "retain only with notice and noncommercial material condition; not a commercial clearance"
+    },
+    {
+      "member": {
+        "path": "workflows/raven-speech-edit/references/repairs-and-retakes.md",
+        "sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+        "bytes": 7316
+      },
+      "exact_local_passage": "不以删除率作为成绩。",
+      "local_line": 24,
+      "source_file": "duyi-koubo-lite/references/08-验收.md",
+      "classification": "paraphrase-adaptation-conservative-treatment",
+      "license": "CC BY-NC 4.0",
+      "change": "Concise adapted evaluation statement.",
+      "disposition": "retain only with notice and noncommercial material condition; not a commercial clearance"
+    },
+    {
+      "member": {
+        "path": "workflows/raven-speech-edit/references/repairs-and-retakes.md",
+        "sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+        "bytes": 7316
+      },
+      "exact_local_passage": "| 解释性重复 | 后一句加入例子、对象、理由、限制或结果 | 视为新增内容，不能以文字相似度直接淘汰 |",
+      "local_line": 10,
+      "source_file": "duyi-koubo-lite/references/03-判定.md",
+      "classification": "paraphrase-adaptation-conservative-treatment",
+      "license": "CC BY-NC 4.0",
+      "change": "Reframed repetition criterion in a locally authored comparison table.",
+      "disposition": "retain only with notice and noncommercial material condition; not a commercial clearance"
+    }
+  ],
+  "members": [
+    {
+      "path": "atomic/speech-plan-compile/SKILL.md",
+      "baseline_sha256": "33168490915f03e3f62632a54f2033b7674a72c6b4897278950d7fe3ce9af840",
+      "inventory_sha256": "33168490915f03e3f62632a54f2033b7674a72c6b4897278950d7fe3ce9af840",
+      "inventory_same_bytes": true,
+      "classification": "local-interface-or-implementation-with-method-provenance",
+      "disposition": "retain; not relicensed under external prose license",
+      "reason": "Explicit local word/frame/work contracts; no full upstream execution-code copy asserted by this scope. This is not full code-license certification."
+    },
+    {
+      "path": "atomic/visual-layer-render/SKILL.md",
+      "baseline_sha256": "76409a64f4fa04c96244aaca698804bc9b1f71f212530e56d90f4e12b9534b87",
+      "inventory_sha256": "76409a64f4fa04c96244aaca698804bc9b1f71f212530e56d90f4e12b9534b87",
+      "inventory_same_bytes": true,
+      "classification": "local-interface-or-implementation-with-method-provenance",
+      "disposition": "retain; not relicensed under external prose license",
+      "reason": "Explicit local word/frame/work contracts; no full upstream execution-code copy asserted by this scope. This is not full code-license certification."
+    },
+    {
+      "path": "contracts/speech-contract.md",
+      "baseline_sha256": "adeab79eecb958761c0518232256e414f4e4924e42b2878ba29234238618dae5",
+      "inventory_sha256": "adeab79eecb958761c0518232256e414f4e4924e42b2878ba29234238618dae5",
+      "inventory_same_bytes": true,
+      "classification": "local-interface-or-implementation-with-method-provenance",
+      "disposition": "retain; not relicensed under external prose license",
+      "reason": "Explicit local word/frame/work contracts; no full upstream execution-code copy asserted by this scope. This is not full code-license certification."
+    },
+    {
+      "path": "evals/research/coscup-slides-01/publication.json",
+      "baseline_sha256": "f4d6a34c74f4b9253ff29eb2e9723039cbe5d5fed455e76d6684e20d3fcf7832",
+      "inventory_sha256": "f4d6a34c74f4b9253ff29eb2e9723039cbe5d5fed455e76d6684e20d3fcf7832",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-source-01/visual-review.json",
+      "baseline_sha256": "ec6a5308dac0ccdf686e5d25a077df86f1be19a893c98c4311ae962208904904",
+      "inventory_sha256": "ec6a5308dac0ccdf686e5d25a077df86f1be19a893c98c4311ae962208904904",
+      "inventory_same_bytes": true,
+      "classification": "slide-text-paraphrase",
+      "field_scope": "$.observations[*].content",
+      "disposition": "exclude-historical-member-from-future-text-bundle; technical locator replaces inbound links",
+      "reason": "Contains translated slide sequence and examples. Omit historical member; technical locator keeps observed times and original identity without descriptive prose."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/current-readback-02.json",
+      "baseline_sha256": "7f2927b4d110a6e33d87978214834bb8218190143b3d070ec2da52e8e385e3e9",
+      "inventory_sha256": "7f2927b4d110a6e33d87978214834bb8218190143b3d070ec2da52e8e385e3e9",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/current-readback.json",
+      "baseline_sha256": "1fe80c9ab24c3e53cc00cff2ebeff167dd14607658efb4f162b3473559adf9e2",
+      "inventory_sha256": "1fe80c9ab24c3e53cc00cff2ebeff167dd14607658efb4f162b3473559adf9e2",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/frame-review-02.json",
+      "baseline_sha256": "9c09b44c564786444393c8f6b1e9c0ca920bbf011189265fd05d46425d8885fe",
+      "inventory_sha256": "9c09b44c564786444393c8f6b1e9c0ca920bbf011189265fd05d46425d8885fe",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/frame-review.json",
+      "baseline_sha256": "bd88222213c3ee79fd1c677a9fd6d25432d6554114f72ecc44cc17abc3dc074c",
+      "inventory_sha256": "bd88222213c3ee79fd1c677a9fd6d25432d6554114f72ecc44cc17abc3dc074c",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/result-current.json",
+      "baseline_sha256": "45849c86853f5a699d738c5d782319cc1e092d7648985b5c986ee240248d2706",
+      "inventory_sha256": "45849c86853f5a699d738c5d782319cc1e092d7648985b5c986ee240248d2706",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-case-work-01/result.json",
+      "baseline_sha256": "18695a27028161c0d075a66bfb2991f0c04a1a74c75d7a367096f0f12a9c3348",
+      "inventory_sha256": "18695a27028161c0d075a66bfb2991f0c04a1a74c75d7a367096f0f12a9c3348",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-qwen-alignment-01/result.json",
+      "baseline_sha256": "c05c586e6463813a055b1294c8074918a125b7b71e1330da96492299d677730d",
+      "inventory_sha256": "c05c586e6463813a055b1294c8074918a125b7b71e1330da96492299d677730d",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-qwen-windows-01/comparison.json",
+      "baseline_sha256": "05dbd52122c0964c01d7dca618c37fb557c090e55c9bff3713d2a866f7ad0d94",
+      "inventory_sha256": "05dbd52122c0964c01d7dca618c37fb557c090e55c9bff3713d2a866f7ad0d94",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/coscup-qwen-windows-01/index.html",
+      "baseline_sha256": "95aff76016956c69164d2d593142a9209c8d2cd52e47e76b5e13abab27c18a4b",
+      "inventory_sha256": "95aff76016956c69164d2d593142a9209c8d2cd52e47e76b5e13abab27c18a4b",
+      "inventory_same_bytes": true,
+      "classification": "ASR-transcription-of-CC-BY-video-plus-local-alignment-view",
+      "disposition": "retain-with-Wikidata-Taiwan-credit-license-and-change-notice",
+      "field_scope": "embedded machine transcript; HTML layout and timing diagnostics remain local implementation"
+    },
+    {
+      "path": "evals/runs/coscup-qwen-windows-01/result.json",
+      "baseline_sha256": "04ad9facd1530eefbc1426165a52af942ed934d692ae0456e0e6bb7e41d2a342",
+      "inventory_sha256": "04ad9facd1530eefbc1426165a52af942ed934d692ae0456e0e6bb7e41d2a342",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/prepared-statement-work-01/current-readback-02.json",
+      "baseline_sha256": "97dba017daacd1afbb0c51778daae5f3a376b1cdc42ef8e7e8ecaa5d02a095dd",
+      "inventory_sha256": "97dba017daacd1afbb0c51778daae5f3a376b1cdc42ef8e7e8ecaa5d02a095dd",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/prepared-statement-work-01/inspection-02/frame-review.json",
+      "baseline_sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6",
+      "inventory_sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6",
+      "inventory_same_bytes": true,
+      "classification": "licensed-source-video-caption-excerpts-plus-local-visual-review",
+      "field_scope": "$.viewed_current[1].findings[3] and $.viewed_current[2].findings[3]",
+      "disposition": "retain-existing-bytes-and-inbound-link; CC-BY-3.0-material-notice",
+      "reason": "Three literal quotations independently visible in inspected bound video frames; saved publisher metadata explicitly licenses source video CC BY 3.0."
+    },
+    {
+      "path": "evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+      "baseline_sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c",
+      "inventory_sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c",
+      "inventory_same_bytes": true,
+      "classification": "external-prepared-text",
+      "field_scope": "$.variants[*].decision/protected/actor_state_pairs",
+      "disposition": "exclude-historical-member-from-future-text-bundle; technical locator replaces inbound links",
+      "reason": "External reference-derived prose and short quotations; retain original locally, omit this evidence member from future text distribution."
+    },
+    {
+      "path": "evals/runs/prepared-statement-work-01/result-current.json",
+      "baseline_sha256": "b7a488e5536a467ccb11db59ab95020f2660be27342f3301e78739b465fd1e5d",
+      "inventory_sha256": "b7a488e5536a467ccb11db59ab95020f2660be27342f3301e78739b465fd1e5d",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/zh-explanation-transfer-01/current-readback.json",
+      "baseline_sha256": "38a210f3cc49a2573f1431fd7b000906855179961c53a6a0172f0c9821bd3e0c",
+      "inventory_sha256": "38a210f3cc49a2573f1431fd7b000906855179961c53a6a0172f0c9821bd3e0c",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/zh-explanation-transfer-01/frame-review.json",
+      "baseline_sha256": "2dbaeb279e79f6aa72a18eef8fefedd848538c424d8198c2f9a22dc7fe3ad302",
+      "inventory_sha256": "2dbaeb279e79f6aa72a18eef8fefedd848538c424d8198c2f9a22dc7fe3ad302",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "evals/runs/zh-explanation-transfer-01/result-current.json",
+      "baseline_sha256": "9a72f439b68e8fbda8edf66ef7441cafd6bf40b315428dc4b991e402905cd5bb",
+      "inventory_sha256": "9a72f439b68e8fbda8edf66ef7441cafd6bf40b315428dc4b991e402905cd5bb",
+      "inventory_same_bytes": true,
+      "classification": "external-prepared-text-adaptation",
+      "field_scope": "$.cards[*].summary",
+      "disposition": "exclude-historical-member-from-future-text-bundle; technical locator replaces inbound links",
+      "reason": "Contains actual actor/action summary-card text, not only receipts. Omit historical member; preserve result/video identity in technical locator."
+    },
+    {
+      "path": "evals/runs/zh-explanation-transfer-01/selection.json",
+      "baseline_sha256": "5bdc7afd477a515476d1657984100e10a7de8d9b485db01e69eef8dc0aeed84e",
+      "inventory_sha256": "5bdc7afd477a515476d1657984100e10a7de8d9b485db01e69eef8dc0aeed84e",
+      "inventory_same_bytes": true,
+      "classification": "technical-metadata-or-local-review; factual-observation-where-present",
+      "disposition": "retain-source-hash-and-original-status",
+      "reason": "Paths/hashes/frame numbers do not bundle referenced media. COSCUP numeric observations are facts; no slide prose clearance inferred."
+    },
+    {
+      "path": "provenance/fusion-speech.md",
+      "baseline_sha256": "cabfbc372f1378ca4ca0669d4f8209a38fd497dee0c04351124f2d16330cf059",
+      "inventory_sha256": "cabfbc372f1378ca4ca0669d4f8209a38fd497dee0c04351124f2d16330cf059",
+      "inventory_same_bytes": true,
+      "classification": "local-method-protocol-or-provenance-record",
+      "disposition": "retain-bounded-method-reference; preserve-independent-source-conditions",
+      "reason": "AMI/AISHELL notices are separate; no new blanket rights clearance."
+    },
+    {
+      "path": "runtime/speech_ops.py",
+      "baseline_sha256": "b6a28ab5f9866a7193ffff5c0d8f513810b07567472a46585880a674fa1dbebc",
+      "inventory_sha256": "b6a28ab5f9866a7193ffff5c0d8f513810b07567472a46585880a674fa1dbebc",
+      "inventory_same_bytes": true,
+      "classification": "local-interface-or-implementation-with-method-provenance",
+      "disposition": "retain; not relicensed under external prose license",
+      "reason": "Explicit local word/frame/work contracts; no full upstream execution-code copy asserted by this scope. This is not full code-license certification."
+    },
+    {
+      "path": "styles/speech/actor-action.md",
+      "baseline_sha256": "98d92dbb91a33868e70b643ad8e852d21e8589fc24ef9a351edb99ff73e0ae2c",
+      "inventory_sha256": "98d92dbb91a33868e70b643ad8e852d21e8589fc24ef9a351edb99ff73e0ae2c",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/balanced-comparison.md",
+      "baseline_sha256": "5f15104345fbeb3902fe97b969cbb7cc049b6ae6fc218795c287bc6d8cf5288f",
+      "inventory_sha256": "5f15104345fbeb3902fe97b969cbb7cc049b6ae6fc218795c287bc6d8cf5288f",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/case-reconstruction.md",
+      "baseline_sha256": "a7e52db29f42b4afb9d8a0191de449bfebbb7d68c3a54f531d40fec8b0163e92",
+      "inventory_sha256": "a7e52db29f42b4afb9d8a0191de449bfebbb7d68c3a54f531d40fec8b0163e92",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/catalog.json",
+      "baseline_sha256": "8180c9a607e6d089c2a088f284b959c995b81634cba3c2f344358e7696e14366",
+      "inventory_sha256": "8180c9a607e6d089c2a088f284b959c995b81634cba3c2f344358e7696e14366",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/complete-record.md",
+      "baseline_sha256": "433d2ed61bf72a2cd9960b172adcdff3f818b224bbf7ecc196d78a0662a20d87",
+      "inventory_sha256": "433d2ed61bf72a2cd9960b172adcdff3f818b224bbf7ecc196d78a0662a20d87",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/constraint-pivot.md",
+      "baseline_sha256": "02b8d8df9ff271c833a5d8c556e3980e8d890be3ccbd0c046c1983cd66fcda08",
+      "inventory_sha256": "02b8d8df9ff271c833a5d8c556e3980e8d890be3ccbd0c046c1983cd66fcda08",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/conversational-company.md",
+      "baseline_sha256": "c3b666b559a34f48a63ed64cb0bd8126f23966db1e5137a5da7b52e9ad223a87",
+      "inventory_sha256": "c3b666b559a34f48a63ed64cb0bd8126f23966db1e5137a5da7b52e9ad223a87",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/counterpoint-dialogue.md",
+      "baseline_sha256": "f021bdc8f524f79cbd8ee06d392b0e98b4ac112285b95365fe3f7287ce5132bb",
+      "inventory_sha256": "f021bdc8f524f79cbd8ee06d392b0e98b4ac112285b95365fe3f7287ce5132bb",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/crisp-argument.md",
+      "baseline_sha256": "92857989550989b13a5236ce648c3f5dfac9a26a0c0f692cc08519410c666322",
+      "inventory_sha256": "92857989550989b13a5236ce648c3f5dfac9a26a0c0f692cc08519410c666322",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/evidence-led.md",
+      "baseline_sha256": "60735e685fedf04635702ba6897065ea8a78da07244333d24d50deb077bc26da",
+      "inventory_sha256": "60735e685fedf04635702ba6897065ea8a78da07244333d24d50deb077bc26da",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/executive-brief.md",
+      "baseline_sha256": "777eddb76c6ad7b9840349daf06842688f7501974356305252d81402b9a1b29d",
+      "inventory_sha256": "777eddb76c6ad7b9840349daf06842688f7501974356305252d81402b9a1b29d",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/expert-deep-dive.md",
+      "baseline_sha256": "99f06a90814d26d5e2e959d46f86533582c82ed20349698907b2c6af2009fab1",
+      "inventory_sha256": "99f06a90814d26d5e2e959d46f86533582c82ed20349698907b2c6af2009fab1",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/faithful-clean.md",
+      "baseline_sha256": "7cd361368644fd7d20c572a8012d444e0d0ba7a07df0af3ccbd8635843659709",
+      "inventory_sha256": "7cd361368644fd7d20c572a8012d444e0d0ba7a07df0af3ccbd8635843659709",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/humorous-explanation.md",
+      "baseline_sha256": "0d3ab7e57b30361830cf5ae586549a449fb0166d364bd3dff4b9d231c0b56fcf",
+      "inventory_sha256": "0d3ab7e57b30361830cf5ae586549a449fb0166d364bd3dff4b9d231c0b56fcf",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/index.md",
+      "baseline_sha256": "8cbd52ef3005bede43698ef88b6e49ddd0e825f60f3cd4c28c9c44925821aabf",
+      "inventory_sha256": "8cbd52ef3005bede43698ef88b6e49ddd0e825f60f3cd4c28c9c44925821aabf",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/issue-context.md",
+      "baseline_sha256": "b22214522d1b7e2e3077702d79c95529ddaf848d4fff4fb4a32c3422e919e5fd",
+      "inventory_sha256": "b22214522d1b7e2e3077702d79c95529ddaf848d4fff4fb4a32c3422e919e5fd",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/myth-correction.md",
+      "baseline_sha256": "79e6b9144edfebe836a08e07b11753b5451850bfbd830fee7021d53ce8a94916",
+      "inventory_sha256": "79e6b9144edfebe836a08e07b11753b5451850bfbd830fee7021d53ce8a94916",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/personal-story.md",
+      "baseline_sha256": "702d9161ad2e563624b9784fd49913b26b9d9567efe8cf8044188513cf2f8c07",
+      "inventory_sha256": "702d9161ad2e563624b9784fd49913b26b9d9567efe8cf8044188513cf2f8c07",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/problem-solution.md",
+      "baseline_sha256": "5621b9ec367ca9e9fbece9870b2ae8c4b8f45ae20989d79bf15896d22ceb253a",
+      "inventory_sha256": "5621b9ec367ca9e9fbece9870b2ae8c4b8f45ae20989d79bf15896d22ceb253a",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/progressive-outline.md",
+      "baseline_sha256": "998bc0437b7dac5f8e5e54dca9fd309b1e1a080d03e400e2528ed081e580d08f",
+      "inventory_sha256": "998bc0437b7dac5f8e5e54dca9fd309b1e1a080d03e400e2528ed081e580d08f",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/question-answer.md",
+      "baseline_sha256": "9e428b2a0e44fd0271b0d8864cb4c54a37eab6ad3230adc5e27450aad807401a",
+      "inventory_sha256": "9e428b2a0e44fd0271b0d8864cb4c54a37eab6ad3230adc5e27450aad807401a",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/reflective-monologue.md",
+      "baseline_sha256": "99877f8d7604129a07dc954b897a2ad7556f4cc2c3237242d456d1a928987b42",
+      "inventory_sha256": "99877f8d7604129a07dc954b897a2ad7556f4cc2c3237242d456d1a928987b42",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "styles/speech/stepwise-teaching.md",
+      "baseline_sha256": "aa650d4707da7e33544bf676a96d23512916b12493752535d19dbdaaf10883df",
+      "inventory_sha256": "aa650d4707da7e33544bf676a96d23512916b12493752535d19dbdaaf10883df",
+      "inventory_same_bytes": true,
+      "classification": "locally-authored-recipe-or-catalog-with-generic-method-reference",
+      "disposition": "retain-source-identity-and-authored-unvalidated-boundary",
+      "reason": "Source fusion records identify local recipes. This task does not recertify every style as legally original or behaviorally accepted."
+    },
+    {
+      "path": "workflows/raven-speech-edit/SKILL.md",
+      "baseline_sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05",
+      "inventory_sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05",
+      "inventory_same_bytes": true,
+      "classification": "local-protocol-with-identified-duyi-adaptations-and-method-reference",
+      "disposition": "retain-with-field-scoped-CC-BY-NC-notice",
+      "coverage": "exact_local_passage entries only; all other source materials retain their own conditions",
+      "proposed_sha256": "86763ff411ccbb0abfab72cd5f04e9a9d4087d57d2b143c7e1da7f0b995ee40c"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/asr-observation.md",
+      "baseline_sha256": "11e1b126d817dae505cb68eb94dfe60f60546510cbc277949a675934e6143259",
+      "inventory_sha256": "11e1b126d817dae505cb68eb94dfe60f60546510cbc277949a675934e6143259",
+      "inventory_same_bytes": true,
+      "classification": "local-method-protocol-or-provenance-record",
+      "disposition": "retain-bounded-method-reference; preserve-independent-source-conditions",
+      "reason": "AMI/AISHELL notices are separate; no new blanket rights clearance."
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/chinese-alignment.md",
+      "baseline_sha256": "cc80383b6198eef4f767c9c2fbb2fc35fd7a822e998efe1b41b62d269d6eaee9",
+      "inventory_sha256": "cc80383b6198eef4f767c9c2fbb2fc35fd7a822e998efe1b41b62d269d6eaee9",
+      "inventory_same_bytes": true,
+      "classification": "local-method-protocol-or-provenance-record",
+      "disposition": "retain-bounded-method-reference; preserve-independent-source-conditions",
+      "reason": "AMI/AISHELL notices are separate; no new blanket rights clearance."
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/evaluation.md",
+      "baseline_sha256": "d9f7820248ebb6842e52e4915d13f48305c768a62043c903b8e07f5c1230cdc2",
+      "inventory_sha256": "d9f7820248ebb6842e52e4915d13f48305c768a62043c903b8e07f5c1230cdc2",
+      "inventory_same_bytes": true,
+      "classification": "local-technical-summary-with-short-source-examples",
+      "disposition": "remove-prepared-text-examples; redirect-excluded-evidence; preserve-other-source-notices",
+      "proposed_sha256": "a2b0090a42f62bac9dfe9b9c8c0da78cc75bd2dce649510883fc913e107b1bee"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/explanatory-layers.md",
+      "baseline_sha256": "e21ad7e7520d3671981cdc704fee265c62c0f9ce33db558e133707f91ba085f8",
+      "inventory_sha256": "e21ad7e7520d3671981cdc704fee265c62c0f9ce33db558e133707f91ba085f8",
+      "inventory_same_bytes": true,
+      "classification": "local-method-protocol-or-provenance-record",
+      "disposition": "retain-bounded-method-reference; preserve-independent-source-conditions",
+      "reason": "AMI/AISHELL notices are separate; no new blanket rights clearance.",
+      "proposed_sha256": "dbf7210ffdd828a98dc46d28abdd83c3024c5ca9e778c0c4a8ed94cf0b35321f"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/prepared-statements.md",
+      "baseline_sha256": "4aedd87d53d184aaeb402ca46918a6d5ab1669dbacf5c0dde7d5f7169f6c8229",
+      "inventory_sha256": "4aedd87d53d184aaeb402ca46918a6d5ab1669dbacf5c0dde7d5f7169f6c8229",
+      "inventory_same_bytes": true,
+      "classification": "local-protocol-with-licensed-screen-caption-short-quotes-and-external-reference-comparison",
+      "disposition": "retain-three-licensed-boundary-quotes-with-notice; replace-only-external-ASR-comparison-examples",
+      "proposed_sha256": "f9bcae90135da6b6c832606122e18b8540251ca7d556d8b33c8ba1409804f2d3"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/repairs-and-retakes.md",
+      "baseline_sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+      "inventory_sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+      "inventory_same_bytes": true,
+      "classification": "local-protocol-with-identified-duyi-adaptations-and-method-reference",
+      "disposition": "retain-with-field-scoped-CC-BY-NC-notice",
+      "coverage": "exact_local_passage entries only; all other source materials retain their own conditions",
+      "proposed_sha256": "f6f7b3fe987c2bab6d2e85b137b14a3fcd38d3687f9ef80d15fcb530a8e632f4"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/semantic-editing.md",
+      "baseline_sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+      "inventory_sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+      "inventory_same_bytes": true,
+      "classification": "local-protocol-with-identified-duyi-adaptations-and-method-reference",
+      "disposition": "retain-with-field-scoped-CC-BY-NC-notice",
+      "coverage": "exact_local_passage entries only; all other source materials retain their own conditions",
+      "proposed_sha256": "b01154810593f1938a1cb352abbf54f4a4ebf26129990d7bcc65ccd6473e2baf"
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/technical-case.md",
+      "baseline_sha256": "f94bb07dd6cf10b74d4ca78a39208d833ae23685ff78739a8bc87fff24e3c5f9",
+      "inventory_sha256": "f94bb07dd6cf10b74d4ca78a39208d833ae23685ff78739a8bc87fff24e3c5f9",
+      "inventory_same_bytes": true,
+      "classification": "local-constraints-plus-slide-derived-case-summary-and-factual-numbers",
+      "disposition": "replace-slide-narrative-with-local-diagnostic-description; retain-facts-and-attribution; redirect-evidence",
+      "proposed_sha256": "2bc93cc29bad0846619bfa4d054b821a1ac0ab6129bd97256ec3dc8480102141"
+    }
+  ],
+  "excluded_members": [
+    {
+      "path": "evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+      "sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c",
+      "reason": "External reference-derived prose and short quotations; retain original locally, omit this evidence member from future text distribution."
+    },
+    {
+      "path": "evals/runs/zh-explanation-transfer-01/result-current.json",
+      "sha256": "9a72f439b68e8fbda8edf66ef7441cafd6bf40b315428dc4b991e402905cd5bb",
+      "reason": "Contains actual actor/action summary-card text, not only receipts. Omit historical member; preserve result/video identity in technical locator."
+    },
+    {
+      "path": "evals/runs/coscup-case-source-01/visual-review.json",
+      "sha256": "ec6a5308dac0ccdf686e5d25a077df86f1be19a893c98c4311ae962208904904",
+      "reason": "Contains translated slide sequence and examples. Omit historical member; technical locator keeps observed times and original identity without descriptive prose."
+    }
+  ],
+  "commercial_use": "NC-adapted passages not cleared for commercial use; exact scope listed above.",
+  "historical_scope": "foundation49 and portable892 untouched; COSCUP learning pages outside this current-member scope.",
+  "licensed_screen_caption_excerpts": {
+    "schema": "licensed-screen-caption-evidence/1",
+    "status": "SOURCE_VIDEO_CAPTION_EXCERPTS_CONFIRMED",
+    "basis": "Saved Commons publication metadata and source bytes; no claim of fresh online permission or full audiovisual reacceptance.",
+    "source_metadata": {
+      "path": "evals/assets/commons-prepared-statement/source.json",
+      "bytes": 2128,
+      "sha256": "c72cfef229349d344a568016ba176b5815c272b782af49d8d1f57fb02baf87f0"
+    },
+    "publication_metadata": {
+      "path": "evals/assets/commons-prepared-statement/authority-api.json",
+      "bytes": 27207,
+      "sha256": "29770bd5e0fd7656285ff502d7e16da4aead155cfa3eeb1322878647db0ed25c"
+    },
+    "media": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-prepared-statement/source.webm",
+      "sha256": "5e7639bd8cf4aa929a1f3086a84bbe5f0b8081b874f74098a87731dd59a17c91",
+      "sha1": "8996d6681ef35f8181c86a98cbfb215689c0e668",
+      "bytes": 22452623
+    },
+    "publication_fields": {
+      "Artist": {
+        "value": "Office of the President, ROC (Taiwan)",
+        "source": "commons-desc-page"
+      },
+      "ObjectName": {
+        "value": "President Tsai responds to the live-fire military exercises China has initiated around Taiwan",
+        "source": "mediawiki-metadata"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/3.0",
+        "source": "commons-desc-page"
+      },
+      "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "Credit": {
+        "value": "<bdi lang=\"en\" dir=\"ltr\"><a href=\"//commons.wikimedia.org/wiki/Commons:YouTube_files\" title=\"Commons:YouTube files\">YouTube</a>: <a rel=\"nofollow\" class=\"external text\" href=\"https://www.youtube.com/watch?v=MkD-awRsSXM\"><bdi lang=\"\">https://www.youtube.com/watch?v=MkD-awRsSXM</bdi></a> – View/save archived versions on <a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/*/https://www.youtube.com/watch?v=MkD-awRsSXM\">archive.org</a></bdi>",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "personality",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "DateTimeOriginal": {
+        "value": "2022-08-04",
+        "source": "commons-desc-page"
+      }
+    },
+    "source_page": "https://commons.wikimedia.org/wiki/File:President_Tsai_responds_to_the_live-fire_military_exercises_China_has_initiated_around_Taiwan.webm",
+    "original_video_credit": "https://www.youtube.com/watch?v=MkD-awRsSXM",
+    "review_member": {
+      "path": "evals/runs/prepared-statement-work-01/inspection-02/frame-review.json",
+      "bytes": 34275,
+      "sha256": "4ac2ed4bc46bc6743efec74ca6e3428d94c3ac4b180afd73a945f1e642669df6"
+    },
+    "quotes": [
+      {
+        "literal": "我也要向國人同胞說",
+        "pts": 133.3,
+        "index": 3995,
+        "image": "evals/runs/prepared-statement-boundaries-01/frame-0096.png",
+        "index_file": "evals/runs/prepared-statement-boundaries-01/index.json",
+        "review_field": "$.viewed_current[1].findings[3]",
+        "image_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-01/frame-0096.png",
+          "bytes": 121909,
+          "sha256": "fb28d86d63ae2800c0051c2a1c75da06f0679a8755646f347bac513d36b8cb92"
+        },
+        "index_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-01/index.json",
+          "bytes": 150109,
+          "sha256": "a7af1be03cef8f26da9938aa7b28018a2ded200d110f94adada818f610e2427c"
+        },
+        "verification": "Image actually displayed and inspected in this revision; visible traditional-Chinese caption exactly matches quotation. PTS and source identity are separately hash-bound.",
+        "protocol_scope": "prepared-statements.md, actual findings paragraph with source caption transition times"
+      },
+      {
+        "literal": "對於資安的侵擾",
+        "pts": 149.716,
+        "index": 4487,
+        "image": "evals/runs/prepared-statement-boundaries-02/frame-0019.png",
+        "index_file": "evals/runs/prepared-statement-boundaries-02/index.json",
+        "review_field": "$.viewed_current[2].findings[3]",
+        "image_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-02/frame-0019.png",
+          "bytes": 116118,
+          "sha256": "9e1a8092d738b35ed7bc6777ae51880ca7e818119209124453917957490a6a07"
+        },
+        "index_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-02/index.json",
+          "bytes": 25358,
+          "sha256": "a62d604f0eaf4ec410426872becb6e5ee61db58effdbe98832a2295f3ac3c090"
+        },
+        "verification": "Image actually displayed and inspected in this revision; visible traditional-Chinese caption exactly matches quotation. PTS and source identity are separately hash-bound.",
+        "protocol_scope": "prepared-statements.md, actual findings paragraph with source caption transition times"
+      },
+      {
+        "literal": "切勿傳遞錯假訊息",
+        "pts": 182.449,
+        "index": 5468,
+        "image": "evals/runs/prepared-statement-boundaries-01/frame-0134.png",
+        "index_file": "evals/runs/prepared-statement-boundaries-01/index.json",
+        "review_field": "$.viewed_current[1,2].findings[3]",
+        "image_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-01/frame-0134.png",
+          "bytes": 131033,
+          "sha256": "e237aa475380f82f7731cf067f49950eefa988c91b5b9b60bdeea8fe56b37263"
+        },
+        "index_binding": {
+          "path": "evals/runs/prepared-statement-boundaries-01/index.json",
+          "bytes": 150109,
+          "sha256": "a7af1be03cef8f26da9938aa7b28018a2ded200d110f94adada818f610e2427c"
+        },
+        "verification": "Image actually displayed and inspected in this revision; visible traditional-Chinese caption exactly matches quotation. PTS and source identity are separately hash-bound.",
+        "protocol_scope": "prepared-statements.md, actual findings paragraph with source caption transition times"
+      }
+    ],
+    "separation": "The permitted excerpt source is visible source-video caption pixels. External template prose and summary cards are not relicensed by this evidence.",
+    "rights_conditions": [
+      "Credit Office of the President, ROC (Taiwan), title, source and CC BY 3.0 link.",
+      "Identify caption extraction and local observation/commentary; keep historical source date; no endorsement.",
+      "CC BY 3.0 permits commercial copyright use subject to conditions; personality rights listed by publisher remain outside this copyright grant.",
+      "Keep applicable notices and do not add restrictions preventing license-permitted use."
+    ]
+  }
+}

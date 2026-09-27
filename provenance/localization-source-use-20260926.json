@@ -1,0 +1,1290 @@
+{
+  "schema": "source-use-review/1",
+  "task_id": "P-W15-D2",
+  "marker": "W15-D2-SOURCE-20260926-01",
+  "scope": "Local methods and existing material use only",
+  "rows": [
+    {
+      "id": "METHOD-host-treatment",
+      "type": "method",
+      "problem": "字幕、改声音与口型不应混成同一交付",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/video-translation/SKILL.md",
+          "sha256": "ed2fdd3113a54577e767477910687496ef93d66695138c43f6739019e81ec6ce",
+          "locators": [
+            {
+              "needle": "Subtitle-only translation",
+              "lines": [
+                65,
+                74
+              ]
+            },
+            {
+              "needle": "Audio-only translation",
+              "lines": [
+                63,
+                74
+              ]
+            },
+            {
+              "needle": "whole source video",
+              "lines": [
+                178
+              ]
+            },
+            {
+              "needle": "Indicative cost",
+              "lines": [
+                201
+              ]
+            },
+            {
+              "needle": "Never reveal",
+              "lines": [
+                205
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "按处理目的分支，先核源稿和真实服务范围。",
+      "actual_adoption": [
+        "references/modes.md",
+        "references/voice-and-sync.md:3-9",
+        "meeting captions-only / nature new-voice dub"
+      ],
+      "excluded_or_changed": [
+        "固定价格",
+        "隐瞒 provider",
+        "不必要重复审批",
+        "把历史宿主接口当当前可用服务"
+      ],
+      "rights_scope": "Archived ChatCut root manifest has no LICENSE member; method reference only, no upstream source proposed for distribution.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "METHOD-Noiz-segment-voice",
+      "type": "method",
+      "problem": "从源文字到实际译声及原声处理",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/NoizAI__skills/2a0e09d8cb90/skills/video-translation/SKILL.md",
+          "sha256": "2b3f4741e2c96cdd94d30633515389532b7b202083d04ebea451dd4a17d4eae4",
+          "locators": [
+            {
+              "needle": "Translate Subtitles",
+              "lines": [
+                32
+              ]
+            },
+            {
+              "needle": "Generate Dubbed Audio",
+              "lines": [
+                42
+              ]
+            },
+            {
+              "needle": "Replace Audio in Video",
+              "lines": [
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/NoizAI__skills/2a0e09d8cb90/skills/video-translation/scripts/srt_to_duck.py",
+          "sha256": "e66379f85664cd1a288eba833a843875436286d128d22b6fa3981b152713d2d8",
+          "locators": [
+            {
+              "needle": "for m in matches",
+              "lines": [
+                27
+              ]
+            },
+            {
+              "needle": "volume 0.0",
+              "lines": [
+                36
+              ]
+            },
+            {
+              "needle": "volume 1.0",
+              "lines": [
+                24,
+                25,
+                37
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "源SRT/译文/实际声音/替换分层；静音窗口逻辑只有研究用途。",
+      "actual_adoption": [
+        "references/voice-and-sync.md:3-7",
+        "nature explicit whole audio assets, not Noiz script execution"
+      ],
+      "excluded_or_changed": [
+        "未继承自动时长/音色匹配保证",
+        "不复制 srt_to_duck.py",
+        "不以混合声轨静音冒 M&E 分离",
+        "重叠区间提前恢复音量风险保留"
+      ],
+      "rights_scope": "Noiz archived root manifest LICENSE absent; only method/code reading, no copying proposed.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "METHOD-subtitle-register",
+      "type": "method",
+      "problem": "译文长度变化不能冲掉语义与语域",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/translation-localization/subtitle-translator/SKILL.md",
+          "sha256": "2e88369dfa322dca34da13e9fd5279930e395b4ed2f6c1c927115d3df662c7bd",
+          "locators": [
+            {
+              "needle": "Read each block",
+              "lines": [
+                35
+              ]
+            },
+            {
+              "needle": "17 words per minute",
+              "lines": [
+                37
+              ]
+            },
+            {
+              "needle": "Every block where meaning",
+              "lines": [
+                59
+              ]
+            },
+            {
+              "needle": "no flag required",
+              "lines": [
+                102
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "源/译对照、分行和凝练记录；参数按语言/任务指定。",
+      "actual_adoption": [
+        "references/captions.md",
+        "meeting zh-faithful→zh-compact→c4 reviewed repair"
+      ],
+      "excluded_or_changed": [
+        "17 words per minute 不采纳为标准",
+        "42字符不作通用阈值",
+        "忽略凝练标记的示例不采纳"
+      ],
+      "rights_scope": "ur-grue archived root MIT; method attribution only. Not license for AMI/media/font/voices.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "METHOD-glossary",
+      "type": "method",
+      "problem": "术语/专名需要上下文与地区版本",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/translation-localization/translation-glossary-creator/SKILL.md",
+          "sha256": "fabe587bdf6ef6b946224f9ea2478d0152378a348507f0aea7c817770187194d",
+          "locators": [
+            {
+              "needle": "at least 300 words",
+              "lines": [
+                23
+              ]
+            },
+            {
+              "needle": "identifies every term",
+              "lines": [
+                28
+              ]
+            },
+            {
+              "needle": "Proper nouns",
+              "lines": [
+                38
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/LICENSE",
+          "sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+          "locators": [
+            {
+              "needle": "Copyright",
+              "lines": [
+                3
+              ]
+            },
+            {
+              "needle": "permission notice",
+              "lines": [
+                12
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "术语结合原句与locale，未知官方译名保留不确定性。",
+      "actual_adoption": [
+        "references/source-and-terms.md:3-7",
+        "trial inline 25欧元/我认为/functioning/user-friendly; no approved glossary file"
+      ],
+      "excluded_or_changed": [
+        "不采纳300词最低门槛",
+        "示例译名不当官方词库",
+        "ID覆盖不认证多人归属/专名"
+      ],
+      "rights_scope": "MIT copyright2026 ur-grue; no source glossary copied into user media.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "METHOD-dub-adaptation",
+      "type": "method",
+      "problem": "译文长度预算与真实发声时长不可混淆",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/tv-documentary/localization/dubbing-script-adapter/SKILL.md",
+          "sha256": "881a7ad198531942d14843101645d1a0a2e1f032a254fd44461cb133d22ce60c",
+          "locators": [
+            {
+              "needle": "syllable count",
+              "lines": [
+                18,
+                37,
+                40,
+                44,
+                51,
+                84
+              ]
+            },
+            {
+              "needle": "±10%",
+              "lines": [
+                51,
+                73
+              ]
+            },
+            {
+              "needle": "cannot verify actual spoken duration",
+              "lines": [
+                84
+              ]
+            },
+            {
+              "needle": "does not handle on-screen",
+              "lines": [
+                87
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "先保意义，再短表达和真实音频窗口；不能截尾强塞。",
+      "actual_adoption": [
+        "references/voice-and-sync.md:5-9",
+        "localization-voice-fit-01 three actual historical TTS durations",
+        "DUB_EXCEEDS_SLOT refusal"
+      ],
+      "excluded_or_changed": [
+        "±10%音节不认证时长",
+        "口型可见入口和limitations冲突保留",
+        "不自动扩写填空"
+      ],
+      "rights_scope": "ur-grue root MIT applies archived text/code members only.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "METHOD-production-layers",
+      "type": "method",
+      "problem": "locale、M&E、声音身份和最终检查应分层",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/localization-dubbing-production/SKILL.md",
+          "sha256": "13046c09964ce056bdef8de7ba7e738b92916a8cc42176da84821eea1deeaa05",
+          "locators": [
+            {
+              "needle": "Localize intent first",
+              "lines": [
+                56
+              ]
+            },
+            {
+              "needle": "Music/effects/dialogue stems",
+              "lines": [
+                128
+              ]
+            },
+            {
+              "needle": "If the source is not locked",
+              "lines": [
+                131
+              ]
+            },
+            {
+              "needle": "global glossary",
+              "lines": [
+                167
+              ]
+            },
+            {
+              "needle": "Meaning, omissions",
+              "lines": [
+                283
+              ]
+            },
+            {
+              "needle": "Strategy approval",
+              "lines": [
+                255
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/LICENSE",
+          "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+          "locators": [
+            {
+              "needle": "Copyright",
+              "lines": [
+                3
+              ]
+            },
+            {
+              "needle": "permission notice",
+              "lines": [
+                12
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "意义后时长、源变更使下游失效、最终语言和视听分别判断。",
+      "actual_adoption": [
+        "references/meaning-and-locale.md",
+        "references/source-and-terms.md",
+        "references/evaluation.md",
+        "source revision refusal / c4 repair"
+      ],
+      "excluded_or_changed": [
+        "来源引用的历史标准/平台政策不当本次现行保证",
+        "不增加无必要逐阶段审批",
+        "流程不是已实现服务"
+      ],
+      "rights_scope": "calesthio root MIT copyright2026 contributors; external standards/voices/media retain own conditions.",
+      "verification_limits": "Local archived bytes/version use review only; no upstream authenticity or whole-repository plagiarism/legal certification."
+    },
+    {
+      "id": "MATERIAL-AMI-RM",
+      "type": "source media excerpt",
+      "problem": "英文→中文试验需要确切原声和原图来源",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/english-source-document.json",
+          "sha256": "9586cc5c6c23fb1873dfbf763f3c1de0830f7ab5d402132201e60654d5d86743",
+          "locators": [
+            {
+              "needle": "1380.28",
+              "lines": [
+                19,
+                68
+              ]
+            },
+            {
+              "needle": "1400.08",
+              "lines": [
+                20,
+                69
+              ]
+            },
+            {
+              "needle": "program",
+              "lines": [
+                63,
+                95
+              ]
+            },
+            {
+              "needle": "caption_origin",
+              "lines": [
+                93
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/source-readback.json",
+          "sha256": "da59732efb096dc9bf042c771d604a60c1ed2a07e6ea22fa010ea4dac618f3dd",
+          "locators": [
+            {
+              "needle": "IS1000a.C.rm",
+              "lines": [
+                6
+              ]
+            },
+            {
+              "needle": "IS1000a.Mix-Headset.rm",
+              "lines": [
+                10
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/license.html",
+          "sha256": "2b5328846c1db44dad89e473ae74a7497ff2a637efaceb83a2d45148eb5db5a6",
+          "locators": [
+            {
+              "needle": "Commons Attribution 4.0",
+              "lines": [
+                92,
+                150
+              ]
+            },
+            {
+              "needle": "<!--",
+              "lines": [
+                9,
+                18,
+                29,
+                59,
+                66,
+                80,
+                81,
+                481
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "1380.28–1400.08秒 RM 全景静音主轨 + 同窗 RM Mix-Headset program音轨，字幕单独变更。",
+      "actual_adoption": [
+        "meeting four stages / current sequence4; four current captions"
+      ],
+      "excluded_or_changed": [
+        "情景产品会议不是实际客户决定",
+        "25欧元不认证市场价",
+        "B意见不变集体决议",
+        "未给AMI人物译配/克隆",
+        "原标注时钟不等于物理同步听检"
+      ],
+      "rights_scope": "Archived page visible CC BY4.0 corpus+annotations; old noncommercial text is HTML comment481–688, not a second active declaration. Actual derivative notes contain AMI/license/change/no endorsement; no release clearance.",
+      "verification_limits": "Original/source/output media hashes only inherited; current stat only, no rehash/playback/listening."
+    },
+    {
+      "id": "MATERIAL-AMI-words",
+      "type": "manual annotation plus Agent edited text",
+      "problem": "源词、说话人和译文必须保持可追溯",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.B.words.xml",
+          "sha256": "c3f6bc40aab864f46ca27a5763d87b617b1ce08096d6e7fb327aed947195989f",
+          "locators": [
+            {
+              "needle": "IS1000a.B.words1636",
+              "lines": [
+                1639
+              ]
+            },
+            {
+              "needle": "IS1000a.B.words1668",
+              "lines": [
+                1671
+              ]
+            },
+            {
+              "needle": "IS1000a.B.words1683",
+              "lines": [
+                1686
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/ami-is1000a/annotations/words/IS1000a.A.words.xml",
+          "sha256": "f065db34e9fed74c00135fea4d47f9f1e7e0f42e77e36cc78371e253c1088020",
+          "locators": [
+            {
+              "needle": "IS1000a.A.words497",
+              "lines": [
+                501
+              ]
+            },
+            {
+              "needle": "IS1000a.A.words499",
+              "lines": [
+                503
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/source-word-evidence.json",
+          "sha256": "9e598681527b5c8fe362b9299fc209a4ee36152af779b02ae1725c703cdb89d3",
+          "locators": [
+            {
+              "needle": "meaning_note",
+              "lines": [
+                344
+              ]
+            },
+            {
+              "needle": "timing",
+              "lines": [
+                345
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "B逐词手工标注 ID/时间/文本核对；A两次Mm分别保留，字幕窗口为合并显示。",
+      "actual_adoption": [
+        "b1–b4+a1/a2→c1–c4; source JSONs declared human-transcript; displayed English already removes stutters"
+      ],
+      "excluded_or_changed": [
+        "不是本轮ASR/听写",
+        "English source captions非逐字转录",
+        "未知原转写错误不因译文流畅消失",
+        "多人speaker_ids集合通过不能证明真实归属"
+      ],
+      "rights_scope": "Only AMI annotation/excerpt and attributed derivatives; no real-identity consent/voice-generation grant inferred.",
+      "verification_limits": "XML identity/coordinates verified, semantic/sound/identity not independently assessed."
+    },
+    {
+      "id": "TEXT-meeting-versions",
+      "type": "Agent translation and inline terminology",
+      "problem": "忠实译文与凝练版本不可混成同一冻结稿",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/zh-faithful-translation.json",
+          "sha256": "19db52278ccf0a22f3a83e766977cff32dc38163db328803d7917d29f44a38e9",
+          "locators": [
+            {
+              "needle": "source_script_sha256",
+              "lines": [
+                2
+              ]
+            },
+            {
+              "needle": "我认为",
+              "lines": [
+                39,
+                78
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/zh-compact-translation.json",
+          "sha256": "5ab99fec759832cd0eacdfe43d1d34cbcea8f40638171ac7dfdc0ed9f2ab1907",
+          "locators": [
+            {
+              "needle": "好用",
+              "lines": [
+                69
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/zh-compact-reviewed-translation.json",
+          "sha256": "8e92425bb656dd8c15d5880ce9f1cc64c01d12f3df1512b3a11346fc38d903ae",
+          "locators": [
+            {
+              "needle": "功能良好",
+              "lines": [
+                69
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/semantic-review-01.json",
+          "sha256": "e0ff71033c1b428e461a9d6cefb58f3f1d39bc2e79451609fb2e52820c0fa426",
+          "locators": [
+            {
+              "needle": "initial",
+              "lines": [
+                28
+              ]
+            },
+            {
+              "needle": "repair",
+              "lines": [
+                29
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "保留三份译文及各自源稿SHA；c4从“好用、易操作”改“功能良好、易用”，其他cue/原声保持为历史回执范围。",
+      "actual_adoption": [
+        "meeting seq2→3→4; literals 我认为/25欧元; current source-target mapping"
+      ],
+      "excluded_or_changed": [
+        "没有独立术语/发音字典签收",
+        "literal_locks只验已填字符串",
+        "源ID覆盖不是翻译充分性",
+        "作者Agent复核不是独立母语评审"
+      ],
+      "rights_scope": "Authored Chinese wording based on AMI excerpt; AMI underlying attribution retained.",
+      "verification_limits": "Current source text read and historical hashes verified; no new compiler/render/language panel."
+    },
+    {
+      "id": "MATERIAL-KAWAIDA-FRONT",
+      "type": "source→frame→motion media lineage",
+      "problem": "自然旁白本地化须标明它实际基于静图",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-kawaida/front.webm.metadata.json",
+          "sha256": "72214741624a64f71fe5b22b9ec8972e519a7bd624084db9b5464ce935c18352",
+          "locators": [
+            {
+              "needle": "Artist",
+              "lines": [
+                53
+              ]
+            },
+            {
+              "needle": "LicenseShortName",
+              "lines": [
+                57
+              ]
+            },
+            {
+              "needle": "DateTimeOriginal",
+              "lines": [
+                45
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/av-script.json",
+          "sha256": "8f8b07b8a3e8441148fd91e4c91cd804b5c393acd8306a8ae184e803b588b08a",
+          "locators": [
+            {
+              "needle": "images",
+              "lines": [
+                10
+              ]
+            },
+            {
+              "needle": "image_source_times",
+              "lines": [
+                24
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/motion/front-focus/request.json",
+          "sha256": "5dafa442e63b7fe67e24d44d159cb9dc2de67063f56b27808025c28c0af9845a",
+          "locators": [
+            {
+              "needle": "image",
+              "lines": [
+                2
+              ]
+            },
+            {
+              "needle": "frames",
+              "lines": [
+                7,
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/zh-source-document.json",
+          "sha256": "15d7631b12b5b3e3a1d492af91deff81d22f15f49ecd3f4ad9836677386ebf6a",
+          "locators": [
+            {
+              "needle": "front-focus",
+              "lines": [
+                11,
+                138
+              ]
+            },
+            {
+              "needle": "source_scope",
+              "lines": [
+                151
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "既有front8s/side3s/behind3s抽帧→本地确定性裁切/停留→W15继承的19.6秒三镜画面。",
+      "actual_adoption": [
+        "nature zh-source/en-subtitles/en-dub; front-focus"
+      ],
+      "excluded_or_changed": [
+        "非新模型生成",
+        "非连续录像/真实行走路线",
+        "不继承原摄像机运动",
+        "无现场环境声/音乐"
+      ],
+      "rights_scope": "Archived Lebu Ayiga / CC BY4.0 only corresponding original and descendants. Keep source pages/license/changes/no-endorsement; not license for fonts/TTS/library.",
+      "verification_limits": "Metadata hashes match existing acquisition manifest; source/frame/video byte hashes inherited and stat-only now; no new visual viewing."
+    },
+    {
+      "id": "MATERIAL-KAWAIDA-SIDE",
+      "type": "source→frame→motion media lineage",
+      "problem": "自然旁白本地化须标明它实际基于静图",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-kawaida/side.webm.metadata.json",
+          "sha256": "3626185cbffacc584ab3ded0e00e5b422a99c1122d59ecc10a51da2d797a8241",
+          "locators": [
+            {
+              "needle": "Artist",
+              "lines": [
+                53
+              ]
+            },
+            {
+              "needle": "LicenseShortName",
+              "lines": [
+                57
+              ]
+            },
+            {
+              "needle": "DateTimeOriginal",
+              "lines": [
+                45
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/av-script.json",
+          "sha256": "8f8b07b8a3e8441148fd91e4c91cd804b5c393acd8306a8ae184e803b588b08a",
+          "locators": [
+            {
+              "needle": "images",
+              "lines": [
+                10
+              ]
+            },
+            {
+              "needle": "image_source_times",
+              "lines": [
+                24
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/motion/side-hold/request.json",
+          "sha256": "595aba0868d1527e8ab70f07e673c113a5811e3e2a6582af3e6b3881cfbf7a5c",
+          "locators": [
+            {
+              "needle": "image",
+              "lines": [
+                2
+              ]
+            },
+            {
+              "needle": "frames",
+              "lines": [
+                7,
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/zh-source-document.json",
+          "sha256": "15d7631b12b5b3e3a1d492af91deff81d22f15f49ecd3f4ad9836677386ebf6a",
+          "locators": [
+            {
+              "needle": "side-hold",
+              "lines": [
+                15,
+                142
+              ]
+            },
+            {
+              "needle": "source_scope",
+              "lines": [
+                151
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "既有front8s/side3s/behind3s抽帧→本地确定性裁切/停留→W15继承的19.6秒三镜画面。",
+      "actual_adoption": [
+        "nature zh-source/en-subtitles/en-dub; side-hold"
+      ],
+      "excluded_or_changed": [
+        "非新模型生成",
+        "非连续录像/真实行走路线",
+        "不继承原摄像机运动",
+        "无现场环境声/音乐"
+      ],
+      "rights_scope": "Archived Lebu Ayiga / CC BY4.0 only corresponding original and descendants. Keep source pages/license/changes/no-endorsement; not license for fonts/TTS/library.",
+      "verification_limits": "Metadata hashes match existing acquisition manifest; source/frame/video byte hashes inherited and stat-only now; no new visual viewing."
+    },
+    {
+      "id": "MATERIAL-KAWAIDA-BEHIND",
+      "type": "source→frame→motion media lineage",
+      "problem": "自然旁白本地化须标明它实际基于静图",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-kawaida/behind.webm.metadata.json",
+          "sha256": "4daf159d1fa438901a500da453960cbe325c26a27b19838f8c7786694253179b",
+          "locators": [
+            {
+              "needle": "Artist",
+              "lines": [
+                53
+              ]
+            },
+            {
+              "needle": "LicenseShortName",
+              "lines": [
+                57
+              ]
+            },
+            {
+              "needle": "DateTimeOriginal",
+              "lines": [
+                45
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/av-script.json",
+          "sha256": "8f8b07b8a3e8441148fd91e4c91cd804b5c393acd8306a8ae184e803b588b08a",
+          "locators": [
+            {
+              "needle": "images",
+              "lines": [
+                10
+              ]
+            },
+            {
+              "needle": "image_source_times",
+              "lines": [
+                24
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/motion/behind-focus/request.json",
+          "sha256": "8962c495a51aaa1f4f813283eb2bca334a86d10093dd6c79793230010d6a26d3",
+          "locators": [
+            {
+              "needle": "image",
+              "lines": [
+                2
+              ]
+            },
+            {
+              "needle": "frames",
+              "lines": [
+                7,
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/zh-source-document.json",
+          "sha256": "15d7631b12b5b3e3a1d492af91deff81d22f15f49ecd3f4ad9836677386ebf6a",
+          "locators": [
+            {
+              "needle": "behind-focus",
+              "lines": [
+                19,
+                146
+              ]
+            },
+            {
+              "needle": "source_scope",
+              "lines": [
+                151
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "既有front8s/side3s/behind3s抽帧→本地确定性裁切/停留→W15继承的19.6秒三镜画面。",
+      "actual_adoption": [
+        "nature zh-source/en-subtitles/en-dub; behind-focus"
+      ],
+      "excluded_or_changed": [
+        "非新模型生成",
+        "非连续录像/真实行走路线",
+        "不继承原摄像机运动",
+        "无现场环境声/音乐"
+      ],
+      "rights_scope": "Archived Lebu Ayiga / CC BY4.0 only corresponding original and descendants. Keep source pages/license/changes/no-endorsement; not license for fonts/TTS/library.",
+      "verification_limits": "Metadata hashes match existing acquisition manifest; source/frame/video byte hashes inherited and stat-only now; no new visual viewing."
+    },
+    {
+      "id": "TEXT-nature-script-translation",
+      "type": "Agent-authored script and translation",
+      "problem": "中文源稿不是自然对白或摄影者原话",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/av-script.json",
+          "sha256": "8f8b07b8a3e8441148fd91e4c91cd804b5c393acd8306a8ae184e803b588b08a",
+          "locators": [
+            {
+              "needle": "script_origin",
+              "lines": [
+                4
+              ]
+            },
+            {
+              "needle": "paragraphs",
+              "lines": [
+                5
+              ]
+            },
+            {
+              "needle": "audio_policy",
+              "lines": [
+                44
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/translation-decisions.json",
+          "sha256": "a7a1bc3870eb378a8b1fa242051575f22f18acd4c9d85027af0a3f275ccd85d2",
+          "locators": [
+            {
+              "needle": "semantic_review",
+              "lines": [
+                11
+              ]
+            },
+            {
+              "needle": "source_sound",
+              "lines": [
+                41
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/en-dub-translation.json",
+          "sha256": "8ee267148ec1e174fd01ba40efc0df3308a011f829626582677bff8ce9f85a31",
+          "locators": [
+            {
+              "needle": "target_locale",
+              "lines": [
+                3
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "三段中文自撰稿→en-US字幕/译声；目标顺序和对象关系在作者对照记录中可见。",
+      "actual_adoption": [
+        "front water/pool→landing; side layers; behind roots/water/light; Chinese title/credit intentionally retained"
+      ],
+      "excluded_or_changed": [
+        "不是全片所有文字英文化",
+        "不是摄影者口述/实际源ASR",
+        "不凭记录宣布专名/语义/地区偏好独立通过"
+      ],
+      "rights_scope": "Authored translation is separate from Lebu Ayiga source media; does not replace original attribution.",
+      "verification_limits": "Source/target versions and exact text read. Native/bilingual and full-listening NOT_RUN."
+    },
+    {
+      "id": "VOICE-Tingting-Samantha",
+      "type": "local synthesis asset use",
+      "problem": "更换合成音色不能冒原音色保留",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/generation-local-trials-01/voice/front/request.json",
+          "sha256": "663fede6079f6f48ca7d70e1e73dd861e45faa3168fbd1453116ff74f6d61d15",
+          "locators": [
+            {
+              "needle": "Tingting",
+              "lines": [
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-voice-fit-01/front/request.json",
+          "sha256": "bbef163e8d066490c52c8fbf7c16b609c26ae204eb94a73a1250fa04fe464b11",
+          "locators": [
+            {
+              "needle": "Samantha",
+              "lines": [
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-voice-fit-01/result.json",
+          "sha256": "1f0992ff70d8ad6a35abbfeb18370cfa50995ca21bba5f573e8b41d1852640e2",
+          "locators": [
+            {
+              "needle": "duration",
+              "lines": [
+                9,
+                15,
+                21
+              ]
+            },
+            {
+              "needle": "listening",
+              "lines": [
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-voice-fit-01/front/receipt.json",
+          "sha256": "ecf8128b9ab93023ed5546b361de838adca8184a625ab9ee9422a17f95e75ae9",
+          "locators": [
+            {
+              "needle": "provider",
+              "lines": [
+                35,
+                36,
+                37,
+                44
+              ]
+            },
+            {
+              "needle": "word_alignment",
+              "lines": [
+                41
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "既有 macos-say Tingting180三段中文→Samantha180三段英文，whole WAV素材进入时间窗。",
+      "actual_adoption": [
+        "English durations3.624958/4.05475/3.746854 seconds, all three speech.wav consumed by en-dub"
+      ],
+      "excluded_or_changed": [
+        "不是原作者/AMI人物音色克隆",
+        "不提供词时间/口型",
+        "fit不证明发音/情感/听感",
+        "本机音色不是通用Skill前置"
+      ],
+      "rights_scope": "System voice/tool/output usage and redistribution terms not independently reviewed; CC source-media license does not cover voices.",
+      "verification_limits": "Exact text/request/old receipt hashes reviewed; voice binaries/audio only old identity+stat, no say invocation/listening."
+    },
+    {
+      "id": "FONT-Arial-Unicode",
+      "type": "copied font binary",
+      "problem": "字幕试验实际复制了字体，不能只记方法许可",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/meeting/zh-compact-reviewed-render/captions/receipt.json",
+          "sha256": "344c0ef1f55f7aa8664f59e8637c7f4d7acd3bee567edbd0dd86ee18c1286e01",
+          "locators": [
+            {
+              "needle": "Arial Unicode",
+              "lines": [
+                41,
+                45
+              ]
+            },
+            {
+              "needle": "fonts/specified.ttf",
+              "lines": [
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/runtime/editing_runtime.py",
+          "sha256": "a86d544b5d4e925b52b044f734474f8720915eb7edc095cad7a0afe800c3cd52",
+          "locators": [
+            {
+              "needle": "shutil.copyfile(font['path']",
+              "lines": [
+                954
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "七个历史阶段 caption-burn 将系统 Arial Unicode.ttf 复制为 fonts/specified.ttf供渲染。",
+      "actual_adoption": [
+        "all seven caption stage artifact lists;23278008 bytes each, historicalSHA876af2…"
+      ],
+      "excluded_or_changed": [
+        "字形/回退检查未通过",
+        "不是所有Agent必须此字体",
+        "不把已安装字体或CC视频许可解释为可再分发字体"
+      ],
+      "rights_scope": "Font copyright/license/embedding or redistribution not verified. If distributing these binaries, resolve exact font terms separately; local D2 attribution review is not clearance.",
+      "verification_limits": "Seven old receipt artifact identities + current stat only; font binary not rehashed or copied in this review."
+    },
+    {
+      "id": "CODE-localization-compiler",
+      "type": "local implementation boundary",
+      "problem": "映射/预算工具不能替复杂层翻译",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/runtime/localization_ops.py",
+          "sha256": "1bff2f857cb573dc6819b4a0c58790da85d5a335dd8d0d6201a92cf7bef19168",
+          "locators": [
+            {
+              "needle": "never translate",
+              "lines": [
+                1
+              ]
+            },
+            {
+              "needle": "source_coverage",
+              "lines": [
+                128
+              ]
+            },
+            {
+              "needle": "semantic_review",
+              "lines": [
+                128
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/nature/en-dub-compile/receipt.json",
+          "sha256": "d114618a91f3680e210d496a39c4536dbb03423dc6635b843ee3663d28c90034",
+          "locators": [
+            {
+              "needle": "No translation",
+              "lines": [
+                196
+              ]
+            },
+            {
+              "needle": "DECLARED_NOT_VERIFIED",
+              "lines": [
+                126,
+                153,
+                180
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "显式源/译版本、ID覆盖、literal locks、窗口和完整音频资产校验；没有自然语言翻译与压缩决策。",
+      "actual_adoption": [
+        "localization-plan-compile optional local branch"
+      ],
+      "excluded_or_changed": [
+        "Noiz脚本未移植",
+        "源码审读不等于全库原创性认证",
+        "现行源码不是旧0.12.0运行身份"
+      ],
+      "rights_scope": "Local implementation classified separately from external method and actual media/font copying; no upstream code proposed in this patch.",
+      "verification_limits": "Read source only. Current behavior/clock regressions and semantic quality not tested by D2."
+    },
+    {
+      "id": "FAILURES-and-unverified",
+      "type": "preserved evidence boundary",
+      "problem": "编译拒绝与语义效果必须分开",
+      "source_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/current-readback-02.json",
+          "sha256": "6eeeede2f280c9cb857d8984f7b2896620619fad9b565008d57608a3a588b9e8",
+          "locators": [
+            {
+              "needle": "negative_cases",
+              "lines": [
+                225
+              ]
+            },
+            {
+              "needle": "full_listening",
+              "lines": [
+                38,
+                67,
+                96,
+                125,
+                154,
+                183,
+                212,
+                239
+              ]
+            },
+            {
+              "needle": "local_revision",
+              "lines": [
+                246
+              ]
+            }
+          ]
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/localization-trials-01/semantic-review-01.json",
+          "sha256": "e0ff71033c1b428e461a9d6cefb58f3f1d39bc2e79451609fb2e52820c0fa426",
+          "locators": [
+            {
+              "needle": "not_proven",
+              "lines": [
+                42
+              ]
+            }
+          ]
+        }
+      ],
+      "mechanism": "保留原四个负例与原c4语义修订原因；七阶段DEGRADED不改成完整通过。",
+      "actual_adoption": [
+        "TARGET_LITERAL_MISMATCH",
+        "OUTSIDE_SCOPE",
+        "DUB_EXCEEDS_SLOT",
+        "SOURCE_SCRIPT_REVISION_CONFLICT"
+      ],
+      "excluded_or_changed": [
+        "不重跑终态",
+        "不把负例拒绝当真实听感改善",
+        "无独立母语/真人/原生宿主/RTL/其他语种信用"
+      ],
+      "rights_scope": "No media distribution grant or whole-library release by this provenance review.",
+      "verification_limits": "Historical outputs are evidence history only, no current media execution claim."
+    }
+  ],
+  "old_lock_unchanged": true,
+  "no_new_media_or_human_credit": true,
+  "no_upstream_authenticity_or_release_grant": true,
+  "review_support": {
+    "method-source-verification.json": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w15-source-review-01/method-source-verification.json",
+      "sha256": "59334e5b197ec98769977b7f0f5235523dc58611f5a448db44d3445e1ffac92b"
+    },
+    "source-text-readback.json": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w15-source-review-01/source-text-readback.json",
+      "sha256": "a81b3b462bba9c5694ebd08ed0c61c6c1c139a63f0b0ceb9bce431c841d09d44"
+    },
+    "media-identity-readback.json": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w15-source-review-01/media-identity-readback.json",
+      "sha256": "2aec0311e19f1ee9c05cca300bf05064aac2716ec7544ff87f34905f6aa3d4f3"
+    },
+    "work-and-stage-use.json": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/reviews/20260926-remediation-acceptance/w15-source-review-01/work-and-stage-use.json",
+      "sha256": "2cec50f10543cf4eb06863f0cc1f87676943a8c75047efef1b527f5d7060ff23"
+    }
+  },
+  "review_support_limit": "Sealed local review records only; media/font SHA values are historical declarations plus stat, not current byte/semantic validation."
+}

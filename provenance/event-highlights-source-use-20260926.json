@@ -1,0 +1,2586 @@
+{
+  "schema": "local-source-use-review/1",
+  "scope": "W07-D2; proposed for M acceptance only",
+  "recorded_at": "2026-09-25T22:10:01.255057+00:00",
+  "historical_lock": {
+    "path": "provenance/highlight-sources.lock.json",
+    "sha256": "63adcc05dd334b71f60eed506807bd062bbc9e73f19aef7780e2288ec3797fe6",
+    "unchanged": true
+  },
+  "method_authorities": {
+    "changan1995/RandomAISkills": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json",
+      "sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+      "commit": "0053b89dc2c5be5ac4c0e9e805fdec5fa95cd787",
+      "license_metadata": null,
+      "trust_limit": "archived local manifest; no new upstream authentication",
+      "license_paths_in_manifest": []
+    },
+    "DeepBlueCoding/mcp-replay-dota2": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json",
+      "sha256": "9edd6655ead44e373c8acbe40b69724e12c5ed35386325db3a57daf68927f888",
+      "commit": "23992b85b4864180a078eb27bc4e0ea47e120339",
+      "license_metadata": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "trust_limit": "archived local manifest; no new upstream authentication",
+      "license_paths_in_manifest": [
+        "LICENSE"
+      ]
+    },
+    "akrindev/trimer-clip": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json",
+      "sha256": "daad00d4267a702b5f0008364d1e5530dbcd35c4a83e9ccb2dbe709cf6cb2019",
+      "commit": "5ee2f600355940c925aa1be7adbc69e09b438404",
+      "license_metadata": null,
+      "trust_limit": "archived local manifest; no new upstream authentication",
+      "license_paths_in_manifest": []
+    }
+  },
+  "claims": [
+    {
+      "id": "W07-S01",
+      "claim": "音量只是候选弱信号，全文复读与完整语境是编辑判断输入。",
+      "kind": "method",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/SKILL.md",
+          "locator": "lines 22-38, 115-140"
+        }
+      ],
+      "adopted_use": "采用弱信号、上下文、原话复核的设计方法；由Agent判断，不安装或执行上游。",
+      "excluded_use": [
+        "不把音量、z分数或候选表认证为精彩、召回率或语义真值"
+      ],
+      "uncertainty": [
+        "来源为作者经验说明；本轮未复现其3.5小时直播案例。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S02",
+      "claim": "拒绝将90秒峰距、前12/后15秒、25–180秒截窗照搬为通用剪点。",
+      "kind": "method",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/scripts/score_energy.py",
+          "locator": "lines 33-36, 57-83"
+        }
+      ],
+      "adopted_use": "把这些常数登记为被排除的上游启发式，片段边界回到具体事件。",
+      "excluded_use": [
+        "未把上游阈值标成跨体育/游戏/直播效果依据"
+      ],
+      "uncertainty": [
+        "首尾与持续音乐的风险是本库设计警戒，不是本轮效果测量。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S03",
+      "claim": "稳定片段身份、逐片清单和失败后复用有固定原始出处。",
+      "kind": "method",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/highlight-reel-builder/SKILL.md",
+          "locator": "lines 35-39, 54-73, 113-116"
+        }
+      ],
+      "adopted_use": "采用可追踪/增量复用原则；本库源/计划/工具/输出绑定是本库补足。",
+      "excluded_use": [
+        "不采用仅名字/时间作为充分缓存身份",
+        "不默认stream-copy能保持关键动作切点"
+      ],
+      "uncertainty": [
+        "本轮只核来源用途，不重新验证当前缓存或渲染实现。",
+        "归档highlight-reel-builder在116行句中结束；113-116只证明有A/V sync讨论入口，不能代推未保存结论。精确切点保护记为本库补足。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S04",
+      "claim": "Dota多事件战斗检测与无死亡交战有源码依据，但不是通用游戏解析能力。",
+      "kind": "method",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/src/services/analyzers/fight_detector.py",
+          "locator": "lines 1-6, 18-25, 69-94, 144-175, 298-305"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/LICENSE",
+          "locator": "lines 1-21"
+        }
+      ],
+      "adopted_use": "参考detect_fights_from_combat的伤害/技能/死亡及发起/脱离思路；保留游戏版本和分段时钟校准。",
+      "excluded_use": [
+        "排除固定技能清单/人数/时窗的跨游戏套用",
+        "旧detect_fights是death-only，不能用于证明无死亡分支",
+        "未复制代码、安装MCP或执行真实Dota日志"
+      ],
+      "uncertainty": [
+        "MIT文本含Copyright (c) 2025 [Your Name]占位；原文照录，不推定权利人身份或替上游补全。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S05",
+      "claim": "trimer-clip的多信号可作对照，固定爆款词和小数权重不作效果依据。",
+      "kind": "method",
+      "sources": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/SKILL.md",
+          "locator": "lines 23-64, 167-185"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/scripts/find_highlights.py",
+          "locator": "lines 14-39, 432-476, 642-658"
+        }
+      ],
+      "adopted_use": "参考信号组合种类，明确拒绝virality分数和固定关键词效果承诺。",
+      "excluded_use": [
+        "不移植0.35/0.25/0.25/0.15为本库已验证权重",
+        "不分发许可未明的源代码/原文"
+      ],
+      "uncertainty": [
+        "归档license=null且清单无许可文件；不能把公开可读当作复制/再发行授权。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S06",
+      "claim": "W06来源、区间、依赖、出现实例是本库内部复用，事件图是W07补足。",
+      "kind": "internal-method",
+      "sources": [
+        {
+          "path": "contracts/evidence-contract.md",
+          "locator": "lines 9-15, 23-33"
+        },
+        {
+          "path": "workflows/raven-course-meeting/SKILL.md",
+          "locator": "lines 22, 32"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/event-protocol.md",
+          "locator": "lines 13-21"
+        }
+      ],
+      "adopted_use": "将内容单元映射原则用于setup/action/outcome、canonical事件和主事件/回放实例。",
+      "excluded_use": [
+        "不借W06外部课程/会议素材许可覆盖体育或游戏素材",
+        "合同身份校验不认证语义"
+      ],
+      "uncertainty": [
+        "本轮不重审证据编译器执行有效性。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S07",
+      "claim": "篮球4是初期信号扫描来源；篮球2是已取得的比较候选。",
+      "kind": "media-use",
+      "sources": [
+        {
+          "path": "evals/assets/commons-basketball/basketball-4.ogv",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-basketball/source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-basketball/download-manifest.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/assets/commons-basketball/basketball-2.ogv",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-basketball/basketball-2.ogv.source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-basketball/basketball-2.ogv.download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/runs/highlight-observation-01/signals/request.json",
+          "locator": "source/start/end/video/audio"
+        },
+        {
+          "path": "evals/runs/highlight-observation-01/signals/receipt.json",
+          "locator": "operation/source; historical runtime 0.6.0"
+        }
+      ],
+      "adopted_use": "篮球4测量用途；篮球2只登记已取得身份，不能冒称已采用成片。",
+      "excluded_use": [
+        "扫描信号不等于事件理解/召回",
+        "不将篮球2登记为已通过编辑作品"
+      ],
+      "uncertainty": [
+        "未运行旧脚本；旧扫描回执不绑定当前runtime。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S08",
+      "claim": "篮球5被用于6.96秒上下文基线和2.2–5.6秒同事件回放。",
+      "kind": "media-use",
+      "sources": [
+        {
+          "path": "evals/assets/commons-basketball/basketball-5.ogv",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-basketball/basketball-5.ogv.source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-basketball/basketball-5.ogv.download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/runs/highlight-style-trials-01/observation.json",
+          "locator": "sources.basketball, basketball, editorial_decisions"
+        },
+        {
+          "path": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "locator": "results[id=basketball-context|basketball-replay]"
+        }
+      ],
+      "adopted_use": "非正式练习与结果未知的风格适配负例；编辑字幕明确是否得分未确认。",
+      "excluded_use": [
+        "不是正式比赛、完整得分回合或独立风格效果证明",
+        "无声音来源不推出现场音完好"
+      ],
+      "uncertainty": [
+        "历史观测仅抽帧；本轮不重看/听；源片1×不认证现场拍摄速度。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S09",
+      "claim": "Minetest 5.6.1岩浆源用于连续观察和标明跳时的三阶段摘录。",
+      "kind": "media-use",
+      "sources": [
+        {
+          "path": "evals/assets/commons-minetest/lava-block.webm",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-minetest/lava-block.webm.source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-minetest/lava-block.webm.download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/runs/highlight-style-trials-01/observation.json",
+          "locator": "sources.lava, lava, editorial_decisions"
+        },
+        {
+          "path": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+          "locator": "results[id=lava-observe|lava-digest]"
+        }
+      ],
+      "adopted_use": "连续版0–19.6秒；摘录0–3/7–10/16–19.6秒；同一world-discovery机制，不增风格数。",
+      "excluded_use": [
+        "不是竞技战术高光、Dota实测或真实直播互动",
+        "源描述的放置动作不能冒充已完整入镜",
+        "游戏软件/资产许可不由该视频许可自动证明"
+      ],
+      "uncertainty": [
+        "录屏作者PantheraLeo1359531；Minetest Team为游戏创作者，二者不混为同一录屏作者；原声听检未做。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S10",
+      "claim": "游戏HUD遮挡失败促成同作字幕位置修改，是局部来源用途增量。",
+      "kind": "local-observation-use",
+      "sources": [
+        {
+          "path": "evals/runs/highlight-style-trials-01/caption-revision-evidence.json",
+          "locator": "[0:2].observation_trigger/checks/new_video/old_video"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/evaluation.md",
+          "locator": "line 14"
+        }
+      ],
+      "adopted_use": "保存字幕避让具体HUD的失败/修改出处；署名和字幕为编辑层，不是ASR或游戏日志。",
+      "excluded_use": [
+        "不把局部位置回执当完整画面/试听或原生宿主通过"
+      ],
+      "uncertainty": [
+        "本轮只验证已有记录及成员身份。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S11",
+      "claim": "点球两版采用同一CC0源，以连续上下文与防守动作+结果+回放作机制对照。",
+      "kind": "media-use",
+      "sources": [
+        {
+          "path": "evals/assets/commons-penalty-save-2010/source.webm",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-penalty-save-2010/source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-penalty-save-2010/download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/runs/penalty-save-01/observation.json",
+          "locator": "visual_observation/source_description/event_scope/unknown"
+        },
+        {
+          "path": "evals/runs/penalty-save-01/result-current.json",
+          "locator": "results/comparison"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/defensive-outcomes.md",
+          "locator": "lines 7-28"
+        }
+      ],
+      "adopted_use": "保留0–25.73333333连续版；防守14–25.73333333+17.8–22.4同事件回放。",
+      "excluded_use": [
+        "不能从来源描述独立认证球员姓名、扑救判罚或全场比分",
+        "不能将14秒起点通用化",
+        "比赛前因及约0.04秒容器尾端不计入声明范围"
+      ],
+      "uncertainty": [
+        "事件语义、连续运动、精确触球帧、听检与独立效果未完成。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S12",
+      "claim": "防守保护采用显式动作→结果/context依赖，而非自动识别防守成功。",
+      "kind": "internal-method",
+      "sources": [
+        {
+          "path": "workflows/raven-event-highlights/references/defensive-outcomes.md",
+          "locator": "lines 18-22"
+        },
+        {
+          "path": "evals/runs/penalty-save-01/negative-binding.json",
+          "locator": "complete record"
+        },
+        {
+          "path": "evals/runs/penalty-save-01/aftermath-rejection.json",
+          "locator": "complete record"
+        }
+      ],
+      "adopted_use": "把本库声明保护机制与该真实素材的负例来源登记；源完整性与官方判定分开。",
+      "excluded_use": [
+        "不把旧拒绝回执当当前源码D4通过",
+        "PCM相等不认证内容听清"
+      ],
+      "uncertainty": [
+        "本轮不运行编译器或重作媒体。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S13",
+      "claim": "跳高01和02是同赛事两个来源成员、同一回放机制，不据文件号推出顺序或进步。",
+      "kind": "media-use",
+      "sources": [
+        {
+          "path": "evals/assets/commons-high-jump-2019/01.webm",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-high-jump-2019/01.source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-high-jump-2019/01.download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/assets/commons-high-jump-2019/02.webm",
+          "locator": "complete byte identity"
+        },
+        {
+          "path": "evals/assets/commons-high-jump-2019/02.source-api.json",
+          "locator": "query.pages[*].imageinfo[0].extmetadata"
+        },
+        {
+          "path": "evals/assets/commons-high-jump-2019/02.download.json",
+          "locator": "sha256/metadata_sha256/scope or hash_note"
+        },
+        {
+          "path": "evals/runs/high-jump-replay-01/observation.json",
+          "locator": "observations/editorial_scope/unknown/speed"
+        },
+        {
+          "path": "evals/runs/high-jump-replay-01/result-current.json",
+          "locator": "results/scope"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/attempt-replay.md",
+          "locator": "lines 7-26"
+        }
+      ],
+      "adopted_use": "01保留0–7.007+回放3.5035–7.007；02保留0–7.007+回放2.002–7.007。",
+      "excluded_use": [
+        "不新增风格数量",
+        "不认证成绩/运动员身份/同一运动员进步",
+        "没有速度变换不证明原拍摄正常速度"
+      ],
+      "uncertainty": [
+        "样帧及旗帜只属原观测记录，不形成独立裁判结论。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S14",
+      "claim": "跳高的回放尾段延长和字幕位置修订用于保留判定/动作语境。",
+      "kind": "local-observation-use",
+      "sources": [
+        {
+          "path": "evals/runs/high-jump-replay-01/revision-evidence.json",
+          "locator": "complete record"
+        },
+        {
+          "path": "evals/runs/high-jump-replay-01/placement-evidence.json",
+          "locator": "complete record"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/attempt-replay.md",
+          "locator": "lines 14-24"
+        }
+      ],
+      "adopted_use": "来源用途记录两次局部修订与原作身份，未把旧回放尾段错误隐藏。",
+      "excluded_use": [
+        "不从局部样帧/浏览器回执推连续运动/听检/官方成绩通过"
+      ],
+      "uncertainty": [
+        "未重放旧终态流程。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    },
+    {
+      "id": "W07-S15",
+      "claim": "体育/游戏/直播规则是有来源边界的设计约束，并非三个领域均已有真实效果证据。",
+      "kind": "design-boundary",
+      "sources": [
+        {
+          "path": "workflows/raven-event-highlights/references/domains.md",
+          "locator": "lines 5-21"
+        },
+        {
+          "path": "workflows/raven-event-highlights/references/event-protocol.md",
+          "locator": "lines 3-23"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/SKILL.md",
+          "locator": "lines 115-140, 172-184"
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/src/services/analyzers/fight_detector.py",
+          "locator": "lines 1-6, 69-94"
+        }
+      ],
+      "adopted_use": "保持动作/正式结果、游戏/录像时钟、真实话语/聊天归属和同事件身份的区分。",
+      "excluded_use": [
+        "不能从现有篮球/点球/跳高/开发测试录屏推出直播语义笑点、竞技游戏召回或全域效果",
+        "Dota固定源码是方法来源，不是实际日志/回放输入"
+      ],
+      "uncertainty": [
+        "此范围没有绑定真实直播聊天记录或Dota战斗日志；未作全库不存在断言。"
+      ],
+      "decision": "accepted-for-local-source-use-only"
+    }
+  ],
+  "media_members": [
+    {
+      "id": "basketball-4",
+      "original": "evals/assets/commons-basketball/basketball-4.ogv",
+      "acquisition": "evals/assets/commons-basketball/download-manifest.json",
+      "metadata": "evals/assets/commons-basketball/source-api.json",
+      "title": "File:Basketball (4).ogv",
+      "sha256": "207d7145ddfca04b749d882586e8a5caf348579200ccf196978fa61875a9578b",
+      "original_local_baseline": "initial download baseline; uploader attribution and license from Wikimedia metadata",
+      "historical_verification_now": "current SHA256 matches prior first-acquisition baseline; archived metadata lacks public SHA1",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "basketball-4",
+        "path": "evals/assets/commons-basketball/basketball-4.ogv",
+        "bytes": 1369612,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "927a6cf5fc933605d1cc048f3a96322928e3cb3f",
+        "archived_public_sha1": null,
+        "public_sha1_match": null,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "measurement source; no semantic outcome",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/wiki/User:Azorbli\" title=\"User:Azorbli\">Azorbli</a>",
+      "license_as_recorded": "CC BY-SA 4.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/4.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "basketball-2",
+      "original": "evals/assets/commons-basketball/basketball-2.ogv",
+      "acquisition": "evals/assets/commons-basketball/basketball-2.ogv.download.json",
+      "metadata": "evals/assets/commons-basketball/basketball-2.ogv.source-api.json",
+      "title": "File:Basketball (2).ogv",
+      "sha256": "b2f9f45ea56c4a7b6090b4c456ca12e06bb5d263b0a36133f02f76ab6e1a5331",
+      "original_local_baseline": "first acquisition baseline, not prior integrity proof",
+      "historical_verification_now": "current SHA256 matches prior first-acquisition baseline; archived metadata lacks public SHA1",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "basketball-2",
+        "path": "evals/assets/commons-basketball/basketball-2.ogv",
+        "bytes": 1377309,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "39ac96c0af2adfe8607e867fe7f4edb4a9e459e6",
+        "archived_public_sha1": null,
+        "public_sha1_match": null,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "acquired alternative; no selected Work established in this bounded review",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/wiki/User:Azorbli\" title=\"User:Azorbli\">Azorbli</a>",
+      "license_as_recorded": "CC BY-SA 4.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/4.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "basketball-5",
+      "original": "evals/assets/commons-basketball/basketball-5.ogv",
+      "acquisition": "evals/assets/commons-basketball/basketball-5.ogv.download.json",
+      "metadata": "evals/assets/commons-basketball/basketball-5.ogv.source-api.json",
+      "title": "File:Basketball (5).ogv",
+      "sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+      "original_local_baseline": "first acquisition baseline, not prior integrity proof",
+      "historical_verification_now": "current SHA256 matches prior first-acquisition baseline; archived metadata lacks public SHA1",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "basketball-5",
+        "path": "evals/assets/commons-basketball/basketball-5.ogv",
+        "bytes": 1376536,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "d2e3489307e5bb4e2f5be65ee9ad6ed6f0e9b05f",
+        "archived_public_sha1": null,
+        "public_sha1_match": null,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "selected practice baseline and same-event replay",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/wiki/User:Azorbli\" title=\"User:Azorbli\">Azorbli</a>",
+      "license_as_recorded": "CC BY-SA 4.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/4.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "minetest-lava",
+      "original": "evals/assets/commons-minetest/lava-block.webm",
+      "acquisition": "evals/assets/commons-minetest/lava-block.webm.download.json",
+      "metadata": "evals/assets/commons-minetest/lava-block.webm.source-api.json",
+      "title": "File:Devtest Minetest 5.6.1 Lava block 2023.01.04 - 20.29.08.02.webm",
+      "sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+      "original_local_baseline": "first acquisition baseline, not upstream authentication",
+      "historical_verification_now": "current SHA256 matches prior first-acquisition baseline; archived metadata lacks public SHA1",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "minetest-lava",
+        "path": "evals/assets/commons-minetest/lava-block.webm",
+        "bytes": 20395478,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "74bb668dcec64787e98453ddc0e43ff80c57a3f3",
+        "archived_public_sha1": null,
+        "public_sha1_match": null,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "selected development-test observation and explicitly discontinuous digest",
+      "artist_as_recorded": "<ul><li>Spiel: Perttu Ahola und weitere (The Minetest Team)</li>\n<li>Video: <a href=\"//commons.wikimedia.org/wiki/User:PantheraLeo1359531\" title=\"User:PantheraLeo1359531\">PantheraLeo1359531 😺</a> (<a href=\"//commons.wikimedia.org/wiki/User_talk:PantheraLeo1359531\" title=\"User talk:PantheraLeo1359531\"><span class=\"signature-talk\">talk</span></a>)</li></ul>",
+      "license_as_recorded": "CC BY-SA 3.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/3.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "penalty-save",
+      "original": "evals/assets/commons-penalty-save-2010/source.webm",
+      "acquisition": "evals/assets/commons-penalty-save-2010/download.json",
+      "metadata": "evals/assets/commons-penalty-save-2010/source-api.json",
+      "title": "File:20100919-fc-blau-weiß-linz-fc-red-bull-salzburg-öfb-cup-david-wimleitner-hält-elfmeter-von-roman-wallner.webm",
+      "sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+      "original_local_baseline": "SHA256 is new local baseline; upstream SHA1 and size matched independently published metadata.",
+      "historical_verification_now": "current SHA256 matches prior acquisition; public SHA1 also checked",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "penalty-save",
+        "path": "evals/assets/commons-penalty-save-2010/source.webm",
+        "bytes": 13098828,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "18f027806cc2bd307462c10f19de4e8d2741255f",
+        "archived_public_sha1": "18f027806cc2bd307462c10f19de4e8d2741255f",
+        "public_sha1_match": true,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "selected continuous context and defensive same-event replay",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:BikeMike&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:BikeMike (page does not exist)\">BikeMike</a>",
+      "license_as_recorded": "CC0",
+      "license_url_as_recorded": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "high-jump-01",
+      "original": "evals/assets/commons-high-jump-2019/01.webm",
+      "acquisition": "evals/assets/commons-high-jump-2019/01.download.json",
+      "metadata": "evals/assets/commons-high-jump-2019/01.source-api.json",
+      "title": "File:Grand Prix Sudamericanos Estrella Puente - Darwin Piñeyrúa 2019 - Salto alto masculino - 01.webm",
+      "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+      "original_local_baseline": null,
+      "historical_verification_now": "current SHA256 matches prior acquisition; public SHA1 also checked",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "high-jump-01",
+        "path": "evals/assets/commons-high-jump-2019/01.webm",
+        "bytes": 5867303,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "fe0ce6d5ed58eab0c3248baa402d915bf5199881",
+        "archived_public_sha1": "fe0ce6d5ed58eab0c3248baa402d915bf5199881",
+        "public_sha1_match": true,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "selected visible attempt and same-event replay, file ID only",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/wiki/User:NaBUru38\" title=\"User:NaBUru38\">NaBUru38</a>",
+      "license_as_recorded": "CC BY-SA 4.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/4.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    },
+    {
+      "id": "high-jump-02",
+      "original": "evals/assets/commons-high-jump-2019/02.webm",
+      "acquisition": "evals/assets/commons-high-jump-2019/02.download.json",
+      "metadata": "evals/assets/commons-high-jump-2019/02.source-api.json",
+      "title": "File:Grand Prix Sudamericanos Estrella Puente - Darwin Piñeyrúa 2019 - Salto alto masculino - 02.webm",
+      "sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53",
+      "original_local_baseline": null,
+      "historical_verification_now": "current SHA256 matches prior acquisition; public SHA1 also checked",
+      "public_sha1_comparison": {
+        "kind": "original-media-size-and-archived-public-sha1",
+        "id": "high-jump-02",
+        "path": "evals/assets/commons-high-jump-2019/02.webm",
+        "bytes": 7070197,
+        "download_bytes_match": true,
+        "api_bytes_match": true,
+        "actual_sha1": "1f9c38c94e7e74c58505b9a168ee092f0ce22fed",
+        "archived_public_sha1": "1f9c38c94e7e74c58505b9a168ee092f0ce22fed",
+        "public_sha1_match": true,
+        "scope": "current byte match to archived record; not fresh upstream verification"
+      },
+      "use": "selected visible attempt and same-event replay, file ID only",
+      "artist_as_recorded": "<a href=\"//commons.wikimedia.org/wiki/User:NaBUru38\" title=\"User:NaBUru38\">NaBUru38</a>",
+      "license_as_recorded": "CC BY-SA 4.0",
+      "license_url_as_recorded": "https://creativecommons.org/licenses/by-sa/4.0",
+      "license_scope": "this exact downloaded media member per archived metadata; not blanket rights for library, software, all game assets, people, trademarks or actual distribution",
+      "semantic_status": "metadata attributed; no fresh media interpretation/listening/full playback in this review"
+    }
+  ],
+  "derivative_uses": [
+    {
+      "document": "evals/runs/highlight-style-trials-01/basketball-context/document.json",
+      "source_members": [
+        "evals/assets/commons-basketball/basketball-5.ogv"
+      ],
+      "clips": [
+        {
+          "id": "c0",
+          "source_id": "s",
+          "start": 0,
+          "end": 6.96,
+          "gain_db": 0
+        }
+      ],
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "start": 0,
+          "end": 2.6,
+          "text": "Azorbli · CC BY-SA 4.0\n剪辑/字幕；原片无声"
+        },
+        "t1": {
+          "clip_id": "c0",
+          "start": 2.6,
+          "end": 6.96,
+          "text": "篮下对抗｜是否得分尚未确认"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "reason": "完整保留现有短片，作为上下文基线；进球未确认，不能称完整得分回合。这是风格适配不足的负例候选。",
+        "limits": "Source does not establish a complete possession outcome.",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/observation.json",
+          "sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f"
+        },
+        "attribution": {
+          "file": "basketball-5.ogv",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Basketball_%285%29.ogv",
+          "page": "https://commons.wikimedia.org/wiki/File:Basketball_(5).ogv",
+          "artist_html": "<a href=\"//commons.wikimedia.org/wiki/User:Azorbli\" title=\"User:Azorbli\">Azorbli</a>",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "description": "Learning basic basketball skills",
+          "sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "bytes": 1376536,
+          "metadata_sha256": "2de3fdfb52eb28ce9a24a89858a906208810acad0e81876ef3cd2f670e349005",
+          "scope": "first acquisition baseline, not prior integrity proof",
+          "acquired": "2026-09-21"
+        },
+        "derivative_license": "CC BY-SA 4.0",
+        "modifications": "excerpt selection, subtitles, scaling/encoding; labeled replay or jump cuts when indicated",
+        "no_endorsement": true,
+        "source_audio": "NO_AUDIO; renderer adds digital silence"
+      },
+      "attribution_sidecar": "evals/runs/highlight-style-trials-01/basketball-context/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/highlight-style-trials-01/basketball-replay/document.json",
+      "source_members": [
+        "evals/assets/commons-basketball/basketball-5.ogv"
+      ],
+      "clips": [
+        {
+          "id": "c0",
+          "source_id": "s",
+          "start": 0,
+          "end": 6.96,
+          "gain_db": 0
+        },
+        {
+          "id": "c1",
+          "source_id": "s",
+          "start": 2.2,
+          "end": 5.6,
+          "gain_db": 0
+        }
+      ],
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "start": 0,
+          "end": 2.6,
+          "text": "Azorbli · CC BY-SA 4.0\n剪辑/字幕；原片无声"
+        },
+        "t1": {
+          "clip_id": "c0",
+          "start": 2.6,
+          "end": 6.96,
+          "text": "篮下对抗｜是否得分尚未确认"
+        },
+        "t2": {
+          "clip_id": "c1",
+          "start": 0,
+          "end": 3.4,
+          "text": "回放 · 正常速度 · 同一事件\n是否得分尚未确认"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "reason": "先给上下文，再回看起跳与落地；回放全程标识，不增加事件或得分次数。",
+        "limits": "Replay helps inspect the motion but small ball/rim details remain ambiguous.",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/observation.json",
+          "sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f"
+        },
+        "attribution": {
+          "file": "basketball-5.ogv",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Basketball_%285%29.ogv",
+          "page": "https://commons.wikimedia.org/wiki/File:Basketball_(5).ogv",
+          "artist_html": "<a href=\"//commons.wikimedia.org/wiki/User:Azorbli\" title=\"User:Azorbli\">Azorbli</a>",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "description": "Learning basic basketball skills",
+          "sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "bytes": 1376536,
+          "metadata_sha256": "2de3fdfb52eb28ce9a24a89858a906208810acad0e81876ef3cd2f670e349005",
+          "scope": "first acquisition baseline, not prior integrity proof",
+          "acquired": "2026-09-21"
+        },
+        "derivative_license": "CC BY-SA 4.0",
+        "modifications": "excerpt selection, subtitles, scaling/encoding; labeled replay or jump cuts when indicated",
+        "no_endorsement": true,
+        "source_audio": "NO_AUDIO; renderer adds digital silence"
+      },
+      "attribution_sidecar": "evals/runs/highlight-style-trials-01/basketball-replay/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/highlight-style-trials-01/lava-observe/document-current.json",
+      "source_members": [
+        "evals/assets/commons-minetest/lava-block.webm"
+      ],
+      "clips": [
+        {
+          "end": 19.6,
+          "gain_db": 0,
+          "id": "c0",
+          "source_id": "s",
+          "start": 0
+        }
+      ],
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "end": 4,
+          "start": 0,
+          "text": "PantheraLeo1359531 / Minetest Team\nCC BY-SA 3.0 · 剪辑与字幕"
+        },
+        "t1": {
+          "clip_id": "c0",
+          "end": 10,
+          "start": 4,
+          "text": "观察：岩浆沿阶梯地形扩散"
+        },
+        "t2": {
+          "clip_id": "c0",
+          "end": 15,
+          "start": 10,
+          "text": "保留连续时间，观察覆盖范围变化"
+        },
+        "t3": {
+          "clip_id": "c0",
+          "end": 19.6,
+          "start": 15,
+          "text": "片段结束时仍可见扩散｜不代表过程已完成"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": {
+          "acquired": "2026-09-21",
+          "artist_html": "<ul><li>Spiel: Perttu Ahola und weitere (The Minetest Team)</li>\n<li>Video: <a href=\"//commons.wikimedia.org/wiki/User:PantheraLeo1359531\" title=\"User:PantheraLeo1359531\">PantheraLeo1359531 😺</a> (<a href=\"//commons.wikimedia.org/wiki/User_talk:PantheraLeo1359531\" title=\"User talk:PantheraLeo1359531\"><span class=\"signature-talk\">talk</span></a>)</li></ul>",
+          "bytes": 20395478,
+          "description": "This video shows the lava block from Minetest and its effects in the Development test mod. Here, a lava block is deposited. Lava streams are created from it, which spread out into the environment.",
+          "file": "lava-block.webm",
+          "license": "CC BY-SA 3.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "metadata_sha256": "5559587ff7781667fa4b552723da5c99d5e407b5fb8e87cb567c00fc75cb7f84",
+          "page": "https://commons.wikimedia.org/wiki/File:Devtest_Minetest_5.6.1_Lava_block_2023.01.04_-_20.29.08.02.webm",
+          "scope": "first acquisition baseline, not upstream authentication",
+          "sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Devtest_Minetest_5.6.1_Lava_block_2023.01.04_-_20.29.08.02.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        "derivative_license": "CC BY-SA 3.0",
+        "limits": "Devtest demonstration, not competitive gameplay. Audio listening and complete motion review pending.",
+        "modifications": "excerpt selection, subtitles, scaling/encoding; labeled replay or jump cuts when indicated",
+        "no_endorsement": true,
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/observation.json",
+          "sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f"
+        },
+        "reason": "保留可见扩散过程的连续时间，观察岩浆怎样沿阶梯地形展开；不宣称放置操作已完整入镜。",
+        "source_audio": "original source track retained, listening pending"
+      },
+      "attribution_sidecar": "evals/runs/highlight-style-trials-01/lava-observe/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/highlight-style-trials-01/lava-digest/document-current.json",
+      "source_members": [
+        "evals/assets/commons-minetest/lava-block.webm"
+      ],
+      "clips": [
+        {
+          "end": 3,
+          "gain_db": 0,
+          "id": "c0",
+          "source_id": "s",
+          "start": 0
+        },
+        {
+          "end": 10,
+          "gain_db": 0,
+          "id": "c1",
+          "source_id": "s",
+          "start": 7
+        },
+        {
+          "end": 19.6,
+          "gain_db": 0,
+          "id": "c2",
+          "source_id": "s",
+          "start": 16
+        }
+      ],
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "end": 3,
+          "start": 0,
+          "text": "PantheraLeo1359531 / Minetest Team\nCC BY-SA 3.0 · 剪辑与字幕"
+        },
+        "t1": {
+          "clip_id": "c1",
+          "end": 3,
+          "start": 0,
+          "text": "跳时至原片 7 秒｜中段扩散"
+        },
+        "t2": {
+          "clip_id": "c2",
+          "end": 3.6,
+          "start": 0,
+          "text": "跳时至原片 16 秒｜仍在扩散"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": {
+          "acquired": "2026-09-21",
+          "artist_html": "<ul><li>Spiel: Perttu Ahola und weitere (The Minetest Team)</li>\n<li>Video: <a href=\"//commons.wikimedia.org/wiki/User:PantheraLeo1359531\" title=\"User:PantheraLeo1359531\">PantheraLeo1359531 😺</a> (<a href=\"//commons.wikimedia.org/wiki/User_talk:PantheraLeo1359531\" title=\"User talk:PantheraLeo1359531\"><span class=\"signature-talk\">talk</span></a>)</li></ul>",
+          "bytes": 20395478,
+          "description": "This video shows the lava block from Minetest and its effects in the Development test mod. Here, a lava block is deposited. Lava streams are created from it, which spread out into the environment.",
+          "file": "lava-block.webm",
+          "license": "CC BY-SA 3.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+          "metadata_sha256": "5559587ff7781667fa4b552723da5c99d5e407b5fb8e87cb567c00fc75cb7f84",
+          "page": "https://commons.wikimedia.org/wiki/File:Devtest_Minetest_5.6.1_Lava_block_2023.01.04_-_20.29.08.02.webm",
+          "scope": "first acquisition baseline, not upstream authentication",
+          "sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Devtest_Minetest_5.6.1_Lava_block_2023.01.04_-_20.29.08.02.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original"
+        },
+        "derivative_license": "CC BY-SA 3.0",
+        "limits": "A shorter variant of one style, not an additional style or continuous simulation evidence.",
+        "modifications": "excerpt selection, subtitles, scaling/encoding; labeled replay or jump cuts when indicated",
+        "no_endorsement": true,
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/highlight-style-trials-01/observation.json",
+          "sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f"
+        },
+        "reason": "将同一扩散过程按早、中、晚三段压缩；明确源时间跳转，保持各保留段正常速度。",
+        "source_audio": "original source track retained, listening pending"
+      },
+      "attribution_sidecar": "evals/runs/highlight-style-trials-01/lava-digest/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/penalty-save-01/continuous-context/document.json",
+      "source_members": [
+        "evals/assets/commons-penalty-save-2010/source.webm"
+      ],
+      "clips": [
+        {
+          "end": 25.73333333,
+          "gain_db": 0,
+          "id": "primary",
+          "source_id": "s",
+          "start": 0
+        }
+      ],
+      "captions": {
+        "aftermath": {
+          "clip_id": "primary",
+          "end": 25.73333333,
+          "start": 22,
+          "text": "门将起身，队友上前"
+        },
+        "credit": {
+          "clip_id": "primary",
+          "end": 2.5,
+          "start": 0,
+          "text": "点球防守｜BikeMike · CC0"
+        },
+        "save": {
+          "clip_id": "primary",
+          "end": 22,
+          "start": 18,
+          "text": "射门与扑救"
+        },
+        "threat": {
+          "clip_id": "primary",
+          "end": 18,
+          "start": 8,
+          "text": "点球准备"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": "BikeMike · CC0 · http://creativecommons.org/publicdomain/zero/1.0/deed.en · no endorsement",
+        "modifications": "Continuous supplied penalty excerpt, Chinese editorial labels and encoding; no replay, no synthetic reaction; incident awarding penalty absent from source.",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/penalty-save-01/observation.json",
+          "sha256": "f3f1e2d0c91f8305d49fe6661b23eb15a02519971a13eaad2d6326f0db5620be"
+        },
+        "official_result": "Source description says save; visual edit reports a visible defensive action, but independent judging is NOT_RUN"
+      },
+      "attribution_sidecar": null,
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/penalty-save-01/defensive-save/document-current.json",
+      "source_members": [
+        "evals/assets/commons-penalty-save-2010/source.webm"
+      ],
+      "clips": [
+        {
+          "end": 25.73333333,
+          "gain_db": 0,
+          "id": "primary",
+          "source_id": "s",
+          "start": 14
+        },
+        {
+          "end": 22.4,
+          "gain_db": 0,
+          "id": "replay",
+          "source_id": "s",
+          "start": 17.8
+        }
+      ],
+      "captions": {
+        "credit": {
+          "clip_id": "primary",
+          "start": 0,
+          "end": 2.5,
+          "text": "点球防守｜BikeMike · CC0"
+        },
+        "threat": {
+          "clip_id": "primary",
+          "start": 2.5,
+          "end": 4,
+          "text": "保留助跑与方向"
+        },
+        "save": {
+          "clip_id": "primary",
+          "start": 4,
+          "end": 8,
+          "text": "射门与扑救"
+        },
+        "aftermath": {
+          "clip_id": "primary",
+          "start": 8,
+          "end": 11.73333333,
+          "text": "门将起身，队友上前"
+        },
+        "replay-label": {
+          "clip_id": "replay",
+          "end": 4.599999999999998,
+          "start": 0,
+          "text": "回放｜同一次扑救｜源片 1×播放"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": "BikeMike · CC0 · http://creativecommons.org/publicdomain/zero/1.0/deed.en · no endorsement",
+        "modifications": "Excerpt selection, Chinese labels and re-encoding; source audio retained; no synthetic cheer or speed transform",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/penalty-save-01/observation.json",
+          "sha256": "f3f1e2d0c91f8305d49fe6661b23eb15a02519971a13eaad2d6326f0db5620be"
+        },
+        "official_result": "Source description says save; visual edit reports a visible defensive action, but independent judging is NOT_RUN",
+        "selection": "Remove pre-kick organization 0–14s; primary retains14–25.73333333 including shot/deflection/ball behind goal/team reaction; replay17.8–22.4 for defensive action, same event."
+      },
+      "attribution_sidecar": "evals/runs/penalty-save-01/defensive-save/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/high-jump-replay-01/attempt-01/document-current.json",
+      "source_members": [
+        "evals/assets/commons-high-jump-2019/01.webm"
+      ],
+      "clips": [
+        {
+          "end": 7.007,
+          "gain_db": 0,
+          "id": "primary",
+          "source_id": "s",
+          "start": 0
+        },
+        {
+          "end": 7.007,
+          "gain_db": 0,
+          "id": "replay",
+          "source_id": "s",
+          "start": 3.5035
+        }
+      ],
+      "captions": {
+        "aftermath": {
+          "clip_id": "primary",
+          "end": 7.007,
+          "start": 5.9059,
+          "text": "保留落垫后续｜不据此判定成绩"
+        },
+        "context": {
+          "clip_id": "primary",
+          "end": 5.9059,
+          "start": 2.002,
+          "text": "跳高动作记录｜正式成绩未核实"
+        },
+        "credit": {
+          "clip_id": "primary",
+          "end": 2.002,
+          "start": 0,
+          "text": "NaBUru38 · CC BY-SA 4.0｜剪辑与字幕"
+        },
+        "replay-label": {
+          "clip_id": "replay",
+          "end": 3.5035,
+          "start": 0,
+          "text": "回放｜同一次动作｜源片 1×播放"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": "NaBUru38; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0/; no endorsement",
+        "event_scope": "Visible jump movement; official outcome UNKNOWN",
+        "full_audio_listening": "NOT_RUN",
+        "modifications": "Full supplied primary excerpt plus selected same-source replay, Chinese editorial labels, re-encoding; no speed transform or synthetic reaction",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/high-jump-replay-01/observation.json",
+          "sha256": "56090eab5aaf033ecb31d2dc9a53decce5b5cba0e629bdb422988d8340b11c87"
+        },
+        "source_id_not_attempt_order": "01",
+        "source_record": {
+          "acquisition": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/01.download.json",
+            "sha256": "cbfef20dea1ae0d2ed5b613bea82f44e66b9766e922fe0f41ce6b1a146377725"
+          },
+          "metadata": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/01.source-api.json",
+            "sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1"
+          },
+          "probe": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/01.probe.json",
+            "sha256": "60c80e89057d6108c19a148c4e7854f234a2dd03a17d82d006d089fd2d11f23c"
+          },
+          "source": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/01.webm",
+            "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776"
+          }
+        }
+      },
+      "attribution_sidecar": "evals/runs/high-jump-replay-01/attempt-01/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    },
+    {
+      "document": "evals/runs/high-jump-replay-01/attempt-02/document-current.json",
+      "source_members": [
+        "evals/assets/commons-high-jump-2019/02.webm"
+      ],
+      "clips": [
+        {
+          "end": 7.007,
+          "gain_db": 0,
+          "id": "primary",
+          "source_id": "s",
+          "start": 0
+        },
+        {
+          "end": 7.007,
+          "gain_db": 0,
+          "id": "replay",
+          "source_id": "s",
+          "start": 2.002
+        }
+      ],
+      "captions": {
+        "aftermath": {
+          "clip_id": "primary",
+          "end": 7.007,
+          "start": 4.1041,
+          "text": "保留落垫后续｜不据此判定成绩"
+        },
+        "context": {
+          "clip_id": "primary",
+          "end": 4.1041,
+          "start": 2.002,
+          "text": "跳高动作记录｜正式成绩未核实"
+        },
+        "credit": {
+          "clip_id": "primary",
+          "end": 2.002,
+          "start": 0,
+          "text": "NaBUru38 · CC BY-SA 4.0｜剪辑与字幕"
+        },
+        "replay-label": {
+          "clip_id": "replay",
+          "end": 5.005,
+          "start": 0,
+          "text": "回放｜同一次动作｜源片 1×播放"
+        }
+      },
+      "captions_type": "editorial labels/attribution; not source transcript or ASR",
+      "notes": {
+        "attribution": "NaBUru38; CC BY-SA 4.0; https://creativecommons.org/licenses/by-sa/4.0/; no endorsement",
+        "event_scope": "Visible jump movement; official outcome UNKNOWN",
+        "full_audio_listening": "NOT_RUN",
+        "modifications": "Full supplied primary excerpt plus selected same-source replay, Chinese editorial labels, re-encoding; no speed transform or synthetic reaction",
+        "observation": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/high-jump-replay-01/observation.json",
+          "sha256": "56090eab5aaf033ecb31d2dc9a53decce5b5cba0e629bdb422988d8340b11c87"
+        },
+        "source_id_not_attempt_order": "02",
+        "source_record": {
+          "acquisition": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/02.download.json",
+            "sha256": "ea622f5ee7ce86a2e08a0675ac155cbe20c94be1fd65bdffa468b546a17c48c4"
+          },
+          "metadata": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/02.source-api.json",
+            "sha256": "c464be2a491ed5839a188775369a7696456e0e22a91b820ffb00d61283a1f89d"
+          },
+          "probe": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/02.probe.json",
+            "sha256": "858c73d48a4ae30b47b662025415efa290ddee908f7a40347aea4bc70f86710c"
+          },
+          "source": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-high-jump-2019/02.webm",
+            "sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53"
+          }
+        }
+      },
+      "attribution_sidecar": "evals/runs/high-jump-replay-01/attempt-02/ATTRIBUTION.txt",
+      "limit": "hash and stated use reviewed; no Work database opened, no media playback/render or current runtime acceptance"
+    }
+  ],
+  "members": [
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/plans/remaining-v015-20260924/backlog.json",
+      "sha256": "a5dd127348ca7ad9c967690645f7732db4f4145b64635a5189a880b368687220",
+      "bytes": 1206836,
+      "role": "task-scope",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/evidence/portfolio-ledger-v0.16.json",
+      "sha256": "26743d8a15fda74204b7ac03cf2e6324c0a385047ca865fac0f064ece08052e7",
+      "bytes": 173255,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/evidence/iteration-20260924/I1-M/i1-20260924-m-01/REPORT-current.md",
+      "sha256": "a927bfc522de3a6f86b1a0edc8360b0368d1cf200df132669ded61bb7cc92753",
+      "bytes": 3853,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/SKILL.md",
+      "sha256": "4bf27595fb2a22fddf2e56add9cead8ac296e67c121adf329c26a0cfcaedbab2",
+      "bytes": 4462,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/result-current.json",
+      "sha256": "a0d997de5d3ed6c56f2f60fe3d36e773abf0a0cdee117bf5d1857104f1016e70",
+      "bytes": 4842,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/event-protocol.md",
+      "sha256": "7e3c43beb6f5ad59870d63a5055c787ed48d1c4ab3cd78805efff8a3d3084d3f",
+      "bytes": 2415,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/defensive-outcomes.md",
+      "sha256": "389cde133d3c03260fbbcfd4026e37f9b162349f0f7134f3a7f6e4e911a5c620",
+      "bytes": 3005,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/attempt-replay.md",
+      "sha256": "81701a23aae7a7b5c71fd57d9f2acca43e12cbf6e8e05fd5b8f4156669c80514",
+      "bytes": 3139,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/domains.md",
+      "sha256": "5540d585269acbc596c92049485e1cffaaf02171db6d48275823dd6f832b8ea0",
+      "bytes": 2077,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/result-current.json",
+      "sha256": "43f5bb410c0a90db78e99ba0d693fb340b09a06de8d915f00d394f6a86e9e998",
+      "bytes": 7192,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/source-fusion.md",
+      "sha256": "9cac936fbdfe5e9a703ae897f0672a07c06c21d1eff2369d28f0332d02fb465d",
+      "bytes": 2124,
+      "role": "original-task-input",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/evidence/portfolio-ledger-v0.23.json",
+      "sha256": "e29b51c2ec9821a31220261cdc926c92d8e562fc5d77db43ce666c55e7204cb0",
+      "bytes": 184030,
+      "role": "status-snapshot-not-mutated",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "provenance/highlight-sources.lock.json",
+      "sha256": "63adcc05dd334b71f60eed506807bd062bbc9e73f19aef7780e2288ec3797fe6",
+      "bytes": 6248,
+      "role": "historical-immutable-lock",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json",
+      "sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+      "bytes": 6831,
+      "role": "fixed-commit-archive-authority",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "ed97819eaf9816532c21151a1cb58edbf6b685bc4858fdf4681b93ab50b3eb82",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/SKILL.md",
+      "sha256": "fff9d11a40aa139738b855e4430966c3c12cd47e6d53e34045352d1a978dfe9c",
+      "bytes": 9792,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "fff9d11a40aa139738b855e4430966c3c12cd47e6d53e34045352d1a978dfe9c",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json#/manifest/eu4-skills/stream-highlight-scoring/SKILL.md",
+          "expected_sha256": "fff9d11a40aa139738b855e4430966c3c12cd47e6d53e34045352d1a978dfe9c",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/stream-highlight-scoring/scripts/score_energy.py",
+      "sha256": "b79d38cfe438e87dfdba8091581bda162ac089d1df100b3fb563a4e85aa3fa46",
+      "bytes": 3935,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "b79d38cfe438e87dfdba8091581bda162ac089d1df100b3fb563a4e85aa3fa46",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json#/manifest/eu4-skills/stream-highlight-scoring/scripts/score_energy.py",
+          "expected_sha256": "b79d38cfe438e87dfdba8091581bda162ac089d1df100b3fb563a4e85aa3fa46",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/changan1995__RandomAISkills/0053b89dc2c5/eu4-skills/highlight-reel-builder/SKILL.md",
+      "sha256": "261f43865c4acfaee60b007523fb1e0df24d47f17aea3ab8fc60ab91a475a98c",
+      "bytes": 5980,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "261f43865c4acfaee60b007523fb1e0df24d47f17aea3ab8fc60ab91a475a98c",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/changan1995__RandomAISkills.json#/manifest/eu4-skills/highlight-reel-builder/SKILL.md",
+          "expected_sha256": "261f43865c4acfaee60b007523fb1e0df24d47f17aea3ab8fc60ab91a475a98c",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json",
+      "sha256": "9edd6655ead44e373c8acbe40b69724e12c5ed35386325db3a57daf68927f888",
+      "bytes": 35284,
+      "role": "fixed-commit-archive-authority",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "9edd6655ead44e373c8acbe40b69724e12c5ed35386325db3a57daf68927f888",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/src/services/analyzers/fight_detector.py",
+      "sha256": "f192f670cf399680f024126452c8ebd06b32243d01741f957042a1ee07aea612",
+      "bytes": 16943,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "f192f670cf399680f024126452c8ebd06b32243d01741f957042a1ee07aea612",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json#/manifest/src/services/analyzers/fight_detector.py",
+          "expected_sha256": "f192f670cf399680f024126452c8ebd06b32243d01741f957042a1ee07aea612",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/DeepBlueCoding__mcp-replay-dota2/23992b85b486/LICENSE",
+      "sha256": "9a7c606e1627ecaef5bffc73b1550545579720c61e6dea9d9ae6e000b327b888",
+      "bytes": 1068,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "9a7c606e1627ecaef5bffc73b1550545579720c61e6dea9d9ae6e000b327b888",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/DeepBlueCoding__mcp-replay-dota2.json#/manifest/LICENSE",
+          "expected_sha256": "9a7c606e1627ecaef5bffc73b1550545579720c61e6dea9d9ae6e000b327b888",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json",
+      "sha256": "daad00d4267a702b5f0008364d1e5530dbcd35c4a83e9ccb2dbe709cf6cb2019",
+      "bytes": 10476,
+      "role": "fixed-commit-archive-authority",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "daad00d4267a702b5f0008364d1e5530dbcd35c4a83e9ccb2dbe709cf6cb2019",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/SKILL.md",
+      "sha256": "c2987db0b65d692bcf326c25aefc34d909de83a4e673e942d0059f3a5f281ff0",
+      "bytes": 7208,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "c2987db0b65d692bcf326c25aefc34d909de83a4e673e942d0059f3a5f281ff0",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json#/manifest/skills/highlight-scanner/SKILL.md",
+          "expected_sha256": "c2987db0b65d692bcf326c25aefc34d909de83a4e673e942d0059f3a5f281ff0",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/akrindev__trimer-clip/5ee2f6003559/skills/highlight-scanner/scripts/find_highlights.py",
+      "sha256": "22a0a51c1317a644b147b9f92378260d4123c5c034ab33878857cac139b70550",
+      "bytes": 25683,
+      "role": "upstream-method-or-license",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "provenance/highlight-sources.lock.json",
+          "expected_sha256": "22a0a51c1317a644b147b9f92378260d4123c5c034ab33878857cac139b70550",
+          "matches": true
+        },
+        {
+          "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/akrindev__trimer-clip.json#/manifest/skills/highlight-scanner/scripts/find_highlights.py",
+          "expected_sha256": "22a0a51c1317a644b147b9f92378260d4123c5c034ab33878857cac139b70550",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "contracts/evidence-contract.md",
+      "sha256": "b533ffcd9b43b969cfd216fc73e5026afa37289dccfd36333ad30f77ae25ae4e",
+      "bytes": 6485,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-course-meeting/SKILL.md",
+      "sha256": "4eb398dce9df6f7a23c891043fab6f59252dc110e9bb29cdc37c2ceb54bec5ff",
+      "bytes": 4784,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-basketball/download-manifest.json",
+      "sha256": "9874f07350df533661c91d32fde83a78b98fd4794e37f3bfb87ec73e72d01ed3",
+      "bytes": 626,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-basketball/source-api.json",
+      "sha256": "fb5ab6497b8be61c3f481538468e8679613bbb529fd54e7c0c0ed21a2d91c2a6",
+      "bytes": 2189,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/download-manifest.json#/metadata_sha256",
+          "expected_sha256": "fb5ab6497b8be61c3f481538468e8679613bbb529fd54e7c0c0ed21a2d91c2a6",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-4.ogv",
+      "sha256": "207d7145ddfca04b749d882586e8a5caf348579200ccf196978fa61875a9578b",
+      "bytes": 1369612,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/download-manifest.json#/sha256",
+          "expected_sha256": "207d7145ddfca04b749d882586e8a5caf348579200ccf196978fa61875a9578b",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-2.ogv.download.json",
+      "sha256": "1daaddb86ff5062e9850171053debde7bc0694dc7c1240a1cad895abf3602a49",
+      "bytes": 735,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-2.ogv.source-api.json",
+      "sha256": "cef82a63f894928a020bcd46d175fc629ad0128b48939f6f58c6925d89d264e8",
+      "bytes": 2189,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/basketball-2.ogv.download.json#/metadata_sha256",
+          "expected_sha256": "cef82a63f894928a020bcd46d175fc629ad0128b48939f6f58c6925d89d264e8",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-2.ogv",
+      "sha256": "b2f9f45ea56c4a7b6090b4c456ca12e06bb5d263b0a36133f02f76ab6e1a5331",
+      "bytes": 1377309,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/basketball-2.ogv.download.json#/sha256",
+          "expected_sha256": "b2f9f45ea56c4a7b6090b4c456ca12e06bb5d263b0a36133f02f76ab6e1a5331",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-5.ogv.download.json",
+      "sha256": "08a4322962b2776a45934143a3ddf50df03ef65e40d76a50053e9cab64df4c1f",
+      "bytes": 735,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-5.ogv.source-api.json",
+      "sha256": "2de3fdfb52eb28ce9a24a89858a906208810acad0e81876ef3cd2f670e349005",
+      "bytes": 2189,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/basketball-5.ogv.download.json#/metadata_sha256",
+          "expected_sha256": "2de3fdfb52eb28ce9a24a89858a906208810acad0e81876ef3cd2f670e349005",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-basketball/basketball-5.ogv",
+      "sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+      "bytes": 1376536,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-basketball/basketball-5.ogv.download.json#/sha256",
+          "expected_sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/sources/basketball",
+          "expected_sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/basketball-context/document.json#/plan/sources/s",
+          "expected_sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/basketball-replay/document.json#/plan/sources/s",
+          "expected_sha256": "0af2ca4f012e3be4da8f3692da1a3ddf7b98b458cdf3e4a94510ae6e5562a318",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-minetest/lava-block.webm.download.json",
+      "sha256": "5f6899eaae0a3eb12bb87473ee7c7c9136ff2ea8f264e992a4177ec42a74b2fc",
+      "bytes": 1346,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-minetest/lava-block.webm.source-api.json",
+      "sha256": "5559587ff7781667fa4b552723da5c99d5e407b5fb8e87cb567c00fc75cb7f84",
+      "bytes": 2870,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-minetest/lava-block.webm.download.json#/metadata_sha256",
+          "expected_sha256": "5559587ff7781667fa4b552723da5c99d5e407b5fb8e87cb567c00fc75cb7f84",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-minetest/lava-block.webm",
+      "sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+      "bytes": 20395478,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-minetest/lava-block.webm.download.json#/sha256",
+          "expected_sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/sources/lava",
+          "expected_sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/lava-observe/document-current.json#/plan/sources/s",
+          "expected_sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/lava-digest/document-current.json#/plan/sources/s",
+          "expected_sha256": "8c83dd8796b2b5c72c0468622373a15c95075db55702e661a4595d8cd2e9d5f2",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/download.json",
+      "sha256": "cc2236a6a5ee7aaae308b9b1f10cfd771a623dbab1e00d487bfe75e9c1bf01ac",
+      "bytes": 2461,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/acquisition",
+          "expected_sha256": "cc2236a6a5ee7aaae308b9b1f10cfd771a623dbab1e00d487bfe75e9c1bf01ac",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/source-api.json",
+      "sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+      "bytes": 2975,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-penalty-save-2010/download.json#/metadata_sha256",
+          "expected_sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/metadata",
+          "expected_sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/source.webm",
+      "sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+      "bytes": 13098828,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-penalty-save-2010/download.json#/sha256",
+          "expected_sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/source",
+          "expected_sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/penalty-save-01/continuous-context/document.json#/plan/sources/s",
+          "expected_sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/penalty-save-01/defensive-save/document-current.json#/plan/sources/s",
+          "expected_sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.download.json",
+      "sha256": "cbfef20dea1ae0d2ed5b613bea82f44e66b9766e922fe0f41ce6b1a146377725",
+      "bytes": 1253,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/01/acquisition",
+          "expected_sha256": "cbfef20dea1ae0d2ed5b613bea82f44e66b9766e922fe0f41ce6b1a146377725",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.source-api.json",
+      "sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+      "bytes": 2914,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-high-jump-2019/01.download.json#/metadata_sha256",
+          "expected_sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/01/metadata",
+          "expected_sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.webm",
+      "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+      "bytes": 5867303,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-high-jump-2019/01.download.json#/sha256",
+          "expected_sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/01/source",
+          "expected_sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/attempt-01/document-current.json#/plan/sources/s",
+          "expected_sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.download.json",
+      "sha256": "ea622f5ee7ce86a2e08a0675ac155cbe20c94be1fd65bdffa468b546a17c48c4",
+      "bytes": 1253,
+      "role": "historical-acquisition",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/02/acquisition",
+          "expected_sha256": "ea622f5ee7ce86a2e08a0675ac155cbe20c94be1fd65bdffa468b546a17c48c4",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.source-api.json",
+      "sha256": "c464be2a491ed5839a188775369a7696456e0e22a91b820ffb00d61283a1f89d",
+      "bytes": 2914,
+      "role": "archived-original-metadata",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-high-jump-2019/02.download.json#/metadata_sha256",
+          "expected_sha256": "c464be2a491ed5839a188775369a7696456e0e22a91b820ffb00d61283a1f89d",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/02/metadata",
+          "expected_sha256": "c464be2a491ed5839a188775369a7696456e0e22a91b820ffb00d61283a1f89d",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.webm",
+      "sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53",
+      "bytes": 7070197,
+      "role": "original-downloaded-media",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/assets/commons-high-jump-2019/02.download.json#/sha256",
+          "expected_sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/02/source",
+          "expected_sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/attempt-02/document-current.json#/plan/sources/s",
+          "expected_sha256": "940c59a37680ecfd3518d7cad7ece82bfb62a7c4ecb22d0f5e9c37fd2863cb53",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-observation-01/signals/request.json",
+      "sha256": "0cbb457276c71fe96306fd0c9bc1cfb3101129fb159cb395ccec60637ede0344",
+      "bytes": 501,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-observation-01/signals/receipt.json",
+      "sha256": "cc6119a063cebbf9f9152ef479b672b53bc0b5cb6d4ff662aeb8dfb937ee808b",
+      "bytes": 25403,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/observation.json",
+      "sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f",
+      "bytes": 3118,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/basketball-context/document.json#/notes/observation",
+          "expected_sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/basketball-replay/document.json#/notes/observation",
+          "expected_sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/lava-observe/document-current.json#/notes/observation",
+          "expected_sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/highlight-style-trials-01/lava-digest/document-current.json#/notes/observation",
+          "expected_sha256": "04376a6269ae3f1b38ddee75caf66839fd4892662a8714b8642c43b4111a8b2f",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json",
+      "sha256": "01c86c64aca8c3146813eddf4c1041117074841871188df07b2a1fdef1faa7a8",
+      "bytes": 5595,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/caption-revision-evidence.json",
+      "sha256": "ac82cb2994ae2f70fe826b45e7070f04a03f462e05d151e38d63a718b0f49d0e",
+      "bytes": 2336,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "workflows/raven-event-highlights/references/evaluation.md",
+      "sha256": "6b43fcae7f876eee3cfa105f26ba74472bcd1f43a1a012324a781297319e97d9",
+      "bytes": 2687,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/observation.json",
+      "sha256": "f3f1e2d0c91f8305d49fe6661b23eb15a02519971a13eaad2d6326f0db5620be",
+      "bytes": 3487,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/continuous-context/document.json#/notes/observation",
+          "expected_sha256": "f3f1e2d0c91f8305d49fe6661b23eb15a02519971a13eaad2d6326f0db5620be",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/penalty-save-01/defensive-save/document-current.json#/notes/observation",
+          "expected_sha256": "f3f1e2d0c91f8305d49fe6661b23eb15a02519971a13eaad2d6326f0db5620be",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/penalty-save-01/negative-binding.json",
+      "sha256": "eeccfbd510a463cd8f7d8250cf6b17b57e748a1af515a7628af975352ca0bbbb",
+      "bytes": 318,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/aftermath-rejection.json",
+      "sha256": "aad95b1966ffe8f3ada0aeb015824df261a8679ee7c0dfc94481f570368b6984",
+      "bytes": 383,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/observation.json",
+      "sha256": "56090eab5aaf033ecb31d2dc9a53decce5b5cba0e629bdb422988d8340b11c87",
+      "bytes": 4996,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/attempt-01/document-current.json#/notes/observation",
+          "expected_sha256": "56090eab5aaf033ecb31d2dc9a53decce5b5cba0e629bdb422988d8340b11c87",
+          "matches": true
+        },
+        {
+          "authority": "evals/runs/high-jump-replay-01/attempt-02/document-current.json#/notes/observation",
+          "expected_sha256": "56090eab5aaf033ecb31d2dc9a53decce5b5cba0e629bdb422988d8340b11c87",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/revision-evidence.json",
+      "sha256": "500cff2a80b595c47c74b486064f99eaf3be55263d7d7b02aa88a50c3a74ec56",
+      "bytes": 2252,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/placement-evidence.json",
+      "sha256": "b58e2cac0efdef6d6855774eea98a497ba0408fc85384e33904ca25a66b81d9e",
+      "bytes": 2622,
+      "role": "local-record",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/assets/commons-basketball/overview-5.png",
+      "sha256": "be2895d3c25a5cfc98f0cdce528c609e46923cfc043404bdc15d45340be998d5",
+      "bytes": 2187031,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/images_viewed",
+          "expected_sha256": "be2895d3c25a5cfc98f0cdce528c609e46923cfc043404bdc15d45340be998d5",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-basketball/dense-5-0.png",
+      "sha256": "6cbfd9347a7d9ceb52994d417c1c183436024595fa589a007b3beb8012f22f15",
+      "bytes": 4652359,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/images_viewed",
+          "expected_sha256": "6cbfd9347a7d9ceb52994d417c1c183436024595fa589a007b3beb8012f22f15",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-basketball/dense-5-1.png",
+      "sha256": "1c9599408b8a18983d0c715855c17db3386db6cf2e9bf47f10266295b0c03f4f",
+      "bytes": 4225261,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/images_viewed",
+          "expected_sha256": "1c9599408b8a18983d0c715855c17db3386db6cf2e9bf47f10266295b0c03f4f",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-basketball/dense-5-2.png",
+      "sha256": "987596aa28b5703972d2c28c34a9d5534597246a85f87cbd583ac9197bb8c5a9",
+      "bytes": 5461080,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/images_viewed",
+          "expected_sha256": "987596aa28b5703972d2c28c34a9d5534597246a85f87cbd583ac9197bb8c5a9",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-minetest/overview.png",
+      "sha256": "ba5e599990678e8da74fd260618af77f55f2d93a27716b776577c8f449a47f29",
+      "bytes": 4166708,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/observation.json#/images_viewed",
+          "expected_sha256": "ba5e599990678e8da74fd260618af77f55f2d93a27716b776577c8f449a47f29",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/overview.png",
+      "sha256": "ef9366b1fa40ade40b2df51dd1d22a278567e0467bf6b65172d1a7fa67b1585a",
+      "bytes": 4565137,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "ef9366b1fa40ade40b2df51dd1d22a278567e0467bf6b65172d1a7fa67b1585a",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/strike-2.png",
+      "sha256": "ddd52021fd288a8d3e6ca8bd98b3cca1efc807156ac567a8bbe4c812fd9749de",
+      "bytes": 1064854,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "ddd52021fd288a8d3e6ca8bd98b3cca1efc807156ac567a8bbe4c812fd9749de",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/strike-0.png",
+      "sha256": "75fa9e10b5bed6137fda5fd5d2fe04f9898765e8b63f29a98bf27b1dfbb9c99d",
+      "bytes": 3157740,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "75fa9e10b5bed6137fda5fd5d2fe04f9898765e8b63f29a98bf27b1dfbb9c99d",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/strike-1.png",
+      "sha256": "466581a2066919318dbf0e6f1280964d2fc568050992440789562cb5728ee008",
+      "bytes": 3134204,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "466581a2066919318dbf0e6f1280964d2fc568050992440789562cb5728ee008",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/aftermath-0.png",
+      "sha256": "eed866324f58da49b04095a7e0a55fda7ce4ce7453ddea89bc04dca877608f44",
+      "bytes": 3225519,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "eed866324f58da49b04095a7e0a55fda7ce4ce7453ddea89bc04dca877608f44",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/aftermath-2.png",
+      "sha256": "d571bd76ad3de3accaaa4ee88edb3c35502c87b0947ad7d3020b9840b6eb3e2d",
+      "bytes": 2870181,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/images_viewed",
+          "expected_sha256": "d571bd76ad3de3accaaa4ee88edb3c35502c87b0947ad7d3020b9840b6eb3e2d",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/probe.json",
+      "sha256": "65eccffcdc9db9bdfa55e8d3ebe93546b224d342ec5c37ae9f5b0cfc0442e2e4",
+      "bytes": 3199,
+      "role": "historical-observation-member",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/observation.json#/probe",
+          "expected_sha256": "65eccffcdc9db9bdfa55e8d3ebe93546b224d342ec5c37ae9f5b0cfc0442e2e4",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.overview.png",
+      "sha256": "8d8c8ae63a821eff2ee6240e5283035ec19e2f710c43e60611f0a635e9bb7e07",
+      "bytes": 865368,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "8d8c8ae63a821eff2ee6240e5283035ec19e2f710c43e60611f0a635e9bb7e07",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.dense.png",
+      "sha256": "1e0ee1413ae23830532915c9aa80687c9c107b35c548733bc3f08107cfc1041c",
+      "bytes": 7192764,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "1e0ee1413ae23830532915c9aa80687c9c107b35c548733bc3f08107cfc1041c",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.overview.png",
+      "sha256": "8343816a82444e864dfe0468a81eaac7e20376cbd13d7a6d62e22b0c94bf78b8",
+      "bytes": 940414,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "8343816a82444e864dfe0468a81eaac7e20376cbd13d7a6d62e22b0c94bf78b8",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.dense.png",
+      "sha256": "24cc8e167bd298dfa24079f72402003da33367e84796cb56f7f071c57f62233c",
+      "bytes": 6871780,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "24cc8e167bd298dfa24079f72402003da33367e84796cb56f7f071c57f62233c",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01-detail-6.4.png",
+      "sha256": "cbf1d300d648a6577577918c6957812349aa03996a1a989b2d69e201fcb67bef",
+      "bytes": 1300515,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "cbf1d300d648a6577577918c6957812349aa03996a1a989b2d69e201fcb67bef",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02-detail-4.6.png",
+      "sha256": "0af3725963773cc11d698aacc8df8f31c44274b981318af7c02e8a05b901097d",
+      "bytes": 1404504,
+      "role": "derived-frame-contact-sheet",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/images_viewed",
+          "expected_sha256": "0af3725963773cc11d698aacc8df8f31c44274b981318af7c02e8a05b901097d",
+          "matches": true
+        }
+      ],
+      "trust_limit": "derived image, not original media; historical partial visual observation only; not opened this review"
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.probe.json",
+      "sha256": "60c80e89057d6108c19a148c4e7854f234a2dd03a17d82d006d089fd2d11f23c",
+      "bytes": 2609,
+      "role": "historical-observation-member",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/01/probe",
+          "expected_sha256": "60c80e89057d6108c19a148c4e7854f234a2dd03a17d82d006d089fd2d11f23c",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/assets/commons-high-jump-2019/02.probe.json",
+      "sha256": "858c73d48a4ae30b47b662025415efa290ddee908f7a40347aea4bc70f86710c",
+      "bytes": 2609,
+      "role": "historical-observation-member",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/observation.json#/sources/02/probe",
+          "expected_sha256": "858c73d48a4ae30b47b662025415efa290ddee908f7a40347aea4bc70f86710c",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-context/render/captions/captioned.mp4",
+      "sha256": "8ab2eca55e2378151d473cc2e39b985880466af37755f0a14337e1580286f607",
+      "bytes": 1265923,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json#/results/video",
+          "expected_sha256": "8ab2eca55e2378151d473cc2e39b985880466af37755f0a14337e1580286f607",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-replay/render/captions/captioned.mp4",
+      "sha256": "0126781b481d682c6250ea67b83a33fd9f3ea7eae5b1fbf4dec59956fb05d903",
+      "bytes": 1887615,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json#/results/video",
+          "expected_sha256": "0126781b481d682c6250ea67b83a33fd9f3ea7eae5b1fbf4dec59956fb05d903",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-observe/revision-render/captions/captioned.mp4",
+      "sha256": "3bf88723469b3623a1c6436c1dbcf0c757aa2bf3d176255d94d62fe6b48ae3cf",
+      "bytes": 1330750,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json#/results/video",
+          "expected_sha256": "3bf88723469b3623a1c6436c1dbcf0c757aa2bf3d176255d94d62fe6b48ae3cf",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-digest/revision-render/captions/captioned.mp4",
+      "sha256": "05bd9b5ebd00e701f17b9bc53924f45a6c5a7eca741332ba3f4281e29d2117cf",
+      "bytes": 863321,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/highlight-style-trials-01/result-after-caption-revision.json#/results/video",
+          "expected_sha256": "05bd9b5ebd00e701f17b9bc53924f45a6c5a7eca741332ba3f4281e29d2117cf",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-context/document.json",
+      "sha256": "f04b138eaae7bb8b3db0a098df99909ed65a01730de6c2d413b9ec8d91e7623d",
+      "bytes": 3245,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-context/ATTRIBUTION.txt",
+      "sha256": "c645ccda252426b5ce9ab1c7e377e307f3e103efb66a559a173d08ed7d52cc22",
+      "bytes": 388,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-replay/document.json",
+      "sha256": "1531008bd15c8e6d40d10909f24ac8947c8d20e674347134adb49e7739bf3ab3",
+      "bytes": 3494,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/basketball-replay/ATTRIBUTION.txt",
+      "sha256": "c645ccda252426b5ce9ab1c7e377e307f3e103efb66a559a173d08ed7d52cc22",
+      "bytes": 388,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-observe/document-current.json",
+      "sha256": "94d7a0264ac70658888f2421f6c310f7135c6cc722213ece9edd8a1db33fb002",
+      "bytes": 4176,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-observe/ATTRIBUTION.txt",
+      "sha256": "f218a197c1adea25281b3ed7a28bad8e4e6e92b6d46e12c91387683fb9a5b82d",
+      "bytes": 709,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-digest/document-current.json",
+      "sha256": "f5a0a562c087b1d01c2df9e2f2060e0d83797d0acd72b2cfb5775c26310f0f53",
+      "bytes": 4236,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/highlight-style-trials-01/lava-digest/ATTRIBUTION.txt",
+      "sha256": "f218a197c1adea25281b3ed7a28bad8e4e6e92b6d46e12c91387683fb9a5b82d",
+      "bytes": 709,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/continuous-context/render/captions/captioned.mp4",
+      "sha256": "6c2137360e59c894774ed73de6afe45dc72b267ce53ff41fb58a7cf9ad86d7cf",
+      "bytes": 10473240,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/result-current.json#/results/video",
+          "expected_sha256": "6c2137360e59c894774ed73de6afe45dc72b267ce53ff41fb58a7cf9ad86d7cf",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/penalty-save-01/defensive-save/edit-render/captions/captioned.mp4",
+      "sha256": "d584f8bbf97c9cc477678abdc34f1b8045d478500dbcf30a8cf3a863f1610dfc",
+      "bytes": 6203204,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/penalty-save-01/result-current.json#/results/video",
+          "expected_sha256": "d584f8bbf97c9cc477678abdc34f1b8045d478500dbcf30a8cf3a863f1610dfc",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/penalty-save-01/continuous-context/document.json",
+      "sha256": "d1f23ae4f6b5cedadb5b8766305deea1038da798650e6fcb4263b333a4d5c0a9",
+      "bytes": 2661,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/defensive-save/document-current.json",
+      "sha256": "c278e6586f69412724052bb8c4e6aa391755fc25790876bba845d6dd9af9efe2",
+      "bytes": 3082,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/penalty-save-01/defensive-save/ATTRIBUTION.txt",
+      "sha256": "caa95c1fca3e6a2130616f3017e27ef9d2837581864c5a302011c892c2a0d65b",
+      "bytes": 431,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-01/placement-render/captions/captioned.mp4",
+      "sha256": "bccc582d1565b6e0a0acfd7556b1cb4cbea19a5749211fe21843da90aec4f3e9",
+      "bytes": 8699810,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/result-current.json#/results/video",
+          "expected_sha256": "bccc582d1565b6e0a0acfd7556b1cb4cbea19a5749211fe21843da90aec4f3e9",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-02/placement-render/captions/captioned.mp4",
+      "sha256": "96fa717725f8f5712e4870b35349427a0823b8910b0aae25883017342d5ece4a",
+      "bytes": 11702852,
+      "role": "derived-captioned-video",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": [
+        {
+          "authority": "evals/runs/high-jump-replay-01/result-current.json#/results/video",
+          "expected_sha256": "96fa717725f8f5712e4870b35349427a0823b8910b0aae25883017342d5ece4a",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-01/document-current.json",
+      "sha256": "2a8accf6ed5a1b99d685b96349ecc7288cd1cf512a507a3bb106f8463bfc472a",
+      "bytes": 3872,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-01/ATTRIBUTION.txt",
+      "sha256": "1fadc637139b441403a8b9a439e59d514d96bf5e14dc80be872b6841268d8da9",
+      "bytes": 434,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-02/document-current.json",
+      "sha256": "5a296acc81b7c11b4ecb03b2f7bbe87fcb7a56da610202140df47270b03ae575",
+      "bytes": 3870,
+      "role": "selected-historical-work-document",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    },
+    {
+      "path": "evals/runs/high-jump-replay-01/attempt-02/ATTRIBUTION.txt",
+      "sha256": "a257b2541653cf7651ccf35351b78c2d063fe7868f03e7a51d48f40b830b4342",
+      "bytes": 434,
+      "role": "derivative-attribution-sidecar",
+      "identity_basis": "current-read-only-sha256; first hash in this review unless a prior binding is recorded below",
+      "historical_bindings": []
+    }
+  ],
+  "limits": [
+    "no new upstream authentication",
+    "no media/tool/model execution",
+    "no fresh semantic judgment",
+    "not a release-license decision",
+    "not ledger acceptance"
+  ]
+}

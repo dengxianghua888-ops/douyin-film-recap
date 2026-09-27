@@ -1,0 +1,52 @@
+{
+  "schema": "research-source-reference/1",
+  "source_id": "minipaint-evaluation-app",
+  "repository": "https://github.com/viliusle/miniPaint",
+  "commit": "a79733eb803fc97084ef0ee4faa96b031e69e1c0",
+  "root_tree": "01f7ae37cf339bfe20e1d3ccec50a8d81a9c34d9",
+  "binding": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/files-binding.json",
+    "sha256": "56d4496b3b0fb175d8483c6f6ff48f59f8bf3315593b8967dde954f2ce72ee15"
+  },
+  "license": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/repository/MIT-LICENSE.txt",
+    "sha256": "92a21f763974d0a691f7738ed8aae674b74ef077ff6341844ad7fadf36999be8"
+  },
+  "verified_blobs": 292,
+  "use": "Pinned software executed locally as a teaching subject. Save/open/resize source read to interpret artifacts and auxiliary UI errors. No upstream code copied into Skill runtime.",
+  "source_read": [
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/repository/src/js/modules/file/save.js",
+      "sha256": "ee7f94900d070fbe16833c53924e91633a6eff60ad2198648cf998b7bffc7d4c"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/repository/src/js/modules/file/open.js",
+      "sha256": "d2f3497a2ecaba5791eaa71e722bb270640c80557332e8f8cf606bfc08bb2ccd"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/repository/src/js/modules/image/resize.js",
+      "sha256": "7ccedcab9569e7d85d83122b7af136e9487ec7dd090f18f32c6c554af0fa1a9c"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/minipaint-source-01/repository/src/js/config-menu.js",
+      "sha256": "be4695ee73dba38acc9991ae09a6cced3c7230427500933dc7a82da7a5b124c9"
+    }
+  ],
+  "capture": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-capture-01/result.json",
+    "sha256": "bb049732f8da2bd9397336191607fbbc3e21d5286ef03722e36b6bd27162455b"
+  },
+  "artifact_readback": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-capture-01/artifact-readback.json",
+    "sha256": "e470b7b425af15677a6505abf0f76bb349568d74eb4a559423e936a1effd36f1"
+  },
+  "error_analysis": {
+    "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-capture-01/error-analysis.json",
+    "sha256": "22cdbb62b915d3ff4f4e1a4577acd371e899ae755c8e77a42c8547837050faeb"
+  },
+  "limits": [
+    "Fresh acquisition SHA256 baseline plus unsigned Git consistency; separate from 132 archived source adoptions.",
+    "Root-tree reconstruction recorded in acquisition binding; this integration rechecks all blobs.",
+    "Actual headless browser operations do not certify novice comprehension or editing-Agent native host."
+  ]
+}

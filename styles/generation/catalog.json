@@ -1,0 +1,1896 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "script-to-picture editorial mechanisms; explicit per-card execution gaps, not style quality certification",
+  "styles": [
+    {
+      "id": "spatial-window",
+      "name": "空间窗口",
+      "family": "照片叙事",
+      "fit": "多张同地照片或实拍抽帧",
+      "question": "观众先认识什么再靠近什么",
+      "selection": "能说明全貌与细部的真实图片",
+      "sequence": "建立全貌→侧面→局部",
+      "audio": "旁白补充视角不编路线",
+      "rhythm": "辨认完成后才换图",
+      "visual": "明确裁切路径，保留空间参照",
+      "anti": "静图推拉冒充摄像机实拍",
+      "example": "构造例：瀑布正面到水幕后方",
+      "nearest": "与细节起问相反，先给空间",
+      "effect_check": "观众区分视角与未知路线",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/generation-local-trials-01",
+          "report": "evals/runs/generation-local-trials-01/current-readback.json",
+          "visual_review": "evals/runs/generation-local-trials-01/inspection/frame-review-01.json",
+          "scope": "local still/TTS, static versus explicit camera crop motion and side-only rollback; no generated subject motion",
+          "status": "technical-and-sampled-visual-only",
+          "effect": "NOT_INDEPENDENTLY_VALIDATED"
+        }
+      ],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "still-attention",
+      "name": "静止凝视",
+      "family": "照片叙事",
+      "fit": "照片本身有足够层次",
+      "question": "不动时观众看见什么",
+      "selection": "有具体观察内容的完整图",
+      "sequence": "给图→文字或声音引导→留看",
+      "audio": "声音让注意力变化而非催促",
+      "rhythm": "静止时长随信息负担",
+      "visual": "不为避免静态而乱推拉",
+      "anti": "纯填时长的长hold",
+      "example": "构造例：根系照片上先认形再看光",
+      "nearest": "与空间窗口不同，焦点靠声音而非移动",
+      "effect_check": "观看时长有可说明的新信息",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "trial": "evals/runs/generation-local-trials-01",
+          "report": "evals/runs/generation-local-trials-01/current-readback.json",
+          "visual_review": "evals/runs/generation-local-trials-01/inspection/frame-review-01.json",
+          "scope": "local still/TTS, static versus explicit camera crop motion and side-only rollback; no generated subject motion",
+          "status": "technical-and-sampled-visual-only",
+          "effect": "NOT_INDEPENDENTLY_VALIDATED"
+        }
+      ],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "detail-question",
+      "name": "细节起问",
+      "family": "照片叙事",
+      "fit": "局部细节能引出真实对象",
+      "question": "什么细节值得先问",
+      "selection": "真实局部与完整同图",
+      "sequence": "局部→问题→全图解释",
+      "audio": "旁白不提前抢答案",
+      "rhythm": "揭示前留辨认窗口",
+      "visual": "从合法局部矩形拉回完整画面",
+      "anti": "裁切误导物体尺度或身份",
+      "example": "构造例：水滴细部拉回整片水帘",
+      "nearest": "与全貌先行相反，先限制可见信息",
+      "effect_check": "揭示不靠虚假局部暗示",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "archive-letter",
+      "name": "照片来信",
+      "family": "照片叙事",
+      "fit": "有来源的旧照与个人文字",
+      "question": "文字和照片怎样互相留白",
+      "selection": "与叙述有实际关联的照片",
+      "sequence": "称呼→回忆片段→当前立场",
+      "audio": "朗读语气克制，图不逐句复述",
+      "rhythm": "允许停顿和无字图",
+      "visual": "照片时间与人物身份准确",
+      "anti": "陌生旧照冒充本人经历",
+      "example": "构造例：授权家庭照配作者原信",
+      "nearest": "与静止凝视不同，文字是关系线",
+      "effect_check": "观众知道谁在回忆及图片出处",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "annotated-proof",
+      "name": "图片举证",
+      "family": "照片叙事",
+      "fit": "需要看清图中具体证据",
+      "question": "哪个可见细节支持哪句主张",
+      "selection": "原图与可追溯细节",
+      "sequence": "主张→定位→证据→边界",
+      "audio": "声音区分看到与推断",
+      "rhythm": "给读图和回看时间",
+      "visual": "标题注明出处，图表不得裁掉坐标",
+      "anti": "局部截图抹去限定条件",
+      "example": "构造例：产品官方图标出明确接口",
+      "nearest": "与细节起问不同，不制造悬疑",
+      "effect_check": "限定条件与证据同时可读",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "time-pair",
+      "name": "两张照片的时间",
+      "family": "照片叙事",
+      "fit": "同对象有明确日期的照片",
+      "question": "哪些变化真的可比较",
+      "selection": "有日期及拍摄差异说明的图",
+      "sequence": "早期→后期→差异与未知",
+      "audio": "不补不存在的连续过程",
+      "rhythm": "两图各留比较窗口",
+      "visual": "尽量可比构图，不伪造对齐",
+      "anti": "不同对象做虚假前后效果",
+      "example": "构造例：同一建筑两年照片",
+      "nearest": "与档案来信不同，比较是主线",
+      "effect_check": "观众不会误认连续录像或因果证明",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "negative-space-voice",
+      "name": "留白中的声音",
+      "family": "照片叙事",
+      "fit": "照片可留阅读或声音空间",
+      "question": "画面怎样不抢旁白",
+      "selection": "有负空间的图和精简文句",
+      "sequence": "画面建立→声音推进→静默收束",
+      "audio": "旁白承担抽象关系",
+      "rhythm": "运动少且不打断重点词",
+      "visual": "裁切保主体，字幕不盖关键部位",
+      "anti": "每句同时满屏大字",
+      "example": "构造例：宽阔水面照片配短独白",
+      "nearest": "与图片举证不同，服务感受而非证实",
+      "effect_check": "声画主次清楚且原意未减",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "quiet-gallery",
+      "name": "安静画廊",
+      "family": "照片叙事",
+      "fit": "摄影作品展示且无需故事化",
+      "question": "每张照片的独特观看价值是什么",
+      "selection": "完整构图与必要署名",
+      "sequence": "按光线或主题关系组织",
+      "audio": "可无旁白，音乐可选",
+      "rhythm": "尊重构图观看，不按固定秒数",
+      "visual": "优先完整呈现，运镜需有理由",
+      "anti": "把照片都裁成相同局部",
+      "example": "构造例：三幅水景作品依质地排序",
+      "nearest": "与照片来信不同，不代作者编故事",
+      "effect_check": "每张构图被看见且署名可读",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "motif-image-return",
+      "name": "图像母题回返",
+      "family": "照片叙事",
+      "fit": "同一图在不同文字语境有新意义",
+      "question": "回来后观众多知道了什么",
+      "selection": "主图和能改变理解的补充图",
+      "sequence": "主图→补充→回主图",
+      "audio": "声音提供新的理解线索",
+      "rhythm": "重复有意且显式",
+      "visual": "同图回返可换已指定局部",
+      "anti": "重复填补缺素材而称新镜头",
+      "example": "构造例：先见树根，再讲光，回同图",
+      "nearest": "与时间对照不同，图片本身没有时间变化",
+      "effect_check": "回返增加意义且不伪造新照片",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "spatial-contrast",
+      "name": "空间对照",
+      "family": "照片叙事",
+      "fit": "同对象有内外或远近图片",
+      "question": "两种观察位置如何互相说明",
+      "selection": "互补视角和明确未知关系",
+      "sequence": "A视角→B视角→关联",
+      "audio": "环境声注明来源，不伪同期",
+      "rhythm": "两边都给足辨认时间",
+      "visual": "保持方向线索，不模拟不存在路径",
+      "anti": "拼接成未经拍摄的穿越镜头",
+      "example": "构造例：瀑布外部明亮与内部背光",
+      "nearest": "与空间窗口不同，以对照为核心",
+      "effect_check": "差异清楚且空间关系未过度断言",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "one-question-explainer",
+      "name": "一个问题的解释",
+      "family": "知识图文",
+      "fit": "短文围绕清楚问题",
+      "question": "观众最后应理解什么",
+      "selection": "必要定义、一个实例、范围",
+      "sequence": "问题→实例→解释→边界",
+      "audio": "旁白负责逻辑，图给例子",
+      "rhythm": "按理解负担而非句子等分",
+      "visual": "真实图和示意身份分开",
+      "anti": "一段文稿堆成十个不相干画面",
+      "example": "构造例：为什么静图需要留阅读时间",
+      "nearest": "与因果展开不同，可解释概念而非过程",
+      "effect_check": "答案可复述且范围明确",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "step-reveal",
+      "name": "逐步说明",
+      "family": "知识图文",
+      "fit": "步骤顺序不可颠倒",
+      "question": "前一步为后一步提供什么",
+      "selection": "前提、操作、结果图",
+      "sequence": "前提→步骤→结果→限制",
+      "audio": "旁白与该步骤画面同步",
+      "rhythm": "复杂步骤更久，完成后再切",
+      "visual": "结果图不能提前充当操作证据",
+      "anti": "删掉前提只留漂亮结果",
+      "example": "构造例：三张授权折叠步骤图",
+      "nearest": "与问题解释不同，以可复现操作为主",
+      "effect_check": "步骤依赖完整，非真实连续演示需说明",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "cause-map",
+      "name": "因果展开",
+      "family": "知识图文",
+      "fit": "文字包含可说明的因果",
+      "question": "哪些箭头有事实支持",
+      "selection": "原因、机制、结果和条件",
+      "sequence": "现象→机制→条件→结果",
+      "audio": "声音标区分因果与相关",
+      "rhythm": "机制处放慢，结论收束",
+      "visual": "用可控图示，模型画面仅示意",
+      "anti": "漂亮动画替代因果证据",
+      "example": "构造例：降雨到径流的教学示意",
+      "nearest": "与步骤说明不同，不是操作教程",
+      "effect_check": "因果与条件不被简化失真",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：原因、机制、结果和条件。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：因果与条件不被简化失真；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "analogy-with-return",
+      "name": "比喻后返回",
+      "family": "知识图文",
+      "fit": "抽象概念需要类比",
+      "question": "比喻在哪些地方有效",
+      "selection": "概念、相似关系、不适用点",
+      "sequence": "概念→类比→回本体→界限",
+      "audio": "旁白明确这是比喻",
+      "rhythm": "比喻不占满解释时间",
+      "visual": "视觉类比不伪装真实机制",
+      "anti": "让观众把隐喻当科学过程",
+      "example": "构造例：把信息排队类比为候车",
+      "nearest": "与因果展开不同，必须回到本体",
+      "effect_check": "能指出比喻的适用边界",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：概念、相似关系、不适用点。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：能指出比喻的适用边界；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "myth-and-evidence",
+      "name": "误解与证据",
+      "family": "知识图文",
+      "fit": "常见误解有可靠澄清资料",
+      "question": "误解错在哪而非谁愚蠢",
+      "selection": "准确表述的误解与证据",
+      "sequence": "误解→可观察证据→修正解释",
+      "audio": "保留条件和不确定性",
+      "rhythm": "证据读完再揭结论",
+      "visual": "文字准确，反例不得造假",
+      "anti": "断章取义制造稻草人",
+      "example": "构造例：高分辨率不保证无损细节",
+      "nearest": "与问题解释不同，以纠偏为目的",
+      "effect_check": "不会强化误解或夸大确定性",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "comparison-axes",
+      "name": "按维度比较",
+      "family": "知识图文",
+      "fit": "选项有可比信息",
+      "question": "观众实际要比较哪几维",
+      "selection": "同尺度事实和使用条件",
+      "sequence": "共同问题→各维对照→选择条件",
+      "audio": "避免一边煽情一边机械",
+      "rhythm": "相似信息负担给可比时间",
+      "visual": "标签与数值用真实文字资产",
+      "anti": "偷偷改变比例制造优劣",
+      "example": "构造例：静图运镜与模型视频用途比较",
+      "nearest": "与时间对照不同，是方法或选项比较",
+      "effect_check": "条件相同且没有隐藏分母",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "quote-with-context",
+      "name": "原文与语境",
+      "family": "知识图文",
+      "fit": "一段引用需要解读",
+      "question": "哪些原词必须完整保留",
+      "selection": "引用、作者、日期、上下文",
+      "sequence": "语境→原文→解释→限度",
+      "audio": "引用与作者解说声部清楚",
+      "rhythm": "原文保证阅读时间",
+      "visual": "不让装饰挤掉否定词",
+      "anti": "只显示一句金句抹掉条件",
+      "example": "构造例：讲解公开授权的技术原文",
+      "nearest": "与照片来信不同，以准确引用为主",
+      "effect_check": "原文、解释和立场可区分",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "number-to-scale",
+      "name": "数字到尺度",
+      "family": "知识图文",
+      "fit": "数字需要变得可理解",
+      "question": "用什么参照说明大小",
+      "selection": "数值来源、单位、同尺度参照",
+      "sequence": "数字→参照→意义→误差",
+      "audio": "不靠音量夸大数字",
+      "rhythm": "给单位与限定读完时间",
+      "visual": "可控图形优先，生成仅作意象",
+      "anti": "AI画图表产生错误刻度",
+      "example": "构造例：用真实面积关系解释画幅裁切",
+      "nearest": "与按维比较不同，单一量级解释",
+      "effect_check": "数值单位和视觉比例一致",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：数值来源、单位、同尺度参照。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：数值单位和视觉比例一致；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "anchored-character",
+      "name": "角色锚点叙事",
+      "family": "虚构短片",
+      "fit": "同一虚构角色跨多个镜头",
+      "question": "角色在每镜仍是同一个谁",
+      "selection": "角色锚点、目标与变化",
+      "sequence": "目标→行动→后果",
+      "audio": "声音身份与角色一致",
+      "rhythm": "给表演与反应空间",
+      "visual": "重复引用角色锚点，检查衣物和道具",
+      "anti": "只靠同名提示词保证身份",
+      "example": "构造例：同一纸偶寻找丢失钥匙",
+      "nearest": "与对象旅程不同，人物选择驱动",
+      "effect_check": "角色外观、行为与动机连续",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：角色锚点、目标与变化。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：角色外观、行为与动机连续；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "object-journey",
+      "name": "物件旅程",
+      "family": "虚构短片",
+      "fit": "一个物件连接多个空间",
+      "question": "物件状态怎样推进故事",
+      "selection": "明确物件锚点及位置状态",
+      "sequence": "出现→流转→新用途",
+      "audio": "音效强调实际动作，不替代因果",
+      "rhythm": "转交和落点不切断",
+      "visual": "检查数量、形状和持有关系",
+      "anti": "物件每镜变样却不说明",
+      "example": "构造例：红色信封在不同房间被传递",
+      "nearest": "与角色叙事不同，物件是持续主体",
+      "effect_check": "观众追得上物件状态变化",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：明确物件锚点及位置状态。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：观众追得上物件状态变化；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "spatial-miniature",
+      "name": "一处空间的小故事",
+      "family": "虚构短片",
+      "fit": "短片集中在单一场景",
+      "question": "空间怎样成为叙事条件",
+      "selection": "门窗、出入口、光向和主体",
+      "sequence": "建立布局→动作→空间后果",
+      "audio": "声音方位帮助理解",
+      "rhythm": "少切但动作可读",
+      "visual": "固定地理锚点，跨镜核方向",
+      "anti": "每镜门窗位置随机变化",
+      "example": "构造例：屋内一束光随人物移动",
+      "nearest": "与物件旅程不同，地点固定",
+      "effect_check": "布局稳定且动作方向成立",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：门窗、出入口、光向和主体。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：布局稳定且动作方向成立；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "silent-action",
+      "name": "无对白动作",
+      "family": "虚构短片",
+      "fit": "故事可由完整动作讲清",
+      "question": "观众能否只看动作理解",
+      "selection": "明确意图、障碍、动作结果",
+      "sequence": "意图→尝试→变化→结果",
+      "audio": "动作声和静默，旁白可无",
+      "rhythm": "保持动作完整，不每秒换镜",
+      "visual": "重点检查手与物体接触、重力和遮挡",
+      "anti": "中间动作崩坏靠切镜掩盖",
+      "example": "构造例：纸偶试着打开过大的抽屉",
+      "nearest": "与角色锚点不同，以动作可读为验收",
+      "effect_check": "不靠旁白补救不存在的动作",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：明确意图、障碍、动作结果。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：不靠旁白补救不存在的动作；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "ellipsis-with-anchor",
+      "name": "省略中的锚点",
+      "family": "虚构短片",
+      "fit": "需要跨时间压缩故事",
+      "question": "观众如何知道跳过了什么",
+      "selection": "同一角色或物件的可识别状态",
+      "sequence": "状态A→明确省略→状态B",
+      "audio": "声桥连接但不伪装连续时间",
+      "rhythm": "省略前后各有辨认时间",
+      "visual": "保留锚点，时间变化要可感",
+      "anti": "突然换装被误当一致性错误",
+      "example": "构造例：窗边盆栽不同生长阶段",
+      "nearest": "与物件旅程不同，重点处理时间省略",
+      "effect_check": "时间跳跃有意且能理解",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：同一角色或物件的可识别状态。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：时间跳跃有意且能理解；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "subjective-imagery",
+      "name": "主观意象",
+      "family": "虚构短片",
+      "fit": "人物感受需要非写实表达",
+      "question": "意象和现实如何区分",
+      "selection": "现实锚点与受控象征",
+      "sequence": "现实触发→意象→回现实",
+      "audio": "声音切换标记主观层",
+      "rhythm": "意象长度服务情绪变化",
+      "visual": "允许变形但保持叙事边界",
+      "anti": "意象被误当真实事件证据",
+      "example": "构造例：焦虑用不断变窄的虚构走廊",
+      "nearest": "与比喻解释不同，服务人物感受",
+      "effect_check": "主观层清楚且不任意堆特效",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：现实锚点与受控象征。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：主观层清楚且不任意堆特效；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "micro-reversal",
+      "name": "微小反转",
+      "family": "虚构短片",
+      "fit": "短故事有可见的预期差",
+      "question": "反转依靠什么已埋线索",
+      "selection": "预期、线索和可成立的结果",
+      "sequence": "建立预期→行动→结果改读",
+      "audio": "音效不过早泄露",
+      "rhythm": "反转后留重新理解时间",
+      "visual": "不能生成一件新物品强解反转",
+      "anti": "毫无铺垫的随机惊吓",
+      "example": "构造例：被追的纸团其实在引路",
+      "nearest": "与细节起问不同，重解释前文",
+      "effect_check": "线索可回看且因果成立",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：预期、线索和可成立的结果。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：线索可回看且因果成立；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "illustrated-fable",
+      "name": "插画寓言",
+      "family": "虚构短片",
+      "fit": "已有插画或明确非写实脚本",
+      "question": "哪些画面足以讲一个变化",
+      "selection": "可控插画、叙述视角、寓意",
+      "sequence": "处境→选择→结果→留白",
+      "audio": "旁白和图各承担不同信息",
+      "rhythm": "读图优先，少量明确运镜",
+      "visual": "静图可成立时不假装角色动画",
+      "anti": "给每张图加抖动代替故事",
+      "example": "构造例：三张作者插画讲一枚种子的选择",
+      "nearest": "与无对白动作不同，可由静图和叙述完成",
+      "effect_check": "图文共同推进而非重复朗读",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "product-form-study",
+      "name": "产品形态观察",
+      "family": "产品概念",
+      "fit": "有真实产品图片或模型",
+      "question": "什么形态值得被看清",
+      "selection": "真实外形、结构与限定",
+      "sequence": "整体→细部→使用语境",
+      "audio": "声音不编性能或用户证言",
+      "rhythm": "细部留读，避免无意义转圈",
+      "visual": "官方文字和颜色需保护",
+      "anti": "生成改变接口却称真实产品",
+      "example": "构造例：官方耳机图展示折叠结构",
+      "nearest": "与品牌意象不同，真实性优先",
+      "effect_check": "外形和文字未被美化改错",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "material-concept",
+      "name": "材质概念片",
+      "family": "产品概念",
+      "fit": "表达未来概念而非实物证明",
+      "question": "材质如何服务概念",
+      "selection": "明确虚构材质设定和参考",
+      "sequence": "材质近看→形态→概念全貌",
+      "audio": "声音可设计，说明非实拍",
+      "rhythm": "质地变化给观察窗口",
+      "visual": "标明概念，检查跨镜材质一致",
+      "anti": "用生成质感暗示真实耐用性",
+      "example": "构造例：虚构可折叠玻璃装置",
+      "nearest": "与形态观察不同，允许明确虚构",
+      "effect_check": "概念与真实性能承诺分开",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：明确虚构材质设定和参考。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：概念与真实性能承诺分开；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "brand-metaphor",
+      "name": "品牌意象",
+      "family": "产品概念",
+      "fit": "品牌表达允许抽象象征",
+      "question": "意象怎样连接真实品牌主张",
+      "selection": "经授权标识、主张、象征物",
+      "sequence": "意象→关联→品牌落点",
+      "audio": "音乐和旁白不作虚假证明",
+      "rhythm": "品牌落点可读而不突兀",
+      "visual": "标识用真实资产，生成不猜字",
+      "anti": "模型生成拼错标志仍入片",
+      "example": "构造例：用流动光线表达协作概念",
+      "nearest": "与材质概念不同，主张而非实体中心",
+      "effect_check": "意象关联可解释且标识正确",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：经授权标识、主张、象征物。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：意象关联可解释且标识正确；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "use-scenario-board",
+      "name": "使用场景图文",
+      "family": "产品概念",
+      "fit": "已有真实使用图和文案",
+      "question": "哪个需求得到哪种支持",
+      "selection": "场景、真实功能依据、限制",
+      "sequence": "问题场景→功能→条件",
+      "audio": "不编未经发生的用户体验",
+      "rhythm": "功能图与文案同期可读",
+      "visual": "合成示意身份明确",
+      "anti": "AI人物被当真实客户推荐",
+      "example": "构造例：授权办公图片解释软件协作",
+      "nearest": "与形态观察不同，问题解决主导",
+      "effect_check": "每条功能有依据且不伪证言",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "feature-space",
+      "name": "功能与空间",
+      "family": "产品概念",
+      "fit": "复杂功能需分层说明",
+      "question": "一次只让观众理解哪一层",
+      "selection": "真实界面、功能文字、焦点",
+      "sequence": "全局→局部功能→回全局",
+      "audio": "旁白不盖操作反馈",
+      "rhythm": "按阅读和操作复杂度配时",
+      "visual": "界面截图不生成虚假按钮",
+      "anti": "生成UI冒充已上线功能",
+      "example": "构造例：三张真实截图介绍导入编辑导出",
+      "nearest": "与步骤教程不同，侧重功能结构",
+      "effect_check": "功能存在且观众定位清楚",
+      "capability": "local-still",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "local still/TTS path available; effect unvalidated"
+    },
+    {
+      "id": "concept-before-after",
+      "name": "概念前后状态",
+      "family": "产品概念",
+      "fit": "对比是明确设计设想",
+      "question": "哪些变化是概念而非测试结果",
+      "selection": "可比的概念状态与声明",
+      "sequence": "当前问题→设想状态→限制",
+      "audio": "声音明确预期而非实测",
+      "rhythm": "两状态有可比观察时间",
+      "visual": "生成结果显著标概念示意",
+      "anti": "虚构前后片夸大实测收益",
+      "example": "构造例：未来工作台界面概念",
+      "nearest": "与真实时间对照不同，是设想变化",
+      "effect_check": "观众不把设想当已验证效果",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：可比的概念状态与声明。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：观众不把设想当已验证效果；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "missing-insert",
+      "name": "缺失插镜补足",
+      "family": "生成补足",
+      "fit": "已有作品缺一个说明镜头",
+      "question": "新增镜头补哪个明确缺口",
+      "selection": "当前段落、缺信息、可信参考",
+      "sequence": "原段→补充镜头→回原段",
+      "audio": "原音轨优先保持",
+      "rhythm": "插入长度不打断完整原话",
+      "visual": "生成标识与视觉风格适配",
+      "anti": "为美观插入不存在的事件证据",
+      "example": "构造例：抽象概念旁补明确示意镜",
+      "nearest": "与从零脚本不同，已有作品范围固定",
+      "effect_check": "补足有作用且无关作品保持",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：当前段落、缺信息、可信参考。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：补足有作用且无关作品保持；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "source-aware-bridge",
+      "name": "诚实转场补足",
+      "family": "生成补足",
+      "fit": "两段素材缺连接但不能伪造时空",
+      "question": "怎么让转折可理解",
+      "selection": "两端真实边界与连接作用",
+      "sequence": "原A→明确过渡→原B",
+      "audio": "声桥不假造同期",
+      "rhythm": "短到服务转折，长到读懂",
+      "visual": "抽象或示意桥不冒充现场",
+      "anti": "AI生成走路镜头伪造真实路线",
+      "example": "构造例：两地资料间用日期地图过渡",
+      "nearest": "与缺失插镜不同，解决段间连接",
+      "effect_check": "观众知道时间地点关系",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：两端真实边界与连接作用。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：观众知道时间地点关系；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "localized-regeneration",
+      "name": "局部生成修订",
+      "family": "生成补足",
+      "fit": "某个生成片局部需改",
+      "question": "改什么必须保持什么",
+      "selection": "原生成片、区域、保护属性",
+      "sequence": "原片→候选变化→整片复核",
+      "audio": "声音是否保留单独核验",
+      "rhythm": "时长与动作完整性复查",
+      "visual": "全帧检查副作用，不承诺像素无损",
+      "anti": "改气球颜色导致人脸变化仍替换",
+      "example": "构造例：虚构道具换色保角色",
+      "nearest": "与调色原子不同，模型会重生成",
+      "effect_check": "修改达成且保护项有真实对照",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：原生成片、区域、保护属性。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：修改达成且保护项有真实对照；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "extend-with-purpose",
+      "name": "有目的延展",
+      "family": "生成补足",
+      "fit": "原生成片缺动作尾部或观察时间",
+      "question": "延长应发生什么变化",
+      "selection": "前镜尾态、目的、结束状态",
+      "sequence": "已发生→新动作→可用退出",
+      "audio": "声音尾部衔接实际检查",
+      "rhythm": "不无限延伸直到预算耗尽",
+      "visual": "尾态、光向、物件连续",
+      "anti": "延长只重复原动作",
+      "example": "构造例：角色放下杯子后停稳",
+      "nearest": "与循环不同，延展增加新内容",
+      "effect_check": "新增时间有用途且接缝成立",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：前镜尾态、目的、结束状态。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：新增时间有用途且接缝成立；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "first-last-bridge",
+      "name": "首尾帧过渡",
+      "family": "生成补足",
+      "fit": "有合法首尾图且需要中间动作",
+      "question": "中间怎样合理连接两状态",
+      "selection": "首尾图、动作和不能变的属性",
+      "sequence": "起态→可行过程→终态",
+      "audio": "声音与过程匹配",
+      "rhythm": "时长足够完成动作",
+      "visual": "逐段看中间形变，不只看两端",
+      "anti": "首尾正确但物体中途融化",
+      "example": "构造例：同一虚构盒子开盖到闭合",
+      "nearest": "与普通延展不同，终态被约束",
+      "effect_check": "中段动作及物件守恒成立",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：首尾图、动作和不能变的属性。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：中段动作及物件守恒成立；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "reference-motion",
+      "name": "参考运动迁移",
+      "family": "生成补足",
+      "fit": "目标对象需要参考运动方式",
+      "question": "迁移的是哪种运动而非身份",
+      "selection": "合法运动参考与独立目标锚点",
+      "sequence": "参考机制→目标动作→核对",
+      "audio": "不自动复制参考声音",
+      "rhythm": "动作尺度和速度适配目标",
+      "visual": "人物与运动引用职责分开",
+      "anti": "把舞者身份也复制到目标",
+      "example": "构造例：纸偶采用参考抬手节奏",
+      "nearest": "与参考风格总览不同，明确生成动作",
+      "effect_check": "身份保留且动作物理可读",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：合法运动参考与独立目标锚点。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：身份保留且动作物理可读；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "loop-with-state",
+      "name": "状态闭合循环",
+      "family": "生成补足",
+      "fit": "需要可重复的短片",
+      "question": "首尾哪些状态必须闭合",
+      "selection": "主体位置、光线、声音相位",
+      "sequence": "进入→变化→回到兼容状态",
+      "audio": "听接缝，不只找零交叉",
+      "rhythm": "循环感服务用途",
+      "visual": "尾帧接首帧且运动方向连续",
+      "anti": "首尾像素近似但速度突然跳变",
+      "example": "构造例：虚构装置稳定往复",
+      "nearest": "与延展不同，终点回到起点",
+      "effect_check": "画面和声音接缝都成立",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：主体位置、光线、声音相位。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：画面和声音接缝都成立；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "illustrative-reconstruction",
+      "name": "明确演绎重建",
+      "family": "生成补足",
+      "fit": "资料不足但允许说明性演绎",
+      "question": "哪些细节有证据哪些是假设",
+      "selection": "可靠事实、假设清单、演绎标识",
+      "sequence": "事实→演绎说明→返回证据",
+      "audio": "不伪造当事人原话",
+      "rhythm": "让说明标签足够可读",
+      "visual": "全程明确演绎范围",
+      "anti": "生成历史现场被当档案",
+      "example": "构造例：不确定建筑布局的示意复原",
+      "nearest": "与虚构短片不同，边界来自事实证据",
+      "effect_check": "观众能区分资料与重建",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：可靠事实、假设清单、演绎标识。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：观众能区分资料与重建；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "candidate-dimension-study",
+      "name": "单维候选探索",
+      "family": "生成补足",
+      "fit": "方向未明需少量可比较候选",
+      "question": "这轮比较哪个创作变量",
+      "selection": "同脚本同锚点与一项变化",
+      "sequence": "控制版→变体→选择依据",
+      "audio": "声音可比，避免响度偏差",
+      "rhythm": "同范围同长度优先",
+      "visual": "记录随机差异，不归因所有变化于prompt",
+      "anti": "多因素全变后声称镜头更好",
+      "example": "构造例：固定角色只比较两种机位",
+      "nearest": "与普通多风格不同，针对决策缺口",
+      "effect_check": "能解释选择及不可归因部分",
+      "capability": "model-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：同脚本同锚点与一项变化。已有合格候选可进入评审和剪辑；需新生成时由当前 Agent 核实际图像/视频能力、授权、预算和输出身份，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。逐镜核验：能解释选择及不可归因部分；模型返回成功不等于连续性或效果通过"
+    },
+    {
+      "id": "hybrid-boundaries",
+      "name": "实拍与生成分工",
+      "family": "生成补足",
+      "fit": "真实片需少量生成意象",
+      "question": "哪部分必须真实哪部分可虚构",
+      "selection": "实拍证据和生成示意分层",
+      "sequence": "真实建立→生成说明→回真实",
+      "audio": "原话与合成旁白清楚",
+      "rhythm": "生成不吞掉关键真实动作",
+      "visual": "在观看时可辨来源身份",
+      "anti": "生成画面冒充真人现场",
+      "example": "构造例：真实访谈加抽象情绪画面",
+      "nearest": "与演绎重建不同，按表达角色分工",
+      "effect_check": "真实信息不被生成装饰扭曲",
+      "capability": "mixed-conditional",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：实拍证据和生成示意分层。已有可控图示、真实图像或合格候选可直接进入评审和剪辑；缺视觉资产时由当前 Agent 核图形制作或生成能力，做不到则只交脚本/分镜和已有素材部分并记录缺项。核验：真实信息不被生成装饰扭曲；示意不能冒充事实，候选可用不等于效果通过"
+    },
+    {
+      "id": "presenter-explainer",
+      "name": "讲解型数字人",
+      "family": "数字人表达",
+      "fit": "用户明确要合成讲解者",
+      "question": "讲解者如何帮助理解",
+      "selection": "授权角色、准确稿件、辅助画面",
+      "sequence": "提出问题→分段解释→总结",
+      "audio": "语气自然须实听，专名核对",
+      "rhythm": "停顿服务理解",
+      "visual": "身份和合成属性明确，口型实看",
+      "anti": "把合成人物称真实专家证言",
+      "example": "构造例：虚构主持人说明工具流程",
+      "nearest": "与旁白图文不同，有可见讲解者",
+      "effect_check": "稿意准确、口型与表情不分散注意",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：授权角色、准确稿件、辅助画面。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：稿意准确、口型与表情不分散注意；身份、语音归属和口型不因任务成功而默认合格"
+    },
+    {
+      "id": "presenter-demo-handoff",
+      "name": "讲解与演示交接",
+      "family": "数字人表达",
+      "fit": "讲解者与真实操作画面结合",
+      "question": "何时该让位给操作",
+      "selection": "讲解稿与可证操作素材",
+      "sequence": "人提出→操作证明→人解释边界",
+      "audio": "操作声保留必要反馈",
+      "rhythm": "不让数字人遮关键UI",
+      "visual": "人物画面与实际功能分开",
+      "anti": "口播宣称功能但演示对不上",
+      "example": "构造例：合成主持引入真实录屏",
+      "nearest": "与单人讲解不同，证据在演示",
+      "effect_check": "交接清楚且操作信息完整",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：讲解稿与可证操作素材。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：交接清楚且操作信息完整；身份、语音归属和口型不因任务成功而默认合格"
+    },
+    {
+      "id": "character-narrator",
+      "name": "角色化讲述",
+      "family": "数字人表达",
+      "fit": "虚构角色承担故事叙述",
+      "question": "叙述者知道什么不知道什么",
+      "selection": "角色设定、视角、故事稿",
+      "sequence": "设定立场→讲述→视角回收",
+      "audio": "声音与身份一致",
+      "rhythm": "让表演承担部分信息",
+      "visual": "角色限制一致，不突然全知",
+      "anti": "角色口型正常却讲错视角",
+      "example": "构造例：虚构档案员读一封信",
+      "nearest": "与知识讲解不同，角色视角影响叙述",
+      "effect_check": "视角和声音连续",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：角色设定、视角、故事稿。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：视角和声音连续；身份、语音归属和口型不因任务成功而默认合格"
+    },
+    {
+      "id": "two-voice-dialogue",
+      "name": "双声部对话",
+      "family": "数字人表达",
+      "fit": "需要两种观点互相推进",
+      "question": "谁在回应谁的哪句话",
+      "selection": "两身份与真实可辨的论点",
+      "sequence": "观点A→回应B→分歧或共识",
+      "audio": "说话归属和轮次准确",
+      "rhythm": "给对方反应但不伪造真实反应",
+      "visual": "分别绑定角色与声音，检查视线",
+      "anti": "两个人脸或声音混用",
+      "example": "构造例：两个虚构角色讨论设计取舍",
+      "nearest": "与独白不同，回应关系是主线",
+      "effect_check": "每句归属正确且非假专家背书",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：两身份与真实可辨的论点。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：每句归属正确且非假专家背书；身份、语音归属和口型不因任务成功而默认合格"
+    },
+    {
+      "id": "accessible-presenter",
+      "name": "清楚易读讲述",
+      "family": "数字人表达",
+      "fit": "目标受众需要稳定清晰表达",
+      "question": "怎样降低理解负担",
+      "selection": "简明稿、清晰字幕、稳定构图",
+      "sequence": "定位问题→小段说明→回顾",
+      "audio": "吐字与停顿实际核验",
+      "rhythm": "允许较慢，不强行压时长",
+      "visual": "字幕有稳定区域，动作不过量",
+      "anti": "用花字与快切掩盖含糊配音",
+      "example": "构造例：合成服务向导解释步骤",
+      "nearest": "与知识讲解不同，优先可达性",
+      "effect_check": "可读可听，信息没有因简化失真",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：简明稿、清晰字幕、稳定构图。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：可读可听，信息没有因简化失真；身份、语音归属和口型不因任务成功而默认合格"
+    },
+    {
+      "id": "presenter-local-repair",
+      "name": "讲解局部重录",
+      "family": "数字人表达",
+      "fit": "一句合成台词需修订",
+      "question": "哪些片段声音与画面保持",
+      "selection": "原句新句、原角色和相邻段",
+      "sequence": "定位→重合成→接点复核",
+      "audio": "音色、响度、语气连续",
+      "rhythm": "实测新句时长后调对应画面",
+      "visual": "不整片重生成覆盖手工修改",
+      "anti": "改数字导致后半片全部重做",
+      "example": "构造例：只修正主持人读错的数字",
+      "nearest": "与生成局部修订不同，聚焦语句和口型",
+      "effect_check": "新句正确且周边状态保持",
+      "capability": "avatar-required",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "generation-storyboard",
+        "generation-av-script",
+        "generation-service",
+        "generation-frame-motion"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "adjustable": [
+        "图文与声音分工",
+        "镜头目的和阅读负担",
+        "实际可用资产与生成规格",
+        "连续性锚点",
+        "局部保护与修改范围"
+      ],
+      "compatibility": {
+        "requires": "符合事实或虚构身份，所需执行能力真实可用",
+        "avoid": "不把模型成功当效果，不把静图运镜冒充生成主体运动"
+      },
+      "execution_support": "所需素材：原句新句、原角色和相邻段。已有授权数字人候选可进入评审和剪辑；需新合成时由当前 Agent 核数字人、声音及口型能力与授权，当前无合格候选且能力与授权可用时，由 Agent 生成候选并评审；能力不可用或生成后仍无合格候选时，只交脚本/分镜及已有素材部分并记录缺项。实看实听：新句正确且周边状态保持；身份、语音归属和口型不因任务成功而默认合格"
+    }
+  ]
+}

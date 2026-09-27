@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "localization-host",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/video-translation/SKILL.md",
+      "size": 12201,
+      "sha256": "ed2fdd3113a54577e767477910687496ef93d66695138c43f6739019e81ec6ce",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-audio",
+      "version": "2a0e09d8cb9056e044c473dd53a136b81ba428e9",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/NoizAI__skills/2a0e09d8cb90/skills/video-translation/SKILL.md",
+      "size": 5051,
+      "sha256": "2b3f4741e2c96cdd94d30633515389532b7b202083d04ebea451dd4a17d4eae4",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/NoizAI__skills.json",
+      "authority_sha256": "f30ad406066e2c786528e1e9aae82b579244361e9653b6753599154f1d23224e",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-audio",
+      "version": "2a0e09d8cb9056e044c473dd53a136b81ba428e9",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/NoizAI__skills/2a0e09d8cb90/skills/video-translation/scripts/srt_to_duck.py",
+      "size": 1382,
+      "sha256": "e66379f85664cd1a288eba833a843875436286d128d22b6fa3981b152713d2d8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/NoizAI__skills.json",
+      "authority_sha256": "f30ad406066e2c786528e1e9aae82b579244361e9653b6753599154f1d23224e",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-text",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/translation-localization/subtitle-translator/SKILL.md",
+      "size": 6971,
+      "sha256": "2e88369dfa322dca34da13e9fd5279930e395b4ed2f6c1c927115d3df662c7bd",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-text",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/translation-localization/translation-glossary-creator/SKILL.md",
+      "size": 6931,
+      "sha256": "fabe587bdf6ef6b946224f9ea2478d0152378a348507f0aea7c817770187194d",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-text",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/tv-documentary/localization/dubbing-script-adapter/SKILL.md",
+      "size": 7715,
+      "sha256": "881a7ad198531942d14843101645d1a0a2e1f032a254fd44461cb133d22ce60c",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-text",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/LICENSE",
+      "size": 1064,
+      "sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-production",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/localization-dubbing-production/SKILL.md",
+      "size": 29144,
+      "sha256": "13046c09964ce056bdef8de7ba7e738b92916a8cc42176da84821eea1deeaa05",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "localization-production",
+      "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/LICENSE",
+      "size": 1093,
+      "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/calesthio__generative-media-skills.json",
+      "authority_sha256": "d6835d9d7605398626bab394e8718e6a354688288f590e5380902e8f0b67dfba",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    }
+  ]
+}

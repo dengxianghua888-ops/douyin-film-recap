@@ -1,0 +1,41 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "chatcut-multicam",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/multicam-sync/SKILL.md",
+      "sha256": "756f719350c8f19fd5e76d18284b9e968610bb1c9eb8a5037798adac37c8f097",
+      "size": 16235,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "use": "method reference; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "chatcut-multicam",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/multicam-sync/scripts/transcript-offset.mjs",
+      "sha256": "aea086440455b17fc39728e672553bd3a809a841291cb9f12ade0f288f419a4a",
+      "size": 7839,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "use": "method reference; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "chatcut-multicam",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/talking-head-guide/references/multicam.md",
+      "sha256": "67c39336d2b697c5c7e6837c92ff0cc3d8e32e14b190f50feaf8e47d0dfa293d",
+      "size": 1296,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "use": "method reference; original implementation, no copied code",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

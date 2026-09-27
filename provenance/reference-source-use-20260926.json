@@ -1,0 +1,1573 @@
+{
+  "task_id": "P-W13-D2",
+  "reviewer": "iteration_workplan / internal Agent source-use review",
+  "scope": "static local D2 proposal; M is sole adjudicator/integrator",
+  "formal_baseline": {
+    "ledger": {
+      "path": "evals/evidence/portfolio-ledger-v0.35.json",
+      "sha256": "010bc1b80418816835a580be424e44cdc8788fa97e52783b1a0a4b0a3032613b"
+    },
+    "cell": {
+      "status": "designed",
+      "evidence": {
+        "path": "workflows/raven-reference-style/references/source-fusion.md",
+        "sha256": "55317921662f76352355034f8459d581a8e2160cb3014acf8d5e586b4ddcb491"
+      },
+      "missing": "W13: A source record exists, but its adopted/excluded claims and all later method/media increments have not been reconciled in this audit.",
+      "next_action": "W13: Reconcile the located source-fusion map, adopted methods, exclusions and later material sources; review claimed uses.",
+      "recovery_condition": "Each claimed adoption and exclusion has a current attributable source binding and a reviewed use boundary.",
+      "audit_inventory": {
+        "path": "evals/evidence/r0-portfolio-audit-20260923/inventory.json",
+        "package": "W13"
+      },
+      "supplemental_evidence": [
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/result.json",
+          "sha256": "ef746b5cb1319a6cc6dc9ad65ee9daf271b16b07e6cc9ff0f2d47fa132bd90ac"
+        },
+        {
+          "path": "evals/evidence/r1-evidence-reconciliation-20260923/result.json",
+          "sha256": "18eda0b4927e07f7a3c2414e570ebf80f431c1211e7830af0c020604393086ab"
+        }
+      ]
+    }
+  },
+  "direct_methods": [
+    {
+      "id": "reference-story-formula",
+      "problem": "参考机制如何落到目标内容而非复制参考资产",
+      "source": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/125-reference-story-formula.md",
+        "sha256": "bd5dd1468792566af40030d3c7f2e039d87c38a0ce243b49eb6ae452316fba14"
+      },
+      "source_version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "source_lines": "26–55,74–76",
+      "use_kind": "method borrowing and original editorial paraphrase; no upstream code copied by this proposal",
+      "adopt": "绑定参考版本、逐段机制、目标锚点和排除项；改变后重核源",
+      "omit": "不照搬全段恰好一beat、单向线性、逐项approve/发布门禁、18字符当原创性证明",
+      "adoption_locations": "references/observation.md; references/transfer-contract.md; references/execution.md",
+      "verification_scope": "local text and bindings only; no upstream execution or effect validation",
+      "license_scope": "root LICENSE absent in this local archive; do not copy/distribute upstream code/docs under an assumed license"
+    },
+    {
+      "id": "reference-edit-rhythm",
+      "problem": "量化节奏时不把统计当效果",
+      "source": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/92-reference-edit-rhythm.md",
+        "sha256": "ec0699c3d8fe529572cdfc5515500d5ff4d549ff6a17a1195d386a1fbc1ebd8d"
+      },
+      "source_version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "source_lines": "20–27,57–76",
+      "use_kind": "method borrowing and original editorial paraphrase; no upstream code copied by this proposal",
+      "adopt": "切点候选、镜长/段落密度/结尾hold和源hash，接触表只作局部证据",
+      "omit": "不采用默认数值作为普适美学/产品门槛；不运行上游脚本或继承其发布审批",
+      "adoption_locations": "references/observation.md; references/evaluation.md",
+      "verification_scope": "local text and bindings only; no upstream execution or effect validation",
+      "license_scope": "root LICENSE absent in this local archive; do not copy/distribute upstream code/docs under an assumed license"
+    },
+    {
+      "id": "edit-style-profile",
+      "problem": "保留本作显式决定和长期偏好边界",
+      "source": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/98-edit-style-profile.md",
+        "sha256": "b98438ded24d5164da5d40f5691275aa37c9b1bc58a532ec97b6569ecec66c27"
+      },
+      "source_version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "source_lines": "5–29,56–60,101–112",
+      "use_kind": "method borrowing and original editorial paraphrase; no upstream code copied by this proposal",
+      "adopt": "规则与具体recipe分开、显式选择优先；参考profile只记本次notes",
+      "omit": "不继承一个主方向一个accent上限、品牌审批、固定模型、发布时间；不偷偷改长期偏好",
+      "adoption_locations": "SKILL.md; references/transfer-contract.md; references/execution.md",
+      "verification_scope": "local text and bindings only; no upstream execution or effect validation",
+      "license_scope": "root LICENSE absent in this local archive; do not copy/distribute upstream code/docs under an assumed license"
+    },
+    {
+      "id": "design-video-analysis",
+      "problem": "文本与画面互证且保留观察",
+      "source": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/wanenmao2011__design-video-analysis-skill/ab3da1b589fa/SKILL.md",
+        "sha256": "45eaf518a0705ef893e734a57531ee5e8d8302f238e297f3e0484bd3e625585a"
+      },
+      "source_version": "ab3da1b589fa4b3e51302f3655c29a268761b081",
+      "source_lines": "17,86–98,118–142",
+      "use_kind": "method borrowing and original editorial paraphrase; no upstream code copied by this proposal",
+      "adopt": "原始资料、转写与完整画面对应；只采用观察方法",
+      "omit": "不继承强制DOCX、固定30/60秒抽样、默认口头词清理；不声称自动迁移",
+      "adoption_locations": "references/observation.md",
+      "verification_scope": "local text and bindings only; no upstream execution or effect validation",
+      "license_scope": "MIT file in the same locked archive; retain its copyright/permission notice if copying substantial portions"
+    },
+    {
+      "id": "color-grading",
+      "problem": "把显式色彩变换与审美评判分开",
+      "source": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/filipenevola__fable-video-edit/fdc4f5e44f07/reference/color-grading.md",
+        "sha256": "5fe331c93a9ebf6d955540b259a00c5ec2f17e96423b30c64fd59104b63898c1"
+      },
+      "source_version": "fdc4f5e44f07ee907b06f98438872f5a66b14ba4",
+      "source_lines": "39–68",
+      "use_kind": "method borrowing and original editorial paraphrase; no upstream code copied by this proposal",
+      "adopt": "cube轴序、同源同帧look比较、归一化与look分离、LUT只烧一次",
+      "omit": "不复制Log公式，不固定4–7款，不继承逐步审批或肤色代表一切；不证明自动匹配/HDR/Log",
+      "adoption_locations": "references/execution.md; references/compatibility.md; styles/reference/restrained-palette.md",
+      "verification_scope": "local text and bindings only; no upstream execution or effect validation",
+      "license_scope": "MIT file in the same locked archive; retain its copyright/permission notice if copying substantial portions"
+    }
+  ],
+  "preserved_method_lock": {
+    "binding": {
+      "path": "provenance/reference-sources.lock.json",
+      "sha256": "867e47872e22785d7385c0daa466bd8b5ff468a8dd3c0494d409ab72ee162251"
+    },
+    "counts": {
+      "method_and_script_files": 7,
+      "license_files": 2,
+      "total_files": 9,
+      "repository_groups": 3,
+      "method_rows": 5
+    },
+    "files": [
+      {
+        "source_id": "reference-mechanisms",
+        "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/125-reference-story-formula.md",
+        "size": 6167,
+        "sha256": "bd5dd1468792566af40030d3c7f2e039d87c38a0ce243b49eb6ae452316fba14",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+        "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-mechanisms",
+        "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/92-reference-edit-rhythm.md",
+        "size": 4347,
+        "sha256": "ec0699c3d8fe529572cdfc5515500d5ff4d549ff6a17a1195d386a1fbc1ebd8d",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+        "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-mechanisms",
+        "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/98-edit-style-profile.md",
+        "size": 4732,
+        "sha256": "b98438ded24d5164da5d40f5691275aa37c9b1bc58a532ec97b6569ecec66c27",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+        "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-mechanisms",
+        "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/scripts/reference_edit_rhythm.py",
+        "size": 38073,
+        "sha256": "8b852ddb1e197aad2bbc171915ec987dadae9661a975b5e9de185299a0dbf54e",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+        "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-mechanisms",
+        "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/scripts/reference_story_formula.py",
+        "size": 35558,
+        "sha256": "1b68b96685d9d6f0406080951b5926eb98966b8401a1da0bc5cd85cc1b490532",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+        "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-observation",
+        "version": "ab3da1b589fa4b3e51302f3655c29a268761b081",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/wanenmao2011__design-video-analysis-skill/ab3da1b589fa/SKILL.md",
+        "size": 8827,
+        "sha256": "45eaf518a0705ef893e734a57531ee5e8d8302f238e297f3e0484bd3e625585a",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/wanenmao2011__design-video-analysis-skill.json",
+        "authority_sha256": "6d2da9f73b8a3cd5c7445db592653e1f29aa77c35c9164eab456aca1d402ecf7",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-observation",
+        "version": "ab3da1b589fa4b3e51302f3655c29a268761b081",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/wanenmao2011__design-video-analysis-skill/ab3da1b589fa/LICENSE",
+        "size": 1056,
+        "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/wanenmao2011__design-video-analysis-skill.json",
+        "authority_sha256": "6d2da9f73b8a3cd5c7445db592653e1f29aa77c35c9164eab456aca1d402ecf7",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-color",
+        "version": "fdc4f5e44f07ee907b06f98438872f5a66b14ba4",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/filipenevola__fable-video-edit/fdc4f5e44f07/reference/color-grading.md",
+        "size": 3175,
+        "sha256": "5fe331c93a9ebf6d955540b259a00c5ec2f17e96423b30c64fd59104b63898c1",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/filipenevola__fable-video-edit.json",
+        "authority_sha256": "8da14c740efa974516d647e28ae87dc33b0a0de7cb02461db31ae5bc3fd45635",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      },
+      {
+        "source_id": "reference-color",
+        "version": "fdc4f5e44f07ee907b06f98438872f5a66b14ba4",
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/filipenevola__fable-video-edit/fdc4f5e44f07/LICENSE",
+        "size": 1071,
+        "sha256": "5d398d644f41def1c0159aa0455adb55f35957e008a17bc5012f9377b0947627",
+        "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/filipenevola__fable-video-edit.json",
+        "authority_sha256": "8da14c740efa974516d647e28ae87dc33b0a0de7cb02461db31ae5bc3fd45635",
+        "use": "critical method reference only; original code and editorial writing, no source code copied",
+        "verification": "matches-existing-local-manifest",
+        "trust_limit": "local archive consistency, not upstream authenticity"
+      }
+    ],
+    "boundary": "all 9 archive bytes and 3 authority records checked; source assertions not independently authenticated; no all-library originality audit"
+  },
+  "inherited_reference_uses": [
+    {
+      "family": "music",
+      "lock": {
+        "path": "provenance/music-sources.lock.json",
+        "sha256": "1a8e84c49fac1e07ce715157ec180625fe3f4992c24fa6ac71bc4ad2b60417c5"
+      },
+      "scope": "声音结构、呼吸和参考版本失效作为方法引用",
+      "excluded": "本W13未新增外部音乐片内使用；不能继承强拍正确/音乐听感/其他包录音许可",
+      "source_ids_and_versions": [
+        {
+          "source_id": "music-cache-contract",
+          "version": "07437f60257a578745262359753bfccce337510c"
+        },
+        {
+          "source_id": "music-grid-methods",
+          "version": "c204b3c7579af6eff2226db64aac71292a58950d"
+        },
+        {
+          "source_id": "music-editorial-methods",
+          "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1"
+        }
+      ],
+      "review_boundary": "existing lock references retained; no new code/media import and no re-audit of all upstream repositories"
+    },
+    {
+      "family": "pacing",
+      "lock": {
+        "path": "provenance/pacing-sources.lock.json",
+        "sha256": "fbf59fb7655c5349bfd6692256e581cddd22d0475c7e3c138e5cb9a5ae4279f6"
+      },
+      "scope": "内容完整性、观察参数与节奏统计不能替代剪辑判断",
+      "excluded": "不把量化阈值当美学，不继承W12听检/中文语义/变速效果信用",
+      "source_ids_and_versions": [
+        {
+          "source_id": "pacing-reference",
+          "version": "9e73275b35e827b8f7af4bca900790909d86e63e"
+        },
+        {
+          "source_id": "silence-review",
+          "version": "93dd0010cf9dec2c8a76cfb35a8346fcf52ed292"
+        },
+        {
+          "source_id": "silence-detection",
+          "version": "83c5ff6006dd79918e8395ef58cfcb4600c21db5"
+        },
+        {
+          "source_id": "pacing-measurement",
+          "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96"
+        }
+      ],
+      "review_boundary": "existing lock references retained; no new code/media import and no re-audit of all upstream repositories"
+    },
+    {
+      "family": "documentary",
+      "lock": {
+        "path": "provenance/documentary-sources.lock.json",
+        "sha256": "6e80c40ad9fc7d2eee96c6efe2df4d59b6b49daa3ece4bfd3e07505910648a3f"
+      },
+      "scope": "事实/来源说法/推断及声音归属区分",
+      "excluded": "不因档案标题认证人物、比赛成绩或录制日期，不复制其他包访谈/音轨",
+      "source_ids_and_versions": [
+        {
+          "source_id": "documentary-quote-methods",
+          "version": "2b67184efd0bac8de0200af6943788ae89eae2ea"
+        },
+        {
+          "source_id": "documentary-research-methods",
+          "version": "9559c97a6b6fc90c0fbe5a20b7718716f7aee677"
+        },
+        {
+          "source_id": "documentary-sound-methods",
+          "version": "39e119bfef25957223d6c44fccab0329e936d2f6"
+        },
+        {
+          "source_id": "documentary-archive-methods",
+          "version": "897224c1f04394640ffb1111f65cfd26b4af895f"
+        }
+      ],
+      "review_boundary": "existing lock references retained; no new code/media import and no re-audit of all upstream repositories"
+    }
+  ],
+  "external_materials": [
+    {
+      "id": "reference-high-jump",
+      "source": {
+        "path": "evals/assets/commons-high-jump-2019/01.webm",
+        "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      "metadata": {
+        "path": "evals/assets/commons-high-jump-2019/01.source-api.json",
+        "bytes": 2914,
+        "sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+        "roles": [
+          "raw publisher metadata"
+        ],
+        "historical_bindings": [
+          {
+            "sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+            "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+            "matches_current": true
+          }
+        ],
+        "identity_scope": "current bytes compared with named prior binding"
+      },
+      "download": {
+        "path": "evals/assets/commons-high-jump-2019/01.download.json",
+        "sha256": "cbfef20dea1ae0d2ed5b613bea82f44e66b9766e922fe0f41ce6b1a146377725"
+      },
+      "publisher_record": {
+        "source_title": "File:Grand Prix Sudamericanos Estrella Puente - Darwin Piñeyrúa 2019 - Salto alto masculino - 01.webm",
+        "page": "https://commons.wikimedia.org/wiki/File:Grand_Prix_Sudamericanos_Estrella_Puente_-_Darwin_Pi%C3%B1eyr%C3%BAa_2019_-_Salto_alto_masculino_-_01.webm",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Grand_Prix_Sudamericanos_Estrella_Puente_-_Darwin_Pi%C3%B1eyr%C3%BAa_2019_-_Salto_alto_masculino_-_01.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "timestamp": "2024-05-21T18:07:27Z",
+        "retrieved_utc": "2026-09-21T17:08:25.893727+00:00",
+        "bytes": 5867303,
+        "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+        "upstream_sha1": "fe0ce6d5ed58eab0c3248baa402d915bf5199881",
+        "upstream_size_verified": true,
+        "upstream_sha1_verified": true,
+        "metadata_sha256": "9cc9eb4b3dffb74e34a54c53b0ce88a3d63e6a2cb18dbd232f48b4cf9d548bd1",
+        "artist_html": "<a href=\"//commons.wikimedia.org/wiki/User:NaBUru38\" title=\"User:NaBUru38\">NaBUru38</a>",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "note": "SHA256 is local acquisition baseline; upstream SHA1 and size separately compared."
+      },
+      "actual_copied_inspection_frames": [
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/0_5.png",
+          "sha256": "703910635320a25dd35b5b1ed36827c52c0f298208727b1476fa099be14085ad",
+          "requested_time_seconds": 0.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/3_5.png",
+          "sha256": "198e2b832e3c9856acfdd7d456c2375f8a33cc17db3b7e6787a5eccc3c9969d1",
+          "requested_time_seconds": 3.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/4_0.png",
+          "sha256": "da1a2e018d167dd6898ca0d1b5edbb8b70b62a6c4f1419e05d6f7005bd636b05",
+          "requested_time_seconds": 4.0,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/4_5.png",
+          "sha256": "c1b5e96b46e1a43b2081b4cdc503da6fbe0564d51fe2b8aa043a29763e52f894",
+          "requested_time_seconds": 4.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/5_0.png",
+          "sha256": "651c6ff5018ef20563863de5fd28719c0b8ab1f7d3489339d88541084b7b5e4a",
+          "requested_time_seconds": 5.0,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/5_5.png",
+          "sha256": "63c80801857c0278eaaeb1c556fbe9eba47e25a16411871cdd11191ac8db17ba",
+          "requested_time_seconds": 5.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/reference-high-jump/6_4.png",
+          "sha256": "cbf1d300d648a6577577918c6957812349aa03996a1a989b2d69e201fcb67bef",
+          "requested_time_seconds": 6.4,
+          "precision": "requested seek time, not asserted exact PTS"
+        }
+      ],
+      "observation_credit": "Prior Codex/model static observations at the listed seek requests; this D2 review reads records, not media or frames anew",
+      "use": "external mechanism reference only; source frames copied for local inspection, no high-jump video/audio/pixels/title copied into the two penalty outputs",
+      "adopt": "approach → takeoff/over-bar action → landing/bar-position change → athlete up on mat, limited to recorded anchors",
+      "omit": "no official jump success, athlete identity or score inference from title/landing",
+      "license_scope": "metadata records NaBUru38 / CC BY-SA 4.0; retained for actual source/inspection derivatives, not automatically applied to penalty-only outputs"
+    },
+    {
+      "id": "target-penalty",
+      "source": {
+        "path": "evals/assets/commons-penalty-save-2010/source.webm",
+        "sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      "metadata": {
+        "path": "evals/assets/commons-penalty-save-2010/source-api.json",
+        "bytes": 2975,
+        "sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+        "roles": [
+          "raw publisher metadata"
+        ],
+        "historical_bindings": [
+          {
+            "sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+            "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+            "matches_current": true
+          }
+        ],
+        "identity_scope": "current bytes compared with named prior binding"
+      },
+      "download": {
+        "path": "evals/assets/commons-penalty-save-2010/download.json",
+        "sha256": "cc2236a6a5ee7aaae308b9b1f10cfd771a623dbab1e00d487bfe75e9c1bf01ac"
+      },
+      "publisher_record": {
+        "title": "File:20100919-fc-blau-weiß-linz-fc-red-bull-salzburg-öfb-cup-david-wimleitner-hält-elfmeter-von-roman-wallner.webm",
+        "page": "https://commons.wikimedia.org/wiki/File:20100919-fc-blau-wei%C3%9F-linz-fc-red-bull-salzburg-%C3%B6fb-cup-david-wimleitner-h%C3%A4lt-elfmeter-von-roman-wallner.webm",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/20100919-fc-blau-wei%C3%9F-linz-fc-red-bull-salzburg-%C3%B6fb-cup-david-wimleitner-h%C3%A4lt-elfmeter-von-roman-wallner.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "source_timestamp": "2023-11-15T08:01:35Z",
+        "retrieved_utc": "2026-09-22T01:40:44.862355+00:00",
+        "bytes": 13098828,
+        "sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+        "metadata_sha256": "f553fa381ec3d340307fed907e65193e81e4160d98137195bfe019d13620206a",
+        "upstream_sha1": "18f027806cc2bd307462c10f19de4e8d2741255f",
+        "sha1_and_size_match": true,
+        "metadata": {
+          "DateTime": "2023-11-15 08:01:35",
+          "ObjectName": "20100919-fc-blau-weiß-linz-fc-red-bull-salzburg-öfb-cup-david-wimleitner-hält-elfmeter-von-roman-wallner",
+          "CommonsMetadataExtension": 1.2,
+          "Categories": "Penalty kick (association football)|CC-Zero|Linzer Stadion|WebM videos|Self-published work|Uploaded with video2commons|Roman Wallner in 2010|David Wimleitner|FC Blau-Weiß Linz vs FC Red Bull Salzburg (ÖFB-Cup, 19. September 2010)",
+          "Assessments": "",
+          "ImageDescription": "Goalkeeper David Wimleitner saves a penalty by Roman Wallner in injury time during the 2nd round game in the ÖFB Cup between FC Blau-Weiß Linz and FC Red Bull Salzburg on September 19, 2010 in front of 4,100 spectators in Linz's Auf der Gugl stadium (final score 3:1)",
+          "DateTimeOriginal": "2010-09-19",
+          "Credit": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+          "Artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:BikeMike&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:BikeMike (page does not exist)\">BikeMike</a>",
+          "LicenseShortName": "CC0",
+          "UsageTerms": "Creative Commons Zero, Public Domain Dedication",
+          "AttributionRequired": "false",
+          "LicenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "Copyrighted": "True",
+          "Restrictions": "",
+          "License": "cc0"
+        },
+        "hash_note": "SHA256 is new local baseline; upstream SHA1 and size matched independently published metadata."
+      },
+      "actual_copied_inspection_frames": [
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/17.png",
+          "sha256": "4bf619d828d0bd968ccd70ed9ddcef6a93b013710fd0d8ae3cad169bfbe2c8bf",
+          "requested_time_seconds": 17,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/18.png",
+          "sha256": "18623072e177ba71f0975c9201081e914b121d54ded2fdcb935c02547e3f9e1b",
+          "requested_time_seconds": 18,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/18_5.png",
+          "sha256": "70bc3e3cfd52e111010970043ac9679ed87146e706662a5395ac582791ebe34a",
+          "requested_time_seconds": 18.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/19.png",
+          "sha256": "a2bff9b5ba06ab1988524ccb8c448ea6efaa599a847ac05f8da508601a65d0b5",
+          "requested_time_seconds": 19,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/19_5.png",
+          "sha256": "12c8d2591ae23e34c5e8890178a163435fdcd1c0bcebd36e01953fc94568cc0c",
+          "requested_time_seconds": 19.5,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/20.png",
+          "sha256": "38628b04b4635a0f91c3c3a3d1489fd54874cd887dc6a5c792c6bce4635c5d75",
+          "requested_time_seconds": 20,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/21.png",
+          "sha256": "0360686fb3c38cc775e2e06055414bb6c1df9a90dbb4e989b334c2d73bcc1776",
+          "requested_time_seconds": 21,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/23.png",
+          "sha256": "7d8d8232c689ededbdf52cd5e3bb94a9b728e516b6761b1338409a6bccc86fec",
+          "requested_time_seconds": 23,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/target-penalty/25.png",
+          "sha256": "ef208dab6065d46ab2698d766b8bdf7c8874611ff95ae1d0c03a96e936998531",
+          "requested_time_seconds": 25,
+          "precision": "requested seek time, not asserted exact PTS"
+        }
+      ],
+      "observation_credit": "Prior Codex/model static observations at the listed seek requests; this D2 review reads records, not media or frames anew",
+      "use": "actual sole video source of the 8.5s/255-frame transfer/control; selected decoded frame indices A=[510,615), B=[615,765); 1x, silent, no captions/LUT/crop",
+      "adopt": "A action before B aftermath; control B before A with the same 255 selected frames once each",
+      "omit": "source description names/date/final score are publisher claims, not new independently confirmed event facts; no full listening or new mechanism discovery",
+      "license_scope": "raw fields CC0/AttributionRequired=false retained alongside Copyrighted=True; provenance attribution to BikeMike retained; this does not authenticate all depicted persons/third-party rights",
+      "prior_use": "already used by W07; original selected timeline already action→aftermath; not an independent unseen holdout"
+    },
+    {
+      "id": "candidate-gigaset",
+      "source": {
+        "path": "evals/assets/commons-gigaset-inspection/source.webm",
+        "sha256": "9f1df90978a735f1836cf36777075e959bef20ba63b4546fb0feec38fb731dec",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      "metadata": {
+        "path": "evals/assets/commons-gigaset-inspection/source-api.json",
+        "bytes": 9384,
+        "sha256": "2b4e3240e0dcefc6c9008a02d03fd9da06c3aa698a10c9ae076419a83815ab01",
+        "roles": [
+          "raw publisher metadata"
+        ],
+        "historical_bindings": [
+          {
+            "sha256": "2b4e3240e0dcefc6c9008a02d03fd9da06c3aa698a10c9ae076419a83815ab01",
+            "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+            "matches_current": true
+          }
+        ],
+        "identity_scope": "current bytes compared with named prior binding"
+      },
+      "download": {
+        "path": "evals/assets/commons-gigaset-inspection/download.json",
+        "sha256": "2a2b9f40ae96655bd28fea2fc11d21dc79c3388ed842753dd5b03330f870f126"
+      },
+      "publisher_record": {
+        "page": "https://commons.wikimedia.org/wiki/File:Gigaset_Smartphone_Production_IV_Quality_Inspection.webm",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Gigaset_Smartphone_Production_IV_Quality_Inspection.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "bytes": 2779506,
+        "sha1": "07e9a837316e0f05aad8dead867c8af4efb78137",
+        "sha256": "9f1df90978a735f1836cf36777075e959bef20ba63b4546fb0feec38fb731dec",
+        "upstream_sha1": "07e9a837316e0f05aad8dead867c8af4efb78137",
+        "upstream_bytes": 2779506,
+        "metadata_sha256": "2b4e3240e0dcefc6c9008a02d03fd9da06c3aa698a10c9ae076419a83815ab01",
+        "status": "UPSTREAM_SHA1_SIZE_MATCH",
+        "license_fields": {
+          "Permission": "CC-BY 4.0",
+          "LicenseShortName": "CC BY 3.0"
+        },
+        "licensing_note": "Both raw fields retained; Commons YouTubeReview dated2020-02-13 records CC-BY. Not resolved to a single license version. Attribute Sounds of Changes and named recordists, retain both notices.",
+        "historical_note": "Description says2018 production; date field2010s, category2009 inconsistent; precise recording date unknown."
+      },
+      "actual_copied_inspection_frames": [
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/candidate-gigaset/0.png",
+          "sha256": "ef69ea9f6743ccc475259d887171f4f994fdde6c8615036a9e56a1a8dd7134f4",
+          "requested_time_seconds": 0,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/candidate-gigaset/4.png",
+          "sha256": "215a98ae1dfa9a41094c39101b6cbf04769a5e2446837a6d701ec9f15aa911e2",
+          "requested_time_seconds": 4,
+          "precision": "requested seek time, not asserted exact PTS"
+        },
+        {
+          "path": "evals/parallel/w13-qualified-reference-20260923/inspection/candidate-gigaset/8.png",
+          "sha256": "46e96743134044ec0b48cab4d35dd06839a7822194787a34a739baf8835baebb",
+          "requested_time_seconds": 8,
+          "precision": "requested seek time, not asserted exact PTS"
+        }
+      ],
+      "observation_credit": "Prior Codex/model static observations at the listed seek requests; this D2 review reads records, not media or frames anew",
+      "use": "excluded candidate; 0/4/8s inspection only, no video/audio in comparison outputs",
+      "adopt": "record the absence of independent result confirmation in sampled anchors",
+      "omit": "does not rule out every possible future use; production narrative/touchtone explanation remains publisher claim, not listening result",
+      "license_scope": "Permission=CC-BY 4.0 conflicts with LicenseShortName/LicenseUrl=CC BY 3.0; no single version selected; retain Sounds of Changes, sound recordist Kathinka Engels and photographer/video recordist Inke Pickhardt; publication of copied material requires resolving this local open item",
+      "date_scope": "2018 production description, 2010s date and Videos of 2009 category do not establish precise recording date"
+    },
+    {
+      "id": "pottery-reference",
+      "source": {
+        "path": "evals/assets/commons-ceramics-makerere/source.webm",
+        "sha256": "6a4d3b667ccf7a13107dc2f8009c5e9e23dd0ec78cebd9b436402aacd31a67cb",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      "publisher_record": {
+        "role": "external_reference",
+        "identity": "Ceramics Process at Makerere University",
+        "path": "evals/assets/commons-ceramics-makerere/source.webm",
+        "sha256": "6a4d3b667ccf7a13107dc2f8009c5e9e23dd0ec78cebd9b436402aacd31a67cb",
+        "bytes": 12858616,
+        "source_page": "https://commons.wikimedia.org/wiki/File:Ceramics_Process_at_Makerere_University.webm",
+        "creator_as_recorded": "Fiktube",
+        "license_as_recorded": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "upstream_sha1": "f28e064499c02cb8aaa5ad0cb81728efe1931ed7",
+        "upstream_sha1_match": true,
+        "metadata": {
+          "path": "evals/assets/commons-ceramics-makerere/source-api.json",
+          "sha256": "bb86331e2114213b845075ca937614af401dba95ede5c1a93f6e67b2f780a430"
+        },
+        "download_record": {
+          "path": "evals/assets/commons-ceramics-makerere/download.json",
+          "sha256": "181ded8cc55e122d4fc4dc6f8e4e641ef6ef2fac37ad1f227be2e5519c4b9ca7"
+        },
+        "media": {
+          "duration_seconds": 42.303,
+          "video": {
+            "codec": "vp9",
+            "width": 1920,
+            "height": 1080,
+            "rate": "30/1"
+          },
+          "audio": {
+            "codec": "vorbis",
+            "sample_rate": 44100,
+            "channels": 2
+          }
+        },
+        "observation_times_seconds": [
+          0.5,
+          1.5,
+          3.0,
+          8.0
+        ],
+        "scope": "external reference evidence; the page metadata and file hash are verified locally, but complete viewing and listening are not claimed"
+      },
+      "use": "external reference and 4 sampled frames, not copied into target outputs",
+      "adopt": "negative boundary: existing shaped objects are not proven raw→finished merely by later time or hand contact",
+      "omit": "old state-first mechanism remains REJECTED_INSUFFICIENT_STATE_AND_PROCESS_EVIDENCE; no after-the-fact renaming to pass",
+      "license_scope": "local metadata records CC BY-SA 4.0 and creator; keep notices tied to this material and its copied derivatives, not to every W13 file",
+      "evidence": {
+        "path": "evals/parallel/w13-reference-recovery-20260923/REPORT.md",
+        "sha256": "af5e5cf9a69383d4c412087397cbc954e56ff711f0d6a7e59dad0195d1916e5b",
+        "selector": "观察与迁移矩阵 / N1–N5"
+      },
+      "reviewer_scope": "old report says 人工判断 but identified reviewer is Codex/model; no real-human/independent credit"
+    },
+    {
+      "id": "pottery-target",
+      "source": {
+        "path": "evals/assets/commons-pottery-01/source.webm",
+        "sha256": "e572629532b0ee1a7058e3198992fdbd30a3422a43913f683fd3c9cb64fe2a98",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      "publisher_record": {
+        "role": "new_target_material",
+        "identity": "Pottery 01",
+        "path": "evals/assets/commons-pottery-01/source.webm",
+        "sha256": "e572629532b0ee1a7058e3198992fdbd30a3422a43913f683fd3c9cb64fe2a98",
+        "bytes": 8291592,
+        "source_page": "https://commons.wikimedia.org/wiki/File:Pottery_01.webm",
+        "creator_as_recorded": "Ganesh Mohan T",
+        "license_as_recorded": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "upstream_sha1": "19c89247aff0f26efbbf13cdf52531c9c5c48751",
+        "upstream_sha1_match": true,
+        "metadata": {
+          "path": "evals/assets/commons-pottery-01/source-api.json",
+          "sha256": "b6bc17be8f6f21777f9c327fe06e1824bca828313bea253a80cae087be9463b6"
+        },
+        "download_record": {
+          "path": "evals/assets/commons-pottery-01/download.json",
+          "sha256": "b32d58dbde8158f13c9c4bf86da7c6caeeadc3ed7c4d147bae430d5fd6ac510b"
+        },
+        "media": {
+          "duration_seconds": 30.788,
+          "video": {
+            "codec": "vp9",
+            "width": 720,
+            "height": 1280,
+            "rate": "28433/948"
+          },
+          "audio": {
+            "codec": "opus",
+            "sample_rate": 48000,
+            "channels": 2
+          }
+        },
+        "observation_times_seconds": [
+          0.5,
+          3.0,
+          6.0,
+          27.0,
+          29.5
+        ],
+        "selected_intervals": [
+          {
+            "id": "process",
+            "source_start_seconds": 0.0,
+            "source_end_seconds": 7.0,
+            "duration_seconds": 7.0
+          },
+          {
+            "id": "later-state",
+            "source_start_seconds": 27.0,
+            "source_end_seconds": 30.0,
+            "duration_seconds": 3.0
+          }
+        ],
+        "scope": "new relative to the foundation49 W13 trial; same target source and same two ranges are used in both comparison outputs"
+      },
+      "use": "actual target footage [0,7) and [27,30) used in 2 silent 10s/300f reordered outputs; source and output sampled frames copied",
+      "adopt": "negative boundary: existing shaped objects are not proven raw→finished merely by later time or hand contact",
+      "omit": "old state-first mechanism remains REJECTED_INSUFFICIENT_STATE_AND_PROCESS_EVIDENCE; no after-the-fact renaming to pass",
+      "license_scope": "local metadata records CC BY-SA 4.0 and creator; keep notices tied to this material and its copied derivatives, not to every W13 file",
+      "evidence": {
+        "path": "evals/parallel/w13-reference-recovery-20260923/REPORT.md",
+        "sha256": "af5e5cf9a69383d4c412087397cbc954e56ff711f0d6a7e59dad0195d1916e5b",
+        "selector": "观察与迁移矩阵 / N1–N5"
+      },
+      "reviewer_scope": "old report says 人工判断 but identified reviewer is Codex/model; no real-human/independent credit"
+    }
+  ],
+  "pottery_rejection": {
+    "result": {
+      "path": "evals/parallel/w13-reference-recovery-20260923/result.json",
+      "sha256": "c8067c0544c8c94dd8fb2bcaeb3042b4e8a501a0e14e032c766b175e4a01631a"
+    },
+    "outputs": [
+      {
+        "path": "evals/parallel/w13-reference-20260922/control-process-first.mp4",
+        "sha256": "a373eb9f044c90bd29892deaeac59d75af9b261b981790f7dc7bbc39ae3fe6c3",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      {
+        "path": "evals/parallel/w13-reference-20260922/transfer-state-first.mp4",
+        "sha256": "582e0b6da6f68d61eea8b59afa2f687d54508ee3ff1d63892693b007482e46fd",
+        "verification": "prior hash reused; current presence/stat only"
+      }
+    ],
+    "history": "original source-lock had no output hashes; 2026-09-23 recovery first established them; this review reuses those bindings without rehashing media",
+    "status": "RECOVERED_CANDIDATE_REJECTED / W13 INCOMPLETE",
+    "adoption_readback": "the state/causal safeguards proposed by recovery are now present in current observation.md, transfer-contract.md and evaluation.md; no reapplication needed",
+    "scope": "13 historical model-viewed frames and technical permutation evidence; no new media/visual/human review"
+  },
+  "qualified_visual_trial": {
+    "result": {
+      "path": "evals/parallel/w13-qualified-reference-20260923/result.json",
+      "sha256": "ef746b5cb1319a6cc6dc9ad65ee9daf271b16b07e6cc9ff0f2d47fa132bd90ac"
+    },
+    "plan": {
+      "path": "evals/parallel/w13-qualified-reference-20260923/transfer-plan.json",
+      "sha256": "ca9f379a305385c75e87ec77f65e0e638cc3036559b723262bc8f30a05958432"
+    },
+    "outputs": [
+      {
+        "path": "evals/parallel/w13-qualified-reference-20260923/transfer-action-aftermath.mp4",
+        "sha256": "c039008fac4ec7a608010caf5ffc881c107e56a11ea32c62172e08c1495f2cfd",
+        "verification": "prior hash reused; current presence/stat only"
+      },
+      {
+        "path": "evals/parallel/w13-qualified-reference-20260923/control-aftermath-action.mp4",
+        "sha256": "a9ee2dc5738210cad1bc649a7c9d3a951ac896d00ef72561e337609ea5482221",
+        "verification": "prior hash reused; current presence/stat only"
+      }
+    ],
+    "exact_frame_convention": "zero-based decoded source indices A=[510,615), B=[615,765), nominal30fps; first source container video PTS0.074s; seek PNG requests are not exact frame indices",
+    "status": "VISUAL_ORDERING_TRIAL_COMPLETED_NOT_ACCEPTED / W13 INCOMPLETE",
+    "scope": "same 255 target frames once each, A→B vs B→A; 8.5s/30fps/640x480, silent; historical decode/permutation only; no shared runtime receipt or new Work",
+    "not_claimed": [
+      "full viewing/listening",
+      "independent transfer/generalization",
+      "official athletic outcome",
+      "long-take-attention/ending-weight/style or package acceptance"
+    ]
+  },
+  "internal_controlled_comparisons": {
+    "evidence": {
+      "path": "evals/runs/reference-trials-01/transfer-matrix.json",
+      "sha256": "f3c520e63441bd75d97b835c5b12056b4e1a86cd7970b5644f02d7b62bcdcef3"
+    },
+    "sources": [
+      {
+        "source": {
+          "path": "evals/assets/commons-brompton/folding.webm",
+          "sha256": "ec2e3c19de31bcc872f50c8fb646a3d5578f9e1c2c15f00d3a01e0a8ec340b08",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        "publisher_record": {
+          "file": "folding.webm",
+          "sha256": "ec2e3c19de31bcc872f50c8fb646a3d5578f9e1c2c15f00d3a01e0a8ec340b08",
+          "bytes": 7573184,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Folding_a_Brompton.webm",
+          "page": "https://commons.wikimedia.org/wiki/File:Folding_a_Brompton.webm",
+          "metadata": "metadata.json",
+          "metadata_sha256": "339cc862afb5cfb5b89dbab46018ee3db2d6057a14c2f6c1add9864017c5f76d",
+          "author": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Bossphotography&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Bossphotography (page does not exist)\">Bossphotography</a>",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0",
+          "scope": "first acquisition baseline, not source authenticity proof"
+        },
+        "use": "Agent-authored Brompton result-first reference; normalized [0,30), selected [24,30) then [2,24), 28s; original and monochrome",
+        "not_claimed": "product weight/speed/durability or commercial endorsement",
+        "license_scope": "local publisher metadata CC BY 4.0; source, derivative and excerpt/reorder/caption/color changes remain attributable; no endorsement or font sublicense"
+      },
+      {
+        "source": {
+          "path": "evals/assets/commons-kawaida/front.webm",
+          "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        "publisher_record": {
+          "file": "front.webm",
+          "bytes": 3520704,
+          "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Front_view_video_of_Kawaida_Waterfall%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "page": "https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm",
+          "metadata": "front.webm.metadata.json",
+          "metadata_sha256": "72214741624a64f71fe5b22b9ec8972e519a7bd624084db9b5464ce935c18352",
+          "license": "CC BY 4.0",
+          "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+          "date": "2026-04-04",
+          "scope": "first acquisition baseline"
+        },
+        "use": "Kawaida target view with original segment sound; front[3.2,11.2), side[0,4), behind[0,4); reorder and optional 18% retained RGB difference",
+        "not_claimed": "recording sequence, physical travel route, contemporaneous cameras or listening quality",
+        "license_scope": "local publisher metadata CC BY 4.0; source, derivative and excerpt/reorder/caption/color changes remain attributable; no endorsement or font sublicense"
+      },
+      {
+        "source": {
+          "path": "evals/assets/commons-kawaida/side.webm",
+          "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        "publisher_record": {
+          "file": "side.webm",
+          "bytes": 2424824,
+          "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Side_view_video_of_Kawaida_Waterfall_cascading%2C_Cianda%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "page": "https://commons.wikimedia.org/wiki/File:Side_view_video_of_Kawaida_Waterfall_cascading,_Cianda,_Kiambu_County.webm",
+          "metadata": "side.webm.metadata.json",
+          "metadata_sha256": "3626185cbffacc584ab3ded0e00e5b422a99c1122d59ecc10a51da2d797a8241",
+          "license": "CC BY 4.0",
+          "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+          "date": "2026-04-04",
+          "scope": "first acquisition baseline"
+        },
+        "use": "Kawaida target view with original segment sound; front[3.2,11.2), side[0,4), behind[0,4); reorder and optional 18% retained RGB difference",
+        "not_claimed": "recording sequence, physical travel route, contemporaneous cameras or listening quality",
+        "license_scope": "local publisher metadata CC BY 4.0; source, derivative and excerpt/reorder/caption/color changes remain attributable; no endorsement or font sublicense"
+      },
+      {
+        "source": {
+          "path": "evals/assets/commons-kawaida/behind.webm",
+          "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        "publisher_record": {
+          "file": "behind.webm",
+          "bytes": 1842135,
+          "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Video_from_behind_Kawaida_Waterfall_through_hanging_roots%2C_Kiambu_County.webm?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "page": "https://commons.wikimedia.org/wiki/File:Video_from_behind_Kawaida_Waterfall_through_hanging_roots,_Kiambu_County.webm",
+          "metadata": "behind.webm.metadata.json",
+          "metadata_sha256": "4daf159d1fa438901a500da453960cbe325c26a27b19838f8c7786694253179b",
+          "license": "CC BY 4.0",
+          "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Lebu_Ayiga\" title=\"User:Lebu Ayiga\">Lebu Ayiga</a>",
+          "date": "2026-04-04",
+          "scope": "first acquisition baseline"
+        },
+        "use": "Kawaida target view with original segment sound; front[3.2,11.2), side[0,4), behind[0,4); reorder and optional 18% retained RGB difference",
+        "not_claimed": "recording sequence, physical travel route, contemporaneous cameras or listening quality",
+        "license_scope": "local publisher metadata CC BY 4.0; source, derivative and excerpt/reorder/caption/color changes remain attributable; no endorsement or font sublicense"
+      }
+    ],
+    "outputs": [
+      {
+        "work": "reference-product",
+        "stage": "color-original",
+        "version": "d04fe30f4e81c0a79d396a1bf77be7c1bc97dad7156482cb99b970e63d4af5a2",
+        "sequence": 1,
+        "document": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/color-original-document.json",
+          "sha256": "d343f75ec78a108053fcfaf3c9aaa74553766babbf22a32373ddd0cb813dd108"
+        },
+        "video": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/color-original-render/captions/captioned.mp4",
+          "sha256": "2f4486146f6e10c38118c32c05e43e6fd1381ee50fe614dd34d6a6a0a37a82a9"
+        },
+        "duration": 28.0,
+        "frames": 700,
+        "reason": "先推行状态，再回到折叠过程；内部受控参考，不作为外部风格泛化证据。",
+        "reference": null,
+        "status": "DEGRADED",
+        "technical_status": "PASSED",
+        "full_playback": "NOT_RUN",
+        "full_listening": "NOT_RUN",
+        "independent_effect": "NOT_RUN"
+      },
+      {
+        "work": "reference-product",
+        "stage": "monochrome",
+        "version": "d58490901199b8a94ca2231168bd6d6466239137f21ff28acdd34fbdf3fb6f18",
+        "sequence": 2,
+        "document": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/monochrome-document.json",
+          "sha256": "91f34baea8c04d108eada0411e4bda2be2248a3b4e4565c15474c17f2276846b"
+        },
+        "video": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/monochrome-render/captions/captioned.mp4",
+          "sha256": "038dc943f0b6bacd1588d2c9c596a7bcf367870c6fccfdb476771ffd6fc318ef"
+        },
+        "duration": 28.0,
+        "frames": 700,
+        "reason": "只将源画面转为黑白；片序、切点、字幕、声音安排保持。",
+        "reference": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/color-original-render/captions/captioned.mp4",
+          "sha256": "2f4486146f6e10c38118c32c05e43e6fd1381ee50fe614dd34d6a6a0a37a82a9"
+        },
+        "status": "DEGRADED",
+        "technical_status": "PASSED",
+        "full_playback": "NOT_RUN",
+        "full_listening": "NOT_RUN",
+        "independent_effect": "NOT_RUN"
+      },
+      {
+        "work": "target-nature",
+        "stage": "baseline",
+        "version": "1d3185df46d4910d402fa930969470891a6c8ccc07b7d74a8261c863e2c0db15",
+        "sequence": 1,
+        "document": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/baseline-document.json",
+          "sha256": "001653a09ae5625d5b70a60ace5ea6ba8697e93153a5fc62f1801e9da9a81f5b"
+        },
+        "video": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/baseline-render/captions/captioned.mp4",
+          "sha256": "255fac2050a2c9b2219a3439ef6777f30843fbc5683b5a9e663e8e46cd7c54d3"
+        },
+        "duration": 16.0,
+        "frames": 400,
+        "reason": "内侧→侧面→正面开阔视域，16秒；保留各段现场声。",
+        "reference": null,
+        "status": "DEGRADED",
+        "technical_status": "PASSED",
+        "full_playback": "NOT_RUN",
+        "full_listening": "NOT_RUN",
+        "independent_effect": "NOT_RUN"
+      },
+      {
+        "work": "target-nature",
+        "stage": "structure",
+        "version": "2f62a7e85e0383841faeb59e37202544bb5d4e83154fb76513ba3796ac03959c",
+        "sequence": 2,
+        "document": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/structure-document.json",
+          "sha256": "702ba8168d5fa60affe503223ee95fc17bc0ec4868b84ea3ba87fd6097d2a4cd"
+        },
+        "video": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/structure-render/captions/captioned.mp4",
+          "sha256": "46739bfa23b98b7a5e199779f308ca9961f41c468e45edea6b02a89bef744d8f"
+        },
+        "duration": 16.0,
+        "frames": 400,
+        "reason": "正面全貌→侧面→内侧；源范围和总时长相同，标题文字与主风格不变。",
+        "reference": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/color-original-render/captions/captioned.mp4",
+          "sha256": "2f4486146f6e10c38118c32c05e43e6fd1381ee50fe614dd34d6a6a0a37a82a9"
+        },
+        "status": "DEGRADED",
+        "technical_status": "PASSED",
+        "full_playback": "NOT_RUN",
+        "full_listening": "NOT_RUN",
+        "independent_effect": "NOT_RUN"
+      },
+      {
+        "work": "target-nature",
+        "stage": "palette",
+        "version": "0f7b5a2cd94616dc97c184792b33ecec152810232196caddf926b6dffa5a0fb1",
+        "sequence": 3,
+        "document": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/palette-document.json",
+          "sha256": "fa323c26f3d2ee5bb509ff67dce522363f20fba569fbd597045bcaad203a2a19"
+        },
+        "video": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/target-nature/palette-render/captions/captioned.mp4",
+          "sha256": "8aee8abc306f87bf26ac89ef0226d00e5d178c1c6de428d250d0c0266c94c46e"
+        },
+        "duration": 16.0,
+        "frames": 400,
+        "reason": "结构版上只改源色彩，保留18%原始RGB色差；字幕在调色后烧录。",
+        "reference": {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/reference-trials-01/reference-product/monochrome-render/captions/captioned.mp4",
+          "sha256": "038dc943f0b6bacd1588d2c9c596a7bcf367870c6fccfdb476771ffd6fc318ef"
+        },
+        "status": "DEGRADED",
+        "technical_status": "PASSED",
+        "full_playback": "NOT_RUN",
+        "full_listening": "NOT_RUN",
+        "independent_effect": "NOT_RUN"
+      }
+    ],
+    "current_immutable_work_heads": [
+      {
+        "database": {
+          "path": "evals/runs/reference-trials-01/reference-product/work.sqlite",
+          "sha256": "fbdf81847e9cd1e85f6ec475eb13d84bb4924c820e8999b74972e34eed63a871"
+        },
+        "metadata": {
+          "work_id": "w13-controlled-reference",
+          "head": "2"
+        },
+        "history": [
+          {
+            "sequence": 1,
+            "parent": 0,
+            "version": "d04fe30f4e81c0a79d396a1bf77be7c1bc97dad7156482cb99b970e63d4af5a2",
+            "digest": "b760298aa2e3b53c5ec508937cf8b139fb00e5897d3f4bda5759594ab003d6ec",
+            "action": "init",
+            "author": "agent"
+          },
+          {
+            "sequence": 2,
+            "parent": 1,
+            "version": "d58490901199b8a94ca2231168bd6d6466239137f21ff28acdd34fbdf3fb6f18",
+            "digest": "836e2ca3c36cfdeee01741f07956acac32940a29ff3df9d078b40c1f96af362b",
+            "action": "commit",
+            "author": "agent"
+          }
+        ],
+        "matches_old_head": true,
+        "review_scope": "readonly identity/head only; no work/runtime/restore execution; all authors agent"
+      },
+      {
+        "database": {
+          "path": "evals/runs/reference-trials-01/target-nature/work.sqlite",
+          "sha256": "ebf76f1618ca82b5ca3162a97c96f348c3523a14f120edddbf32bc2288253c25"
+        },
+        "metadata": {
+          "work_id": "w13-nature-target",
+          "head": "3"
+        },
+        "history": [
+          {
+            "sequence": 1,
+            "parent": 0,
+            "version": "1d3185df46d4910d402fa930969470891a6c8ccc07b7d74a8261c863e2c0db15",
+            "digest": "07575a93128fba48000a31153fa67be28e330c0cab3ad19b71c95d55084a9918",
+            "action": "init",
+            "author": "agent"
+          },
+          {
+            "sequence": 2,
+            "parent": 1,
+            "version": "2f62a7e85e0383841faeb59e37202544bb5d4e83154fb76513ba3796ac03959c",
+            "digest": "f74e4f57016c477b9002fa2374e5142b005f6a105416993a31b0e36a2d60d805",
+            "action": "commit",
+            "author": "agent"
+          },
+          {
+            "sequence": 3,
+            "parent": 2,
+            "version": "0f7b5a2cd94616dc97c184792b33ecec152810232196caddf926b6dffa5a0fb1",
+            "digest": "528ba1c0456de7a72659420cf51f886a5652af201188f7a2cfe6d005edf7df9b",
+            "action": "commit",
+            "author": "agent"
+          }
+        ],
+        "matches_old_head": true,
+        "review_scope": "readonly identity/head only; no work/runtime/restore execution; all authors agent"
+      }
+    ],
+    "actual_lut_copies": [
+      {
+        "path": "evals/runs/reference-trials-01/graded/bike-monochrome/selected.cube",
+        "sha256": "e6f85571a959f78501b596382da7ab0267c1ca8580d13778d517ec51b3f204d4"
+      },
+      {
+        "path": "evals/runs/reference-trials-01/graded/front-subdued/selected.cube",
+        "sha256": "43912ed6a3278bb16c1fa11064295610162b2a2fc520c32c0388303b69de3194"
+      },
+      {
+        "path": "evals/runs/reference-trials-01/graded/side-subdued/selected.cube",
+        "sha256": "43912ed6a3278bb16c1fa11064295610162b2a2fc520c32c0388303b69de3194"
+      },
+      {
+        "path": "evals/runs/reference-trials-01/graded/behind-subdued/selected.cube",
+        "sha256": "43912ed6a3278bb16c1fa11064295610162b2a2fc520c32c0388303b69de3194"
+      }
+    ],
+    "font": {
+      "source_path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+      "source_sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "copies": [
+        {
+          "path": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        {
+          "path": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        {
+          "path": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        {
+          "path": "evals/runs/reference-trials-01/target-nature/structure-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "verification": "prior hash reused; current presence/stat only"
+        },
+        {
+          "path": "evals/runs/reference-trials-01/target-nature/palette-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "verification": "prior hash reused; current presence/stat only"
+        }
+      ],
+      "license_scope": "no font redistribution grant found in these local W13 receipts/manifests. Do not package specified.ttf under media CC BY or library license. Rendered glyph use and font-file redistribution are separate unresolved/use-specific questions; no license was inferred from the hash or OS installation."
+    },
+    "audio_scope": "source segments retained; old coded-payload equality across palette-only comparisons, not strict SOURCE/sample-freeze/listening proof; no new external music",
+    "color_scope": "25fps explicit normalized working copies; caller-declared BT.709 SDR; local 2x2x2 cube neutral/18% RGB chroma difference; no automatic matching, skin/HDR/Log generalization",
+    "status": "all 5 historical outputs DEGRADED, full playback/listening/independent effect NOT_RUN",
+    "reference_scope": "internal Agent-authored references, external source footage underneath; not external unseen style success or actual human edits"
+  },
+  "member_bindings": [
+    {
+      "path": "evals/assets/commons-high-jump-2019/01.webm",
+      "sha256": "c0e7ea70b3976882e561d30bdf88435df34e34598ffbf616ae123ff6a816b776",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+      "current_exists": true,
+      "current_bytes": 5867303,
+      "prior_bytes": 5867303,
+      "size_match": true,
+      "role": "external reference/target/excluded material"
+    },
+    {
+      "path": "evals/assets/commons-penalty-save-2010/source.webm",
+      "sha256": "9a139c9f726bc6ad301de83825acbc21e79a7c4cac6f27d82c52d86d33628d07",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+      "current_exists": true,
+      "current_bytes": 13098828,
+      "prior_bytes": 13098828,
+      "size_match": true,
+      "role": "external reference/target/excluded material"
+    },
+    {
+      "path": "evals/assets/commons-gigaset-inspection/source.webm",
+      "sha256": "9f1df90978a735f1836cf36777075e959bef20ba63b4546fb0feec38fb731dec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-qualified-reference-20260923/candidate-source-lock.json",
+      "current_exists": true,
+      "current_bytes": 2779506,
+      "prior_bytes": 2779506,
+      "size_match": true,
+      "role": "external reference/target/excluded material"
+    },
+    {
+      "path": "evals/assets/commons-ceramics-makerere/source.webm",
+      "sha256": "6a4d3b667ccf7a13107dc2f8009c5e9e23dd0ec78cebd9b436402aacd31a67cb",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-reference-20260922/source-lock.json",
+      "current_exists": true,
+      "current_bytes": 12858616,
+      "prior_bytes": 12858616,
+      "size_match": true,
+      "role": "rejected historical mechanism material"
+    },
+    {
+      "path": "evals/assets/commons-pottery-01/source.webm",
+      "sha256": "e572629532b0ee1a7058e3198992fdbd30a3422a43913f683fd3c9cb64fe2a98",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-reference-20260922/source-lock.json",
+      "current_exists": true,
+      "current_bytes": 8291592,
+      "prior_bytes": 8291592,
+      "size_match": true,
+      "role": "rejected historical mechanism material"
+    },
+    {
+      "path": "evals/parallel/w13-reference-20260922/control-process-first.mp4",
+      "sha256": "a373eb9f044c90bd29892deaeac59d75af9b261b981790f7dc7bbc39ae3fe6c3",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-reference-recovery-20260923/technical-readback.json",
+      "current_exists": true,
+      "current_bytes": 9699189,
+      "prior_bytes": 9699189,
+      "size_match": true,
+      "role": "pottery output; FIRST hash established at 2026-09-23 recovery, not original run lock"
+    },
+    {
+      "path": "evals/parallel/w13-reference-20260922/transfer-state-first.mp4",
+      "sha256": "582e0b6da6f68d61eea8b59afa2f687d54508ee3ff1d63892693b007482e46fd",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-reference-recovery-20260923/technical-readback.json",
+      "current_exists": true,
+      "current_bytes": 9686447,
+      "prior_bytes": 9686447,
+      "size_match": true,
+      "role": "pottery output; FIRST hash established at 2026-09-23 recovery, not original run lock"
+    },
+    {
+      "path": "evals/parallel/w13-qualified-reference-20260923/transfer-action-aftermath.mp4",
+      "sha256": "c039008fac4ec7a608010caf5ffc881c107e56a11ea32c62172e08c1495f2cfd",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-qualified-reference-20260923/render-readback.json",
+      "current_exists": true,
+      "current_bytes": 3126106,
+      "prior_bytes": 3126106,
+      "size_match": true,
+      "role": "silent penalty comparison output"
+    },
+    {
+      "path": "evals/parallel/w13-qualified-reference-20260923/control-aftermath-action.mp4",
+      "sha256": "a9ee2dc5738210cad1bc649a7c9d3a951ac896d00ef72561e337609ea5482221",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/parallel/w13-qualified-reference-20260923/render-readback.json",
+      "current_exists": true,
+      "current_bytes": 3087381,
+      "prior_bytes": 3087381,
+      "size_match": true,
+      "role": "silent penalty comparison output"
+    },
+    {
+      "path": "evals/assets/commons-brompton/folding.webm",
+      "sha256": "ec2e3c19de31bcc872f50c8fb646a3d5578f9e1c2c15f00d3a01e0a8ec340b08",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/assets/commons-brompton/download-manifest.json",
+      "current_exists": true,
+      "current_bytes": 7573184,
+      "prior_bytes": 7573184,
+      "size_match": true,
+      "role": "internal controlled-reference/target source media"
+    },
+    {
+      "path": "evals/assets/commons-kawaida/front.webm",
+      "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/assets/commons-kawaida/download-manifest.json",
+      "current_exists": true,
+      "current_bytes": 3520704,
+      "prior_bytes": 3520704,
+      "size_match": true,
+      "role": "internal controlled-reference/target source media"
+    },
+    {
+      "path": "evals/assets/commons-kawaida/side.webm",
+      "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/assets/commons-kawaida/download-manifest.json",
+      "current_exists": true,
+      "current_bytes": 2424824,
+      "prior_bytes": 2424824,
+      "size_match": true,
+      "role": "internal controlled-reference/target source media"
+    },
+    {
+      "path": "evals/assets/commons-kawaida/behind.webm",
+      "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/assets/commons-kawaida/download-manifest.json",
+      "current_exists": true,
+      "current_bytes": 1842135,
+      "prior_bytes": 1842135,
+      "size_match": true,
+      "role": "internal controlled-reference/target source media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/color-original-render/timeline/preview.mp4",
+      "sha256": "db57d3d06c46d6554b2950b31e4a18150c3f8f7d0bf2e4aa43d892a9838cd227",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4954790,
+      "prior_bytes": 4954790,
+      "size_match": true,
+      "role": "pre-caption intermediate video; same material provenance"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/captioned.mp4",
+      "sha256": "2f4486146f6e10c38118c32c05e43e6fd1381ee50fe614dd34d6a6a0a37a82a9",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4736170,
+      "prior_bytes": 4736170,
+      "size_match": true,
+      "role": "actual output video"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "actual copied system font"
+    },
+    {
+      "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/color-original-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "system font source; local install is not redistribution permission"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/monochrome-render/timeline/preview.mp4",
+      "sha256": "1d89f9c9a6aac5bcca674988b612b008e4af727fa5ce5f2b816cf7aa1ff698e5",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4560202,
+      "prior_bytes": 4560202,
+      "size_match": true,
+      "role": "pre-caption intermediate video; same material provenance"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/captioned.mp4",
+      "sha256": "038dc943f0b6bacd1588d2c9c596a7bcf367870c6fccfdb476771ffd6fc318ef",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4380400,
+      "prior_bytes": 4380400,
+      "size_match": true,
+      "role": "actual output video"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/reference-product/monochrome-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "actual copied system font"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/baseline-render/timeline/preview.mp4",
+      "sha256": "472369e08603ef279ee22f3acca02e050156d30c99a1f37f3fb31fce99040672",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7654709,
+      "prior_bytes": 7654709,
+      "size_match": true,
+      "role": "pre-caption intermediate video; same material provenance"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/captioned.mp4",
+      "sha256": "255fac2050a2c9b2219a3439ef6777f30843fbc5683b5a9e663e8e46cd7c54d3",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7357806,
+      "prior_bytes": 7357806,
+      "size_match": true,
+      "role": "actual output video"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/baseline-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "actual copied system font"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/structure-render/timeline/preview.mp4",
+      "sha256": "5662e4181e48f48cdc8f5ac75e0a13b4d67fb46130b7197a20a782d0439a5308",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/structure-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7649156,
+      "prior_bytes": 7649156,
+      "size_match": true,
+      "role": "pre-caption intermediate video; same material provenance"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/structure-render/captions/captioned.mp4",
+      "sha256": "46739bfa23b98b7a5e199779f308ca9961f41c468e45edea6b02a89bef744d8f",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/structure-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7378775,
+      "prior_bytes": 7378775,
+      "size_match": true,
+      "role": "actual output video"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/structure-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/structure-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "actual copied system font"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/palette-render/timeline/preview.mp4",
+      "sha256": "661a1dbd7d5484ba54bd9dbb76b2fb8bbb56a4313ae310383648cc1f4701772a",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/palette-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7210904,
+      "prior_bytes": 7210904,
+      "size_match": true,
+      "role": "pre-caption intermediate video; same material provenance"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/palette-render/captions/captioned.mp4",
+      "sha256": "8aee8abc306f87bf26ac89ef0226d00e5d178c1c6de428d250d0c0266c94c46e",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/palette-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 7100400,
+      "prior_bytes": 7100400,
+      "size_match": true,
+      "role": "actual output video"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/target-nature/palette-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/target-nature/palette-render/captions/receipt.json",
+      "current_exists": true,
+      "current_bytes": 23278008,
+      "prior_bytes": 23278008,
+      "size_match": true,
+      "role": "actual copied system font"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/normalized/bike/preview.mp4",
+      "sha256": "3eee1352045b3bf39caa52a7d338afa494b016303f61a1f2b75b9d2bc90a7cc1",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/normalized/bike/receipt.json",
+      "current_exists": true,
+      "current_bytes": 5386647,
+      "prior_bytes": 5386647,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/normalized/front/preview.mp4",
+      "sha256": "b1894f70c570c68d819c25d386a4f39f3b7e9a7c1e11bcc6740c49c3b6cf7207",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/normalized/front/receipt.json",
+      "current_exists": true,
+      "current_bytes": 6060648,
+      "prior_bytes": 6060648,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/normalized/side/preview.mp4",
+      "sha256": "0a24a4e89bb99ee61aeb66f31029f84c507aec253fb6ccf9a7a9048478080ed2",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/normalized/side/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4294198,
+      "prior_bytes": 4294198,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/normalized/behind/preview.mp4",
+      "sha256": "e1f16ed10f6cce152b2f8a94aa3e4c388a183ab93d93e4b8e038b965e664ed59",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/normalized/behind/receipt.json",
+      "current_exists": true,
+      "current_bytes": 2876545,
+      "prior_bytes": 2876545,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/graded/bike-monochrome/graded.mp4",
+      "sha256": "4c8631a701d14aaf95d96cad6da8e6a917c2376a100d0ebfbb00c90c777b840b",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/graded/bike-monochrome/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4903859,
+      "prior_bytes": 4903859,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/graded/front-subdued/graded.mp4",
+      "sha256": "01a6f8c15b58027d111e4faaffe0f6c43ea7835946610bdea5acca2bd4101200",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/graded/front-subdued/receipt.json",
+      "current_exists": true,
+      "current_bytes": 5788385,
+      "prior_bytes": 5788385,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/graded/side-subdued/graded.mp4",
+      "sha256": "8eeb3fe3dee8d54100a495af7d2aabb9fa3c1433b16ad3b4e6bcca9481e33409",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/graded/side-subdued/receipt.json",
+      "current_exists": true,
+      "current_bytes": 4009777,
+      "prior_bytes": 4009777,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    },
+    {
+      "path": "evals/runs/reference-trials-01/graded/behind-subdued/graded.mp4",
+      "sha256": "865524bf7838871f33c3d5fef336f04c0e1d032ff8c93488313739f9da345542",
+      "sha256_scope": "REUSED_PRIOR_BINDING_NOT_REHASHED_THIS_REVIEW",
+      "binding_source": "evals/runs/reference-trials-01/graded/behind-subdued/receipt.json",
+      "current_exists": true,
+      "current_bytes": 2615074,
+      "prior_bytes": 2615074,
+      "size_match": true,
+      "role": "normalization/color derivative media"
+    }
+  ],
+  "notice_target": "provenance/reference-material-NOTICE-20260926.md",
+  "remaining_conditions": [
+    "Gigaset CC BY3.0 vs4.0/version and exact recording date unresolved; affects reuse/publication claims for that material, not local exclusion record",
+    "System-font copying has no observed redistribution grant; keep copies out of distributable bundle absent separate permitted arrangement",
+    "No independent publisher authenticity/depicted-person rights/endorsement conclusion from metadata or hash",
+    "Full viewing/listening, independent compatible new target, creative effect and real-user same-Work chain remain separate D3–D7/G5 work"
+  ],
+  "no_new_credit": [
+    "no project/runtime/media test executed",
+    "no new frame observation",
+    "no human or holdout review",
+    "no distribution approval",
+    "no D3/D4/D5/D6/D7 or gate upgrade"
+  ],
+  "current_engineering_context": "R01 stream-v5 already adopted into local development by m-final-35; no obsolete pending-integration claim. Existing W13 1x historical clips do not thereby acquire current runtime/retime/strict/listening credit."
+}

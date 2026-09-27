@@ -1,0 +1,57 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "inhai-video-highlight",
+      "version": "35a81e11c02c90289cbca3ca2e9f641e4c050b9d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/SKILL.md",
+      "sha256": "663d508289ac9e986dec76c361e11f82bf1590854355a5017e5c8c50fcf284e1",
+      "size": 7327,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+      "authority_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+      "use": "method reference; original implementation, no copied code",
+      "license": "MIT",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "inhai-video-highlight",
+      "version": "35a81e11c02c90289cbca3ca2e9f641e4c050b9d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/scripts/video_highlight.py",
+      "sha256": "7d037d1d7ba451af7c6d49acb3d8d918ea910ac00450e591d165f065d8e0c75e",
+      "size": 35439,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+      "authority_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+      "use": "method reference; original implementation, no copied code",
+      "license": "MIT",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "inhai-video-highlight",
+      "version": "35a81e11c02c90289cbca3ca2e9f641e4c050b9d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/references/analysis-schema.md",
+      "sha256": "04f8f55d002b886b872e8866d4f9f3bf78859a062c3594c9a765f798d5223c06",
+      "size": 3810,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+      "authority_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+      "use": "method reference; original implementation, no copied code",
+      "license": "MIT",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "inhai-video-highlight",
+      "version": "35a81e11c02c90289cbca3ca2e9f641e4c050b9d",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/inhai-wiki__video-highlight-skill/35a81e11c02c/LICENSE",
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "size": 1056,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/inhai-wiki__video-highlight-skill.json",
+      "authority_sha256": "faa840d3b30849bb355227e60bcf34c8c2c1b1d5b2dad904d40979fedf2588e4",
+      "use": "method reference; original implementation, no copied code",
+      "license": "MIT",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

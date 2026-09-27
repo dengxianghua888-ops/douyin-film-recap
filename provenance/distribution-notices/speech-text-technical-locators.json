@@ -1,0 +1,126 @@
+{
+  "schema": "text-rights-technical-locator/1",
+  "status": "PROPOSED_FOR_FUTURE_DISTRIBUTION",
+  "limits": [
+    "Original evidence remains local and immutable. No new media review was performed.",
+    "Paths and hashes are provenance locators, not bundled media or source text."
+  ],
+  "records": [
+    {
+      "original": {
+        "path": "evals/runs/prepared-statement-work-01/inspection-02/semantic-review.json",
+        "sha256": "5a948689fa9c8616beb7cdb7c2341f9b8fa90b45d48a7f0b3b62a33fb0527e8c",
+        "bytes": 3285
+      },
+      "original_status": "EXTERNAL_TEXT_SELECTION_REVIEW_ONLY",
+      "omitted_fields": "$.variants[*].decision/protected/actor_state_pairs",
+      "reason": "External reference-derived prose and short quotations; retain original locally, omit this evidence member from future text distribution.",
+      "new_status": "TECHNICAL_LOCATOR_ONLY_NOT_REPLACEMENT_EVIDENCE",
+      "reviewed_external_paragraphs": [
+        "p00",
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p10",
+        "p11",
+        "p12",
+        "p13"
+      ],
+      "variants": [
+        {
+          "id": "complete-record",
+          "paragraphs": [
+            "p00",
+            "p01",
+            "p02",
+            "p03",
+            "p04",
+            "p05",
+            "p06",
+            "p07",
+            "p08",
+            "p09",
+            "p10",
+            "p11",
+            "p12",
+            "p13"
+          ]
+        },
+        {
+          "id": "issue-context",
+          "paragraphs": [
+            "p08",
+            "p09",
+            "p10"
+          ]
+        },
+        {
+          "id": "actor-action",
+          "paragraphs": [
+            "p09",
+            "p10"
+          ]
+        }
+      ],
+      "audio_truth": "NOT_VERIFIED",
+      "boundary_naturalness": "NOT_VERIFIED"
+    },
+    {
+      "original": {
+        "path": "evals/runs/zh-explanation-transfer-01/result-current.json",
+        "sha256": "9a72f439b68e8fbda8edf66ef7441cafd6bf40b315428dc4b991e402905cd5bb",
+        "bytes": 17113
+      },
+      "original_status": "CHINESE_OUTLINE_TRANSFER_DEGRADED",
+      "omitted_fields": "$.cards[*].summary",
+      "reason": "Contains actual actor/action summary-card text, not only receipts. Omit historical member; preserve result/video identity in technical locator.",
+      "new_status": "TECHNICAL_LOCATOR_ONLY_NOT_REPLACEMENT_EVIDENCE",
+      "video": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/layout-revision/render/visual/composited.mp4",
+        "sha256": "420fc1ae6e8675bc33f5982c7826d39da2164c7e5da79a52097d3c4093c55e6d"
+      },
+      "document": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/zh-explanation-transfer-01/layout-revision/document.json",
+        "sha256": "f30b097cc9596de94627f59ec5d425e81974effb7d460a847c4eed1ec714fa27"
+      },
+      "version": "6c81af321b7b558b6b4f53eb4e4f00c218b191caf53cb20366725d7d53dbdd15",
+      "card_count": 7
+    },
+    {
+      "original": {
+        "path": "evals/runs/coscup-case-source-01/visual-review.json",
+        "sha256": "ec6a5308dac0ccdf686e5d25a077df86f1be19a893c98c4311ae962208904904",
+        "bytes": 2235
+      },
+      "original_status": "SAMPLED_SOURCE_SLIDE_MATCH",
+      "omitted_fields": "$.observations[*].content",
+      "reason": "Contains translated slide sequence and examples. Omit historical member; technical locator keeps observed times and original identity without descriptive prose.",
+      "new_status": "TECHNICAL_LOCATOR_ONLY_NOT_REPLACEMENT_EVIDENCE",
+      "reviewed_times": [
+        519,
+        535,
+        550,
+        570,
+        589,
+        600,
+        611,
+        620,
+        634,
+        645,
+        660,
+        680,
+        700,
+        705
+      ],
+      "full_size_times": [
+        600
+      ]
+    }
+  ]
+}

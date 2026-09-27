@@ -1,0 +1,2735 @@
+{
+  "schema": "claim-source-use-map/1",
+  "task_id": "P-W10-D2",
+  "scope": "Static local source-use reconciliation proposal; M alone adopts. No new tasks or formal pass claims.",
+  "reviewer": "iteration_workplan / Stack Raven; independent source-use technical review, not human/content/holdout reviewer",
+  "status_snapshot": {
+    "path": "evals/evidence/portfolio-ledger-v0.30.json",
+    "sha256": "7d7089f85196dfa90d45a1ce6f48e9b2f55bd281fca36ed7910882856f1037fd",
+    "cell": {
+      "status": "reviewed",
+      "evidence": {
+        "path": "evals/parallel/w10-documentary-20260922/source-lock.json",
+        "sha256": "c20bd61fb4d91050321402548be555fbff57cc0a755e58e58283a6f169513e4f"
+      },
+      "missing": "W10: A source record exists, but its adopted/excluded claims and all later method/media increments have not been reconciled in this audit.",
+      "next_action": "W10: Reconcile the located source-fusion map, adopted methods, exclusions and later material sources; review claimed uses.",
+      "recovery_condition": "Each claimed adoption and exclusion has a current attributable source binding and a reviewed use boundary.",
+      "audit_inventory": {
+        "path": "evals/evidence/r0-portfolio-audit-20260923/inventory.json",
+        "package": "W10"
+      }
+    }
+  },
+  "historical_locks": {
+    "method_lock": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/documentary-sources.lock.json",
+      "sha256": "6e80c40ad9fc7d2eee96c6efe2df4d59b6b49daa3ece4bfd3e07505910648a3f",
+      "bytes": 7039
+    },
+    "trial_six_source_lock": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/source-lock.json",
+      "sha256": "c20bd61fb4d91050321402548be555fbff57cc0a755e58e58283a6f169513e4f",
+      "bytes": 4493
+    },
+    "claim_ledger": {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+      "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+      "bytes": 6230
+    },
+    "preserved_unmodified": true
+  },
+  "method_adoptions": [
+    {
+      "source_id": "documentary-quote-methods",
+      "question": "如何保持原话身份和上下文，同时允许可追溯版本修订？",
+      "locators": {
+        "SKILL.md": "28–41, 158–193",
+        "SKILL-edit.md": "63–89"
+      },
+      "mechanism": "原话段落身份、单源连续片段、纸上剪辑、版本依赖。",
+      "adopted_locations": [
+        "workflows/raven-documentary-story/references/quotes-and-people.md:3–15",
+        "workflows/raven-documentary-story/SKILL.md:18–26"
+      ],
+      "adaptation": "字面不变不足以许可重排；本库要求原意、说话者与问答语境。保留同作版本思想，使用既有Work合同。",
+      "excluded": [
+        "自由重排原话直接当语义许可",
+        "固定Jeff审批/子Agent/FCPXML宿主",
+        "复制来源代码、案例或缺许可的全文进入分发"
+      ],
+      "license": "Snapshot metadata license=null; no redistribution authority inferred.",
+      "use_type": "METHOD_REFERENCE_AND_ORIGINAL_ADAPTATION",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL.md",
+          "sha256": "cd4db6ff06439022c92050237471cf61eebb4e14397a6d9ef3689b88c915e00e",
+          "bytes": 51696,
+          "source_id": "documentary-quote-methods",
+          "version": "2b67184efd0bac8de0200af6943788ae89eae2ea",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/SB-Jeff__documentary-junior-editor.json",
+            "sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+            "bytes": 24611
+          },
+          "authority_member": "SKILL.md",
+          "authority_member_matches": true
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL-edit.md",
+          "sha256": "6b07e8e65299e68c19193c0ff7b41509ea4c67a83dabf83055305710cbe95874",
+          "bytes": 126990,
+          "source_id": "documentary-quote-methods",
+          "version": "2b67184efd0bac8de0200af6943788ae89eae2ea",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/SB-Jeff__documentary-junior-editor.json",
+            "sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+            "bytes": 24611
+          },
+          "authority_member": "SKILL-edit.md",
+          "authority_member_matches": true
+        }
+      ],
+      "validation_record": "Current bytes and existing local archive manifest match; this is not upstream authentication or effect validation."
+    },
+    {
+      "source_id": "documentary-research-methods",
+      "question": "怎样记录来源类别、人物关系、四条时间线与待核问题？",
+      "locators": {
+        "SKILL.md": "50–70, 133–140, 175–181"
+      },
+      "mechanism": "原始/档案/学术/数字来源分开，研究记录与开放问题。",
+      "adopted_locations": [
+        "workflows/raven-documentary-story/references/source-and-time.md:3–26",
+        "workflows/raven-documentary-story/references/quotes-and-people.md:11–15"
+      ],
+      "adaptation": "针对当前缺项定向核验，不强迫每次剪辑重做研究；NASA/Commons分别支持事实/来源说法。",
+      "excluded": [
+        "每次小修改全网穷尽研究",
+        "固定月份、问题数量、文档字数、三个选项",
+        "未授权联系采访对象"
+      ],
+      "license": "Archived MIT license; text/code copies or substantial portions require corresponding notice; this proposal does not distribute source snapshot.",
+      "use_type": "METHOD_REFERENCE_AND_ORIGINAL_ADAPTATION",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/skills/cdm/alterlab-cdm-documentary-research/SKILL.md",
+          "sha256": "4fd22c63b2d279924853722281120375125f5f653d1e51d303e126437a64cb4b",
+          "bytes": 12017,
+          "source_id": "documentary-research-methods",
+          "version": "9559c97a6b6fc90c0fbe5a20b7718716f7aee677",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/AlterLab-IEU__AlterLab-FC-Skills.json",
+            "sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+            "bytes": 16918
+          },
+          "authority_member": "skills/cdm/alterlab-cdm-documentary-research/SKILL.md",
+          "authority_member_matches": true
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/LICENSE",
+          "sha256": "46a02cad0300e2bda2fb9e255517a837ed23a40ca3f3bfa5be19e74743e3416c",
+          "bytes": 1110,
+          "source_id": "documentary-research-methods",
+          "version": "9559c97a6b6fc90c0fbe5a20b7718716f7aee677",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/AlterLab-IEU__AlterLab-FC-Skills.json",
+            "sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+            "bytes": 16918
+          },
+          "authority_member": "LICENSE",
+          "authority_member_matches": true
+        }
+      ],
+      "validation_record": "Current bytes and existing local archive manifest match; this is not upstream authentication or effect validation."
+    },
+    {
+      "source_id": "documentary-sound-methods",
+      "question": "原话、旁白和环境声如何分工，不让模板补造事实？",
+      "locators": {
+        "SKILL.md": "23–40, 46–55, 104–111, 151–168"
+      },
+      "mechanism": "NAR/CLIP/ATMOS分工、避免旁白复述、声音分段。",
+      "adopted_locations": [
+        "workflows/raven-documentary-story/references/narrative-and-sound.md:9–13",
+        "workflows/raven-documentary-story/references/quotes-and-people.md:5"
+      ],
+      "adaptation": "区分源片声轨与可证同期，不从音轨存在推出已听证原话。年龄74→83及新事件作为反例。",
+      "excluded": [
+        "40/60配额和20–90秒固定块",
+        "例文补写人物经历/后续事件",
+        "eval_score作为本库效果",
+        "把不会听音的来源能力当已听检"
+      ],
+      "license": "Archived MIT license; attribution conditions limited to its material, not footage/other sources.",
+      "use_type": "METHOD_REFERENCE_AND_FAILURE_ANALYSIS",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/radio-audio/scripting/documentary-narration-writer/SKILL.md",
+          "sha256": "b1cbe36847fe0eae2b83f97a403d929e9e93a8ef60bc5870ddbde6f920b761ed",
+          "bytes": 9345,
+          "source_id": "documentary-sound-methods",
+          "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+            "sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+            "bytes": 325435
+          },
+          "authority_member": "skills/radio-audio/scripting/documentary-narration-writer/SKILL.md",
+          "authority_member_matches": true
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/LICENSE",
+          "sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+          "bytes": 1064,
+          "source_id": "documentary-sound-methods",
+          "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+            "sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+            "bytes": 325435
+          },
+          "authority_member": "LICENSE",
+          "authority_member_matches": true
+        }
+      ],
+      "validation_record": "Current bytes and existing local archive manifest match; this is not upstream authentication or effect validation."
+    },
+    {
+      "source_id": "documentary-archive-methods",
+      "question": "怎样区分档案、重建与解释，并让新证据修正原叙事？",
+      "locators": {
+        "SKILL.md": "220–241, 254–289, 298–334, 338–359"
+      },
+      "mechanism": "资料与重建标签、纸上剪辑、反证改变结论、最终质量检查。",
+      "adopted_locations": [
+        "workflows/raven-documentary-story/references/source-and-time.md:22–28",
+        "workflows/raven-documentary-story/references/narrative-and-sound.md:3–25",
+        "workflows/raven-documentary-story/SKILL.md:26–28"
+      ],
+      "adaptation": "以可回源事实/语义/技术三类边界适配；保持四时间线及完整看听要求。",
+      "excluded": [
+        "固定三幕、工期、拍摄比/时长",
+        "从对象忽略摄影机及机动拍摄建议推导隐拍授权（来源同时要求知情同意）",
+        "默认发行投稿、预算或笼统许可承诺"
+      ],
+      "license": "Archived Apache-2.0; source license is not archival-media/right-of-person permission.",
+      "use_type": "METHOD_REFERENCE_AND_ORIGINAL_ADAPTATION",
+      "source_files": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/skills-library/documentary-filmmaker/SKILL.md",
+          "sha256": "7f299057c819955318f2c70ebc6fdb391a88e73eb20979a3ca552103c72dc5e1",
+          "bytes": 17398,
+          "source_id": "documentary-archive-methods",
+          "version": "897224c1f04394640ffb1111f65cfd26b4af895f",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/FerroxLabs__murage.json",
+            "sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+            "bytes": 898949
+          },
+          "authority_member": "skills-library/documentary-filmmaker/SKILL.md",
+          "authority_member_matches": true
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "bytes": 11358,
+          "source_id": "documentary-archive-methods",
+          "version": "897224c1f04394640ffb1111f65cfd26b4af895f",
+          "authority": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/FerroxLabs__murage.json",
+            "sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+            "bytes": 898949
+          },
+          "authority_member": "LICENSE",
+          "authority_member_matches": true
+        }
+      ],
+      "validation_record": "Current bytes and existing local archive manifest match; this is not upstream authentication or effect validation."
+    }
+  ],
+  "original_six_sources": [
+    {
+      "id": "archive-media",
+      "kind": "archival-media",
+      "path": "evals/assets/commons-apollo-launch/launch.webm",
+      "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+      "bytes": 3126645,
+      "publisher_or_holder": "NASAKennedy via Wikimedia Commons",
+      "event_time": "1969-07-16 (from separate NASA source; not inferred from media PTS)",
+      "recording_time": "unknown",
+      "published_or_repackaged_time": "Commons metadata DateTime 2020-11-21; DateTimeOriginal 2015-06-12 is not filming/event proof",
+      "license_or_permission": "Public domain as stated in Commons metadata; not cryptographic authentication",
+      "supports": [
+        "direct_observation",
+        "media_identity"
+      ],
+      "limits": [
+        "source is already edited",
+        "exact shot dates, speaker identity and audio semantic boundaries are not established"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/launch.webm",
+        "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+        "bytes": 3126645
+      },
+      "old_bytes_match": true
+    },
+    {
+      "id": "commons-metadata",
+      "kind": "publisher-attributed-source-statement",
+      "path": "evals/assets/commons-apollo-launch/metadata.json",
+      "sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+      "bytes": 3460,
+      "publisher_or_holder": "Wikimedia Commons page metadata",
+      "supports": [
+        "source_statement",
+        "media_identity"
+      ],
+      "limits": [
+        "description and artist fields are attribution, not independent eyewitness confirmation",
+        "exact spoken words not reviewed"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/metadata.json",
+        "sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+        "bytes": 3460
+      },
+      "old_bytes_match": true
+    },
+    {
+      "id": "nasa-apollo-11",
+      "kind": "official-historical-source",
+      "path": "evals/research/w10/nasa-apollo-11.txt",
+      "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+      "bytes": 14916,
+      "publisher_or_holder": "NASA",
+      "url": "https://www.nasa.gov/mission/apollo-11/",
+      "published_or_retrieved": "local acquisition record does not state a retrieval date",
+      "supports": [
+        "verified_fact"
+      ],
+      "limits": [
+        "official source supports the historical claims listed; it is not an independent eyewitness source for the Commons media"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+        "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+        "bytes": 14916
+      },
+      "old_bytes_match": true
+    },
+    {
+      "id": "observation-v2",
+      "kind": "editorial-observation",
+      "path": "evals/runs/documentary-style-trials-01/observation-v2.json",
+      "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+      "bytes": 2268,
+      "supports": [
+        "direct_observation"
+      ],
+      "limits": [
+        "sampled picture descriptions only",
+        "contact-sheet labels are not exact source timestamps",
+        "no speaker identity, speech or precise launch timing inferred"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation-v2.json",
+        "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+        "bytes": 2268
+      },
+      "old_bytes_match": true
+    },
+    {
+      "id": "fact-brief-plan",
+      "kind": "editorial-plan",
+      "path": "evals/runs/documentary-style-trials-01/fact-brief/editorial-plan.json",
+      "sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+      "bytes": 641,
+      "supports": [
+        "editorial_explanation"
+      ],
+      "limits": [
+        "plan records the editor's organization decision; it does not prove audience understanding or style quality"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/editorial-plan.json",
+        "sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+        "bytes": 641
+      },
+      "old_bytes_match": true
+    },
+    {
+      "id": "archive-close-reading-plan",
+      "kind": "editorial-plan",
+      "path": "evals/runs/documentary-style-trials-01/archive-close-reading/editorial-plan.json",
+      "sha256": "4e9f0f1ef6b04f5583b18c172f892eabd147ce82d6ccd33fffe0956fff0e0108",
+      "bytes": 621,
+      "supports": [
+        "editorial_explanation"
+      ],
+      "limits": [
+        "plan records the editor's organization decision; it does not prove audience understanding or style quality"
+      ],
+      "current_binding": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/editorial-plan.json",
+        "sha256": "4e9f0f1ef6b04f5583b18c172f892eabd147ce82d6ccd33fffe0956fff0e0108",
+        "bytes": 621
+      },
+      "old_bytes_match": true
+    }
+  ],
+  "original_nine_claims": [
+    {
+      "original_id": "obs-001",
+      "original_record": {
+        "id": "obs-001",
+        "layer": "direct_observation",
+        "statement": "The sampled source contains rocket/gantry, control-room, equipment and personnel views across multiple source cuts.",
+        "status": "supported-in-sample",
+        "evidence": [
+          {
+            "source_id": "observation-v2",
+            "locator": "observed[0]",
+            "supports": "sampled picture description"
+          }
+        ],
+        "limits": [
+          "not a continuous observation",
+          "contact-sheet labels are not precise source timestamps"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/0",
+      "source_bindings": [
+        {
+          "source_id": "observation-v2",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation-v2.json",
+            "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+            "bytes": 2268
+          },
+          "locator": "observed[0]",
+          "supports": "sampled picture description"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "archive-close-reading"
+        ],
+        "location": "document-v2.captions.t0; editorial-plan.captions[0]",
+        "boundary": "历史Agent抽样观察记录；本轮没有观看图像/媒体，不追加真人观察信用。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "obs-002",
+      "original_record": {
+        "id": "obs-002",
+        "layer": "direct_observation",
+        "statement": "The sampled source includes bright exhaust/flames and smoke in a dark lower-rocket view, followed by rocket/gantry close views and a rocket against blue sky with visible exhaust.",
+        "status": "supported-in-sample",
+        "evidence": [
+          {
+            "source_id": "observation-v2",
+            "locator": "observed[1..3]",
+            "supports": "sampled picture descriptions"
+          }
+        ],
+        "limits": [
+          "relative sequence only",
+          "no event-time or causal inference"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/1",
+      "source_bindings": [
+        {
+          "source_id": "observation-v2",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation-v2.json",
+            "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+            "bytes": 2268
+          },
+          "locator": "observed[1..3]",
+          "supports": "sampled picture descriptions"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "archive-close-reading"
+        ],
+        "location": "document-v2.captions.t1,t2; editorial-plan.captions[1..2]",
+        "boundary": "只描述样本中可见类别及相对序列；字幕显示窗不是动作精确源时刻。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "src-001",
+      "original_record": {
+        "id": "src-001",
+        "layer": "source_statement",
+        "statement": "Wikimedia Commons metadata describes the file as Jack King's Apollo 11 launch commentary, by NASAKennedy, announcing the July 16, 1969 launch from Kennedy Space Center in Florida.",
+        "status": "publisher-attributed",
+        "evidence": [
+          {
+            "source_id": "commons-metadata",
+            "locator": "imageinfo[0].extmetadata.ImageDescription, Artist, Credit",
+            "supports": "attribution and description only"
+          }
+        ],
+        "limits": [
+          "not an independently verified eyewitness statement",
+          "exact spoken words and semantic boundary are not reviewed"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/2",
+      "source_bindings": [
+        {
+          "source_id": "commons-metadata",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/metadata.json",
+            "sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+            "bytes": 3460
+          },
+          "locator": "imageinfo[0].extmetadata.ImageDescription, Artist, Credit",
+          "supports": "attribution and description only"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "fact-brief",
+          "archive-close-reading"
+        ],
+        "location": "notes.license; ATTRIBUTION.txt; fact-brief.captions.t3仅来源部分",
+        "boundary": "保留NASAKennedy/Commons归属；不能推出现场同期、精确原话或人物观点。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "fact-001",
+      "original_record": {
+        "id": "fact-001",
+        "layer": "verified_fact",
+        "statement": "Apollo 11 launched on July 16, 1969.",
+        "status": "official-source-supported",
+        "evidence": [
+          {
+            "source_id": "nasa-apollo-11",
+            "locator": "text lines 358-367",
+            "supports": "official NASA mission page text"
+          }
+        ],
+        "limits": [
+          "historical fact support does not authenticate the media's individual shot date"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/3",
+      "source_bindings": [
+        {
+          "source_id": "nasa-apollo-11",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+            "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+            "bytes": 14916
+          },
+          "locator": "text lines 358-367",
+          "supports": "official NASA mission page text"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "fact-brief"
+        ],
+        "location": "captions.t0 [0,5]",
+        "boundary": "NASA文本支持发射日期，不能逐镜认证拍摄日期；任务日期与页面日期分开。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "fact-002",
+      "original_record": {
+        "id": "fact-002",
+        "layer": "verified_fact",
+        "statement": "Apollo 11 lifted off from Kennedy Space Center in Florida.",
+        "status": "official-source-supported",
+        "evidence": [
+          {
+            "source_id": "nasa-apollo-11",
+            "locator": "text line 372",
+            "supports": "official NASA mission page text"
+          }
+        ],
+        "limits": [
+          "does not prove every visible control-room person or shot is from that same moment"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/4",
+      "source_bindings": [
+        {
+          "source_id": "nasa-apollo-11",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+            "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+            "bytes": 14916
+          },
+          "locator": "text line 372",
+          "supports": "official NASA mission page text"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "fact-brief"
+        ],
+        "location": "captions.t1 [5,10]",
+        "boundary": "NASA文本支持发射地点，不能认证控制室中每个人和拍摄时刻。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "fact-003",
+      "original_record": {
+        "id": "fact-003",
+        "layer": "verified_fact",
+        "statement": "The primary objective was a crewed lunar landing and return to Earth.",
+        "status": "official-source-supported",
+        "evidence": [
+          {
+            "source_id": "nasa-apollo-11",
+            "locator": "text lines 360-361",
+            "supports": "official NASA mission page text"
+          }
+        ],
+        "limits": [
+          "not a claim about what the source audio says"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/5",
+      "source_bindings": [
+        {
+          "source_id": "nasa-apollo-11",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+            "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+            "bytes": 14916
+          },
+          "locator": "text lines 360-361",
+          "supports": "official NASA mission page text"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "fact-brief"
+        ],
+        "location": "captions.t2 [10,15]",
+        "boundary": "NASA任务目标的中文释义，不是源片音频翻译或已听证的旁白。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "view-001",
+      "original_record": {
+        "id": "view-001",
+        "layer": "person_viewpoint",
+        "statement": "Jack King's exact spoken viewpoint, wording or personal experience.",
+        "status": "absent",
+        "evidence": [],
+        "gap_reason": "The foundation49 trial retains source audio but has no verified transcript, speaker interval or semantic review; the Commons title/description cannot stand in for a person's own words.",
+        "recovery_condition": "Obtain a permitted copy with verified speaker/time boundaries, import or manually review the transcript, then bind any retained quote to the source interval and context."
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/6",
+      "source_bindings": [],
+      "current_use": {
+        "works": [],
+        "location": "NO_PERMITTED_PERSON_VIEWPOINT_USE",
+        "boundary": "明确absent；标题、简介、保留音轨均不能补人物本人观点。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "edit-001",
+      "original_record": {
+        "id": "edit-001",
+        "layer": "editorial_explanation",
+        "statement": "The fact-brief version organizes the locked historical claims as date, place and mission objective while retaining the source montage and labeling the media as archival.",
+        "status": "declared-in-plan",
+        "evidence": [
+          {
+            "source_id": "fact-brief-plan",
+            "locator": "reason and captions[0..3]",
+            "supports": "editorial organization decision"
+          }
+        ],
+        "limits": [
+          "not an independent content or audience-effect evaluation"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/7",
+      "source_bindings": [
+        {
+          "source_id": "fact-brief-plan",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/editorial-plan.json",
+            "sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+            "bytes": 641
+          },
+          "locator": "reason and captions[0..3]",
+          "supports": "editorial organization decision"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "fact-brief"
+        ],
+        "location": "editorial_reason; captions.t0..t3",
+        "boundary": "编辑组织决定；非独立事实、受众理解或风格效果证据。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    },
+    {
+      "original_id": "edit-002",
+      "original_record": {
+        "id": "edit-002",
+        "layer": "editorial_explanation",
+        "statement": "The archive-close-reading version foregrounds the source montage's changing viewpoints and states that source-film time is not the same as elapsed event time.",
+        "status": "declared-in-plan",
+        "evidence": [
+          {
+            "source_id": "archive-close-reading-plan",
+            "locator": "reason and captions[0..2]",
+            "supports": "editorial framing decision"
+          }
+        ],
+        "limits": [
+          "not a claim that the viewer understood the distinction",
+          "full playback/listening and style review remain open"
+        ]
+      },
+      "original_claim_ledger": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+        "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+        "bytes": 6230
+      },
+      "original_pointer": "/claims/8",
+      "source_bindings": [
+        {
+          "source_id": "archive-close-reading-plan",
+          "binding": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/editorial-plan.json",
+            "sha256": "4e9f0f1ef6b04f5583b18c172f892eabd147ce82d6ccd33fffe0956fff0e0108",
+            "bytes": 621
+          },
+          "locator": "reason and captions[0..2]",
+          "supports": "editorial framing decision"
+        }
+      ],
+      "current_use": {
+        "works": [
+          "archive-close-reading"
+        ],
+        "location": "editorial_reason; captions.t0..t2",
+        "boundary": "编辑引导与限制说明；不证明观众已理解、连续现场或真实经过时长。"
+      },
+      "review": "RETAIN_ORIGINAL_LAYER_AND_LIMITS; static source-use review only"
+    }
+  ],
+  "later_increments": [
+    {
+      "id": "actual-archive-footage",
+      "kind": "MEDIA_COPY_AND_DERIVATIVE",
+      "sources": [
+        "archive-media",
+        "commons-metadata"
+      ],
+      "use": "一份已剪辑档案影像及原源声轨用于两版20.72秒候选；25fps重采样/中文字幕/重编码。",
+      "excluded": "连续观察、已证声画同期、人物原话或事件真实经过时长。",
+      "evidence": [
+        "download-manifest.json",
+        "facts.json",
+        "source-readback.json",
+        "document-v2.json",
+        "ATTRIBUTION.txt"
+      ],
+      "notice_boundary": "公共领域仅为保存的Commons声明；no endorsement与未核原话保留。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/launch.webm",
+          "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+          "bytes": 3126645
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/metadata.json",
+          "sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+          "bytes": 3460
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/download-manifest.json",
+          "sha256": "fd003e09e636011bc2103d7e00e9267d419efe89a37533f551bdb7726fd2f6b5",
+          "bytes": 1428
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/facts.json",
+          "sha256": "c9422cc7a51f7876cc8bc89cfb0c9ec284c26eac944ab21319dd5f6542dc87c5",
+          "bytes": 3136
+        }
+      ]
+    },
+    {
+      "id": "nasa-html-and-chinese-facts",
+      "kind": "FACT_REFERENCE_AND_TRANSLATED_SUMMARY",
+      "sources": [
+        "nasa-apollo-11"
+      ],
+      "use": "NASA归档HTML/抽取文本支持日期、地点、任务目标；中文字幕是释义。",
+      "excluded": "不从网页补人物观点；NASA与Commons共享NASA背景不计两独立目击来源。",
+      "evidence": [
+        "nasa-page-acquisition.json",
+        "facts.json",
+        "fact-brief/editorial-plan.json"
+      ],
+      "notice_boundary": "官方文本内容支持不等于已核网页全文/第三方图像再分发权限；原HTML保留研究，未来发行另核具体成员。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.html",
+          "sha256": "e90d1d80467719fde2eff12c17f106d02c82a1118a937fb0b14bcedd66308fdd",
+          "bytes": 397982
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+          "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+          "bytes": 14916
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-page-acquisition.json",
+          "sha256": "ef719a1caa447f38550b3fc7edf6f22370954603ad4446ee6bf96a44892f6229",
+          "bytes": 385
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/editorial-plan.json",
+          "sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+          "bytes": 641
+        }
+      ]
+    },
+    {
+      "id": "observation-correction",
+      "kind": "EDITORIAL_OBSERVATION_REVISION",
+      "sources": [
+        "observation-v2"
+      ],
+      "use": "从接触表fps标签纠正为仅视觉相对序列；source-at-7历史帧支持原标签不精确的既有发现。",
+      "excluded": "本轮未看图/听音；不把历史Agent观察升级真人或新独立评测。",
+      "evidence": [
+        "observation.json",
+        "observation-v2.json",
+        "current-readback.json"
+      ],
+      "notice_boundary": "旧观察与修正一并保留，首次hash不能反推旧来源身份。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation.json",
+          "sha256": "604fffeb37d9346d9078a69ea800a86a83e4bfe0050b3bae1be88aae845f1d7d",
+          "bytes": 1276
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation-v2.json",
+          "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+          "bytes": 2268
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/inspection/source-at-7.png",
+          "sha256": "289e97af9ff4a837601d689af0f46928720cf3f5e789183d842945b1541fc236",
+          "bytes": 706457
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/overview.png",
+          "sha256": "8633bdc6368d12422155245d295fc538c63e541fe6ab67bf8d4e910726a91045",
+          "bytes": 2451629
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/current-readback.json",
+          "sha256": "dc27092d10085b92de30ae57cec4a8dc0fe75709951833d0100fb5c97a6803a4",
+          "bytes": 4297
+        }
+      ]
+    },
+    {
+      "id": "same-work-v2",
+      "kind": "WORK_HISTORY_REVISION",
+      "sources": [
+        "observation-v2",
+        "fact-brief-plan",
+        "archive-close-reading-plan"
+      ],
+      "use": "两同作seq1→2仅notes.observation改变，版本和导出绑定更新；当前文档、样式与源身份核对。",
+      "excluded": "不叫新叙事/新素材迁移/真实手改；两个机制只改字幕信息组织。",
+      "evidence": [
+        "two work.sqlite",
+        "document-v2.json",
+        "result-after-observation-revision.json"
+      ],
+      "notice_boundary": "旧结果/旧版本不重写，媒体字节相同不产生新的看听信用。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/work.sqlite",
+          "sha256": "ae84d0b35c2d238a1aab732b1157ce2a588173bd26935b6c224ca7cb3d6fba68",
+          "bytes": 28672
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/document-v2.json",
+          "sha256": "607ebbcf768985b859ab15d67a5b54605ff4b8923ca7838970da9c405247b344",
+          "bytes": 4481
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/observation-commit/work-state.json",
+          "sha256": "48635f5c109af4a3fccc518d7dc1b37f3de6be45111bad9e4fe8860b283e5873",
+          "bytes": 5790
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/work.sqlite",
+          "sha256": "2ef3d3e593d15bee0e9fcacbb2cc065116a9313d8f409d469764824966aac5bc",
+          "bytes": 28672
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/document-v2.json",
+          "sha256": "d83307807f8008d2f2a35eaa869e809b653fb3bcc78f6edc7a7386455787ca32",
+          "bytes": 4413
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/observation-commit/work-state.json",
+          "sha256": "cb817b8be515c8aa71c7ca8ec79fe092551daa8feb63a12966c5f8d99b241f9b",
+          "bytes": 5721
+        }
+      ]
+    },
+    {
+      "id": "claim-layer-integration",
+      "kind": "LOCAL_PROTOCOL_ADAPTATION",
+      "sources": [
+        "archive-media",
+        "commons-metadata",
+        "nasa-apollo-11",
+        "observation-v2",
+        "fact-brief-plan",
+        "archive-close-reading-plan"
+      ],
+      "use": "六来源九原声明精确保留；五类已记录，人物观点以absent占位；未决单列，映射当前采用窗口。",
+      "excluded": "结构PASS不认证真伪/听感/受众；人物标题负例保留。",
+      "evidence": [
+        "claim-ledger.json",
+        "validation-result.json",
+        "negative-person-viewpoint-fixture.json",
+        "SKILL.md",
+        "source-and-time.md"
+      ],
+      "notice_boundary": "内部JSON与原创规则增量，不引入外部代码执行。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+          "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+          "bytes": 6230
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/validation-result.json",
+          "sha256": "4240e0f1ee25690765031193e069194e9efb21263add8e56811763eb3b1bbeb3",
+          "bytes": 1242
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/negative-person-viewpoint-fixture.json",
+          "sha256": "30368013d34180802b82fe192e846ac7ecd0e15faa992b3b066adc26072b4eda",
+          "bytes": 1012
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/SKILL.md",
+          "sha256": "5697a860c14509f3c66c431eb26553dd1c6ad0061a74ae12e6c3bb3d1b59d629",
+          "bytes": 4134
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/references/source-and-time.md",
+          "sha256": "5e5628a9feb3e554307bcbccbbea36c659c1199b3293f973537d5d8050c5d322",
+          "bytes": 3664
+        }
+      ]
+    },
+    {
+      "id": "actual-font-copies",
+      "kind": "BINARY_RESOURCE_COPY",
+      "sources": [
+        "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
+      ],
+      "use": "两版的原/修订render各保存specified.ttf；用于中文字幕渲染。",
+      "excluded": "系统已安装/哈希匹配不赋予字体再分发许可。",
+      "evidence": [
+        "caption_style.font",
+        "render/captions/fonts/specified.ttf",
+        "revision-render/captions/fonts/specified.ttf"
+      ],
+      "notice_boundary": "当前只有本地使用身份；未来分发如携带字体须有独立许可依据或明确排除。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        }
+      ]
+    },
+    {
+      "id": "rejected-archive-label",
+      "kind": "NEGATIVE_DEVELOPMENT_EVIDENCE",
+      "sources": [
+        "archive-media"
+      ],
+      "use": "将资料标签改为现场实拍的历史负例被CAPTION_TEXT_MISMATCH拒绝。",
+      "excluded": "不把文字匹配拒绝当自动识别新闻真伪/语义判断。",
+      "evidence": [
+        "negative-archive-label-01/request.json",
+        "negative-archive-label-01/receipt.json"
+      ],
+      "notice_boundary": "保留FAILED原回执，不重跑或计新增通过。",
+      "evidence_bindings": [
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/negative-archive-label-01/request.json",
+          "sha256": "83826c189c85b26f2c63ce4e580ec377fb64725040123f59a74a070d7ccf6164",
+          "bytes": 5128
+        },
+        {
+          "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/negative-archive-label-01/receipt.json",
+          "sha256": "c6b899e8f81a6163ee48759d53a06c6577145c197f4ac28e893c10f6acffa6ba",
+          "bytes": 1952
+        }
+      ]
+    }
+  ],
+  "selected_works": [
+    {
+      "id": "fact-brief",
+      "store": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/work.sqlite",
+        "sha256": "ae84d0b35c2d238a1aab732b1157ce2a588173bd26935b6c224ca7cb3d6fba68",
+        "bytes": 28672
+      },
+      "work_id": "w10-fact-brief",
+      "sequence": 2,
+      "version": "b7df7c95040a22068bca0c529d646d2e8a13f4d362f1d513d4edefd3d3f9bef1",
+      "document_sha256": "505f25c0dd786ecf0435ee2be5f91abd280adf5fad492f24bccb21c16a472f59",
+      "current_document_matches_document_v2": true,
+      "history": [
+        {
+          "sequence": 1,
+          "parent": 0,
+          "version": "2fd6f13da5d9c9e4bc8e14bcb91c97a13e722388a5421087f4824fe3f63ff388",
+          "document_sha256": "bf37cf3089262952dc9cdbd5e4cffd7e1b79e553d2ac7e7b89a0a11a8627cfe4",
+          "action": "init",
+          "author": "agent",
+          "message": "Historical archive candidate with fact/context ledger"
+        },
+        {
+          "sequence": 2,
+          "parent": 1,
+          "version": "b7df7c95040a22068bca0c529d646d2e8a13f4d362f1d513d4edefd3d3f9bef1",
+          "document_sha256": "505f25c0dd786ecf0435ee2be5f91abd280adf5fad492f24bccb21c16a472f59",
+          "action": "commit",
+          "author": "agent",
+          "message": "Correct contact-sheet labels versus exact source timestamps"
+        }
+      ],
+      "actual_revision_scope": {
+        "top_level_changed": [
+          "notes"
+        ],
+        "notes_changed": [
+          "observation"
+        ]
+      },
+      "old_and_revision_output_bytes_equal": true,
+      "actual_user_event": false,
+      "status_preserved": "DEGRADED; historical technical PASS not reexecuted; full playback/listening/style unvalidated",
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "end": 5,
+          "start": 0,
+          "text": "资料画面｜1969年7月16日\n阿波罗11号发射"
+        },
+        "t1": {
+          "clip_id": "c0",
+          "end": 10,
+          "start": 5,
+          "text": "资料画面｜发射地点\n美国佛罗里达州 · 肯尼迪航天中心"
+        },
+        "t2": {
+          "clip_id": "c0",
+          "end": 15,
+          "start": 10,
+          "text": "资料画面｜任务目标\n载人登月，并返回地球"
+        },
+        "t3": {
+          "clip_id": "c0",
+          "end": 20.72,
+          "start": 15,
+          "text": "资料画面｜影像来源 NASAKennedy\n公共领域 · 历史事实据 NASA 任务页"
+        }
+      },
+      "source_selection": {
+        "clips": [
+          {
+            "end": 20.72,
+            "gain_db": 0,
+            "id": "c0",
+            "source_id": "archive",
+            "start": 0
+          }
+        ],
+        "fit": "contain",
+        "fps": "25",
+        "height": 720,
+        "schema": "execution-plan/1",
+        "sources": {
+          "archive": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/launch.webm",
+            "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e"
+          }
+        },
+        "width": 1280
+      },
+      "style_binding": {
+        "*": {
+          "card": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/styles/documentary/fact-brief.md",
+            "sha256": "11b2197e4d01117a82234ab074500e06406444bbc738784cb54ffa2efc245f3e"
+          },
+          "family": "documentary",
+          "parameters": {},
+          "style_id": "fact-brief",
+          "version": "0.1.0"
+        }
+      }
+    },
+    {
+      "id": "archive-close-reading",
+      "store": {
+        "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/work.sqlite",
+        "sha256": "2ef3d3e593d15bee0e9fcacbb2cc065116a9313d8f409d469764824966aac5bc",
+        "bytes": 28672
+      },
+      "work_id": "w10-archive-close-reading",
+      "sequence": 2,
+      "version": "f87c2ecb4edd68b8433e3a59d1c0d19fe2d369df0564aa0c38b938a3419d682b",
+      "document_sha256": "3c3c08321652285ffa5ca845d7366e629eb9323d570e4931a998dad919a0da72",
+      "current_document_matches_document_v2": true,
+      "history": [
+        {
+          "sequence": 1,
+          "parent": 0,
+          "version": "05f61646110a6cd3db48d8e333f8e094050478d4760d5e42dcb630e60717eedd",
+          "document_sha256": "a1e3fa089d5f4c99b63dc0636aa782bc2b56b510238e9b519248de24e8aa9ae6",
+          "action": "init",
+          "author": "agent",
+          "message": "Historical archive candidate with fact/context ledger"
+        },
+        {
+          "sequence": 2,
+          "parent": 1,
+          "version": "f87c2ecb4edd68b8433e3a59d1c0d19fe2d369df0564aa0c38b938a3419d682b",
+          "document_sha256": "3c3c08321652285ffa5ca845d7366e629eb9323d570e4931a998dad919a0da72",
+          "action": "commit",
+          "author": "agent",
+          "message": "Correct contact-sheet labels versus exact source timestamps"
+        }
+      ],
+      "actual_revision_scope": {
+        "top_level_changed": [
+          "notes"
+        ],
+        "notes_changed": [
+          "observation"
+        ]
+      },
+      "old_and_revision_output_bytes_equal": true,
+      "actual_user_event": false,
+      "status_preserved": "DEGRADED; historical technical PASS not reexecuted; full playback/listening/style unvalidated",
+      "captions": {
+        "t0": {
+          "clip_id": "c0",
+          "end": 6,
+          "start": 0,
+          "text": "资料画面｜先看原片如何切换视角\n箭体、控制室与设备交替出现"
+        },
+        "t1": {
+          "clip_id": "c0",
+          "end": 14,
+          "start": 6,
+          "text": "资料画面｜设备、火焰与箭体近景\n切镜本身不能证明各镜头同时发生"
+        },
+        "t2": {
+          "clip_id": "c0",
+          "end": 20.72,
+          "start": 14,
+          "text": "资料画面｜从箭体近景转到天空\n原片已剪辑，片长不等于事件耗时"
+        }
+      },
+      "source_selection": {
+        "clips": [
+          {
+            "end": 20.72,
+            "gain_db": 0,
+            "id": "c0",
+            "source_id": "archive",
+            "start": 0
+          }
+        ],
+        "fit": "contain",
+        "fps": "25",
+        "height": 720,
+        "schema": "execution-plan/1",
+        "sources": {
+          "archive": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/launch.webm",
+            "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e"
+          }
+        },
+        "width": 1280
+      },
+      "style_binding": {
+        "*": {
+          "card": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/styles/documentary/archive-close-reading.md",
+            "sha256": "f06238c23e50f7307906511cd0198bc776eb49b103234e70c21f72760d423830"
+          },
+          "family": "documentary",
+          "parameters": {},
+          "style_id": "archive-close-reading",
+          "version": "0.1.0"
+        }
+      }
+    }
+  ],
+  "local_media_and_font_members": [
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/captions/captioned.mp4",
+      "sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956",
+      "bytes": 6270283,
+      "work": "fact-brief",
+      "stage": "render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/timeline/preview.mp4",
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "work": "fact-brief",
+      "stage": "render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA_BEFORE_CAPTIONS",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "work": "fact-brief",
+      "stage": "render",
+      "use_class": "COPIED_FONT_RESOURCE",
+      "notice": null,
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "System Arial Unicode MS font bytes copied into trial output folder. No redistributable font license evidence inspected; exclude from redistributable package unless independently supported.",
+      "matches_document_font_sha256": true
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/captioned.mp4",
+      "sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956",
+      "bytes": 6270283,
+      "work": "fact-brief",
+      "stage": "revision-render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/timeline/preview.mp4",
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "work": "fact-brief",
+      "stage": "revision-render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA_BEFORE_CAPTIONS",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "work": "fact-brief",
+      "stage": "revision-render",
+      "use_class": "COPIED_FONT_RESOURCE",
+      "notice": null,
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "System Arial Unicode MS font bytes copied into trial output folder. No redistributable font license evidence inspected; exclude from redistributable package unless independently supported.",
+      "matches_document_font_sha256": true
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/captions/captioned.mp4",
+      "sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61",
+      "bytes": 6291921,
+      "work": "archive-close-reading",
+      "stage": "render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/timeline/preview.mp4",
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "work": "archive-close-reading",
+      "stage": "render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA_BEFORE_CAPTIONS",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "work": "archive-close-reading",
+      "stage": "render",
+      "use_class": "COPIED_FONT_RESOURCE",
+      "notice": null,
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "System Arial Unicode MS font bytes copied into trial output folder. No redistributable font license evidence inspected; exclude from redistributable package unless independently supported.",
+      "matches_document_font_sha256": true
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/captioned.mp4",
+      "sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61",
+      "bytes": 6291921,
+      "work": "archive-close-reading",
+      "stage": "revision-render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/timeline/preview.mp4",
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "work": "archive-close-reading",
+      "stage": "revision-render",
+      "use_class": "DERIVED_ARCHIVAL_MEDIA_BEFORE_CAPTIONS",
+      "notice": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt",
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "Commons public-domain metadata assertion for source footage and attributed modification record; not individual identity/audio proof."
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/fonts/specified.ttf",
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "work": "archive-close-reading",
+      "stage": "revision-render",
+      "use_class": "COPIED_FONT_RESOURCE",
+      "notice": null,
+      "distribution_boundary": "Local trial identity only; future actual-package rights review required, no redistribution granted by hash.",
+      "license_scope": "System Arial Unicode MS font bytes copied into trial output folder. No redistributable font license evidence inspected; exclude from redistributable package unless independently supported.",
+      "matches_document_font_sha256": true
+    }
+  ],
+  "notice_proposal": {
+    "scope": "Supplemental local-use wording; not permission, not already shipped notice",
+    "text": "本地W10档案候选引用：Jack King's Apollo 11 Launch Commentary，发布归属NASAKennedy，经Wikimedia Commons保存。Public domain为保存元数据的声明；不构成对逐镜身份、声画同期或任意后续用途的认证。历史事实参考NASA Apollo 11任务页，中文文案为对应事实释义，不是源片音频转写/翻译。修改为请求源区间0–20.72秒、25fps呈现、中文字幕与重编码；历史记录注明源视频流尾部补帧，不将成片时长解释为事件耗时。不暗示NASA、人物或发布者背书。保留原ATTRIBUTION、来源URL和SHA；确切原话与完整看听仍未核。字体文件、网页全文/第三方内容及研究Skill原文不得从这条媒体声明继承分发依据；实际发行按具体成员另核或排除。",
+    "existing_output_notices": [
+      "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt"
+    ],
+    "future_distribution": "Reconcile actual target bundle members; this review does not publish or certify a bundle."
+  },
+  "unresolved": [
+    {
+      "item": "person_viewpoint",
+      "status": "ABSENT",
+      "reason": "无核实说话者、原话区间、完整语境与语义听检；原view-001及负例保持。"
+    },
+    {
+      "item": "timing_and_synchronicity",
+      "status": "UNRESOLVED",
+      "reason": "各镜头拍摄时刻、声画同期、montage代表的真实事件耗时未证。"
+    },
+    {
+      "item": "independent_confirmation",
+      "status": "NOT_ESTABLISHED",
+      "reason": "NASA事实页与NASAKennedy/Commons归属不算两独立目击印证。"
+    },
+    {
+      "item": "retrieval_date",
+      "status": "UNKNOWN_IN_ORIGINAL_NASA_RECORD",
+      "reason": "acquisition JSON未记抓取日期，不补造历史时间。"
+    },
+    {
+      "item": "human_and_effect_review",
+      "status": "NOT_RUN_OR_UNVALIDATED",
+      "reason": "本轮0媒体/0观看/0听音，无真人、独立留出、全片风格信用。"
+    },
+    {
+      "item": "future_distribution",
+      "status": "MATERIAL_SPECIFIC_REVIEW_REQUIRED",
+      "reason": "Commons元数据声明不涵盖字体、Skill原文、NASA网页全文及第三方图片；实际成员须匹配通知和许可依据。"
+    }
+  ],
+  "members": [
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/plans/remaining-v015-20260924/backlog.json",
+      "exists": true,
+      "sha256": "bb7d605d2ad70f6cc23d25aef7d259346375ccb00d4ec91c9226aa73e0601b8d",
+      "bytes": 1209323,
+      "purposes": [
+        "Original authorized task card"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/plans/remaining-v015-20260924/任务卡全集.md",
+      "exists": true,
+      "sha256": "93cc75a87aa2bed325c9d6a5f73052e0fcb72013633f2ac990e535bfcc205b19",
+      "bytes": 261975,
+      "purposes": [
+        "Original task readable card"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/SKILL.md",
+      "exists": true,
+      "sha256": "5697a860c14509f3c66c431eb26553dd1c6ad0061a74ae12e6c3bb3d1b59d629",
+      "bytes": 4134,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "5697a860c14509f3c66c431eb26553dd1c6ad0061a74ae12e6c3bb3d1b59d629",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/evidence/portfolio-ledger-v0.16.json",
+      "exists": true,
+      "sha256": "26743d8a15fda74204b7ac03cf2e6324c0a385047ca865fac0f064ece08052e7",
+      "bytes": 173255,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/result-after-observation-revision.json",
+      "exists": true,
+      "sha256": "db4b53dd15bfd2b9146e25308e85e880dc8b7e5e297e4367643958619875e463",
+      "bytes": 2864,
+      "purposes": [
+        "Required original P-W10-D2 input",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "db4b53dd15bfd2b9146e25308e85e880dc8b7e5e297e4367643958619875e463",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        },
+        {
+          "expected_sha256": "db4b53dd15bfd2b9146e25308e85e880dc8b7e5e297e4367643958619875e463",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/references/source-fusion.md",
+      "exists": true,
+      "sha256": "6a33e1116bba4bf6c07c57634e282f57bf339860076a152d39f7ccefcbcc31bf",
+      "bytes": 2133,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "6a33e1116bba4bf6c07c57634e282f57bf339860076a152d39f7ccefcbcc31bf",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/references/source-and-time.md",
+      "exists": true,
+      "sha256": "5e5628a9feb3e554307bcbccbbea36c659c1199b3293f973537d5d8050c5d322",
+      "bytes": 3664,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "5e5628a9feb3e554307bcbccbbea36c659c1199b3293f973537d5d8050c5d322",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/references/quotes-and-people.md",
+      "exists": true,
+      "sha256": "cdc8f8871cd5c487b29de5724df45b68b57e7a2459ee040c4f5949dc61a58ce4",
+      "bytes": 2040,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "cdc8f8871cd5c487b29de5724df45b68b57e7a2459ee040c4f5949dc61a58ce4",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/workflows/raven-documentary-story/references/narrative-and-sound.md",
+      "exists": true,
+      "sha256": "adbb18835a96e20b2fe34b22d24152b1732fb4cd4ac2284a0aa27215f0f75c4d",
+      "bytes": 2611,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "adbb18835a96e20b2fe34b22d24152b1732fb4cd4ac2284a0aa27215f0f75c4d",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/claim-ledger.json",
+      "exists": true,
+      "sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+      "bytes": 6230,
+      "purposes": [
+        "Required original P-W10-D2 input",
+        "Nine original exact claim records"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        },
+        {
+          "expected_sha256": "6571ac9ee93ea43afe7ef150cf2aadb25969dd8b89f274c7d05881bc636b0a33",
+          "matches_current": true,
+          "locator": "parallel result"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/result.json",
+      "exists": true,
+      "sha256": "25d43164abe2244d43fe06381d308a3d9b7518559b292f685652aadb8468741d",
+      "bytes": 4279,
+      "purposes": [
+        "Required original P-W10-D2 input"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "25d43164abe2244d43fe06381d308a3d9b7518559b292f685652aadb8468741d",
+          "matches_current": true,
+          "locator": "backlog legacy_source_inputs where matching path"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/evidence/portfolio-ledger-v0.30.json",
+      "exists": true,
+      "sha256": "7d7089f85196dfa90d45a1ce6f48e9b2f55bd281fca36ed7910882856f1037fd",
+      "bytes": 186860,
+      "purposes": [
+        "Latest formal D2 snapshot at review, not modified"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/documentary-sources.lock.json",
+      "exists": true,
+      "sha256": "6e80c40ad9fc7d2eee96c6efe2df4d59b6b49daa3ece4bfd3e07505910648a3f",
+      "bytes": 7039,
+      "purposes": [
+        "Original eight method files lock kept unchanged"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL.md",
+      "exists": true,
+      "sha256": "cd4db6ff06439022c92050237471cf61eebb4e14397a6d9ef3689b88c915e00e",
+      "bytes": 51696,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "cd4db6ff06439022c92050237471cf61eebb4e14397a6d9ef3689b88c915e00e",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/SB-Jeff__documentary-junior-editor.json",
+      "exists": true,
+      "sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+      "bytes": 24611,
+      "purposes": [
+        "Existing acquisition authority"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+          "matches_current": true,
+          "locator": "same method lock"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL-edit.md",
+      "exists": true,
+      "sha256": "6b07e8e65299e68c19193c0ff7b41509ea4c67a83dabf83055305710cbe95874",
+      "bytes": 126990,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "6b07e8e65299e68c19193c0ff7b41509ea4c67a83dabf83055305710cbe95874",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/skills/cdm/alterlab-cdm-documentary-research/SKILL.md",
+      "exists": true,
+      "sha256": "4fd22c63b2d279924853722281120375125f5f653d1e51d303e126437a64cb4b",
+      "bytes": 12017,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "4fd22c63b2d279924853722281120375125f5f653d1e51d303e126437a64cb4b",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/AlterLab-IEU__AlterLab-FC-Skills.json",
+      "exists": true,
+      "sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+      "bytes": 16918,
+      "purposes": [
+        "Existing acquisition authority"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+          "matches_current": true,
+          "locator": "same method lock"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/LICENSE",
+      "exists": true,
+      "sha256": "46a02cad0300e2bda2fb9e255517a837ed23a40ca3f3bfa5be19e74743e3416c",
+      "bytes": 1110,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "46a02cad0300e2bda2fb9e255517a837ed23a40ca3f3bfa5be19e74743e3416c",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/radio-audio/scripting/documentary-narration-writer/SKILL.md",
+      "exists": true,
+      "sha256": "b1cbe36847fe0eae2b83f97a403d929e9e93a8ef60bc5870ddbde6f920b761ed",
+      "bytes": 9345,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "b1cbe36847fe0eae2b83f97a403d929e9e93a8ef60bc5870ddbde6f920b761ed",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "exists": true,
+      "sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "bytes": 325435,
+      "purposes": [
+        "Existing acquisition authority"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+          "matches_current": true,
+          "locator": "same method lock"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/LICENSE",
+      "exists": true,
+      "sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+      "bytes": 1064,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/skills-library/documentary-filmmaker/SKILL.md",
+      "exists": true,
+      "sha256": "7f299057c819955318f2c70ebc6fdb391a88e73eb20979a3ca552103c72dc5e1",
+      "bytes": 17398,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "7f299057c819955318f2c70ebc6fdb391a88e73eb20979a3ca552103c72dc5e1",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/FerroxLabs__murage.json",
+      "exists": true,
+      "sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+      "bytes": 898949,
+      "purposes": [
+        "Existing acquisition authority"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+          "matches_current": true,
+          "locator": "same method lock"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/LICENSE",
+      "exists": true,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "purposes": [
+        "Existing method snapshot / permission record"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "matches_current": true,
+          "locator": "provenance/documentary-sources.lock.json"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/source-lock.json",
+      "exists": true,
+      "sha256": "c20bd61fb4d91050321402548be555fbff57cc0a755e58e58283a6f169513e4f",
+      "bytes": 4493,
+      "purposes": [
+        "Original six-source lock kept unchanged"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "c20bd61fb4d91050321402548be555fbff57cc0a755e58e58283a6f169513e4f",
+          "matches_current": true,
+          "locator": "claim-ledger baseline"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/launch.webm",
+      "exists": true,
+      "sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+      "bytes": 3126645,
+      "purposes": [
+        "Original six-source use",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/archive-media"
+        },
+        {
+          "expected_sha256": "4c7edf144c975e7766094108d6156dad5a9cd2989b6b673c01d704de9c18518e",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/metadata.json",
+      "exists": true,
+      "sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+      "bytes": 3460,
+      "purposes": [
+        "Original six-source use",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/commons-metadata"
+        },
+        {
+          "expected_sha256": "5ebc7ec3c2f6840fa58bd05f029a0ff5b77c0f9fae2194f642a3373c42cd5ba7",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.txt",
+      "exists": true,
+      "sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+      "bytes": 14916,
+      "purposes": [
+        "Original six-source use",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/nasa-apollo-11"
+        },
+        {
+          "expected_sha256": "e2c32b216fa97c85bf3cc3a851e5121e9c9cafcb9b9e307e3ccf1e7c4c885751",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation-v2.json",
+      "exists": true,
+      "sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+      "bytes": 2268,
+      "purposes": [
+        "Original six-source use",
+        "Existing trial increment/old result/failure retained",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/observation-v2"
+        },
+        {
+          "expected_sha256": "982e703cc42556c66b2c7ebe29b40ecfd6155bcde55deeae2365b1ff6364651c",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/editorial-plan.json",
+      "exists": true,
+      "sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+      "bytes": 641,
+      "purposes": [
+        "Original six-source use",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "6bf75755ace0449a50c87a6dfeef33aefea4bec53dec1c59bedb795458106030",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/fact-brief-plan"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/editorial-plan.json",
+      "exists": true,
+      "sha256": "4e9f0f1ef6b04f5583b18c172f892eabd147ce82d6ccd33fffe0956fff0e0108",
+      "bytes": 621,
+      "purposes": [
+        "Original six-source use",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "4e9f0f1ef6b04f5583b18c172f892eabd147ce82d6ccd33fffe0956fff0e0108",
+          "matches_current": true,
+          "locator": "w10 source-lock.sources/archive-close-reading-plan"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/validation-result.json",
+      "exists": true,
+      "sha256": "4240e0f1ee25690765031193e069194e9efb21263add8e56811763eb3b1bbeb3",
+      "bytes": 1242,
+      "purposes": [
+        "Historical structure/refusal evidence; not rerun"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/negative-person-viewpoint-fixture.json",
+      "exists": true,
+      "sha256": "30368013d34180802b82fe192e846ac7ecd0e15faa992b3b066adc26072b4eda",
+      "bytes": 1012,
+      "purposes": [
+        "Historical structure/refusal evidence; not rerun"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/validate_claim_ledger.py",
+      "exists": true,
+      "sha256": "47fc1b7b439d7d6656c042f55eddff170adb6c85fde9c0a260ed70d6b2f2bbc5",
+      "bytes": 6399,
+      "purposes": [
+        "Historical structure/refusal evidence; not rerun"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/parallel/w10-documentary-20260922/proposal.md",
+      "exists": true,
+      "sha256": "e7f393471517a9ec58b5f4ec08d011d73fd2b73f3a3f16da67a47e1b0157d3e4",
+      "bytes": 5173,
+      "purposes": [
+        "Historical structure/refusal evidence; not rerun"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/result.json",
+      "exists": true,
+      "sha256": "30049011ff22494654f7bcac4accbb742100209e8f6d0087b9b0849b5dee8c85",
+      "bytes": 2223,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/current-readback.json",
+      "exists": true,
+      "sha256": "dc27092d10085b92de30ae57cec4a8dc0fe75709951833d0100fb5c97a6803a4",
+      "bytes": 4297,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/source-readback.json",
+      "exists": true,
+      "sha256": "92b9ace3bbab959b7e3eeada3e18788b5d76ce9aa6b1eff85f8ea4edb5fab4d3",
+      "bytes": 839,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/facts.json",
+      "exists": true,
+      "sha256": "c9422cc7a51f7876cc8bc89cfb0c9ec284c26eac944ab21319dd5f6542dc87c5",
+      "bytes": 3136,
+      "purposes": [
+        "Existing trial increment/old result/failure retained",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "c9422cc7a51f7876cc8bc89cfb0c9ec284c26eac944ab21319dd5f6542dc87c5",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/observation.json",
+      "exists": true,
+      "sha256": "604fffeb37d9346d9078a69ea800a86a83e4bfe0050b3bae1be88aae845f1d7d",
+      "bytes": 1276,
+      "purposes": [
+        "Existing trial increment/old result/failure retained",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "604fffeb37d9346d9078a69ea800a86a83e4bfe0050b3bae1be88aae845f1d7d",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/partial-results-01.json",
+      "exists": true,
+      "sha256": "5eb98aea34614e7aa39c8b39620f57ee6ac5c035737bfe6597c4c13718bdeb6b",
+      "bytes": 976,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/partial-results-02.json",
+      "exists": true,
+      "sha256": "d5e84082f3a18b0e3a4fbdbeeaf79571f15a1ff2913ea711e858748dee70003c",
+      "bytes": 2000,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/negative-archive-label-01/receipt.json",
+      "exists": true,
+      "sha256": "c6b899e8f81a6163ee48759d53a06c6577145c197f4ac28e893c10f6acffa6ba",
+      "bytes": 1952,
+      "purposes": [
+        "Existing trial increment/old result/failure retained",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "c6b899e8f81a6163ee48759d53a06c6577145c197f4ac28e893c10f6acffa6ba",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/negative-archive-label-01/request.json",
+      "exists": true,
+      "sha256": "83826c189c85b26f2c63ce4e580ec377fb64725040123f59a74a070d7ccf6164",
+      "bytes": 5128,
+      "purposes": [
+        "Existing trial increment/old result/failure retained"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/download-manifest.json",
+      "exists": true,
+      "sha256": "fd003e09e636011bc2103d7e00e9267d419efe89a37533f551bdb7726fd2f6b5",
+      "bytes": 1428,
+      "purposes": [
+        "Acquisition/media property support; not rights authentication",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "fd003e09e636011bc2103d7e00e9267d419efe89a37533f551bdb7726fd2f6b5",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/probe.json",
+      "exists": true,
+      "sha256": "6992f5fc0f6ae66eabd7b02e9e7e1f0610a0a376ced68e9ce5b5339cdd89a389",
+      "bytes": 3189,
+      "purposes": [
+        "Acquisition/media property support; not rights authentication"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-page-acquisition.json",
+      "exists": true,
+      "sha256": "ef719a1caa447f38550b3fc7edf6f22370954603ad4446ee6bf96a44892f6229",
+      "bytes": 385,
+      "purposes": [
+        "Acquisition/media property support; not rights authentication",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "ef719a1caa447f38550b3fc7edf6f22370954603ad4446ee6bf96a44892f6229",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/research/w10/nasa-apollo-11.html",
+      "exists": true,
+      "sha256": "e90d1d80467719fde2eff12c17f106d02c82a1118a937fb0b14bcedd66308fdd",
+      "bytes": 397982,
+      "purposes": [
+        "Acquisition/media property support; not rights authentication",
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "e90d1d80467719fde2eff12c17f106d02c82a1118a937fb0b14bcedd66308fdd",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/assets/commons-apollo-launch/overview.png",
+      "exists": true,
+      "sha256": "8633bdc6368d12422155245d295fc538c63e541fe6ab67bf8d4e910726a91045",
+      "bytes": 2451629,
+      "purposes": [
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "8633bdc6368d12422155245d295fc538c63e541fe6ab67bf8d4e910726a91045",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/inspection/source-at-7.png",
+      "exists": true,
+      "sha256": "289e97af9ff4a837601d689af0f46928720cf3f5e789183d842945b1541fc236",
+      "bytes": 706457,
+      "purposes": [
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "289e97af9ff4a837601d689af0f46928720cf3f5e789183d842945b1541fc236",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/captioned.mp4",
+      "exists": true,
+      "sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956",
+      "bytes": 6270283,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-evidence/evidence-map.json",
+      "exists": true,
+      "sha256": "ebe78d32f473bbaa6e18618a1804e272230de9515f55e466754ddf3feb8388d3",
+      "bytes": 1890,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "ebe78d32f473bbaa6e18618a1804e272230de9515f55e466754ddf3feb8388d3",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-caption-check/caption-coverage.json",
+      "exists": true,
+      "sha256": "889e4ab7f86b8b3d76110e0db2acd500e070fe11ff29d5793e66171569dc4129",
+      "bytes": 1137,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "889e4ab7f86b8b3d76110e0db2acd500e070fe11ff29d5793e66171569dc4129",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/captioned.mp4",
+      "exists": true,
+      "sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61",
+      "bytes": 6291921,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-evidence/evidence-map.json",
+      "exists": true,
+      "sha256": "f8533bc78db3c5229f7257035fe03136635e2a6afc65e300eb1d35fc9bd8296b",
+      "bytes": 1890,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "f8533bc78db3c5229f7257035fe03136635e2a6afc65e300eb1d35fc9bd8296b",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-caption-check/caption-coverage.json",
+      "exists": true,
+      "sha256": "20c506756fbd8a8d21fac1a9e5d604acba5e6d2ba62894c26335e1125ae2747a",
+      "bytes": 1047,
+      "purposes": [
+        "Existing nested source/observation/current result binding",
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "20c506756fbd8a8d21fac1a9e5d604acba5e6d2ba62894c26335e1125ae2747a",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/work.sqlite",
+      "exists": true,
+      "sha256": "ae84d0b35c2d238a1aab732b1157ce2a588173bd26935b6c224ca7cb3d6fba68",
+      "bytes": 28672,
+      "purposes": [
+        "Original Work read-only head/history; no writes"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/document.json",
+      "exists": true,
+      "sha256": "9a7f9f0bc3940c5fbdb45a927d2ba3a0971aa91641e15a1a2142970a7873a4fc",
+      "bytes": 4478,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/document-v2.json",
+      "exists": true,
+      "sha256": "607ebbcf768985b859ab15d67a5b54605ff4b8923ca7838970da9c405247b344",
+      "bytes": 4481,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/ATTRIBUTION.txt",
+      "exists": true,
+      "sha256": "14bcc519fa05f1ecf961a0ff4a060788fb53fcbf5dba0f013fdf24e922e4f648",
+      "bytes": 445,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/observation-commit/work-state.json",
+      "exists": true,
+      "sha256": "48635f5c109af4a3fccc518d7dc1b37f3de6be45111bad9e4fe8860b283e5873",
+      "bytes": 5790,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/render-binding.json",
+      "exists": true,
+      "sha256": "7de3739bab27a1fc157e60fcbd9d8ee59735aa4f6c8cd8f5acaf69304bf8bc1e",
+      "bytes": 867,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/receipt.json",
+      "exists": true,
+      "sha256": "51f80c5bcc95f456e1d9a892823c4a4d76253d63fe28db8b597ba5192df7649c",
+      "bytes": 5159,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+      "exists": true,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "purposes": [
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/styles/documentary/fact-brief.md",
+      "exists": true,
+      "sha256": "11b2197e4d01117a82234ab074500e06406444bbc738784cb54ffa2efc245f3e",
+      "bytes": 1318,
+      "purposes": [
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "11b2197e4d01117a82234ab074500e06406444bbc738784cb54ffa2efc245f3e",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/captions/captioned.mp4",
+      "exists": true,
+      "sha256": "7a8b9e60ff78c02e16fd3170b237706f1f1b5be3c8665bdf9d12429945310956",
+      "bytes": 6270283,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/timeline/preview.mp4",
+      "exists": true,
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/render/captions/fonts/specified.ttf",
+      "exists": true,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/timeline/preview.mp4",
+      "exists": true,
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/fact-brief/revision-render/captions/fonts/specified.ttf",
+      "exists": true,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/work.sqlite",
+      "exists": true,
+      "sha256": "2ef3d3e593d15bee0e9fcacbb2cc065116a9313d8f409d469764824966aac5bc",
+      "bytes": 28672,
+      "purposes": [
+        "Original Work read-only head/history; no writes"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/document.json",
+      "exists": true,
+      "sha256": "0684c86adbfae99e5979bd7ac5654d2830f13c8eb36034cc3e2e689b8991ef0b",
+      "bytes": 4410,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/document-v2.json",
+      "exists": true,
+      "sha256": "d83307807f8008d2f2a35eaa869e809b653fb3bcc78f6edc7a7386455787ca32",
+      "bytes": 4413,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/ATTRIBUTION.txt",
+      "exists": true,
+      "sha256": "14bcc519fa05f1ecf961a0ff4a060788fb53fcbf5dba0f013fdf24e922e4f648",
+      "bytes": 445,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/observation-commit/work-state.json",
+      "exists": true,
+      "sha256": "cb817b8be515c8aa71c7ca8ec79fe092551daa8feb63a12966c5f8d99b241f9b",
+      "bytes": 5721,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/render-binding.json",
+      "exists": true,
+      "sha256": "3223da6266f087e75ff0e659660c2914fd55566c40ec56d8131b839103b8096b",
+      "bytes": 889,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/receipt.json",
+      "exists": true,
+      "sha256": "d2b32428e5890f3ff1b0d98e55caeda3fe89395de180f7a98a8d82315a6a8b30",
+      "bytes": 5181,
+      "purposes": [
+        "Actual existing Work use / receipt / notification"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/styles/documentary/archive-close-reading.md",
+      "exists": true,
+      "sha256": "f06238c23e50f7307906511cd0198bc776eb49b103234e70c21f72760d423830",
+      "bytes": 1381,
+      "purposes": [
+        "Existing nested source/observation/current result binding"
+      ],
+      "prior_bindings": [
+        {
+          "expected_sha256": "f06238c23e50f7307906511cd0198bc776eb49b103234e70c21f72760d423830",
+          "matches_current": true,
+          "locator": "historical local record"
+        }
+      ],
+      "identity_class": "MATCHES_EXISTING_BINDING"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/captions/captioned.mp4",
+      "exists": true,
+      "sha256": "94a741defccb904dc12115fb7268391ef712eae450d19a935b0bf2cb3ef83e61",
+      "bytes": 6291921,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/timeline/preview.mp4",
+      "exists": true,
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/render/captions/fonts/specified.ttf",
+      "exists": true,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/timeline/preview.mp4",
+      "exists": true,
+      "sha256": "e3e9148c22376a4c7ad4e1ba0f8e6aaf5335abe3eba4f6427c1194b34dd44752",
+      "bytes": 6400822,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/documentary-style-trials-01/archive-close-reading/revision-render/captions/fonts/specified.ttf",
+      "exists": true,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "bytes": 23278008,
+      "purposes": [
+        "Actual included local trial member; no media execution"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/distribution-notices/NOTICE.md",
+      "exists": true,
+      "sha256": "a1b4bb07236d31142a624de94642027dfd2053e076854e8a6b93798c171bee1c",
+      "bytes": 3589,
+      "purposes": [
+        "Existing distribution boundary: not a blanket W10 license/notice"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/distribution-notices/member-coverage.json",
+      "exists": true,
+      "sha256": "492edc296acc999845347918864ec7c3bb63d26fe335944069011b5041e0249e",
+      "bytes": 8280,
+      "purposes": [
+        "Existing distribution boundary: not a blanket W10 license/notice"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/contracts/distribution-policy.md",
+      "exists": true,
+      "sha256": "4f28f044687b22b4d07e66c0e367acad54242ef41942f77ba0853c1bc25922a4",
+      "bytes": 2160,
+      "purposes": [
+        "Existing distribution boundary: not a blanket W10 license/notice"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    },
+    {
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/contracts/portable-resource-edges.current.json",
+      "exists": true,
+      "sha256": "38b21c9858c0c91a11c33af6857f7b2683694e371dd74c698d18db95e0c7f34e",
+      "bytes": 12384,
+      "purposes": [
+        "Existing distribution boundary: not a blanket W10 license/notice"
+      ],
+      "prior_bindings": [],
+      "identity_class": "FIRST_HASH_BASELINE_IN_THIS_REVIEW_NO_RETROACTIVE_IDENTITY_CLAIM"
+    }
+  ],
+  "limits": [
+    "Only the original task inputs, their direct source/Work/receipt links and bounded current references are reconciled; no new broad research.",
+    "Existing exact hashes preserved; newly recorded hashes are first baselines only.",
+    "All statements classified by use and evidence; title/description never fills a person viewpoint.",
+    "No shared source, ledger, original media or Work written; no media/runtime/test process run."
+  ]
+}

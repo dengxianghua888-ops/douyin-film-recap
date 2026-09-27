@@ -1,0 +1,101 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "pacing-reference",
+      "version": "9e73275b35e827b8f7af4bca900790909d86e63e",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/feicaiclub__video-spec-builder/9e73275b35e8/references/pacing-rules.md",
+      "size": 12174,
+      "sha256": "b95f11227f5cc64dcdfd71804ca3d0394f0a1a31bc5240d1bd1a8fe987cfe455",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/feicaiclub__video-spec-builder.json",
+      "authority_sha256": "57c7db9821a600997c0467bc5eaefa27de1721c4db2d60ba7c0ea41af68975b5",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "pacing-reference",
+      "version": "9e73275b35e827b8f7af4bca900790909d86e63e",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/feicaiclub__video-spec-builder/9e73275b35e8/LICENSE",
+      "size": 1067,
+      "sha256": "91cc0112294b9c9a1d8bf74b5d60fa22239b3958403deb6c8eaa931e7f3cb257",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/feicaiclub__video-spec-builder.json",
+      "authority_sha256": "57c7db9821a600997c0467bc5eaefa27de1721c4db2d60ba7c0ea41af68975b5",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "silence-review",
+      "version": "93dd0010cf9dec2c8a76cfb35a8346fcf52ed292",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/craftled__openklip/93dd0010cf9d/web/lib/cleanup-silence.ts",
+      "size": 3876,
+      "sha256": "d3e9f6adc097d452e1b9cea8163c5349d2ca27f5786ab77593dc14de85bee506",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/craftled__openklip.json",
+      "authority_sha256": "6776d612d9aab4eda392e66f8b4059327696c489bafb7bff5bcb8da4dc9d598e",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "silence-review",
+      "version": "93dd0010cf9dec2c8a76cfb35a8346fcf52ed292",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/craftled__openklip/93dd0010cf9d/LICENSE",
+      "size": 1066,
+      "sha256": "491565c0771ab813f5cf3c9731e4bfa2eb83a0035c47319f5fe660fa18708a95",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/craftled__openklip.json",
+      "authority_sha256": "6776d612d9aab4eda392e66f8b4059327696c489bafb7bff5bcb8da4dc9d598e",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "silence-detection",
+      "version": "83c5ff6006dd79918e8395ef58cfcb4600c21db5",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maddexritter-rgb__vibe-editing/83c5ff6006dd/plugins/vibe-editing/skills/edit/scripts/silence_map.py",
+      "size": 2194,
+      "sha256": "143367fa327ec889a18bb7fcd2a08a53a77ed021351105828e645db5b1cb37cd",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maddexritter-rgb__vibe-editing.json",
+      "authority_sha256": "5e3cbb78c61711cecb9a2a9bdb82a24302c42302ddff23da53ed8e495d053846",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "silence-detection",
+      "version": "83c5ff6006dd79918e8395ef58cfcb4600c21db5",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maddexritter-rgb__vibe-editing/83c5ff6006dd/LICENSE",
+      "size": 1069,
+      "sha256": "715ce1fd7613cc462c35c3993448fdd2ecf7f14df176675133d31c3159900a46",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maddexritter-rgb__vibe-editing.json",
+      "authority_sha256": "5e3cbb78c61711cecb9a2a9bdb82a24302c42302ddff23da53ed8e495d053846",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "pacing-measurement",
+      "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/content_quality/pacing.py",
+      "size": 5072,
+      "sha256": "9f975c2ab05054ac24b0791c51fa1a81901c801e7dd48b6e49b3bd1b321b46b8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json",
+      "authority_sha256": "3ef56d8aa29bf772bc5f9b5633fb6b6696a6653729a7bef8d87e58dc6118c05f",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    },
+    {
+      "source_id": "pacing-measurement",
+      "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/LICENSE",
+      "size": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json",
+      "authority_sha256": "3ef56d8aa29bf772bc5f9b5633fb6b6696a6653729a7bef8d87e58dc6118c05f",
+      "use": "critical method study only; original editorial synthesis, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream signature authentication"
+    }
+  ]
+}

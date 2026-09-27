@@ -1,0 +1,623 @@
+{
+  "schema": "skill-registry/1",
+  "routing": "agent-semantic; see router.md",
+  "entries": [
+    {
+      "id": "audio-extract",
+      "layer": "atomic",
+      "entry": "atomic/audio-extract/SKILL.md",
+      "description": "按指定源时间范围、采样率和声道数提取 PCM WAV；用于转写或音频处理前准备，不选择台词、不清除停顿。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "audio-mix",
+      "layer": "atomic",
+      "entry": "atomic/audio-mix/SKILL.md",
+      "description": "将指定音频区间按明确时间位置和增益混入已有视频，保留原视频流；用于已确定的配音或配乐摆放，不选择音乐、不改写旁白、不自动裁短语音。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "caption-burn",
+      "layer": "atomic",
+      "entry": "atomic/caption-burn/SKILL.md",
+      "description": "按明确输出时间、字体文件、字号、颜色和边距烧录给定字幕；不改文案、不选择关键词、不自动设计字幕风格。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "caption-map",
+      "layer": "atomic",
+      "entry": "atomic/caption-map/SKILL.md",
+      "description": "将给定原文字幕按确定剪辑计划从源时间映射到输出时间，生成 JSON 与 SRT；不转写、不校正文案、不选择强调词。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "frame-extract",
+      "layer": "atomic",
+      "entry": "atomic/frame-extract/SKILL.md",
+      "description": "按明确时间点从已登记视频抽取画面 PNG；用于建立观察证据，不自行寻找高光或判断最佳镜头。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "media-inspect",
+      "layer": "atomic",
+      "entry": "atomic/media-inspect/SKILL.md",
+      "description": "读取指定本地音视频的时长、流规格和 SHA-256；用于登记素材或核对已有素材身份，不评价内容或选择素材。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "media-qc",
+      "layer": "atomic",
+      "entry": "atomic/media-qc/SKILL.md",
+      "description": "对指定哈希的视频完整解码并检查显式要求的时长、宽高和音频流；用于技术交付检查，不评价故事、风格或听感。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "speech-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/speech-plan-compile/SKILL.md",
+      "status": "local-synthetic-tested",
+      "description": "将已明确选择的连续词 ID 和经上游复核的声学入出点编译为剪辑计划，检查保留词、保护词和被排除词的时间覆盖；不挑 take、不删口癖、不改原话。"
+    },
+    {
+      "id": "timeline-patch",
+      "layer": "atomic",
+      "entry": "atomic/timeline-patch/SKILL.md",
+      "description": "在校验当前计划版本后，修改明确指定片段的入点、出点、增益或恒定速度，保持其他片段数据；不解释审美反馈、不增删或重排片段。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "timeline-render",
+      "layer": "atomic",
+      "entry": "atomic/timeline-render/SKILL.md",
+      "description": "按明确源区间、顺序、音量、恒定速度和输出规格渲染本地时间线预览；只执行已决定的片段表，不选段、不改节奏或生成旁白。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "transcript-import",
+      "layer": "atomic",
+      "entry": "atomic/transcript-import/SKILL.md",
+      "status": "local-synthetic-tested",
+      "description": "校验并登记与当前源音视频哈希绑定的逐词转写，保留词 ID、说话人和时间来源；不执行识别、不纠词、不作删减判断。"
+    },
+    {
+      "id": "tts-macos",
+      "layer": "atomic",
+      "entry": "atomic/tts-macos/SKILL.md",
+      "description": "使用明确指定的 macOS 已安装语音、朗读速度和原文生成本地旁白 WAV；只负责合成，不写稿、不选音色、不伪造逐词时间。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-film-recap",
+      "layer": "complex",
+      "entry": "workflows/raven-film-recap/SKILL.md",
+      "description": "将电影、电视剧单集或多集素材做成有证据的中文影视解说、原声剧情剪辑或局部修订，按目标加载多类型叙事风格并调用原子操作；仅要求分析或方案时停止在相应交付层。",
+      "status": "experimental-content-unvalidated",
+      "atomic_dependencies": [
+        "audio-extract",
+        "audio-mix",
+        "caption-burn",
+        "caption-map",
+        "frame-extract",
+        "media-inspect",
+        "media-qc",
+        "timeline-patch",
+        "timeline-render",
+        "timeline-revise",
+        "tts-macos",
+        "work-render",
+        "work-variant-create",
+        "work-version"
+      ],
+      "style_index": "styles/film-recap/index.md"
+    },
+    {
+      "id": "raven-speech-edit",
+      "layer": "complex",
+      "entry": "workflows/raven-speech-edit/SKILL.md",
+      "status": "experimental-content-unvalidated",
+      "description": "基于已有口播或知识讲解素材做语义精剪、重复 take 取舍、结构调整与风格化表达，保留说话者原意并调用逐词剪辑原子；不用于无源素材数字人口播或电影剧情解说。",
+      "style_index": "styles/speech/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "transcript-import",
+        "speech-plan-compile",
+        "timeline-render",
+        "caption-map",
+        "caption-burn",
+        "audio-mix",
+        "media-qc",
+        "timeline-patch",
+        "speech-transcribe-local",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "work-variant-create",
+        "transcript-reference-compare",
+        "visual-layer-render"
+      ]
+    },
+    {
+      "id": "screen-focus",
+      "layer": "atomic",
+      "entry": "atomic/screen-focus/SKILL.md",
+      "description": "按明确源像素矩形裁切录屏并等比缩放，在指定时间画矩形高亮，保留原音轨；不识别点击目标、不选择焦点、不自动跟踪或设计镜头运动。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "tutorial-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/tutorial-plan-compile/SKILL.md",
+      "description": "校验明确指定的教程操作前、操作中、结果证据窗口与步骤依赖，并映射至成片时间；不理解软件行为、不决定教学步骤、不判断结果真伪。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-software-tutorial",
+      "layer": "complex",
+      "entry": "workflows/raven-software-tutorial/SKILL.md",
+      "description": "将已有软件录屏或可验证操作素材剪成教程、问题排查、功能演示与产品工作流视频，按教学或演示风格组织操作证据和旁白；仅要方案时交脚本，不把概念动画当实际操作。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/software/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "tutorial-plan-compile",
+        "timeline-render",
+        "screen-focus",
+        "tts-macos",
+        "audio-mix",
+        "caption-map",
+        "caption-burn",
+        "timeline-patch",
+        "media-qc",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "work-variant-create"
+      ]
+    },
+    {
+      "id": "timeline-revise",
+      "layer": "atomic",
+      "entry": "atomic/timeline-revise/SKILL.md",
+      "description": "比较当前作品文档与明确候选，在显式片段、字幕、音轨、风格和备注范围内校验增删重排或参数修改，输出差异与失效项；不解释审美反馈、不自动选段、不提交作品。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "work-render",
+      "layer": "atomic",
+      "entry": "atomic/work-render/SKILL.md",
+      "description": "渲染本地作品库的指定版本，将已明确的片段、锚定音轨和字幕统一映射到成片并绑定回执；不自动实现风格标签、不做创作判断、不宣称编辑器工程已验收。",
+      "status": "local-synthetic-tested",
+      "atomic_dependencies": [
+        "timeline-render",
+        "audio-mix",
+        "caption-burn",
+        "media-qc",
+        "visual-layer-render"
+      ]
+    },
+    {
+      "id": "work-version",
+      "layer": "atomic",
+      "entry": "atomic/work-version/SKILL.md",
+      "description": "读取同一作品当前版本、提交受限修改、登记保护与恢复；可由编辑器项目历史/API 或本库本地 Work 实现。host-bridge 与 work-delivery 是本地可选操作，不要求所有作品迁入 SQLite。",
+      "status": "local-synthetic-tested",
+      "runtime_operations": [
+        "work-version",
+        "work-delivery",
+        "host-bridge"
+      ]
+    },
+    {
+      "id": "raven-local-revision",
+      "layer": "complex",
+      "entry": "workflows/raven-local-revision/SKILL.md",
+      "description": "根据自然语言反馈局部修改或续编已有作品，解释审美意图、选择修改策略、保护人工编辑与冻结范围，并提交可回退的新版本；不用于从零制作，也不把仅分析要求扩大为执行。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/revision/index.md",
+      "atomic_dependencies": [
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-inspect",
+        "frame-extract",
+        "speech-plan-compile",
+        "tutorial-plan-compile",
+        "timeline-render",
+        "audio-mix",
+        "caption-burn"
+      ]
+    },
+    {
+      "id": "sync-offset-measure",
+      "layer": "atomic",
+      "entry": "atomic/sync-offset-measure/SKILL.md",
+      "description": "对已指定的参考录音与跟随素材做多窗口波形相关测量，或计算已提供对应标记的恒定时间偏移，报告歧义和漂移；不判断谁在说话、不选择导演镜头、不自动应用同步。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "multicam-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/multicam-plan-compile/SKILL.md",
+      "description": "将明确的同步母版、保留会话区间、机位切点与节目音轨编译为同一作品文档，检查偏移证据、帧量化与源覆盖；不选择机位、不判断反应含义、不重排对话。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-interview-multicam",
+      "layer": "complex",
+      "entry": "workflows/raven-interview-multicam/SKILL.md",
+      "description": "将访谈、多人对话或多机位播客整理为同步方案、对话剪辑与导演版，按多类型风格保留观点归属、真实反应和连续节目声音；只要求同步时不自动制作精剪，单人口播优先口播 Skill。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/interview/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "sync-offset-measure",
+        "multicam-plan-compile",
+        "transcript-import",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc",
+        "evidence-plan-compile",
+        "work-variant-create"
+      ]
+    },
+    {
+      "id": "evidence-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/evidence-plan-compile/SKILL.md",
+      "description": "将上层明确指定的内容单元、来源区间、保留依赖和章节映射到当前作品，检查证据完整覆盖及先修顺序，支持独立录音；不挑重点、不判断建议是否通过、不认证教学完整性。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-course-meeting",
+      "layer": "complex",
+      "entry": "workflows/raven-course-meeting/SKILL.md",
+      "description": "将已有课程、会议或技术分享剪成保留知识依赖和观点归属的精华、章节版或议题回顾，按教学或会议风格组织原话和证据；仅要纪要或索引时不渲染，软件点击教程优先软件教程 Skill。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/course-meeting/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "transcript-import",
+        "sync-offset-measure",
+        "multicam-plan-compile",
+        "evidence-plan-compile",
+        "timeline-render",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc",
+        "speech-transcribe-local",
+        "work-variant-create"
+      ]
+    },
+    {
+      "id": "media-signal-scan",
+      "layer": "atomic",
+      "entry": "atomic/media-signal-scan/SKILL.md",
+      "description": "按明确时间范围逐帧测量亮度差和逐窗音频能量，返回给定阈值命中；不检测高光、不判断输赢或兴奋程度。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "event-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/event-plan-compile/SKILL.md",
+      "description": "将明确的事件阶段、出现实例及回放关系映射到当前作品，检查阶段顺序和实际回放字幕覆盖；不识别事件、不认证结果或语义去重。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-event-highlights",
+      "layer": "complex",
+      "entry": "workflows/raven-event-highlights/SKILL.md",
+      "description": "将已有体育、游戏或直播素材剪成保留事件上下文与真实结果的高光，按领域和风格组织原声、动作与回放；仅要分析时不渲染，不以音量代替精彩程度。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/highlights/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "media-signal-scan",
+        "frame-extract",
+        "evidence-plan-compile",
+        "event-plan-compile",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "audio-envelope",
+      "layer": "atomic",
+      "entry": "atomic/audio-envelope/SKILL.md",
+      "description": "按明确源区间、增益、采样率和淡入淡出长度生成WAV，不选择声音或判断对白。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-vlog-journey",
+      "layer": "complex",
+      "entry": "workflows/raven-vlog-journey/SKILL.md",
+      "description": "将生活Vlog、旅行或活动实拍组织为有视角、空间关系与体验变化的短片，加载多类型风格并保持同一作品；支持仅拍摄方案，不虚构路线或人物关系。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/vlog-journey/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "audio-extract",
+        "audio-envelope",
+        "evidence-plan-compile",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "caption-coverage-check",
+      "layer": "atomic",
+      "entry": "atomic/caption-coverage-check/SKILL.md",
+      "description": "按明确文字、字幕ID和成片时间窗核对当前作品字幕覆盖，不判断真假、声音或可读性。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-commerce-story",
+      "layer": "complex",
+      "entry": "workflows/raven-commerce-story/SKILL.md",
+      "description": "将商品实拍、真实使用体验或品牌资料剪成多风格产品/UGC/品牌视频，区分事实与表达并保持同一作品。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/commerce/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "audio-envelope",
+        "tts-macos",
+        "evidence-plan-compile",
+        "caption-coverage-check",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "raven-documentary-story",
+      "layer": "complex",
+      "entry": "workflows/raven-documentary-story/SKILL.md",
+      "description": "将新闻、历史资料、纪实观察或人物素材组织成有来源与语境的非虚构短片，支持事实梳理、纸上剪辑、多风格成片及同作修订；区分事实、原话、观点、资料画面和演绎，不用于虚构剧情解说。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/documentary/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "transcript-import",
+        "speech-plan-compile",
+        "evidence-plan-compile",
+        "caption-coverage-check",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "cue-alignment-check",
+      "layer": "atomic",
+      "entry": "atomic/cue-alignment-check/SKILL.md",
+      "description": "按已给音乐源时间标记、当前音轨和指定画面帧检查提前或延后量及容差，返回全部数值匹配结果；不识别节拍、乐段、动作或选择切点，不修改作品。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-music-montage",
+      "layer": "complex",
+      "entry": "workflows/raven-music-montage/SKILL.md",
+      "description": "将音乐与实拍、动画、表演或图像素材组织为有乐段结构、视觉母题与情绪变化的混剪，支持卡点、乐句长镜、反节奏、多风格方案和同作修订；明确点位操作用对应原子，不把音乐生成当作已有能力。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/music-montage/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "media-signal-scan",
+        "audio-extract",
+        "audio-envelope",
+        "cue-alignment-check",
+        "evidence-plan-compile",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "raven-pacing-restructure",
+      "layer": "complex",
+      "entry": "workflows/raven-pacing-restructure/SKILL.md",
+      "description": "根据紧凑、舒展、压缩时长或重新分配节奏的要求重构已有作品，保护原话、因果、动作、音乐和人工修改，按素材选择多类节奏策略；精确区间删除与明确片段 0.5–2 倍恒速走已支持原子；速度曲线和光流须核工具能力，不替代题材内容判断。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/pacing/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "media-signal-scan",
+        "speech-plan-compile",
+        "evidence-plan-compile",
+        "cue-alignment-check",
+        "timeline-revise",
+        "work-version",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "color-lut-apply",
+      "layer": "atomic",
+      "entry": "atomic/color-lut-apply/SKILL.md",
+      "description": "对已声明BT.709 SDR色彩解释和零起点恒定帧率视频应用指定3D cube LUT，保留帧顺序和音轨；不选择风格、不自动匹配参考色调、不做HDR或Log转换。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-reference-style",
+      "layer": "complex",
+      "entry": "workflows/raven-reference-style/SKILL.md",
+      "description": "分析参考片的叙事、节奏、声画、构图、色彩和文字机制，将用户选定维度适配到当前素材与作品，支持多参考融合、局部迁移和个人风格沉淀；明确参数操作直接原子，单纯缩短作品走节奏重构。",
+      "status": "experimental-content-unvalidated",
+      "style_index": "styles/reference/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "media-signal-scan",
+        "audio-extract",
+        "audio-envelope",
+        "color-lut-apply",
+        "screen-focus",
+        "caption-burn",
+        "cue-alignment-check",
+        "evidence-plan-compile",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ]
+    },
+    {
+      "id": "still-image-render",
+      "layer": "atomic",
+      "entry": "atomic/still-image-render/SKILL.md",
+      "description": "按明确帧数、帧率、画幅和裁切关键帧把单张图片渲染成静止或运镜视频；不设计镜头、不选择图片、不生成主体运动。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "generation-task",
+      "layer": "agent-adapter",
+      "entry": "atomic/generation-task/SKILL.md",
+      "description": "本库可选的 Agent 生成调用账本与文本模型适配实现；不属于通用剪辑原子依赖，模型、服务、凭据和费用由运行 Agent 管理。",
+      "status": "optional-agent-adapter",
+      "runtime_operations": [
+        "generation-task",
+        "model-text",
+        "model-text-deepseek"
+      ]
+    },
+    {
+      "id": "raven-script-generation",
+      "layer": "complex",
+      "entry": "workflows/raven-script-generation/SKILL.md",
+      "description": "将图文、脚本或图片素材制作成多风格声画短片，或为已有作品规划和接入由运行 Agent 提供的生成候选；负责镜头连续性、候选取舍与同作修改，不依赖本库模型适配器。",
+      "status": "experimental-partial-execution",
+      "style_index": "styles/generation/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "frame-extract",
+        "still-image-render",
+        "audio-envelope",
+        "caption-coverage-check",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ],
+      "capability_limits": [
+        "image/video generation is supplied by the running Agent and is not a Skill-layer dependency",
+        "bundled local implementation has no avatar/lip-sync execution; verify the running Agent actual tool capabilities",
+        "historically exercised local still/TTS subset only; model/avatar/lip-sync and effects require actual evidence"
+      ]
+    },
+    {
+      "id": "localization-plan-compile",
+      "layer": "atomic",
+      "entry": "atomic/localization-plan-compile/SKILL.md",
+      "description": "将已确定译文、来源单元映射、字幕窗口和完整配音音频编译成字幕与音轨计划，检查版本、声明覆盖、说话人标识、字面术语和实际时长；不翻译、不压缩语义、不选声音、不修改口型。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-localization",
+      "layer": "complex",
+      "entry": "workflows/raven-localization/SKILL.md",
+      "description": "为已有视频制作翻译字幕、双语字幕、译配或目标地区版本，负责语义忠实、术语、语气、字幕阅读、真实配音时长与局部修改；口型和原音色保留需真实服务，普通同语种字幕样式修改走原子或原场景Skill。",
+      "status": "experimental-partial-execution",
+      "style_index": "styles/localization/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "localization-plan-compile",
+        "tts-macos",
+        "caption-coverage-check",
+        "audio-envelope",
+        "work-version",
+        "timeline-revise",
+        "work-render",
+        "media-qc"
+      ],
+      "capability_limits": [
+        "optional local runtime has no voice-cloning or lip-sync adapter; Agent capabilities require actual authorization and result readback",
+        "optional local WorkDocument has one caption layer and no overlapping independent subtitle tracks; other tools require actual capability and output verification",
+        "local font/voice coverage is locale-specific",
+        "independent language/style/listening and native host unvalidated"
+      ]
+    },
+    {
+      "id": "work-variant-create",
+      "layer": "atomic",
+      "entry": "atomic/work-variant-create/SKILL.md",
+      "description": "从指定父作品版本与已声明修改范围派生独立可编辑版本，复核候选差异并记录父子谱系；不决定每版内容、不覆盖父工程或其他版本。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "work-batch-render",
+      "layer": "atomic",
+      "entry": "atomic/work-batch-render/SKILL.md",
+      "description": "按明确作品版本执行本地批量导出、已验证结果复用和有限失败恢复，保留不可变尝试记录；不选创作风格、不自动重剪、不发布或提交收费服务。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "video-reframe",
+      "layer": "atomic",
+      "entry": "atomic/video-reframe/SKILL.md",
+      "description": "按明确裁切矩形、等比缩放、画布和放置位置执行静态画幅适配，保留帧钟及可复用音轨；不找主体、不追踪说话人、不判断构图。",
+      "status": "local-synthetic-tested"
+    },
+    {
+      "id": "raven-multiplatform-batch",
+      "layer": "complex",
+      "entry": "workflows/raven-multiplatform-batch/SKILL.md",
+      "description": "将已有作品改编为不同用途、时长或画幅的版本家族，并批量导出与恢复失败项，负责每版叙事完整、构图、字幕和继承边界；仅转码或明确矩形裁切可直接走原子，语言创作交给本地化Skill。",
+      "status": "experimental-partial-execution",
+      "style_index": "styles/multiplatform/index.md",
+      "atomic_dependencies": [
+        "media-inspect",
+        "video-reframe",
+        "timeline-revise",
+        "work-variant-create",
+        "work-batch-render",
+        "work-version",
+        "work-render",
+        "media-qc"
+      ],
+      "capability_limits": [
+        "optional local video-reframe supports static explicit crop only; dynamic tracking requires actual Agent capability and output verification",
+        "optional local work-batch-render is a sequential queue without remote paid jobs or publishing; external actions require actual Agent tools and explicit user authorization",
+        "no automatic propagation/merge of later parent edits",
+        "full viewing/listening, independent effect/routing and native host unvalidated"
+      ]
+    },
+    {
+      "id": "speech-transcribe-local",
+      "layer": "atomic",
+      "entry": "atomic/speech-transcribe-local/SKILL.md",
+      "description": "使用固定本地模型和显式音轨／窗口生成原始语音观察与逐词候选，不删改文本或作剪辑判断。",
+      "status": "experimental-model-observation"
+    },
+    {
+      "id": "transcript-reference-compare",
+      "layer": "atomic",
+      "entry": "atomic/transcript-reference-compare/SKILL.md",
+      "description": "按文件、字段和版本比较参考稿与识别稿文字，保留原文范围；不纠词、不推算声学时间。",
+      "status": "experimental-text-comparison"
+    },
+    {
+      "id": "visual-layer-render",
+      "layer": "atomic",
+      "entry": "atomic/visual-layer-render/SKILL.md",
+      "description": "按明确源帧、输出帧、矩形、透明度和层级叠加视频，保留底片音轨；不选择内容或构图。",
+      "status": "local-synthetic-tested"
+    }
+  ]
+}

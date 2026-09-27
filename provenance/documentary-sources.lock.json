@@ -1,0 +1,101 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "documentary-quote-methods",
+      "version": "2b67184efd0bac8de0200af6943788ae89eae2ea",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL.md",
+      "sha256": "cd4db6ff06439022c92050237471cf61eebb4e14397a6d9ef3689b88c915e00e",
+      "size": 51696,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/SB-Jeff__documentary-junior-editor.json",
+      "authority_sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-quote-methods",
+      "version": "2b67184efd0bac8de0200af6943788ae89eae2ea",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/SB-Jeff__documentary-junior-editor/2b67184efd0b/SKILL-edit.md",
+      "sha256": "6b07e8e65299e68c19193c0ff7b41509ea4c67a83dabf83055305710cbe95874",
+      "size": 126990,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/SB-Jeff__documentary-junior-editor.json",
+      "authority_sha256": "d73fc26e4ebe88bef3964b3cd5b888631bed356b94a8a53c38f32a7f184b6b5c",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-research-methods",
+      "version": "9559c97a6b6fc90c0fbe5a20b7718716f7aee677",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/skills/cdm/alterlab-cdm-documentary-research/SKILL.md",
+      "sha256": "4fd22c63b2d279924853722281120375125f5f653d1e51d303e126437a64cb4b",
+      "size": 12017,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/AlterLab-IEU__AlterLab-FC-Skills.json",
+      "authority_sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-research-methods",
+      "version": "9559c97a6b6fc90c0fbe5a20b7718716f7aee677",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/AlterLab-IEU__AlterLab-FC-Skills/9559c97a6b6f/LICENSE",
+      "sha256": "46a02cad0300e2bda2fb9e255517a837ed23a40ca3f3bfa5be19e74743e3416c",
+      "size": 1110,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/AlterLab-IEU__AlterLab-FC-Skills.json",
+      "authority_sha256": "9d5743e81a01ad218542cd57779b661e5bef855e183b5f184ba5daf237fbef1e",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-sound-methods",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/skills/radio-audio/scripting/documentary-narration-writer/SKILL.md",
+      "sha256": "b1cbe36847fe0eae2b83f97a403d929e9e93a8ef60bc5870ddbde6f920b761ed",
+      "size": 9345,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-sound-methods",
+      "version": "39e119bfef25957223d6c44fccab0329e936d2f6",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ur-grue__autopunk-media-skills/39e119bfef25/LICENSE",
+      "sha256": "262a837bb724e50e13ce9026767131996a98e660d0ce6fac3bac64512c73f150",
+      "size": 1064,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ur-grue__autopunk-media-skills.json",
+      "authority_sha256": "bbce7fe1111e01f128c63dce082feb4a3fa79267f54a697c99b074c01cffc6bf",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-archive-methods",
+      "version": "897224c1f04394640ffb1111f65cfd26b4af895f",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/skills-library/documentary-filmmaker/SKILL.md",
+      "sha256": "7f299057c819955318f2c70ebc6fdb391a88e73eb20979a3ca552103c72dc5e1",
+      "size": 17398,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/FerroxLabs__murage.json",
+      "authority_sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "documentary-archive-methods",
+      "version": "897224c1f04394640ffb1111f65cfd26b4af895f",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/FerroxLabs__murage/897224c1f043/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size": 11358,
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/FerroxLabs__murage.json",
+      "authority_sha256": "cf2ae6efa156d59ae851be0c89ec4ec8add4eccc4316bba37f179bbda22a1053",
+      "use": "method-reference and failure analysis; no copied code; relevant sections reviewed",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local baseline consistency, not upstream authenticity"
+    }
+  ]
+}

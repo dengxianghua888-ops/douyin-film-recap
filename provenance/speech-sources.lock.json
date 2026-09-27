@@ -1,0 +1,53 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "chatcut-speech",
+      "version": "f58a037d82abe0ad6b4163f84dcd8ea8c590d686",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ChatCut-Inc__agent-plugin/f58a037d82ab/codex/skills/talking-head-guide/SKILL.md",
+      "size": 25068,
+      "sha256": "0faa69a19d80614d27598bcbe717571b0969c6f52cd94da7acbd6716d3d7a056",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ChatCut-Inc__agent-plugin.json",
+      "authority_sha256": "6216585887512b2f744875dc834432c87e8d0602376daeab90e1d4cf871e72a0",
+      "use": "method reference only; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "duyi-speech",
+      "version": "b9b631021403d717a813ec1dce283972c3ea37b4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/SKILL.md",
+      "size": 6227,
+      "sha256": "bf514b4369775735cd5f975befdf6bf305291f56287692a9532f3cdf171c0c67",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/duyi2076__duyi-scripted-video-edit.json",
+      "authority_sha256": "2851219653d2526f9655c0612b6c27924a33a21e5d9041659a22f032ade999b6",
+      "use": "method reference only; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "duyi-speech",
+      "version": "b9b631021403d717a813ec1dce283972c3ea37b4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/references/03-判定.md",
+      "size": 2932,
+      "sha256": "2cdd9f0f9b94295e446c020dd744c830d14831809ff3444b1c6271425430333c",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/duyi2076__duyi-scripted-video-edit.json",
+      "authority_sha256": "2851219653d2526f9655c0612b6c27924a33a21e5d9041659a22f032ade999b6",
+      "use": "method reference only; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    },
+    {
+      "source_id": "duyi-speech",
+      "version": "b9b631021403d717a813ec1dce283972c3ea37b4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/duyi2076__duyi-scripted-video-edit/b9b631021403/duyi-koubo-lite/references/08-验收.md",
+      "size": 1662,
+      "sha256": "34e109bfc56afeca5a25485965a36f611eaed373957dbf900378599bd500daa8",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/duyi2076__duyi-scripted-video-edit.json",
+      "authority_sha256": "2851219653d2526f9655c0612b6c27924a33a21e5d9041659a22f032ade999b6",
+      "use": "method reference only; no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local manifest consistency, not upstream authentication"
+    }
+  ]
+}

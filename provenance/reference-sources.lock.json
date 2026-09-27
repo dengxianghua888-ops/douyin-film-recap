@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "reference-mechanisms",
+      "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/125-reference-story-formula.md",
+      "size": 6167,
+      "sha256": "bd5dd1468792566af40030d3c7f2e039d87c38a0ce243b49eb6ae452316fba14",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+      "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-mechanisms",
+      "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/92-reference-edit-rhythm.md",
+      "size": 4347,
+      "sha256": "ec0699c3d8fe529572cdfc5515500d5ff4d549ff6a17a1195d386a1fbc1ebd8d",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+      "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-mechanisms",
+      "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/docs/prompts/98-edit-style-profile.md",
+      "size": 4732,
+      "sha256": "b98438ded24d5164da5d40f5691275aa37c9b1bc58a532ec97b6569ecec66c27",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+      "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-mechanisms",
+      "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/scripts/reference_edit_rhythm.py",
+      "size": 38073,
+      "sha256": "8b852ddb1e197aad2bbc171915ec987dadae9661a975b5e9de185299a0dbf54e",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+      "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-mechanisms",
+      "version": "52ec46319ebe916bc4e4ad31aa48f7254201ef85",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/maxazure__video-editing-skill/52ec46319ebe/scripts/reference_story_formula.py",
+      "size": 35558,
+      "sha256": "1b68b96685d9d6f0406080951b5926eb98966b8401a1da0bc5cd85cc1b490532",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/maxazure__video-editing-skill.json",
+      "authority_sha256": "0d6a5e4e051c53d7dba122b2ac2347972c43928906c51815f5d8b5b557e0b384",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-observation",
+      "version": "ab3da1b589fa4b3e51302f3655c29a268761b081",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/wanenmao2011__design-video-analysis-skill/ab3da1b589fa/SKILL.md",
+      "size": 8827,
+      "sha256": "45eaf518a0705ef893e734a57531ee5e8d8302f238e297f3e0484bd3e625585a",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/wanenmao2011__design-video-analysis-skill.json",
+      "authority_sha256": "6d2da9f73b8a3cd5c7445db592653e1f29aa77c35c9164eab456aca1d402ecf7",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-observation",
+      "version": "ab3da1b589fa4b3e51302f3655c29a268761b081",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/wanenmao2011__design-video-analysis-skill/ab3da1b589fa/LICENSE",
+      "size": 1056,
+      "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/wanenmao2011__design-video-analysis-skill.json",
+      "authority_sha256": "6d2da9f73b8a3cd5c7445db592653e1f29aa77c35c9164eab456aca1d402ecf7",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-color",
+      "version": "fdc4f5e44f07ee907b06f98438872f5a66b14ba4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/filipenevola__fable-video-edit/fdc4f5e44f07/reference/color-grading.md",
+      "size": 3175,
+      "sha256": "5fe331c93a9ebf6d955540b259a00c5ec2f17e96423b30c64fd59104b63898c1",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/filipenevola__fable-video-edit.json",
+      "authority_sha256": "8da14c740efa974516d647e28ae87dc33b0a0de7cb02461db31ae5bc3fd45635",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "reference-color",
+      "version": "fdc4f5e44f07ee907b06f98438872f5a66b14ba4",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/filipenevola__fable-video-edit/fdc4f5e44f07/LICENSE",
+      "size": 1071,
+      "sha256": "5d398d644f41def1c0159aa0455adb55f35957e008a17bc5012f9377b0947627",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/filipenevola__fable-video-edit.json",
+      "authority_sha256": "8da14c740efa974516d647e28ae87dc33b0a0de7cb02461db31ae5bc3fd45635",
+      "use": "critical method reference only; original code and editorial writing, no source code copied",
+      "verification": "matches-existing-local-manifest",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    }
+  ]
+}

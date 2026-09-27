@@ -1,0 +1,53 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "faster-whisper-reference",
+      "version": "1c8d6a682c56813a540640babe49d9b270ea708c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__faster-whisper/1c8d6a682c56/SKILL.md",
+      "size": 67024,
+      "sha256": "970204a5eac1b70195b2f1835b1d3bacb4341e327968549e7753f16a9e0653bf",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__faster-whisper.json",
+      "authority_sha256": "13764b5fdfb59917de3aa64be1b99f13c2c65e7ccdd0f290978b62342462af02",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis; no external wrapper code copied",
+      "trust_limit": "local archive consistency, not performance or recognition quality"
+    },
+    {
+      "source_id": "faster-whisper-reference",
+      "version": "1c8d6a682c56813a540640babe49d9b270ea708c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__faster-whisper/1c8d6a682c56/scripts/transcribe.py",
+      "size": 114264,
+      "sha256": "3c313601d0aa3586eb63e6e8dd45fdca65481151fdf247aee07db8da3dbef32a",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__faster-whisper.json",
+      "authority_sha256": "13764b5fdfb59917de3aa64be1b99f13c2c65e7ccdd0f290978b62342462af02",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis; no external wrapper code copied",
+      "trust_limit": "local archive consistency, not performance or recognition quality"
+    },
+    {
+      "source_id": "faster-whisper-reference",
+      "version": "1c8d6a682c56813a540640babe49d9b270ea708c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__faster-whisper/1c8d6a682c56/LICENSE",
+      "size": 1067,
+      "sha256": "a5840884b26cf76e1325a711f6f1b761bdd4b8f0b71934cb70df133ac8087e2a",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__faster-whisper.json",
+      "authority_sha256": "13764b5fdfb59917de3aa64be1b99f13c2c65e7ccdd0f290978b62342462af02",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis; no external wrapper code copied",
+      "trust_limit": "local archive consistency, not performance or recognition quality"
+    },
+    {
+      "source_id": "faster-whisper-reference",
+      "version": "1c8d6a682c56813a540640babe49d9b270ea708c",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/ThePlasmak__faster-whisper/1c8d6a682c56/requirements.txt",
+      "size": 117,
+      "sha256": "db500dda68105d00efa2be011ba9beb7efa27a181d13cbb024eb671ecca7297d",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/ThePlasmak__faster-whisper.json",
+      "authority_sha256": "13764b5fdfb59917de3aa64be1b99f13c2c65e7ccdd0f290978b62342462af02",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis; no external wrapper code copied",
+      "trust_limit": "local archive consistency, not performance or recognition quality"
+    }
+  ]
+}

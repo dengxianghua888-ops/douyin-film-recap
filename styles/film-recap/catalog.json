@@ -1,0 +1,787 @@
+{
+  "schema": "film-style-catalog/1",
+  "scope": "open-ended; no style-count ceiling",
+  "styles": [
+    {
+      "id": "causal-spine",
+      "name": "因果主线",
+      "family": "结构与信息",
+      "fit": "人物目标清楚、事件连锁明确的完整故事；支线过多时只沿选定主线",
+      "question": "他为了什么采取行动，这个行动如何招致下一步后果？",
+      "selection": "优先不可省略的触发、选择和后果；删掉不影响理解的重复受阻，不删改变动机的证据",
+      "sequence": "用一个困境入场→补目标→行动及代价逐次升级→关键选择→后果落地",
+      "audio": "旁白连接被压缩的过程，原声保留决定与反应；解释后给证据发声",
+      "rhythm": "背景快过，选择慢落；每段推进因果，不规定等长镜头",
+      "visual": "用人物或关键物件建立因果位置；时间标记仅解决真实跳时",
+      "anti": "把相邻发生误写成因果；以全知口吻编造内心",
+      "example": "虚构例：借钱遭拒→接受危险工作→隐瞒伤情→关系破裂，保留接受工作的实际理由",
+      "nearest": "与程序调查不同，它围绕人物行动后果，不以办案步骤完整为目标",
+      "effect_check": "拿掉任一保留段后能指出具体因果损失；陌生观众可复述目标、选择和代价",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "result-backtrack",
+      "name": "后果追因",
+      "family": "结构与信息",
+      "fit": "结果可公开且真正存在可追问原因的故事；禁剧透结果时不用",
+      "question": "这个已发生的后果，究竟由哪次选择开始？",
+      "selection": "选后果的可读局部和解释它必需的前因；不把所有高潮提前播完",
+      "sequence": "允许公开的后果片段→建立因果问题→回到关键起点→逐步逼近→完整兑现原后果",
+      "audio": "开头尽量由真实声音提出问题；旁白明确回到何时，不连续反复卖关子",
+      "rhythm": "短开口、逐层回填，追到结果时给新理解而非原样重复",
+      "visual": "必要时用简短时间提示，区分回看与现实；避免假装连续动作",
+      "anti": "结果先泄露却没有新理解；隐藏用户要求保留的关键前提",
+      "example": "虚构例：桌上的辞职信→回到第一次被要求改报告→几次妥协→签字时改变含义",
+      "nearest": "与线索悬疑不同，观众先知道结果，悬念是原因而非答案",
+      "effect_check": "开头披露通过剧透检查；结尾比开头多解释一个有源依据的因果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "procedural-investigation",
+      "name": "程序与证据推进",
+      "family": "结构与信息",
+      "fit": "调查、职业任务或解决问题的影片，流程中有真实障碍和推翻",
+      "question": "每条证据改变了哪一步判断，下一步为何合理？",
+      "selection": "留证据来源、检验、失败和修正；删机械重复但保留错误路线的原因",
+      "sequence": "问题定义→初步假设→验证受阻→新证据修正→决定性检验→结果",
+      "audio": "关键证据与判断用原声，旁白压缩重复查找；不把怀疑配成定罪语气",
+      "rhythm": "信息到达和假设更新交替，难理解的证据给阅读时间",
+      "visual": "证物、空间和人物关系可用简洁文字标注，不用装饰掩盖证据",
+      "anti": "把结论剪在证据前导致伪推理；抹掉反证使过程显得必然",
+      "example": "虚构例：监控失效→访谈矛盾→核对班表→排除最初嫌疑→找到真正时间窗",
+      "nearest": "与因果主线相比，核心是知识如何经检验变化，不只是角色遭遇",
+      "effect_check": "每个判断有前置证据；观众能分清已知事实、假设和被推翻项",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "parallel-crossroads",
+      "name": "双线交叉",
+      "family": "结构与信息",
+      "fit": "两条行动线在时间、空间或主题上有可证明的关联",
+      "question": "两个人的行动会在什么地方相互改变？",
+      "selection": "各留目标、障碍和变化；切换点必须带问题，避免把两个摘要交替摆放",
+      "sequence": "建立两条线→交替升级→明确交叉条件→相遇或错过→各自后果",
+      "audio": "每次声音交接要帮助辨识人物/地点；跨场景声音桥不得制造不存在的同时性",
+      "rhythm": "按悬而未决的问题切换，不按固定轮次轮流分镜",
+      "visual": "用环境和人物建立线索；必要时标时间差，不把非同时事件伪装同时",
+      "anti": "编造因果或同一时刻；频繁切换使任一线的动作不完整",
+      "example": "虚构例：女儿赶车、父亲返家；保留各自原因，在门口错过的事实处汇合",
+      "nearest": "与群像关系不同，保持两条清楚的主行动线，并有真实交叉点",
+      "effect_check": "两条线都能独立理解，交叉的时间/因果关系与源片一致",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "clue-suspense",
+      "name": "线索递进悬疑",
+      "family": "认知与悬念",
+      "fit": "未知答案推动观看、线索有明确揭示顺序；不适合答案已要求公开的概述",
+      "question": "观众此刻能合理怀疑什么，下一条证据如何改变怀疑？",
+      "selection": "保留可读线索、反证及其反应；去掉纯恐吓但不提供信息的重复",
+      "sequence": "异常问题→第一解释→矛盾→更高风险→合法揭示→余波",
+      "audio": "让线索原声先发生，旁白解释必要关系；真相前不使用身份已知的措辞",
+      "rhythm": "疑问与局部答案交替，关键线索不过快掠过，揭示后留反应",
+      "visual": "避免字幕、封面式标题或补画提前泄密；道具画面要足够看清",
+      "anti": "把最高冲击结局当钩子；旁白提前替观众下结论",
+      "example": "虚构例：屋中多一把钥匙→室友解释→门锁记录矛盾→第三人的进入证据",
+      "nearest": "与后果追因相反，答案尚未交付；与主观困惑不同，线索仍需清楚可验证",
+      "effect_check": "逐段列观众已知集合，所有泄露均在允许时点之后",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "restricted-pov",
+      "name": "受限视角",
+      "family": "认知与悬念",
+      "fit": "主角知道得少且不确定性是作品体验；视角外信息不是必要前提",
+      "question": "只跟随这个人物，我们能知道和误以为什么？",
+      "selection": "只选该视角可经历或合理获知的事件；视角外真相留到被获得时",
+      "sequence": "日常认知→异常→尝试理解→误解受挫→获得关键事实→重新看待经历",
+      "audio": "保留人物迟疑与听到的环境声；旁白只表达有证据的认知，不替角色全知",
+      "rhythm": "困惑段允许停顿，但每段要有新的感知或选择，不空转",
+      "visual": "优先视线、反应与主观观察；主观画面要与客观镜头区分",
+      "anti": "用旁白公布他不知道的事实；把恐惧感等同确有危险",
+      "example": "虚构例：人物听见隔壁响动，只展示他检查房间的过程，答案在他开门后出现",
+      "nearest": "与线索递进的区别在于控制信息来源，而非仅控制答案时机",
+      "effect_check": "逐条旁白检查角色能否知晓，弱推断不被升级为事实",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "unreliable-accounts",
+      "name": "不可靠叙述对照",
+      "family": "认知与悬念",
+      "fit": "存在谎言、记忆偏差或同一事件的不同版本",
+      "question": "同一事件的讲述哪里冲突，哪些事实仍不能确定？",
+      "selection": "选有区别的版本细节和矛盾证据，不重复完整相同过程",
+      "sequence": "给出一个版本并标归属→展示另一版本差异→比对证据→限定可确认结论",
+      "audio": "使用人物原话，旁白持续注明谁的说法；音效不暗示未经证实的罪责",
+      "rhythm": "版本内部先让观众站稳，再以具体矛盾转向，最终保留应有不确定性",
+      "visual": "同一场景重复使用需有目的和重用声明；颜色变化不可当真假证据",
+      "anti": "把后出现的版本自动当真；为爽感强行给出唯一凶手",
+      "example": "虚构例：两人都说自己先离场，时钟画面仅能证明时间范围，不能证明谁说谎",
+      "nearest": "与多线交叉不同，这是证词和真值关系；不是并行客观事件",
+      "effect_check": "所有陈述可归属讲述者，结论强度不超过证据强度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "deadline-tension",
+      "name": "限时任务",
+      "family": "认知与悬念",
+      "fit": "源片有真实截止条件、距离或资源耗尽；没有时限时不编倒计时",
+      "question": "剩余时间或资源如何改变人物选择？",
+      "selection": "保留约束建立、每次延误的代价、关键取舍与到期结果",
+      "sequence": "明确期限→尝试推进→阻力消耗资源→不可兼得的选择→到期结果",
+      "audio": "真实时钟/机械声可承压；旁白交代约束，不虚构剩余秒数",
+      "rhythm": "只在有时间推进证据时加速，决策点可短暂减速以凸显代价",
+      "visual": "时间提示来自源片事实或明确换算；跨时段剪辑保留可信标记",
+      "anti": "把影片剩余时长当剧情倒计时；加速动作导致空间无法理解",
+      "example": "虚构例：末班船将离港，人物要在找回证件与帮助伤者间取舍",
+      "nearest": "与动作推进不同，压力来自限时与取舍，动作强度可很低",
+      "effect_check": "每次时限变化都有依据；最终选择不是靠删掉其他可行选项制造",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "relationship-drift",
+      "name": "关系渐变",
+      "family": "人物与关系",
+      "fit": "关系的亲近、疏远或权力转移比外部事件更重要",
+      "question": "两个人何时开始不再像从前那样对待彼此？",
+      "selection": "优先称呼、距离、回避、照料和回应方式的变化；宏大事件只作为刺激",
+      "sequence": "初始关系→第一次细微变化→重复中的差别→无法回避的选择→新关系落点",
+      "audio": "对话和沉默承担关系变化，旁白少替人解释感情",
+      "rhythm": "用相似情境的不同反应形成节奏，关键对视和转身保留回报",
+      "visual": "双人空间与视线关系优先，竖屏不盲裁掉倾听者",
+      "anti": "用煽情音乐替代关系证据；把沉默都解释成不爱",
+      "example": "虚构例：第一次主动递伞、后来把伞放桌上、最后带走两把伞，含义须由上下文支持",
+      "nearest": "与人物弧线相比，主角是两人之间的关系，不是一个人的成长",
+      "effect_check": "观众能定位关系变化的具体动作；旁白删去后关键转向仍可感知",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "character-arc",
+      "name": "人物选择与弧线",
+      "family": "人物与关系",
+      "fit": "同一人物在相似压力下做出不同选择",
+      "question": "他最初怎样选择，付出什么后终于改变或拒绝改变？",
+      "selection": "保留起始价值观、试探、失败、代价和终局选择；不把服装变化当成长",
+      "sequence": "初始选择→代价暴露→旧方法失效→关键考验→新选择及其代价",
+      "audio": "关键决定让原声/行动承担，旁白连接经历，不总结成空泛鸡汤",
+      "rhythm": "失败可压缩，但改变发生的犹豫和选择不能跳过",
+      "visual": "以能体现选择的实际动作作前后对照，不靠表情拼贴强造弧线",
+      "anti": "把被迫妥协剪成觉醒；只留成功结局没有心理与行动证据",
+      "example": "虚构例：初次遇事推责→伙伴受损→再次面临责任时主动留下",
+      "nearest": "与道德两难不同，重点在跨时间的选择变化，不一定存在两种都合理的选项",
+      "effect_check": "初始和终局选择有可比较条件；中间变化不是由旁白独自声称",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "moral-dilemma",
+      "name": "道德两难",
+      "family": "人物与关系",
+      "fit": "两条选择都有真实代价，作品保留价值张力",
+      "question": "无论怎么选会伤害谁，人物为何仍要作出这次决定？",
+      "selection": "两边利益和后果都给有效证据；保留犹豫与代价，不恶化一方以便站队",
+      "sequence": "建立双方正当需求→约束收紧→无法兼得→决定→被留下的损失",
+      "audio": "让当事人的原话和沉默成立；旁白说明约束，区分解释与评价",
+      "rhythm": "决策前留认识代价的空间，结果后不急着配胜利音乐",
+      "visual": "对双方使用同等清晰的证据，不以丑化镜头替代论证",
+      "anti": "删掉另一方理由后制造简单正邪；替观众宣布唯一正确答案",
+      "example": "虚构例：公开证据能救同事却暴露家人，结尾保留两边承担的结果",
+      "nearest": "与人物弧线相比，聚焦单个难题的价值冲突，不必须展示长期成长",
+      "effect_check": "双方代价可被复述；倾向性观点有证据且被标为观点",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "performance-silence",
+      "name": "表演与沉默",
+      "family": "人物与关系",
+      "fit": "眼神、呼吸、身体姿态和停顿承载主要信息",
+      "question": "人物在哪一瞬间改变了内在状态，而语言没有说出来？",
+      "selection": "留刺激前提、细微变化发生及落地；去掉解释同一变化的多余 VO",
+      "sequence": "可读情境→刺激到来→表演变化→回应或不回应→余味",
+      "audio": "原声呼吸、衣物、房间底噪是内容；旁白只补无法看懂的前提",
+      "rhythm": "允许长停留但不机械拉长；入出点围绕变化，而非静音阈值",
+      "visual": "优先完整表演镜头和真正有意义的反应，避免不断切无关特写",
+      "anti": "依据一帧表情断言复杂动机；配音覆盖呼吸；用慢放伪造反应时长",
+      "example": "虚构例：人物听见名字后手停在杯沿，随后继续倒水；不直接断言他心虚",
+      "nearest": "与关系渐变相比，可聚焦单个场面瞬间，无须铺跨时间关系",
+      "effect_check": "静音旁白后仍能指出状态变化，保留的停顿不是无事件空白",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": [
+        {
+          "id": "w01-tos-film-trials-01",
+          "variant": "performance-silence",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/result-current.json",
+            "sha256": "7bea6e10140e19c5dc70b4556b9421dc8a176797a9f9845862d059328567d200"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/current-readback-02.json",
+            "sha256": "1a49288b2f00d876a3b563edeec3cb909095fc070ff7299c3734a8f9202b9943"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/frame-review.json",
+            "sha256": "0f943f99fcc983ae94cdbdb37d1ffeff398390cc60265864cfd59192e7b2bab4"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/semantic-review.json",
+            "sha256": "0f31328d9e1ba3155cb106add212f1d6c05724d6b1046a57a5900c5d466c6d89"
+          },
+          "scope": "Actual live-action/CGI dialogue rendering, source PTS, hosted-text translation and selected output frames. Full playback/listening, independent style/routing and NLE NOT_RUN."
+        }
+      ]
+    },
+    {
+      "id": "ensemble-network",
+      "name": "群像与关系网",
+      "family": "人物与关系",
+      "fit": "多个角色的利益与行动互相牵动，单主角会损失理解",
+      "question": "同一事件如何改变不同人的立场和联盟？",
+      "selection": "按与核心事件的关系选择角色，首次出现建立目标；删仅露脸的支线",
+      "sequence": "核心事件→必要角色目标→行动互相影响→联盟变化→共同或分化后果",
+      "audio": "用原话区别立场，旁白解决身份/关系定位，不连续报名字",
+      "rhythm": "每次新增角色都有任务；重要关系转移前给观众重新定位的机会",
+      "visual": "必要的关系卡用简洁名字和连接变化，不把整张关系图一直压画面",
+      "anti": "角色太多却无目标；将观点相近误剪成真实联盟",
+      "example": "虚构例：工厂停工后管理者、工人和家属各有目标，保留导致结盟的实际行动",
+      "nearest": "与双线交叉相比，关注多方网络状态，不必只有两条行动线",
+      "effect_check": "新观众能说清主要人物为何参与及关键联盟如何改变",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "ordinary-life",
+      "name": "日常观察与生活质地",
+      "family": "人物与关系",
+      "fit": "日常行动、空间与习惯构成作品意义，外部冲突不强",
+      "question": "这个人的生活如何在细小重复中显出变化？",
+      "selection": "保留有差异的重复、劳动过程、人与环境关系；删没有观察价值的重复",
+      "sequence": "进入生活节律→形成习惯预期→小变化出现→人物回应→回到改变后的日常",
+      "audio": "环境声和真实对话优先，旁白具体描述上下文，不把普通生活拔成口号",
+      "rhythm": "节奏来自活动周期与细小中断，不靠每几秒反转；允许普通动作完成",
+      "visual": "空间和物件有叙事功能才停留，不用任意空镜堆文艺感",
+      "anti": "硬造冲突或把平静写成悲惨；用泛化哲理替代具体观察",
+      "example": "虚构例：每日开店摆三把椅子，某日只摆两把，原因必须从素材确认",
+      "nearest": "与表演沉默相比，观察单位是生活节律和环境，不只是单个表情转折",
+      "effect_check": "每个日常片段提供新的生活事实或变化，整体有可感知的积累",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "original-confrontation",
+      "name": "原声对峙",
+      "family": "声音与场面",
+      "fit": "原对白本身构成行动、权力变化和不可替代表演",
+      "question": "谁在这轮对话中改变了局势，转向发生在哪里？",
+      "selection": "保留问题、回应、反击及必要反应；删重复争执但不打散完整论点",
+      "sequence": "最少背景→对峙建立→施压→转向→真实反应→必要后果",
+      "audio": "原声占据关键段，旁白只在前后或确有缺口处连接；不抢下一句台词",
+      "rhythm": "以话轮、停顿和权力转移控制切点，不按说话人机械切脸",
+      "visual": "说话者与倾听者按表达价值选择，保留空间关系",
+      "anti": "拼接台词制造未发生的回答；过度字幕抢戏；音乐遮住语气",
+      "example": "虚构例：上司质问→员工拿出记录→对方沉默，关键是记录前后的权力变化",
+      "nearest": "与因果主线相比，完整场面承担主叙事，旁白压缩价值退居辅助",
+      "effect_check": "仅听原声仍能理解对峙；所有问答关系与原片一致",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": [
+        {
+          "id": "w01-tos-film-trials-01",
+          "variant": "original-confrontation",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/result-current.json",
+            "sha256": "7bea6e10140e19c5dc70b4556b9421dc8a176797a9f9845862d059328567d200"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/current-readback-02.json",
+            "sha256": "1a49288b2f00d876a3b563edeec3cb909095fc070ff7299c3734a8f9202b9943"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/frame-review.json",
+            "sha256": "0f943f99fcc983ae94cdbdb37d1ffeff398390cc60265864cfd59192e7b2bab4"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/semantic-review.json",
+            "sha256": "0f31328d9e1ba3155cb106add212f1d6c05724d6b1046a57a5900c5d466c6d89"
+          },
+          "scope": "Actual live-action/CGI dialogue rendering, source PTS, hosted-text translation and selected output frames. Full playback/listening, independent style/routing and NLE NOT_RUN."
+        }
+      ]
+    },
+    {
+      "id": "spatial-action",
+      "name": "空间清楚的动作推进",
+      "family": "声音与场面",
+      "fit": "追逐、打斗、营救等任务依赖空间与动作因果",
+      "question": "目标在哪里、障碍在哪里、这次动作如何改变距离或优势？",
+      "selection": "留空间建立、动作发动、接触/结果与必要反应；删重复攻击但保留战术变化",
+      "sequence": "目标与地理→障碍→尝试→空间/优势变化→决定动作→结果",
+      "audio": "动作声保持同步与冲击，VO 放在动作间隙解释目标，不覆盖关键接触",
+      "rhythm": "大动作内部保持可读，升级段提速，关键结果留确认帧",
+      "visual": "方向、入口、出口和物件位置优先，不为竖屏放大破坏地理",
+      "anti": "只保拳头命中造成无因果集锦；画外配音编造不存在的战术",
+      "example": "虚构例：角色绕过货架接近出口，保留敌人改变位置的镜头才能理解绕行",
+      "nearest": "与限时任务不同，张力来自空间目标与行动反馈，未必有倒计时",
+      "effect_check": "静音旁白后可辨认目标与动作结果，关键空间跳变均有连接",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "comic-reaction",
+      "name": "喜剧铺垫与反应",
+      "family": "声音与场面",
+      "fit": "笑点来自期待落差、话语节奏或反应，而不是单句好笑",
+      "question": "观众形成了什么预期，何时被改变，谁的反应完成笑点？",
+      "selection": "保留必要铺垫、包袱与反应；删解释笑点和重复附和",
+      "sequence": "建立认真预期→偏差显露→包袱→反应/空气→下一段或回收",
+      "audio": "语气和原声优先，旁白不提前讲结果，不擅加笑声指挥观众",
+      "rhythm": "在包袱落地后留够反应；快慢来自预期操控，不统一倍速",
+      "visual": "反应镜头必须来自正确时刻，不挪无关表情造笑点",
+      "anti": "先解释为什么好笑；删光包袱后的停顿；凭空配嘲讽音效",
+      "example": "虚构例：人物郑重展示设备却按错开关，保留他装作无事的后续动作",
+      "nearest": "与原声对峙相比，结构目标是期待与落差，不是权力胜负",
+      "effect_check": "第一次观看能感到包袱在何时落地，原声节奏和反应没有被裁断",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": [
+        {
+          "id": "w01-film-work-trials-03",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/result.json",
+            "sha256": "45c49410468cbd16764a2c0a6dd9e74a9b244acf67ef64ebf939720c6f35dd43"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/current-readback.json",
+            "sha256": "da852396ca4b14b420a9d2fcb019599e454d08c8684fb2590a27e2c6cfb7c369"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/frame-review-01.json",
+            "sha256": "e24f5ba9f14b703aae1001eeef189382cd4bb04fe5e3321a65e6ef834bd7d47f"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/semantic-review-01.json",
+            "sha256": "3d34b7047ff6546e75308ef903092e17047944c562a907c03643641cb366061f"
+          },
+          "variant": "comic-reaction",
+          "scope": "current WorkDocument rendering, exact frame count and sampled source/output review; complete playback/listening, independent effect and NLE NOT_RUN"
+        }
+      ]
+    },
+    {
+      "id": "sensory-atmosphere",
+      "name": "感官与氛围推进",
+      "family": "声音与场面",
+      "fit": "空间、声景、光线和运动具有明确情绪作用",
+      "question": "观众从怎样的身体感受进入，又被带向怎样的状态？",
+      "selection": "选相互变化的声画环境而非相似漂亮空镜；保留触发状态变化的事件",
+      "sequence": "建立感官规则→加入异常或反差→积累→转变→余韵",
+      "audio": "环境声、物体声和音乐变化承担结构，VO 极少但不遗漏理解前提",
+      "rhythm": "允许声画持续，变化密度由感官差异决定；不以单一慢动作替代设计",
+      "visual": "构图/运动/明暗对比服务路径，调色不篡改必要证据",
+      "anti": "空镜拼贴与故事无关；所有镜头同一种情绪导致无推进",
+      "example": "虚构例：室内滴水声逐渐被门外车流打断，人物离开后声景展开",
+      "nearest": "与日常观察相比，主要组织声画感受变化，不必完整呈现生活过程",
+      "effect_check": "可描述开始与结束的具体感受差异，并定位导致变化的真实声画",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "motif-echo",
+      "name": "意象回声",
+      "family": "主题与形式",
+      "fit": "物件、动作或构图多次出现且语境发生变化",
+      "question": "同一个东西再次出现时，观众为什么会读出不同含义？",
+      "selection": "选有语境差异的重复物件/动作，保留每次出现的因果背景",
+      "sequence": "首次建立含义→不同情境重现→意义变化→最终回声",
+      "audio": "可用同一真实声音形成回收，旁白少命名象征，把联系留给画面",
+      "rhythm": "重复之间留足叙事距离，最后一次给新的状态而不是素材重放",
+      "visual": "相似构图并列需注明非连续事件；匹配剪辑不得改变人物行为事实",
+      "anti": "随意空镜被强行解释为象征；没有变化却多次重复",
+      "example": "虚构例：钥匙第一次代表进入，第二次被拒收，最后留下空钩；含义受剧情约束",
+      "nearest": "与关系渐变相比，以意象作为组织线索，可连接不同人物和时间",
+      "effect_check": "每次重现有新的语境证据，删除一个重复是否会损失含义变化",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "contrast-argument",
+      "name": "观点与反证",
+      "family": "主题与形式",
+      "fit": "用户需要有立场的剧情解读，源片能提供正反证据",
+      "question": "这个观点能解释什么，又在哪些地方必须收窄？",
+      "selection": "保留支持与反证、角色选择和后果；不挑片段把复杂人物剪成单面",
+      "sequence": "提出有限观点→具体证据→反例挑战→修正观点→开放或限定结论",
+      "audio": "旁白明确区分剧情事实和解读，关键对白给原声；不用情绪音乐替代论证",
+      "rhythm": "论点后给证据时间，反证不一闪而过，结尾收窄而非喊口号",
+      "visual": "字幕可标事实/解读和论证转折，避免堆长段抽象文字",
+      "anti": "断章取义证明预设结论；把角色的话当导演立场",
+      "example": "虚构例：认为人物只为利益行动，但保留他一次无回报援助并修正论点",
+      "nearest": "与因果主线相比，交付是可辩护的解释，不是完整故事复述",
+      "effect_check": "每个论断可定位证据，反证没有被删；观点强度与依据相称",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "historical-context",
+      "name": "背景与时代语境",
+      "family": "主题与形式",
+      "fit": "源片理解依赖制度、时代或文化背景，且有可靠外部材料可核对",
+      "question": "哪些背景是理解人物处境必须知道的，哪些只是知识旁枝？",
+      "selection": "选会改变行动可行性的背景和对应源片场景；删与主线无关的百科",
+      "sequence": "源片具体困境→必要背景→回到行动→制度约束的后果→人物落点",
+      "audio": "旁白承担背景，原声承担人物经验；区分剧中陈述与外部历史事实",
+      "rhythm": "背景段短而可消化，连续信息后回到人物，不把解说变资料朗读",
+      "visual": "外部图像标来源与时间，不能冒充片中实拍证据",
+      "anti": "用真实历史替虚构剧情补证；时代标签直接推断个人动机",
+      "example": "虚构例：解释当时迁居手续如何限制选择，但不据此声称人物真实经历",
+      "nearest": "与程序调查相比，背景解释行动条件，不是故事内的证据推理",
+      "effect_check": "所有外部事实有来源；删去无关背景后人物困境仍被正确解释",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "scene-close-reading",
+      "name": "单场景细读",
+      "family": "主题与形式",
+      "fit": "用户聚焦一个场面、表演或调度，允许更细致分析",
+      "question": "这个场面通过哪些具体声画安排完成变化？",
+      "selection": "保留场面必要前后文与关键调度细节；回看只用于明确分析问题",
+      "sequence": "完整建立场面→指出一个可观察细节→短回看→展示作用→回到完整情绪",
+      "audio": "先让原声成立，再用旁白解释；分析时暂停/回看须显式标明非原作时间",
+      "rhythm": "完整体验和分析拆解分层，避免一句对白被切成许多碎片",
+      "visual": "标注视线、位置、入画出画等可见事实；不能由构图直接断言创作者意图",
+      "anti": "过度分析打断表演；细节描述与画面实际不符",
+      "example": "虚构例：先看完整沉默，再回看人物何时移开视线，讨论其可能作用",
+      "nearest": "与表演沉默相比，额外提供可核对的分析层，不只是让观众感受",
+      "effect_check": "观看段与分析段可区分，每个技术判断能在实际画面定位",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "serial-bridge",
+      "name": "连续剧集承接",
+      "family": "系列与篇幅",
+      "fit": "多集素材需要前情、单集回报与后续问题，用户允许系列 Part",
+      "question": "本集回答了哪个旧问题，又真实打开了哪个新问题？",
+      "selection": "留理解本集所需前情、新变化和本集兑现；不重复播完上一集高潮",
+      "sequence": "最少前情→本集目标→变化升级→本集结果→真实未决问题",
+      "audio": "前情 VO 压缩，核心回报交给原声；结尾不强行追加不存在的危险",
+      "rhythm": "前情短而足够，本集必须有独立回报，悬念不截断应完整的句子",
+      "visual": "集号、时间、人物变化明确；多集素材身份不能混用",
+      "anti": "把关键结果永远留下一集；断在半句原声制造伪悬念",
+      "example": "虚构例：上一集失踪、本集找到人却发现他主动离开，结尾问题来自其真实目的",
+      "nearest": "与线索悬疑相比，兼顾系列记忆和单条完整度，不只延后答案",
+      "effect_check": "本集有明确兑现，前情没有新编事实，结尾问题在素材中成立",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "micro-complete",
+      "name": "短时长完整故事",
+      "family": "系列与篇幅",
+      "fit": "要求几十秒到约两分钟且素材有可独立成立的小事件",
+      "question": "在有限时间里，哪一个变化值得被完整经历？",
+      "selection": "只选一个主要目标/变化，保留前提和结果；宁少一条支线，不牺牲动作/台词完整",
+      "sequence": "立即给具体情境→一次关键尝试或选择→变化→可理解的落点",
+      "audio": "一句 VO 可建立前提，其余由最有效的原声/动作承担；不全程高速朗读",
+      "rhythm": "压缩背景和重复，变化处留可感知的时间；不硬塞多次反转",
+      "visual": "文字只补不可省略身份/时间，保护画面阅读，避免多层同时抢信息",
+      "anti": "所有高潮快速拼接却没有故事；倍速掩盖信息过量",
+      "example": "虚构例：修鞋匠发现鞋中纸条→决定追上客人→还回纸条后看到回应，依据实际素材",
+      "nearest": "与因果主线相比，主动缩小内容单位为一个完整变化，不是整片快速概述",
+      "effect_check": "陌生观众能理解前提、变化、结果；恢复正常语速后仍在时长约束内",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-of-general-methods",
+      "real_media_evaluations": [
+        {
+          "id": "w01-legacy-content-rejection-03",
+          "status": "REJECTED_AS_STYLE_EVIDENCE",
+          "review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-source-review-03/source-findings.json",
+            "sha256": "161d3f48dc4c2cbecf7748879c89c0c684446cfec98e5c2f05ddac91549ffc30"
+          },
+          "scope": "old film-style-trials-02 candidate retained; rejection is content/style applicability, not file integrity"
+        },
+        {
+          "id": "w01-film-work-trials-03",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/result.json",
+            "sha256": "45c49410468cbd16764a2c0a6dd9e74a9b244acf67ef64ebf939720c6f35dd43"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/current-readback.json",
+            "sha256": "da852396ca4b14b420a9d2fcb019599e454d08c8684fb2590a27e2c6cfb7c369"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/frame-review-01.json",
+            "sha256": "e24f5ba9f14b703aae1001eeef189382cd4bb04fe5e3321a65e6ef834bd7d47f"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/semantic-review-01.json",
+            "sha256": "3d34b7047ff6546e75308ef903092e17047944c562a907c03643641cb366061f"
+          },
+          "variant": "micro-complete",
+          "scope": "current WorkDocument rendering, exact frame count and sampled source/output review; complete playback/listening, independent effect and NLE NOT_RUN"
+        }
+      ]
+    },
+    {
+      "fit": "源片确有观众可看到而人物尚未知的信息：隐藏的旁观者、危险、误会或另一方准备。需明确允许向观众披露这些信息；用户要求严格跟随人物认知时不适用。",
+      "id": "dramatic-irony",
+      "name": "观众知情差",
+      "family": "认知与悬念",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap"
+      ],
+      "provenance_type": "original-synthesis-refined-from-trial-failure",
+      "real_media_evaluations": [
+        {
+          "id": "w01-legacy-content-rejection-03",
+          "status": "REJECTED_AS_STYLE_EVIDENCE",
+          "review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-source-review-03/source-findings.json",
+            "sha256": "161d3f48dc4c2cbecf7748879c89c0c684446cfec98e5c2f05ddac91549ffc30"
+          },
+          "scope": "old film-style-trials-02 candidate retained; rejection is content/style applicability, not file integrity"
+        },
+        {
+          "id": "w01-film-work-trials-03",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/result.json",
+            "sha256": "45c49410468cbd16764a2c0a6dd9e74a9b244acf67ef64ebf939720c6f35dd43"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/current-readback.json",
+            "sha256": "da852396ca4b14b420a9d2fcb019599e454d08c8684fb2590a27e2c6cfb7c369"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/frame-review-01.json",
+            "sha256": "e24f5ba9f14b703aae1001eeef189382cd4bb04fe5e3321a65e6ef834bd7d47f"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/film-work-trials-03/inspection/semantic-review-01.json",
+            "sha256": "3d34b7047ff6546e75308ef903092e17047944c562a907c03643641cb366061f"
+          },
+          "variant": "dramatic-irony",
+          "scope": "current WorkDocument rendering, exact frame count and sampled source/output review; complete playback/listening, independent effect and NLE NOT_RUN"
+        }
+      ],
+      "question": "我们已经知道的事，人物何时会发现？他在不知情下的行为会带来什么真实后果？",
+      "selection": "保留信息差的建立、人物尚未知情的证据、接近发现的过程及实际结果。去掉不改变风险/误会的重复旁观镜头。不能凭剪辑顺序把已知情人物剪成无知，也不能把普通眼神解释成恶意计划。",
+      "sequence": "让观众看到合法披露的信息→回到人物有限认知→行动逼近信息交汇→发现或错过→后果。短预告可以停在临近交汇，但交付必须标为预告；完整故事需要兑现。",
+      "audio": "观众知道得更多时尽量让声画本身制造张力。旁白只用于说明不易辨识的空间、人物或时间，不宣布未获证实的动机。声音桥不得虚构两个不同时刻的监听关系。",
+      "rhythm": "在“知情镜头”和“不知情行为”间切换，每次切换应改变风险、距离或误会强度。人物即将发现时可以延长反应，但不要重复同一素材假造等待时间。",
+      "visual": "先确保观众看清差异信息，再切人物；不靠旁白强说画面里看不见的东西。字幕保持与实际披露同步，不能把结论提前覆盖到尚未展示的信息上。",
+      "anti": "人物其实已经看到旁观者却被剪成毫不知情；同一窥视镜头多次复用而不披露；宣称有埋伏但源片只有普通路人；只制造信息差却永不兑现又标为完整故事。",
+      "example": "虚构例：先看到门后有人等候，再看到主人公准备开门；只有实际开门后的源片结果才能作为回报。人物并未见到等候者的判断要有上下文，不从单帧推断。",
+      "nearest": "线索递进悬疑是观众尚不知道答案；受限视角是观众基本不超过人物认知。本风格允许观众提前知道一个事实，张力来自人物尚未发现。一次试剪若只表现该机制，不应计入另外两类的效果通过。",
+      "effect_check": "逐段标记人物/观众各自已知事实与证据；前置信息不得违反禁剧透。调整披露粒度、交叉次数、原声留白和回报时机。最终观众应能指出“我知道、他尚不知道”的具体事实，完整作品必须对该信息差作出回应。"
+    },
+    {
+      "id": "replayed-choice",
+      "name": "复演中的改口",
+      "family": "时间与认知",
+      "fit": "同一事件、对白或选择被真实重演、模拟或回看，后一次发生可核对的偏离；源片明确区分现实与重构",
+      "question": "相同情境再次出现时，哪句回应或哪个动作变了，这个变化实际改变了什么？",
+      "selection": "保留原始回应、复演的建立或控制线索、重复部分中的必要对应、真实偏离及局部后果；不能只拼两句相似台词",
+      "sequence": "原始选择及其落点→明确进入复演→建立相同条件与控制规则→真实改口或偏离→保留对应反应及尚未解决的状态",
+      "audio": "原始对白与复演对白分别绑定源区间；屏内提词不当成已说出口的话，场外指令不冒认成角色内心；保住犹豫和完整回应",
+      "rhythm": "重复段可压缩已知背景，但偏离前后保留足够比较与表演时间；不为了加速删除改口所依赖的犹豫",
+      "visual": "用源片的控制界面、空间变化和必要简短标记区分叙事层；同一张脸或同一句话不自动等于同一时刻",
+      "anti": "把重演当作历史录像；把提词字幕当台词；省掉失败指令便宣称计划顺利；道歉后仍受威胁却写成已经和解",
+      "example": "构造例：原先用理由回避问题，后来在有提示词的重演中先重复理由，再改为承认错误；只描述素材实际给出的反应",
+      "nearest": "不同于意象回声，核心是同一决策条件下的真实回应差异；不同于不可靠叙述对照，不要求两个讲述者互相矛盾",
+      "effect_check": "观众能区分原事件、复演和场外控制；指出实际改动的回应及未兑现事项。相同句子的源区间和声画层级可追溯",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "local-film-recap",
+        "zenstory-recap",
+        "tos-case-study"
+      ],
+      "provenance_type": "original-synthesis-with-licensed-source-case",
+      "real_media_evaluations": [
+        {
+          "id": "w01-tos-film-trials-01",
+          "variant": "replayed-choice",
+          "status": "LIMITED_TRIAL_EVIDENCE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/result-current.json",
+            "sha256": "7bea6e10140e19c5dc70b4556b9421dc8a176797a9f9845862d059328567d200"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/current-readback-02.json",
+            "sha256": "1a49288b2f00d876a3b563edeec3cb909095fc070ff7299c3734a8f9202b9943"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/frame-review.json",
+            "sha256": "0f943f99fcc983ae94cdbdb37d1ffeff398390cc60265864cfd59192e7b2bab4"
+          },
+          "semantic_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/tos-film-trials-01/inspection-02/semantic-review.json",
+            "sha256": "0f31328d9e1ba3155cb106add212f1d6c05724d6b1046a57a5900c5d466c6d89"
+          },
+          "scope": "Actual live-action/CGI dialogue rendering, source PTS, hosted-text translation and selected output frames. Full playback/listening, independent style/routing and NLE NOT_RUN."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1815 @@
+{
+  "schema": "aishell-material-notice-coverage/1",
+  "status": "ADOPTED_MATERIAL_SCOPE_CURRENT_BINDINGS",
+  "licence": "CC BY-SA 4.0",
+  "scope": "Mapped source content and selected case contributions only; no repository-wide relicensing.",
+  "source": {
+    "path": "evals/parallel/w02-spontaneous-speech-20260923/source/M_R003S01C01.TextGrid",
+    "bytes": 183681,
+    "sha256": "f2c05fd5c3125f59cac2de7a5e5b9a6dec26a7b5f53f4abd443731c667bb32e5"
+  },
+  "files": [
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/INTEGRATION_PROPOSAL-v2.md",
+      "bytes": 1894,
+      "sha256": "d058b03fc048b012a1080f52c452b56a6840e51ce19a44746a3f36d67f783931",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/INTEGRATION_PROPOSAL.md",
+      "bytes": 1442,
+      "sha256": "3cc2ca1e959521cbbeef55c5e7ff8df377ed530055f55fe0e31b4a5c716b6720",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/README-v2.md",
+      "bytes": 3271,
+      "sha256": "a84e961294192e9743ff38c7a481ce7b48d07b5519ed3fd7fd4a7b0826ec562c",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/README.md",
+      "bytes": 5097,
+      "sha256": "697bcfb70885cc3ef5f3a3870915631c1bd73aa89fbbd1786c67cd4701c2fd57",
+      "category": "CASE_TEACHING_WITH_GENERIC_INSTRUCTIONS",
+      "proposed_disposition": "AISHELL_CASE_PARAGRAPHS_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "line:24",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "4. 逐单元核对发布原字，不静默修正文中的疑似错字或`<sil>`/`<$>`；标签不是认证发音。核对否定、程度、数量、转折、原因、主体与重复功能，每项允许不同意或无法判断。",
+          "text_sha256": "b6dcfdbb1df81b5b9ae59adad39542bf17d0ad4a0aff00e2532b7429481b4299"
+        },
+        {
+          "selector": "line:25",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "5. 原样候选是一段连续样本，内部没有删剪。66.56186→66.57687与75.30274→75.30774之间的原有音频都保留；只检查语义/气口连续，不称新剪接。首尾才是新截取边界，必要时建议扩大完整上下文，不能制造词级切点。",
+          "text_sha256": "d457a0527b97adab4743dd2a5dd60a120a117a630d1d2a3f416a22e47cdb94d9"
+        },
+        {
+          "selector": "line:26",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "6. 查看未渲染的“删单元16”文字提案，独立写是否丢信息与理由。后句可能增加“不大”“但是也需要”“一部分”“因为…没有没有满”，这些是待回听判断，不能仅照抄标注当听到。",
+          "text_sha256": "b75679e7ffa080cdcb2a5df01dadce7643d1aef827d7f1c82d32c49f33b0f0d1"
+        },
+        {
+          "selector": "line:32",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "候选对应源样本 `[909374,1336457)`，16kHz、单声道16bit；源实际56.835875–83.5285625秒。候选时间=源时间−56.835875，无变速或内部删剪。完整标注单元为：",
+          "text_sha256": "cd7a28e14728c6f2f89f5da7b396d21fdc9e2c81b37bcff25ce5c6b85b81838a"
+        },
+        {
+          "selector": "line:34",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 单元 | 发布源区间 | 候选相对区间 | 主要待核问题 |",
+          "text_sha256": "fc9afe1e06f89cb0c9ab927f1a9765c9ee6311b466f7ba3face0e6c3b93e5766"
+        },
+        {
+          "selector": "line:36",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 12 | 56.83589–66.56186 | 0.000015–9.725985 | 前置指代、招生重复、疑似错字与迟疑 |",
+          "text_sha256": "de35313e583c39ad2c632836dda1d35455b990cedef3effdc8feb2d828bd3273"
+        },
+        {
+          "selector": "line:38",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 16 | 75.30774–83.52856 | 18.471865–26.692685 | 不大、但是也需要、一部分、原因与没有没有 |",
+          "text_sha256": "18efa5914024258a888f4ed2f673c379e7c2ad48c5ee76974c04d9c4c3d55845"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/artifact-manifest-v2.json",
+      "bytes": 16456,
+      "sha256": "d1308c41b3284f11cebe1614ae78d8cf402b251ce08d483b631b06f58d1694d4",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/artifact-manifest.json",
+      "bytes": 5062,
+      "sha256": "1c6b18342e9300b14219a641137d1fb73fbeb8e5b78790021945c3f2effcf5b9",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/binding-manifest-v2.json",
+      "bytes": 5864,
+      "sha256": "7a60215d623fcf1b1dce39a93227c81dfa4c3fad64a4bd04ef78c3f90975f1b0",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/binding-manifest.json",
+      "bytes": 3789,
+      "sha256": "9553a7e7b73910abd51272f18cbfba505ba9e43738e54362b18ea7b7ec58bb1f",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/build_pack.py",
+      "bytes": 7178,
+      "sha256": "3e4dcf48f3867589f2060703f1872aa5a4665e514e457906b02c4fa538e440c1",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [
+        {
+          "selector": "line:34 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('subject','说话对象与话题','001-M / 招生、班级人员','原标注001-M；角色和真实职业未经认证。前后文是否改变“咱”的对象？',[12,14,16]),",
+          "text_sha256": "8bb06c6138c6471b42819679bb9fe500785b78f652df7d9af197c72b3cf60a73",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:35 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('initial_quantity','前句数量表达','要招一批','是否确实说出“一批”？不要自动与后一“一部分”视为同义重录。',[14]),",
+          "text_sha256": "b5e7302237de6faadfa46059b92406c89c455174ab6c81254b7a955dad785ae8",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:36 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('degree','程度与否定','工作嗯量也不大','“不大”实际能否辨认？其否定对象是什么？',[16]),",
+          "text_sha256": "6dc3c432e75eed222e0069cd1a9510cfb879efdd64a0cb8e33373b29419ef348",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:37 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('contrast','转折与必要性','但是也需要','是否承接前述工作量判断？声音有无弱化或另外限定？',[16]),",
+          "text_sha256": "9dd788e0dd304e0cdccf398dc54d551349c270016d370c33f0e39741cbc3a928",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:38 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('limited_quantity','后句数量范围','招一部分','是否与前句相比补充范围？不可改成无数量约束的“要招生”。',[16]),",
+          "text_sha256": "b3b11c36a20d8e8969a36ada00d8192af93227f0e7d3cb5ca2c742312deefdfe",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:40 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('negative_repeat','否定及重复功能','都还没有没有满了','逐字核对是否为“没有没有”；区分重启、迟疑、强调或听不清，不据词面删掉一个。',[16]),",
+          "text_sha256": "f04e93431576cec2eadfaf8421efd51ea69578b6507574bf6f3f517da16ade34",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:50 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[65-offset,68-offset],kind='retained_original_audio_no_splice',question='原有约15.01ms标注间隙并未删除。前句“也是”是否须连着下句理解？停顿/叠声是否自然？'),",
+          "text_sha256": "c634180bf9380e6b9171c1156cf8622cef3bd0e70e34536124c83d877e11e48f",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:52 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[74-offset,77-offset],kind='retained_original_audio_no_splice',question='原有约5ms标注间隙并未删除。“招生”是否为有信息增量的继续？不得仅按再次出现判重复take。'),",
+          "text_sha256": "e11a96420840d6a06ab7ec7c3dcb02efb282a1721a06233d57cefd23bcb4cee4",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:54 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[82-offset,n/16000],kind='new_outer_end',question='“没有没有满了”是否完整结束、尾音是否被截？后一句“包括…食堂”是否仍属必须语境？比较候选尾与源82–86秒。'),",
+          "text_sha256": "b4fa3922e366944ddfadf30fe64c8fd8ccbde5fc585e44dd41c0a28c4f36323b",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/final-source-readback.json",
+      "bytes": 4280,
+      "sha256": "b483eb2e34da89f7f452ac7675ec09a51de015abc0e41ccc4d276c63aed3fdfc",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/finalize.py",
+      "bytes": 3615,
+      "sha256": "4ed7c224b0fb45e43bdae1fc1f0fe298adc8c8350da3c5e8d0214dcabf929829",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/finalize_v2.py",
+      "bytes": 3314,
+      "sha256": "a8fc9209c1bfe087e43a7620d7eec70284b8f6d33fd6cdbcb9d90d44b0836ee5",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/frozen-guidance-v2.json",
+      "bytes": 2229,
+      "sha256": "71573faf540e9ecf8b077d228aa8d8cdaa32b6998d87f405983f8d365dc22807",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/index-v2.html",
+      "bytes": 7229,
+      "sha256": "810da56be8112e97ac9c02c33f7351e354d15209737a1e1536ee663d1e0d37f3",
+      "category": "REVIEW_UI_WITH_CASE_PROSE",
+      "proposed_disposition": "CASE_PROSE_ONLY_CC_BY_SA_4_SOFTWARE_CSS_EXCLUDED",
+      "regions": [
+        {
+          "selector": "line:6 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<p class=\"note\">评审包准备就绪，尚无真人听检。当前只有一个连续保留候选；“删后句”方案被编辑者依据文字拒绝，未生成对照音频。没有内部剪接、可靠词界或独立多take。所有评审记录均需主线复核。</p>",
+          "text_sha256": "002998b20198b9a3fc669c1f823cd1415080daa447fb4a73de216b00be9c7f86",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:13 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>4 · 内容保护与重复的作用</h2><p>以下文字只是发布标注及编辑者待核判断；词语没有独立声学时间。允许反驳原判断、要求扩大语境或填写无法判断。</p><div id=\"protectionFields\"></div>",
+          "text_sha256": "82672ffdcf2038ee8db19eb05e0840854eee54b6ed3fa6a6d897fbdfacd6fb6b",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:15 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<label>后句与前句的关系<select name=\"relation\" required><option value=\"\">请选择</option><option>有新增条件/范围/原因，不能作为等价重复删除</option><option>主要为表达性重复，但仍需保留听感/语气</option><option>可考虑缩短，但须具体指出可删范围</option><option>原标注或上下文不足，无法判断</option></select></label><label>具体依据、反例或修订建议（原源时间；无可靠词界时写整单元）<textarea name=\"relation_reason\" required></textarea></label></section>",
+          "text_sha256": "bb0a10e1f3bae42ff8dcc2ee28ae2f196ce1c8af21c5a5d492fe0e6cff81d4dc",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:16 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>5 · 接点与原有衔接</h2><p>只有候选首尾是新截取边界。66.56与75.30秒附近保持原录音连续，检查是否理解自然，不能误称“修复剪接”。</p><div id=\"boundaryFields\"></div></section>",
+          "text_sha256": "690a3263c72e901598b584d65d2dfc186b3aae749d97d5ab5ae121c099241c5c",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/index.html",
+      "bytes": 7043,
+      "sha256": "f7e0e9e920fe3a9173c8f8e46ddb3481a4aaf542678a4db9dd1d9ddb57d21aef",
+      "category": "REVIEW_UI_WITH_CASE_PROSE",
+      "proposed_disposition": "CASE_PROSE_ONLY_CC_BY_SA_4_SOFTWARE_CSS_EXCLUDED",
+      "regions": [
+        {
+          "selector": "line:6 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<p class=\"note\">评审包准备就绪，尚无真人听检。当前只有一个连续保留候选；“删后句”方案被编辑者依据文字拒绝，未生成对照音频。没有内部剪接、可靠词界或独立多take。所有评审记录均需主线复核。</p>",
+          "text_sha256": "002998b20198b9a3fc669c1f823cd1415080daa447fb4a73de216b00be9c7f86",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:13 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>4 · 内容保护与重复的作用</h2><p>以下文字只是发布标注及编辑者待核判断；词语没有独立声学时间。允许反驳原判断、要求扩大语境或填写无法判断。</p><div id=\"protectionFields\"></div>",
+          "text_sha256": "82672ffdcf2038ee8db19eb05e0840854eee54b6ed3fa6a6d897fbdfacd6fb6b",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:15 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<label>后句与前句的关系<select name=\"relation\" required><option value=\"\">请选择</option><option>有新增条件/范围/原因，不能作为等价重复删除</option><option>主要为表达性重复，但仍需保留听感/语气</option><option>可考虑缩短，但须具体指出可删范围</option><option>原标注或上下文不足，无法判断</option></select></label><label>具体依据、反例或修订建议（原源时间；无可靠词界时写整单元）<textarea name=\"relation_reason\" required></textarea></label></section>",
+          "text_sha256": "bb0a10e1f3bae42ff8dcc2ee28ae2f196ce1c8af21c5a5d492fe0e6cff81d4dc",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:16 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>5 · 接点与原有衔接</h2><p>只有候选首尾是新截取边界。66.56与75.30秒附近保持原录音连续，检查是否理解自然，不能误称“修复剪接”。</p><div id=\"boundaryFields\"></div></section>",
+          "text_sha256": "690a3263c72e901598b584d65d2dfc186b3aae749d97d5ab5ae121c099241c5c",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/prepare_v2.py",
+      "bytes": 3914,
+      "sha256": "11412982f0a22a373861a396eec9521432b2db01788075808fd3684f03fa1152",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/result-current.json",
+      "bytes": 6114,
+      "sha256": "9abe7a51ca68d7aff627339260f807ce1451f855671f3628f96f5cf155cdf872",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/result.json",
+      "bytes": 4900,
+      "sha256": "531011592168b011bcf79ae2c82f2225447fe4ace04b4f0de5d9fffaa927c9a4",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/review-spec.json",
+      "bytes": 8563,
+      "sha256": "0ad33032791b45735c93762fa1834a749835db137d5f9a2f6828bfadbddf6b5b",
+      "category": "ANNOTATION_PLUS_EDITORIAL_CASE",
+      "proposed_disposition": "MATERIAL_AND_MAPPED_EDITORIAL_CONTRIBUTIONS_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "$.units[0].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "咱嗯有没有要套探讨的，包括就是<sil>就是那个招生招生，这次就是<$>也是",
+          "text_sha256": "7a10047a146b6f2d812343cd467029db2234c2eeabfd443e1bfbb4f9093f034c"
+        },
+        {
+          "selector": "$.units[1].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "呃，中途咱有的幼儿园以小学有转幼儿园啦，中途咱要招一批呃<sil>",
+          "text_sha256": "b1cda21918d85ce209c0995d49c3d828bba77ec7ddae7b46216b806a21781b32"
+        },
+        {
+          "selector": "$.units[2].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        },
+        {
+          "selector": "$.protections[0].published_text",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "001-M / 招生、班级人员",
+          "text_sha256": "b59669681c2f856952f33178f7f22d0dc638ef529be18698590151fe822c83ea"
+        },
+        {
+          "selector": "$.protections[0].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原标注001-M；角色和真实职业未经认证。前后文是否改变“咱”的对象？",
+          "text_sha256": "7b773addf4da78caf8e6f5c1b0064b5e1edda7e41d993726f9bf7dd3c3eb3cec"
+        },
+        {
+          "selector": "$.protections[1].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "要招一批",
+          "text_sha256": "bd6305cf72392a51cc9552dfe4a4e6e415759e3ce1dbac0614124575126cbf4e"
+        },
+        {
+          "selector": "$.protections[1].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否确实说出“一批”？不要自动与后一“一部分”视为同义重录。",
+          "text_sha256": "d93171ca439994eecae7e373676ab803a4c9a3a2e74e0317770b7d758a45450f"
+        },
+        {
+          "selector": "$.protections[2].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "工作嗯量也不大",
+          "text_sha256": "3709bc70938d49eecbf284862f0254506e84866a81acdd91c3326b7381f9c2f4"
+        },
+        {
+          "selector": "$.protections[2].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "“不大”实际能否辨认？其否定对象是什么？",
+          "text_sha256": "ab9ac12477e49adbce109022ed7a1d5a0fdd37e2c2e5d7ded1dd0e987366540b"
+        },
+        {
+          "selector": "$.protections[3].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "但是也需要",
+          "text_sha256": "27bf34c379566a3c9bdcc90764fd673544974a7ea80f986f80c31160012766e6"
+        },
+        {
+          "selector": "$.protections[3].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否承接前述工作量判断？声音有无弱化或另外限定？",
+          "text_sha256": "99e17ea781c2186339d2daa077374ec3e63f1214ec57da321191a83d709844c0"
+        },
+        {
+          "selector": "$.protections[4].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "招一部分",
+          "text_sha256": "c316d5d2657e2112323a3aa4cda0f1c9bcdf911f35c8c1c19f224ffb52c44307"
+        },
+        {
+          "selector": "$.protections[4].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否与前句相比补充范围？不可改成无数量约束的“要招生”。",
+          "text_sha256": "95bac9b4134dde0378f2e6c6e4affaff14b92fb72f65b3511d6ae610213d2119"
+        },
+        {
+          "selector": "$.protections[5].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "因为咱这班级人员",
+          "text_sha256": "0991e2f7a80c50380f6bfe7c82c54677b08624244a45de8b4c512784e9d6d3de"
+        },
+        {
+          "selector": "$.protections[5].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "后文是否实际给出未满原因？不能仅保留结论丢原因。",
+          "text_sha256": "9220d5a6af685083c9bea4ca0a986d7a1707d28b000767a97f7a4e2162fcf5b4"
+        },
+        {
+          "selector": "$.protections[6].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "都还没有没有满了",
+          "text_sha256": "860e1380c3741f57378f0c517556f12777816522ea8edc209274adf5de456f13"
+        },
+        {
+          "selector": "$.protections[6].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "逐字核对是否为“没有没有”；区分重启、迟疑、强调或听不清，不据词面删掉一个。",
+          "text_sha256": "462280e1bd2c5c48c195dff622bff54ada2c95afa24674c5f295d897e7e2d135"
+        },
+        {
+          "selector": "$.windows[0].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "候选从完整话轮中起取是否丢前置问题、吞首音或截断连读？比较源54–58秒与候选开头。",
+          "text_sha256": "f97ff9238b55d0e5cc410b914a763ffccb694e5edda52b977b1e1a23021dc7a6"
+        },
+        {
+          "selector": "$.windows[1].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原有约15.01ms标注间隙并未删除。前句“也是”是否须连着下句理解？停顿/叠声是否自然？",
+          "text_sha256": "547f2f67d0698e5e60029200a051e9cb224ec0dd67191fe1c0d7a9ffe9b34929"
+        },
+        {
+          "selector": "$.windows[2].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原有约5ms标注间隙并未删除。“招生”是否为有信息增量的继续？不得仅按再次出现判重复take。",
+          "text_sha256": "2bb2a2814bfc85517019352d8b0f09481bcdd1a550368282f72648598fe1a80c"
+        },
+        {
+          "selector": "$.windows[3].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "“没有没有满了”是否完整结束、尾音是否被截？后一句“包括…食堂”是否仍属必须语境？比较候选尾与源82–86秒。",
+          "text_sha256": "442915348ca92a0f06eec3c56d2150cb06f10f1b92a2cf3d644a64615fb1d72f"
+        },
+        {
+          "selector": "$.rejected_proposal.proposal",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Remove interval 16 as another mention of 招生 to shorten the audition",
+          "text_sha256": "97d122e696d96236a18b71679a91b5967b6762114b58ee88d70d2e7c85f7e526"
+        },
+        {
+          "selector": "$.rejected_proposal.removed_interval.text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        },
+        {
+          "selector": "$.rejected_proposal.reason",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Later mention introduces workload degree 不大, contrast 但是也需要, limited quantity 一部分, and causal negative 未满. It is not equivalent repetition of 要招一批.",
+          "text_sha256": "3bcf6eb6d6b580669b40de4c48e24b34054ed5cb4ccf6f04291fc5cce747b7b2"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[0]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "工作量不大",
+          "text_sha256": "228488706268a8d4f4bb0774f546380f354b5c4099532dd0eef4964128bcd09e"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[1]",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "但是也需要招一部分",
+          "text_sha256": "7af50307dd693c1df22effe63b842f67972b64748fa50c5f4dc36722368557bb"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[2]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "因为班级人员还没有满",
+          "text_sha256": "86ba980ccc2f8edb73599c6f621f0e6a73621ba69ec3300089c14cc30b466fcf"
+        },
+        {
+          "selector": "$.rejected_proposal.keep_decision",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Keep all three published intervals, including repeated 招生 and 没有没有; do not invent independent takes or delete within words.",
+          "text_sha256": "a47efeb1dc36163cf2a8141389f0b94e2fe5aa447585fb53eb61a4824193fc13"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/review-v2.js",
+      "bytes": 9066,
+      "sha256": "30a491c0c425b10e95da7f57705dac57696d82e63cce789922a50b948342a5f8",
+      "category": "SOFTWARE_DATA_CONSUMER",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED",
+      "regions": [
+        {
+          "selector": "runtime-loaded spec.units/spec.protections/spec.windows/spec.rejected_proposal",
+          "kind": "EXTERNAL_DATA_RENDERED_NOT_EMBEDDED_SOURCE",
+          "note": "Rendered materials retain mapped licence. Playback/hash/form/export code is separate."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/review.js",
+      "bytes": 9028,
+      "sha256": "29d337a8d71b56294f8744217432455b03473581c6d449e3ecb001acf429ea36",
+      "category": "SOFTWARE_DATA_CONSUMER",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED",
+      "regions": [
+        {
+          "selector": "runtime-loaded spec.units/spec.protections/spec.windows/spec.rejected_proposal",
+          "kind": "EXTERNAL_DATA_RENDERED_NOT_EMBEDDED_SOURCE",
+          "note": "Rendered materials retain mapped licence. Playback/hash/form/export code is separate."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/contracts/editorial-contract.md",
+      "bytes": 4141,
+      "sha256": "36cc09fa82126f14a8046cacc229810b22391906d2b205667a3cbbb7c306313f",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/SKILL.md",
+      "bytes": 8169,
+      "sha256": "ffda14c08cf993bf85a875291dc5c9c57aeec7710ffe4e9d75544e3d81b84a05",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/evaluation.md",
+      "bytes": 14262,
+      "sha256": "0dc9698518795f5039917579d2e592d3fa69234d9b4c24565ab76ff53b97746f",
+      "category": "MIXED_EVALUATION_WITH_AISHELL_CASE",
+      "proposed_disposition": "AISHELL_SECTION_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "## 中文会话解释性重复：新增材料条件，未通过效果门槛 through EOF",
+          "kind": "EDITORIAL_CASE_AND_SOURCE_USE_DESCRIPTION",
+          "text_sha256": "24c31587d9a5d44b58fef237f0aa569f1a74dd85d9f21867e1430b45700fb870"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/repairs-and-retakes.md",
+      "bytes": 6995,
+      "sha256": "a782e2e0f8337d8956f5af2d63ec8bc57e140deadaf6b8e1aba7423cabbf6e10",
+      "category": "MIXED_PROTOCOL_WITH_AISHELL_CASE",
+      "proposed_disposition": "AISHELL_SECTION_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "### 中文会话中的解释性重复候选 through EOF",
+          "kind": "SOURCE_PHRASES_PLUS_EDITORIAL_CASE",
+          "text_sha256": "e294aed5bb3d4c912de5c6ec02062c14d3d0424b0c95f0acea1a1bcba35c062a"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/snapshots-v2/workflows/raven-speech-edit/references/semantic-editing.md",
+      "bytes": 3127,
+      "sha256": "1e76eb84f00f286414796a1894e546c032d7192b0b8127352c6adac3723487aa",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/software-check-v2-failure.json",
+      "bytes": 273,
+      "sha256": "b33a26fd50ea4d2c11896fdb567112d03133e9bb5fd5b8e55894da19d1305da8",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/software-check-v2.json",
+      "bytes": 1509,
+      "sha256": "d90b48c51e6c92e2b270bf0b06638a7ec73257f11fe1d9c1b7bbea4730e5893b",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/software-check.json",
+      "bytes": 3738,
+      "sha256": "7ff0f99910af1e276786c4ff0224ced6804624b86bc23cb3a8728fa6b02a1d51",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/technical-binding-check.json",
+      "bytes": 493,
+      "sha256": "af2dc0cb60022d4c52f86c585ceccde1115d6174bf6fbf3d2a0e8b692bfb171d",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/INTEGRATION_PROPOSAL.md",
+      "bytes": 1442,
+      "sha256": "3cc2ca1e959521cbbeef55c5e7ff8df377ed530055f55fe0e31b4a5c716b6720",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/README.md",
+      "bytes": 5097,
+      "sha256": "697bcfb70885cc3ef5f3a3870915631c1bd73aa89fbbd1786c67cd4701c2fd57",
+      "category": "CASE_TEACHING_WITH_GENERIC_INSTRUCTIONS",
+      "proposed_disposition": "AISHELL_CASE_PARAGRAPHS_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "line:24",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "4. 逐单元核对发布原字，不静默修正文中的疑似错字或`<sil>`/`<$>`；标签不是认证发音。核对否定、程度、数量、转折、原因、主体与重复功能，每项允许不同意或无法判断。",
+          "text_sha256": "b6dcfdbb1df81b5b9ae59adad39542bf17d0ad4a0aff00e2532b7429481b4299"
+        },
+        {
+          "selector": "line:25",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "5. 原样候选是一段连续样本，内部没有删剪。66.56186→66.57687与75.30274→75.30774之间的原有音频都保留；只检查语义/气口连续，不称新剪接。首尾才是新截取边界，必要时建议扩大完整上下文，不能制造词级切点。",
+          "text_sha256": "d457a0527b97adab4743dd2a5dd60a120a117a630d1d2a3f416a22e47cdb94d9"
+        },
+        {
+          "selector": "line:26",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "6. 查看未渲染的“删单元16”文字提案，独立写是否丢信息与理由。后句可能增加“不大”“但是也需要”“一部分”“因为…没有没有满”，这些是待回听判断，不能仅照抄标注当听到。",
+          "text_sha256": "b75679e7ffa080cdcb2a5df01dadce7643d1aef827d7f1c82d32c49f33b0f0d1"
+        },
+        {
+          "selector": "line:32",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "候选对应源样本 `[909374,1336457)`，16kHz、单声道16bit；源实际56.835875–83.5285625秒。候选时间=源时间−56.835875，无变速或内部删剪。完整标注单元为：",
+          "text_sha256": "cd7a28e14728c6f2f89f5da7b396d21fdc9e2c81b37bcff25ce5c6b85b81838a"
+        },
+        {
+          "selector": "line:34",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 单元 | 发布源区间 | 候选相对区间 | 主要待核问题 |",
+          "text_sha256": "fc9afe1e06f89cb0c9ab927f1a9765c9ee6311b466f7ba3face0e6c3b93e5766"
+        },
+        {
+          "selector": "line:36",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 12 | 56.83589–66.56186 | 0.000015–9.725985 | 前置指代、招生重复、疑似错字与迟疑 |",
+          "text_sha256": "de35313e583c39ad2c632836dda1d35455b990cedef3effdc8feb2d828bd3273"
+        },
+        {
+          "selector": "line:38",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "| 16 | 75.30774–83.52856 | 18.471865–26.692685 | 不大、但是也需要、一部分、原因与没有没有 |",
+          "text_sha256": "18efa5914024258a888f4ed2f673c379e7c2ad48c5ee76974c04d9c4c3d55845"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/artifact-manifest.json",
+      "bytes": 5062,
+      "sha256": "1c6b18342e9300b14219a641137d1fb73fbeb8e5b78790021945c3f2effcf5b9",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/binding-manifest.json",
+      "bytes": 3789,
+      "sha256": "9553a7e7b73910abd51272f18cbfba505ba9e43738e54362b18ea7b7ec58bb1f",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/build_pack.py",
+      "bytes": 7178,
+      "sha256": "3e4dcf48f3867589f2060703f1872aa5a4665e514e457906b02c4fa538e440c1",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [
+        {
+          "selector": "line:34 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('subject','说话对象与话题','001-M / 招生、班级人员','原标注001-M；角色和真实职业未经认证。前后文是否改变“咱”的对象？',[12,14,16]),",
+          "text_sha256": "8bb06c6138c6471b42819679bb9fe500785b78f652df7d9af197c72b3cf60a73",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:35 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('initial_quantity','前句数量表达','要招一批','是否确实说出“一批”？不要自动与后一“一部分”视为同义重录。',[14]),",
+          "text_sha256": "b5e7302237de6faadfa46059b92406c89c455174ab6c81254b7a955dad785ae8",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:36 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('degree','程度与否定','工作嗯量也不大','“不大”实际能否辨认？其否定对象是什么？',[16]),",
+          "text_sha256": "6dc3c432e75eed222e0069cd1a9510cfb879efdd64a0cb8e33373b29419ef348",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:37 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('contrast','转折与必要性','但是也需要','是否承接前述工作量判断？声音有无弱化或另外限定？',[16]),",
+          "text_sha256": "9dd788e0dd304e0cdccf398dc54d551349c270016d370c33f0e39741cbc3a928",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:38 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('limited_quantity','后句数量范围','招一部分','是否与前句相比补充范围？不可改成无数量约束的“要招生”。',[16]),",
+          "text_sha256": "b3b11c36a20d8e8969a36ada00d8192af93227f0e7d3cb5ca2c742312deefdfe",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:40 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": " ('negative_repeat','否定及重复功能','都还没有没有满了','逐字核对是否为“没有没有”；区分重启、迟疑、强调或听不清，不据词面删掉一个。',[16]),",
+          "text_sha256": "f04e93431576cec2eadfaf8421efd51ea69578b6507574bf6f3f517da16ade34",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:50 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[65-offset,68-offset],kind='retained_original_audio_no_splice',question='原有约15.01ms标注间隙并未删除。前句“也是”是否须连着下句理解？停顿/叠声是否自然？'),",
+          "text_sha256": "c634180bf9380e6b9171c1156cf8622cef3bd0e70e34536124c83d877e11e48f",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:52 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[74-offset,77-offset],kind='retained_original_audio_no_splice',question='原有约5ms标注间隙并未删除。“招生”是否为有信息增量的继续？不得仅按再次出现判重复take。'),",
+          "text_sha256": "e11a96420840d6a06ab7ec7c3dcb02efb282a1721a06233d57cefd23bcb4cee4",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:54 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "      candidate_range=[82-offset,n/16000],kind='new_outer_end',question='“没有没有满了”是否完整结束、尾音是否被截？后一句“包括…食堂”是否仍属必须语境？比较候选尾与源82–86秒。'),",
+          "text_sha256": "b4fa3922e366944ddfadf30fe64c8fd8ccbde5fc585e44dd41c0a28c4f36323b",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/final-source-readback.json",
+      "bytes": 4280,
+      "sha256": "b483eb2e34da89f7f452ac7675ec09a51de015abc0e41ccc4d276c63aed3fdfc",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/finalize.py",
+      "bytes": 3615,
+      "sha256": "4ed7c224b0fb45e43bdae1fc1f0fe298adc8c8350da3c5e8d0214dcabf929829",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/index.html",
+      "bytes": 7043,
+      "sha256": "f7e0e9e920fe3a9173c8f8e46ddb3481a4aaf542678a4db9dd1d9ddb57d21aef",
+      "category": "REVIEW_UI_WITH_CASE_PROSE",
+      "proposed_disposition": "CASE_PROSE_ONLY_CC_BY_SA_4_SOFTWARE_CSS_EXCLUDED",
+      "regions": [
+        {
+          "selector": "line:6 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<p class=\"note\">评审包准备就绪，尚无真人听检。当前只有一个连续保留候选；“删后句”方案被编辑者依据文字拒绝，未生成对照音频。没有内部剪接、可靠词界或独立多take。所有评审记录均需主线复核。</p>",
+          "text_sha256": "002998b20198b9a3fc669c1f823cd1415080daa447fb4a73de216b00be9c7f86",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:13 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>4 · 内容保护与重复的作用</h2><p>以下文字只是发布标注及编辑者待核判断；词语没有独立声学时间。允许反驳原判断、要求扩大语境或填写无法判断。</p><div id=\"protectionFields\"></div>",
+          "text_sha256": "82672ffdcf2038ee8db19eb05e0840854eee54b6ed3fa6a6d897fbdfacd6fb6b",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:15 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<label>后句与前句的关系<select name=\"relation\" required><option value=\"\">请选择</option><option>有新增条件/范围/原因，不能作为等价重复删除</option><option>主要为表达性重复，但仍需保留听感/语气</option><option>可考虑缩短，但须具体指出可删范围</option><option>原标注或上下文不足，无法判断</option></select></label><label>具体依据、反例或修订建议（原源时间；无可靠词界时写整单元）<textarea name=\"relation_reason\" required></textarea></label></section>",
+          "text_sha256": "bb0a10e1f3bae42ff8dcc2ee28ae2f196ce1c8af21c5a5d492fe0e6cff81d4dc",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:16 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>5 · 接点与原有衔接</h2><p>只有候选首尾是新截取边界。66.56与75.30秒附近保持原录音连续，检查是否理解自然，不能误称“修复剪接”。</p><div id=\"boundaryFields\"></div></section>",
+          "text_sha256": "690a3263c72e901598b584d65d2dfc186b3aae749d97d5ab5ae121c099241c5c",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/result.json",
+      "bytes": 4900,
+      "sha256": "531011592168b011bcf79ae2c82f2225447fe4ace04b4f0de5d9fffaa927c9a4",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/review-spec.json",
+      "bytes": 8563,
+      "sha256": "0ad33032791b45735c93762fa1834a749835db137d5f9a2f6828bfadbddf6b5b",
+      "category": "ANNOTATION_PLUS_EDITORIAL_CASE",
+      "proposed_disposition": "MATERIAL_AND_MAPPED_EDITORIAL_CONTRIBUTIONS_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "$.units[0].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "咱嗯有没有要套探讨的，包括就是<sil>就是那个招生招生，这次就是<$>也是",
+          "text_sha256": "7a10047a146b6f2d812343cd467029db2234c2eeabfd443e1bfbb4f9093f034c"
+        },
+        {
+          "selector": "$.units[1].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "呃，中途咱有的幼儿园以小学有转幼儿园啦，中途咱要招一批呃<sil>",
+          "text_sha256": "b1cda21918d85ce209c0995d49c3d828bba77ec7ddae7b46216b806a21781b32"
+        },
+        {
+          "selector": "$.units[2].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        },
+        {
+          "selector": "$.protections[0].published_text",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "001-M / 招生、班级人员",
+          "text_sha256": "b59669681c2f856952f33178f7f22d0dc638ef529be18698590151fe822c83ea"
+        },
+        {
+          "selector": "$.protections[0].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原标注001-M；角色和真实职业未经认证。前后文是否改变“咱”的对象？",
+          "text_sha256": "7b773addf4da78caf8e6f5c1b0064b5e1edda7e41d993726f9bf7dd3c3eb3cec"
+        },
+        {
+          "selector": "$.protections[1].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "要招一批",
+          "text_sha256": "bd6305cf72392a51cc9552dfe4a4e6e415759e3ce1dbac0614124575126cbf4e"
+        },
+        {
+          "selector": "$.protections[1].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否确实说出“一批”？不要自动与后一“一部分”视为同义重录。",
+          "text_sha256": "d93171ca439994eecae7e373676ab803a4c9a3a2e74e0317770b7d758a45450f"
+        },
+        {
+          "selector": "$.protections[2].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "工作嗯量也不大",
+          "text_sha256": "3709bc70938d49eecbf284862f0254506e84866a81acdd91c3326b7381f9c2f4"
+        },
+        {
+          "selector": "$.protections[2].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "“不大”实际能否辨认？其否定对象是什么？",
+          "text_sha256": "ab9ac12477e49adbce109022ed7a1d5a0fdd37e2c2e5d7ded1dd0e987366540b"
+        },
+        {
+          "selector": "$.protections[3].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "但是也需要",
+          "text_sha256": "27bf34c379566a3c9bdcc90764fd673544974a7ea80f986f80c31160012766e6"
+        },
+        {
+          "selector": "$.protections[3].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否承接前述工作量判断？声音有无弱化或另外限定？",
+          "text_sha256": "99e17ea781c2186339d2daa077374ec3e63f1214ec57da321191a83d709844c0"
+        },
+        {
+          "selector": "$.protections[4].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "招一部分",
+          "text_sha256": "c316d5d2657e2112323a3aa4cda0f1c9bcdf911f35c8c1c19f224ffb52c44307"
+        },
+        {
+          "selector": "$.protections[4].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "是否与前句相比补充范围？不可改成无数量约束的“要招生”。",
+          "text_sha256": "95bac9b4134dde0378f2e6c6e4affaff14b92fb72f65b3511d6ae610213d2119"
+        },
+        {
+          "selector": "$.protections[5].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "因为咱这班级人员",
+          "text_sha256": "0991e2f7a80c50380f6bfe7c82c54677b08624244a45de8b4c512784e9d6d3de"
+        },
+        {
+          "selector": "$.protections[5].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "后文是否实际给出未满原因？不能仅保留结论丢原因。",
+          "text_sha256": "9220d5a6af685083c9bea4ca0a986d7a1707d28b000767a97f7a4e2162fcf5b4"
+        },
+        {
+          "selector": "$.protections[6].published_text",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "都还没有没有满了",
+          "text_sha256": "860e1380c3741f57378f0c517556f12777816522ea8edc209274adf5de456f13"
+        },
+        {
+          "selector": "$.protections[6].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "逐字核对是否为“没有没有”；区分重启、迟疑、强调或听不清，不据词面删掉一个。",
+          "text_sha256": "462280e1bd2c5c48c195dff622bff54ada2c95afa24674c5f295d897e7e2d135"
+        },
+        {
+          "selector": "$.windows[0].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "候选从完整话轮中起取是否丢前置问题、吞首音或截断连读？比较源54–58秒与候选开头。",
+          "text_sha256": "f97ff9238b55d0e5cc410b914a763ffccb694e5edda52b977b1e1a23021dc7a6"
+        },
+        {
+          "selector": "$.windows[1].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原有约15.01ms标注间隙并未删除。前句“也是”是否须连着下句理解？停顿/叠声是否自然？",
+          "text_sha256": "547f2f67d0698e5e60029200a051e9cb224ec0dd67191fe1c0d7a9ffe9b34929"
+        },
+        {
+          "selector": "$.windows[2].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "原有约5ms标注间隙并未删除。“招生”是否为有信息增量的继续？不得仅按再次出现判重复take。",
+          "text_sha256": "2bb2a2814bfc85517019352d8b0f09481bcdd1a550368282f72648598fe1a80c"
+        },
+        {
+          "selector": "$.windows[3].question",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "“没有没有满了”是否完整结束、尾音是否被截？后一句“包括…食堂”是否仍属必须语境？比较候选尾与源82–86秒。",
+          "text_sha256": "442915348ca92a0f06eec3c56d2150cb06f10f1b92a2cf3d644a64615fb1d72f"
+        },
+        {
+          "selector": "$.rejected_proposal.proposal",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Remove interval 16 as another mention of 招生 to shorten the audition",
+          "text_sha256": "97d122e696d96236a18b71679a91b5967b6762114b58ee88d70d2e7c85f7e526"
+        },
+        {
+          "selector": "$.rejected_proposal.removed_interval.text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        },
+        {
+          "selector": "$.rejected_proposal.reason",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Later mention introduces workload degree 不大, contrast 但是也需要, limited quantity 一部分, and causal negative 未满. It is not equivalent repetition of 要招一批.",
+          "text_sha256": "3bcf6eb6d6b580669b40de4c48e24b34054ed5cb4ccf6f04291fc5cce747b7b2"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[0]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "工作量不大",
+          "text_sha256": "228488706268a8d4f4bb0774f546380f354b5c4099532dd0eef4964128bcd09e"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[1]",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "但是也需要招一部分",
+          "text_sha256": "7af50307dd693c1df22effe63b842f67972b64748fa50c5f4dc36722368557bb"
+        },
+        {
+          "selector": "$.rejected_proposal.would_lose[2]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "因为班级人员还没有满",
+          "text_sha256": "86ba980ccc2f8edb73599c6f621f0e6a73621ba69ec3300089c14cc30b466fcf"
+        },
+        {
+          "selector": "$.rejected_proposal.keep_decision",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Keep all three published intervals, including repeated 招生 and 没有没有; do not invent independent takes or delete within words.",
+          "text_sha256": "a47efeb1dc36163cf2a8141389f0b94e2fe5aa447585fb53eb61a4824193fc13"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/review.js",
+      "bytes": 9028,
+      "sha256": "29d337a8d71b56294f8744217432455b03473581c6d449e3ecb001acf429ea36",
+      "category": "SOFTWARE_DATA_CONSUMER",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED",
+      "regions": [
+        {
+          "selector": "runtime-loaded spec.units/spec.protections/spec.windows/spec.rejected_proposal",
+          "kind": "EXTERNAL_DATA_RENDERED_NOT_EMBEDDED_SOURCE",
+          "note": "Rendered materials retain mapped licence. Playback/hash/form/export code is separate."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/software-check.json",
+      "bytes": 3738,
+      "sha256": "7ff0f99910af1e276786c4ff0224ced6804624b86bc23cb3a8728fa6b02a1d51",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/technical-binding-check.json",
+      "bytes": 493,
+      "sha256": "af2dc0cb60022d4c52f86c585ceccde1115d6174bf6fbf3d2a0e8b692bfb171d",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1/visual-review.json",
+      "bytes": 1094,
+      "sha256": "eb683324a625bc88ea81c9a8b799c7b7052209f4bfd4b3b4cfe9bd36f800a974",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v1-preservation.json",
+      "bytes": 8662,
+      "sha256": "b221bb05e0c363dd2cac0d42a540ac26ac476a5356d1c145eb84105888e51476",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v2-test-recovery.json",
+      "bytes": 606,
+      "sha256": "3bfd80edad53a315d3777a1729e8c91374e6a0d9394fd5ccb5d677192b76a7f1",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/v2-visual-review.json",
+      "bytes": 585,
+      "sha256": "54c8937403ed4a358b33b7d299257bf7900d93b5fe1d6dfa7146d8e6118ec60d",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-listening-review-20260923/visual-review.json",
+      "bytes": 1094,
+      "sha256": "eb683324a625bc88ea81c9a8b799c7b7052209f4bfd4b3b4cfe9bd36f800a974",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/README.md",
+      "bytes": 5477,
+      "sha256": "65598a37dc9c818a27726ea28d9cfffd78a9290bf87319443e64c9733616b3c2",
+      "category": "CASE_TEACHING_WITH_GENERIC_INSTRUCTIONS",
+      "proposed_disposition": "AISHELL_CASE_PARAGRAPHS_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "line:29",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "采用 `001-M` 的三个连续完整标注单元（12/14/16）：56.83589–83.52856秒。发布原字，包括疑似病句、`<sil>`与`<$>`标记均保留。标记不当发音词，不填造置信度，不生成逐词时间。",
+          "text_sha256": "1a52e31606cbfa8dc38d98897c1b6f17a83d504a9781bac83a5f864e6dff44a5"
+        },
+        {
+          "selector": "line:31",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "前文提出招生和“要招一批”，后文不是等价重录，而是补充工作量“不大”、转折“但是也需要”、数量“一部分”、原因“班级人员还没有没有满”。删后句的“去重复”提案被编辑判断拒绝，记录在 `rejected-shortening.json`，不是编译器或独立审查自动判决。也未凭词面删除“没有没有”。",
+          "text_sha256": "10ed100bf529fcb414e8302b944cd4973e4b34aa7a8a1433d045422e73d08aba"
+        },
+        {
+          "selector": "line:33",
+          "kind": "SOURCE_PHRASES_OR_EDITORIAL_CASE",
+          "text": "候选只沿发布区间外边界保留整个单元组：16kHz样本范围[909374,1336457)，实际源56.835875–83.5285625秒，26.6926875秒；向外取整不到一个样本，逐样本确认等于channel0对应片段。只有一个保留音频候选；拒绝的缩短没有另渲染，避免把不可靠词界变成作品。",
+          "text_sha256": "598c2ca92fe9811500d676860186bae99388621f59573498030f7b5caf0f470f"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/artifact-manifest.json",
+      "bytes": 5219,
+      "sha256": "ef77a9de015f94f53b1d727d429aaa33c3561f1c678215bb0c263a9a071fdb22",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/build_review_candidate.py",
+      "bytes": 3703,
+      "sha256": "5c47492479c3e779fac8e626e4856350ed5e307e1f3dcf3756e91d56a36571ee",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [
+        {
+          "selector": "line:38 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "    'proposal':'Remove interval 16 as another mention of 招生 to shorten the audition',",
+          "text_sha256": "08a673d761f8379d9b4606fee62f12fcb498b2aa566465b4fa57d42aefc25a33",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:40 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "    'reason':'Later mention introduces workload degree 不大, contrast 但是也需要, limited quantity 一部分, and causal negative 未满. It is not equivalent repetition of 要招一批.',",
+          "text_sha256": "084ecee7336fa4389ec394ccbf55b373a48d4f67c27c094d31a90dc55c37dbdc",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:41 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "    'would_lose':['工作量不大','但是也需要招一部分','因为班级人员还没有满'],",
+          "text_sha256": "ed08915b95e2caab609aab2069ad04f677e02a542e1e41e366fc25d421996f66",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        },
+        {
+          "selector": "line:42 string literals only",
+          "kind": "EMBEDDED_CASE_TEXT_OR_PARAPHRASE",
+          "text": "    'keep_decision':'Keep all three published intervals, including repeated 招生 and 没有没有; do not invent independent takes or delete within words.',",
+          "text_sha256": "3483823038c34018ae3d271ae07d9327ea4217293999a60dde5512cb85a8f1d1",
+          "exclude": "Python syntax, algorithms, functions and general tooling not covered."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/candidate-selection.json",
+      "bytes": 2590,
+      "sha256": "75230766d1af671c1899a49b7faa9dec6311fa643dd54cdae14655532b5239e5",
+      "category": "ANNOTATION_PLUS_EDITORIAL_CASE",
+      "proposed_disposition": "MATERIAL_AND_MAPPED_EDITORIAL_CONTRIBUTIONS_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "$.derivation.reason",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Explicit fixed channel for review; no best-channel claim, no denoise or downmix",
+          "text_sha256": "9fc5453116893b4adad80045bffa5e8077d4071b074e3e2df8ecbe12270f243d"
+        },
+        {
+          "selector": "$.retained_published_intervals[0].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "咱嗯有没有要套探讨的，包括就是<sil>就是那个招生招生，这次就是<$>也是",
+          "text_sha256": "7a10047a146b6f2d812343cd467029db2234c2eeabfd443e1bfbb4f9093f034c"
+        },
+        {
+          "selector": "$.retained_published_intervals[1].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "呃，中途咱有的幼儿园以小学有转幼儿园啦，中途咱要招一批呃<sil>",
+          "text_sha256": "b1cda21918d85ce209c0995d49c3d828bba77ec7ddae7b46216b806a21781b32"
+        },
+        {
+          "selector": "$.retained_published_intervals[2].text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/extract_bounded_source.py",
+      "bytes": 3005,
+      "sha256": "61f76f1739d04670769afc9d1118a1a9679cda4d255080f4918ea2a6d2968148",
+      "category": "SOFTWARE_WITH_POSSIBLE_EMBEDDED_CASE_TEXT",
+      "proposed_disposition": "SOFTWARE_NOT_RELICENSED_EMBEDDED_MATERIAL_ONLY",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/index.html",
+      "bytes": 5413,
+      "sha256": "e8f594022d2c7f1c19c112d493f58df4ffe3ce5f0541c18a39aa3cc88462c5b6",
+      "category": "REVIEW_UI_WITH_CASE_PROSE",
+      "proposed_disposition": "CASE_PROSE_ONLY_CC_BY_SA_4_SOFTWARE_CSS_EXCLUDED",
+      "regions": [
+        {
+          "selector": "line:3 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<main><h1>“又说一次招生”，是否就能删？</h1><p>W02 · AISHELL-4 / M_R003S01C01 · 音频语料候选</p>",
+          "text_sha256": "a4d8abfeb7acfb6b382283931e5a9d0697e3056194566ac76d0c0b2668f77b82",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:5 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>1 · 回听原语境</h2><button id=\"load\">校验并加载音频</button><output id=\"status\">尚未加载</output><audio id=\"source\" controls preload=\"metadata\"></audio><p>原录音第0声道，0–100秒；保留多声道母本。100秒是取样范围终点，不是原会议或句子终点。</p><button data-time=\"48\">听 48 秒起的前文</button><button data-time=\"56\">听 56 秒起的招生话题</button><button data-time=\"74\">听 74 秒起的新增限定</button><button data-time=\"82\">听 82 秒起的后文</button></section>",
+          "text_sha256": "e3806c9a80514a2352340cc12f7fa5815fe11dffefdcffedf00d4a849150898c",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:7 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>3 · 对照：被拒绝的缩短提案</h2><p>提案：删掉75.30774–83.52856秒，因为它“又提了一次招生”。</p><p>拒绝理由：前句提出“要招一批”，后句增加“工作量不大”“但是也需要招一部分”及“因为人员还没有满”。删除后句会失去程度、转折、数量范围和原因。此处是有信息增量的重复，不能按关键词重复淘汰。</p><p>被拒绝方案没有渲染。也没有擅自把“没有没有”删成单个“没有”；究竟是口吃、重启还是重音，要实际回听。</p></section>",
+          "text_sha256": "f728321bfd6dca4d52f21946611e99e43d6100b29c1f7e4e65f82747b5fb33e7",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        },
+        {
+          "selector": "line:8 visible case prose only",
+          "kind": "CASE_EXCERPT_PARAPHRASE_OR_TEACHING",
+          "text": "<section><h2>听检尚需回答</h2><ol><li>发布标注与声音是否一致？“工作量不大但是也需要”及未满原因是否实际完整可辨？</li><li>56.83589、66.57687、75.30774、83.52856附近是否有吞音、连读、前后句依赖或重叠？</li><li>第0声道能否听清？这是固定选择，尚未与其他七声道比较。</li><li>重复是否承载迟疑/强调？保留后是否仍自然可理解？</li></ol><p>记录实际评审者、原速带真实声音听看范围、媒体哈希和具体时间点后，才能升级相关声学判断。不能用网页可播放或文本通顺代替。</p></section>",
+          "text_sha256": "3a60be09fd605b54968ab625c5f7e57df7f196338250a32745c6cd796d8b297d",
+          "exclude": "HTML tags, CSS, form-control mechanics and script code."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/rejected-shortening.json",
+      "bytes": 1275,
+      "sha256": "8390accd8dcbc159c012d7acb64f49e6bedb0a4ffc49791f4217debfa6fdd7d6",
+      "category": "ANNOTATION_PLUS_EDITORIAL_CASE",
+      "proposed_disposition": "MATERIAL_AND_MAPPED_EDITORIAL_CONTRIBUTIONS_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "$.proposal",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Remove interval 16 as another mention of 招生 to shorten the audition",
+          "text_sha256": "97d122e696d96236a18b71679a91b5967b6762114b58ee88d70d2e7c85f7e526"
+        },
+        {
+          "selector": "$.removed_interval.text",
+          "kind": "VERBATIM_PUBLISHED_UNIT",
+          "text": "招生这块儿也是工作嗯量也不大但是也需要招一部分，因为咱这班级人员都还没有没有满了",
+          "text_sha256": "79fe1ee12e33e52ba1e5e45a62969485229f253b700abcc1aaf4883b2241ae55"
+        },
+        {
+          "selector": "$.reason",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Later mention introduces workload degree 不大, contrast 但是也需要, limited quantity 一部分, and causal negative 未满. It is not equivalent repetition of 要招一批.",
+          "text_sha256": "3bcf6eb6d6b580669b40de4c48e24b34054ed5cb4ccf6f04291fc5cce747b7b2"
+        },
+        {
+          "selector": "$.would_lose[0]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "工作量不大",
+          "text_sha256": "228488706268a8d4f4bb0774f546380f354b5c4099532dd0eef4964128bcd09e"
+        },
+        {
+          "selector": "$.would_lose[1]",
+          "kind": "EXACT_SOURCE_PHRASE",
+          "text": "但是也需要招一部分",
+          "text_sha256": "7af50307dd693c1df22effe63b842f67972b64748fa50c5f4dc36722368557bb"
+        },
+        {
+          "selector": "$.would_lose[2]",
+          "kind": "EDITORIAL_PARAPHRASE_OR_COMBINED_LABEL",
+          "text": "因为班级人员还没有满",
+          "text_sha256": "86ba980ccc2f8edb73599c6f621f0e6a73621ba69ec3300089c14cc30b466fcf"
+        },
+        {
+          "selector": "$.keep_decision",
+          "kind": "EDITORIAL_CASE_EXPLANATION_OR_REVIEW_QUESTION",
+          "text": "Keep all three published intervals, including repeated 招生 and 没有没有; do not invent independent takes or delete within words.",
+          "text_sha256": "a47efeb1dc36163cf2a8141389f0b94e2fe5aa447585fb53eb61a4824193fc13"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/result.json",
+      "bytes": 2153,
+      "sha256": "7d225ac74a48532a13c0d9c8d03c58b62be27abfc0033fbbaca3680b426c1bb6",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/shared-change-proposal.md",
+      "bytes": 3563,
+      "sha256": "40dd50a2cded7f98f9c4a790b67bd9cbac6d27cb617fc0468e821505bf04fc2b",
+      "category": "CASE_TEXT_PROPOSAL",
+      "proposed_disposition": "AISHELL_QUOTED_CASE_BLOCKS_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "line:16",
+          "kind": "PROPOSED_CASE_PROSE",
+          "text": "> AISHELL-4 M_R003S01C01发布区间标注56.83589–83.52856秒包含三次连续谈及招生的单元。前句提出“要招一批”，后句补充“工作量不大”“但是也需要招一部分”和“因为班级人员还没有没有满”。后句具有程度、转折、数量范围及原因的信息增量，不能按重复关键词删除；“没有没有”究竟是重启或强调仍需听检。保留整个标注单元组，没有制造词界或独立take。",
+          "text_sha256": "f9bf0aa6240033a2a56cee58aeef7da2c9028cc86e0b132b30bfd5f35801ae98"
+        },
+        {
+          "selector": "line:24",
+          "kind": "PROPOSED_CASE_PROSE",
+          "text": "> 在本轮最多三个新候选的检查中采用AISHELL-4（CC BY-SA4.0）的一段中文会议录音；AliMeeting前缀未取得匹配标注，MagicData-RAMC的ND许可不用于剪辑交付。AISHELL-4只下载官方链接tar.gz的前16MiB，取得完整目标TextGrid和部分FLAC，正常解码前100秒8声道PCM。完整包与完整FLAC均未下载或整体验证，SHA256只是本次本地字节基线，详见[来源锁](../../../evals/parallel/w02-spontaneous-speech-20260923/source-lock.json)及[试听入口](../../../evals/parallel/w02-spontaneous-speech-20260923/index.html)。",
+          "text_sha256": "930e679b20e34d0e85c85358ead3a749161175679d94f5c096c138c4ae3ceb4a"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/source/M_R003S01C01.TextGrid",
+      "bytes": 183681,
+      "sha256": "f2c05fd5c3125f59cac2de7a5e5b9a6dec26a7b5f53f4abd443731c667bb32e5",
+      "category": "UPSTREAM_ANNOTATION",
+      "proposed_disposition": "RETAIN_UPSTREAM_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "entire TextGrid annotation",
+          "kind": "UNMODIFIED_SOURCE"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/source/first-110s-annotations.json",
+      "bytes": 4284,
+      "sha256": "ebb30b63159e88144cb928eb12831e2de8083ec50735d81e1b2de167636f8d08",
+      "category": "SELECTED_ANNOTATIONS",
+      "proposed_disposition": "SOURCE_CC_BY_SA_4_PLUS_DISCLOSED_SELECTION",
+      "regions": [
+        {
+          "selector": "$.utterances[*]",
+          "kind": "SOURCE_SELECTION_FORMAT_CONVERSION",
+          "note": "17 records; unchanged text/times/labels; ordered by start; final end110.93131."
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/source-lock.json",
+      "bytes": 4574,
+      "sha256": "206ae9e25044628bfe3eefe579c0533723cfd7e7bd99e90bc984e892f51bd65a",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "EXACT_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "evals/parallel/w02-spontaneous-speech-20260923/verification.json",
+      "bytes": 1431,
+      "sha256": "2026f1113124008b6e61673b14368952488fd13da1661cc798e5adc9cfb132d1",
+      "category": "IDENTITY_METADATA_OR_TECHNICAL_EVIDENCE",
+      "proposed_disposition": "NO_NEW_SA_GRANT_BY_THIS_NOTICE",
+      "regions": [],
+      "prior_package_audit_membership": {
+        "foundation49": "NOT_A_MEMBER",
+        "portable892": "NOT_A_MEMBER",
+        "current-proposed-only": "NOT_A_MEMBER"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim."
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/evaluation.md",
+      "bytes": 15624,
+      "sha256": "a2b0090a42f62bac9dfe9b9c8c0da78cc75bd2dce649510883fc913e107b1bee",
+      "category": "MIXED_EVALUATION_WITH_AISHELL_CASE",
+      "proposed_disposition": "AISHELL_SECTION_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "## 中文会话解释性重复：新增材料条件，未通过效果门槛 through EOF",
+          "kind": "EDITORIAL_CASE_AND_SOURCE_USE_DESCRIPTION",
+        "text_sha256": "a34329720babe4d9b57ee2711a22785a0fbf27ba597e1a01dd6292ce889a2210"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "PATH_WITH_DIFFERENT_BYTES",
+        "portable892": "PATH_WITH_DIFFERENT_BYTES",
+        "current-proposed-only": "POST_AUDIT_EDIT_NOT_IN_PRIOR_SNAPSHOT"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim.",
+      "previous_versions": [
+        {
+          "sha256": "93b4e629d75d91633ae9c16819910626221c3db4b3247f553eb0349d14d61d24",
+          "bytes": 15307,
+          "regions": [
+            {
+              "selector": "## 中文会话解释性重复：新增材料条件，未通过效果门槛 through EOF",
+              "kind": "EDITORIAL_CASE_AND_SOURCE_USE_DESCRIPTION",
+              "text_sha256": "ab0b0bf7a6d024fac6cb75047f9a55b8af047024ded72b64f8ce15d24dd674ce"
+            }
+          ],
+          "membership": {
+            "foundation49": "PATH_WITH_DIFFERENT_BYTES",
+            "portable892": "PATH_WITH_DIFFERENT_BYTES",
+            "current-proposed-only": "EXACT_MEMBER"
+          }
+        },
+        {
+          "sha256": "d9f7820248ebb6842e52e4915d13f48305c768a62043c903b8e07f5c1230cdc2",
+          "bytes": 15628,
+          "regions": [
+            {
+              "selector": "## 中文会话解释性重复：新增材料条件，未通过效果门槛 through EOF",
+              "kind": "EDITORIAL_CASE_AND_SOURCE_USE_DESCRIPTION",
+              "text_sha256": "a34329720babe4d9b57ee2711a22785a0fbf27ba597e1a01dd6292ce889a2210"
+            }
+          ],
+          "reason": "Before W02 remaining-text V2 adoption; original byte snapshot retained in r4 records."
+        }
+      ]
+    },
+    {
+      "path": "workflows/raven-speech-edit/references/repairs-and-retakes.md",
+      "bytes": 7579,
+      "sha256": "f6f7b3fe987c2bab6d2e85b137b14a3fcd38d3687f9ef80d15fcb530a8e632f4",
+      "category": "MIXED_PROTOCOL_WITH_AISHELL_CASE",
+      "proposed_disposition": "AISHELL_SECTION_ONLY_CC_BY_SA_4",
+      "regions": [
+        {
+          "selector": "### 中文会话中的解释性重复候选 through EOF",
+          "kind": "SOURCE_PHRASES_PLUS_EDITORIAL_CASE",
+        "text_sha256": "56447f77960d6513c2b5eb0766ca40ae78ca7a0735600ad9204e26737c124cce"
+        }
+      ],
+      "prior_package_audit_membership": {
+        "foundation49": "PATH_WITH_DIFFERENT_BYTES",
+        "portable892": "PATH_WITH_DIFFERENT_BYTES",
+        "current-proposed-only": "POST_AUDIT_EDIT_NOT_IN_PRIOR_SNAPSHOT"
+      },
+      "membership_limit": "Prior audit snapshot only, not a fresh build or public distribution claim.",
+      "previous_versions": [
+        {
+          "sha256": "a782e2e0f8337d8956f5af2d63ec8bc57e140deadaf6b8e1aba7423cabbf6e10",
+          "bytes": 6995,
+          "regions": [
+            {
+              "selector": "### 中文会话中的解释性重复候选 through EOF",
+              "kind": "SOURCE_PHRASES_PLUS_EDITORIAL_CASE",
+              "text_sha256": "e294aed5bb3d4c912de5c6ec02062c14d3d0424b0c95f0acea1a1bcba35c062a"
+            }
+          ],
+          "membership": {
+            "foundation49": "PATH_WITH_DIFFERENT_BYTES",
+            "portable892": "PATH_WITH_DIFFERENT_BYTES",
+            "current-proposed-only": "EXACT_MEMBER"
+          }
+        },
+        {
+          "sha256": "0cc37c552d5cf6cb8c2a6b156619027ef6872d85193cf02c80ee55e37698c97d",
+          "bytes": 7316,
+          "regions": [
+            {
+              "selector": "### 中文会话中的解释性重复候选 through EOF",
+              "kind": "SOURCE_PHRASES_PLUS_EDITORIAL_CASE",
+              "text_sha256": "56447f77960d6513c2b5eb0766ca40ae78ca7a0735600ad9204e26737c124cce"
+            }
+          ],
+          "reason": "Before W02 remaining-text V2 adoption; original byte snapshot retained in r4 records."
+        }
+      ]
+    }
+  ],
+  "history": "v1 and frozen snapshots remain immutable. Byte-identical duplicates retain their own path identities and coverage entries.",
+  "limits": "No new audio/media inclusion authorized. Metadata-only members are classified separately. If newly bundled source-dependent prose lies outside these locators, extend coverage before release.",
+  "adoption": {
+    "date": "2026-09-23",
+    "proposal": {
+      "path": "evals/parallel/w02-aishell-notice-20260923/aishell-material-coverage.json",
+      "sha256": "64a8792759aa88e0766fa72581d246e7a2a7ac250f3753a174c5eb5dfd90fd48"
+    },
+    "note": "Original proposal retained byte-for-byte. Current authority sections receive notice links; frozen snapshots unchanged. No new package membership certification."
+  }
+}

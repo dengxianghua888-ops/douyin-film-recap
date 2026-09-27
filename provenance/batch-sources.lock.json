@@ -1,0 +1,113 @@
+{
+  "schema": "sources-lock/1",
+  "files": [
+    {
+      "source_id": "batch-portrait",
+      "version": "c60753daded5543ea9e81375f04a543aef550945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/partyfly__wowclip/c60753daded5/references/portrait-reframe.md",
+      "size": 4398,
+      "sha256": "1a768089732d4f094806f3a0d265d6c2cb0385043e2d55261d5d4f605ef3386c",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/partyfly__wowclip.json",
+      "authority_sha256": "edfc97303da0dbe10e215819e981f8f43b41bf538f6a1ea49df9513bc74c31f6",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-portrait",
+      "version": "c60753daded5543ea9e81375f04a543aef550945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/partyfly__wowclip/c60753daded5/LICENSE",
+      "size": 1077,
+      "sha256": "6a907bcd790748f968cb095c731a2480f731b000e226c4ac077f78695d50388f",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/partyfly__wowclip.json",
+      "authority_sha256": "edfc97303da0dbe10e215819e981f8f43b41bf538f6a1ea49df9513bc74c31f6",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-repurpose",
+      "version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/skills/cross-platform-repurposing/references/repurposing-model.md",
+      "size": 3474,
+      "sha256": "2684bee0b720539ae939a109b76c469cea3e13af79e0d60afb969b93ae81ad09",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json",
+      "authority_sha256": "5d0efbfd2343ec21b55deafb107e7e470324d0cc0c50e0a010cd6d25ff28393f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-repurpose",
+      "version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/skills/cross-platform-repurposing/references/platform-transforms.md",
+      "size": 4188,
+      "sha256": "7e5b6a223e63ad1a235c9249687b36697ae2cd2a7fe94695ecb02d895d52419e",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json",
+      "authority_sha256": "5d0efbfd2343ec21b55deafb107e7e470324d0cc0c50e0a010cd6d25ff28393f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-repurpose",
+      "version": "6e30eeb2f6736bda8683b6bbaa674af3641d7945",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/creator-futures__social-media-skills/6e30eeb2f673/LICENSE",
+      "size": 1074,
+      "sha256": "0da5befdfbe93f4dd08098d43fcd115c8455ae4fef7672f800e761e843727c13",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/creator-futures__social-media-skills.json",
+      "authority_sha256": "5d0efbfd2343ec21b55deafb107e7e470324d0cc0c50e0a010cd6d25ff28393f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-crop",
+      "version": "48c6663e42d96cb94943925f94622da97666f5e5",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/kitcut-hq__kitcut/48c6663e42d9/scripts/auto-reframe.py",
+      "size": 22582,
+      "sha256": "111ff41b3c34538234a7ee1da1527ba5603bce104dd71ff98290651d10529ebf",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/kitcut-hq__kitcut.json",
+      "authority_sha256": "e7fb64cdad40ec14ce0aa6c6e5fd806a6a2047daf5d9c8b039d6d8a74208a22b",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-recovery",
+      "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/cloud/checkpoint.py",
+      "size": 12774,
+      "sha256": "d9e1755b764fae51a41d2dfdf59b1f03613f9523fc713ad33e1277592b7a4ce4",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json",
+      "authority_sha256": "3ef56d8aa29bf772bc5f9b5633fb6b6696a6653729a7bef8d87e58dc6118c05f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-recovery",
+      "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/src/movie_narrator/cloud/queue.py",
+      "size": 48055,
+      "sha256": "f3cac14f3a0c93728ed80a8a8f1061488221c4b9c3f38e391bd5d1916030cd49",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json",
+      "authority_sha256": "3ef56d8aa29bf772bc5f9b5633fb6b6696a6653729a7bef8d87e58dc6118c05f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    },
+    {
+      "source_id": "batch-recovery",
+      "version": "4c7e81fedb9a0eec72257b15774a2bf5e2f2dd96",
+      "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/zcbacxc__movie-narrator/4c7e81fedb9a/LICENSE",
+      "size": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "authority": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/检索与校验/仓库状态/zcbacxc__movie-narrator.json",
+      "authority_sha256": "3ef56d8aa29bf772bc5f9b5633fb6b6696a6653729a7bef8d87e58dc6118c05f",
+      "verification": "matches-existing-local-manifest",
+      "use": "critical method synthesis only; no source code copied",
+      "trust_limit": "local archive consistency, not upstream authenticity"
+    }
+  ]
+}

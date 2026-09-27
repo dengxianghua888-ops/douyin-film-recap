@@ -1,0 +1,639 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "software tutorials and evidence-based demos; authored, not quality-certified",
+  "styles": [
+    {
+      "id": "guided-first-run",
+      "name": "首次上手带练",
+      "family": "教学",
+      "fit": "初学者第一次完成一个明确软件任务",
+      "question": "第一次打开软件的人能从哪里开始并确认完成？",
+      "selection": "保留入口、必要设置、动作和结果验证；压缩与当前目标无关的菜单介绍",
+      "sequence": "任务预告→初始条件→按依赖操作→检查产物",
+      "audio": "旁白解释动作目的，避免同时念出所有屏幕文字",
+      "rhythm": "复杂步骤留阅读窗口，重复动作可缩短并说明",
+      "visual": "全景定位后聚焦；步骤编号对应真实动作，结果回全景",
+      "anti": "省掉前置设置后声称零基础一遍就会",
+      "example": "虚构例：创建任务、设置日期、保存后重新打开核对",
+      "nearest": "与问题解决相比面向尚无操作经验，入口与基础定义保留更多",
+      "effect_check": "陌生用户按片可完成任务，能指出成功反馈与保存位置",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-wiki-tutorial-01",
+          "status": "LIMITED_HISTORICAL_TUTORIAL_TRIAL",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/result-current.json",
+            "sha256": "2b5bb4aa9ede342c6bb45811b6465f0b2dbbb6e825f3ae73a5e80d3cb1caad8f"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/current-readback-02.json",
+            "sha256": "2de6d96db8e1990161bd8e82dc02f5044db1fc180549f010dfc8f329ff4b9605"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/frame-review-02.json",
+            "sha256": "ac1f35649b96177fe5ecd7753d1845c2659ade617f72a9945b43861bd173ecf0"
+          },
+          "scope": "Same57s historical screen source and audio;different explanation-layer mechanism.32 current output samples/2 full-size;no continuous viewing,listening,independent reproduction,current software or style acceptance."
+        }
+      ]
+    },
+    {
+      "id": "task-resolution",
+      "name": "单问题解决",
+      "family": "教学",
+      "fit": "用户知道软件，但只想完成一个任务",
+      "question": "解决这个具体问题最少需要哪些步骤？",
+      "selection": "保留问题、关键配置与验证；删品牌开场和通用入门",
+      "sequence": "问题→条件→关键步骤→可检查结果",
+      "audio": "一句话定义问题，动作解释只在容易误解处出现",
+      "rhythm": "短开场、难点慢、结果停；不按统一倍速压缩",
+      "visual": "突出当前问题涉及的区域，其余只保留定位锚点",
+      "anti": "删掉失败条件，把特定版本办法说成通用方案",
+      "example": "虚构例：给表格重复项做标记，保留比较列与范围选择",
+      "nearest": "与首次上手不同可略过已知入口；与排错不同目标是完成任务而非诊断根因",
+      "effect_check": "观众知道适用前提，完成指定任务且没有多余支线",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "diagnose-repair",
+      "name": "证据排错",
+      "family": "诊断",
+      "fit": "有真实错误或异常反馈，素材包含诊断和复验",
+      "question": "凭什么判定原因，如何知道修好了？",
+      "selection": "保留症状、错误码、诊断分支、修复与同条件复验",
+      "sequence": "复现→排除/检验→原因假设→修复→复验",
+      "audio": "旁白区分观察、推测与确认，不把猜测说成根因",
+      "rhythm": "诊断关键证据给阅读时间，重复等待可明确省略",
+      "visual": "错误与修复后使用可比范围，关键状态保持可见",
+      "anti": "只展示修好后的画面，或把重启偶然成功当普遍根因",
+      "example": "虚构例：导出失败先核对路径权限，再修正路径并重新导出",
+      "nearest": "与单问题解决相比诊断依据是主线，不只是步骤列表",
+      "effect_check": "观众能解释修复针对的原因，证据不足时明确保留不确定性",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-audiogen-debug-01",
+          "status": "LIMITED_HISTORICAL_DEBUGGING_TRIAL",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/audiogen-debug-trial-01/result-current.json",
+            "sha256": "ef7f3c9e74908652f1ab7aa06338b4d4ba55beebc808cdeb4d6b4ae885588f3f"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/audiogen-debug-trial-01/current-readback-02.json",
+            "sha256": "cd9d953da99136fde20be456524f408cf197b69b29f185ceb8b6e3369acc785d"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/audiogen-debug-trial-01/frame-review-02.json",
+            "sha256": "83c494a4d163f3c47d12d045058754f5bc010a36a92033cc3a7a5aaedb2ad56f"
+          },
+          "mechanism": "Layered diagnosis and conservative completion claims; one premature player cue corrected in the same work.",
+          "limits": [
+            "12current sample frames are not full viewing;30initial samples are separate version evidence.",
+            "Original English audio preserved; Chinese teaching notes are not full translation or captions.",
+            "Historical edited recording not current software reproduction; no independent learner,style comparison or native-editor acceptance.",
+            "No style superiority or validated status claimed."
+          ]
+        },
+        {
+          "id": "w03-minipaint-diagnosis-01-diagnose-repair",
+          "status": "LIMITED_CONTROLLED_PARAMETER_CASE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/result.json",
+            "sha256": "91d3ed0703aff6a5643c9764be5cfd9b813e4ac31507ba5db68107086cd0fa01"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/current-readback.json",
+            "sha256": "67e8a421c7516bc08f02de9e5db1a58e0dd934c75fb60fd8603e7575b145d0db"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/frame-review.json",
+            "sha256": "cc7129f05c7c82d1750c07275c28c57a4ce153ea32fc00f370dff90d21fb55a9"
+          },
+          "mechanism": "Chronological repeated failure,reset,single-field intervention,artifact and reopen verification.",
+          "limits": [
+            "Sampled review is not continuous semantic viewing.",
+            "No independent learner, independent style or native editing-host acceptance.",
+            "Original capture has no audio; generated output silence is not source-audio or listening evidence.",
+            "Staged goal/parameter mismatch, not app defect; one version and image. No style superiority claim."
+          ],
+          "browser_playback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/browser-playback-01/result.json",
+            "sha256": "f3e26a377c27cc3945c464f311ee7e67a4e61bb8420098f369ef9f5d2a732113"
+          },
+          "browser_end_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/browser-playback-01/visual-review.json",
+            "sha256": "3493468e19da3bb37ef14213bb4cee004bd22d32404c27329a790ff8d88c3a20"
+          }
+        }
+      ],
+      "supporting_case_evidence": [
+        {
+          "id": "w03-minipaint-boundaries-01",
+          "status": "PARAMETER_CONDITIONS_OBSERVED_NOT_STYLE_ACCEPTANCE",
+          "reference": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/minipaint-boundary-reference.json",
+            "sha256": "c2d7235862f3c66054d492662011c523931fc6a9470dbd436a375ed14c151f0d"
+          },
+          "scope": "Seven predeclared UI cases on three calibration graphics; no new lesson or independent style assessment."
+        }
+      ]
+    },
+    {
+      "id": "expert-shortcut",
+      "name": "熟手技巧卡",
+      "family": "效率",
+      "fit": "受众已熟悉软件，素材展示一个有条件的快捷方法",
+      "question": "这项技巧在什么情况下减少哪些操作？",
+      "selection": "保留触发条件、核心手法、结果和例外；删已知导航",
+      "sequence": "适用场景→关键动作→等价结果→限制",
+      "audio": "原声或短旁白，快捷键读法与实际平台一致",
+      "rhythm": "迅速进入动作，组合键和关键结果不能一闪而过",
+      "visual": "显示所用按键和目标区域，不补造录屏中没有的操作",
+      "anti": "用快剪制造提速，夸大未测量的节省时间",
+      "example": "虚构例：批量改名显示选择规则与预览，保留撤销方法",
+      "nearest": "与键盘流不同聚焦一项技巧，不组织完整无鼠标流程",
+      "effect_check": "观众能说出适用条件和替代掉的具体操作",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "concept-action",
+      "name": "概念落到操作",
+      "family": "教学",
+      "fit": "软件设置涉及难懂概念，需要解释其作用",
+      "question": "参数变化为什么会改变结果？",
+      "selection": "保留概念必要定义、对照操作、观察结果和适用边界",
+      "sequence": "问题→简短机制→一次变量变化→结果解释→边界",
+      "audio": "旁白承担机制；界面承担当次结果，不能让示意图冒充测量",
+      "rhythm": "抽象解释与实际操作交替，概念后留验证窗口",
+      "visual": "图示与真实界面明确区分，参数值与结果对应",
+      "anti": "长篇讲术语却不给操作，或错把相关变化剪成因果",
+      "example": "虚构例：解释码率后对同一片段用两档导出并比较",
+      "nearest": "与首次上手相比目标是理解机制，不必覆盖全入门流程",
+      "effect_check": "观众能预测换一个参数时可能发生什么并知道限制",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-wiki-tutorial-01",
+          "status": "LIMITED_HISTORICAL_TUTORIAL_TRIAL",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/result-current.json",
+            "sha256": "2b5bb4aa9ede342c6bb45811b6465f0b2dbbb6e825f3ae73a5e80d3cb1caad8f"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/current-readback-02.json",
+            "sha256": "2de6d96db8e1990161bd8e82dc02f5044db1fc180549f010dfc8f329ff4b9605"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/wiki-tutorial-trials-01/frame-review-02.json",
+            "sha256": "ac1f35649b96177fe5ecd7753d1845c2659ade617f72a9945b43861bd173ecf0"
+          },
+          "scope": "Same57s historical screen source and audio;different explanation-layer mechanism.32 current output samples/2 full-size;no continuous viewing,listening,independent reproduction,current software or style acceptance."
+        }
+      ]
+    },
+    {
+      "id": "evidence-demo",
+      "name": "证据型产品演示",
+      "family": "产品演示",
+      "fit": "已有真实任务与运行结果，需要让观众相信能力",
+      "question": "画面中的哪项事实支持这句产品承诺？",
+      "selection": "选择一条完整工作单元，保留输入、执行、结果与产物检查",
+      "sequence": "任务→输入→操作推进→结果→有限结论",
+      "audio": "旁白克制，数值只来自实际证据；不为自动化虚构人类审批",
+      "rhythm": "等待可压缩但标明；关键结果给检查时间",
+      "visual": "同一案例贯穿，实际产物优先于漂亮计数器",
+      "anti": "把队列开始当完成，把样例当客户普遍收益",
+      "example": "虚构例：从一份输入生成报告，再打开报告核对内容",
+      "nearest": "与案例故事相比证据检验优先，戏剧起伏可以很弱",
+      "effect_check": "每项核心承诺有对应真实画面与可回查依据",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "before-after",
+      "name": "改前改后解释",
+      "family": "对比",
+      "fit": "同一输入有可比的初始与修改后结果",
+      "question": "到底改变了什么，代价是什么？",
+      "selection": "保留同条件前后状态、关键改动及影响范围",
+      "sequence": "原问题→改动→同口径对照→收益与代价",
+      "audio": "旁白指出具体变化，不用形容词替代证据",
+      "rhythm": "前后给相当阅读机会，改动过程不故意掩藏",
+      "visual": "用一致缩放和区域作对照；不让更亮更大暗示更好",
+      "anti": "换数据或缩放比例制造效果，隐去副作用",
+      "example": "虚构例：同一表格加筛选前后，对比操作路径与结果行",
+      "nearest": "与条件对比相比看同一作品的变化，不是挑选不同工具",
+      "effect_check": "观众能区分实质变化、展示变化及未改变的部分",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "controlled-comparison",
+      "name": "同条件方案对比",
+      "family": "对比",
+      "fit": "两种操作方式或工具各有适用条件",
+      "question": "在什么条件下选择哪种方案？",
+      "selection": "保留一致输入、相同任务、结果、操作代价和限制",
+      "sequence": "明确任务→A路径→B路径→统一维度→条件选择",
+      "audio": "语气平实，偏好要标明，不制造无条件冠军",
+      "rhythm": "给两方案同等理解机会，熟悉部分可压缩但口径一致",
+      "visual": "统一尺寸、起始状态和展示重点，差异处清楚标注",
+      "anti": "把缓存热启动与冷启动混比，或删掉一方缺点",
+      "example": "虚构例：手动筛选与自动规则处理同一表格，保留设置成本",
+      "nearest": "与改前改后相比比较独立方案，而非一次修改",
+      "effect_check": "结论可按输入规模、重复频率和限制解释",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-minipaint-diagnosis-01-controlled-comparison",
+          "status": "LIMITED_CONTROLLED_PARAMETER_CASE",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/result.json",
+            "sha256": "91d3ed0703aff6a5643c9764be5cfd9b813e4ac31507ba5db68107086cd0fa01"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/current-readback.json",
+            "sha256": "67e8a421c7516bc08f02de9e5db1a58e0dd934c75fb60fd8603e7575b145d0db"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/frame-review.json",
+            "sha256": "cc7129f05c7c82d1750c07275c28c57a4ce153ea32fc00f370dff90d21fb55a9"
+          },
+          "mechanism": "Equal original input and algorithms;A/Bparameter comparison withactual saved-image plate;conditionalchoice,notuniversallybestsettings.",
+          "limits": [
+            "Sampled review is not continuous semantic viewing.",
+            "No independent learner, independent style or native editing-host acceptance.",
+            "Original capture has no audio; generated output silence is not source-audio or listening evidence.",
+            "Staged goal/parameter mismatch, not app defect; one version and image. No style superiority claim."
+          ],
+          "browser_playback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/browser-playback-01/result.json",
+            "sha256": "f3e26a377c27cc3945c464f311ee7e67a4e61bb8420098f369ef9f5d2a732113"
+          },
+          "browser_end_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-diagnosis-trials-01/browser-playback-01/visual-review.json",
+            "sha256": "3493468e19da3bb37ef14213bb4cee004bd22d32404c27329a790ff8d88c3a20"
+          }
+        }
+      ],
+      "supporting_case_evidence": [
+        {
+          "id": "w03-minipaint-boundaries-01",
+          "status": "PARAMETER_CONDITIONS_OBSERVED_NOT_STYLE_ACCEPTANCE",
+          "reference": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/provenance/minipaint-boundary-reference.json",
+            "sha256": "c2d7235862f3c66054d492662011c523931fc6a9470dbd436a375ed14c151f0d"
+          },
+          "scope": "Seven predeclared UI cases on three calibration graphics; no new lesson or independent style assessment."
+        }
+      ]
+    },
+    {
+      "id": "silent-walkthrough",
+      "name": "静音可跟做",
+      "family": "教学",
+      "fit": "观看环境不适合声音，动作和文字足以解释",
+      "question": "关掉声音是否仍能完成任务？",
+      "selection": "保留定位、动作、结果；必要说明由短文字承担",
+      "sequence": "目标卡→定位→动作提示→结果检查",
+      "audio": "不依赖配音，系统提示声可有但不承担唯一信息",
+      "rhythm": "每屏文字可读，动作提示不要与点击同时消失",
+      "visual": "真实光标或明确框选配简短动词；不假造光标轨迹",
+      "anti": "字幕密密麻麻，或画面只有鼠标移动没有目标解释",
+      "example": "虚构例：静音展示新建文件夹、命名、确认创建",
+      "nearest": "与首次上手可组合；区别在全部必要信息能从画面获得",
+      "effect_check": "静音完整观看仍能定位动作并识别结果",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-minipaint-teaching-01",
+          "status": "LIMITED_REPRODUCIBLE_UI_TEACHING_TRIAL",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/result-current.json",
+            "sha256": "8b7d99c96170ce6d9de4f0822c679b838f358a75a3cd8ce52af0976b781c0197"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/current-readback-02.json",
+            "sha256": "c903eb4b648a3e444f372af7c56c3f78fde9a37f7e7067a73977f91b1cb6316b"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/frame-review-current.json",
+            "sha256": "cdff30bd457234e112f836dd1c6fd9adb20c28cdccee63e96d7bcaae24f39e40"
+          },
+          "mechanism": "Text-led import-resize-export-save-reopen chain; undo/redo omitted with disclosure.",
+          "limits": [
+            "One pinned application and task, not general style effectiveness.",
+            "12current samples and35initial samples are separate evidence, not continuous viewing.",
+            "No independent learner/style evaluation or editing-Agent native host acceptance.",
+            "Original recording has no audio; generated silence is not source audio."
+          ],
+          "browser_playback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/browser-playback-01/result.json",
+            "sha256": "a555c79216a71aa9bc57c32ae055a864605aab9367598a7b4b85a8daf7937507"
+          }
+        }
+      ]
+    },
+    {
+      "id": "progressive-reveal",
+      "name": "复杂界面分层讲解",
+      "family": "教学",
+      "fit": "复杂表格/编辑器包含多个关联区域",
+      "question": "先理解哪个区域，才能理解下一个？",
+      "selection": "保留区域关系、核心动作及跨区反馈，隐藏无关介绍而非伪改界面",
+      "sequence": "全景地图→区域一→关联动作→区域二反馈→全景收束",
+      "audio": "旁白一次解释一个关系，少用左右这里等易失效指代",
+      "rhythm": "在认知转换处慢，熟悉区域重访可快",
+      "visual": "每次聚焦保留共同锚点；回全景校正空间关系",
+      "anti": "频繁跳跃放大，裁掉状态导致按钮含义变化",
+      "example": "虚构例：先讲素材区，再操作时间线，最后在预览区看变化",
+      "nearest": "与概念落操作相比主解空间/区域关联而非抽象参数机制",
+      "effect_check": "观众能指出动作影响哪个区域，放大后不会失去位置",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "migration-guide",
+      "name": "迁移与替代操作",
+      "family": "变更",
+      "fit": "用户从旧工具/旧版本迁移，有惯性路径",
+      "question": "原来这样做，现在等价入口在哪里，有何差别？",
+      "selection": "保留旧任务定义、新入口、语义差异和迁移后核对",
+      "sequence": "旧习惯→新路径→不等价处→迁移操作→验收",
+      "audio": "旁白按用户熟悉概念桥接，但不谎称完全兼容",
+      "rhythm": "等价步骤可快，数据格式和不可逆差异放慢",
+      "visual": "旧新界面版本标识清楚，比较同一任务而非相同按钮位置",
+      "anti": "旧新版素材混剪、把字段同名当语义等价",
+      "example": "虚构例：旧表格模板导入新工具后核对日期与公式",
+      "nearest": "与版本更新导览相比重在用户迁移任务与资产保持",
+      "effect_check": "迁移后功能和数据语义可核对，差异明确",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "failure-boundaries",
+      "name": "失败边界演示",
+      "family": "诊断",
+      "fit": "功能容易被误解为无条件成功，有可复现失败条件",
+      "question": "何时会失败，怎样发现并恢复？",
+      "selection": "保留成功前提、失败触发、错误反馈、恢复和重试结果",
+      "sequence": "成功条件→越界输入→失败证据→恢复→边界总结",
+      "audio": "旁白准确描述可恢复与不可恢复状态，不戏剧化夸大",
+      "rhythm": "错误反馈完整可读，恢复步骤不能快到无法复现",
+      "visual": "成功/失败用明确标签，不能仅靠颜色区分",
+      "anti": "故意制造不公平失败，或剪掉会影响现有数据的提醒",
+      "example": "虚构例：导入格式不兼容时展示报错、转换后再导入",
+      "nearest": "与证据排错相比预先解释产品边界，非解决未知原因",
+      "effect_check": "观众能预测失败条件并知道恢复路径",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "release-delta",
+      "name": "版本变化导览",
+      "family": "变更",
+      "fit": "已有用户关心版本更新对现有工作方式的影响",
+      "question": "升级后哪些任务变了，哪些操作需要重学？",
+      "selection": "选择实际可用变更、入口变化和兼容限制，删未上线路线图",
+      "sequence": "旧任务痛点→已上线变化→实际使用→兼容边界",
+      "audio": "旁白分清已上线、灰度、计划，不把预告讲成可用",
+      "rhythm": "每个变化只讲能改变使用行为的部分，避免功能罗列",
+      "visual": "明确版本和环境，旧新截图或录像标识对应",
+      "anti": "把设计稿当新版本，把路线图当完成发布",
+      "example": "虚构例：新版增加批量导出，展示入口、结果和仍有限制的格式",
+      "nearest": "与迁移指南相比重点是差异认知，不要求完整资产迁移",
+      "effect_check": "观众能准确区分可用功能、适用环境和未发布项",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "readable-deliberate",
+      "name": "阅读优先教学",
+      "family": "教学",
+      "fit": "文字密集或目标观众需要更长定位和理解时间",
+      "question": "界面内容能否看清、读完并采取下一步？",
+      "selection": "保留必要文本、定位及确认，不把所有停顿一律压缩",
+      "sequence": "简明目标→定位→读关键字段→操作→核对",
+      "audio": "旁白与屏幕阅读错峰，不同时抛两套高密度信息",
+      "rhythm": "按信息密度分配停留，不全片机械慢放",
+      "visual": "较大必要文字、稳定聚焦、不依赖颜色唯一编码；字幕避开内容",
+      "anti": "用更慢速度补偿模糊画面，或把无障碍需求等同迟缓",
+      "example": "虚构例：配置多个导出字段，逐块说明再确认汇总",
+      "nearest": "与首次上手不同专注可读与认知负荷，适用于专业观众",
+      "effect_check": "必要字段在目标尺寸可读，观看者能完成信息核对",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "keyboard-workflow",
+      "name": "键盘连续操作流",
+      "family": "效率",
+      "fit": "受众熟悉软件，要求展示可执行快捷键流程",
+      "question": "不依赖鼠标时如何完成这一整条任务？",
+      "selection": "保留焦点位置、组合键、模式变化、结果和退出方式",
+      "sequence": "起始焦点→按键链→中间检查→结果→恢复常规状态",
+      "audio": "可用简短旁白说明模式，不让按键播报遮盖关键解释",
+      "rhythm": "按键之间保留响应，重复按键可归纳但不可隐藏模式改变",
+      "visual": "按键显示须来自实际操作记录或显式人工标注，焦点始终可定位",
+      "anti": "按键与录屏错时，Mac/Windows键位混用，遗漏输入法状态",
+      "example": "虚构例：用快捷键选择、复制、粘贴并重命名一组对象",
+      "nearest": "与熟手技巧卡相比是多步连续流程，重点是焦点和模式一致",
+      "effect_check": "观众按同一平台按键可以复现，不会把文字输入到错误目标",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "case-story",
+      "name": "单案例产品故事",
+      "family": "产品演示",
+      "fit": "一个真实使用任务有明确阻碍和结果",
+      "question": "这一工具如何改变当事人的具体工作过程？",
+      "selection": "保留任务背景、实际障碍、使用决定、过程与结果，不编造冲突",
+      "sequence": "具体任务→阻碍→使用→变化→结果与限制",
+      "audio": "旁白连接背景，真实界面证明行为，不替用户编情绪",
+      "rhythm": "背景精简，决定和结果给空间，避免功能堆砌",
+      "visual": "同一案例标识贯穿，人物素材与录屏类型清晰",
+      "anti": "把三个无关案例拼成一个人的成功过程",
+      "example": "虚构例：同一份活动资料从杂乱素材整理成可核对的清单",
+      "nearest": "与证据型演示相比强调任务经历与选择，但证明要求不降低",
+      "effect_check": "故事可以追溯到同一案例，观众知道工具改变了哪个环节",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "decision-trace",
+      "name": "判断过程演示",
+      "family": "产品演示",
+      "fit": "工具或 Agent 的价值在依据证据选择下一步",
+      "question": "为什么走这一步，什么结果会改变后续决定？",
+      "selection": "保留输入、证据、选项、选择、检验和调整；不暴露无关内部日志",
+      "sequence": "目标→证据→候选行动→检验→更新决定→产物",
+      "audio": "旁白解释可见决策依据，不把模型猜测说成真实隐式思考",
+      "rhythm": "把时间留给关键证据变化，等待明确压缩，结果后再总结",
+      "visual": "只展示与观众判断有关的状态，选择和结果顺序准确",
+      "anti": "把预写答案从头摆满屏，伪装为实时推理或自主行动",
+      "example": "虚构例：检查缺失字段后先补数据，再生成报告并复核",
+      "nearest": "与证据型演示相比核心是决策随证据改变，不仅证明能完成",
+      "effect_check": "每个选择有此前可见依据，失败会引发实际调整",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": []
+    },
+    {
+      "id": "reversible-exploration",
+      "name": "试做与回退教学",
+      "family": "教学",
+      "fit": "创作软件需要试效果、比较并撤销，用户关注控制感",
+      "question": "尝试后不满意，怎样退回并保留已有工作？",
+      "selection": "保留原状态、试改、比较、撤销/局部采用与最终状态",
+      "sequence": "原稿→试做→比较→采用一部分或撤销→核对保留项",
+      "audio": "旁白分清预览、应用、保存，不把可撤销和不可逆混说",
+      "rhythm": "比较和回退后的核对留足时间，过程可简洁",
+      "visual": "原状态与当前状态可对照，人工修改保护有实际证据",
+      "anti": "剪掉撤销后丢内容的画面，或将另一个工程冒充恢复",
+      "example": "虚构例：给片段试三种字幕样式，只采用一处并保留时间线",
+      "nearest": "与前后对比相比回退/局部采用本身就是教学目标",
+      "effect_check": "观看者知道如何试、如何选、如何恢复，原稿保留可证",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "demo-director",
+        "ultrademo"
+      ],
+      "provenance_type": "original-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w03-minipaint-teaching-01",
+          "status": "LIMITED_REPRODUCIBLE_UI_TEACHING_TRIAL",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/result-current.json",
+            "sha256": "8b7d99c96170ce6d9de4f0822c679b838f358a75a3cd8ce52af0976b781c0197"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/current-readback-02.json",
+            "sha256": "c903eb4b648a3e444f372af7c56c3f78fde9a37f7e7067a73977f91b1cb6316b"
+          },
+          "visual_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/frame-review-current.json",
+            "sha256": "cdff30bd457234e112f836dd1c6fd9adb20c28cdccee63e96d7bcaae24f39e40"
+          },
+          "mechanism": "State comparison,undo/redo,and cross-session project recovery;different starting prerequisites and declared final hold.",
+          "limits": [
+            "One pinned application and task, not general style effectiveness.",
+            "12current samples and35initial samples are separate evidence, not continuous viewing.",
+            "No independent learner/style evaluation or editing-Agent native host acceptance.",
+            "Original recording has no audio; generated silence is not source audio."
+          ],
+          "browser_playback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/minipaint-teaching-trials-01/browser-playback-01/result.json",
+            "sha256": "a555c79216a71aa9bc57c32ae055a864605aab9367598a7b4b85a8daf7937507"
+          }
+        }
+      ]
+    }
+  ]
+}

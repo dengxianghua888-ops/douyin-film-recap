@@ -1,0 +1,897 @@
+{
+  "task_id": "P-W11-D2",
+  "scope": "具名静态来源用途审查提案，待M裁决；不新增正式状态体系",
+  "formal_baseline": {
+    "path": "evals/evidence/portfolio-ledger-v0.33.json",
+    "W11_D2": "reviewed"
+  },
+  "method_claims": [
+    {
+      "id": "METHOD-OPENCHATCUT",
+      "source_group": "music-cache-contract",
+      "problem": "音乐修订后旧分析或旧剪点被继续采用",
+      "adopted": [
+        "源修订与分析引用绑定",
+        "source trim/playback rate 到时间线坐标",
+        "锁轨/非目标保持",
+        "一次编辑与可撤销记录的机制思想"
+      ],
+      "locations": [
+        "workflows/raven-music-montage/references/music-map.md",
+        "workflows/raven-music-montage/references/timing-and-work.md"
+      ],
+      "excluded": [
+        "Beat This/CLAP 已安装或可直接调用的假设",
+        "每四/二/一候选点的固定密度采样",
+        "每次计划固定批准",
+        "源项目具体 EditorCommands/API/缓存/模型代码"
+      ],
+      "adaptation": "把插件接口思想改为Agent所选工具的输入/修订/保护规则，不照搬源工作流与安装条件",
+      "use_kind": "method_paraphrase_no_code_adoption_declared",
+      "license_as_recorded": "AGPL-3.0",
+      "source_anchors": [
+        {
+          "needle": "sourceRevision",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "needle": "analysisRef",
+          "lines": [
+            14,
+            16,
+            28,
+            45
+          ]
+        },
+        {
+          "needle": "every fourth",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "needle": "one undo step",
+          "lines": [
+            14,
+            48,
+            49
+          ]
+        }
+      ],
+      "source_binding": {
+        "version": "07437f60257a578745262359753bfccce337510c",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/src/agent/skills/music-intelligence/SKILL.md",
+            "sha256": "415969ecd8cc45c06fd03468e8f97129f56c188704587ace4d1b0a1d55373219",
+            "bytes": 4565
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/0xsline__OpenChatCut/07437f60257a/LICENSE",
+            "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+            "bytes": 34523
+          }
+        ]
+      }
+    },
+    {
+      "id": "METHOD-HYPERFRAMES",
+      "source_group": "music-grid-methods",
+      "problem": "把启发式网格、频段与视觉切镜误当音乐事实",
+      "adopted": [
+        "乐句/起音与剪切密度分层",
+        "平静或网格不可靠时长持",
+        "全局音乐独立于视觉剪切",
+        "区间坐标明确"
+      ],
+      "locations": [
+        "workflows/raven-music-montage/references/music-map.md",
+        "workflows/raven-music-montage/references/timing-and-work.md",
+        "workflows/raven-music-montage/references/visual-and-emotion.md"
+      ],
+      "excluded": [
+        "默认四拍 downbeat_phase/16格作为三拍与自由速度真值",
+        "低频峰可靠认证鼓件身份",
+        "默认所有画面静音",
+        "文字模板为所有视频底座",
+        "每点一素材与强制交叉淡化",
+        "源码移植"
+      ],
+      "adaptation": "保留观察候选与编辑用途，否定启发式自动升级；是否保留源声由本次意图决定",
+      "use_kind": "method_and_counterexample_study",
+      "license_as_recorded": "Apache-2.0",
+      "source_anchors": [
+        {
+          "needle": "def downbeat_phase",
+          "lines": [
+            102
+          ]
+        },
+        {
+          "needle": "16-step bar grid",
+          "lines": [
+            116
+          ]
+        },
+        {
+          "needle": "def derive_phrases",
+          "lines": [
+            325
+          ]
+        }
+      ],
+      "source_binding": {
+        "version": "c204b3c7579af6eff2226db64aac71292a58950d",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/scripts/analyze-beatgrid.py",
+            "sha256": "acc14ffbbbcfb59fbe89a6886380d584df07a14205b1a299f424810bc85baed0",
+            "bytes": 24210
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/skills/music-to-video/references/montage.md",
+            "sha256": "ebff415eb7b169050cedf24072f912cffe1f0b4b3fbfe09f57c59f5689515633",
+            "bytes": 3215
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/heygen-com__hyperframes/c204b3c7579a/LICENSE",
+            "sha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8",
+            "bytes": 10763
+          }
+        ]
+      }
+    },
+    {
+      "id": "METHOD-GENERATIVE-MEDIA",
+      "source_group": "music-editorial-methods",
+      "problem": "只有剪点密度、没有声画结构和具体录音身份",
+      "adopted": [
+        "视觉关系与母题返回",
+        "乐句/反节奏/有意留白",
+        "音乐用途和声部优先级",
+        "曲目与具体录音分开",
+        "版本/许可及实际输出来源记录"
+      ],
+      "locations": [
+        "workflows/raven-music-montage/references/visual-and-emotion.md",
+        "workflows/raven-music-montage/references/audio-and-rights.md",
+        "workflows/raven-music-montage/references/music-map.md",
+        "styles/music-montage/motif-return.md",
+        "styles/music-montage/release-wide.md"
+      ],
+      "excluded": [
+        "固定曲式和必备强拍",
+        "完整平台发布流程作为普通剪辑前置",
+        "来源过宽的创作禁令",
+        "来源自称verified的法律/平台事实作为当前认证",
+        "歌词识别、分轨、音乐生成或演奏同步已实现的推断"
+      ],
+      "adaptation": "改写为适用条件、显式参数与未验证范围；不移植来源脚本或平台/模型绑定",
+      "use_kind": "method_paraphrase_and_original_editorial_synthesis_declared",
+      "license_as_recorded": "MIT",
+      "source_anchors": {
+        "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/post-production/editing-montage/SKILL.md": [
+          {
+            "needle": "Motif return",
+            "lines": [
+              190
+            ]
+          },
+          {
+            "needle": "Counter-rhythm",
+            "lines": [
+              295
+            ]
+          }
+        ],
+        "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/music-supervision-scoring/SKILL.md": [
+          {
+            "needle": "public-domain composition",
+            "lines": [
+              28
+            ]
+          },
+          {
+            "needle": "Recording owner",
+            "lines": [
+              188
+            ]
+          }
+        ],
+        "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/content-formats/music-video-production/SKILL.md": [
+          {
+            "needle": "Lock the audio version",
+            "lines": [
+              195
+            ]
+          },
+          {
+            "needle": "Never invent rights",
+            "lines": [
+              15
+            ]
+          }
+        ]
+      },
+      "source_binding": {
+        "version": "8c85352d5d75d4dcbe58480bd138e37b9742bab1",
+        "files": [
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/post-production/editing-montage/SKILL.md",
+            "sha256": "c1cc77a249f5607d11ab4b562a3982dfc61583a5f79dfbcc3755550fcc5cfe1a",
+            "bytes": 30783
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/audio-craft/music-supervision-scoring/SKILL.md",
+            "sha256": "b6c94b209dd9da72a2e8a5d8bffebfe72463654a3bf633ea7792037dd6c7a124",
+            "bytes": 22194
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/skills/production/content-formats/music-video-production/SKILL.md",
+            "sha256": "dfd52094281fed5abde64d03637032420d5fb1e4e6e543ce3bcf0c41bdf83185",
+            "bytes": 27649
+          },
+          {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/AI剪辑Skill全景调研/sources/calesthio__generative-media-skills/8c85352d5d75/LICENSE",
+            "sha256": "27570f011a5a53e84412bcb6abcce17654c4e2b0e68c3522dca8885de7deaf93",
+            "bytes": 1093
+          }
+        ]
+      }
+    }
+  ],
+  "exact_music": {
+    "id": "MUSIC-MAPLE-LEAF-EXACT",
+    "title": "Maple Leaf Rag，第一段/节选",
+    "composition_author": "Scott Joplin",
+    "recording_performer_as_recorded": "Tim Starling",
+    "original": {
+      "path": "evals/assets/commons-maple-leaf/music.ogg",
+      "sha256": "ddc59d07fc49cd913ee58d9dc399957654fe7642b0551dd2db0c774bbaaaf870",
+      "bytes": 152334
+    },
+    "derived_pcm": {
+      "path": "evals/runs/music-pcm-01/audio.wav",
+      "sha256": "89fe4657a41a9ef683484afabe37bb2151e084b86c4e2004637ecf8190590107",
+      "bytes": 3333198
+    },
+    "recording_page": "https://commons.wikimedia.org/wiki/File:Maple_leaf_rag.ogg",
+    "source_metadata": {
+      "path": "evals/assets/commons-maple-leaf/metadata.json",
+      "sha256": "1f1fceffd7206ce9e856ac6809283a987701523ee6e4d3c0e192b95aa828845c",
+      "bytes": 3944
+    },
+    "version_identity": "上述OGG字节及其0–17.36s派生PCM；不与同名其他录音/混音/全曲混用",
+    "derivation": {
+      "request": {
+        "path": "evals/runs/music-pcm-01/request.json",
+        "sha256": "17396c69da6ceb6caac7b5cd824d8afa354d98602c2be71aeb0f2cd988bc0f2f",
+        "bytes": 329
+      },
+      "receipt": {
+        "path": "evals/runs/music-pcm-01/receipt.json",
+        "sha256": "f9fee41b02dbbf34c4890f9628812c8a19acab7274386c2305bca3b42a1335a9",
+        "bytes": 2460
+      },
+      "source_range_seconds": [
+        0,
+        17.36
+      ],
+      "requested_sample_rate": 48000,
+      "requested_channels": 2
+    },
+    "license_known": "归档metadata明确标Public domain，并记表演者在允许范围内放弃其权利的声明；该记录针对具体录音，不是仅由作曲家年代推断。",
+    "license_limit": "没有新联网核权/法域判断；不认证平台曲库、商标/代言、字体或其他录音的权利。",
+    "actual_use": "三版瀑布及动作A/B均用同一PCM作为后期连续音乐；音轨start=0/end=17.36，全局offset=0；不改称现场同期声。",
+    "not_adopted": [
+      "全曲/演奏同步/歌词正确性",
+      "自动节拍、强拍、小节或乐句确认",
+      "分轨/生成/变速效果验证"
+    ]
+  },
+  "water_video_sources": [
+    {
+      "id": "front",
+      "media": {
+        "path": "evals/assets/commons-kawaida/front.webm",
+        "sha256": "8a0702df71ce6b8712b2b5d7c24db8261720198922e663c8bbe0a933524e79f9",
+        "bytes": 3520704
+      },
+      "metadata": {
+        "path": "evals/assets/commons-kawaida/front.webm.metadata.json",
+        "sha256": "72214741624a64f71fe5b22b9ec8972e519a7bd624084db9b5464ce935c18352",
+        "bytes": 3259
+      },
+      "source_page": "https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm",
+      "author": "Lebu Ayiga",
+      "license_as_recorded": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "use": "视觉素材；各作品显式静音原环境声，配乐后期加入",
+      "excluded_claims": [
+        "同期多机位",
+        "连续旅程/拍摄顺序",
+        "人物身份或配乐为现场声"
+      ],
+      "actually_used_by": [
+        "sparse-pulse",
+        "motif-return",
+        "release-wide"
+      ],
+      "declared_in_pool_but_not_consumed_by": []
+    },
+    {
+      "id": "side",
+      "media": {
+        "path": "evals/assets/commons-kawaida/side.webm",
+        "sha256": "8154f19f4c593f7af6021a919a079a8b4ef741d3d09fb7726033b4d157a6b7dc",
+        "bytes": 2424824
+      },
+      "metadata": {
+        "path": "evals/assets/commons-kawaida/side.webm.metadata.json",
+        "sha256": "3626185cbffacc584ab3ded0e00e5b422a99c1122d59ecc10a51da2d797a8241",
+        "bytes": 3268
+      },
+      "source_page": "https://commons.wikimedia.org/wiki/File:Side_view_video_of_Kawaida_Waterfall_cascading,_Cianda,_Kiambu_County.webm",
+      "author": "Lebu Ayiga",
+      "license_as_recorded": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "use": "视觉素材；各作品显式静音原环境声，配乐后期加入",
+      "excluded_claims": [
+        "同期多机位",
+        "连续旅程/拍摄顺序",
+        "人物身份或配乐为现场声"
+      ],
+      "actually_used_by": [
+        "sparse-pulse"
+      ],
+      "declared_in_pool_but_not_consumed_by": [
+        "motif-return",
+        "release-wide"
+      ]
+    },
+    {
+      "id": "behind",
+      "media": {
+        "path": "evals/assets/commons-kawaida/behind.webm",
+        "sha256": "89c84300f09609a2ceb53867f54458c04e082fc79d70928dd979fca312d29485",
+        "bytes": 1842135
+      },
+      "metadata": {
+        "path": "evals/assets/commons-kawaida/behind.webm.metadata.json",
+        "sha256": "4daf159d1fa438901a500da453960cbe325c26a27b19838f8c7786694253179b",
+        "bytes": 3305
+      },
+      "source_page": "https://commons.wikimedia.org/wiki/File:Video_from_behind_Kawaida_Waterfall_through_hanging_roots,_Kiambu_County.webm",
+      "author": "Lebu Ayiga",
+      "license_as_recorded": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "use": "视觉素材；各作品显式静音原环境声，配乐后期加入",
+      "excluded_claims": [
+        "同期多机位",
+        "连续旅程/拍摄顺序",
+        "人物身份或配乐为现场声"
+      ],
+      "actually_used_by": [
+        "sparse-pulse",
+        "motif-return",
+        "release-wide"
+      ],
+      "declared_in_pool_but_not_consumed_by": []
+    }
+  ],
+  "action_video": {
+    "media": {
+      "path": "evals/assets/commons-brompton/folding.webm",
+      "sha256": "ec2e3c19de31bcc872f50c8fb646a3d5578f9e1c2c15f00d3a01e0a8ec340b08",
+      "bytes": 7573184
+    },
+    "source_page": "https://commons.wikimedia.org/wiki/File:Folding_a_Brompton.webm",
+    "author_as_recorded": "Bossphotography",
+    "license_as_recorded": "CC BY 4.0",
+    "source_metadata": {
+      "path": "evals/assets/commons-brompton/metadata.json",
+      "sha256": "339cc862afb5cfb5b89dbab46018ee3db2d6057a14c2f6c1add9864017c5f76d",
+      "bytes": 2916
+    },
+    "use": "动作阶段观察与两版对照的视频选区，声音不采用；不外推人物意图、商业背书或表演同步"
+  },
+  "later_increments": [
+    {
+      "id": "INC-SIGNAL",
+      "binding": [
+        {
+          "path": "evals/runs/music-style-trials-01/music-map.json",
+          "sha256": "37407d10d0d876e171ae1fd2c3c1510a03de8c3d9bc238690e09bf9ada3d730b",
+          "bytes": 4038
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/markers.json",
+          "sha256": "4049d997403bded7624068ae0834cad13d85d0d96fad282ee00254053f1d44e2",
+          "bytes": 838
+        },
+        {
+          "path": "evals/runs/music-signal-scan-01/receipt.json",
+          "sha256": "233e312e567428089b88b52a28cb63bd574e6d5c7325a824d4e700e319951103",
+          "bytes": 2194
+        },
+        {
+          "path": "evals/runs/music-signal-scan-02/media-signals.json",
+          "sha256": "76ef5b022fc34ffe6fb399f64b3e7dff06fee76493e5d788a545ad5678030b4a",
+          "bytes": 277570
+        }
+      ],
+      "use": "原OGG扫描时间不单调失败保留；显式提取PCM后，在[3,5]/[7,9]/[11,13]秒中选10ms窗RMS上升候选4.39/8.88/12.41；仅声明数值选点，不认证强拍/乐句或R01已修。",
+      "excluded": "不继承外部自动乐理分类/鼓件/模型能力"
+    },
+    {
+      "id": "INC-THREE-WORKS",
+      "binding": [
+        {
+          "path": "evals/runs/music-style-trials-01/result-after-typography-revision.json",
+          "sha256": "c91e7363dbe974a6587b64dc530741f81865db3da7a7c8f4a991a5f142f811c8",
+          "bytes": 3995
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/inspection/typography-revision.json",
+          "sha256": "d534e50fc2706032b20107e94698bb0712fd3e4b70aaf7bd524bb565cd624153",
+          "bytes": 1469
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/current-readback.json",
+          "sha256": "e4e80717e9a468c9d0a0f5600579af8ebfc760aa6dbb38aab548406601cf08ad",
+          "bytes": 5293
+        }
+      ],
+      "use": "三种候选沿三个不同Work各自seq1→2，只改字号17→23；同音乐、素材池和总时长，选段/片序/剪点因机制而异。",
+      "excluded": "不是只改标题即产生三种效果；不是三个真人修订或乐句风格验收。",
+      "works": [
+        {
+          "id": "sparse-pulse",
+          "work_id": "w11-sparse-pulse",
+          "store": {
+            "path": "evals/runs/music-style-trials-01/sparse-pulse/work.sqlite",
+            "sha256": "5acd25439675a662b23fd7a060ca469d9dbcf19c30f411db5da490e4ab1f8fa1",
+            "bytes": 28672
+          },
+          "current_head": {
+            "sequence": 2,
+            "version": "2c9d4aaff5f3d091163331ca6fce6ccb199c8ca14d0ceff011c701280d83e3d1",
+            "digest": "912afa8cb7c001667f862563cb666bb52fc10ac3674dd0217554ea6e5d80fad0",
+            "action": "commit",
+            "author": "agent"
+          },
+          "history_count": 2,
+          "document": {
+            "path": "evals/runs/music-style-trials-01/sparse-pulse/document-v2.json",
+            "sha256": "eb3b78cb3c96bf6e4493068d945f03c71aea8aeafb974bcb5224199094c1c7d2",
+            "bytes": 8531
+          },
+          "output": {
+            "path": "evals/runs/music-style-trials-01/sparse-pulse/revision-render/captions/captioned.mp4",
+            "sha256": "37be07d07ff1aa7ac3def8db5f6f3cdbde7d83e97d740c9d55904fcd52649d16",
+            "bytes": 7969231
+          },
+          "source_intervals": [
+            {
+              "end": 4.4,
+              "gain_db": 0,
+              "id": "c0",
+              "mute": true,
+              "source_id": "front",
+              "start": 0
+            },
+            {
+              "end": 4.48,
+              "gain_db": 0,
+              "id": "c1",
+              "mute": true,
+              "source_id": "side",
+              "start": 0
+            },
+            {
+              "end": 7.92,
+              "gain_db": 0,
+              "id": "c2",
+              "mute": true,
+              "source_id": "front",
+              "start": 4.4
+            },
+            {
+              "end": 4.96,
+              "gain_db": 0,
+              "id": "c3",
+              "mute": true,
+              "source_id": "behind",
+              "start": 0
+            }
+          ],
+          "audio_use": {
+            "music": {
+              "anchor_clip_id": null,
+              "end": 17.36,
+              "gain_db": 0,
+              "offset": 0,
+              "source": {
+                "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-pcm-01/audio.wav",
+                "sha256": "89fe4657a41a9ef683484afabe37bb2151e084b86c4e2004637ecf8190590107"
+              },
+              "start": 0
+            }
+          },
+          "font": {
+            "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+            "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+            "bytes": 23278008
+          },
+          "attribution": {
+            "path": "evals/runs/music-style-trials-01/sparse-pulse/ATTRIBUTION.txt",
+            "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+            "bytes": 753
+          },
+          "scope": "existing historical same-Work head read only; no current runtime/render/real-human validation"
+        },
+        {
+          "id": "motif-return",
+          "work_id": "w11-motif-return",
+          "store": {
+            "path": "evals/runs/music-style-trials-01/motif-return/work.sqlite",
+            "sha256": "153adc77e3b42727489efe8872f67a37e7cf1911f6a2a75d5e6e5b66ad75ffe3",
+            "bytes": 28672
+          },
+          "current_head": {
+            "sequence": 2,
+            "version": "2518c005686b15ce5048bea36aac1c237a52077886d863bc65f6f17ce87e6f91",
+            "digest": "3722a8e190bc93687199e26b5e0c8e6f47106c62c99c2d4ee4b7bc49fd66abc9",
+            "action": "commit",
+            "author": "agent"
+          },
+          "history_count": 2,
+          "document": {
+            "path": "evals/runs/music-style-trials-01/motif-return/document-v2.json",
+            "sha256": "dae8cce237952e4c4816cac3ec0930f6a3520a083cfc894c0136660593241fe3",
+            "bytes": 8405
+          },
+          "output": {
+            "path": "evals/runs/music-style-trials-01/motif-return/revision-render/captions/captioned.mp4",
+            "sha256": "21d4bad58553f37ab12d712f4dca88dcd67303347d52821b6cd0b26329fd2b3a",
+            "bytes": 8097097
+          },
+          "source_intervals": [
+            {
+              "end": 5.6,
+              "gain_db": 0,
+              "id": "c0",
+              "mute": true,
+              "source_id": "front",
+              "start": 0
+            },
+            {
+              "end": 6.16,
+              "gain_db": 0,
+              "id": "c1",
+              "mute": true,
+              "source_id": "behind",
+              "start": 0
+            },
+            {
+              "end": 11.2,
+              "gain_db": 0,
+              "id": "c2",
+              "mute": true,
+              "source_id": "front",
+              "start": 5.6
+            }
+          ],
+          "audio_use": {
+            "music": {
+              "anchor_clip_id": null,
+              "end": 17.36,
+              "gain_db": 0,
+              "offset": 0,
+              "source": {
+                "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-pcm-01/audio.wav",
+                "sha256": "89fe4657a41a9ef683484afabe37bb2151e084b86c4e2004637ecf8190590107"
+              },
+              "start": 0
+            }
+          },
+          "font": {
+            "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+            "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+            "bytes": 23278008
+          },
+          "attribution": {
+            "path": "evals/runs/music-style-trials-01/motif-return/ATTRIBUTION.txt",
+            "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+            "bytes": 753
+          },
+          "scope": "existing historical same-Work head read only; no current runtime/render/real-human validation"
+        },
+        {
+          "id": "release-wide",
+          "work_id": "w11-release-wide",
+          "store": {
+            "path": "evals/runs/music-style-trials-01/release-wide/work.sqlite",
+            "sha256": "d8ce43fca2a910724f843a0c297338a3318800ad86a9f7681197eab1535f0ac2",
+            "bytes": 28672
+          },
+          "current_head": {
+            "sequence": 2,
+            "version": "39528588093d536029e6c45b292b6b18b93044984035ff9f383ea39ea6dbd671",
+            "digest": "ef8b6472dce6b855038277c445bcce53167743a501fbcae7a628695c69f2d912",
+            "action": "commit",
+            "author": "agent"
+          },
+          "history_count": 2,
+          "document": {
+            "path": "evals/runs/music-style-trials-01/release-wide/document-v2.json",
+            "sha256": "1486f411326ccb841a86cf01b6f3622720fb46e9659fec625243e5464a4cf712",
+            "bytes": 8241
+          },
+          "output": {
+            "path": "evals/runs/music-style-trials-01/release-wide/revision-render/captions/captioned.mp4",
+            "sha256": "92e452adcf81b8bfc72d6cbe4c6cd8d1312c99898ffe8a29f2376c95623c6add",
+            "bytes": 7450301
+          },
+          "source_intervals": [
+            {
+              "end": 8.4,
+              "gain_db": 0,
+              "id": "c0",
+              "mute": true,
+              "source_id": "behind",
+              "start": 0
+            },
+            {
+              "end": 11.24,
+              "gain_db": 0,
+              "id": "c1",
+              "mute": true,
+              "source_id": "front",
+              "start": 2.28
+            }
+          ],
+          "audio_use": {
+            "music": {
+              "anchor_clip_id": null,
+              "end": 17.36,
+              "gain_db": 0,
+              "offset": 0,
+              "source": {
+                "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/music-pcm-01/audio.wav",
+                "sha256": "89fe4657a41a9ef683484afabe37bb2151e084b86c4e2004637ecf8190590107"
+              },
+              "start": 0
+            }
+          },
+          "font": {
+            "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+            "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+            "bytes": 23278008
+          },
+          "attribution": {
+            "path": "evals/runs/music-style-trials-01/release-wide/ATTRIBUTION.txt",
+            "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+            "bytes": 753
+          },
+          "scope": "existing historical same-Work head read only; no current runtime/render/real-human validation"
+        }
+      ]
+    },
+    {
+      "id": "INC-ACTION-CONTROL",
+      "binding": [
+        {
+          "path": "evals/parallel/w11-music-20260922/source-lock.json",
+          "sha256": "ad8245d119c5a405a37cc0b9927c54f5a0d240714a16bc1357355e36188912f2",
+          "bytes": 2103
+        },
+        {
+          "path": "evals/parallel/w11-music-20260922/action-observation.json",
+          "sha256": "da11de8d7a241d705db9577a370eb2428005a5ddbc39bfaf8519a9f0e5bd2691",
+          "bytes": 2334
+        },
+        {
+          "path": "evals/parallel/w11-music-20260922/edit-decision.json",
+          "sha256": "1843158b7535afcb7cf2528e0bf408716cca7d97fe9e2c297546d83d90aa1d45",
+          "bytes": 2196
+        },
+        {
+          "path": "evals/parallel/w11-music-20260922/technical-qc.json",
+          "sha256": "84093716c527c6eff227951aa09673ef24033abb795dd5125652fd2ba2b019f2",
+          "bytes": 2353
+        },
+        {
+          "path": "evals/parallel/w11-music-20260922/result.json",
+          "sha256": "4be4b303c0467c218007c244e900f3f8a6f76634b0176b729e7bd18401ba44e7",
+          "bytes": 3372
+        }
+      ],
+      "video": {
+        "path": "evals/assets/commons-brompton/folding.webm",
+        "sha256": "ec2e3c19de31bcc872f50c8fb646a3d5578f9e1c2c15f00d3a01e0a8ec340b08",
+        "bytes": 7573184
+      },
+      "source_and_output_windows": {
+        "candidate_aligned": {
+          "output": "evals/parallel/w11-music-20260922/action-candidate-aligned.mp4",
+          "sha256": "24937b09308dc0a9662f506bab219bd70544fb77d4c096d37368d165dc3e4280",
+          "output_cut_times_seconds": [
+            4.39,
+            8.88,
+            12.41
+          ],
+          "source_spans_seconds": [
+            [
+              26.61,
+              31.0
+            ],
+            [
+              32.76,
+              37.25
+            ],
+            [
+              42.22,
+              45.75
+            ],
+            [
+              51.0,
+              55.95
+            ]
+          ],
+          "mechanism": "Keep each observed action unit intact and place its selected visible end state immediately before one of the pre-existing music-map timing candidates.",
+          "music_point_status": "signal-derived candidate only; not a confirmed strong beat, bar, phrase, or form boundary",
+          "action_point_status": "editor-observed from contact sheets"
+        },
+        "fixed_interval": {
+          "output": "evals/parallel/w11-music-20260922/fixed-interval.mp4",
+          "sha256": "1ee8e2e9e7b1626eb5437407956db3935f59da0a64080046931d17dbde288f54",
+          "output_cut_times_seconds": [
+            4.34,
+            8.68,
+            13.02
+          ],
+          "source_spans_seconds": [
+            [
+              26.61,
+              30.95
+            ],
+            [
+              32.76,
+              37.1
+            ],
+            [
+              42.22,
+              46.56
+            ],
+            [
+              51.0,
+              55.34
+            ]
+          ],
+          "mechanism": "Cut every 4.34 seconds without adapting the interval to either the signal candidates or the selected action end states.",
+          "music_point_status": "none inferred",
+          "action_point_status": "interval is mechanical; proximity to an action state is incidental"
+        }
+      },
+      "use": "同一Brompton源片按已有接触表观察选四个动作窗；A切点4.39/8.88/12.41，B等距4.34/8.68/13.02；源声不用、无字幕；输出和来源已核当前字节。",
+      "limits": [
+        "已有动作描述属历史editor/Agent接触表观察，本次没有新观看或真人身份证明",
+        "两组源窗/终点不同，不是完整折叠教程",
+        "历史PCM MD5相同仅保留当时比较结论，本次不重解码",
+        "QC记录A518帧/B519帧；不得扩大为逐帧长度相等或严格声画同步已验"
+      ]
+    },
+    {
+      "id": "INC-EVALUATION-RULE",
+      "binding": [
+        {
+          "path": "evals/parallel/w11-music-20260922/shared-change-proposal.md",
+          "sha256": "d26fccae12d09418409d4b708d8d666b631d5adb17d8dd12a13ceb135eaeba8b",
+          "bytes": 1816
+        },
+        {
+          "path": "workflows/raven-music-montage/references/evaluation.md",
+          "sha256": "df75aaca1dd13599f1be8df4d4ff6d671c58e90657ccf193f80d4f1fd7ae9b9a",
+          "bytes": 1837
+        }
+      ],
+      "use": "当前evaluation已包含动作阶段、音乐点证据等级、编辑关系三分字段；信号候选不冒真人确认。",
+      "excluded": "文字已采纳不是听感/D5或真实能力通过"
+    },
+    {
+      "id": "INC-REVIEW-PACK",
+      "binding": [
+        {
+          "path": "evals/parallel/w11-review-pack-20260923/binding-manifest.json",
+          "sha256": "4908fa1d931d725f93b9351e5c2184af4eec3f776e407118b55a706a2b232aab",
+          "bytes": 2434
+        },
+        {
+          "path": "evals/parallel/w11-review-pack-20260923/README.md",
+          "sha256": "af4f8b502f4ef353c4a151adb13248375aab5bdcaf41f817d685e9f3e12e9387",
+          "bytes": 4023
+        },
+        {
+          "path": "evals/parallel/w11-review-pack-20260923/result.json",
+          "sha256": "eb6017bc64d2668c843389bf2ad2017a60a9273a07c6c4b4cb7f72e494fb541a",
+          "bytes": 2683
+        },
+        {
+          "path": "evals/parallel/w11-review-pack-20260923/verification.json",
+          "sha256": "fc01534415408c8c760df396fa1cf8983ec6511d6a16d07d281d8858f112867e",
+          "bytes": 1701
+        }
+      ],
+      "use": "评审页链接既有三媒体，不复制/重渲染；命名、非盲、非独立；软件验证记录只证明当时哈希与播放机制。",
+      "limits": [
+        "human_records=[]；未产生听辨、全片有声人评",
+        "本次不启动HTTP/浏览器",
+        "不能把现有评审包视作新素材迁移或独立评测"
+      ]
+    },
+    {
+      "id": "INC-FONT-NOTICE",
+      "binding": [
+        {
+          "path": "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/sparse-pulse/revision-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/motif-return/revision-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/release-wide/revision-render/captions/fonts/specified.ttf",
+          "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+          "bytes": 23278008
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/sparse-pulse/ATTRIBUTION.txt",
+          "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+          "bytes": 753
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/motif-return/ATTRIBUTION.txt",
+          "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+          "bytes": 753
+        },
+        {
+          "path": "evals/runs/music-style-trials-01/release-wide/ATTRIBUTION.txt",
+          "sha256": "0a9c9854c9595446d3c28962e91acffac4350c69d3bfbf77d9aeea3bc020f484",
+          "bytes": 753
+        }
+      ],
+      "use": "瀑布标题/片尾字幕使用系统Arial Unicode MS；三份revision-render均实际包含captions/fonts/specified.ttf，已与各自回执及系统源的SHA核对。后续评审页仅链接Brompton媒体，不等于复制这些字体。",
+      "limits": [
+        "三份字体副本的随包分发许可依据未核；即使渲染目录完整归档，也不能由视频或源方法许可继承该权利",
+        "三份历史署名含作者、页面、CC链接与改动；保留原件，其中licensed piano措辞以本次明确的来源Public domain记录补充",
+        "动作页仅简写作品/许可名，后继交付应携带下面的具名完整通知"
+      ]
+    }
+  ],
+  "notice_proposal": {
+    "for_existing_action_pair": "画面：Folding a Brompton，Bossphotography；归档来源 https://commons.wikimedia.org/wiki/File:Folding_a_Brompton.webm 记 CC BY 4.0（https://creativecommons.org/licenses/by/4.0/）。改动：选择不连续动作区间、重排剪接/重编码，源片声音未采用；后期加入下述音乐。两版用途为本地机制对照，不声称原作者或人物赞同，也不声称完整折叠教程。音乐：Maple Leaf Rag（Scott Joplin）第一段，Tim Starling 演奏；https://commons.wikimedia.org/wiki/File:Maple_leaf_rag.ogg 的归档metadata标Public domain并记录表演者声明；使用已绑定OGG的0–17.36秒PCM。此说明沿用来源记录，不新增发行/地域或真实性认证。",
+    "for_existing_water_candidates": "画面：Lebu Ayiga 的 Kawaida Waterfall 三段录影，归档记 CC BY 4.0（https://creativecommons.org/licenses/by/4.0/）；front：https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm；side：https://commons.wikimedia.org/wiki/File:Side_view_video_of_Kawaida_Waterfall_cascading,_Cianda,_Kiambu_County.webm；behind：https://commons.wikimedia.org/wiki/File:Video_from_behind_Kawaida_Waterfall_through_hanging_roots,_Kiambu_County.webm。具体作品实际采用源窗见 works；side 仅 sparse-pulse 使用，另外两版仅声明入素材池。改动：选段、片序、中文标题/署名、字号及重编码，原环境声静音；后期加入 Maple Leaf Rag（Scott Joplin）第一段，Tim Starling 演奏，来源 https://commons.wikimedia.org/wiki/File:Maple_leaf_rag.ogg 的归档 metadata 标 Public domain，采用固定录音的 0–17.36 秒 PCM。保留各作品已有 ATTRIBUTION.txt；不声称连续行程、同期演奏或作者/人物背书。此记录不新增发行/地域认证。",
+    "distribution_conditions": [
+      "实际分发派生媒体时把对应作者/原页/许可链接/具体改动通知一起交付；当前仅为提案，未替换旧页或宣称已发布",
+      "独立复制源方法全文/脚本或字体/二进制须核对应成员的许可与通知；方法锁的许可不覆盖媒体/字体",
+      "库文本包可只携来源记录；不能把不能访问的外部媒体链接称离线可播放"
+    ]
+  },
+  "known_open_conditions": [
+    "真人音乐结构听辨、正常速度完整视听、D5机制/新素材、D6真人均未由本审查补齐",
+    "具体发行包的媒体/字体/方法全文/工具二进制许可与通知仍按实际包含物核",
+    "当前运行时适用性与严格时间/声音保证不由历史来源SHA恢复"
+  ],
+  "no_media_or_tool_execution": true
+}

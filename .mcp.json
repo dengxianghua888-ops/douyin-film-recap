@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "editing-skill-library": {
+      "command": "python3",
+      "args": [
+        "./scripts/mcp_server.py"
+      ],
+      "cwd": ".",
+      "env_vars": [
+        "EDITING_SKILL_LIBRARY_ROOT",
+        "EDITING_SKILL_WORK_ROOT",
+        "EDITING_FFMPEG",
+        "EDITING_FFPROBE",
+        "EDITING_TEXT_PROVIDER_PROFILES_PATH",
+        "DEEPSEEK_API_KEY",
+        "EDITING_TEXT_PROVIDER_API_KEY"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1936 @@
+{
+  "schema": "style-catalog/1",
+  "scope": "Editorial adaptation mechanisms plus explicitly labeled revision/delivery strategies; not platform aliases",
+  "styles": [
+    {
+      "id": "context-preserved",
+      "name": "上下文保全",
+      "fit": "缩短讨论或采访",
+      "question": "哪句话离开前提会变义",
+      "selection": "保问题、限定、回答归属",
+      "sequence": "最小背景→原主张→边界",
+      "audio": "保必要限定的原音",
+      "rhythm": "不能用提速吞限定",
+      "visual": "人物标记清楚",
+      "anti": "只留刺激结论",
+      "example": "25欧元条件与普通但好用的要求同留",
+      "nearest": "不同于论点抽取，优先保语境",
+      "effect_check": "短版没有升级确定性",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "question-answer",
+      "name": "问答独立单元",
+      "fit": "长访谈拆条",
+      "question": "没有前文能理解回答吗",
+      "selection": "保真实问题与完整回应",
+      "sequence": "问题→回答→必要补充",
+      "audio": "问题原声或真实文字说明",
+      "rhythm": "回答尾部留完整落点",
+      "visual": "问答身份一一对应",
+      "anti": "把回应接到另一个问题后",
+      "example": "如何选尺寸对应具体回答",
+      "nearest": "不同于上下文保全，问题就是开场",
+      "effect_check": "陌生观众能说出回答哪个问题",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "claim-proof",
+      "name": "主张证据单元",
+      "fit": "演示、解释和测评",
+      "question": "这个结论凭什么成立",
+      "selection": "保主张与实际可见证据",
+      "sequence": "主张→证据→限制",
+      "audio": "解释不盖关键证据声",
+      "rhythm": "证据需足够观察时间",
+      "visual": "前后对象标注清楚",
+      "anti": "用结果画面替代过程证明",
+      "example": "折叠步骤后展示实际收纳状态",
+      "nearest": "不同于结果预览，要支撑论点",
+      "effect_check": "结论未超出所示证据",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "result-preview",
+      "name": "结果预览再展开",
+      "fit": "完整过程较长",
+      "question": "先给什么结果不误导",
+      "selection": "取真实结果与必要过程",
+      "sequence": "结果预览→过程→结果回归",
+      "audio": "可留结果声再回叙述",
+      "rhythm": "预览短而过程完整",
+      "visual": "明确预览不是第二次发生",
+      "anti": "把失败剪成成功预告",
+      "example": "先看折后体积再展示折法",
+      "nearest": "不同于主张证据，先建立观看目标",
+      "effect_check": "预览与后文是同一结果",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "premise-turn-payoff",
+      "name": "短故事三段",
+      "fit": "故事改短版",
+      "question": "哪种变化让故事成立",
+      "selection": "保前提、转折和结果",
+      "sequence": "前提→变化→后果",
+      "audio": "保关键表演与因果声",
+      "rhythm": "允许不等长三段",
+      "visual": "转折镜头前有铺垫",
+      "anti": "只有高潮无原因",
+      "example": "先见受阻再见应对和结果",
+      "nearest": "不同于结果预览，按因果推进",
+      "effect_check": "人物行为仍说得通",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "single-topic",
+      "name": "单主题拆条",
+      "fit": "一个长片有多个问题",
+      "question": "这版只解决哪件事",
+      "selection": "取同主题内容及必要桥梁",
+      "sequence": "主题建立→论据→收束",
+      "audio": "保同主题完整句",
+      "rhythm": "去旁支不去反证",
+      "visual": "主题字幕匹配内容",
+      "anti": "把跨主题句拼成新立场",
+      "example": "只讲价格但保相关功能限制",
+      "nearest": "不同于系列章节，每条可独立",
+      "effect_check": "没有依赖被删章节才懂的代词",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "contrast-pair",
+      "name": "完整对比单元",
+      "fit": "两种方案或前后比较",
+      "question": "对比依据是否对称",
+      "selection": "保两侧相同指标和条件",
+      "sequence": "条件→A→B→差异",
+      "audio": "说明两侧证据强度",
+      "rhythm": "两边给足辨认时间",
+      "visual": "相同缩放与标签",
+      "anti": "只留优势一侧",
+      "example": "相同光线下比较前后图",
+      "nearest": "不同于主张证据，重在两侧公平",
+      "effect_check": "比较对象、条件和差异均可查",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "open-question",
+      "name": "保留未决",
+      "fit": "讨论、纪实和研究",
+      "question": "原片真的有结论吗",
+      "selection": "保主要观点和未解决处",
+      "sequence": "问题→尝试→未决",
+      "audio": "不加胜利型落点",
+      "rhythm": "允许悬而未决的停留",
+      "visual": "结尾明确讨论状态",
+      "anti": "强加成功结论",
+      "example": "保留仍待测试而非已通过",
+      "nearest": "不同于短故事，不强求闭合",
+      "effect_check": "不制造源素材不存在的结论",
+      "family": "叙事与独立理解",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "full-fidelity-format",
+      "name": "完整内容换格式",
+      "fit": "只要求横竖版适配",
+      "question": "哪些内容一帧也不能少",
+      "selection": "完整时序、声音与文字",
+      "sequence": "顺序完全保持",
+      "audio": "原声完整保留",
+      "rhythm": "不提速不改停顿",
+      "visual": "仅明确构图与排版",
+      "anti": "顺手做平台钩子",
+      "example": "19.8秒全景保内容换竖画布",
+      "nearest": "不同于短版改编，没有删选",
+      "effect_check": "时长、话语与关键关系保持",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w16-batch-trials-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/result-current.json",
+            "sha256": "5c94f35dfc031c6de074a19deb84843eb328fbcb51c93103be182e4b122ec2c8"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/current-readback-02.json",
+            "sha256": "e26edcdbc8b0f42720c1b47156fd40ecfccbedb1a0742282118aff6f18940650"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/inspection/frame-review-01.json",
+            "sha256": "fdb25b7d3db0bb6fb7a322a14ff1f31615c8eeaf78848600c86dfbea4df747f4"
+          },
+          "variants": [
+            "nature-portrait",
+            "nature-landscape"
+          ],
+          "scope": "partial technical/semantic-document and sampled-frame evidence; full playback/listening, independent effect/routing and native host NOT_RUN"
+        }
+      ],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "complete-short",
+      "name": "最小完整短版",
+      "fit": "有明确短时长目标",
+      "question": "最少哪些单元仍完整",
+      "selection": "按意义单元减而非截尾",
+      "sequence": "必要背景→核心→收尾",
+      "audio": "完整语句和尾音",
+      "rhythm": "允许删段但不硬切半句",
+      "visual": "省略区间有记录",
+      "anti": "切到时长即停",
+      "example": "从三段观察选一段完整描述",
+      "nearest": "不同于高密摘要，不求多信息",
+      "effect_check": "短版能独立理解且无残句",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w16-batch-trials-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/result-current.json",
+            "sha256": "5c94f35dfc031c6de074a19deb84843eb328fbcb51c93103be182e4b122ec2c8"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/current-readback-02.json",
+            "sha256": "e26edcdbc8b0f42720c1b47156fd40ecfccbedb1a0742282118aff6f18940650"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/inspection/frame-review-01.json",
+            "sha256": "fdb25b7d3db0bb6fb7a322a14ff1f31615c8eeaf78848600c86dfbea4df747f4"
+          },
+          "variants": [
+            "nature-short-square"
+          ],
+          "scope": "partial technical/semantic-document and sampled-frame evidence; full playback/listening, independent effect/routing and native host NOT_RUN"
+        }
+      ],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "layered-summary",
+      "name": "分层概览",
+      "fit": "复杂教程或报告",
+      "question": "先知道哪些再看细节",
+      "selection": "保结论框架与关键证据",
+      "sequence": "概览→分点→深入入口",
+      "audio": "声画不要同时挤多命题",
+      "rhythm": "每层留辨识窗口",
+      "visual": "标题与正文层级分明",
+      "anti": "密集塞进所有细节",
+      "example": "三步骤概览后给完整教程链接信息",
+      "nearest": "不同于单主题，保总体地图",
+      "effect_check": "用户能复述框架且不误当完整教程",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "process-essential",
+      "name": "过程骨架",
+      "fit": "操作示范缩短",
+      "question": "哪些状态变化不能跳过",
+      "selection": "保起始、必要动作和完成验证",
+      "sequence": "起点→关键状态→验证",
+      "audio": "保操作反馈声",
+      "rhythm": "删等待不删反馈发生",
+      "visual": "对象状态连续",
+      "anti": "把自动等待当多余删除导致假操作",
+      "example": "加载后保实际完成标志",
+      "nearest": "不同于完整短版，关注可复现过程",
+      "effect_check": "观众能依据保留步骤执行",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "quiet-hold",
+      "name": "留白保护",
+      "fit": "观察和表演短版",
+      "question": "哪些停留承载感受",
+      "selection": "保真实观察、呼吸和反应",
+      "sequence": "动作→停留→下一动作",
+      "audio": "留真实环境声",
+      "rhythm": "不因短时长消灭全部停顿",
+      "visual": "稳定构图允许观看",
+      "anti": "所有间隙都压掉",
+      "example": "瀑布全貌停留后看细节",
+      "nearest": "不同于高密摘要，以观看余量为目标",
+      "effect_check": "留白有明确作用且非僵停",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "boundary-tail",
+      "name": "结尾完整保护",
+      "fit": "短版容易掐尾",
+      "question": "结果或语句在哪结束",
+      "selection": "保动作完成、尾音、限定",
+      "sequence": "按真实结尾收束",
+      "audio": "不得切断句尾和音乐必要落点",
+      "rhythm": "给完成后一点余量",
+      "visual": "最终状态可辨",
+      "anti": "时间一到砍断尾词",
+      "example": "折叠锁扣合上后再结束",
+      "nearest": "不同于过程骨架，专护出点",
+      "effect_check": "末帧末音不改变完成状态",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "timed-chapter",
+      "name": "章节预算",
+      "fit": "长教程的多时长版",
+      "question": "各章承担什么功能",
+      "selection": "必要章节先占预算",
+      "sequence": "章节依赖顺序",
+      "audio": "音频桥不串章节",
+      "rhythm": "按理解难度分配时长",
+      "visual": "章节标签不替代内容",
+      "anti": "每章机械均分",
+      "example": "安全前提比重复示例占比更高",
+      "nearest": "不同于分层概览，保完整章节职责",
+      "effect_check": "章间依赖及关键预算合理",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "excerpt-transparent",
+      "name": "片段身份清楚",
+      "fit": "只交精彩段或片段",
+      "question": "怎样不假装全貌",
+      "selection": "保片段出处与必要限制",
+      "sequence": "出处→片段→边界",
+      "audio": "原话保留",
+      "rhythm": "允许不完整全片但交代范围",
+      "visual": "显式片段标识",
+      "anti": "把片段说成完整故事",
+      "example": "标注讨论节选并保说话归属",
+      "nearest": "不同于最小完整短版，承认片段性",
+      "effect_check": "观众不会误以为完整原片",
+      "family": "时长与信息密度",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "relational-wide",
+      "name": "多人关系保全",
+      "fit": "会议和多人互动竖版",
+      "question": "谁与谁的关系不能丢",
+      "selection": "保互动双方和共享对象",
+      "sequence": "全景先建立关系",
+      "audio": "节目声连续",
+      "rhythm": "切镜服从互动而非脸大小",
+      "visual": "全画面等比留边",
+      "anti": "只裁最大脸导致回应失去对象",
+      "example": "会议桌两侧同时保留",
+      "nearest": "不同于说话者中心，关系优先",
+      "effect_check": "回应对象和空间关系仍可见",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w16-batch-trials-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/result-current.json",
+            "sha256": "5c94f35dfc031c6de074a19deb84843eb328fbcb51c93103be182e4b122ec2c8"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/current-readback-02.json",
+            "sha256": "e26edcdbc8b0f42720c1b47156fd40ecfccbedb1a0742282118aff6f18940650"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/inspection/frame-review-01.json",
+            "sha256": "fdb25b7d3db0bb6fb7a322a14ff1f31615c8eeaf78848600c86dfbea4df747f4"
+          },
+          "variants": [
+            "meeting-wide",
+            "meeting-portrait"
+          ],
+          "scope": "partial technical/semantic-document and sampled-frame evidence; full playback/listening, independent effect/routing and native host NOT_RUN"
+        }
+      ],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "action-envelope",
+      "name": "完整动作范围",
+      "fit": "运动、手作和演示",
+      "question": "动作极值会到哪里",
+      "selection": "保起点、路径、终点",
+      "sequence": "空间建立→完整动作",
+      "audio": "留动作声",
+      "rhythm": "镜头跨完整动作",
+      "visual": "按整段动作范围裁切",
+      "anti": "只按开场位置裁切",
+      "example": "手臂伸展终点不能出画",
+      "nearest": "不同于主体静态窗，覆盖时间变化",
+      "effect_check": "全段动作不被裁断",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "screen-evidence",
+      "name": "屏幕证据优先",
+      "fit": "录屏和数据说明",
+      "question": "哪块UI是证明",
+      "selection": "保实际按钮、数值与结果",
+      "sequence": "全局定位→局部操作→结果",
+      "audio": "解说跟随真实界面",
+      "rhythm": "留读数时间",
+      "visual": "清晰裁切区域而非盲放大",
+      "anti": "裁掉单位和上下文",
+      "example": "保价格旁的币种与日期",
+      "nearest": "不同于关系保全，重点是证据文字",
+      "effect_check": "目标屏幕上字数值可读且完整",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "subject-window",
+      "name": "明确主体窗口",
+      "fit": "静态主体或稳定画面",
+      "question": "裁掉背景会损失什么",
+      "selection": "保明确主体及关系所需背景",
+      "sequence": "整体定位→主体细看",
+      "audio": "环境声是否保留单独定",
+      "rhythm": "稳定窗口不假装追踪",
+      "visual": "显式静态矩形",
+      "anti": "用人脸检测代替创作判断",
+      "example": "瀑布中心水柱与水池关系",
+      "nearest": "不同于动作范围，只适合稳定位置",
+      "effect_check": "主体及必要背景完整",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "environment-first",
+      "name": "环境先行",
+      "fit": "旅行和空间观察",
+      "question": "空间本身是不是主角",
+      "selection": "保地形、物体相对位置",
+      "sequence": "全貌→层次→细节",
+      "audio": "保可信环境声",
+      "rhythm": "给空间辨认时间",
+      "visual": "宽景留边而非强填满",
+      "anti": "裁到只剩人物脸",
+      "example": "保瀑布岩壁与池边全貌",
+      "nearest": "不同于主体窗口，环境承载信息",
+      "effect_check": "地理关系和观察方向保留",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "paired-composition",
+      "name": "比较并列",
+      "fit": "两侧对比画面",
+      "question": "两边是否获得同等展示",
+      "selection": "两对象同尺度同时间基础",
+      "sequence": "条件说明→并列观察",
+      "audio": "声音重点明确",
+      "rhythm": "两侧有足够同时观看时间",
+      "visual": "不牺牲一侧填竖屏",
+      "anti": "放大左侧让右侧看似更差",
+      "example": "两款界面字体按同倍率呈现",
+      "nearest": "不同于内容对比，处理几何公平",
+      "effect_check": "缩放裁切没有制造差异",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "look-space",
+      "name": "视线与运动余量",
+      "fit": "人物朝向或运动",
+      "question": "画外方向承载什么期待",
+      "selection": "保必要前方空间",
+      "sequence": "建立方向→动作→回应",
+      "audio": "方向性声保持关系",
+      "rhythm": "不在重要转向时突然换边",
+      "visual": "主体不机械居中",
+      "anti": "脸居中却裁掉被看对象",
+      "example": "人物看向屏幕需保屏幕侧",
+      "nearest": "不同于主体窗，方向关系优先",
+      "effect_check": "观看方向与回应没有断裂",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "embedded-content",
+      "name": "嵌入内容保留",
+      "fit": "画中画、白板或引用",
+      "question": "嵌入内容是不是正文",
+      "selection": "保必要示例与作者画面",
+      "sequence": "正文与引用层次清楚",
+      "audio": "分清原片声与讲解声",
+      "rhythm": "引用停留可读",
+      "visual": "布局适配，不一律去嵌入",
+      "anti": "把屏幕里的证据裁掉",
+      "example": "讲师和白板都属关键内容",
+      "nearest": "不同于屏幕证据，处理画中画关系",
+      "effect_check": "嵌入信息未被错误当边缘噪声",
+      "family": "构图与关系",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "silent-readable",
+      "name": "无声可理解",
+      "fit": "用户明确静音观看",
+      "question": "声音承载哪些不可见信息",
+      "selection": "保必要话语和声音信息",
+      "sequence": "文字与动作同步",
+      "audio": "静音或保声由用户目标决定",
+      "rhythm": "读屏预算独立测",
+      "visual": "不堆满所有原话",
+      "anti": "仅关声音便说适合静音",
+      "example": "操作反馈用真实文字说明",
+      "nearest": "不同于字幕换行，改信息载体",
+      "effect_check": "不听也能理解关键因果",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "caption-reflow",
+      "name": "字幕重排",
+      "fit": "画幅变窄但意思不变",
+      "question": "哪里换行不割裂句意",
+      "selection": "完整文字优先",
+      "sequence": "同一意义单元重排",
+      "audio": "原声音不重合成",
+      "rhythm": "时间窗不足再评估，不硬缩字",
+      "visual": "字体与安全区按最终尺寸看",
+      "anti": "裁掉现有烧录字幕",
+      "example": "中文长行拆为两行",
+      "nearest": "不同于无声版，不增删信息",
+      "effect_check": "目标尺寸可读且意思原样",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "text-picture-priority",
+      "name": "文字画面轮流",
+      "fit": "演示信息和字幕竞争",
+      "question": "此刻观众应看哪里",
+      "selection": "保动作与关键解释",
+      "sequence": "解释→观察→核对",
+      "audio": "声音可桥接阅读与观察",
+      "rhythm": "给UI和字幕各自窗口",
+      "visual": "不盖核心证据区",
+      "anti": "字幕把按钮完全遮住",
+      "example": "说明后留无遮挡点击窗口",
+      "nearest": "不同于重排，改变注意力节奏",
+      "effect_check": "观众能同时获取必要信息",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "attribution-visible",
+      "name": "署名继承",
+      "fit": "素材许可或引用需要",
+      "question": "每版署名如何跟上内容",
+      "selection": "保实际使用来源与修改说明",
+      "sequence": "在合适窗口完整呈现",
+      "audio": "不需制造朗读",
+      "rhythm": "留阅读时长",
+      "visual": "署名不裁边不覆盖正文",
+      "anti": "短版去掉所有来源标记",
+      "example": "CC署名随使用素材保留",
+      "nearest": "不同于片段身份，保护来源义务",
+      "effect_check": "逐版来源能对应且可读",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "title-context",
+      "name": "标题承接背景",
+      "fit": "短版缺少起始介绍",
+      "question": "标题能补什么已知背景",
+      "selection": "仅使用可证背景",
+      "sequence": "标题定位→实际内容",
+      "audio": "不伪造人物原话",
+      "rhythm": "标题先读再进密集信息",
+      "visual": "标题不夸大承诺",
+      "anti": "用夸张标题代替被删前提",
+      "example": "标注遥控器需求讨论节选",
+      "nearest": "不同于问题开场，用场景定位",
+      "effect_check": "标题没有新增未经证实事实",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "accessibility-layer",
+      "name": "可及信息补足",
+      "fit": "明确可及交付",
+      "question": "哪些听视觉信息影响理解",
+      "selection": "只取真实必要信息",
+      "sequence": "主内容与解释有主次",
+      "audio": "声音描述基于实际证据",
+      "rhythm": "解释不抢正文",
+      "visual": "实际对比度与排版检查",
+      "anti": "加几行字就称全面无障碍",
+      "example": "门铃真实响时显示声音标记",
+      "nearest": "不同于无声版，按具体可及目标",
+      "effect_check": "所要求的信息通道确有覆盖",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "series-identity",
+      "name": "系列识别",
+      "fit": "多条属于同一系列",
+      "question": "哪些元素保持一致利于识别",
+      "selection": "统一真实栏目和关键视觉",
+      "sequence": "共同开头线索→本条独立内容",
+      "audio": "音色标记不盖内容",
+      "rhythm": "一致不等于机械相同时长",
+      "visual": "系列标记与本集信息分层",
+      "anti": "套模板挤坏每条内容",
+      "example": "同栏目名但每条不同问题",
+      "nearest": "不同于家族继承，面向观众认知",
+      "effect_check": "共同身份清楚而内容仍独立",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "small-screen-read",
+      "name": "小屏信息重配",
+      "fit": "目标设备较小",
+      "question": "哪些细节缩小会消失",
+      "selection": "保可辨证据与必要文字",
+      "sequence": "整体定位后给必要近看",
+      "audio": "解说指出实际目标",
+      "rhythm": "细节多时给足时间",
+      "visual": "在实际小屏检查而非只看大截图",
+      "anti": "字号数字满足就称可读",
+      "example": "小图表转明确数值局部展示",
+      "nearest": "不同于字幕重排，包含画面细节",
+      "effect_check": "目标屏幕能读对数字与对象",
+      "family": "文字与观看方式",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "novice-onboarding",
+      "name": "新手导览",
+      "fit": "长教程改入门版",
+      "question": "前置知识从哪里补",
+      "selection": "保必要概念和第一步",
+      "sequence": "目标→前提→最小成功",
+      "audio": "术语首次解释",
+      "rhythm": "新概念留理解余量",
+      "visual": "明确操作定位",
+      "anti": "删到只剩专家暗语",
+      "example": "先说明素材导入再谈轨道",
+      "nearest": "不同于过程骨架，补理解前提",
+      "effect_check": "新手能找到起点和完成标准",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "expert-recap",
+      "name": "熟练者速查",
+      "fit": "已知前提的工作参考",
+      "question": "哪些基础解释可略",
+      "selection": "保精确步骤与异常边界",
+      "sequence": "条件→操作→检查",
+      "audio": "简洁但保关键术语",
+      "rhythm": "删基础说明不删约束",
+      "visual": "关键值和快捷操作清楚",
+      "anti": "面向所有人都压成速查",
+      "example": "熟练者只看导出参数与例外",
+      "nearest": "不同于高密概览，受众知识明确",
+      "effect_check": "有经验用户仍获得准确操作",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "decision-brief",
+      "name": "决策摘要",
+      "fit": "讨论内容供决策阅读",
+      "question": "哪些依据足以支持选择",
+      "selection": "保方案、权衡、未决",
+      "sequence": "问题→选项→依据→待决",
+      "audio": "个人意见标归属",
+      "rhythm": "权衡不能闪过",
+      "visual": "证据来源可追",
+      "anti": "把讨论剪成批准结论",
+      "example": "成本与易用性分歧同时留下",
+      "nearest": "不同于单主题，围绕决策条件",
+      "effect_check": "观众可区分已知与待决",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "hands-on-follow",
+      "name": "跟做版本",
+      "fit": "从展示改为实践",
+      "question": "观众何时执行动作",
+      "selection": "保动作和反馈等待",
+      "sequence": "一步操作→反馈→下一步",
+      "audio": "指令后留执行空间",
+      "rhythm": "比速查版允许更长等待",
+      "visual": "真实UI目标清楚",
+      "anti": "为了紧凑删除所有反馈",
+      "example": "点击后等实际预览出现",
+      "nearest": "不同于新手导览，强调同步做",
+      "effect_check": "按成片能跟随步骤不掉队",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "evidence-review",
+      "name": "证据审阅版",
+      "fit": "协作评审或复核",
+      "question": "审阅者如何回源",
+      "selection": "保原上下文和时间映射",
+      "sequence": "源定位→片段→问题",
+      "audio": "不美化争议音频",
+      "rhythm": "关键处可停留",
+      "visual": "来源标记和时间码明确",
+      "anti": "只给精修成片不留依据",
+      "example": "对比剪前后字幕限定词",
+      "nearest": "不同于决策摘要，用于核证",
+      "effect_check": "审阅者可重现被讨论差异",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "teaser-honesty",
+      "name": "诚实预告",
+      "fit": "给完整作品做短预告",
+      "question": "可以悬念到什么程度",
+      "selection": "选真实问题和可兑现片段",
+      "sequence": "诱因→真实片段→明确预期",
+      "audio": "声画不伪造结果",
+      "rhythm": "悬念可以停，承诺不能虚",
+      "visual": "预告身份明确",
+      "anti": "跨场景拼成不存在事件",
+      "example": "展示将解释的问题而非虚构答案",
+      "nearest": "不同于片段身份，主动建立期待",
+      "effect_check": "完整作品能兑现预告所许内容",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "brand-restraint",
+      "name": "品牌语气克制",
+      "fit": "同作面对专业受众",
+      "question": "怎样适配语气不变承诺",
+      "selection": "保事实和证据强度",
+      "sequence": "价值→机制→限制",
+      "audio": "稳定语气，不假造用户证言",
+      "rhythm": "减少刺激堆叠",
+      "visual": "视觉突出真实功能",
+      "anti": "把普通功能改革命性承诺",
+      "example": "专业版强调用途与条件",
+      "nearest": "不同于系列识别，调整表达距离",
+      "effect_check": "语气变化未扩大产品宣称",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "community-context",
+      "name": "圈层背景桥接",
+      "fit": "专业内容给新圈层",
+      "question": "哪些文化背景可解释",
+      "selection": "保必要背景，标编辑补充",
+      "sequence": "背景→原内容→相关性",
+      "audio": "补充不冒充源人物原话",
+      "rhythm": "解释长度服从理解需要",
+      "visual": "原名与释义关联",
+      "anti": "用刻板标签替代背景",
+      "example": "保英文UI原词并释义",
+      "nearest": "不同于新手导览，关注语境差异",
+      "effect_check": "目标受众理解且无新增假事实",
+      "family": "受众与用途",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "hook-controlled",
+      "name": "开场受控对照",
+      "fit": "比较不同入口方式",
+      "question": "这次到底在比较什么",
+      "selection": "同一核心仅改开场",
+      "sequence": "A问题/B结果→相同正文",
+      "audio": "其余声音条件保持",
+      "rhythm": "长度差异明确记录",
+      "visual": "其余排版保持",
+      "anti": "多处一起改却归因钩子",
+      "example": "两版前3秒机制不同，正文同一",
+      "nearest": "不同于结果预览，是比较策略",
+      "effect_check": "差异可定位，不虚报观众效果",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "duration-family",
+      "name": "长短版家族",
+      "fit": "同作不同可用时长",
+      "question": "各版如何保持共同核心",
+      "selection": "共同事实与逐版省略表",
+      "sequence": "核心一致，展开程度不同",
+      "audio": "每版语句完整",
+      "rhythm": "按目标预算重分配",
+      "visual": "版名说明用途非优劣",
+      "anti": "短版只机械截长版开头",
+      "example": "完整版三观点，短版一个完整观点",
+      "nearest": "不同于章节预算，管理多版关系",
+      "effect_check": "长短差异不造成事实冲突",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "crop-controlled",
+      "name": "构图受控对照",
+      "fit": "比较留边与裁切",
+      "question": "丢失的信息是否值得",
+      "selection": "同一时序只改构图",
+      "sequence": "内容顺序一致",
+      "audio": "原声相同",
+      "rhythm": "时长切点一致",
+      "visual": "明确crop vs full-frame",
+      "anti": "同时换音乐后说构图更好",
+      "example": "全景留边对比中心静态窗",
+      "nearest": "不同于主体窗口，目标是比较",
+      "effect_check": "可说明得失且不制造优劣数据",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "single-variant-repair",
+      "name": "单版局部修复",
+      "fit": "用户只改某一版",
+      "question": "哪版哪对象需变化",
+      "selection": "指定子版最新状态",
+      "sequence": "局部候选→本版提交",
+      "audio": "无关音轨保持",
+      "rhythm": "不扩到整条重剪",
+      "visual": "保护兄弟版排版",
+      "anti": "所有版本一起覆盖",
+      "example": "只把竖版第二句字号调大",
+      "nearest": "不同于家族传播，作用域单版",
+      "effect_check": "父版兄弟版hash及当前状态不变",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w16-batch-trials-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/result-current.json",
+            "sha256": "5c94f35dfc031c6de074a19deb84843eb328fbcb51c93103be182e4b122ec2c8"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/current-readback-02.json",
+            "sha256": "e26edcdbc8b0f42720c1b47156fd40ecfccbedb1a0742282118aff6f18940650"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/inspection/frame-review-01.json",
+            "sha256": "fdb25b7d3db0bb6fb7a322a14ff1f31615c8eeaf78848600c86dfbea4df747f4"
+          },
+          "variants": [
+            "meeting-portrait"
+          ],
+          "scope": "partial technical/semantic-document and sampled-frame evidence; full playback/listening, independent effect/routing and native host NOT_RUN"
+        }
+      ],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "fact-propagation",
+      "name": "共享事实纠错",
+      "fit": "父作品事实被纠正",
+      "question": "哪些后代确实含此事实",
+      "selection": "按来源ID和版本检查影响",
+      "sequence": "父事实→相关子版→逐版验证",
+      "audio": "错误配音也标待修",
+      "rhythm": "不动无关节奏",
+      "visual": "每版相关文字同步",
+      "anti": "自动全局替换误伤同形词",
+      "example": "价格更正须查所有使用该句版本",
+      "nearest": "不同于单版修复，跨版语义依赖",
+      "effect_check": "无漏修也无无关改动",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "human-overlay",
+      "name": "人工修改优先",
+      "fit": "重新生成已有子版",
+      "question": "人工层与新计划冲突在哪",
+      "selection": "保已接受局部变化",
+      "sequence": "读当前→差异→必要协调",
+      "audio": "保认可声音表演",
+      "rhythm": "旧计划不能覆盖新时钟",
+      "visual": "手工标题显式锁定",
+      "anti": "拿初始父版重建抹掉人工工作",
+      "example": "重导保留人改标题",
+      "nearest": "不同于单版修复，防旧计划回滚",
+      "effect_check": "新结果包含被保护手工修改",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "localization-family",
+      "name": "语言版本协同",
+      "fit": "每语言独立校对",
+      "question": "共享事实与语句时长如何分开",
+      "selection": "每语种精确稿件／声音",
+      "sequence": "源义→本语表达→逐版成片",
+      "audio": "声音实测各自适配",
+      "rhythm": "不强迫所有语言同语速",
+      "visual": "字体及RTL逐语种验证",
+      "anti": "英文通过推断所有语言可用",
+      "example": "中文和英文共享事实不共享字数预算",
+      "nearest": "不同于语言创作，本卡管理版本差异",
+      "effect_check": "各语种独立QC且不互相覆盖",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    },
+    {
+      "id": "delivery-resume",
+      "name": "交付恢复策略",
+      "fit": "成片已确定但批量部分失败",
+      "question": "哪些工作真正需要重做",
+      "selection": "保成功版本与可验证输出",
+      "sequence": "查状态→查回执→只补必要项",
+      "audio": "不重合成合格声音",
+      "rhythm": "不因恢复改剪辑节奏",
+      "visual": "输出和工程版号对应",
+      "anti": "看到文件存在就跳过验证",
+      "example": "四版中仅缺源的一版修复重导",
+      "nearest": "非创作风格，属交付策略；不以此充创作多样性",
+      "effect_check": "成功项不重跑，失败有独立新尝试",
+      "family": "版本迭代与对照策略",
+      "version": "0.1.0",
+      "status": "authored-unvalidated",
+      "source_ids": [
+        "batch-portrait",
+        "batch-repurpose",
+        "batch-crop",
+        "batch-recovery"
+      ],
+      "provenance_type": "original-editorial-synthesis",
+      "real_media_evaluations": [
+        {
+          "id": "w16-batch-trials-01",
+          "result": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/result-current.json",
+            "sha256": "5c94f35dfc031c6de074a19deb84843eb328fbcb51c93103be182e4b122ec2c8"
+          },
+          "readback": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/current-readback-02.json",
+            "sha256": "e26edcdbc8b0f42720c1b47156fd40ecfccbedb1a0742282118aff6f18940650"
+          },
+          "frame_review": {
+            "path": "${LOCAL_ARCHIVE}/Documents/ChatGPT/skill管理/editing-skill-library/evals/runs/batch-trials-01/inspection/frame-review-01.json",
+            "sha256": "fdb25b7d3db0bb6fb7a322a14ff1f31615c8eeaf78848600c86dfbea4df747f4"
+          },
+          "variants": [
+            "meeting-wide",
+            "meeting-portrait",
+            "nature-portrait",
+            "nature-landscape",
+            "nature-short-square"
+          ],
+          "scope": "partial technical/semantic-document and sampled-frame evidence; full playback/listening, independent effect/routing and native host NOT_RUN"
+        }
+      ],
+      "execution_support": "explicit static reframing, scoped editable variants and local render queue; tracking/host/publishing not implemented",
+      "adjustable": [
+        "目标用途与受众",
+        "必须保留的信息与手工编辑",
+        "各版允许时长及删改",
+        "crop/canvas/placement和文字区",
+        "共享主风格与本版覆盖"
+      ],
+      "compatibility": {
+        "requires": "准确父版本、可用源、明确范围与逐版验证",
+        "avoid": "不将平台名、画幅、文件扩展名算成风格；不为差异而损害事实"
+      }
+    }
+  ]
+}

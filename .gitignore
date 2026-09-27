@@ -1,23 +1,17 @@
-# Python
 __pycache__/
 *.py[cod]
-*.egg-info/
+.DS_Store
+.env
+.env.*
+!.env.example
+work/
+outputs/
+.venv/
 .pytest_cache/
 .ruff_cache/
-.venv/
+*.egg-info/
 dist/
 build/
-
-# Runtime
-.env
-config.yaml
-work/
-output/
 *.mp4
 *.wav
 *.mp3
-
-# OS / editor
-.DS_Store
-.vscode/
-.idea/
