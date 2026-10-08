@@ -1,5 +1,7 @@
 # 剪辑技能库
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?v=cba82ac0fa1d95c3c8c2b6d37a6390ec)](https://m8ven.ai/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?s=readme)
+
 **给 AI Agent 一套从素材理解、剪辑构思到局部修改的视频剪辑方法。**
 
 剪辑技能库是一套供 AI Agent 使用的视频剪辑工作流与工具接口。它把口播、影视解说、教程、访谈、Vlog 等场景中的剪辑方法整理成可复用的 Skill，帮助 Agent 分析素材、选择片段、安排叙事、处理字幕与声音，并调用可用工具完成制作。
