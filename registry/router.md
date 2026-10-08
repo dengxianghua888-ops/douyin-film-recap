@@ -29,7 +29,7 @@
 
 - 影视、电视剧或当前作品已为剧情解说：`raven-film-recap`，可按模式只理解、选段、规划或修改。
 - 文件哈希/规格：`media-inspect`；指定时间截图：`frame-extract`；指定区间提音轨：`audio-extract`。
-- 参数齐全的拼剪：`timeline-render`；明确入出点/增益/恒定片段速度更新：`timeline-patch`。本库 `timeline-render` 接受显式 `speed` 0.5–2（省略为 1），例如已指定片段 0.5 倍慢放可走该参数路径；源音频用 atempo 处理，输出声画仍须验收。速度曲线、光流补帧、跟踪式慢放只在当前 Agent 实查到对应工具后路由，不把恒速能力冒充这些效果。
+- 参数齐全的拼剪：`timeline-render`；明确入出点/增益/恒定片段速度更新：`timeline-patch`。本库 `timeline-render` 接受显式 `speed` 0.5–2（省略为 1），例如已指定片段 0.5 倍慢放可走该参数路径；有声变速默认依赖未分发、固定身份的 Rubber Band helper，本源码预览不能直接运行该默认路径；只有显式选择 `audio_backend.kind="ffmpeg-atempo"` 才使用另一后端，且不继承严格音频证据。1× 与无声路径按各自合同执行，输出声画仍须验收。速度曲线、光流补帧、跟踪式慢放只在当前 Agent 实查到对应工具后路由，不把恒速能力冒充这些效果。
 - 已有源字幕随剪辑映射：`caption-map`；成片时间字幕烧录：`caption-burn`。
 - 明确音轨与时间/音量摆放：`audio-mix`；明确规格技术检查：`media-qc`。
 - 明确使用本地 macOS 系统语音、音色与速度的合成：`tts-macos`。需要情绪表演或已指定其他 Provider 时不可自动改用该提供方。
@@ -66,7 +66,7 @@
 - 已指定内容单元、事件阶段、回放身份和字幕：`event-plan-compile`。事件身份和成功标签由上层提供，编译器只核对映射。
 - 安静策略、未进球或未完成动作同样可以有价值。回放必须可见标注，同一事件不因重播变成多个成绩；规则、游戏时钟与裁判判定需要实际证据。
 - 只要分析/索引则不渲染；已有作品局部反馈沿用 `raven-local-revision`。课程提炼、电影解说仍分别去相应场景。
-- 明确 0.5–2 倍恒速回放可由 `timeline-render` 的 clip.speed 执行；事件选取、完整性、回放身份仍由 `raven-event-highlights` 判断。跟踪竖屏裁切、速度曲线和光流补帧须核当前工具，缺能力则保留缺项，不能把普通变帧采样声称为光流。已保护证据不能直接绑定变速 clip（`EVIDENCE_RETIMED_CARRIER_UNSUPPORTED`）。
+- 明确 0.5–2 倍恒速回放可由 `timeline-render` 的 clip.speed 执行；事件选取、完整性、回放身份仍由 `raven-event-highlights` 判断。跟踪竖屏裁切、速度曲线和光流补帧须核当前工具，缺能力则保留缺项，不能把普通变帧采样声称为光流。公开严格 `evidence-plan-compile` 的证据单元不能直接绑定变速 clip（`EVIDENCE_RETIMED_CARRIER_UNSUPPORTED`）；持久普通 `evidence_protection` 在明确授权 clip 与 `scope.evidence_mapping:true` 后可按范围映射合同处理恒速，不认证严格来源完整性、样本／像素冻结或声学语义，见[证据合同](../contracts/evidence-contract.md)。
 
 ## 参考稿与识别稿核对
 
