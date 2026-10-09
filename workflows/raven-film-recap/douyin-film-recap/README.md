@@ -1,6 +1,6 @@
 # Douyin Film Recap · 影视解说子集
 
-> 本入口现属于 [Editing Skill Library](../../../README.md) 的[影视解说工作流](../SKILL.md)。原 Python 流水线版本为 0.2.0，源码与测试保留。
+> 本入口属于 [Editing Skill Library](../../../README.md) 的[影视解说工作流](../SKILL.md)。当前 Python 候选版本为 0.3.0，工作区协议为 Schema 2；原 0.2.0 数据须显式迁移。
 
 > 把一部电影或一集剧，变成有证据、可修改、能交付的中文影视解说。
 
@@ -10,7 +10,7 @@
 
 ![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![License MIT](https://img.shields.io/badge/License-MIT-2ea44f)
-![Version](https://img.shields.io/badge/version-0.2.0-8A2BE2)
+![Version](https://img.shields.io/badge/version-0.3.0-8A2BE2)
 ![Tests](https://img.shields.io/badge/tests-80%20passed-brightgreen)
 
 ## 它能做什么
@@ -105,7 +105,7 @@ python -m douyin_film_recap doctor --config config.yaml
 
 python -m douyin_film_recap run "/path/to/movie.mp4" \
   --work-dir "./work/movie-demo" \
-  --config config.yaml
+  --config config.yaml --allow-remote
 ```
 
 只想先看高光：
@@ -114,7 +114,7 @@ python -m douyin_film_recap run "/path/to/movie.mp4" \
 python -m douyin_film_recap run "/path/to/movie.mp4" \
   --work-dir "./work/movie-demo" \
   --config config.yaml \
-  --until highlights
+  --until highlights --allow-remote
 ```
 
 修改分镜后，从配音继续：
@@ -123,10 +123,12 @@ python -m douyin_film_recap run "/path/to/movie.mp4" \
 python -m douyin_film_recap run "/path/to/movie.mp4" \
   --work-dir "./work/movie-demo" \
   --config config.yaml \
-  --from-stage tts
+  --from-stage tts --allow-remote
 ```
 
 ## 内容模式
+
+上述 `--allow-remote` 用于传递用户已授权的本次阶段范围；相同绑定的有效授权可复用。API Key 本身不表示授权，未知提交不自动重发。旧数据迁移、固定只读 B 包、恢复与本地请求上限见[工作区协议](../../../docs/film-workspace-v2.md)。本地技术回归通过不代表客户端安装或真实影视质量已验收。
 
 | 模式 | 建议时长 | 适用内容 |
 |---|---:|---|

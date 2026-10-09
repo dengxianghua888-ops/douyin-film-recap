@@ -2,6 +2,7 @@
 """Structure and immutable package manifests. Does not score creative quality."""
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -9,7 +10,11 @@ import sys
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGED = ('atomic','workflows','styles','contracts','runtime','registry','scripts','provenance')
+PACKAGED = ('atomic','workflows','styles','contracts','runtime','registry','scripts','provenance',
+            'skills','docs','.codex-plugin','README.md','AGENTS.md','LICENSES.md','.mcp.json')
+_SPEC = importlib.util.spec_from_file_location('packaging_common', Path(__file__).with_name('packaging_common.py'))
+_common = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_common)
 
 
 def sha(path):
@@ -17,11 +22,10 @@ def sha(path):
 
 
 def files():
-    return sorted(p for group in PACKAGED for p in (ROOT/group).rglob('*')
-                  if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc')
+    return sorted(_common.package_files(ROOT))
 
 
-def structure():
+def structure(inventory=None):
     errors=[]; skills=[]
     for kind in ['atomic','workflows']:
         for entry in sorted((ROOT/kind).glob('*/SKILL.md')):
@@ -34,14 +38,27 @@ def structure():
             if not description:errors.append(str(entry)+' description')
             skills.append({'id':entry.parent.name,'kind':kind,'entry':str(entry.relative_to(ROOT))})
     if len({s['id'] for s in skills})!=len(skills):errors.append('duplicate skill ID')
-    links=0
-    for p in files():
-        if p.suffix!='.md':continue
-        for target in re.findall(r'\]\(([^)]+)\)',p.read_text()):
-            if target.startswith(('https://','http://','#')):continue
-            link=unquote(target.split('#')[0])
-            if not (p.parent/link).exists():errors.append(f'broken link: {p.relative_to(ROOT)} -> {target}')
-            links+=1
+    external_pairs = set()
+    members = None
+    if inventory is not None:
+        if inventory.get('schema') != 'editing-package-check/1':
+            raise ValueError('INVALID_PACKAGE_CHECK_INVENTORY')
+        rows = inventory['files']
+        _common.verify_rows(ROOT, rows)
+        members = {_common.checked_path(ROOT, row['path']) for row in rows}
+        if len(members) != len(rows):
+            raise ValueError('DUPLICATE_PACKAGE_CHECK_MEMBER')
+        external_pairs = {tuple(pair) for pair in inventory['external_links']}
+    package_manifest = ROOT / 'bundle-manifest.json'
+    if inventory is None and package_manifest.is_file():
+        policy = json.loads(package_manifest.read_text()).get('distribution_policy') or {}
+        external_pairs = {(row['from']['path'], row['target']['path']) for row in policy.get('external_links', [])}
+    try:
+        references = _common.validate_package(ROOT, members if members is not None else set(files()), external_pairs)
+        links = len(references)
+    except (ValueError, OSError, KeyError) as exc:
+        errors.append(str(exc))
+        links = 0
     required=['id','name','family','fit','question','selection','sequence','audio','rhythm','visual','anti','example','nearest','effect_check','status','source_ids']
     style_counts={}
     for catalog_path in sorted((ROOT/'styles').glob('*/catalog.json')):
@@ -97,9 +114,11 @@ def verify(path):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('command',choices=['structure','snapshot','verify'])
     parser.add_argument('--manifest',type=Path)
+    parser.add_argument('--inventory',type=Path,help='Builder candidate rows and external edges; structure only')
     args=parser.parse_args()
     try:
-        if args.command=='structure':result=structure()
+        if args.command=='structure':
+            result=structure(json.loads(args.inventory.read_text()) if args.inventory else None)
         else:
             if not args.manifest:raise ValueError('--manifest required')
             result=snapshot(args.manifest) if args.command=='snapshot' else verify(args.manifest)

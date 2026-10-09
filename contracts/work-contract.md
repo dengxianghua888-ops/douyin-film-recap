@@ -105,3 +105,5 @@ scope: {
 ## 可选渲染策略
 
 work-render 的当前作品和 preview_candidate 可传入 operation-contract 定义的 audio_backend；只传播到本次子时间线和 render-binding，不更改 WorkDocument/版本。省略时按实际有效源窗选择默认流式R3或无需DSP的身份/静音路径；旧atempo可显式选，真实听感和R01完整声学验收仍未闭合。helper 只在实际 DSP 时需要，preview/current 共用 render_document；当前组合仅以隔离短预览和完整原源文档恢复验证，不代表真实项目成片、人评或宿主验收。
+
+同样接受 [原媒体消费绑定 v1](operation-contract.md#原媒体消费绑定-v1) 的 `source_consumption`。省略时完整前后复核；显式快照必须在渲染验证前准备，主轨与附加音轨／视觉层／字幕字体使用同一份任务内副本。字段通过 Work 与批次逐层保留，最终绑定关联实际模式、来源记录与子回执 SHA。来源或副本发生可观察变化时父操作失败，不发布 `render-binding.json`，失败子预览不能成为有效作品产物。保护范围限于合同中声明的本地条件，不授予内容、听检或逐样本冻结验收。

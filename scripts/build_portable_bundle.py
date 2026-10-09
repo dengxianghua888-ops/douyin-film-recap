@@ -9,17 +9,15 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-import shutil
-from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 _RESOURCE_SPEC = importlib.util.spec_from_file_location('portable_resource_edges', Path(__file__).with_name('resource_edges.py'))
 _resource_module = importlib.util.module_from_spec(_RESOURCE_SPEC)
 _RESOURCE_SPEC.loader.exec_module(_resource_module)
 resource_closure = _resource_module.closure
-GROUPS = ('atomic', 'workflows', 'styles', 'contracts', 'runtime', 'registry', 'scripts', 'provenance', 'skills', '.codex-plugin')
-PLUGIN_FILES = ('.mcp.json',)
-TEXT_TYPES = {'.md', '.json', '.jsonl', '.html', '.txt', '.py', '.mjs', '.js', '.cjs', '.yaml', '.yml', '.patch'}
+_COMMON_SPEC = importlib.util.spec_from_file_location('packaging_common', Path(__file__).with_name('packaging_common.py'))
+_common = importlib.util.module_from_spec(_COMMON_SPEC)
+_COMMON_SPEC.loader.exec_module(_common)
 
 
 def digest(file):
@@ -31,21 +29,15 @@ def digest(file):
 
 
 def local_target(origin, target):
-    target = unquote(target.split('#', 1)[0].split('?', 1)[0]).strip('<>')
-    if not target or re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target):
-        return None
-    candidate = (origin.parent / target).resolve()
-    candidate.relative_to(ROOT)  # Reject links that escape the library root.
-    if not candidate.is_file() or candidate.is_symlink():
-        raise ValueError('UNRESOLVED_LIBRARY_LINK: ' + str(candidate))
-    return candidate
+    found = _common.local_target(ROOT, origin, target)
+    return found[0] if found else None
 
 
 def checked_binding(row):
     relative = Path(row['path'])
     if relative.is_absolute() or '..' in relative.parts:
         raise ValueError('POLICY_PATH_MUST_BE_LIBRARY_RELATIVE')
-    file = ROOT / relative
+    file = _common.checked_path(ROOT, relative)
     if file.is_symlink() or not file.is_file() or digest(file) != row['sha256']:
         raise ValueError('POLICY_BINDING_MISMATCH: ' + str(relative))
     file.resolve().relative_to(ROOT.resolve())
@@ -63,7 +55,7 @@ def policy_rules(policy):
         if not isinstance(row.get('reason'), str) or not row['reason'].strip():
             raise ValueError('EXTERNAL_REASON_REQUIRED')
         origin, target = checked_binding(row['from']), checked_binding(row['target'])
-        if target.suffix in TEXT_TYPES:
+        if _common.is_text(target):
             raise ValueError('TEXT_LINK_CANNOT_BE_EXTERNALIZED')
         key = (origin, target)
         if key in external:
@@ -80,55 +72,13 @@ def policy_rules(policy):
 
 
 def markdown_targets(text):
-    """Extract inline links outside literal code; not an HTML/fetch dependency parser."""
-    lines = []
-    fence = None
-    for line in text.splitlines(keepends=True):
-        marker = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', line.rstrip('\n'))
-        if fence:
-            if marker and marker[1][0] == fence[0] and len(marker[1]) >= fence[1] and not marker[2].strip():
-                fence = None
-            lines.append('\n')
-        elif marker and (marker[1][0] != '`' or '`' not in marker[2]):
-            fence = (marker[1][0], len(marker[1]))
-            lines.append('\n')
-        else:
-            lines.append(line)
-    body = ''.join(lines)
-    # CommonMark code spans close only on a run of exactly the opening length.
-    runs = list(re.finditer(r'`+', body))
-    spans = []
-    i = 0
-    while i < len(runs):
-        start = runs[i]
-        if start.start() and len(re.search(r'\\*$', body[:start.start()])[0]) % 2:
-            i += 1
-            continue
-        close = next((j for j in range(i + 1, len(runs)) if len(runs[j][0]) == len(start[0])), None)
-        if close is None:
-            i += 1
-            continue
-        spans.append((start.start(), runs[close].end()))
-        i = close + 1
-    for start, end in reversed(spans):
-        body = body[:start] + ' ' * (end - start) + body[end:]
-    return re.findall(r'\]\(([^)]+)\)', body)
+    return _common.markdown_targets(text)
 
 
 def discover(policy=None, external_records=None):
     allowed_external, excluded = policy_rules(policy)
-    core = {p for group in GROUPS for p in (ROOT / group).rglob('*')
-            if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc'
-            and p != ROOT / 'runtime/editing_runtime.py.orig'}
-    for name in PLUGIN_FILES:
-        item = ROOT / name
-        if not item.is_file() or item.is_symlink():
-            raise ValueError('PLUGIN_FILE_MISSING_OR_SYMLINK: ' + name)
-        core.add(item)
-    if not (ROOT / '.codex-plugin' / 'plugin.json').is_file():
-        raise ValueError('PLUGIN_MANIFEST_MISSING')
-    if any(p.is_symlink() for p in core):
-        raise ValueError('SYMLINK_NOT_SUPPORTED')
+    core = _common.source_members(ROOT)
+    _common.declared_entries(ROOT, core)
     if core & excluded:
         raise ValueError('EXCLUDED_FILE_IN_CORE')
     files = set(core)
@@ -144,7 +94,13 @@ def discover(policy=None, external_records=None):
                 continue
             if target in excluded:
                 raise ValueError('EXCLUDED_FILE_REFERENCED: ' + str(target))
-            if target.suffix not in TEXT_TYPES:
+            if target.is_dir():
+                if not any(target in member.parents for member in files):
+                    raise ValueError('DIRECTORY_NAVIGATION_HAS_NO_MEMBERS: ' + str(target))
+                links.append({'from': str(file.relative_to(ROOT)), 'target': str(target.relative_to(ROOT)),
+                              'kind': 'directory'})
+                continue
+            if not _common.is_text(target):
                 key = (file.resolve(), target)
                 if key not in allowed_external:
                     raise ValueError('LINKED_BINARY_REQUIRES_EXPLICIT_DISTRIBUTION: ' + str(target))
@@ -154,8 +110,7 @@ def discover(policy=None, external_records=None):
                 continue
             links.append({'from': str(file.relative_to(ROOT)), 'target': str(target.relative_to(ROOT))})
             if target not in files:
-                files.add(target)
-                queue.append(target)
+                raise ValueError('UNDECLARED_LINKED_MEMBER: ' + str(target.relative_to(ROOT)))
     if seen_external != set(allowed_external):
         raise ValueError('UNUSED_EXTERNAL_LINK_DECLARATION')
     return core, files, links
@@ -201,13 +156,26 @@ def inventory(policy=None):
     return core, files, links, external, entries
 
 
+def check_resource_paths(value):
+    """Apply the same ancestor rule to resource sources, targets and proofs."""
+    if isinstance(value, dict):
+        if 'path' in value and 'sha256' in value:
+            _common.checked_path(ROOT, value['path'])
+        for child in value.values():
+            check_resource_paths(child)
+    elif isinstance(value, list):
+        for child in value:
+            check_resource_paths(child)
+
+
 def inventory_resources(policy=None, resources=None):
     core, files, links, external, _ = inventory(policy)
+    check_resource_paths(resources)
     files, resource_edges = resource_closure(ROOT, files, resources)
     if {ROOT/r['target']['path'] for r in external} & files:
         raise ValueError('EXTERNAL_TARGET_ALSO_BUNDLED')
     entries = [{'path': str(p.relative_to(ROOT)), 'sha256': digest(p), 'bytes': p.stat().st_size, 'mode': p.stat().st_mode & 0o777,
-                'role': 'core' if p in core else 'historical-evidence-text' if p.suffix in TEXT_TYPES
+                'role': 'core' if p in core else 'historical-evidence-text' if _common.is_text(p)
                 else 'declared-resource'} for p in sorted(files)]
     return core, files, links, external, entries, resource_edges
 
@@ -227,17 +195,15 @@ def build(destination, policy=None, resources=None):
     core, files, links, external, entries, resource_edges = inventory_resources(policy, resources)
     refs = historical_refs(files)
     destination.mkdir(parents=True, exist_ok=False)
-    for row in entries:
-        source, target = ROOT/row['path'], destination/row['path']
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, target)
-        target.chmod(row['mode'])
-        if (digest(source) != row['sha256'] or digest(target) != row['sha256']
-                or source.stat().st_mode & 0o777 != row['mode']
-                or target.stat().st_mode & 0o777 != row['mode']):
-            raise ValueError('COPY_OR_SOURCE_DRIFT: ' + row['path'])
+    (destination/'build-incomplete.json').write_text('{"status":"BUILD_INCOMPLETE"}\n')
+    _common.copy_members(ROOT, destination, entries)
+    output_files = {destination / row['path'] for row in entries}
+    external_pairs = {(row['from']['path'], row['target']['path']) for row in external}
+    _common.validate_package(destination, output_files, external_pairs)
+    structure = _common.validate_structure(destination, entries, external_pairs)
     for link in links:
-        if not (destination/link['target']).is_file():
+        target = destination / link['target']
+        if not (target.is_dir() if link.get('kind') == 'directory' else target.is_file()):
             raise ValueError('BUNDLE_LINK_MISSING: ' + link['target'])
     for edge in resource_edges:
         target = edge['target']
@@ -250,9 +216,16 @@ def build(destination, policy=None, resources=None):
             raise ValueError('NONBUNDLE_RESOURCE_COPIED: ' + target['path'])
     # Source or policy targets may have drifted while copying. Do not report success.
     policy_rules(policy)
+    check_resource_paths(resources)
+    _, verified_edges = resource_closure(ROOT, files, resources)
+    if verified_edges != resource_edges:
+        raise ValueError('RESOURCE_DECLARATION_DRIFT')
     manifest = {'schema': 'editing-portable-bundle/1', 'status': 'BUILT_NOT_HOST_INSTALLED',
-        'files': entries, 'core_files': len(core), 'evidence_text_files': len(files-core),
-        'markdown_links': len(links), 'files_byte_verified': True,
+        'files': entries, 'source_candidate': _common.source_identity(ROOT, entries),
+        'core_files': len(core), 'evidence_text_files': len(files-core),
+        'markdown_links': len(links), 'directory_navigation': [row for row in links if row.get('kind') == 'directory'],
+        'references_verified_against_final_members': True, 'files_byte_verified': True,
+        'structure': structure,
         'file_modes_verified': True,
         'file_mode_scope': 'POSIX rwx bits only; no setuid/setgid/sticky or ACL certification',
         'external_markdown_links': len(external),
@@ -273,10 +246,15 @@ def build(destination, policy=None, resources=None):
           'Media, models, source archives and tool binaries referenced by historical evidence are external.',
           'Historical HTML may need external media assets; text-link closure is not offline viewer acceptance.',
           'Configure explicit tool paths and fresh task inputs. Do not execute old requests against user files.']}
-    (destination/'bundle-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     (destination/'external-evidence.json').write_text(json.dumps({'schema':'historical-reference-locator/1',
         'note':'An index, not download permission or proof of remote availability. No historical references were rewritten.',
         'references':refs,'markdown_links':external},ensure_ascii=False,indent=2)+'\n')
+    _common.verify_rows(ROOT, entries)
+    _common.verify_rows(destination, entries)
+    with (destination/'bundle-manifest.json').open('x', encoding='utf-8') as stream:
+        json.dump(manifest, stream, ensure_ascii=False, indent=2)
+        stream.write('\n')
+    (destination/'build-incomplete.json').unlink()
     return {k:manifest[k] for k in ['status','core_files','evidence_text_files','markdown_links','runtime_version']}
 
 

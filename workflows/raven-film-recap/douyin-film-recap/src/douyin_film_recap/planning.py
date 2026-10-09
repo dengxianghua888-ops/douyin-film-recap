@@ -155,6 +155,7 @@ def build_plan(
             model_type=RecapPlan,
             temperature=config.models.temperature.get("creative", 0.45),
             max_tokens=9000,
+            intent_key=f"plan:attempt:{attempt}",
         )
         if plan.hook_highlight_id in eligible_ids:
             break
@@ -363,6 +364,7 @@ def build_storyboard(
         model_type=Storyboard,
         temperature=config.models.temperature.get("creative", 0.45),
         max_tokens=16000,
+        intent_key="storyboard:primary",
     )
     storyboard.project_name = project_name
     storyboard.sources = manifest.sources
@@ -389,11 +391,10 @@ def _normalize_storyboard(
         candidate.highlight_id: candidate for candidate in highlights.candidates
     }
     pool_map = {unit["unit_id"]: unit for unit in visual_pool} if visual_pool is not None else None
-    segment_ids: set[str] = set()
+    # Generated and imported boards use the same reference contract. Invalid
+    # IDs must be corrected before normalization, not silently rebound here.
+    storyboard.unique_segment_ids()
     for index, segment in enumerate(storyboard.segments, start=1):
-        if not segment.segment_id or segment.segment_id in segment_ids:
-            segment.segment_id = f"seg_{index:04d}"
-        segment_ids.add(segment.segment_id)
         normalized_visuals: list[VisualReference] = []
         for visual in segment.visuals:
             if segment.mode == "voiceover" and pool_map is not None:

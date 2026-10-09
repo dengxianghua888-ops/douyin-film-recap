@@ -120,6 +120,13 @@ def _semantic_qc(
     config: AppConfig,
     client: OpenAICompatibleClient,
 ) -> list[QCFinding]:
+    # Match the pipeline's storyboard input identity: rendering only adds these
+    # derived fields, and must not change a replayed semantic request's payload.
+    semantic_storyboard = storyboard.model_dump(mode="json")
+    semantic_storyboard.pop("output", None)
+    for segment in semantic_storyboard.get("segments", []):
+        for key in ("status", "rendered_file", "rendered_duration_sec"):
+            segment.pop(key, None)
     payload = {
         "story": {
             "characters": [
@@ -137,9 +144,10 @@ def _semantic_qc(
             if candidate.selected
         ],
         "plan": plan.model_dump(mode="json"),
-        "storyboard": storyboard.model_dump(mode="json"),
+        "storyboard": semantic_storyboard,
     }
     bundle = client.chat_json(
+        intent_key="pre-qc:semantic",
         system=SEMANTIC_QC_SYSTEM,
         prompt=semantic_qc_prompt(payload),
         model_type=SemanticQCBundle,

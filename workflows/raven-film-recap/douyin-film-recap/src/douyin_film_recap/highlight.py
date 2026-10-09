@@ -385,7 +385,7 @@ def _rerank_candidates(
     work_dir: Path,
 ) -> None:
     event_map = {event.event_id: event for event in story.story_graph.events}
-    for group in chunks(candidates, 6):
+    for group_index, group in enumerate(chunks(candidates, 6)):
         group_list = list(group)
         images = [_candidate_sheet(candidate, manifest, work_dir) for candidate in group_list]
         payload: list[dict[str, Any]] = []
@@ -413,6 +413,7 @@ def _rerank_candidates(
             "themes": story.story_graph.themes,
         }
         result = client.chat_json(
+            intent_key=f"highlights:rerank:{group_index:04d}",
             system=HIGHLIGHT_RERANK_SYSTEM,
             prompt=highlight_rerank_prompt(payload, story_context),
             model_type=HighlightRerankBatch,

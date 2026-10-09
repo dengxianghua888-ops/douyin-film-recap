@@ -8,11 +8,11 @@
 python3 scripts/build_portable_bundle.py --out /absolute/new-bundle
 ```
 
-输出目录必须不存在。构建会随包保留发现器识别的Markdown内联链接及递归文本证据，校验源文件复制前后哈希；缺文件、逃出库根或没有明确策略的二进制链接会拒绝。反引号/围栏中的代码不作为链接；参考式链接、HTML脚本及fetch依赖不在此发现器范围。`bundle-manifest.json`记录每个文件的角色、大小与哈希，`external-evidence.json`列历史JSON里的媒体/来源引用。两者都不表示这些外部媒体/模型已安装、重新验证或获得分发许可。
+当前公开快照的显式成员、目录导航与产物检查见[打包说明](../docs/packaging.md)。输出目录必须不存在。构建会随包保留发现器识别的Markdown内联链接及递归文本证据，校验源文件复制前后哈希；缺文件、逃出库根或没有明确策略的二进制链接会拒绝。反引号/围栏中的代码不作为链接；参考式链接、HTML脚本及fetch依赖不在此发现器范围。`bundle-manifest.json`记录每个文件的角色、大小与哈希，`external-evidence.json`列历史JSON里的媒体/来源引用。两者都不表示这些外部媒体/模型已安装、重新验证或获得分发许可。
 
 需要列出外部媒体或明确排除材料时，使用[分发策略合同](distribution-policy.md)：每条origin→target及排除文件必须绑定SHA-256和理由，默认拒绝行为不变。`--policy 策略.json --plan-only --out 新清单.json`只登记候选，不创建包；外部Markdown链接在单独文本包中仍不可打开，不能据此交付离线播放器。
 
-HTML、CSS、JS 及媒体资源需另附 [受限资源边合同](portable-resource-edges.md)。当前真实声明为 [portable-resource-edges.current.json](portable-resource-edges.current.json)，构建/盘点时用 `--resources /absolute/portable-resource-edges.current.json`，并同时传其依据的 distribution policy。声明逐字节绑定来源、静态边和已审阅的有界动态集合；外置或禁止分发资源不入包，离线页面可用性仍需另验。
+HTML、CSS、JS 及媒体资源需另附 [受限资源边合同](portable-resource-edges.md)。当前真实声明为 [portable-resource-edges.current.json](portable-resource-edges.current.json)，该历史清单依赖未公开 evals，不是当前公开快照默认构建配置；只有原依赖与策略均可核实时，才能显式传 `--resources /absolute/portable-resource-edges.current.json`。当前源码预览没有 HTML/CSS/JS 资源，默认不传历史声明。声明逐字节绑定来源、静态边和已审阅的有界动态集合；外置或禁止分发资源不入包，离线页面可用性仍需另验。
 
 历史证据里的原始绝对路径/哈希不能靠字符串替换伪造迁移。历史 Work 的同 SHA 样式资源可以经明确的 `work-version relink-style-resources` 追加路径维护版本；构建器不自动重写历史，维护回执不授予媒体/保护通过。运行新任务须使用当前环境可核实的真实资产身份；能读取字节时记 SHA-256，只有编辑器稳定资产 ID 时标明字节哈希未知，不能伪造。历史HTML可能仍引用外置媒体；文本完整不等于离线播放器完整。
 

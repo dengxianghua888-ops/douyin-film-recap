@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextvars import copy_context
 from pathlib import Path
 from typing import Any
 
@@ -70,6 +71,7 @@ def analyze_scenes(
     def analyze_group(index: int, units: list[Any]) -> tuple[int, list[SceneAnalysisItem]]:
         images = [unit.contact_sheet_path for unit in units if unit.contact_sheet_path]
         batch = client.chat_json(
+            intent_key=f"scene-analysis:batch:{index:04d}",
             system=SCENE_ANALYSIS_SYSTEM,
             prompt=scene_batch_prompt(units),
             model_type=SceneAnalysisBatch,
@@ -84,7 +86,9 @@ def analyze_scenes(
     max_workers = max(1, min(config.scene.max_scene_analysis_workers, len(groups) or 1))
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
-            executor.submit(analyze_group, index, list(group)): index
+            # Each task gets its own Context, sharing the scoped send session.
+            # Keys describe the stable batch, never thread completion order.
+            executor.submit(copy_context().run, analyze_group, index, list(group)): index
             for index, group in enumerate(groups)
         }
         for future in as_completed(futures):
@@ -143,6 +147,7 @@ def build_story(
     for index, group in enumerate(chunks(payload, config.story.chunk_units), start=1):
         chunk_id = f"chunk_{index:04d}"
         summary = client.chat_json(
+            intent_key=f"story:summary:{chunk_id}",
             system=STORY_CHUNK_SYSTEM,
             prompt=story_chunk_prompt(chunk_id, list(group)),
             model_type=StoryChunkSummary,
@@ -159,6 +164,7 @@ def build_story(
             context = context_path.read_text(encoding="utf-8", errors="replace")[:30000]
 
     bundle = client.chat_json(
+        intent_key="story:global",
         system=STORY_GLOBAL_SYSTEM,
         prompt=story_global_prompt(
             [summary.model_dump(mode="json") for summary in chunk_summaries], context

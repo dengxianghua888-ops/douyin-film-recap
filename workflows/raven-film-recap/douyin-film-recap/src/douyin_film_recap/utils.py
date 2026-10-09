@@ -5,6 +5,7 @@ import json
 import re
 import subprocess
 import os
+import stat
 import tempfile
 from pathlib import Path
 from typing import Any, Iterable, Sequence
@@ -32,7 +33,53 @@ def discover_videos(path: str | Path) -> list[Path]:
     return files
 
 
+CONTENT_IDENTITY_SCHEMA = "sha256-full/2"
+
+
+class SourceChangedDuringRead(RuntimeError):
+    """The file did not remain stable while its bytes were being identified."""
+
+
+def _file_observation(value: os.stat_result) -> tuple[int, ...]:
+    return (value.st_dev, value.st_ino, value.st_size, value.st_mtime_ns, value.st_ctime_ns)
+
+
+def content_identity(path: str | Path, chunk_size: int = 1024 * 1024) -> dict[str, Any]:
+    """Stream every byte and reject observable changes, with bounded memory.
+
+    Metadata detects ordinary mutations during this read; it is never a cached
+    content identity. This does not provide isolation against a hostile writer.
+    """
+    if chunk_size <= 0:
+        raise ValueError("Hash chunk size must be positive")
+    target = Path(path)
+    digest = hashlib.sha256()
+    size = 0
+    with target.open("rb") as handle:
+        before = os.fstat(handle.fileno())
+        if not stat.S_ISREG(before.st_mode):
+            raise ValueError("Content identity requires a regular file")
+        for chunk in iter(lambda: handle.read(chunk_size), b""):
+            digest.update(chunk)
+            size += len(chunk)
+        after = os.fstat(handle.fileno())
+        try:
+            current = target.stat()
+        except OSError as exc:
+            raise SourceChangedDuringRead("Source disappeared during content hashing") from exc
+    if (size != before.st_size or _file_observation(before) != _file_observation(after)
+            or _file_observation(before) != _file_observation(current)):
+        raise SourceChangedDuringRead("Source changed during content hashing")
+    return {"schema": CONTENT_IDENTITY_SCHEMA, "sha256": digest.hexdigest(), "bytes": size}
+
+
 def file_fingerprint(path: str | Path, chunk_size: int = 1024 * 1024) -> str:
+    """Authoritative full-content SHA. Legacy sampled values require migration."""
+    return content_identity(path, chunk_size)["sha256"]
+
+
+def sampled_fingerprint_hint(path: str | Path, chunk_size: int = 1024 * 1024) -> str:
+    """Legacy head/tail hint only. Never use to authorize cache reuse or resume."""
     target = Path(path)
     stat = target.stat()
     digest = hashlib.sha256()
@@ -49,11 +96,7 @@ def file_fingerprint(path: str | Path, chunk_size: int = 1024 * 1024) -> str:
 
 def content_fingerprint(path: str | Path) -> str:
     """Hash the entire artifact, independent of mutable filesystem timestamps."""
-    digest = hashlib.sha256()
-    with Path(path).open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    return content_identity(path)["sha256"]
 
 
 def fingerprint_json(value: Any) -> str:

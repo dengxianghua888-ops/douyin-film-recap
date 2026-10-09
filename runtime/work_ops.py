@@ -425,17 +425,36 @@ def timeline_revise(request,directory,tools):
     return {**diff,'applied_to_work':False}
 
 
-def render_document(document,directory,tools,*,work_version,audio_backend=None):
+def render_document(document,directory,tools,*,work_version,audio_backend=None,source_consumption=None):
+    from source_binding import consumption_session, document_references
+    from editing_runtime import sha256
+    with consumption_session(document_references(document),source_consumption,directory,tools) as (_,bound_tools):
+        result=_render_document_bound(document,directory,bound_tools,work_version=work_version,
+                                      audio_backend=audio_backend,source_consumption=source_consumption)
+    binding=directory/'source-binding.json'
+    evidence=json.loads(binding.read_text())
+    result['source_consumption']={'schema':evidence['schema'],'selection':evidence['selection'],
+        'status':evidence['status'],'adoptable':evidence['adoptable'],
+        'binding':{'path':str(binding),'sha256':sha256(binding)},
+        'child_receipts':result.pop('child_receipts')}
+    return result
+
+
+def _render_document_bound(document,directory,tools,*,work_version,audio_backend=None,source_consumption=None):
     """Render one immutable WorkDocument; never write to the Work store."""
     from editing_runtime import run,sha256,write_json,require,fingerprint,OperationCancelled
     doc=copy.deepcopy(document)
     norm,cues,tracks=validate_document(doc,tools)
+    child_receipts=[]
     def invoke(req,name):
         receipt=run(req,directory/name,tools)
         if receipt.get('cancelled'):
             raise OperationCancelled('WORK_RENDER_CANCELLED: '+name+': '+receipt.get('error',''))
         require(receipt['status']=='SUCCEEDED','WORK_RENDER_FAILED: '+name+': '+receipt.get('error',''))
+        child_receipts.append({'operation':req['operation'],'path':str(directory/name/'receipt.json'),
+                               'sha256':sha256(directory/name/'receipt.json')})
     invoke({'operation':'timeline-render','plan':doc['plan'],
+            **({'source_consumption':source_consumption} if source_consumption is not None else {}),
             **({'audio_backend':audio_backend} if audio_backend is not None else {})},'timeline')
     current=directory/'timeline/preview.mp4'
     if tracks:
@@ -458,6 +477,7 @@ def render_document(document,directory,tools,*,work_version,audio_backend=None):
     write_json(directory/'output-captions.json',{'cues':cues,'work_version':work_version})
     if visual:write_json(directory/'output-visual-layers.json',{'layers':visual,'work_version':work_version,'order':'after audio, before captions'})
     return {'video':{'path':str(current),'sha256':sha256(current)},'document_sha256':fingerprint(doc),
+            'child_receipts':child_receipts,
             'layer_counts':{'audio_tracks':len(tracks),'visual_layers':len(visual),'captions':len(cues)}}
 
 
@@ -465,7 +485,7 @@ def work_render(request,directory,tools):
     from editing_runtime import exact_keys,require,source,write_json,fingerprint
     preview='preview_candidate' in request
     fields=['operation','store','expected_version']+(['preview_candidate'] if preview else [])
-    exact_keys(request,fields+['audio_backend'],fields)
+    exact_keys(request,fields+['audio_backend','source_consumption'],fields)
     db=connect(request['store'])
     try:
         db.execute('BEGIN');state=load(db);db.commit()
@@ -486,7 +506,8 @@ def work_render(request,directory,tools):
         document=bundle['document']
     else:
         document=state['document']
-    rendered=render_document(document,directory,tools,work_version=state['version'],audio_backend=request.get('audio_backend'))
+    rendered=render_document(document,directory,tools,work_version=state['version'],audio_backend=request.get('audio_backend'),
+                             source_consumption=request.get('source_consumption'))
     if preview:source(request['preview_candidate'])
     db=connect(request['store'])
     try:latest=load(db)
@@ -495,6 +516,9 @@ def work_render(request,directory,tools):
             'document_sha256':rendered['document_sha256'],
             'audio_backend_request':copy.deepcopy(request.get('audio_backend')),
             'audio_backend_request_sha256':fingerprint(request.get('audio_backend')),
+            'source_consumption_request':copy.deepcopy(request.get('source_consumption')),
+            'source_consumption_request_sha256':fingerprint(request.get('source_consumption')),
+            'source_consumption':rendered['source_consumption'],
             'video':rendered['video'],'current_at_finish':latest['version']==state['version'],
             'current_version_at_finish':latest['version'],'technical_status':'PASSED','delivery_status':'DEGRADED',
             'source_audio_evidence':'NOT_GRANTED_BY_RENDER',
