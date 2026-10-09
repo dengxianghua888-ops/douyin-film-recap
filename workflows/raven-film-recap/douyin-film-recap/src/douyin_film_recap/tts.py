@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import re
+import uuid
 from pathlib import Path
 from typing import Any
 
@@ -10,6 +12,7 @@ from .media import media_duration
 from .models import Storyboard, StoryboardSegment
 from .prompts import shorten_narration_prompt
 from .providers import OpenAICompatibleClient
+from .send_guard import guarded_async_send
 from .utils import content_fingerprint, fingerprint_json, read_json, safe_slug, write_json
 
 
@@ -31,6 +34,7 @@ def shorten_text(
     target_chars: int,
     client: OpenAICompatibleClient,
     config: AppConfig,
+    phase: str = "pre-fit",
 ) -> str:
     raw = client.chat(
         system="你是影视解说文案编辑，只做准确压缩。",
@@ -39,6 +43,7 @@ def shorten_text(
         ),
         temperature=config.models.temperature.get("creative", 0.45),
         max_tokens=1000,
+        intent_key=f"tts:{segment.segment_id}:shorten:{phase}",
     )
     result = _clean_model_text(raw)
     if not result:
@@ -54,28 +59,23 @@ async def _edge_tts_stream(
     rate: str,
     pitch: str,
     volume: str,
+    intent_key: str | None = None,
 ) -> list[dict[str, Any]]:
-    try:
-        import edge_tts
-    except ImportError as exc:  # pragma: no cover - optional dependency
-        raise RuntimeError(
-            "edge-tts is not installed. Install with pip install -e '.[tts]'"
-        ) from exc
-
     output_path.parent.mkdir(parents=True, exist_ok=True)
     boundaries: list[dict[str, Any]] = []
-    communicate = edge_tts.Communicate(
-        text=text,
-        voice=voice,
-        rate=rate,
-        pitch=pitch,
-        volume=volume,
-        boundary="WordBoundary",
-    )
-    with output_path.open("wb") as audio_handle:
+    async def send():
+        try:
+            import edge_tts
+        except ImportError as exc:
+            raise RuntimeError("edge-tts is not installed. Install with pip install -e '.[tts]'") from exc
+        communicate = edge_tts.Communicate(
+            text=text, voice=voice, rate=rate, pitch=pitch, volume=volume,
+            boundary="WordBoundary",
+        )
+        audio = bytearray()
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
-                audio_handle.write(chunk["data"])
+                audio.extend(chunk["data"])
             elif chunk["type"] == "WordBoundary":
                 # edge-tts reports offset/duration in 100-nanosecond ticks.
                 boundaries.append(
@@ -85,7 +85,14 @@ async def _edge_tts_stream(
                         "duration": float(chunk.get("duration", 0)) / 10_000_000,
                     }
                 )
-    return boundaries
+        return {"audio_base64": base64.b64encode(audio).decode("ascii"), "boundaries": boundaries}
+
+    result = await guarded_async_send("edge_tts", {"text": text, "voice": voice,
+        "rate": rate, "pitch": pitch, "volume": volume, "boundary": "WordBoundary"}, send,
+        intent_key=intent_key)
+    with output_path.open("xb") as audio_handle:
+        audio_handle.write(base64.b64decode(result["audio_base64"], validate=True))
+    return result["boundaries"]
 
 
 def synthesize_edge_tts(
@@ -93,6 +100,7 @@ def synthesize_edge_tts(
     text: str,
     output_path: Path,
     config: AppConfig,
+    intent_key: str | None = None,
 ) -> list[dict[str, Any]]:
     return asyncio.run(
         _edge_tts_stream(
@@ -102,6 +110,7 @@ def synthesize_edge_tts(
             rate=config.tts.rate,
             pitch=config.tts.pitch,
             volume=config.tts.volume,
+            intent_key=intent_key,
         )
     )
 
@@ -110,16 +119,20 @@ def _generate_segment_audio(
     segment: StoryboardSegment,
     audio_dir: Path,
     config: AppConfig,
+    phase: str = "initial",
 ) -> None:
     if config.tts.provider != "edge_tts":
         raise NotImplementedError(
             f"TTS provider is not implemented in the bundled runtime: {config.tts.provider}"
         )
     filename = f"{safe_slug(segment.segment_id)}.mp3"
-    output = audio_dir / filename
+    attempt = audio_dir / f"attempt-{uuid.uuid4().hex}"
+    attempt.mkdir(parents=True, exist_ok=False)
+    output = attempt / filename
     temporary = output.with_suffix(".partial.mp3")
     try:
-        boundaries = synthesize_edge_tts(text=segment.text, output_path=temporary, config=config)
+        boundaries = synthesize_edge_tts(text=segment.text, output_path=temporary, config=config,
+                                        intent_key=f"tts:{segment.segment_id}:audio:{phase}")
         if not temporary.is_file() or temporary.stat().st_size == 0:
             raise RuntimeError(f"TTS produced no audio: {segment.segment_id}")
         duration = media_duration(temporary)
@@ -222,8 +235,8 @@ def synthesize_storyboard(
         if segment.audio_source_duration_sec > visual_duration + 0.15:
             ratio = visual_duration / max(segment.audio_source_duration_sec, 0.001)
             tighter_target = max(6, int(_text_units(segment.text) * ratio * 0.92))
-            segment.text = shorten_text(segment, tighter_target, client, config)
-            _generate_segment_audio(segment, segment_audio_dir, config)
+            segment.text = shorten_text(segment, tighter_target, client, config, phase="post-fit")
+            _generate_segment_audio(segment, segment_audio_dir, config, phase="post-fit")
         desired_duration = min(visual_duration, planned_target)
         _fit_audio_timing(
             segment,
@@ -246,4 +259,3 @@ def synthesize_storyboard(
         if final_key != request_key:
             write_json(audio_dir / "cache" / f"{final_key}.json", cache_entry)
     return storyboard
-

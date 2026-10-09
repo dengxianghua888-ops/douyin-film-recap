@@ -5,7 +5,7 @@ description: 将电影、电视剧单集或多集素材制作成中文影视解�
 
 # 影视解说成片 Skill
 
-版本：0.2.0；创作协议：film-recap-content/1。执行前读取本目录 `AGENTS.md`。
+版本：0.3.0；创作协议：film-recap-content/1；工作区：film-workspace/2。执行前读取本目录 `AGENTS.md`。
 
 ## 任务与交付模式
 
@@ -55,6 +55,8 @@ python -m douyin_film_recap run "/path/to/source" --work-dir "./work/project" --
 先按当前交付模式检查必要能力。完整制作需要 FFmpeg/ffprobe、配置的 LLM/VLM、字幕或 ASR、TTS；烧录字幕需要 libass。缺失能力如实阻断或降级，不静默替换 Provider。
 
 恢复沿用原工作目录。源视频、字幕、可信上下文或有效配置改变时失效相应结果；上游重算后不能沿用旧的下游 QC。人工编辑中间文件后明确从受影响的下游阶段继续，例如修改 Storyboard 文案后 `--from-stage tts`，保留已修改的 Storyboard。
+
+远程模型/TTS 新请求须绑定用户的有效授权范围：有授权时添加 `--allow-remote`，可用 `--max-remote-requests` 限制本地发送次数；相同来源、配置和阶段范围下可以复用已保存授权。API Key 不代表授权。超时或断连保留 UNKNOWN，不自动重发。旧 Schema 1 生产运行须保全字节并迁移，新 Schema 2 不沿用旧 passed/QC；迁移、固定 B 包与恢复命令见[工作区协议](../../../docs/film-workspace-v2.md)。恢复仅证明字节取回。
 
 `09_storyboard.json` 是剪辑执行依据；其中素材身份必须与已索引清单一致。运行状态、阶段快照和最终文件校验不能代替用户创作决策，也不能把旧 QC 绑定到新文件。
 

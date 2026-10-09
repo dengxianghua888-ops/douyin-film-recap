@@ -85,17 +85,22 @@ def snapshot(db,manifest):
 
 def render_request(spec):
     from editing_runtime import require
+    from source_binding import selection
     request={'operation':'work-render','store':spec['store'],'expected_version':spec['expected_version']}
     if 'audio_backend' in spec:
         require(isinstance(spec['audio_backend'],dict),'BATCH_AUDIO_BACKEND_OBJECT_REQUIRED')
         # Preserve the selected renderer's request without certifying its
         # capabilities at queue preparation. work-render validates it at run.
         request['audio_backend']=copy.deepcopy(spec['audio_backend'])
+    if 'source_consumption' in spec:
+        selection(spec['source_consumption'])
+        request['source_consumption']=copy.deepcopy(spec['source_consumption'])
     return request
 
 
 def check_receipt(path,spec,env):
     from editing_runtime import require,sha256,fingerprint,source
+    from source_binding import selection
     require(path.is_file(),'BATCH_RECEIPT_MISSING')
     rr=json.loads(path.read_text());folder=path.parent
     expected=render_request(spec)
@@ -109,6 +114,24 @@ def check_receipt(path,spec,env):
         require(rr['result']['version']==spec['expected_version'],'BATCH_OUTPUT_VERSION_MISMATCH')
         output=Path(rr['result']['video']['path']);require(output.resolve().is_relative_to(folder.resolve()),'BATCH_OUTPUT_PATH_INVALID')
         require(sha256(output)==rr['result']['video']['sha256'],'BATCH_OUTPUT_CHANGED')
+        actual_consumption=rr['result'].get('source_consumption',{})
+        require(rr['result'].get('source_consumption_request')==spec.get('source_consumption') and
+                rr['result'].get('source_consumption_request_sha256')==fingerprint(spec.get('source_consumption')),
+                'BATCH_SOURCE_CONSUMPTION_REQUEST_MISMATCH')
+        require(actual_consumption.get('selection')==selection(spec.get('source_consumption')) and
+                actual_consumption.get('status')=='VERIFIED' and actual_consumption.get('adoptable') is True,
+                'BATCH_SOURCE_CONSUMPTION_UNVERIFIED')
+        binding_ref=actual_consumption.get('binding',{})
+        require(Path(binding_ref.get('path','')).resolve()==folder/'source-binding.json',
+                'BATCH_SOURCE_BINDING_PATH_INVALID')
+        source(binding_ref)
+        binding=json.loads((folder/'source-binding.json').read_text())
+        require(binding.get('selection')==actual_consumption['selection'] and binding.get('status')=='VERIFIED' and
+                binding.get('adoptable') is True,'BATCH_SOURCE_BINDING_UNVERIFIED')
+        for bound_source in binding['sources']:
+            for logical in bound_source['logical_paths']:
+                current=source({'path':logical,'sha256':bound_source['sha256']})
+                require(current['path']==bound_source['path'],'BATCH_SOURCE_PATH_CHANGED')
         if 'audio_backend' in spec:
             require(rr['result'].get('audio_backend_request')==spec['audio_backend'] and
                     rr['result'].get('audio_backend_request_sha256')==fingerprint(spec['audio_backend']),
@@ -121,6 +144,10 @@ def check_receipt(path,spec,env):
                     'BATCH_AUDIO_BACKEND_RECEIPT_UNBOUND')
             child=json.loads(timeline.read_text())
             require(child['status']=='SUCCEEDED','BATCH_TIMELINE_RECEIPT_FAILED')
+            consumption=child.get('result',{}).get('source_consumption',{})
+            require(consumption.get('selection')==actual_consumption['selection'] and
+                    consumption.get('status')=='VERIFIED' and consumption.get('adoptable') is True,
+                    'BATCH_TIMELINE_SOURCE_CONSUMPTION_MISMATCH')
             actual=child.get('result',{}).get('audio_backend')
             if 'audio_backend' in spec:
                 require(isinstance(actual,dict) and actual.get('kind')==spec['audio_backend'].get('kind'),
@@ -148,7 +175,7 @@ def batch_render(q,directory,tools):
         require(isinstance(q['jobs'],list) and q['jobs'],'BATCH_JOBS_REQUIRED')
         jobs=[];ids=set();identities=set()
         for spec in q['jobs']:
-            keys=['id','store','expected_version'];exact_keys(spec,keys+['audio_backend'],keys)
+            keys=['id','store','expected_version'];exact_keys(spec,keys+['audio_backend','source_consumption'],keys)
             render_request(spec)
             jid=spec['id'];require(isinstance(jid,str) and re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,79}',jid) and jid not in ids,'BATCH_JOB_ID_INVALID_OR_DUPLICATE');ids.add(jid)
             state=work_state(spec['store']);require(state['version']==spec['expected_version'],'BATCH_WORK_VERSION_CONFLICT')
@@ -157,6 +184,7 @@ def batch_render(q,directory,tools):
             require(identity not in identities,'BATCH_DUPLICATE_WORK_VERSION');identities.add(identity)
             job={'id':jid,'store':store,'expected_version':state['version'],'document_sha256':state['document_sha256']}
             if 'audio_backend' in spec:job['audio_backend']=copy.deepcopy(spec['audio_backend'])
+            if 'source_consumption' in spec:job['source_consumption']=copy.deepcopy(spec['source_consumption'])
             jobs.append(job)
         env=environment(tools);require(all('sha256' in info for info in env['tools'].values()),'BATCH_TOOL_UNAVAILABLE')
         manifest={'schema':'local-render-batch/1','batch_id':q['batch_id'],'jobs':jobs,'environment':env}

@@ -2,12 +2,15 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import contextmanager
+from contextvars import ContextVar
 import json
+import os
 from pathlib import Path
 import re
 import shutil
 import tempfile
 from typing import Any
+from uuid import uuid4
 
 from PIL import ImageFont
 
@@ -15,7 +18,111 @@ from .config import AppConfig
 from .media import media_duration
 from .models import SourceInfo, Storyboard, StoryboardSegment, VisualReference
 from .subtitles import build_cues, output_timeline, resolved_visual_spans, segment_output_duration, write_srt
-from .utils import content_fingerprint, run_command, safe_slug, write_json
+from .utils import content_fingerprint, content_identity, fingerprint_json, run_command
+
+
+class ArtifactPathError(ValueError):
+    """An output path is not a new artifact owned by this rendering attempt."""
+
+
+def _safe_directory(path: Path, boundary: Path | None = None) -> None:
+    """Reject existing directory links before creating descendants.
+
+    Fresh private attempt directories protect ordinary writers. These checks do
+    not claim to isolate a malicious process running with the same permissions.
+    """
+    if boundary is not None and not path.is_relative_to(boundary):
+        raise ArtifactPathError("OUTPUT_OUTSIDE_ATTEMPT")
+    if path.is_symlink():
+        raise ArtifactPathError("OUTPUT_DIRECTORY_SYMLINK")
+    if path.exists():
+        if not path.is_dir():
+            raise ArtifactPathError("OUTPUT_PARENT_NOT_DIRECTORY")
+        if boundary is not None and path != boundary:
+            _safe_directory(path.parent, boundary)
+        return
+    if path.parent != path:
+        _safe_directory(path.parent, boundary)
+    try:
+        path.mkdir(mode=0o700)
+    except FileExistsError:
+        if path.is_symlink() or not path.is_dir():
+            raise ArtifactPathError("OUTPUT_PARENT_CHANGED")
+
+
+class _RenderAttempt:
+    def __init__(self, work_dir: Path, protected: list[Path]):
+        # Resolve the explicitly supplied task root once; descendants must never
+        # be redirected by links in a previously used work directory.
+        if work_dir.is_symlink():
+            raise ArtifactPathError("WORK_DIRECTORY_SYMLINK")
+        task_root = work_dir.absolute().resolve()
+        _safe_directory(task_root)
+        parent = task_root / "render_attempts"
+        _safe_directory(parent, task_root)
+        self.attempt_id = uuid4().hex
+        self.root = parent / self.attempt_id
+        self.root.mkdir(mode=0o700, exist_ok=False)
+        identity = self.root.stat()
+        self.directory_identity = (identity.st_dev, identity.st_ino)
+        self.protected = [path.resolve() for path in protected]
+        self.inputs = {str(path): content_identity(path) for path in self.protected}
+
+    def prepare(self, path: Path) -> None:
+        path = path.absolute()
+        if not path.is_relative_to(self.root) or path == self.root:
+            raise ArtifactPathError(f"OUTPUT_OUTSIDE_ATTEMPT: {self.attempt_id}")
+        _safe_directory(self.root, self.root)
+        current = self.root.stat()
+        if (current.st_dev, current.st_ino) != self.directory_identity:
+            raise ArtifactPathError(f"ATTEMPT_DIRECTORY_CHANGED: {self.attempt_id}")
+        _safe_directory(path.parent, self.root)
+        _reject_existing_output(path, self.protected)
+
+
+_render_attempt: ContextVar[_RenderAttempt | None] = ContextVar("render_attempt", default=None)
+
+
+def _reject_existing_output(path: Path, protected: list[Path]) -> None:
+    if path.is_symlink():
+        raise ArtifactPathError("OUTPUT_SYMLINK")
+    for source in protected:
+        if path.resolve() == source.resolve() or (path.exists() and source.exists() and path.samefile(source)):
+            raise ArtifactPathError("OUTPUT_ALIASES_SOURCE")
+    if path.exists():
+        raise ArtifactPathError("OUTPUT_ALREADY_EXISTS")
+
+
+def _prepare_output(path: Path, protected: list[Path] | None = None) -> None:
+    attempt = _render_attempt.get()
+    if attempt is not None:
+        attempt.prepare(path)
+    else:
+        # Private helper calls also refuse existing files and linked parents.
+        path = path.absolute()
+        for ancestor in path.parents:
+            if ancestor.is_symlink():
+                raise ArtifactPathError("OUTPUT_DIRECTORY_SYMLINK")
+        _safe_directory(path.parent)
+        _reject_existing_output(path, protected or [])
+
+
+def _write_new_json(path: Path, value: Any) -> None:
+    _prepare_output(path)
+    with path.open("x", encoding="utf-8") as handle:
+        json.dump(value, handle, ensure_ascii=False, indent=2)
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+def _segment_key(segment: StoryboardSegment, config: AppConfig) -> str:
+    payload = segment.model_dump(mode="json")
+    for name in ("status", "rendered_file", "rendered_duration_sec"):
+        payload.pop(name, None)
+    attempt = _render_attempt.get()
+    return fingerprint_json({"schema": "film-render-artifact/2", "segment": payload,
+                             "inputs": attempt.inputs if attempt else {},
+                             "render": config.render.model_dump(mode="json")})
 
 
 def _layout_filter(config: AppConfig) -> str:
@@ -83,10 +190,10 @@ def _render_visual_piece(
     *,
     include_audio: bool = False,
 ) -> None:
-    output.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(output, [Path(source.path)])
     args: list[str | Path] = [
         "ffmpeg",
-        "-y",
+        "-n",
         "-v",
         "error",
         "-ss",
@@ -134,22 +241,26 @@ def _render_visual_piece(
 
 
 def _write_concat_list(paths: list[Path], output_path: Path) -> Path:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(output_path, paths)
     lines = []
     for path in paths:
         escaped = str(path.resolve()).replace("'", "'\\''")
         lines.append(f"file '{escaped}'")
-    output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    with output_path.open("x", encoding="utf-8") as handle:
+        handle.write("\n".join(lines) + "\n")
     return output_path
 
 
 def _concat_copy(paths: list[Path], output: Path, config: AppConfig) -> None:
+    _prepare_output(output, paths)
     concat_list = _write_concat_list(paths, output.with_suffix(".concat.txt"))
+    temporary = output.with_name(f".{output.stem}.copy-{uuid4().hex}{output.suffix}")
+    _prepare_output(temporary, paths)
     try:
         run_command(
             [
                 "ffmpeg",
-                "-y",
+                "-n",
                 "-v",
                 "error",
                 "-f",
@@ -162,16 +273,18 @@ def _concat_copy(paths: list[Path], output: Path, config: AppConfig) -> None:
                 "copy",
                 "-movflags",
                 "+faststart",
-                output,
+                temporary,
             ],
             timeout=config.runtime.stage_timeout_sec,
         )
-    except Exception:
+    except RuntimeError:
         # Fallback re-encodes but remains deterministic when container timebases differ.
+        # Keep any failed copy as evidence; the fallback gets a distinct target.
+        _prepare_output(output, paths)
         run_command(
             [
                 "ffmpeg",
-                "-y",
+                "-n",
                 "-v",
                 "error",
                 "-f",
@@ -186,6 +299,12 @@ def _concat_copy(paths: list[Path], output: Path, config: AppConfig) -> None:
             ],
             timeout=config.runtime.stage_timeout_sec,
         )
+    else:
+        # Hard-link publication is no-clobber: an unexpected existing destination
+        # raises instead of replacing it. Both names are inside this attempt.
+        _prepare_output(output, paths)
+        os.link(temporary, output, follow_symlinks=False)
+        temporary.unlink()
 
 
 def _render_voiceover_segment(
@@ -204,7 +323,7 @@ def _render_voiceover_segment(
         source = source_map[visual.source_id]
         available = visual.end - visual.start
         duration = min(available, remaining)
-        piece = work_dir / "clips" / "visuals" / segment.segment_id / f"v{index:03d}.mp4"
+        piece = work_dir / "clips" / "visuals" / _segment_key(segment, config) / f"v{index:03d}.mp4"
         _render_visual_piece(
             visual,
             source,
@@ -219,13 +338,13 @@ def _render_voiceover_segment(
         raise ValueError(
             f"Voiceover visuals are {remaining:.2f}s shorter than audio: {segment.segment_id}"
         )
-    visual_base = work_dir / "clips" / "visuals" / segment.segment_id / "visual_base.mp4"
+    visual_base = work_dir / "clips" / "visuals" / _segment_key(segment, config) / "visual_base.mp4"
     _concat_copy(pieces, visual_base, config)
     fade = min(0.03, target_duration / 4)
-    output.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(output, [visual_base, Path(segment.audio_file)])
     args: list[str | Path] = [
         "ffmpeg",
-        "-y",
+        "-n",
         "-v",
         "error",
         "-i",
@@ -286,7 +405,7 @@ def _render_original_segment(
     fade = min(0.03, duration / 4)
     args: list[str | Path] = [
         "ffmpeg",
-        "-y",
+        "-n",
         "-v",
         "error",
         "-ss",
@@ -330,7 +449,7 @@ def _render_original_segment(
             output,
         ]
     )
-    output.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(output, [Path(source.path)])
     run_command(args, timeout=config.runtime.stage_timeout_sec)
 
 
@@ -405,7 +524,7 @@ def _finalize(
         f"loudnorm=I={config.render.target_lufs}:"
         f"TP={config.render.true_peak_db}:LRA=11"
     )
-    args: list[str | Path] = ["ffmpeg", "-y", "-v", "info", "-i", base_video]
+    args: list[str | Path] = ["ffmpeg", "-n", "-v", "info", "-i", base_video]
     has_subtitles = subtitle_path.exists() and subtitle_path.stat().st_size > 0
     if subtitles_expected and not has_subtitles:
         raise ValueError("Expected captions are missing or empty; refusing silent subtitle loss")
@@ -420,7 +539,7 @@ def _finalize(
             subtitle_filter += f"force_style='{_subtitle_style(config, family)}'"
             args.extend(["-vf", subtitle_filter, "-af", audio_filter, *_video_encode_args(config)])
             args.extend([*_audio_encode_args(config), "-movflags", "+faststart", final_path])
-            final_path.parent.mkdir(parents=True, exist_ok=True)
+            _prepare_output(final_path, [base_video, subtitle_path])
             result = run_command(args, timeout=config.runtime.stage_timeout_sec)
             log = (result.stderr or "") + "\n" + (result.stdout or "")
             font_lines = [line for line in log.splitlines() if any(marker in line.lower() for marker in (
@@ -428,7 +547,7 @@ def _finalize(
             ))]
             missing = [line for line in font_lines if re.search(r"failed to find.*glyph|fontselect:.*failed|no usable font", line, re.I)]
             report_path = final_path.with_suffix(".fonts.json")
-            write_json(report_path, {"requested_family": config.render.subtitle_font,
+            _write_new_json(report_path, {"requested_family": config.render.subtitle_font,
                        "resolved_family": family, "font_file": font_file,
                        "fonts_dir": config.render.subtitle_fonts_dir,
                        "font_file_sha256": content_fingerprint(font_file) if font_file else None,
@@ -443,19 +562,23 @@ def _finalize(
                 )
         return "applied"
     else:
-        args.extend(["-af", audio_filter, "-c:v", "copy"])
+        # Concat-copy can retain AAC/container offsets between video packets.
+        # Normalize the final frame grid even when captions are not burned in;
+        # stream-copy would preserve irregular PTS and fail the configured FPS QC.
+        args.extend(["-vf", f"fps={config.render.fps}", "-af", audio_filter,
+                     *_video_encode_args(config)])
     args.extend([*_audio_encode_args(config), "-movflags", "+faststart", final_path])
-    final_path.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(final_path, [base_video, subtitle_path])
     run_command(args, timeout=config.runtime.stage_timeout_sec)
     return burn_status
 
 
 def _make_preview(final_path: Path, preview_path: Path, config: AppConfig) -> None:
-    preview_path.parent.mkdir(parents=True, exist_ok=True)
+    _prepare_output(preview_path, [final_path])
     run_command(
         [
             "ffmpeg",
-            "-y",
+            "-n",
             "-v",
             "error",
             "-i",
@@ -521,23 +644,51 @@ def render_storyboard(
     config: AppConfig,
     work_dir: Path,
 ) -> Storyboard:
+    # Validate again at the write boundary: Pydantic objects can be mutated by
+    # callers after construction. Work on a copy so a failed attempt cannot
+    # publish partial status or replace the caller's last valid output record.
+    storyboard = Storyboard.model_validate(storyboard.model_dump(mode="json"))
+    if not storyboard.segments:
+        raise ValueError("Cannot render an empty storyboard")
+    protected = [Path(source.path) for source in storyboard.sources]
+    protected.extend(Path(segment.audio_file) for segment in storyboard.segments if segment.audio_file)
+    attempt = _RenderAttempt(Path(work_dir), protected)
+    token = _render_attempt.set(attempt)
+    try:
+        result = _render_storyboard_in_attempt(storyboard, config, attempt)
+        result.output["render_attempt_id"] = attempt.attempt_id
+        result.output["artifact_schema"] = "film-render-artifact/2"
+        return result
+    finally:
+        _render_attempt.reset(token)
+
+
+def _render_storyboard_in_attempt(
+    storyboard: Storyboard, config: AppConfig, attempt: _RenderAttempt,
+) -> Storyboard:
+    work_dir = attempt.root
     source_map = _source_map(storyboard)
     segment_dir = work_dir / "clips" / "rendered"
     render_jobs: list[tuple[int, StoryboardSegment, Path]] = []
     for index, segment in enumerate(storyboard.segments, start=1):
-        output = segment_dir / f"{index:04d}_{safe_slug(segment.segment_id)}.mp4"
+        output = segment_dir / f"{index:04d}_{_segment_key(segment, config)}.mp4"
         render_jobs.append((index, segment, output))
 
     def render_one(job: tuple[int, StoryboardSegment, Path]) -> tuple[int, Path]:
         index, segment, output = job
-        if segment.mode == "voiceover":
-            _render_voiceover_segment(segment, source_map, output, work_dir, config)
-        else:
-            _render_original_segment(segment, source_map, output, config)
-        segment.status = "rendered"
-        segment.rendered_file = str(output)
-        segment.rendered_duration_sec = media_duration(output)
-        return index, output
+        # Worker threads do not automatically inherit ContextVar bindings.
+        token = _render_attempt.set(attempt)
+        try:
+            if segment.mode == "voiceover":
+                _render_voiceover_segment(segment, source_map, output, work_dir, config)
+            else:
+                _render_original_segment(segment, source_map, output, config)
+            segment.status = "rendered"
+            segment.rendered_file = str(output)
+            segment.rendered_duration_sec = media_duration(output)
+            return index, output
+        finally:
+            _render_attempt.reset(token)
 
     rendered: dict[int, Path] = {}
     workers = max(1, min(config.runtime.max_parallel_ffmpeg, len(render_jobs) or 1))
@@ -556,13 +707,18 @@ def render_storyboard(
     base_video = work_dir / "output" / "base_no_subtitles.mp4"
     _concat_copy(segment_paths, base_video, config)
     cues = build_cues(storyboard, config)
-    srt_path = write_srt(cues, work_dir / "subtitles" / "master.srt")
+    srt_path = work_dir / "subtitles" / "master.srt"
+    _prepare_output(srt_path)
+    with tempfile.TemporaryDirectory(prefix=".captions-", dir=srt_path.parent) as temporary:
+        generated = write_srt(cues, Path(temporary) / "master.srt")
+        _prepare_output(srt_path)
+        os.link(generated, srt_path, follow_symlinks=False)
     final_path = work_dir / "output" / "final.mp4"
     burn_status = _finalize(base_video, srt_path, final_path, config, subtitles_expected=bool(cues))
     preview_path = work_dir / "output" / "preview.mp4"
     _make_preview(final_path, preview_path, config)
     edl_path = work_dir / "output" / "edit_decision_list.json"
-    write_json(edl_path, build_edl(storyboard))
+    _write_new_json(edl_path, build_edl(storyboard))
     review_file = storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json"))
     storyboard.output = {
         "base_video": str(base_video),

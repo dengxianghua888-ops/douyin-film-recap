@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import re
+import unicodedata
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class ArtifactModel(BaseModel):
@@ -34,6 +36,8 @@ class SourceInfo(ArtifactModel):
     source_id: str
     path: str
     fingerprint: str
+    identity_schema: Literal["sha256-full/2"] = "sha256-full/2"
+    size_bytes: int | None = Field(default=None, ge=0)
     filename: str
     duration: float = Field(gt=0)
     width: int = Field(gt=0)
@@ -45,7 +49,7 @@ class SourceInfo(ArtifactModel):
 
 
 class SourceManifest(ArtifactModel):
-    schema_version: int = 1
+    schema_version: Literal[2] = 2
     created_at: str = Field(default_factory=ArtifactModel.now_iso)
     sources: list[SourceInfo]
     rights_confirmed: bool = False
@@ -383,6 +387,16 @@ class OriginalCue(TimeSpan):
     words: list[TranscriptWord] = Field(default_factory=list)
 
 
+def validate_segment_id(value: str) -> str:
+    """IDs are user-facing references, never filesystem paths."""
+    if (not value.strip() or len(value) > 128 or value in {".", ".."}
+            or any(character in value for character in ("/", "\\"))
+            or re.match(r"^[A-Za-z]:", value)
+            or any(unicodedata.category(character).startswith("C") for character in value)):
+        raise ValueError("segment_id must be a nonempty display ID of at most 128 characters, without paths or controls")
+    return value
+
+
 class StoryboardSegment(ArtifactModel):
     segment_id: str
     beat_id: str
@@ -422,6 +436,8 @@ class StoryboardSegment(ArtifactModel):
     notes: str
     status: Literal["planned", "audio_ready", "rendered", "failed"] = "planned"
 
+    _safe_display_id = field_validator("segment_id")(validate_segment_id)
+
 
 class Storyboard(ArtifactModel):
     schema_version: int = 1
@@ -432,6 +448,13 @@ class Storyboard(ArtifactModel):
     target_duration_sec: float
     segments: list[StoryboardSegment]
     output: dict[str, Any] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def unique_segment_ids(self) -> "Storyboard":
+        identifiers = [validate_segment_id(segment.segment_id) for segment in self.segments]
+        if len(set(identifiers)) != len(identifiers):
+            raise ValueError("Storyboard segment_id values must be unique")
+        return self
 
 
 class QCLocation(ArtifactModel):
@@ -478,7 +501,7 @@ class StageRecord(ArtifactModel):
 
 
 class PipelineState(ArtifactModel):
-    schema_version: int = 1
+    schema_version: Literal[2] = 2
     project_name: str
     created_at: str = Field(default_factory=ArtifactModel.now_iso)
     updated_at: str = Field(default_factory=ArtifactModel.now_iso)

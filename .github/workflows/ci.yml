@@ -17,6 +17,30 @@ jobs:
           python-version: "3.12"
       - name: Check library structure
         run: python scripts/verify_library.py structure
+  runtime-and-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install local media tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-cjk
+      - name: Install test dependencies
+        run: python -m pip install pytest==8.4.2 numpy==2.3.5 Pillow==12.3.0 ruff==0.16.8
+      - name: Runtime and independent package regressions
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python -m pytest -q tests/runtime tests/packaging --junitxml="${RUNNER_TEMP}/runtime-packaging-junit.xml"
+      - name: Preserve runtime and packaging JUnit after failures
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: runtime-packaging-junit-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/runtime-packaging-junit.xml
+          if-no-files-found: warn
+      - name: Check fatal Python errors in shared runtime and packaging
+        run: python -m ruff check runtime scripts tests --select F821,F822,F823,E9
   test:
     runs-on: ubuntu-latest
     defaults:
@@ -36,6 +60,13 @@ jobs:
       - name: Validate skill
         run: python scripts/validate_skill.py
       - name: Test
-        run: pytest -q
+        run: pytest -q --junitxml="${RUNNER_TEMP}/film-junit.xml"
+      - name: Preserve film migration and send-guard JUnit after failures
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: film-junit-attempt-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/film-junit.xml
+          if-no-files-found: warn
       - name: Check fatal Python errors
         run: python -m ruff check src tests scripts --select F821,F822,F823,E9

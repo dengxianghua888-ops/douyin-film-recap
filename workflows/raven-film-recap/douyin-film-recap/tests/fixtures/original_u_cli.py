@@ -12,8 +12,6 @@ from .config import load_config
 from .doctor import run_doctor
 from .pipeline import FilmRecapPipeline, StageBlocked
 from .state import STAGES
-from .workspace import preflight
-from .send_guard import reconcile
 
 app = typer.Typer(
     name="douyin-film-recap",
@@ -71,11 +69,6 @@ def run_pipeline(
         str | None,
         typer.Option("--from-stage", help="从指定阶段强制重算"),
     ] = None,
-    migrate_legacy: Annotated[bool, typer.Option("--migrate-legacy", help="保全旧字节后迁移 Schema 1")] = False,
-    recovery_bundle: Annotated[Path | None, typer.Option("--recovery-bundle", help="已独立验证的只读 B 包目录")] = None,
-    recovery_bundle_sha256: Annotated[str | None, typer.Option("--recovery-bundle-sha256", help="固定 B 包 manifest SHA256")] = None,
-    allow_remote: Annotated[bool, typer.Option("--allow-remote", help="授权本次选定阶段产生新的模型/TTS请求")] = False,
-    max_remote_requests: Annotated[int | None, typer.Option("--max-remote-requests", min=0, help="本次本地新发请求上限；不代表服务计费封顶")] = None,
 ) -> None:
     """执行完整或分阶段的影视解说生产管线。"""
     if until and until not in STAGES:
@@ -87,18 +80,14 @@ def run_pipeline(
         )
         raise typer.Exit(code=2)
     try:
-        preflight(work_dir, allow_legacy=migrate_legacy)
         app_config = load_config(config)
         pipeline = FilmRecapPipeline(
             input_path=input_path,
             work_dir=work_dir,
             config=app_config,
             on_update=lambda message: console.print(f"[cyan]{message}[/cyan]"),
-            migrate_legacy=migrate_legacy, recovery_bundle=recovery_bundle,
-            recovery_bundle_sha256=recovery_bundle_sha256,
         )
-        result = pipeline.run(until=until, from_stage=from_stage,
-                              allow_remote=allow_remote, max_remote_requests=max_remote_requests)
+        result = pipeline.run(until=until, from_stage=from_stage)
         console.print(f"\n[bold green]完成[/bold green]：{result}")
     except StageBlocked as exc:
         console.print(f"\n[bold red]{exc.stage} 被质量门禁阻断[/bold red]")
@@ -116,12 +105,7 @@ def status(
     work_dir: Annotated[Path, typer.Argument(help="项目工作目录")],
 ) -> None:
     """查看断点续跑状态。"""
-    try:
-        _, active = preflight(work_dir, allow_legacy=True)
-    except (ValueError, OSError) as exc:
-        console.print(f"[red]状态读取被拒绝：{exc}[/red]")
-        raise typer.Exit(code=2) from exc
-    state_path = active / "state.json"
+    state_path = work_dir.expanduser().resolve() / "state.json"
     if not state_path.exists():
         console.print(f"[red]未找到状态文件：{state_path}[/red]")
         raise typer.Exit(code=1)
@@ -149,22 +133,6 @@ def status(
             str(error.get("message") or ""),
         )
     console.print(table)
-
-
-@app.command("reconcile-send")
-def reconcile_send(
-    work_dir: Annotated[Path, typer.Argument(help="原任务根目录")],
-    intent: Annotated[str, typer.Option("--intent", help="UNKNOWN 请求的 intent SHA")],
-    evidence: Annotated[str, typer.Option("--confirmed-not-submitted", help="人工确认服务未接收的证据；不能仅凭本地超时断言")],
-) -> None:
-    """记录人工核对结果；下次实际重发仍须 --allow-remote。"""
-    try:
-        root, _ = preflight(work_dir)
-        result = reconcile(root, intent, evidence)
-        console.print(json.dumps(result, ensure_ascii=False))
-    except (ValueError, OSError) as exc:
-        console.print(f"[red]核对失败：{exc}[/red]")
-        raise typer.Exit(code=2) from exc
 
 
 @app.command("stages")

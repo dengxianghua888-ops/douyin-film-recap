@@ -26,7 +26,7 @@ python3 runtime/editing_runtime.py run --request /absolute/request.json --work-d
 | media-inspect | source | 媒体规格、时长、流信息、源哈希 |
 | frame-extract | source, times: 秒数数组 | 指定时间处解码帧 PNG；不是内容挑帧 |
 | audio-extract | source, start, end, sample_rate, channels | PCM WAV；无音频明确返回 NO_AUDIO |
-| timeline-render | plan, audio_backend（可选） | normalized-plan.json、preview.mp4；仅按给定顺序拼接 |
+| timeline-render | plan, audio_backend、source_consumption（可选） | normalized-plan.json、source-binding.json、preview.mp4；仅按给定顺序拼接 |
 | caption-map | plan, cues, boundary_policy | 原文不变的输出时间字幕 JSON/SRT |
 | timeline-patch | plan, expected_revision, allowed_clip_ids, changes | 新计划版本、修改/未改片段、失效项 |
 | media-qc | source, expected | 技术检查 JSON；不代替内容、观看与听检 |
@@ -45,7 +45,7 @@ python3 runtime/editing_runtime.py run --request /absolute/request.json --work-d
 | model-text | action、store 及文本调用字段 | 宿主配置的 HTTPS 文本/function Provider、冻结请求、单次发送与费用账本，见 [生成合同](generation-task-contract.md) |
 | model-text-deepseek | action, store 及文本调用字段 | DeepSeek 文本/function 单次请求与账单登记，见 [生成合同](generation-task-contract.md)；不生成图片/视频 |
 | timeline-revise | base_version, document, expected_document_sha256, candidate, scope | 明确候选的范围校验、差异与失效项，不自动应用 |
-| work-render | store, expected_version | 同一版本的片段/音轨/字幕渲染与输出绑定 |
+| work-render | store, expected_version、source_consumption（可选） | 同一版本的片段/音轨/字幕渲染与输出绑定 |
 | sync-offset-measure | method, reference, follower, max_spread_seconds, min_span_seconds 及方法字段 | 多窗口/标记偏移测量，不自动应用，见 [多机位合同](multicam-contract.md) |
 | multicam-plan-compile | master, expected_revision, output, segments, allow_reorder, allow_session_reuse | 明确机位/节目声映射为 WorkDocument，见多机位合同 |
 | evidence-plan-compile | document, expected_document_sha256, units, occurrences, required_units, chapters | 声画证据、显式依赖与实际章节时间映射，见 [证据合同](evidence-contract.md)；不判断重要性或决议真伪 |
@@ -114,6 +114,22 @@ source_time_precision=SAMPLE_RESOLVING继续按原样本观察；stream-v5对COA
 stage_timeout_seconds为1–7200的显式每阶段上限，原值保留；没有提供时，以输出时长自动取max(300,min(7200,ceil(2×duration)))。源PCM物化、DSP、目标矩阵、最终编码及全帧计数使用同预算并留证；独立流/时窗metadata探测仍按原有限探测预算。不是整任务总时限或资金预算，显式小预算不能被自动放大。可捕获取消/超时终止本次拥有的子进程组并保存诊断，Work子取消传播到父；强制杀宿主/断电不承诺终态。
 
 历史证据快照（当时范围）：真实压力证据仅为已有32×32合成静音双声道1670秒主片段在0.5x下完整输出3340秒/100200帧，helper峰值RSS约9.1MB只适用于此例；另有非零短例和混合70帧。当时尚无六组合、任意复杂声音、长片听检、跨平台安装、宿主或发行验证。Work/batch记录请求及实际子回执/helper身份；当前作品文档和历史不写入后端参数。RUNNING恢复的本轮测试是隔离SQLite受控回拨＋实际完整回执读回，不能冒称真实崩溃恢复。 后续[六格技术接收](../docs/evidence-scope.md)与[30fps长Work接收](../docs/evidence-scope.md)已限范围补证；现行范围以[CURRENT_STATUS](../docs/evidence-scope.md)顶部为准，完整声音／听检／安装／宿主／发行仍须另验。
+
+## 原媒体消费绑定 v1
+
+`timeline-render`、`work-render`（包括候选预览）及 `work-batch-render.prepare.jobs[]` 可提供同一个可选字段：
+
+```json
+{"source_consumption":{"schema":"source-consumption/1","mode":"snapshot","prepare_timeout_seconds":300,"reserve_bytes":67108864}}
+```
+
+`schema` 和 `mode` 必填；仅支持 `boundary`、`snapshot`，不支持的显式值拒绝。省略整个字段等价于 `boundary`。准备／每次完整复核的超时为 1–7200 秒整数，默认 300；`reserve_bytes` 为至少 1 MiB 的整数，默认 64 MiB，是调用方为输出等留下的磁盘余量，不是成片大小保证或整任务磁盘硬上限。快照前对按来源路径去重的总字节加余量预检空间。逐块读取内存有界，可捕获取消；准备失败不启动渲染，失败诊断保留。
+
+两种模式都在素材探测／时钟观察／媒体消费前后完整复核原媒体；来源内容或路径绑定变化必须失败，失败文件保留为诊断，不能自动采用。`boundary` 的前后哈希不能识别期间 A→B→A 并恢复的全部变化。`snapshot` 在本次新工作目录生成普通独立副本，复制与目标重读均核完整 SHA，采用独占创建和只读文件／目录；探测、时钟与实际渲染共同消费副本。副本不用源文件硬链接，原计划的逻辑路径、SHA、剪辑参数与作品版本不变。副本被改或原媒体在消费中变化仍失败。任务拥有的目录与只读权限不能抵抗同权限恶意进程，本模式不宣称宿主安全隔离或任意竞态免疫，不授予来源声学精度或内容通过。
+
+`source-binding.json` 使用 `source-consumption-receipt/1`，记录选择、原逻辑路径／SHA、执行路径、边界观察与 `VERIFIED`／`FAILED`；`adoptable` 只表示该来源检查通过，是采用的必要条件，不是作品采用授权。成功结果引用其路径和 SHA；失败操作不发布成功结果。重复 clip 共享同一来源副本。Work 将主轨、显式附加音轨、视觉层和字幕字体纳入同一消费范围，在开始渲染验证前准备；当前作品和候选预览沿用相同规则。
+
+Work 最终 `render-binding.json` 保留原选择请求与请求摘要、实际消费选择和子回执摘要。批次清单透传原字段，恢复时核实际选择、来源绑定、子回执与源文件当前身份；来源漂移或快照缺失使历史产物不能被当作有效缓存。此策略不改 WorkDocument，也不绕过技术／内容 QC 或当前版本采用要求。
 
 ## 普通播放的 Vorbis 块时钟
 

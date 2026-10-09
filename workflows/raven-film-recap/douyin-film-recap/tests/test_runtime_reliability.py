@@ -52,8 +52,12 @@ def test_sidecar_add_modify_delete_invalidates_input(tmp_path, app_config, monke
     p = pipeline(tmp_path, app_config, monkeypatch)
     previous = p.state.input_fingerprint
     sidecar = tmp_path / 'source.srt'
+    prior = p.work_dir / '01_transcript.json'
+    prior.write_text('{}')
     for operation in ('add', 'modify', 'delete'):
-        p.store.pass_stage(p.state, 'transcript', artifact='old')
+        prior = p.work_dir / '01_transcript.json'
+        prior.write_text('{}')
+        p.store.pass_stage(p.state, 'transcript', artifact=str(prior))
         if operation == 'delete':
             sidecar.unlink()
         else:
@@ -168,7 +172,7 @@ def test_tts_resume_reuses_completed_segment_and_retries_failure(tmp_path, app_c
     sb = board(tmp_path, [voiceover('first'), voiceover('second')])
     calls = []
     fail = {'enabled': True}
-    def synth(*, text, output_path, config):
+    def synth(*, text, output_path, config, intent_key=None):
         calls.append(str(output_path))
         if output_path.name.startswith('second') and fail['enabled']:
             raise RuntimeError('interrupted provider')
@@ -204,6 +208,8 @@ def test_receipts_survive_full_stage_cycle_and_revalidate_changed_video(tmp_path
             executed.append(stage)
             if stage == 'ingest':
                 write_json(p.paths['manifest'], SourceManifest(sources=sb.sources,config_fingerprint='f'))
+            elif stage == 'transcript':
+                write_json(p.paths['transcript'], TranscriptDocument(provider='fixture', segments=[], source_fingerprints={'src':'fixture'}))
             elif stage == 'scenes':
                 write_json(p.paths['scene_index'], {'units':[], 'source_fingerprints':{}, 'detector':'fixture'})
             elif stage == 'story':

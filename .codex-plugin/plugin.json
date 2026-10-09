@@ -1,15 +1,15 @@
 {
   "name": "editing-skill-library",
   "version": "0.1.0",
-  "description": "供 AI Agent 使用的通用视频剪辑技能库，覆盖素材分析、剪辑构思与局部修改。",
+  "description": "实验性源码预览：供 AI Agent 使用的通用视频剪辑工作流与可选本地工具接口，客户端安装及完整作品链尚未验收。",
   "author": {
     "name": "Editing Skill Library Project"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "剪辑技能库",
-    "shortDescription": "让 Agent 按场景理解素材、制定剪辑方案并执行修改",
-    "longDescription": "覆盖口播、影视解说、教程、访谈与 Vlog 等场景。运行 Agent 选择剪辑工具和模型，可选用本地执行器与 MCP 桥接。",
+    "shortDescription": "实验性剪辑工作流与本地工具接口",
+    "longDescription": "提供口播、影视解说、教程、访谈与 Vlog 等工作流定义；运行 Agent 选择工具和模型。可选本地 stdio MCP 只列举技能、诊断依赖及执行明确的原子请求，不自动完成全部工作流。客户端安装、编辑器兼容与完整作品修改链尚未验收；依赖限制见 docs/local-setup.md。",
     "developerName": "剪辑技能库项目",
     "category": "Productivity",
     "capabilities": [

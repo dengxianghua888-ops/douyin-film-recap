@@ -23,7 +23,8 @@ from .models import (
 from .utils import (
     clamp,
     discover_videos,
-    file_fingerprint,
+    content_identity,
+    SourceChangedDuringRead,
     overlap_seconds,
     run_command,
     safe_slug,
@@ -152,6 +153,7 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
     subtitle_cache = work_dir / "subtitles" / "source"
     sources: list[SourceInfo] = []
     for order, video in enumerate(videos):
+        identity = content_identity(video)
         probe = ffprobe_json(video)
         streams = probe.get("streams", [])
         video_stream = next(
@@ -172,11 +174,15 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
         sidecar = find_sidecar_subtitle(video) if config.asr.prefer_sidecar_subtitle else None
         if sidecar is None and config.asr.prefer_embedded_subtitle:
             sidecar = extract_embedded_subtitle(video, subtitle_cache)
+        if content_identity(video) != identity:
+            raise SourceChangedDuringRead("Source changed while building the media manifest")
         sources.append(
             SourceInfo(
                 source_id=f"src_{order + 1:03d}",
                 path=str(video),
-                fingerprint=file_fingerprint(video),
+                fingerprint=identity["sha256"],
+                identity_schema=identity["schema"],
+                size_bytes=identity["bytes"],
                 filename=video.name,
                 duration=duration,
                 width=int(video_stream.get("width") or 0),

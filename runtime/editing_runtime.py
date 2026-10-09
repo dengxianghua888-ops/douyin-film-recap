@@ -119,7 +119,17 @@ def owned_process(command, timeout=300, cwd=None):
 
 
 def exec_tool(command, timeout=300, cwd=None):
-    result = owned_process(command, timeout=timeout, cwd=cwd)
+    from source_binding import ACTIVE_BINDING
+    binding = ACTIVE_BINDING.get()
+    touched = []
+    if binding is not None:
+        command, touched = binding.command(command)
+        binding.observe('before-tool-consumption', touched)
+    try:
+        result = owned_process(command, timeout=timeout, cwd=cwd)
+    finally:
+        if binding is not None:
+            binding.observe('after-tool-consumption', touched)
     directory = RUN_DIRECTORY.get()
     if directory is not None and (result.termination_reason is not None or result.returncode != 0):
         sequence = TOOL_DIAGNOSTIC_SEQUENCE.get() + 1
@@ -660,7 +670,20 @@ def prepare_rubberband_audio(clip, media, directory, tools, helper, index, fps, 
     return target, 2, evidence
 
 
-def render(plan, directory, tools, audio_backend=None):
+def render(plan, directory, tools, audio_backend=None, source_consumption=None):
+    from source_binding import consumption_session
+    require(isinstance(plan, dict) and isinstance(plan.get('sources'), dict), 'SOURCES_REQUIRED')
+    with consumption_session(list(plan['sources'].values()), source_consumption, directory, tools) as (_, bound_tools):
+        result = _render_bound(plan, directory, bound_tools, audio_backend)
+    binding_path = directory / 'source-binding.json'
+    evidence = json.loads(binding_path.read_text())
+    result['source_consumption'] = {'schema': evidence['schema'], 'selection': evidence['selection'],
+                                    'status': evidence['status'], 'adoptable': evidence['adoptable'],
+                                    'binding': {'path': str(binding_path), 'sha256': sha256(binding_path)}}
+    return result
+
+
+def _render_bound(plan, directory, tools, audio_backend=None):
     normalized = normalize_plan(plan, tools)
     need_dsp = any(Fraction(c['speed']) != 1 and 'selected_audio_clock' in c and
                    audio_intersection(c['selected_audio_clock'], c['start'], c['effective_source_end'], playback=True)
@@ -958,7 +981,8 @@ def caption_burn(request, directory, tools):
     require(isinstance(request['cues'],list) and request['cues'],'CUES_REQUIRED')
     (directory/'fonts').mkdir()
     suffix=Path(font['path']).suffix.lower(); require(suffix in ['.ttf','.otf','.ttc'],'FONT_FORMAT_UNSUPPORTED')
-    shutil.copyfile(font['path'],directory/'fonts'/('specified'+suffix))
+    from source_binding import execution_path
+    shutil.copyfile(execution_path(font['path']),directory/'fonts'/('specified'+suffix))
     ass='[Script Info]\nScriptType: v4.00+\nPlayResX: '+str(video['width'])+'\nPlayResY: '+str(video['height'])+'\nWrapStyle: 0\n'
     ass+='[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n'
     ass+=f'Style: Default,{family},{size},&H00{rgb[4:6]}{rgb[2:4]}{rgb[0:2]},&H00000000,1,1,0,2,20,20,{margin},1\n'
@@ -1111,8 +1135,8 @@ def execute(request, directory, tools):
                 'selected_audio_clock': audio_clock, 'samples': samples,
                 'source_audio_evidence': 'NOT_GRANTED_BY_EXTRACTION'}
     if op == 'timeline-render':
-        exact_keys(request, ['operation', 'plan', 'audio_backend'], ['operation', 'plan'])
-        return render(request['plan'], directory, tools, request.get('audio_backend'))
+        exact_keys(request, ['operation', 'plan', 'audio_backend', 'source_consumption'], ['operation', 'plan'])
+        return render(request['plan'], directory, tools, request.get('audio_backend'), request.get('source_consumption'))
     if op == 'caption-map':
         return map_captions(request, directory, tools)
     if op == 'timeline-patch':

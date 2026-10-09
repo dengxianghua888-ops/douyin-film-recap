@@ -2,6 +2,8 @@
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?v=cba82ac0fa1d95c3c8c2b6d37a6390ec)](https://m8ven.ai/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?s=readme)
 
+> **实验性源码预览，不是稳定发行或完整剪辑产品。** 工作流与工具接口的存在不代表场景效果、客户端安装或完整作品修改链已验收。当前内部记录为 46/112 项出口、0/7 全局门槛；这是历史证据统计，不是代码完成率，完整原始证据未随包公开。使用前请阅读[开发状态](docs/development-status.md)与[本地接入限制](docs/local-setup.md)。
+
 **给 AI Agent 一套从素材理解、剪辑构思到局部修改的视频剪辑方法。**
 
 剪辑技能库是一套供 AI Agent 使用的视频剪辑工作流与工具接口。它把口播、影视解说、教程、访谈、Vlog 等场景中的剪辑方法整理成可复用的 Skill，帮助 Agent 分析素材、选择片段、安排叙事、处理字幕与声音，并调用可用工具完成制作。
@@ -87,7 +89,9 @@ cd douyin-film-recap
 python3 scripts/install_doctor.py --root "$PWD"
 ```
 
-诊断会列出当前机器的依赖情况。需要 MCP 接入时，本地服务提供技能列举、依赖诊断与操作执行接口；媒体工具、字体及模型按实际任务配置。
+诊断会列出当前机器的依赖情况。本地 stdio MCP 仅提供 `list_skills`（静态列举）、`diagnose_installation`（依赖诊断）与 `run_operation`（明确请求的单次原子操作），不自动编排完整剪辑任务。`.mcp.json` 与 Codex 插件定义尚未完成客户端安装验收；不承诺 ChatCut、剪映或其他编辑器全链兼容。
+
+有声变速默认依赖未分发且绑定固定身份的 Rubber Band helper，当前源码预览无法直接运行该默认路径。显式选择 `audio_backend.kind="ffmpeg-atempo"` 是另一后端，不继承严格音频证据。读取 Skill、列举与路由不要求 DeepSeek API Key；联网 Provider 的凭据与费用只在选择对应分支时需要。
 
 ## 它如何工作
 

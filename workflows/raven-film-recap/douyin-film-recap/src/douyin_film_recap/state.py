@@ -3,9 +3,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
+import uuid
 
 from .models import PipelineState, StageRecord
 from .utils import read_json, write_json
+from .workspace import WorkspaceError, atomic, preflight, work_lock
 
 
 STAGES = [
@@ -42,9 +44,20 @@ class StateStore:
         config_fingerprint: str,
         input_fingerprint: str | None = None,
     ) -> PipelineState:
+        root, active = preflight(self.work_dir)
+        if active != self.work_dir.resolve():
+            raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+        with work_lock(root):
+            return self._load_or_create(project_name=project_name, input_paths=input_paths,
+                config_fingerprint=config_fingerprint, input_fingerprint=input_fingerprint)
+
+    def _load_or_create(self, *, project_name, input_paths, config_fingerprint, input_fingerprint):
         self.work_dir.mkdir(parents=True, exist_ok=True)
         if self.path.exists():
-            return PipelineState.model_validate(read_json(self.path))
+            state = PipelineState.model_validate(read_json(self.path))
+            for stage in STAGES:
+                state.stages.setdefault(stage, StageRecord())
+            return state
         state = PipelineState(
             project_name=project_name,
             input_paths=input_paths,
@@ -56,8 +69,15 @@ class StateStore:
         return state
 
     def save(self, state: PipelineState) -> None:
-        state.updated_at = utc_now()
-        write_json(self.path, state)
+        root, active = preflight(self.work_dir)
+        if active != self.work_dir.resolve():
+            raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+        with work_lock(root):
+            _, active = preflight(root)
+            if active != self.work_dir.resolve():
+                raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+            state.updated_at = utc_now()
+            write_json(self.path, state)
 
     def start(self, state: PipelineState, stage: str) -> None:
         record = state.stages[stage]
@@ -97,6 +117,19 @@ class StateStore:
         self.save(state)
 
     def fail(self, state: PipelineState, stage: str, error: Exception) -> None:
+        root, active = preflight(self.work_dir)
+        if active != self.work_dir.resolve():
+            raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+        with work_lock(root):
+            atomic(self.work_dir / ".receipts/failures" / f"{stage}-{uuid.uuid4().hex}.json", {
+                "schema": "film-stage-failure/1", "stage": stage, "at": utc_now(),
+                "input_fingerprint": state.input_fingerprint,
+                "config_fingerprint": state.config_fingerprint,
+                "error": {"code": type(error).__name__, "message": str(error)},
+            })
+            self._fail(state, stage, error)
+
+    def _fail(self, state: PipelineState, stage: str, error: Exception) -> None:
         record = state.stages[stage]
         record.status = "failed"
         record.finished_at = utc_now()

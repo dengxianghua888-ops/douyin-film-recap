@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import shutil
+import os
+import uuid
+from urllib.parse import urlsplit
 from pathlib import Path
 from typing import Callable
 
@@ -29,11 +32,13 @@ from .providers import OpenAICompatibleClient
 from .qc import post_render_qc, preflight_qc
 from .render import render_storyboard
 from .state import STAGES, StateStore
+from .send_guard import send_session
+from .workspace import WorkspaceError, atomic, preflight, prepare, read, work_lock
 from .tts import synthesize_storyboard
 from .utils import (
     content_fingerprint,
+    content_identity,
     discover_videos,
-    file_fingerprint,
     fingerprint_json,
     read_json,
     safe_slug,
@@ -48,7 +53,7 @@ class StageBlocked(RuntimeError):
         self.report = report
 
 
-PIPELINE_REVISION = "0.2.0-receipts-1"
+PIPELINE_REVISION = "0.3.0-workspace-2-cfr-1"
 
 
 class FilmRecapPipeline:
@@ -59,55 +64,96 @@ class FilmRecapPipeline:
         work_dir: str | Path,
         config: AppConfig,
         on_update: Callable[[str], None] | None = None,
+        migrate_legacy: bool = False,
+        recovery_bundle: str | Path | None = None,
+        recovery_bundle_sha256: str | None = None,
     ):
+        self.task_root, _ = preflight(work_dir, allow_legacy=migrate_legacy)
         self.input_path = Path(input_path).expanduser().resolve()
-        self.work_dir = Path(work_dir).expanduser().resolve()
+        self.work_dir = self.task_root
         if self.input_path.is_dir() and self.work_dir.is_relative_to(self.input_path):
             raise ValueError("work_dir must be outside the input media directory to prevent importing generated videos")
         if self.input_path.is_relative_to(self.work_dir):
             raise ValueError("Input media must be outside work_dir to protect source files from generated outputs")
-        self.config = config
+        self.config = config.model_copy(deep=True)
+        config = self.config  # All constructor bindings use the same frozen copy.
+        self._config_fingerprint = self.config.fingerprint()
+        self._endpoint = self._resolved_endpoint()
         self.on_update = on_update or (lambda _: None)
-        self.work_dir.mkdir(parents=True, exist_ok=True)
         self.project_name = safe_slug(
             self.input_path.stem if self.input_path.is_file() else self.input_path.name
         )
-        self.client = OpenAICompatibleClient(config.models)
-        self.store = StateStore(self.work_dir)
+        self._client = None
         current_inputs = discover_videos(self.input_path)
-        input_fingerprint = fingerprint_json(
-            [self._source_input_identity(path) for path in current_inputs]
-        )
+        identities = [self._source_input_identity(path) for path in current_inputs]
+        input_fingerprint = fingerprint_json(identities)
         context_fingerprint = None
         if config.story.allow_external_context and config.project.context_file:
             context_path = Path(config.project.context_file).expanduser()
             if context_path.exists():
-                context_fingerprint = file_fingerprint(context_path)
+                context_fingerprint = content_identity(context_path)
         runtime_fingerprint = fingerprint_json(
             {
                 "config": config.fingerprint(),
                 "pipeline_revision": PIPELINE_REVISION,
                 "context_fingerprint": context_fingerprint,
+                "remote_endpoint": self._endpoint,
             }
         )
-        state = self.store.load_or_create(
-            project_name=self.project_name,
-            input_paths=[str(self.input_path)],
-            input_fingerprint=input_fingerprint,
-            config_fingerprint=runtime_fingerprint,
+        self.binding = {"schema": "film-input-binding/2", "input_paths": [str(self.input_path)],
+                        "input_fingerprint": input_fingerprint,
+                        "config_fingerprint": runtime_fingerprint, "sources": identities,
+                        "context_identity": context_fingerprint}
+        self.remote_policy = {"endpoint": self._endpoint,
+            "models": [self.config.models.llm_model, self.config.models.vlm_model],
+            "edge_tts": {key: getattr(self.config.tts, key) for key in ("voice", "rate", "pitch", "volume")}}
+        self.task_root, self.work_dir, self.migration = prepare(
+            self.task_root, self.binding, allow_legacy=migrate_legacy,
+            recovery_bundle=recovery_bundle,
+            recovery_bundle_sha256=recovery_bundle_sha256,
         )
-        if (
-            state.input_paths != [str(self.input_path)]
-            or state.input_fingerprint != input_fingerprint
-            or state.config_fingerprint != runtime_fingerprint
-        ):
-            state.input_paths = [str(self.input_path)]
-            state.input_fingerprint = input_fingerprint
-            state.config_fingerprint = runtime_fingerprint
-            self.store.invalidate_from(state, "ingest")
-        self.state = state
-        if not self.config.runtime.cache:
-            self.store.invalidate_from(self.state, "ingest")
+        self.store = StateStore(self.work_dir)
+        with work_lock(self.task_root):
+            _, active = preflight(self.task_root)
+            if active != self.work_dir:
+                raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+            self.state = self.store.load_or_create(
+                project_name=self.project_name,
+                input_paths=[str(self.input_path)],
+                input_fingerprint=input_fingerprint,
+                config_fingerprint=runtime_fingerprint,
+            )
+
+    @property
+    def client(self):
+        if self._client is None:
+            self._client = OpenAICompatibleClient(self.config.models)
+        return self._client
+
+    @client.setter
+    def client(self, value):
+        self._client = value
+
+    def _assert_bound_sources(self):
+        if self.config.fingerprint() != self._config_fingerprint or self._resolved_endpoint() != self._endpoint:
+            raise WorkspaceError("CONFIG_OR_ENDPOINT_BINDING_CHANGED")
+        current = fingerprint_json([self._source_input_identity(p) for p in discover_videos(self.input_path)])
+        if current != self.binding["input_fingerprint"]:
+            raise WorkspaceError("SOURCE_BINDING_CHANGED: create a new generation before recomputing")
+        context = None
+        if self.config.story.allow_external_context and self.config.project.context_file:
+            path = Path(self.config.project.context_file).expanduser()
+            if path.exists():
+                context = content_identity(path)
+        if context != self.binding["context_identity"]:
+            raise WorkspaceError("CONTEXT_BINDING_CHANGED")
+
+    def _resolved_endpoint(self):
+        value = os.getenv(self.config.models.base_url_env, "").strip().rstrip("/")
+        parsed = urlsplit(value)
+        if parsed.username or parsed.password or parsed.query or parsed.fragment:
+            raise WorkspaceError("MODEL_ENDPOINT_MUST_NOT_CONTAIN_CREDENTIALS_OR_QUERY")
+        return value or None
 
     @property
     def paths(self) -> dict[str, Path]:
@@ -134,8 +180,8 @@ class FilmRecapPipeline:
     def _source_input_identity(self, path: Path) -> dict:
         subtitle = find_sidecar_subtitle(path) if self.config.asr.prefer_sidecar_subtitle else None
         return {
-            "path": str(path), "fingerprint": file_fingerprint(path),
-            "subtitle": {"path": str(subtitle), "fingerprint": content_fingerprint(subtitle)}
+            "path": str(path), "identity": content_identity(path),
+            "subtitle": {"path": str(subtitle), "identity": content_identity(subtitle)}
                         if subtitle else None,
         }
 
@@ -254,23 +300,82 @@ class FilmRecapPipeline:
                 record.input_fingerprint = input_fingerprint
         self.store.save(self.state)
 
-    def run(self, *, until: str | None = None, from_stage: str | None = None) -> Path:
+    def run(self, *, until: str | None = None, from_stage: str | None = None,
+            allow_remote: bool = False, max_remote_requests: int | None = None) -> Path:
         if until and until not in STAGES:
             raise ValueError(f"Unknown stage: {until}")
         if from_stage and from_stage not in STAGES:
             raise ValueError(f"Unknown stage: {from_stage}")
-        if from_stage:
-            self._adopt_manual_artifacts(from_stage)
-            self.store.invalidate_from(self.state, from_stage)
-        for stage in self.store.selected_stages(until):
-            if self.state.stages[stage].status == "passed" and self._artifact_exists(stage):
-                self._say(f"[cache] {stage}")
-                continue
-            # Rebuilding an upstream artifact invalidates every dependent receipt, including QC.
-            self.store.invalidate_from(self.state, stage)
-            self._run_stage(stage)
+        if max_remote_requests is not None and max_remote_requests < 0:
+            raise ValueError("max_remote_requests must be non-negative")
+        # Unknown versions are rejected before even creating the cooperating lock.
+        _, active = preflight(self.task_root)
+        with work_lock(self.task_root):
+            _, active = preflight(self.task_root)
+            if active != self.work_dir:
+                raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+            self._assert_bound_sources()
+            self.state = self.store.load_or_create(project_name=self.project_name,
+                input_paths=self.binding["input_paths"],
+                input_fingerprint=self.binding["input_fingerprint"],
+                config_fingerprint=self.binding["config_fingerprint"])
+            if (self.state.input_fingerprint != self.binding["input_fingerprint"] or
+                    self.state.config_fingerprint != self.binding["config_fingerprint"]):
+                raise WorkspaceError("STATE_BINDING_CHANGED")
+            if not self.config.runtime.cache:
+                self.store.invalidate_from(self.state, "ingest")
+            if from_stage:
+                self._adopt_manual_artifacts(from_stage)
+                self.store.invalidate_from(self.state, from_stage)
+            selected = list(self.store.selected_stages(until))
+            grant_path = self.task_root / ".remote-authorization.json"
+            grant = None
+            if allow_remote:
+                grant = {"schema": "film-remote-authorization/1", "id": uuid.uuid4().hex,
+                    "binding": self.binding, "remote_policy": self.remote_policy,
+                    "stages": selected, "max_requests": max_remote_requests,
+                    "request_limit_is_billing_cap": False}
+                atomic(grant_path, grant)
+            elif grant_path.is_file():
+                previous = read(grant_path)
+                if (previous.get("schema") == "film-remote-authorization/1"
+                        and previous.get("binding") == self.binding
+                        and previous.get("remote_policy") == self.remote_policy
+                        and set(selected) <= set(previous.get("stages", []))):
+                    grant = previous
+            atomic(self.work_dir / ".receipts" / "recompute-plan.json", {
+                "schema": "film-recompute-plan/1", "binding": self.binding,
+                "selected_stages": selected, "from_stage": from_stage,
+                "allow_remote": allow_remote, "max_remote_requests": max_remote_requests,
+                "existing_authorization_reused": bool(grant and not allow_remote),
+                "request_limit_is_billing_cap": False})
+            remaining = max_remote_requests
+            for stage in selected:
+                self._assert_bound_sources()
+                if self.state.stages[stage].status == "passed" and self._artifact_exists(stage):
+                    self._say(f"[cache] {stage}")
+                    continue
+                self.store.invalidate_from(self.state, stage)
+                try:
+                    self._prepare_stage(stage)
+                except Exception as exc:
+                    self.store.fail(self.state, stage, exc)
+                    raise
+                scope = {"binding": self.binding, "stage": stage,
+                         "stage_inputs": self._stage_inputs(stage), "remote_policy": self.remote_policy}
+                with send_session(self.task_root, scope, authorized=bool(grant),
+                                  max_requests=remaining, grant=grant) as sends:
+                    self._run_stage(stage)
+                if remaining is not None:
+                    remaining -= sends.sent
         return (self.paths["delivery"] if self.state.stages["delivery"].status == "passed"
                 and self.paths["delivery"].is_file() else self.work_dir)
+
+    def _prepare_stage(self, stage):
+        if stage == "pre_qc":
+            storyboard = self._storyboard()
+            self._attach_original_cues(storyboard)
+            write_json(self.paths["storyboard"], storyboard)
 
     def _run_stage(self, stage: str) -> None:
         handler = getattr(self, f"_stage_{stage}")
@@ -278,6 +383,7 @@ class FilmRecapPipeline:
         self.store.start(self.state, stage)
         try:
             artifact = handler()
+            self._assert_bound_sources()
             if stage in {"storyboard", "tts"}:
                 write_json(self._snapshot_path(stage), read_json(self.paths["storyboard"]))
             required = self._required_artifacts(stage, artifact)
@@ -428,8 +534,6 @@ class FilmRecapPipeline:
 
     def _stage_pre_qc(self) -> Path:
         storyboard = self._storyboard()
-        self._attach_original_cues(storyboard)
-        write_json(self.paths["storyboard"], storyboard)
         report = preflight_qc(
             manifest=self._manifest(),
             transcript=self._transcript(),
@@ -452,10 +556,8 @@ class FilmRecapPipeline:
         return final
 
     def _clear_render_outputs(self) -> None:
-        for relative in ["clips/rendered", "clips/visuals"]:
-            shutil.rmtree(self.work_dir / relative, ignore_errors=True)
-        for name in ["base_no_subtitles.mp4", "final.mp4", "preview.mp4"]:
-            (self.work_dir / "output" / name).unlink(missing_ok=True)
+        # Renderer allocates a fresh attempt; preserve successful and failed outputs.
+        return None
 
     def _stage_post_qc(self) -> Path:
         storyboard = self._storyboard()

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import base64
 import mimetypes
-import time
+import json
 from pathlib import Path
 from typing import Any, TypeVar
 
@@ -10,6 +10,7 @@ import httpx
 from pydantic import BaseModel
 
 from .config import ModelConfig
+from .send_guard import guarded_send
 from .utils import extract_json_object
 
 T = TypeVar("T", bound=BaseModel)
@@ -85,6 +86,7 @@ class OpenAICompatibleClient:
         temperature: float = 0.1,
         max_tokens: int | None = None,
         response_format: dict[str, Any] | None = None,
+        intent_key: str | None = None,
     ) -> str:
         model = self.config.vlm_model if vision else self.config.llm_model
         user_content: str | list[dict[str, Any]]
@@ -107,35 +109,35 @@ class OpenAICompatibleClient:
         if response_format is not None:
             payload["response_format"] = response_format
 
-        last_error: Exception | None = None
-        for attempt in range(1, self.config.max_retries + 1):
-            try:
+        for fallback in range(2):
+            def send():
                 with httpx.Client(timeout=self.timeout) as client:
                     response = client.post(
                         f"{self.base_url}/chat/completions",
                         headers=self.headers,
                         json=payload,
                     )
-                if response.status_code >= 400:
-                    # Many compatible endpoints do not implement response_format.
-                    if response.status_code in {400, 404, 422} and "response_format" in payload:
-                        payload.pop("response_format", None)
-                        continue
-                    raise ProviderError(
-                        f"Provider HTTP {response.status_code}: {response.text[:1000]}"
-                    )
-                data = response.json()
-                choices = data.get("choices") or []
-                if not choices:
-                    raise ProviderError(f"Provider response has no choices: {str(data)[:1000]}")
-                message = choices[0].get("message", {})
-                return self._message_text(message.get("content", ""))
-            except Exception as exc:  # pragma: no cover - retry paths network dependent
-                last_error = exc
-                if attempt >= self.config.max_retries:
-                    break
-                time.sleep(min(2 ** (attempt - 1), 8))
-        raise ProviderError(str(last_error) if last_error else "Unknown provider error")
+                return {"status_code": response.status_code, "text": response.text}
+
+            observed = guarded_send("chat", {"endpoint": f"{self.base_url}/chat/completions",
+                                             "body": payload}, send,
+                intent_key=f"{intent_key}:format-{fallback}" if intent_key else None)
+            if observed["status_code"] >= 400:
+                # Only an observed rejection can trigger this separately reserved send.
+                if observed["status_code"] in {400, 404, 422} and "response_format" in payload:
+                    payload.pop("response_format", None)
+                    continue
+                raise ProviderError(f"Provider HTTP {observed['status_code']}: {observed['text'][:1000]}")
+            try:
+                data = json.loads(observed["text"])
+            except ValueError as exc:
+                raise ProviderError("Provider returned invalid response JSON; response preserved") from exc
+            choices = data.get("choices") or []
+            if not choices:
+                raise ProviderError(f"Provider response has no choices: {str(data)[:1000]}")
+            message = choices[0].get("message", {})
+            return self._message_text(message.get("content", ""))
+        raise ProviderError("Structured-output fallback exhausted")
 
     def chat_json(
         self,
@@ -147,6 +149,7 @@ class OpenAICompatibleClient:
         images: list[str | Path] | None = None,
         temperature: float = 0.1,
         max_tokens: int | None = None,
+        intent_key: str | None = None,
     ) -> T:
         schema = model_type.model_json_schema()
         schema_prompt = (
@@ -160,6 +163,7 @@ class OpenAICompatibleClient:
             temperature=temperature,
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
+            intent_key=intent_key,
         )
         try:
             return model_type.model_validate(extract_json_object(raw))
@@ -176,6 +180,7 @@ class OpenAICompatibleClient:
                 temperature=0.0,
                 max_tokens=max_tokens,
                 response_format={"type": "json_object"},
+                intent_key=f"{intent_key}:json-repair" if intent_key else None,
             )
             try:
                 return model_type.model_validate(extract_json_object(repaired))
