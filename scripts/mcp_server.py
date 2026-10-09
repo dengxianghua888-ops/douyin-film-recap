@@ -26,8 +26,12 @@ def library_root():
 
 
 def _tool_specs():
+    # MCP ToolAnnotations are hints, not authorization or sandbox guarantees.
+    # destructiveHint/idempotentHint are immaterial for read-only tools.
     return [
         {'name': 'diagnose_installation',
+         'annotations': {'readOnlyHint': True, 'destructiveHint': False,
+                         'idempotentHint': True, 'openWorldHint': False},
          'description': 'Read-only target-environment dependency inventory. Presence is not host or media acceptance.',
          'inputSchema': {'type': 'object', 'properties': {
              'ffmpeg': {'type': 'string', 'description': 'Absolute executable path; optional.'},
@@ -36,10 +40,17 @@ def _tool_specs():
              'request': {'type': 'object', 'description': 'Optional exact local runtime request for branch-specific diagnosis.'}},
              'additionalProperties': False}},
         {'name': 'list_skills',
+         'annotations': {'readOnlyHint': True, 'destructiveHint': False,
+                         'idempotentHint': True, 'openWorldHint': False},
          'description': 'List the local registry entries and declared layer/status. Static enumeration only.',
          'inputSchema': {'type': 'object', 'properties': {}, 'additionalProperties': False}},
         {'name': 'run_operation',
-         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. Requires explicit task authorization.',
+         # A fresh receipt directory does not confine all effects: requests may
+         # update existing Work/provider stores and explicitly send paid calls.
+         # Directory rejection is not a replay/resume or idempotency contract.
+         'annotations': {'readOnlyHint': False, 'destructiveHint': True,
+                         'idempotentHint': False, 'openWorldHint': True},
+         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. May update existing stores or invoke external providers. No generic retry/resume guarantee; existing work directories are rejected. Requires explicit task authorization and separate authorization for paid provider calls.',
          'inputSchema': {'type': 'object', 'properties': {
              'request': {'type': 'object', 'description': 'Exact editing_runtime request object.'},
              'work_dir': {'type': 'string', 'description': 'New absolute work directory under configured work root.'},
