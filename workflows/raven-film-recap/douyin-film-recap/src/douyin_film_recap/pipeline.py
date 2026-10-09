@@ -53,7 +53,7 @@ class StageBlocked(RuntimeError):
         self.report = report
 
 
-PIPELINE_REVISION = "0.3.0-workspace-2"
+PIPELINE_REVISION = "0.3.0-workspace-2-cfr-1"
 
 
 class FilmRecapPipeline:

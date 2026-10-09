@@ -562,7 +562,11 @@ def _finalize(
                 )
         return "applied"
     else:
-        args.extend(["-af", audio_filter, "-c:v", "copy"])
+        # Concat-copy can retain AAC/container offsets between video packets.
+        # Normalize the final frame grid even when captions are not burned in;
+        # stream-copy would preserve irregular PTS and fail the configured FPS QC.
+        args.extend(["-vf", f"fps={config.render.fps}", "-af", audio_filter,
+                     *_video_encode_args(config)])
     args.extend([*_audio_encode_args(config), "-movflags", "+faststart", final_path])
     _prepare_output(final_path, [base_video, subtitle_path])
     run_command(args, timeout=config.runtime.stage_timeout_sec)

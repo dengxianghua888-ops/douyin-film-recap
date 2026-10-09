@@ -198,6 +198,24 @@ def test_source_drift_preserves_old_generation_and_requires_new_binding(tmp_path
         p.run(until="ingest")
 
 
+def test_cfr_pipeline_revision_preserves_prior_generation_and_invalidates_cache(tmp_path, app_config, monkeypatch):
+    from douyin_film_recap import pipeline as module
+    revision = module.PIPELINE_REVISION
+    source = tmp_path/'source.mp4'; source.write_bytes(b'unchanged synthetic source')
+    monkeypatch.setattr(module, 'PIPELINE_REVISION', '0.3.0-workspace-2')
+    old = FilmRecapPipeline(input_path=source, work_dir=tmp_path/'task', config=app_config)
+    artifact = old.paths['manifest']; artifact.write_text('{"prior":"preserve"}')
+    old.store.pass_stage(old.state, 'ingest', artifact=str(artifact), artifacts={str(artifact):w.sha(artifact)})
+    old_bytes = artifact.read_bytes()
+    monkeypatch.setattr(module, 'PIPELINE_REVISION', revision)
+    current = FilmRecapPipeline(input_path=source, work_dir=old.task_root, config=app_config)
+    assert current.state.config_fingerprint != old.state.config_fingerprint
+    assert current.work_dir != old.work_dir and current.state.stages['ingest'].status == 'pending'
+    assert artifact.read_bytes() == old_bytes
+    with pytest.raises(w.WorkspaceError, match='STALE'):
+        old.run(until='ingest')
+
+
 def test_other_process_cannot_write_during_migration(tmp_path, recovery_bundle):
     root, _ = legacy(tmp_path)
     source_dir = REPO / "workflows/raven-film-recap/douyin-film-recap/src"
