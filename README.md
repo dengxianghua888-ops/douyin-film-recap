@@ -1,5 +1,7 @@
 # 剪辑技能库
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?v=cba82ac0fa1d95c3c8c2b6d37a6390ec)](https://m8ven.ai/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?s=readme)
+
 > **实验性源码预览，不是稳定发行或完整剪辑产品。** 工作流与工具接口的存在不代表场景效果、客户端安装或完整作品修改链已验收。当前内部记录为 46/112 项出口、0/7 全局门槛；这是历史证据统计，不是代码完成率，完整原始证据未随包公开。使用前请阅读[开发状态](docs/development-status.md)与[本地接入限制](docs/local-setup.md)。
 
 **给 AI Agent 一套从素材理解、剪辑构思到局部修改的视频剪辑方法。**
