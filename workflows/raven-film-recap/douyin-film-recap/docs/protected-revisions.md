@@ -133,6 +133,17 @@ old-generation files merely because a new cleanup receipt lists them. Regression
 cover three consecutive revisions, a render-configuration generation change, and these
 failure cases; neither scenes metadata nor source evidence hashes are rewritten.
 
+Delivery cleanup preserves this evidence across `revise → render-current → revise`.
+If the current generation has no registered local debug targets, it leaves the old
+receipt (or legacy lack of a receipt) untouched and does not delete unregistered
+directories. When local targets and historical cleanup coexist, only absence facts
+validated by the existing inventory/recovery checks are carried into the new receipt;
+unrelated receipt entries grant no authority. If historical absence is legacy-only,
+cleanup conservatively leaves the current debug files in place because the v1 receipt
+cannot record that uncertainty separately without upgrading it to observed cleanup.
+Tests exercise two full render/delivery/revision cycles with synthetic gates/media,
+repeated cleanup, mixed-generation targets, and a tampered receipt that must still fail.
+
 ### Render-current snapshot binding
 
 Pre-QC preparation/checking, rendering and post-QC repair parse and hash the same

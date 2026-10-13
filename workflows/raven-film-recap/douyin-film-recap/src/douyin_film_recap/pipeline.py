@@ -36,7 +36,7 @@ from .qc import post_render_qc, preflight_qc
 from .render import render_storyboard
 from .state import STAGES, StateStore
 from .send_guard import send_session
-from .workspace import WorkspaceError, atomic, canonical, now, preflight, prepare, read, work_lock
+from .workspace import WorkspaceError, atomic, canonical, inventory, now, preflight, prepare, read, work_lock
 from .tts import synthesize_storyboard
 from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
 from .utils import (
@@ -866,14 +866,33 @@ class FilmRecapPipeline:
     def _cleanup_debug_artifacts(self) -> None:
         # Persist cleanup intent before deletion so an interruption is recoverable.
         # Required media and authored artifacts are never covered by this receipt.
-        files = []
+        files = {}
+        recorded = {}
         for name, sha256 in self.state.stages["scenes"].artifacts.items():
-            path = Path(name).resolve()
+            path = Path(name)
+            path = (path if path.is_absolute() else self.work_dir / path).resolve()
+            recorded[str(path)] = sha256
             if any(path.is_relative_to(self.work_dir / directory)
                    for directory in ("frames", "contact_sheets")):
-                files.append({"path": str(path), "sha256": sha256})
+                files[str(path)] = sha256
+        if not files:
+            # Copied scenes can reference only old generations. An empty receipt
+            # would erase their cleanup proof (or poison legacy absence facts).
+            # No registered local target also means no local directory deletion.
+            return
+        _, _, unavailable = inventory(self.work_dir)
+        if any(row["reason"] == "missing_regenerable_debug_after_delivery" for row in unavailable):
+            # The v1 receipt cannot represent legacy absence separately from
+            # observed cleanup. Keep current debug files instead of upgrading
+            # historical uncertainty or invalidating its recovery evidence.
+            return
+        for row in unavailable:
+            if row["reason"] == "recorded_regenerable_debug_cleanup":
+                path = str(Path(row["original_path"]).resolve())
+                files[path] = recorded[path]  # inventory verified path/hash/history.
         atomic(self.work_dir / ".receipts/debug-cleanup.json", {
-            "schema": "film-debug-cleanup/1", "requested_at": now(), "files": files,
+            "schema": "film-debug-cleanup/1", "requested_at": now(),
+            "files": [{"path": path, "sha256": files[path]} for path in sorted(files)],
             "reason": "runtime.keep_debug_frames=false",
         })
         shutil.rmtree(self.work_dir / "frames", ignore_errors=True)

@@ -227,6 +227,150 @@ class ProtectedRevisionTests(unittest.TestCase):
         with self.assertRaisesRegex(w.WorkspaceError, "BOUND_RESOURCE_UNSAFE"):
             self._adopt_current_note("missing voice audio")
 
+    def _assert_delivery_cleanup_keeps_inherited_proof(self, *, legacy):
+        self.config.runtime.keep_debug_frames = False
+        self.pipeline = FilmRecapPipeline(input_path=self.source_path,
+            work_dir=self.root / "delivery-work", config=self.config)
+        self.work = self.pipeline.work_dir
+        for name, value in self.artifacts.items():
+            write_json(self.work / name, value)
+        frame = self._register_missing_debug(legacy=legacy)
+        self._adopt_current_note("first revision before delivery")
+        expected_reason = "missing_regenerable_debug_after_delivery" if legacy else "recorded_regenerable_debug_cleanup"
+        for number in range(2):
+            current = FilmRecapPipeline.from_current(work_dir=self.work, config=self.config)
+            receipt_path = current.work_dir / ".receipts/debug-cleanup.json"
+            before = receipt_path.read_bytes() if receipt_path.exists() else None
+            pre = QCReport(stage="pre_render", status="DEGRADED", findings=[])
+            post = QCReport(stage="post_render", status="DEGRADED", findings=[])
+            def synthetic_renderer(board, config, work_dir):
+                output = {}
+                for key, filename in [("final_video", "final.mp4"), ("preview_video", "preview.mp4"),
+                                      ("subtitle", "captions.srt"), ("edl", "edl.json")]:
+                    path = work_dir / "synthetic-output" / filename
+                    path.parent.mkdir(exist_ok=True)
+                    path.write_bytes(b"synthetic delivery fixture")
+                    output[key] = str(path)
+                board.output = {**output, "duration_sec": 2}
+                return board
+            with patch("douyin_film_recap.pipeline.preflight_qc", return_value=pre), \
+                 patch("douyin_film_recap.pipeline.post_render_qc", return_value=post), \
+                 patch("douyin_film_recap.pipeline.render_storyboard", side_effect=synthetic_renderer):
+                self.assertTrue(current.render_only().is_file())
+            current._cleanup_debug_artifacts()  # Repeated cleanup must be idempotent.
+            after = receipt_path.read_bytes() if receipt_path.exists() else None
+            self.assertEqual(after, before)
+            result = self._adopt_current_note(f"revision after delivery {number}")
+            absent = {row["original_path"]: row["reason"]
+                      for row in w.verify_archive(result["archive"])["unavailable_optional_references"]}
+            self.assertEqual(absent[str(frame)], expected_reason)
+
+    def test_render_delivery_then_revise_preserves_recorded_cleanup_receipt(self):
+        self._assert_delivery_cleanup_keeps_inherited_proof(legacy=False)
+
+    def test_render_delivery_then_revise_preserves_legacy_absence_without_new_receipt(self):
+        self._assert_delivery_cleanup_keeps_inherited_proof(legacy=True)
+
+    def test_cleanup_still_records_and_removes_current_generation_debug_files(self):
+        frame = self.work / "frames/source/current.jpg"
+        frame.parent.mkdir(parents=True)
+        frame.write_bytes(b"synthetic debug image")
+        expected = w.sha(frame)
+        self.pipeline.state.stages["scenes"].artifacts = {str(frame): expected}
+        self.pipeline.store.save(self.pipeline.state)
+        self.pipeline._cleanup_debug_artifacts()
+        self.assertFalse(frame.exists())
+        receipt = w.read(self.work / ".receipts/debug-cleanup.json")
+        self.assertEqual(receipt["files"], [{"path": str(frame), "sha256": expected}])
+
+    def test_no_current_targets_cannot_repair_a_tampered_inherited_cleanup_receipt(self):
+        self._register_missing_debug()
+        self._adopt_current_note("first revision")
+        current = FilmRecapPipeline.from_current(work_dir=self.work, config=self.config)
+        receipt_path = current.work_dir / ".receipts/debug-cleanup.json"
+        receipt = w.read(receipt_path)
+        receipt["files"][0]["sha256"] = "b" * 64
+        w.atomic(receipt_path, receipt)
+        before = receipt_path.read_bytes()
+        current._cleanup_debug_artifacts()
+        self.assertEqual(receipt_path.read_bytes(), before)
+        with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_EXTERNAL_ARTIFACT_MISSING"):
+            self._adopt_current_note("invalid cleanup remains blocked")
+
+    def test_no_registered_targets_leaves_unregistered_debug_directory_intact(self):
+        frame = self.work / "frames/source/unregistered.jpg"
+        frame.parent.mkdir(parents=True)
+        frame.write_bytes(b"unregistered debug file")
+        self.pipeline._cleanup_debug_artifacts()
+        self.assertTrue(frame.is_file())
+        self.assertFalse((self.work / ".receipts/debug-cleanup.json").exists())
+
+    def _current_debug_target(self, current):
+        frame = current.work_dir / "frames/source/current.jpg"
+        frame.parent.mkdir(parents=True)
+        frame.write_bytes(b"new current generation debug image")
+        current.state.stages["scenes"].artifacts[str(frame)] = w.sha(frame)
+        current.store.save(current.state)
+        index = w.read(current.work_dir / "02_scene_index.json")
+        index["units"][0]["frame_paths"].append(str(frame))
+        w.atomic(current.work_dir / "02_scene_index.json", index)
+        return frame
+
+    def test_mixed_recorded_cleanup_preserves_validated_old_and_new_targets(self):
+        old_frame = self._register_missing_debug()
+        self._adopt_current_note("first revision")
+        current = FilmRecapPipeline.from_current(work_dir=self.work, config=self.config)
+        new_frame = self._current_debug_target(current)
+        new_hash = w.sha(new_frame)
+        # A receipt is not an authority for unrelated missing paths. Only the
+        # inventory's verified absence facts may be inherited into a new receipt.
+        receipt_path = current.work_dir / ".receipts/debug-cleanup.json"
+        receipt = w.read(receipt_path)
+        receipt["files"].append({"path": str(self.root / "foreign/frames/missing.jpg"), "sha256": "f" * 64})
+        w.atomic(receipt_path, receipt)
+        current._cleanup_debug_artifacts()
+        self.assertFalse(new_frame.exists())
+        expected_files = {str(old_frame): "a" * 64, str(new_frame): new_hash}
+        receipt_path = current.work_dir / ".receipts/debug-cleanup.json"
+        self.assertEqual({row["path"]: row["sha256"] for row in w.read(receipt_path)["files"]}, expected_files)
+        current._cleanup_debug_artifacts()
+        self.assertEqual({row["path"]: row["sha256"] for row in w.read(receipt_path)["files"]}, expected_files)
+        result = self._adopt_current_note("both generations remain revisable")
+        absent = {row["original_path"]: row["reason"]
+                  for row in w.verify_archive(result["archive"])["unavailable_optional_references"]}
+        self.assertEqual({name: absent[name] for name in expected_files},
+                         {name: "recorded_regenerable_debug_cleanup" for name in expected_files})
+
+    def test_mixed_legacy_absence_defers_cleanup_without_upgrading_old_proof(self):
+        old_frame = self._register_missing_debug(legacy=True)
+        self._adopt_current_note("first revision")
+        current = FilmRecapPipeline.from_current(work_dir=self.work, config=self.config)
+        new_frame = self._current_debug_target(current)
+        for _ in range(2):
+            current._cleanup_debug_artifacts()
+            self.assertTrue(new_frame.is_file())
+            self.assertFalse((current.work_dir / ".receipts/debug-cleanup.json").exists())
+        result = self._adopt_current_note("legacy proof remains distinct")
+        absent = {row["original_path"]: row["reason"]
+                  for row in w.verify_archive(result["archive"])["unavailable_optional_references"]}
+        self.assertEqual(absent[str(old_frame)], "missing_regenerable_debug_after_delivery")
+        self.assertNotIn(str(new_frame), absent)
+
+    def test_mixed_cleanup_rejects_tampered_receipt_without_deleting_new_files(self):
+        self._register_missing_debug()
+        self._adopt_current_note("first revision")
+        current = FilmRecapPipeline.from_current(work_dir=self.work, config=self.config)
+        new_frame = self._current_debug_target(current)
+        receipt_path = current.work_dir / ".receipts/debug-cleanup.json"
+        receipt = w.read(receipt_path)
+        receipt["files"][0]["sha256"] = "b" * 64
+        w.atomic(receipt_path, receipt)
+        before = receipt_path.read_bytes()
+        with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_EXTERNAL_ARTIFACT_MISSING"):
+            current._cleanup_debug_artifacts()
+        self.assertTrue(new_frame.is_file())
+        self.assertEqual(receipt_path.read_bytes(), before)
+
     def test_conflicting_adoption_cannot_replace_new_head(self):
         base = freeze_revision(self.work)
         result = self.adopt(base=base)

@@ -223,3 +223,31 @@ latest narration tests; all passed. These overlapping totals are not added as
 unique test counts. Root structure/skill validation and diff checks also passed.
 The full dev environment and CLI/parser suites ran in remote CI; restricted local
 package availability is not represented as full local regression success.
+
+## Follow-up merge review — 2026-10-13
+
+A second independent review found four concrete defects despite the earlier green
+regressions. Each was reproduced before repair. The implementation status above
+must not be interpreted as absence of these subsequently discovered issues.
+
+- X2 terminal Gap duration was omitted from readback. Track endpoints are now
+  retained and unsupported trailing blank intervals block adoption, including
+  shorter audio tracks whose edits do not change the overall timeline maximum.
+- X2 snapshot destination traversal could write inside the frozen export package.
+  Capture now rejects parent traversal before creating directories and checks
+  symlink-free canonical containment; negative tests preserve the package bytes.
+- I2 inherited, legitimately cleaned debug artifacts blocked later revisions.
+  Recovery-bound absence facts now survive generation changes. The delivery
+  cleanup producer must also preserve those facts; repeated adoption alone was
+  insufficient evidence, so render-only → delivery → next revision is covered.
+- I2 render-current captured its comparison hash after evidence validation,
+  permitting a manually saved newer Storyboard to be overwritten by the old
+  parsed object. Snapshot parsing and comparison now use the same bytes through
+  pre-QC, render, post-QC and repairs; observed intervening writes block rather
+  than adopting a later hash as the old object's baseline.
+
+These repairs do not grant active-host CAS, uncooperative-writer isolation,
+real-film/model acceptance or broader cleanup permission. Earlier checkpoints
+remain historical; merge readiness requires independent closure and successful
+full CI for the final repaired exact SHA. Merge is a separate parent-controlled
+step, not performed by the implementation task.
