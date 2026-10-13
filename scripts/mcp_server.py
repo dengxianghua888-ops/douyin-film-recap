@@ -29,6 +29,8 @@ def _tool_specs():
     return [
         {'name': 'diagnose_installation',
          'description': 'Read-only target-environment dependency inventory. Presence is not host or media acceptance.',
+         'annotations': {'readOnlyHint': True, 'destructiveHint': False,
+                         'idempotentHint': True, 'openWorldHint': False},
          'inputSchema': {'type': 'object', 'properties': {
              'ffmpeg': {'type': 'string', 'description': 'Absolute executable path; optional.'},
              'ffprobe': {'type': 'string', 'description': 'Absolute executable path; optional.'},
@@ -37,9 +39,17 @@ def _tool_specs():
              'additionalProperties': False}},
         {'name': 'list_skills',
          'description': 'List the local registry entries and declared layer/status. Static enumeration only.',
+         'annotations': {'readOnlyHint': True, 'destructiveHint': False,
+                         'idempotentHint': True, 'openWorldHint': False},
          'inputSchema': {'type': 'object', 'properties': {}, 'additionalProperties': False}},
         {'name': 'run_operation',
          'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. Requires explicit task authorization.',
+         # This dispatcher also reaches mutable Work/Task stores and external
+         # model providers; a fresh receipt directory does not make it additive,
+         # repeatable, or confined to local entities. Use conservative hints for
+         # the complete dispatch surface, not just read-only atomic requests.
+         'annotations': {'readOnlyHint': False, 'destructiveHint': True,
+                         'idempotentHint': False, 'openWorldHint': True},
          'inputSchema': {'type': 'object', 'properties': {
              'request': {'type': 'object', 'description': 'Exact editing_runtime request object.'},
              'work_dir': {'type': 'string', 'description': 'New absolute work directory under configured work root.'},
