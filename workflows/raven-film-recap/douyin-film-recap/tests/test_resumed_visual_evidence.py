@@ -57,6 +57,54 @@ class VisualEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(VisualEvidenceError, "fingerprint"):
             self.validate()
 
+    def legacy_index(self):
+        # Construct real baseline-schema JSON, not a model_dump containing new
+        # null/default fields. model_validate must preserve which keys were absent.
+        raw = self.index.model_dump(mode="json")
+        for unit in raw["units"]:
+            unit.pop("scene_detection", None)
+            unit["signals"].pop("shot_density_available", None)
+        self.analysis.unit_fingerprint = fingerprint_json(raw["units"])
+        self.index = SceneIndex.model_validate(raw)
+        return raw
+
+    def test_unchanged_baseline_index_keeps_its_original_analysis_binding(self):
+        raw = self.legacy_index()
+        self.assertNotIn("scene_detection", raw["units"][0])
+        self.assertNotIn("shot_density_available", raw["units"][0]["signals"])
+        self.assertNotEqual(self.analysis.unit_fingerprint, self.fingerprint())
+        self.validate()
+
+    def test_legacy_projection_is_limited_to_the_baseline_schema(self):
+        raw = self.legacy_index()
+        raw["schema_version"] = 2
+        self.index = SceneIndex.model_validate(raw)
+        with self.assertRaisesRegex(VisualEvidenceError, "fingerprint"):
+            self.validate()
+
+    def test_explicit_new_metadata_cannot_be_stripped_to_match_old_fingerprint(self):
+        raw = self.legacy_index()
+        raw["units"][0]["scene_detection"] = None
+        self.index = SceneIndex.model_validate(raw)
+        with self.assertRaisesRegex(VisualEvidenceError, "fingerprint"):
+            self.validate()
+
+    def test_explicit_new_signal_default_cannot_hide_behind_legacy_projection(self):
+        raw = self.legacy_index()
+        raw["units"][0]["signals"]["shot_density_available"] = True
+        self.index = SceneIndex.model_validate(raw)
+        with self.assertRaisesRegex(VisualEvidenceError, "fingerprint"):
+            self.validate()
+
+    def test_legacy_projection_does_not_ignore_changed_existing_evidence(self):
+        raw = self.legacy_index()
+        for key, value in (("end", 21), ("transcript", "changed transcript"), ("source_id", "other")):
+            with self.subTest(field=key):
+                modified = {**raw, "units": [{**raw["units"][0], key: value}]}
+                self.index = SceneIndex.model_validate(modified)
+                with self.assertRaisesRegex(VisualEvidenceError, "fingerprint"):
+                    self.validate()
+
     def test_scene_source_identity_must_match(self):
         self.index.source_fingerprints["s"] = "old-source"
         with self.assertRaisesRegex(VisualEvidenceError, "source identity"):

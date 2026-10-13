@@ -16,6 +16,26 @@ class VisualEvidenceError(ValueError):
         self.segment_id = segment_id
 
 
+def _scene_unit_fingerprints(scene_index: SceneIndex) -> set[str]:
+    current = [unit.model_dump(mode="json") for unit in scene_index.units]
+    fingerprints = {fingerprint_json(current)}
+    if scene_index.schema_version != 1:
+        return fingerprints
+    # Schema-1 indices from before detector provenance omit these new defaults.
+    # Only omit fields that were genuinely absent in the loaded artifact. Explicit
+    # metadata, including explicit null/default values, must remain hash-bound.
+    legacy = []
+    for unit in scene_index.units:
+        row = unit.model_dump(mode="json")
+        if "scene_detection" not in unit.model_fields_set:
+            row.pop("scene_detection", None)
+        if "shot_density_available" not in unit.signals.model_fields_set:
+            row["signals"].pop("shot_density_available", None)
+        legacy.append(row)
+    fingerprints.add(fingerprint_json(legacy))
+    return fingerprints
+
+
 def validate_storyboard_visual_evidence(
     storyboard: Storyboard,
     manifest: SourceManifest,
@@ -32,8 +52,7 @@ def validate_storyboard_visual_evidence(
     fingerprints = {key: source.fingerprint for key, source in source_map.items()}
     if scene_index.source_fingerprints != fingerprints:
         raise VisualEvidenceError("Scene index source identity does not match the current manifest")
-    expected = fingerprint_json([unit.model_dump(mode="json") for unit in scene_index.units])
-    if scene_analysis.unit_fingerprint != expected:
+    if scene_analysis.unit_fingerprint not in _scene_unit_fingerprints(scene_index):
         raise VisualEvidenceError("Scene analysis fingerprint does not match the current scene index")
     units = {unit.unit_id: unit for unit in scene_index.units}
     analysis_ids = {item.unit_id for item in scene_analysis.items}
