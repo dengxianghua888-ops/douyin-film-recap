@@ -215,7 +215,7 @@ def _sample_evenly(values: list[Any], count: int) -> list[Any]:
     return [values[index * (len(values) - 1) // (count - 1)] for index in range(count)]
 
 
-def _build_visual_pool(
+def _build_visual_pool_r0(
     manifest: SourceManifest,
     story: StoryBundle,
     highlights: HighlightDocument,
@@ -311,6 +311,48 @@ def _build_visual_pool(
     return pool
 
 
+
+def _build_visual_pool(
+    manifest, story, highlights, plan, config, scene_index, scene_analysis,
+    *, retrieval_report: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """R0 stays default; R1 uses its exact ordinary/highlight writer envelope."""
+    baseline = _build_visual_pool_r0(manifest, story, highlights, plan, config,
+                                     scene_index, scene_analysis)
+    method = config.format.visual_retrieval
+    if method == "r0":
+        if retrieval_report is not None:
+            from .retrieval import writer_input_bytes
+            retrieval_report.update(method="r0-beat-stratified/1",
+                ordinary_count=sum(row["evidence_type"] != "highlight" for row in baseline),
+                highlight_append_count=sum(row["evidence_type"] == "highlight" for row in baseline),
+                writer_bytes=writer_input_bytes(baseline), provider_token_budget_verified=False)
+        return baseline
+    if method != "r1":
+        raise ValueError(f"Unsupported visual retrieval method: {method}")
+    from .retrieval import build_retrieval_requests, rerank_visual_pool
+    from .visual_evidence import _scene_unit_fingerprints
+    if scene_index is None or scene_analysis is None:
+        raise ValueError("R1 requires the current complete analyzed evidence index")
+    if scene_index.source_fingerprints != {s.source_id:s.fingerprint for s in manifest.sources} or scene_analysis.unit_fingerprint not in _scene_unit_fingerprints(scene_index):
+        raise ValueError("R1 evidence index has stale source/analysis bindings")
+    expanded = config.model_copy(deep=True)
+    expanded.format.visual_pool_size = len(scene_index.units)
+    all_pool = _build_visual_pool_r0(manifest, story, highlights, plan, expanded,
+                                    scene_index, scene_analysis)
+    ordinary = [row for row in all_pool if row["evidence_type"] != "highlight"]
+    event_ids = {row["unit_id"]:[event.event_id for event in story.story_graph.events
+        if any(row["source_id"] == span.source_id and min(row["end"],span.end) > max(row["start"],span.start)
+               for span in event.source_spans)] for row in ordinary}
+    result = rerank_visual_pool(ordinary, r0_pool=baseline,
+        requests=build_retrieval_requests(plan,story), ordinary_limit=config.format.visual_pool_size,
+        exploration_fraction=config.format.visual_exploration_fraction,
+        text_byte_budget=config.format.visual_pool_text_budget, unit_event_ids=event_ids)
+    if retrieval_report is not None:
+        retrieval_report.update(result.provenance)
+    return result.pool
+
+
 def _storyboard_payload(
     project_name: str,
     manifest: SourceManifest,
@@ -320,6 +362,7 @@ def _storyboard_payload(
     config: AppConfig,
     scene_index: SceneIndex | None = None,
     scene_analysis: SceneAnalysisDocument | None = None,
+    *, retrieval_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     selected = [candidate for candidate in highlights.candidates if candidate.selected]
     minimum_segments = 3 if plan.duration_mode == "highlight" else 12
@@ -341,7 +384,8 @@ def _storyboard_payload(
         ],
         "highlights": [candidate.model_dump(mode="json") for candidate in selected],
         "visual_pool": _build_visual_pool(
-            manifest, story, highlights, plan, config, scene_index, scene_analysis
+            manifest, story, highlights, plan, config, scene_index, scene_analysis,
+            retrieval_report=retrieval_report,
         ),
         "constraints": get_plan_constraints(plan, config),
     }
@@ -359,8 +403,10 @@ def build_storyboard(
     scene_index: SceneIndex | None = None,
     scene_analysis: SceneAnalysisDocument | None = None,
 ) -> Storyboard:
+    retrieval_report: dict[str, Any] = {}
     payload = _storyboard_payload(
-        project_name, manifest, story, highlights, plan, config, scene_index, scene_analysis
+        project_name, manifest, story, highlights, plan, config, scene_index, scene_analysis,
+        retrieval_report=retrieval_report,
     )
     storyboard = client.chat_json(
         system=STORYBOARD_SYSTEM,
@@ -374,6 +420,22 @@ def build_storyboard(
     storyboard.sources = manifest.sources
     storyboard.plan_fingerprint = fingerprint_json(plan.model_dump(mode="json"))
     storyboard.target_duration_sec = plan.target_duration_sec
+    if config.format.visual_retrieval == "r1":
+        storyboard.retrieval_provenance = retrieval_report
+        rankings = retrieval_report.get("per_beat_rankings", {})
+        pool_kinds = {row["unit_id"]:row["evidence_type"] for row in payload["visual_pool"]}
+        for segment in storyboard.segments:
+            if segment.beat_id not in rankings:
+                raise ValueError(f"R1 writer returned unknown Beat: {segment.beat_id}")
+            allowed = {row["unit_id"]:row for row in rankings[segment.beat_id]}
+            for visual in segment.visuals:
+                if pool_kinds.get(visual.unit_id) == "highlight":
+                    continue  # The unchanged selected-highlight append contract.
+                row = allowed.get(visual.unit_id)
+                if row is None:
+                    raise ValueError(f"R1 visual violates Beat source/knowledge constraints: {segment.beat_id}/{visual.unit_id}")
+                if row["requires_raw_verification"] and visual.visual_role == "direct_evidence":
+                    raise ValueError("Exploration retrieval requires raw verification before direct-evidence use")
     _normalize_storyboard(
         storyboard, manifest, highlights, config,
         visual_pool=payload["visual_pool"], constraints=payload["constraints"],

@@ -102,6 +102,9 @@ class HighlightConfig(FlexibleModel):
 
 
 class FormatConfig(FlexibleModel):
+    visual_retrieval: Literal["r0", "r1"] = "r0"
+    visual_pool_text_budget: int | None = Field(default=None, gt=0)
+    visual_exploration_fraction: float = Field(default=0.15, ge=0, le=1)
     duration_mode: Literal["auto", "highlight", "short", "standard", "deep", "series"] = "auto"
     content_unit: Literal["auto", "scene", "relationship", "episode", "film", "series"] = "auto"
     highlight_range_sec: tuple[int, int] = (30, 90)
@@ -197,10 +200,17 @@ class AppConfig(FlexibleModel):
         # Disabled opt-in scheduling must retain pre-cache workspace identity.
         if data["render"].get("incremental_cache") is False:
             data["render"].pop("incremental_cache", None)
+        explicit = set(self.format.model_fields_set)
+        # Preserve historical defaults; non-default retrieval policy changes bind anew.
+        for key, default in {"visual_retrieval": "r0", "visual_pool_text_budget": None,
+                             "visual_exploration_fraction": 0.15}.items():
+            if data["format"].get(key) == default:
+                data["format"].pop(key, None)
+                explicit.discard(key)
         return fingerprint_json(
             {
                 "config": data,
-                "explicit_format_fields": sorted(self.format.model_fields_set),
+                "explicit_format_fields": sorted(explicit),
             }
         )
 

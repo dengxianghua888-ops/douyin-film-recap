@@ -14,7 +14,7 @@ summarized here rather than introducing another project authority.
 | I2 | Protected local revision/render-only entry using existing generation | Implemented; 20 local fixtures plus existing regressions pass; full CI pending |
 | B1 | Immutable cross-window boundary proposals and validation | Implemented; 11 local synthetic contract tests pass; full CI pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Implemented; 12 local adoption fixtures pass; full CI pending |
-| R1 | Same-budget query reranking above existing Beat-stratified baseline | Pending |
+| R1 | Same-budget query reranking above existing Beat-stratified baseline | Implemented; 14 retrieval + 3 config fixtures pass; full CI pending |
 | V1 | Independently bound raw evidence, advisory model decisions | Pending |
 | X1 | Restricted one-way OTIO exchange package and explicit losses | Pending |
 | X2 | Saved-snapshot three-way readback proposals, no active-host writes | Pending |
@@ -95,3 +95,16 @@ Eleven local fixtures pass: immutable source/revision/timebase bindings, cross-w
 ### B2 verification
 
 Twelve local tests pass, including actual generation adoption, stale retry rejection, preserved archived Storyboard bytes, quote/cue/event/reveal reconciliation, VO subspan preservation and independent source PTS probing. The apply-boundary CLI obtains current clocks from bound source bytes rather than trusting the proposal clock. A changed selected set or incompatible protected/manual edits requires a separate editorial revision. Full original pre/post QC remains required after adoption.
+
+### R1 verification
+
+R0 remains default. R1 uses derived Beat/event query text, constrained lexical
+ranking and bounded exploration while retaining the separate highlight append
+policy. Fourteen retrieval and three config tests pass, including per-Beat
+knowledge limits, same ordinary-count envelope, actual pretty-printed writer-pool
+UTF-8 bytes, short-row budget counterexamples and explicit uncovered Beats.
+Instrumented token comparison is supported by an injected counter; production
+provider-token equality, total-machine-cost equality and real-film quality remain
+UNKNOWN/NOT_RUN. A retrieved candidate does not become truth or narrow the full
+manual evidence index. Default config identity is preserved. I1 and I2 exact-commit
+full CI both succeeded (runs38376556294 and38376804026).
