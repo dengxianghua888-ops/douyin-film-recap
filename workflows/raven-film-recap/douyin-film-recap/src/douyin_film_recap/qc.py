@@ -17,6 +17,8 @@ from .models import (
     QCLocation,
     QCReport,
     RecapPlan,
+    SceneAnalysisDocument,
+    SceneIndex,
     SemanticQCBundle,
     SourceManifest,
     StoryBundle,
@@ -28,6 +30,7 @@ from .providers import OpenAICompatibleClient
 from .subtitles import build_cues, resolved_visual_spans, segment_output_duration
 from .utils import content_fingerprint, overlap_seconds, run_command
 from .narrative_contracts import get_plan_constraints, hook_eligibility
+from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
 
 
 class FindingBuilder:
@@ -176,8 +179,21 @@ def preflight_qc(
     storyboard: Storyboard,
     config: AppConfig,
     client: OpenAICompatibleClient | None = None,
+    scene_index: SceneIndex | None = None,
+    scene_analysis: SceneAnalysisDocument | None = None,
 ) -> QCReport:
     builder = FindingBuilder("pre")
+    visual_evidence_valid = True
+    try:
+        validate_storyboard_visual_evidence(
+            storyboard, manifest, highlights, scene_index, scene_analysis,
+        )
+    except VisualEvidenceError as exc:
+        visual_evidence_valid = False
+        builder.add(stage="pre_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="VISUAL_EVIDENCE_INVALID", segment_id=exc.segment_id,
+                    message=f"VO 画面证据无效：{exc}",
+                    next_action="修正 unit_id、来源和时间范围；新镜头需登记场景单元及其分析证据。")
     source_map = {source.source_id: source for source in manifest.sources}
     constraints = get_plan_constraints(plan, config)
     storyboard_sources = {source.source_id: source for source in storyboard.sources}
@@ -701,7 +717,7 @@ def preflight_qc(
                         evidence={"reason": reason, "highlight_id": hook.highlight_id})
 
     semantic_checked = False
-    if client is not None:
+    if client is not None and visual_evidence_valid:
         try:
             builder.findings.extend(
                 _semantic_qc(

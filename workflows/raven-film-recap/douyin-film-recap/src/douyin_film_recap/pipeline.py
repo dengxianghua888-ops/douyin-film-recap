@@ -35,6 +35,7 @@ from .state import STAGES, StateStore
 from .send_guard import send_session
 from .workspace import WorkspaceError, atomic, now, preflight, prepare, read, work_lock
 from .tts import synthesize_storyboard
+from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
 from .utils import (
     content_fingerprint,
     content_identity,
@@ -203,12 +204,15 @@ class FilmRecapPipeline:
             "highlights": ["manifest", "transcript", "scene_index", "scene_analysis", "characters", "story", "knowledge"],
             "plan": ["manifest", "transcript", "characters", "story", "knowledge", "highlights"],
             "storyboard": ["manifest", "characters", "story", "knowledge", "highlights", "plan", "scene_index", "scene_analysis"],
-            "tts": ["plan"],
-            "pre_qc": ["manifest", "transcript", "characters", "story", "knowledge", "highlights", "plan"],
+            "tts": ["manifest", "highlights", "plan", "scene_index", "scene_analysis"],
+            "pre_qc": ["manifest", "transcript", "characters", "story", "knowledge", "highlights", "plan", "scene_index", "scene_analysis"],
             "render": ["pre_qc"], "post_qc": ["pre_qc"], "delivery": ["pre_qc", "post_qc", "highlights", "plan"],
         }
         payload: dict = {"config": self.state.config_fingerprint, "inputs": self.state.input_fingerprint}
-        payload["files"] = {name: content_fingerprint(self.paths[name]) for name in dependencies[stage]}
+        payload["files"] = {
+            name: content_fingerprint(self.paths[name]) if self.paths[name].is_file() else "MISSING"
+            for name in dependencies[stage]
+        }
         if stage == "tts":
             board = self._storyboard_identity()
             payload["voiceover"] = [
@@ -523,9 +527,18 @@ class FilmRecapPipeline:
         effective.format.vo_chars_per_sec = tuple(get_plan_constraints(self._plan(), self.config)["vo_chars_per_sec"])
         return effective
 
+    def _validate_visual_evidence(self, storyboard: Storyboard) -> None:
+        if any(segment.mode == "voiceover" for segment in storyboard.segments):
+            validate_storyboard_visual_evidence(
+                storyboard, self._manifest(), self._highlights(),
+                self._scene_index(), self._scene_analysis(),
+            )
+
     def _stage_tts(self) -> Path:
+        storyboard = self._storyboard()
+        self._validate_visual_evidence(storyboard)
         storyboard = synthesize_storyboard(
-            self._storyboard(), self._effective_tts_config(), self.client, self.work_dir
+            storyboard, self._effective_tts_config(), self.client, self.work_dir
         )
         self._attach_original_cues(storyboard)
         write_json(self.paths["storyboard"], storyboard)
@@ -534,6 +547,12 @@ class FilmRecapPipeline:
 
     def _stage_pre_qc(self) -> Path:
         storyboard = self._storyboard()
+        try:
+            self._validate_visual_evidence(storyboard)
+        except VisualEvidenceError:
+            client = None  # Persist deterministic findings without opening a provider.
+        else:
+            client = self.client
         report = preflight_qc(
             manifest=self._manifest(),
             transcript=self._transcript(),
@@ -542,7 +561,9 @@ class FilmRecapPipeline:
             plan=self._plan(),
             storyboard=storyboard,
             config=self.config,
-            client=self.client,
+            client=client,
+            scene_index=self._scene_index(),
+            scene_analysis=self._scene_analysis(),
         )
         write_json(self.paths["pre_qc"], report)
         if report.status == "BLOCKED":
@@ -550,7 +571,9 @@ class FilmRecapPipeline:
         return self.paths["pre_qc"]
 
     def _stage_render(self) -> Path:
-        storyboard = render_storyboard(self._storyboard(), self.config, self.work_dir)
+        storyboard = self._storyboard()
+        self._validate_visual_evidence(storyboard)
+        storyboard = render_storyboard(storyboard, self.config, self.work_dir)
         write_json(self.paths["storyboard"], storyboard)
         final = Path(storyboard.output["final_video"])
         return final
@@ -586,6 +609,7 @@ class FilmRecapPipeline:
                 break
             self._say(f"[repair] render pass {attempts + 1}")
             self._clear_render_outputs()
+            self._validate_visual_evidence(storyboard)
             storyboard = render_storyboard(storyboard, self.config, self.work_dir)
             write_json(self.paths["storyboard"], storyboard)
             final = Path(storyboard.output["final_video"])

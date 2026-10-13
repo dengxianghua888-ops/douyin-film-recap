@@ -880,6 +880,7 @@
     "workflows/raven-film-recap/douyin-film-recap/src/douyin_film_recap/subtitles.py",
     "workflows/raven-film-recap/douyin-film-recap/src/douyin_film_recap/tts.py",
     "workflows/raven-film-recap/douyin-film-recap/src/douyin_film_recap/utils.py",
+    "workflows/raven-film-recap/douyin-film-recap/src/douyin_film_recap/visual_evidence.py",
     "workflows/raven-film-recap/douyin-film-recap/src/douyin_film_recap/workspace.py",
     "workflows/raven-film-recap/references/capability-status.md",
     "workflows/raven-film-recap/references/dialogue-and-repetition-review.md",
