@@ -4,10 +4,10 @@ import json
 import math
 import re
 import shutil
+import tempfile
 from pathlib import Path
 from typing import Any, Iterable
 
-import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -118,19 +118,26 @@ def extract_embedded_subtitle(video_path: Path, output_dir: Path) -> Path | None
     ]
     # Bitmap subtitles cannot be converted to SRT without OCR. Skip them explicitly.
     unsupported = {"hdmv_pgs_subtitle", "dvd_subtitle", "dvb_subtitle", "xsub"}
+    extraction_dir: Path | None = None
     for stream in subtitle_streams:
         if stream.get("codec_name") in unsupported:
             continue
         stream_index = stream.get("index")
         if stream_index is None:
             continue
-        output_dir.mkdir(parents=True, exist_ok=True)
-        output = output_dir / f"{safe_slug(video_path.stem)}.embedded.srt"
+        if extraction_dir is None:
+            output_dir.mkdir(parents=True, exist_ok=True)
+            # Each extraction owns a fresh directory. Re-ingest and basename/slug
+            # collisions must never replace subtitles referenced by an old manifest.
+            extraction_dir = Path(tempfile.mkdtemp(
+                prefix=f"{safe_slug(video_path.stem)}.", dir=output_dir
+            ))
+        output = extraction_dir / f"stream_{stream_index}.embedded.srt"
         try:
             run_command(
                 [
                     "ffmpeg",
-                    "-y",
+                    "-n",
                     "-v",
                     "error",
                     "-i",
@@ -173,7 +180,10 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
             fps = 30.0
         sidecar = find_sidecar_subtitle(video) if config.asr.prefer_sidecar_subtitle else None
         if sidecar is None and config.asr.prefer_embedded_subtitle:
-            sidecar = extract_embedded_subtitle(video, subtitle_cache)
+            sidecar = extract_embedded_subtitle(
+                video, subtitle_cache / f"src_{order + 1:03d}" / identity["sha256"]
+            )
+        subtitle_identity = content_identity(sidecar) if sidecar else None
         if content_identity(video) != identity:
             raise SourceChangedDuringRead("Source changed while building the media manifest")
         sources.append(
@@ -190,6 +200,8 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
                 fps=fps,
                 has_audio=any(stream.get("codec_type") == "audio" for stream in streams),
                 subtitle_path=str(sidecar) if sidecar else None,
+                subtitle_fingerprint=subtitle_identity["sha256"] if subtitle_identity else None,
+                subtitle_size_bytes=subtitle_identity["bytes"] if subtitle_identity else None,
                 order=order,
             )
         )
@@ -323,6 +335,8 @@ def extract_frames_batch(
     """
     if not requests:
         return []
+    import cv2
+
     capture = cv2.VideoCapture(str(video_path))
     outputs: list[Path] = []
     try:
@@ -413,6 +427,8 @@ def make_contact_sheet(
 
 
 def motion_score(frame_paths: Iterable[str | Path]) -> float:
+    import cv2
+
     frames: list[np.ndarray] = []
     for path in frame_paths:
         frame = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)

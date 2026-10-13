@@ -45,6 +45,8 @@ class SourceInfo(ArtifactModel):
     fps: float = Field(gt=0)
     has_audio: bool = True
     subtitle_path: str | None = None
+    subtitle_fingerprint: str | None = None
+    subtitle_size_bytes: int | None = Field(default=None, ge=0)
     order: int = 0
 
 
