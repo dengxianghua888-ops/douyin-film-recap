@@ -86,8 +86,11 @@ API exists, because no real host CAS has been established.
 
 Five evidence levels remain separate: serialization, actual host import, saved
 reopen, rendered equivalence, reversible readback. The last four remain NOT_RUN;
-the official OTIO parser is also NOT_RUN in this dependency-free implementation.
-Synthetic FFmpeg source probing and JSON/contract tests do not change that status.
+the runtime exporter still reports per-export official parser evidence as NOT_RUN
+because it does not invoke the parser. A separate pinned development/CI suite
+checks representative packages with the official parser and its native JSON
+roundtrip; see [parser acceptance](otio-parser-acceptance.md). Those tests do not
+change host, rendered-equivalence or per-export evidence flags.
 
 ## Format/permission provenance
 
@@ -97,11 +100,12 @@ sample format, not copied from Kdenlive/MLT code:
 - [OTIO v0.17.0 native example](https://github.com/AcademySoftwareFoundation/OpenTimelineIO/blob/v0.17.0/tests/sample_data/clip_example.otio)
 - [OTIO v0.17.0 Apache-2.0 license](https://github.com/AcademySoftwareFoundation/OpenTimelineIO/blob/v0.17.0/LICENSE.txt)
 
-No OTIO code, binary, fixture, or dependency was vendored or installed. No new
-runtime dependency or license obligation is asserted from merely writing the
-format. A later parser/host integration must pin its distribution and retain its
-applicable license/NOTICE. User media, paid APIs and the user's Mac are outside
-these synthetic tests.
+No third-party OTIO implementation or fixture is vendored. The runtime exporter
+keeps no OTIO dependency. The optional dev extra pins the official OTIO 0.18.1
+distribution for isolated parser acceptance tests, with license and package
+provenance documented separately. No local install was attempted in the restricted
+cloud workspace; existing CI performs its normal dev installation. User media,
+paid APIs and the user's Mac remain outside these synthetic tests.
 
 Local test command (no pytest installation required):
 
