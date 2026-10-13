@@ -44,6 +44,34 @@ def validate_storyboard_visual_evidence(
     scene_analysis: SceneAnalysisDocument | None,
 ) -> None:
     voiceovers = [segment for segment in storyboard.segments if segment.mode == "voiceover"]
+    # Bound highlight references, including original-mode segments, cannot drift
+    # to a newer range just because their logical h0001 ID stayed the same.
+    from .boundary import validate_highlight_reference_binding, highlight_reference_binding
+    current_highlights = {item.highlight_id: item for item in highlights.candidates}
+    sources = {item.source_id: item for item in manifest.sources}
+    for segment in storyboard.segments:
+        for visual in segment.visuals:
+            highlight_id = visual.highlight_id
+            if not highlight_id and (visual.unit_id or "").startswith("highlight:"):
+                highlight_id = visual.unit_id[len("highlight:"):]
+            highlight = current_highlights.get(highlight_id or "")
+            try:
+                if highlight is None:
+                    if (visual.model_extra or {}).get("evidence_revision"):
+                        raise ValueError(f"Missing versioned highlight evidence: {highlight_id}")
+                    continue
+                binding = highlight_reference_binding(highlight)
+                validate_highlight_reference_binding(visual, highlight)
+                if binding:
+                    source = sources.get(highlight.source_id)
+                    if source is None or source.fingerprint != binding["source_sha256"]:
+                        raise ValueError(f"Bound highlight source SHA changed: {highlight_id}")
+                    validate_visual_reference(visual, {visual.unit_id: {
+                        "source_id": highlight.source_id, "start": highlight.start,
+                        "end": highlight.end, "highlight_id": highlight.highlight_id,
+                    }})
+            except ValueError as exc:
+                raise VisualEvidenceError(str(exc), segment_id=segment.segment_id) from exc
     if not voiceovers:
         return
     if scene_index is None or scene_analysis is None:

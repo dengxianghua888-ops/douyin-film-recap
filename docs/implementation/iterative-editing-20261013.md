@@ -12,7 +12,7 @@ summarized here rather than introducing another project authority.
 | I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local fixtures and exact-commit full CI pass |
 | I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Implemented; synthetic FFmpeg and safety fixtures pass; full CI pending |
 | I2 | Protected local revision/render-only entry using existing generation | Implemented; 20 local fixtures plus existing regressions pass; full CI pending |
-| B1 | Immutable cross-window boundary proposals and validation | Pending |
+| B1 | Immutable cross-window boundary proposals and validation | Implemented; 11 local synthetic contract tests pass; full CI pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Pending |
 | V1 | Independently bound raw evidence, advisory model decisions | Pending |
@@ -87,3 +87,7 @@ stale sources/heads/unknown or protected modifications, and switches one existin
 generation pointer. render-current retains both QC gates, forbids new remote sends,
 and leaves UNKNOWN unresolved. Ordinary run cannot silently regenerate adopted
 work; explicit from-stage or render-current is required. No true host CAS is claimed.
+
+### B1 verification
+
+Eleven local fixtures pass: immutable source/revision/timebase bindings, cross-window coverage, missing-middle UNKNOWN, legacy bool UNKNOWN, detector provenance and stale-reference rejection. Semantic and audio observation IDs alone are shape-level advisory records, not proof that raw audio was consumed. Real-film boundary-quality acceptance is NOT_RUN.
