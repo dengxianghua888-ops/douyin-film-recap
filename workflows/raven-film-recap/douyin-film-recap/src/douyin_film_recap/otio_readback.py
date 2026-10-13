@@ -196,7 +196,7 @@ def _parse_snapshot(snapshot_dir: str | Path, base_projection: dict, binding: di
     manifest = verify_saved_snapshot(root)
     document = x._json(x.read_stable(root / "saved.otio")[0])
     problems = deepcopy(manifest["findings"])
-    opaque, entities = {}, {}
+    opaque, entities, track_ends = {}, {}, {}
     base_entities = _entities(base_projection)
     base_tracks = {t["track_id"]: t for t in base_projection["tracks"]}
     known_item = {"OTIO_SCHEMA", "name", "metadata", "source_range", "effects", "markers", "enabled"}
@@ -316,6 +316,14 @@ def _parse_snapshot(snapshot_dir: str | Path, base_projection: dict, binding: di
                     opaque[iid] = {"clip": extra, "reference": ref_extra}
             except (x.ExchangeError, KeyError, TypeError) as exc:
                 problems.append(_problem(getattr(exc, "code", "HOST_CLIP_INVALID"), iid, detail=str(exc)))
+        track_ends[tid] = x.rational(cursor)
+        last_clip_end = max((x.fraction(e["target_start"]) + x.fraction(e["duration"])
+                            for e in entities.values() if e["track_id"] == tid), default=Fraction(0))
+        if cursor > last_clip_end:
+            # Storyboard cut projections cannot express terminal blank intervals.
+            # Preserve the measured endpoint and block instead of dropping the gap.
+            problems.append(_problem("HOST_TRAILING_GAP_REQUIRES_EXPLICIT_MAPPING", tid,
+                detail={"track_end": x.rational(cursor), "last_clip_end": x.rational(last_clip_end)}))
     captions = None
     if manifest["caption_document"]:
         captions = {}
@@ -332,7 +340,8 @@ def _parse_snapshot(snapshot_dir: str | Path, base_projection: dict, binding: di
                 captions[cid] = {**deepcopy(cap), "start": x.rational(start), "end": x.rational(end)}
             except (x.ExchangeError, KeyError, TypeError) as exc:
                 problems.append(_problem("HOST_CAPTION_INVALID", cid, detail=str(exc)))
-    return {"entities": entities, "problems": problems, "opaque": opaque, "captions": captions}
+    return {"entities": entities, "problems": problems, "opaque": opaque, "captions": captions,
+            "track_ends": track_ends}
 
 
 def parse_snapshot(snapshot_dir: str | Path, base_projection: dict, binding: dict) -> dict:
@@ -374,6 +383,20 @@ def three_way_compare(base: dict, current: dict, host: dict, *, base_storyboard:
     b, c, h = _entities(base), _entities(current), host["entities"]
     conflicts = deepcopy(host["problems"])
     changes = []
+    def projected_ends(projection):
+        return {track["track_id"]: x.rational(max((x.fraction(clip["target_start"]) +
+            x.fraction(clip["duration"]) for clip in track["clips"]), default=Fraction(0)))
+            for track in projection["tracks"] if track["clips"]}
+
+    base_ends, current_ends = projected_ends(base), projected_ends(current)
+    host_ends = host.get("track_ends", {})
+    for tid in sorted(set(base_ends) | set(current_ends) | set(host_ends)):
+        delta = _field_changes({"track_end": base_ends.get(tid)},
+            {"track_end": current_ends.get(tid)}, {"track_end": host_ends.get(tid)},
+            ("track_end",), tid)
+        changes.extend(delta)
+        if any(row["host"] != row["base"] for row in delta):
+            conflicts.append(_problem("HOST_TRACK_END_REQUIRES_EXPLICIT_MAPPING", tid))
     base_segments = {s["segment_id"]: s for s in base_storyboard["segments"]}
     current_segments = {s["segment_id"]: s for s in current_storyboard["segments"]}
     for iid in sorted(set(b) | set(c) | set(h)):
@@ -446,7 +469,8 @@ def three_way_compare(base: dict, current: dict, host: dict, *, base_storyboard:
         for cid in set(base_caps) - set(host["captions"]):
             conflicts.append(_problem("CAPTION_REMOVAL_REQUIRES_EXPLICIT_MAPPING", cid))
     # An unsupported item can move subsequent anchors; never approve unaffected-looking JSON fields.
-    global_block = bool(host["problems"])
+    global_block = bool(host["problems"]) or any(
+        p["code"] == "HOST_TRACK_END_REQUIRES_EXPLICIT_MAPPING" for p in conflicts)
     blocked = {problem["entity_id"] for problem in conflicts}
     proposed = [row for row in changes if row["classification"] == "host_only"
                 and not global_block and row["entity_id"] not in blocked]

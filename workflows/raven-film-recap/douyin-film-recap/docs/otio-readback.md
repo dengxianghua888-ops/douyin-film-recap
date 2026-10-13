@@ -106,3 +106,14 @@ notes preservation, protected and semantic anchors, unknown effects, media
 relocation/drift, Clip.2 upgrade, caption IDs/current binding, live-file divergence,
 tampering, no-overwrite and narration replacement at the same path. The fixtures
 exercise saved JSON/media contracts, not actual host behavior.
+
+### Track endpoints and trailing blank intervals
+
+Readback retains each recognized track's exact rational endpoint, including Gap
+durations. Endpoint changes are compared against both the exported and current
+cut projections; unsupported terminal blank intervals return a blocking conflict
+and no adoptable changes. This applies to shorter audio tracks even when the
+overall timeline maximum is unchanged. A later snapshot that removes an added
+tail gap back to the original export is correctly unchanged relative to that
+export, not treated as a diff against the previous snapshot. No active host file
+is modified.

@@ -63,6 +63,60 @@ class SavedReadbackTests(unittest.TestCase):
         for path, raw in before.items():
             self.assertEqual(path.read_bytes(), raw)
 
+    def test_added_video_tail_gap_is_measured_and_blocked(self):
+        track = next(t for t in self.otio["tracks"]["children"] if t["kind"] == "Video")
+        track["children"].append({"OTIO_SCHEMA": "Gap.1", "name": "tail", "metadata": {},
+            "source_range": x._range(0, 3, 30), "effects": [], "markers": [], "enabled": True})
+        self.capture()
+        proposal = self.propose()
+        self.assertEqual(proposal["status"], "CONFLICT")
+        self.assertFalse(proposal["proposed_changes"])
+        delta = next(row for row in proposal["changes"] if row["field"] == "track_end")
+        self.assertEqual(delta["base"], x.rational(6))
+        self.assertEqual(delta["host"], x.rational(9))
+        self.assertIn("HOST_TRAILING_GAP_REQUIRES_EXPLICIT_MAPPING",
+                      {p["code"] for p in proposal["conflicts"]})
+
+    def test_short_audio_tail_gap_is_detected_without_changing_timeline_max(self):
+        track = next(t for t in self.otio["tracks"]["children"] if t["name"] == "narration")
+        track["children"].append({"OTIO_SCHEMA": "Gap.1", "name": "tail", "metadata": {},
+            "source_range": x._range(0, 1, 48000), "effects": [], "markers": [], "enabled": True})
+        self.capture()
+        paths = [self.work / "09_storyboard.json", self.work / "state.json", self.host,
+                 self.root / "snapshot" / "saved.otio"]
+        before = {path: path.read_bytes() for path in paths}
+        proposal = self.propose()
+        self.assertEqual(proposal["status"], "CONFLICT")
+        delta = next(row for row in proposal["changes"] if row["field"] == "track_end")
+        self.assertEqual(delta["base"], x.rational(4))
+        self.assertEqual(delta["host"], x.rational(5))  # Video remains 6 seconds.
+        self.assertFalse(proposal["proposed_changes"])
+        self.assertEqual(before, {path: path.read_bytes() for path in paths})
+
+    def test_changed_and_removed_tail_gap_do_not_erase_endpoint_evidence(self):
+        # The export has no trailing gaps. An edited saved document can have one;
+        # successive snapshots must report against the export, not the last read.
+        track = next(t for t in self.otio["tracks"]["children"] if t["kind"] == "Video")
+        track["children"].append({"OTIO_SCHEMA": "Gap.1", "name": "tail", "metadata": {},
+            "source_range": x._range(0, 3, 30), "effects": [], "markers": [], "enabled": True})
+        binding = json.loads((self.package / "export-binding.json").read_bytes())
+        base = json.loads((self.package / "projection.json").read_bytes())
+        for index, duration in enumerate((3, 1, 0)):
+            if duration:
+                track["children"][-1]["source_range"] = x._range(0, duration, 30)
+            else:
+                track["children"].pop()
+            self.host.write_bytes(x.canonical(self.otio))
+            snapshot = self.root / f"snapshot-{index}"
+            r.capture_saved_snapshot(self.host, snapshot, export_package=self.package,
+                                     media_root=self.package)
+            parsed = r.parse_snapshot(snapshot, base, binding)
+            tid = track["metadata"]["recap"]["track_id"]
+            self.assertEqual(parsed["track_ends"][tid], x.rational(6 + duration))
+            proposal = r.propose_saved_readback(self.package, self.work, snapshot)
+            self.assertEqual(proposal["status"], "CONFLICT" if duration else "NO_CHANGES")
+            self.assertFalse(proposal["proposed_changes"])
+
     def test_confirmed_occurrence_trim_generates_preconditioned_proposal(self):
         self.video()["source_range"]["start_time"]["value"] += 1
         self.capture()
