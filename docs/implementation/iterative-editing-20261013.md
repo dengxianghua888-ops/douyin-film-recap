@@ -17,7 +17,7 @@ summarized here rather than introducing another project authority.
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Implemented; 14 retrieval + 3 config fixtures pass; full CI pending |
 | V1 | Independently bound raw evidence, advisory model decisions | Pending |
 | X1 | Restricted one-way OTIO exchange package and explicit losses | Implemented; 8 local fixtures pass; actual host/parser acceptance NOT_RUN |
-| X2 | Saved-snapshot three-way readback proposals, no active-host writes | Pending |
+| X2 | Saved-snapshot three-way readback proposals, no active-host writes | Implemented; 20 local readback tests pass; real-host round-trip NOT_RUN |
 
 ## Non-negotiable boundaries
 
@@ -120,3 +120,13 @@ silently promoted to a native editable equivalent. Official OTIO parser and actu
 host import/save/reopen/render acceptance remain NOT_RUN; this is not yet a verified
 Kdenlive profile. No dependency was installed. X1 is independent of V1 and can be
 published while raw-evidence hardening continues.
+
+### X2 verification
+
+Twenty local saved-snapshot tests pass: hash-sealed snapshots, three-way proposals,
+missing/duplicate occurrence identity, same-field and timing conflicts, protected
+caption/document edits, opaque source timing dependencies, resource drift/relinking,
+caption IDs and live-file DIVERGED detection. The snapshot proposal includes an I2
+base token but does not invoke adoption or overwrite any host. It does not claim
+real-time bidirectional sync or actual-host round-trip acceptance. The official
+parser and host acceptance gaps recorded for X1 still apply.

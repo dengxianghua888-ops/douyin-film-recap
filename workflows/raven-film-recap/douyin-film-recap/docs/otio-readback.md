@@ -1,0 +1,108 @@
+# Saved-snapshot readback proposals (X2)
+
+X2 compares an X1 base export, the current film Storyboard, and a newly saved
+OTIO snapshot. It never changes the host project, Storyboard, state, or generation
+pointer. It does not automatically adopt a proposal. It does not open, save,
+reopen, or render in an actual NLE.
+
+## Use
+
+Save a new OTIO export from the editing host using its own workflow. Then archive
+that saved file and its referenced media into a **new** local snapshot directory:
+
+```bash
+python -m douyin_film_recap.otio_readback capture \
+  --export-package ./exports/cuts-001 \
+  --saved-otio ./host-work/saved-edit.otio \
+  --media-root ./exports/cuts-001 \
+  --snapshot-dir ./readbacks/saved-edit-001
+
+python -m douyin_film_recap.otio_readback propose \
+  --export-package ./exports/cuts-001 --work-dir ./work/project \
+  --snapshot-dir ./readbacks/saved-edit-001 \
+  --output ./readbacks/proposal-001.json
+```
+
+`media-root` is explicit; its default is the saved OTIO file's directory. Only
+safe relative media paths are followed. Absolute paths, `file://`, network URLs,
+escaping paths and links are preserved as raw evidence but block interpretation.
+This is a restricted file interchange route, not a general native-project parser.
+Missing media is a finding; no remote fetch or relink guess occurs.
+
+The capture directory contains exact saved OTIO bytes, independent verified
+resource copies, snapshot-manifest.json and a last-written COMPLETE checksum
+manifest. Optional `--caption-document` supplies a JSON `{ "captions": [...] }`
+with explicit stable caption IDs. `--companions-json` supplies a mapping of
+archive names to saved files (for example an untouched native project or ASS).
+Companions are archived byte-for-byte as opaque evidence, never interpreted or
+reapplied. All paths must be new. Existing files are never replaced.
+
+The saved snapshot is hash-sealed, not an OS-enforced immutable file or signed
+trust record. The original host file is compared again after capture. A later
+change is reported as DIVERGED; the archived branch remains available. Absence
+of a later change is not a cross-system CAS or a promise about unsaved host edits.
+
+## Comparison contract
+
+- Base identity comes from the verified X1 export binding and projection.
+- Current identity/version comes from the existing I2 `freeze_revision` token,
+  including sources and narration bytes. Same path with new narration bytes is
+  a different binding, not an unchanged clip.
+- Host identity requires persistent recap export, track, occurrence and resource
+  IDs. Clip names, source paths, text and timecodes are not replacement IDs.
+  Repeated-source instances cannot be matched after losing IDs. No fuzzy matching.
+- Clip.1 and the single-active-reference Clip.2 upgrade are interpreted. Gaps
+  reconstruct target placement; source range comes from the actual OTIO field,
+  never stale recap metadata. Exact known source/timeline rates are restored
+  only after validating the serialized double rate; subframes are rejected.
+- Same SHA at a new safe relative path is a valid media relocation. New bytes
+  with the old resource ID are a conflict. Ranges beyond verified source frames
+  or samples are rejected even if a legacy duration field is too large.
+- Only confirmed host-only field changes are proposed. The report distinguishes
+  host-only, current-only, converged and conflicting changes. It binds a hash
+  of every current field value as a future precondition.
+- Same-field concurrent changes conflict. Different timing fields also conflict
+  when their anchors interact. Current changes to narration, source evidence,
+  audio ownership or protected fields require review before a host timing edit.
+  Notes/title-only current edits are retained and do not create a false conflict.
+- Unknown fields/effects/markers survive in raw snapshots and an opaque report.
+  Timing edits affecting their clip, track or unknown global scope are blocked
+  for adoption. Merely retaining an unknown keyframe blob does not prove safety.
+- Deletion, additions, split/merge, ID loss and caption removal require an explicit
+  mapping outside this first readback subset. They are not inferred from absence.
+- Caption comparison requires explicit stable IDs. If the current Storyboard
+  changed, an explicit current caption map is required; old caption timing is
+  not assumed valid. Raw SRT numbering is never treated as a persistent ID.
+
+Statuses are NO_CHANGES, READY_FOR_REVIEW, NEEDS_REVIEW, CONFLICT or DIVERGED.
+READY_FOR_REVIEW means field interpretation is available for review; it does not
+mean the film can execute those edits, that narration intent was inferred, or
+that QC passed. A conflict report may retain independent, nonconflicting proposed
+fields so the reviewer can see useful work, but no proposal is automatically run.
+
+## Eventual adoption boundary
+
+The report carries `current_revision_base` and identifies the existing
+`revision.adopt_revision` entry. A later integration must map an authorized
+subset back into a Storyboard candidate, set explicit scope, revalidate the
+current base and source/evidence/protection contracts, and rerun affected QC.
+No new revision database or editable Work copy is created. The initial I2 local
+entry supports a narrower set of changes than every field visible in an OTIO
+proposal; unsupported trim/order/audio/caption mapping remains pending.
+
+There is no host CAS. Therefore even eventual adoption would certify only this
+saved branch, never overwrite or synchronize a live host project. Actual host
+import, ID survival after saved reopen, rendered equivalence and an adopted
+roundtrip all remain NOT_RUN until independently tested in a named host version.
+
+## Local tests
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -p test_otio_readback.py -v
+```
+
+Tests cover unchanged files, repeated-source lost IDs, field/cross-field conflicts,
+notes preservation, protected and semantic anchors, unknown effects, media
+relocation/drift, Clip.2 upgrade, caption IDs/current binding, live-file divergence,
+tampering, no-overwrite and narration replacement at the same path. The fixtures
+exercise saved JSON/media contracts, not actual host behavior.
