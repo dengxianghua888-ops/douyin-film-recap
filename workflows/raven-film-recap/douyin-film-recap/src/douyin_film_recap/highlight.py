@@ -537,6 +537,9 @@ def build_highlights(
     for candidate in candidates:
         candidate.final_score = _compute_final_score(candidate, weights)
     candidates.sort(key=lambda value: value.final_score, reverse=True)
+    complete_ledger = list(candidates)
+    for excluded in candidates[config.highlight.candidate_pool_size:]:
+        excluded.rejection_reason = "candidate_pool_budget_exhausted"
     candidates = candidates[: config.highlight.candidate_pool_size]
     rerank_pool = candidates[: config.highlight.rerank_top_k]
     if rerank_pool:
@@ -547,7 +550,7 @@ def build_highlights(
     _select_diverse(deduplicated, config)
     # Keep selected and rejected candidates for auditability, selected first.
     audited = sorted(
-        deduplicated,
+        complete_ledger,
         key=lambda value: (not value.selected, -value.final_score),
     )
     return HighlightDocument(

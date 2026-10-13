@@ -13,7 +13,7 @@ summarized here rather than introducing another project authority.
 | I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Implemented; synthetic FFmpeg and safety fixtures pass; full CI pending |
 | I2 | Protected local revision/render-only entry using existing generation | Implemented; 20 local fixtures plus existing regressions pass; full CI pending |
 | B1 | Immutable cross-window boundary proposals and validation | Implemented; 11 local synthetic contract tests pass; full CI pending |
-| B2 | Consistent 07/08/09 adoption with stale-reference isolation | Pending |
+| B2 | Consistent 07/08/09 adoption with stale-reference isolation | Implemented; 12 local adoption fixtures pass; full CI pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Pending |
 | V1 | Independently bound raw evidence, advisory model decisions | Pending |
 | X1 | Restricted one-way OTIO exchange package and explicit losses | Pending |
@@ -91,3 +91,7 @@ work; explicit from-stage or render-current is required. No true host CAS is cla
 ### B1 verification
 
 Eleven local fixtures pass: immutable source/revision/timebase bindings, cross-window coverage, missing-middle UNKNOWN, legacy bool UNKNOWN, detector provenance and stale-reference rejection. Semantic and audio observation IDs alone are shape-level advisory records, not proof that raw audio was consumed. Real-film boundary-quality acceptance is NOT_RUN.
+
+### B2 verification
+
+Twelve local tests pass, including actual generation adoption, stale retry rejection, preserved archived Storyboard bytes, quote/cue/event/reveal reconciliation, VO subspan preservation and independent source PTS probing. The apply-boundary CLI obtains current clocks from bound source bytes rather than trusting the proposal clock. A changed selected set or incompatible protected/manual edits requires a separate editorial revision. Full original pre/post QC remains required after adoption.

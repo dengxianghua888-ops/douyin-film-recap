@@ -289,12 +289,14 @@ def _build_visual_pool(
                 "continuity_shot_ids": (unit.model_extra or {}).get("continuity_shot_ids", []),
             }
         )
+    from .boundary import highlight_reference_binding
     for highlight in highlights.candidates:
         if not highlight.selected:
             continue
         pool.append(
             {
                 "unit_id": f"highlight:{highlight.highlight_id}",
+                **highlight_reference_binding(highlight),
                 "source_id": highlight.source_id,
                 "start": highlight.start,
                 "end": highlight.end,
@@ -403,21 +405,11 @@ def _normalize_storyboard(
                 validate_visual_reference(visual, pool_map)
                 visual.highlight_id = pool_map[visual.unit_id].get("highlight_id")
             source = source_map.get(visual.source_id)
-            if source is None:
-                continue
-            start = clamp(visual.start, 0.0, max(0.0, source.duration - 0.05))
-            end = clamp(visual.end, start + 0.05, source.duration)
-            normalized_visuals.append(
-                VisualReference(
-                    source_id=visual.source_id,
-                    start=start,
-                    end=end,
-                    purpose=visual.purpose,
-                    highlight_id=visual.highlight_id,
-                    unit_id=visual.unit_id,
-                    visual_role=visual.visual_role,
-                )
-            )
+            if source is None or visual.start < 0 or visual.end > source.duration:
+                raise ValueError(f"Visual has invalid source range: {segment.segment_id}")
+            # Preserve revision/protection/unknown metadata. Never clamp a new
+            # boundary back into an old window or discard evidence bindings.
+            normalized_visuals.append(visual.model_copy(deep=True))
         segment.visuals = normalized_visuals
         visual_highlight_ids = {
             visual.highlight_id for visual in segment.visuals if visual.highlight_id
@@ -427,6 +419,11 @@ def _normalize_storyboard(
         if segment.mode == "original":
             if segment.highlight_id and segment.highlight_id in highlight_map:
                 highlight = highlight_map[segment.highlight_id]
+                from .boundary import highlight_reference_binding, validate_highlight_reference_binding
+                binding = highlight_reference_binding(highlight)
+                if binding:
+                    for visual in segment.visuals:
+                        validate_highlight_reference_binding(visual, highlight)
                 segment.visuals = [
                     VisualReference(
                         source_id=highlight.source_id,
@@ -436,6 +433,7 @@ def _normalize_storyboard(
                         highlight_id=highlight.highlight_id,
                         unit_id=f"highlight:{highlight.highlight_id}",
                         visual_role="direct_evidence",
+                        **binding,
                     )
                 ]
                 segment.text_raw = segment.text_raw or highlight.quote

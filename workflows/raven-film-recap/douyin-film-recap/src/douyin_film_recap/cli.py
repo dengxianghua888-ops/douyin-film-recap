@@ -259,3 +259,32 @@ def render_current_command(
     except (ValueError, OSError, RuntimeError) as exc:
         console.print(f"当前作品渲染失败：{exc}")
         raise typer.Exit(code=2) from exc
+
+
+@app.command("apply-boundary")
+def apply_boundary_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前已冻结的工作区")],
+    proposal: Annotated[Path, typer.Option("--proposal", help="包含 proposal 与 base 的边界采用请求")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+) -> None:
+    """重新核对独立来源时钟后，一次采用对应 07/08/09；不自动渲染。"""
+    from .boundary import BoundaryProposal
+    from .boundary_apply import apply_boundary_proposal, collect_boundary_timebases
+    from .models import SourceManifest
+    from .workspace import read, work_lock
+    try:
+        request = json.loads(proposal.read_text(encoding="utf-8"))
+        if not isinstance(request, dict) or set(request) != {"proposal", "base"}:
+            raise ValueError("INVALID_BOUNDARY_APPLICATION_REQUEST")
+        root, _ = preflight(work_dir)
+        with work_lock(root):
+            _, active = preflight(root)
+            manifest = SourceManifest.model_validate(read(active / "00_source_manifest.json"))
+            current_timebases = collect_boundary_timebases(manifest)
+            result = apply_boundary_proposal(root,
+                proposal=BoundaryProposal.model_validate(request["proposal"]), base=request["base"],
+                config=load_config(config), timebases=current_timebases)
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"边界采用失败：{exc}")
+        raise typer.Exit(code=2) from exc
