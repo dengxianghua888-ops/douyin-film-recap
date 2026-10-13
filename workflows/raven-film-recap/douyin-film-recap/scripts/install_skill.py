@@ -11,6 +11,24 @@ DEFAULT_TARGETS = {
 }
 
 
+def checked_target(root: Path, target: Path) -> Path:
+    # Keep the final path component lexical: resolving an installed symlink
+    # would turn --force into deletion of the source that it points to.
+    target = target.expanduser().absolute()
+    if target.name == "..":
+        raise SystemExit(f"Unsafe target: {target}. A parent-directory target is not allowed.")
+    try:
+        actual_target = target.parent.resolve() / target.name
+    except (OSError, RuntimeError) as exc:
+        raise SystemExit(f"Unsafe target parent: {target.parent}: {exc}") from exc
+    # Resolve ancestors, not the final component, to also catch paths entering
+    # the source through a parent symlink. Check before mkdir or removal.
+    for candidate in (target, actual_target):
+        if candidate == root or candidate in root.parents or root in candidate.parents:
+            raise SystemExit(f"Unsafe target: {target}. Target and source must not overlap: {root}")
+    return target
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Install the Skill by link or copy.")
     parser.add_argument("--agent", choices=sorted(DEFAULT_TARGETS), default="claude")
@@ -20,12 +38,14 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
-    target = (args.target or DEFAULT_TARGETS[args.agent]).expanduser().resolve()
+    target = checked_target(root, args.target or DEFAULT_TARGETS[args.agent])
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists() or target.is_symlink():
         if not args.force:
             raise SystemExit(f"Target exists: {target}. Use --force to replace it.")
-        if target.is_dir() and not target.is_symlink():
+        if target.is_symlink():
+            target.unlink()
+        elif target.is_dir():
             shutil.rmtree(target)
         else:
             target.unlink()
