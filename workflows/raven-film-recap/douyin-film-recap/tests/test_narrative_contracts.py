@@ -42,6 +42,7 @@ from douyin_film_recap.planning import (
     choose_target_duration,
 )
 from douyin_film_recap.qc import preflight_qc
+from douyin_film_recap.utils import fingerprint_json
 
 
 def _config(**overrides) -> AppConfig:
@@ -233,7 +234,8 @@ def _scene_artifacts():
                          continuity_shot_ids=["shot_2"])],
     )
     analysis = SceneAnalysisDocument(
-        provider="fixture", model="fixture", unit_fingerprint="fixture", items=[
+        provider="fixture", model="fixture",
+        unit_fingerprint=fingerprint_json([unit.model_dump(mode="json") for unit in index.units]), items=[
             SceneAnalysisItem(unit_id="u_context", visible_facts=["甲将照片放进抽屉"],
                               performance_moments=["回望门口"], confidence=0.9),
         ],
@@ -330,10 +332,29 @@ def _hook_report(tmp_path, visuals, audio_duration, *, declared=True, lead_durat
         lead.audio_duration_sec = lead_duration
         lead.visuals = [VisualReference(source_id="s1", start=30, end=30 + lead_duration)]
         storyboard.segments.insert(0, lead)
-    return preflight_qc(
+    index = SceneIndex(detector="fixture", source_fingerprints={"s1": "source-v1"}, units=[
+        SceneUnit(unit_id="u_open", source_id="s1", start=0, end=10),
+        SceneUnit(unit_id="u_context", source_id="s1", start=20, end=30),
+        SceneUnit(unit_id="u_lead", source_id="s1", start=30, end=40),
+    ])
+    analysis = SceneAnalysisDocument(provider="fixture", model="fixture",
+        unit_fingerprint=fingerprint_json([unit.model_dump(mode="json") for unit in index.units]),
+        items=[SceneAnalysisItem(unit_id=unit.unit_id, visible_facts=["synthetic observed range"])
+               for unit in index.units])
+    for current in storyboard.segments:
+        for visual in current.visuals:
+            visual.unit_id = (f"highlight:{visual.highlight_id}" if visual.highlight_id else next(
+                unit.unit_id for unit in index.units
+                if unit.start <= visual.start and unit.end >= visual.end
+            ))
+    report = preflight_qc(
         manifest=manifest, transcript=transcript, story=story, highlights=highlights,
         plan=_plan(), storyboard=storyboard, config=config, client=None,
+        scene_index=index, scene_analysis=analysis,
     )
+    if all(visual.source_id == "s1" for segment in storyboard.segments for visual in segment.visuals):
+        assert not any(item.rule_id == "VISUAL_EVIDENCE_INVALID" for item in report.findings)
+    return report
 
 
 @pytest.mark.parametrize("source_id,start,end", [("s1", 20, 24), ("wrong-source", 1, 5)])
@@ -367,7 +388,7 @@ def test_unconsumed_tail_or_touching_hook_boundary_does_not_count(tmp_path, dura
 def test_hook_time_includes_preceding_segments_visuals_and_intra_visual_offset(tmp_path):
     report = _hook_report(tmp_path, [
         VisualReference(source_id="s1", start=20, end=24),
-        VisualReference(source_id="s1", start=0, end=5, highlight_id="h_open"),
+        VisualReference(source_id="s1", start=0, end=5),
     ], 8, lead_duration=3)
     # 3 seconds in the previous segment + 4 seconds of ordinary picture + 1
     # second into the matching visual, rather than the containing segment's 3s.
