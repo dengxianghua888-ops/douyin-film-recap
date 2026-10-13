@@ -19,7 +19,8 @@ dependencies = [
   "Pillow>=10.4,<13",
   "numpy>=1.26,<3",
   "opencv-python-headless>=4.10,<5",
-  "scenedetect>=0.6.4,<0.8",
+  # PySceneDetect 0.7+ ships separate distributions; the plain one pulls GUI OpenCV.
+  "scenedetect-headless>=0.7.2,<0.8",
   "jsonschema>=4.23,<5",
   "platformdirs>=4.2,<5",
 ]
