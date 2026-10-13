@@ -89,6 +89,144 @@ class ProtectedRevisionTests(unittest.TestCase):
         self.assertFalse((active / "11_post_render_qc.json").exists())
         self.assertEqual(w.read(Path(result["archive"]) / "files/11_post_render_qc.json")["status"], "PASSED")
 
+    def _register_missing_debug(self, *, legacy=False):
+        frame = self.work / "frames/source/unit.jpg"
+        index = w.read(self.work / "02_scene_index.json")
+        index["units"][0]["frame_paths"] = [str(frame)]
+        w.atomic(self.work / "02_scene_index.json", index)
+        analysis = w.read(self.work / "03_scene_analysis.json")
+        analysis["unit_fingerprint"] = fingerprint_json(index["units"])
+        w.atomic(self.work / "03_scene_analysis.json", analysis)
+        state = w.read(self.work / "state.json")
+        state["stages"]["scenes"] = {"status": "passed", "artifacts": {str(frame): "a" * 64}}
+        if legacy:
+            for stage in ("scene_analysis", "highlights", "delivery"):
+                state["stages"][stage] = {"status": "passed"}
+        else:
+            w.atomic(self.work / ".receipts/debug-cleanup.json", {"schema": "film-debug-cleanup/1",
+                "files": [{"path": str(frame), "sha256": "a" * 64}]})
+        w.atomic(self.work / "state.json", state)
+        return frame
+
+    def _adopt_current_note(self, note):
+        _, active = w.preflight(self.work)
+        candidate = w.read(active / BOARD)
+        candidate["segments"][0]["notes"] = note
+        return adopt_revision(self.work, base=freeze_revision(self.work), artifacts={BOARD: candidate},
+                              scope={"segment_ids": ["one"], "fields": ["notes"]})
+
+    def _assert_debug_absence_survives_generations(self, *, legacy):
+        frame = self._register_missing_debug(legacy=legacy)
+        expected = "missing_regenerable_debug_after_delivery" if legacy else "recorded_regenerable_debug_cleanup"
+        for number in range(3):
+            result = self._adopt_current_note(f"revision {number}")
+            active = Path(result["active_dir"])
+            archive = w.verify_archive(result["archive"])
+            absent = {row["original_path"]: row["reason"] for row in archive["unavailable_optional_references"]}
+            self.assertEqual(absent[str(frame)], expected)
+            self.assertFalse(frame.exists())
+            self.assertEqual(w.read(active / "02_scene_index.json")["units"][0]["frame_paths"], [str(frame)])
+            self.assertEqual(w.read(active / "state.json")["stages"]["scenes"]["artifacts"][str(frame)], "a" * 64)
+        changed = self.config.model_copy(deep=True)
+        changed.render.crf += 1
+        current = FilmRecapPipeline.from_current(work_dir=self.work, config=changed)
+        self.assertNotEqual(current.work_dir, active)
+        result = self._adopt_current_note("revision after render configuration change")
+        absent = {row["original_path"]: row["reason"]
+                  for row in w.verify_archive(result["archive"])["unavailable_optional_references"]}
+        self.assertEqual(absent[str(frame)], expected)
+
+    def test_recorded_debug_cleanup_survives_multiple_revisions_and_render_config(self):
+        self._assert_debug_absence_survives_generations(legacy=False)
+
+    def test_legacy_completed_debug_absence_survives_multiple_revisions_and_render_config(self):
+        self._assert_debug_absence_survives_generations(legacy=True)
+
+    def test_cleanup_from_an_owned_generation_is_inherited(self):
+        first = self._adopt_current_note("create first generation")
+        self.work = Path(first["active_dir"])
+        frame = self._register_missing_debug()
+        for number in range(2):
+            result = self._adopt_current_note(f"later generation {number}")
+            absent = {row["original_path"] for row in w.verify_archive(result["archive"])["unavailable_optional_references"]}
+            self.assertIn(str(frame), absent)
+
+    def test_inherited_cleanup_rejects_missing_or_mismatched_receipt_and_state_hash(self):
+        frame = self._register_missing_debug()
+        active = Path(self._adopt_current_note("first revision")["active_dir"])
+        receipt_path = active / ".receipts/debug-cleanup.json"
+        receipt = w.read(receipt_path)
+        state = w.read(active / "state.json")
+        pointer = (self.work / w.POINTER).read_bytes()
+        for mutation in ("missing", "schema", "path", "hash", "scene_hash"):
+            with self.subTest(mutation=mutation):
+                changed = deepcopy(receipt)
+                changed_state = deepcopy(state)
+                if mutation == "schema":
+                    changed["schema"] = "unknown-cleanup/99"
+                elif mutation == "path":
+                    changed["files"][0]["path"] = str(frame.with_name("wrong.jpg"))
+                elif mutation == "hash":
+                    changed["files"][0]["sha256"] = "b" * 64
+                elif mutation == "scene_hash":
+                    changed_state["stages"]["scenes"]["artifacts"][str(frame)] = "b" * 64
+                w.atomic(receipt_path, changed)
+                if mutation == "missing":
+                    receipt_path.unlink()
+                w.atomic(active / "state.json", changed_state)
+                with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_EXTERNAL_ARTIFACT_MISSING"):
+                    self._adopt_current_note(f"must reject {mutation}")
+                self.assertEqual((self.work / w.POINTER).read_bytes(), pointer)
+
+    def test_missing_debug_without_receipt_or_completed_history_still_blocks(self):
+        self._register_missing_debug()
+        (self.work / ".receipts/debug-cleanup.json").unlink()
+        with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_ARCHIVE_MEMBER_MISSING"):
+            self._adopt_current_note("unproven missing debug")
+        self.assertFalse((self.work / w.POINTER).exists())
+
+    def test_new_old_generation_or_foreign_missing_path_cannot_gain_cleanup_exemption(self):
+        self._register_missing_debug()
+        active = Path(self._adopt_current_note("first revision")["active_dir"])
+        state = w.read(active / "state.json")
+        receipt = w.read(active / ".receipts/debug-cleanup.json")
+        for missing in (self.work / "frames/source/never-recorded.jpg",
+                        self.root / "different-workspace/frames/source/unit.jpg",
+                        self.work / "audio/missing-voice.mp3"):
+            with self.subTest(missing=str(missing)):
+                changed_state = deepcopy(state)
+                changed_state["stages"]["scenes"]["artifacts"][str(missing)] = "c" * 64
+                changed_receipt = deepcopy(receipt)
+                changed_receipt["files"].append({"path": str(missing), "sha256": "c" * 64})
+                w.atomic(active / "state.json", changed_state)
+                w.atomic(active / ".receipts/debug-cleanup.json", changed_receipt)
+                with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_EXTERNAL_ARTIFACT_MISSING"):
+                    self._adopt_current_note("unproven external absence")
+
+    def test_scene_cleanup_does_not_exempt_required_non_scene_artifact(self):
+        frame = self._register_missing_debug()
+        active = Path(self._adopt_current_note("first revision")["active_dir"])
+        state = w.read(active / "state.json")
+        state["stages"]["tts"] = {"status": "passed", "artifacts": {str(frame): "a" * 64}}
+        w.atomic(active / "state.json", state)
+        with self.assertRaisesRegex(w.WorkspaceError, "REQUIRED_EXTERNAL_ARTIFACT_MISSING"):
+            self._adopt_current_note("debug path is also required by TTS")
+
+    def test_missing_source_or_voice_audio_still_blocks_with_inherited_cleanup(self):
+        self._register_missing_debug()
+        active = Path(self._adopt_current_note("first revision")["active_dir"])
+        original_source = self.source_path.read_bytes()
+        self.source_path.unlink()
+        with self.assertRaisesRegex(w.WorkspaceError, "BOUND_RESOURCE_UNSAFE"):
+            self._adopt_current_note("missing source")
+        self.source_path.write_bytes(original_source)
+        board = w.read(active / BOARD)
+        board["segments"][0].update(mode="voiceover", audio_owner="narration",
+            audio_file=str(self.work / "audio/missing-voice.mp3"))
+        w.atomic(active / BOARD, board)
+        with self.assertRaisesRegex(w.WorkspaceError, "BOUND_RESOURCE_UNSAFE"):
+            self._adopt_current_note("missing voice audio")
+
     def test_conflicting_adoption_cannot_replace_new_head(self):
         base = freeze_revision(self.work)
         result = self.adopt(base=base)

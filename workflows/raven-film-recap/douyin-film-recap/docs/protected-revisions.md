@@ -115,3 +115,20 @@ checks that only the changed AV segment executes while the other is reused, and
 runs real post-render QC. Its pre-QC result is explicitly a synthetic `DEGRADED`
 fixture; it does not certify story, spoken delivery or real film quality. No remote
 provider or paid production work is used by these tests.
+
+### Cleaned debug images across revisions
+
+Copied scene/index references can still name a prior generation's frames or contact
+sheets. A later revision inherits their absence only when the current generation's
+pinned, verified recovery archive already recorded that same debug path as optional,
+and its archived scenes hash matches the current scenes record. The path must belong
+to this workspace's original debug directory or an owned generation's debug directory.
+Explicit cleanup receipts must still match path and hash; a missing or altered receipt
+cannot become a legacy exemption. The separate legacy completed-run absence reason is
+preserved without upgrading it to proof of observed cleanup.
+
+This exception applies only to scene debug artifacts and frame/contact-sheet references.
+It does not exempt ordinary external files, source media, TTS audio, or newly missing
+old-generation files merely because a new cleanup receipt lists them. Regression tests
+cover three consecutive revisions, a render-configuration generation change, and these
+failure cases; neither scenes metadata nor source evidence hashes are rewritten.

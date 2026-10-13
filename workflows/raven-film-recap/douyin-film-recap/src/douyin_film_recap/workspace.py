@@ -212,24 +212,87 @@ def _refs(value):
             yield from _refs(item)
 
 
-def _debug_absence_reason(active, state, path, cleanup):
+def _inherited_debug_absences(active, state):
+    """Read only absence facts already pinned by this generation's recovery archive.
+
+    A copied scenes record still points to its original generation. Neither a
+    matching receipt alone nor an arbitrary missing external file is inherited.
+    """
+    root = _task_root(active)
+    if root == active.resolve():
+        return {}
+    _, current = preflight(root)
+    if current != active.resolve():
+        raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+    pointer = read(root / POINTER)
+    intent = pointer["migration_intent"]
+    archive = member(root, f".migrations/{intent}")
+    if (state.get("migration_intent") != intent
+            or state.get("recovery_manifest") != str(archive / "recovery-manifest.json")):
+        return {}
+    manifest = verify_archive(archive)
+    previous = Path(manifest["previous_active"])
+    archived_state = read(member(archive / "files", "state.json"))
+    recorded = {
+        str((Path(name) if Path(name).is_absolute() else previous / name).resolve()): value
+        for name, value in archived_state.get("stages", {}).get("scenes", {}).get("artifacts", {}).items()
+    }
+    inherited = {}
+    for row in manifest.get("unavailable_optional_references", []):
+        if not isinstance(row, dict) or row.get("reason") not in {
+                "recorded_regenerable_debug_cleanup", "missing_regenerable_debug_after_delivery"}:
+            continue
+        path = Path(row.get("original_path", ""))
+        if not path.is_absolute() or not path.is_relative_to(root):
+            continue
+        relative = path.relative_to(root)
+        parts = relative.parts
+        # Only this task's original debug roots or an owned generation's debug
+        # roots qualify. A sibling workspace/ordinary external artifact cannot.
+        if len(parts) >= 2 and parts[0] in {"frames", "contact_sheets"}:
+            owner = root
+        elif (len(parts) >= 4 and parts[0] == ".generations"
+              and parts[2] in {"frames", "contact_sheets"}):
+            owner = member(root, str(Path(*parts[:2])))
+            if _task_root(owner) != root or not (owner / GENERATION).is_file():
+                continue
+        else:
+            continue
+        checked = member(root, str(relative))
+        key = str(checked.resolve())
+        if key in recorded:
+            inherited[key] = {"sha256": recorded[key], "reason": row["reason"]}
+    return inherited
+
+
+def _debug_absence_reason(active, state, path, cleanup, inherited=None):
     """Only recorded, regenerable scene imagery may be absent after cleanup."""
     root = active.resolve()
     resolved = path.resolve()
-    if not any(resolved.is_relative_to(root / name) for name in ("frames", "contact_sheets")):
-        return None
-    scenes = state.get("stages", {}).get("scenes", {})
+    local_debug = any(resolved.is_relative_to(root / name) for name in ("frames", "contact_sheets"))
     recorded = {
         str((Path(name) if Path(name).is_absolute() else active / name).resolve()): sha256
-        for name, sha256 in scenes.get("artifacts", {}).items()
+        for name, sha256 in state.get("stages", {}).get("scenes", {}).get("artifacts", {}).items()
     }
     if str(resolved) not in recorded:
         return None
     expected = recorded[str(resolved)]
-    if (cleanup.get("schema") == "film-debug-cleanup/1"
-            and any(row.get("path") == str(resolved) and row.get("sha256") == expected
-                    for row in cleanup.get("files", []) if isinstance(row, dict))):
-        return "recorded_regenerable_debug_cleanup"
+    historical = (inherited or {}).get(str(resolved))
+    if not local_debug and (historical is None or historical["sha256"] != expected):
+        return None
+    if cleanup is not None:
+        cleanup_files = cleanup.get("files") if isinstance(cleanup, dict) else None
+        if (isinstance(cleanup, dict) and cleanup.get("schema") == "film-debug-cleanup/1"
+                and isinstance(cleanup_files, list)
+                and any(row.get("path") == str(resolved) and row.get("sha256") == expected
+                        for row in cleanup_files if isinstance(row, dict))):
+            return "recorded_regenerable_debug_cleanup"
+        # An explicit but mismatched receipt cannot fall back to a legacy guess.
+        return None
+    if not local_debug:
+        if historical["reason"] == "missing_regenerable_debug_after_delivery":
+            return historical["reason"]
+        return None  # Removing a recorded-cleanup receipt does not create legacy proof.
     # Older completed workspaces predate cleanup receipts. Preserve the missing
     # fact rather than claim the file was reviewed or that cleanup was observed.
     stages = state.get("stages", {})
@@ -258,12 +321,18 @@ def inventory(active):
     external = set()
     unavailable = {}
     cleanup_path = member(active, ".receipts/debug-cleanup.json")
-    cleanup = read(cleanup_path) if cleanup_path.is_file() else {}
+    cleanup = read(cleanup_path) if cleanup_path.is_file() else None
+    inherited_debug = None
 
-    def missing_optional(path, field=None):
+    def missing_optional(path, field=None, *, stage=None):
+        nonlocal inherited_debug
         if path.exists():
             return False
-        reason = _debug_absence_reason(active, state, path, cleanup)
+        reason = None
+        if stage == "scenes" or field in {"frame_paths", "contact_sheet_path"}:
+            if inherited_debug is None and not path.resolve().is_relative_to(active.resolve()):
+                inherited_debug = _inherited_debug_absences(active, state)
+            reason = _debug_absence_reason(active, state, path, cleanup, inherited_debug)
         if reason is None and field == "review_file":
             reason = "optional_review_not_present"
         if reason is None:
@@ -286,7 +355,7 @@ def inventory(active):
             recorded[str(ref.resolve())] = expected
             if ref.is_absolute() and ref.resolve().is_relative_to(active.resolve()):
                 if not ref.is_file():
-                    if missing_optional(ref):
+                    if missing_optional(ref, stage=stage):
                         continue
                     raise WorkspaceError("REQUIRED_ARCHIVE_MEMBER_MISSING")
                 files.add(ref)
@@ -294,6 +363,8 @@ def inventory(active):
                 external.add(str(ref))  # Original sidecar/source references stay references.
             else:
                 if not ref.is_file():
+                    if missing_optional(ref, stage=stage):
+                        continue
                     raise WorkspaceError("REQUIRED_EXTERNAL_ARTIFACT_MISSING")
                 files.add(ref)  # Preserve explicitly referenced generated artifacts.
     # In-task references may include nested generated media; sources outside the task
