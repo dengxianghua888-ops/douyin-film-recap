@@ -32,4 +32,4 @@ Read root and nested AGENTS.md/Skill contracts first. Run focused regression tes
 
 ## Completion record
 
-Individual commits and test evidence provide the implementation record. A final verification section will be added after all first-batch fixes have been exercised; an item is not complete merely because it appears in this plan.
+All nine first-batch items are implemented as independent commits, with additional fixes for actual SceneDetect dependency resolution, interruption-state persistence, and strict legacy scene-fingerprint compatibility. See [implementation results and verification matrix](optimization-results-20261013.md). Code acceptance commit `c85fe1ce8c4f3a05213d793585c09cf6eb6b1107` passed all three existing CI jobs: 241 film tests and 65 runtime/package tests, zero failures/errors/skips, structure validation and fatal lint. The local full test installation was blocked by a proxy 403; the full-suite result is from clean remote CI, not a claim of local execution. Deferred work above remains deferred.
