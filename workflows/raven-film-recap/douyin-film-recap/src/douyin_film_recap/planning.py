@@ -282,6 +282,8 @@ def _build_visual_pool(
                 "performance_moments": item.performance_moments,
                 "uncertainties": item.uncertainties,
                 "confidence": item.confidence,
+                "scene_detection": (unit.scene_detection.model_dump(mode="json")
+                                    if unit.scene_detection else None),
                 "analysis_window_only": (unit.model_extra or {}).get("analysis_window_only", False),
                 "original_shot_spans": (unit.model_extra or {}).get("original_shot_spans", unit.shot_spans),
                 "continuity_shot_ids": (unit.model_extra or {}).get("continuity_shot_ids", []),

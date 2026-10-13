@@ -27,6 +27,8 @@ ASR 真词界标 `asr`，经过声学对齐的词界可标 `aligned`，按字数
 
 ## 两层 QC
 
+镜头检测缺依赖、解码失败或无可用结果时，`02_scene_index.json` 记录每个来源的 `source_detection`：配置的检测器、实际 `detector_used`、`fallback_reason` 和 `boundary_confidence`。等长回退为 `fixed_interval`，边界置信度为 `unknown`；其分析窗口不提供 `original_shot_spans` 或 `continuity_shot_ids`，也不把人工窗口数当作真实镜头密度。混合来源的索引标记 `mixed`，后续模型输入保留这些缺口；回退本身不阻断制作，但 QC 应保留降级提示。
+
 自动检查文件、流、规格、时间、源身份、字幕合法性等确定性属性，并保留语义模型发现。自动检查不能证明听起来舒服、人物动作正确或字幕没有遮住关键道具。
 
 最终画面与声音需要独立复核证据：说明谁/哪个系统、使用何种方法、覆盖哪些输出区间、证据位置和结果，绑定本次 final 文件 SHA256。没有证据时保留 DEGRADED，而不是生成虚假“已看/已听”。具名记录是可追溯声明，不是程序对审美正确性的证明。

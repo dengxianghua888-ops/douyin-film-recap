@@ -116,6 +116,8 @@ def _scene_payload(
                 "start": unit.start,
                 "end": unit.end,
                 "transcript": unit.transcript,
+                "scene_detection": (unit.scene_detection.model_dump(mode="json")
+                                    if unit.scene_detection else None),
                 "visible_facts": item.visible_facts,
                 "dialogue_facts": item.dialogue_facts,
                 "characters": [value.model_dump(mode="json") for value in item.characters],

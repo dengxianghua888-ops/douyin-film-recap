@@ -183,6 +183,14 @@ def preflight_qc(
     scene_analysis: SceneAnalysisDocument | None = None,
 ) -> QCReport:
     builder = FindingBuilder("pre")
+    if scene_index is not None:
+        for source_id, detection in scene_index.source_detection.items():
+            if detection.fallback_reason:
+                builder.add(stage="pre_render", severity="warning", blocking=False, deterministic=True,
+                            rule_id="SCENE_DETECTION_FALLBACK", source_id=source_id,
+                            message="镜头检测已降级为分析窗口，切点不能视为已验证的真实镜头边界。",
+                            evidence=detection.model_dump(mode="json"),
+                            next_action="复核受影响素材的镜头边界与动作连续性。")
     visual_evidence_valid = True
     try:
         validate_storyboard_visual_evidence(
