@@ -9,8 +9,8 @@ summarized here rather than introducing another project authority.
 
 | Item | Deliverable | Status |
 | --- | --- | --- |
-| I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local unittest fixtures pass; CLI/full CI pending |
-| I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Pending |
+| I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local fixtures and exact-commit full CI pass |
+| I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Implemented; synthetic FFmpeg and safety fixtures pass; full CI pending |
 | I2 | Protected local revision/render-only entry using existing generation | Pending |
 | B1 | Immutable cross-window boundary proposals and validation | Pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Pending |
@@ -60,3 +60,18 @@ checks and limitations.
 ### I0 verification
 
 Pure planner: 20 standard-library unittest fixtures passed locally. CLI read-only/stale-authority fixtures added; full pytest and CLI execution await CI because local pytest/typer are unavailable. Python compileall passed. No media/QC or performance claim.
+
+### I1 verification
+
+Opt-in remains disabled by default. Synthetic FFmpeg checks cover full/cold/warm
+decoded audio/video equality, selective shot invalidation, mixed original/voice,
+reordering, same-key parallel rendering, cross-generation reuse, corruption,
+malformed manifests, path safety and no-clobber publication. Planner regressions
+remain green. Additional focused checks cover historical disabled-config identity,
+bounded realized clocks in QC, and recovery references before a stage is marked
+passed. The full pipeline still finalizes and reruns QC. Default-off legacy config
+identity is preserved. Real-film/human listening, production speedups and broad
+platform/FPS acceptance are NOT_RUN. The verified opt-in toolchain collector is
+currently Linux/ldd; unsupported toolchains fail closed while the default renderer
+is unchanged. I0 exact-SHA CI: e4759d429106f4f11ad0657f095e08dcb617bcd7, run38373950716,
+all three jobs succeeded.

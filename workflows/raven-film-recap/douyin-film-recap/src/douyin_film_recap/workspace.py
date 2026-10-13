@@ -29,7 +29,7 @@ RECOVERY_LAUNCHER = ('from pathlib import Path\nimport sys\n'
 KNOWN_NAMES = {"state.json", ".remote-authorization.json", "delivery_report.md", "review_evidence.json"}
 OWNED_DIRS = (".receipts", ".remote-intents", "output", "scripts", "audio")
 PATH_FIELDS = {"audio_file", "rendered_file", "final_video", "preview_video", "subtitle",
-               "edl", "review_file", "contact_sheet_path"}
+               "edl", "review_file", "contact_sheet_path", "render_plan", "render_receipt"}
 _held_roots = ContextVar("film_held_roots", default=frozenset())
 
 

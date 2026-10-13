@@ -103,6 +103,8 @@ tts:
   min_speedup: 0.95
 
 render:
+  # Opt-in whole-segment AV reuse; finalization and QC still run in full.
+  incremental_cache: false
   width: 1080
   height: 1920
   fps: 30

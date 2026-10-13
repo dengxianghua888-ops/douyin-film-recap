@@ -27,7 +27,7 @@ from .models import (
 )
 from .prompts import SEMANTIC_QC_SYSTEM, semantic_qc_prompt
 from .providers import OpenAICompatibleClient
-from .subtitles import build_cues, resolved_visual_spans, segment_output_duration
+from .subtitles import build_cues, output_timeline, resolved_visual_spans, segment_output_duration
 from .utils import content_fingerprint, overlap_seconds, run_command
 from .narrative_contracts import get_plan_constraints, hook_eligibility
 from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
@@ -913,11 +913,34 @@ def _review_coverage(storyboard: Storyboard, final_hash: str, duration: float) -
     return result
 
 
+def _checked_realized_timeline(storyboard: Storyboard, config: AppConfig):
+    """A stored output clock cannot override authored duration without bounds."""
+    realized = storyboard.output.get("realized_timeline")
+    if realized is None:
+        return None
+    actual = output_timeline(storyboard, realized_timeline=realized)
+    expected_cursor = 0.0
+    tolerance = 1.0 / config.render.fps + 1e-8
+    for segment, row in zip(storyboard.segments, actual):
+        duration = segment_output_duration(segment)
+        expected_cursor += duration
+        if (abs(float(row["duration"]) - duration) > tolerance
+                or abs(float(row["end"]) - expected_cursor) > tolerance):
+            raise ValueError("REALIZED_TIMELINE_EXCEEDS_AUTHORED_TOLERANCE")
+    return realized
+
+
 def _subtitle_delivery_checks(
     builder: FindingBuilder, storyboard: Storyboard, config: AppConfig,
     duration: float, final_hash: str,
 ) -> dict[str, Any]:
-    expected = build_cues(storyboard, config)
+    try:
+        expected = build_cues(storyboard, config,
+                              realized_timeline=_checked_realized_timeline(storyboard, config))
+    except (ValueError, TypeError, KeyError) as exc:
+        builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
+        return {"status": "not_checked", "reason": str(exc)}
     for segment in storyboard.segments:
         if segment.mode == "original" and not segment.original_cues_verified:
             builder.add(stage="post_render", severity="warning", blocking=False, deterministic=True,
@@ -1024,7 +1047,14 @@ def post_render_qc(
         (stream for stream in streams if stream.get("codec_type") == "audio"), None
     )
     actual_duration = media_duration(final_path)
-    expected_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
+    try:
+        timeline = output_timeline(storyboard,
+            realized_timeline=_checked_realized_timeline(storyboard, config))
+        expected_duration = float(timeline[-1]["end"]) if timeline else 0.0
+    except (ValueError, TypeError, KeyError) as exc:
+        builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
+        expected_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
     if not video_stream:
         builder.add(
             stage="post_render",

@@ -132,6 +132,8 @@ class TTSConfig(FlexibleModel):
 
 
 class RenderConfig(FlexibleModel):
+    # Opt-in until independent media/performance acceptance is recorded.
+    incremental_cache: bool = False
     width: int = 1080
     height: int = 1920
     fps: int = 30
@@ -191,9 +193,13 @@ class AppConfig(FlexibleModel):
     runtime: RuntimeConfig = Field(default_factory=RuntimeConfig)
 
     def fingerprint(self) -> str:
+        data = self.model_dump(mode="json")
+        # Disabled opt-in scheduling must retain pre-cache workspace identity.
+        if data["render"].get("incremental_cache") is False:
+            data["render"].pop("incremental_cache", None)
         return fingerprint_json(
             {
-                "config": self.model_dump(mode="json"),
+                "config": data,
                 "explicit_format_fields": sorted(self.format.model_fields_set),
             }
         )

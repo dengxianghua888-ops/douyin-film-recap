@@ -8,6 +8,8 @@ from __future__ import annotations
 from fractions import Fraction
 from pathlib import Path
 import shutil
+import re
+import sys
 from typing import Any, Mapping
 
 from .config import AppConfig
@@ -52,7 +54,7 @@ def _node(kind: str, node_id: str, params: dict, deps: list[dict], *, ready: boo
     key = digest(payload)
     return {"node_id": node_id, "kind": kind, "semantic_key": key if ready else None,
             "provisional_key": None if ready else key, "key_state": "complete" if ready else "provisional",
-            "params": params, "inputs": deps, "action": "build",
+            "params": params, "inputs": deps, "toolchain_digest": digest(toolchain or {}), "action": "build",
             "reason_codes": reasons or (["NOT_LOOKED_UP"] if ready else ["DEPENDENCY_UNREALIZED"])}
 
 
@@ -188,6 +190,22 @@ def compile_render_plan(
             if rational(contract.get("fps", 0)) != fps:
                 raise RenderContractError(f"REALIZED_FPS_MISMATCH: {sid}")
             actual = Fraction(frames, 1) / fps
+            if contract.get("sample_rate") != 48000:
+                raise RenderContractError(f"REALIZED_SAMPLE_RATE_MISMATCH: {sid}")
+            decoded = contract.get("decoded_sample_count")
+            padding = contract.get("padding")
+            delay = contract.get("encoder_delay")
+            if (any(type(v) is not int or v < 0 for v in (decoded, padding, delay))
+                    or decoded != samples + padding or padding > 8192 or delay > 8192
+                    or contract.get("padding_policy") != "decoded-minus-packet-end/1"):
+                raise RenderContractError(f"REALIZED_AUDIO_PADDING_INVALID: {sid}")
+            if abs(Fraction(samples, 48000) - actual) > 1 / fps:
+                raise RenderContractError(f"REALIZED_AUDIO_VIDEO_DRIFT: {sid}")
+            for boundary in segment.tts_word_boundaries if segment.mode == "voiceover" else []:
+                start = rational(boundary.get("start", 0))
+                end = start + rational(boundary.get("duration", 0))
+                if start < 0 or end > Fraction(samples + 1, 48000) or start >= Fraction(samples, 48000):
+                    raise RenderContractError(f"WORD_OUTSIDE_REALIZED_AUDIO: {sid}")
             if abs(actual - duration) > 1 / fps:
                 raise RenderContractError(f"REALIZED_DURATION_DRIFT: {sid}")
             realized.append(_time_entry(sid, realized_cursor, actual, fps))
@@ -205,6 +223,14 @@ def compile_render_plan(
         cue = _node("cue_local", f"cue_local:{sid}", {"cues": cues, "implementation": "subtitles/1"}, [], ready=True)
         nodes.append(cue)
         cue_deps.append({"role": cue["node_id"], "key": cue["semantic_key"]})
+    if all_realized:
+        compatibility_fields = ("video_codec", "video_profile", "audio_codec", "audio_profile", "width", "height",
+            "pix_fmt", "sar", "fps", "video_time_base", "audio_time_base", "sample_rate", "channel_layout",
+            "color_primaries", "color_transfer", "color_space", "color_range")
+        baseline = segment_deps[0]["media_contract"]
+        for dependency in segment_deps[1:]:
+            if any(dependency["media_contract"].get(field) != baseline.get(field) for field in compatibility_fields):
+                raise RenderContractError("ASSEMBLY_MEDIA_CONTRACT_MISMATCH")
     assembly = _node("assembly", "assembly", {"concat_policy": "copy-or-reencode/1", "fps": ratio(fps),
                          "time_map": realized if all_realized else expected}, segment_deps, ready=all_realized,
                          toolchain=tc)
@@ -216,14 +242,14 @@ def compile_render_plan(
     final_params = {name: getattr(config.render, name) for name, role in RENDER_FIELDS.items()
                     if "finalize" in role}
     final = _node("finalize", "finalize", final_params,
-                  [{"role": "assembly", "key": assembly["semantic_key"]},
-                   {"role": "cue_placement", "key": placement["semantic_key"]}],
+                  [{"role": "assembly", "key": assembly["semantic_key"] or assembly["provisional_key"], "key_state": assembly["key_state"]},
+                   {"role": "cue_placement", "key": placement["semantic_key"] or placement["provisional_key"], "key_state": placement["key_state"]}],
                   ready=False, reasons=["FINALIZE_ALWAYS_EXECUTED", "DEPENDENCY_BYTES_UNREALIZED"], toolchain=tc)
     if config.render.subtitle_burn_in:
         final["reason_codes"].append("FONT_RESOLUTION_REQUIRES_FINALIZE")
     nodes.append(final)
     for kind in ("preview", "technical_qc", "delivery_manifest"):
-        nodes.append(_node(kind, kind, {}, [{"role": "finalize", "key": None}], ready=False,
+        nodes.append(_node(kind, kind, {}, [{"role": "finalize", "key": final["provisional_key"], "key_state": "provisional"}], ready=False,
                            reasons=["NEW_OUTPUT_REQUIRES_FULL_QC"] if kind == "technical_qc" else None))
     payload = authority_payload(storyboard)
     changes = []
@@ -269,5 +295,29 @@ def collect_render_inputs(storyboard: Storyboard) -> dict[str, Any]:
                      "ffprobe_sha256": content_fingerprint(ffprobe),
                      "version": run_command([ffmpeg, "-version"]).stdout,
                      "implementation_digest": digest({name: content_fingerprint(Path(__file__).with_name(name))
-                         for name in ("render.py", "render_plan.py", "render_contracts.py", "subtitles.py")})}
+                         for name in ("render.py", "render_plan.py", "render_contracts.py", "render_cache.py", "subtitles.py")
+                         if Path(__file__).with_name(name).exists()})}
+        # Binary/version alone misses dynamically linked codec/filter changes.
+        # Unresolved environments remain safe dry-run plans, never reusable keys.
+        libraries = {}
+        if sys.platform.startswith("linux") and shutil.which("ldd"):
+            for binary in (ffmpeg, ffprobe):
+                try:
+                    linked = run_command(["ldd", binary]).stdout
+                except RuntimeError:
+                    toolchain["verified"] = False
+                    continue
+                if "not found" in linked:
+                    toolchain["verified"] = False
+                for line in linked.splitlines():
+                    match = re.search(r"(?:=>\s+)?(/[^\s]+)\s+\(", line)
+                    if match:
+                        library = Path(match.group(1))
+                        libraries[Path(binary).name + ":" + library.name] = identify(str(library))
+            if not libraries:
+                toolchain["verified"] = False
+        else:
+            toolchain["verified"] = False
+        toolchain["linked_libraries"] = libraries
+        toolchain["dependency_identity_scope"] = "linux-ldd-full-bytes/1" if libraries else "unverified"
     return {"source_identities": sources, "audio_identities": audio, "toolchain": toolchain}

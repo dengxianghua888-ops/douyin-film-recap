@@ -93,7 +93,8 @@ class RenderPlanTests(unittest.TestCase):
         self.board.segments.reverse()
         after = self.plan()
         self.assertEqual(self.nodes(before)["segment_av:s0"]["semantic_key"], self.nodes(after)["segment_av:s0"]["semantic_key"])
-        self.assertNotEqual(self.nodes(before)["assembly"]["provisional_key"], self.nodes(after)["assembly"]["provisional_key"])
+        for kind in ("assembly", "finalize", "preview", "technical_qc"):
+            self.assertNotEqual(self.nodes(before)[kind]["provisional_key"], self.nodes(after)[kind]["provisional_key"])
 
     def test_length_change_moves_later_segment_not_local_key(self):
         before = self.plan()
@@ -141,12 +142,20 @@ class RenderPlanTests(unittest.TestCase):
         for node in plan["nodes"]:
             if node["kind"] == "segment_av":
                 artifacts[node["node_id"]] = {"semantic_key": node["semantic_key"], "sha256": "1" * 64,
-                    "size": 123, "media_contract": {"frame_count": 30, "fps": {"num": 30, "den": 1}, "sample_count": 48000},
+                    "size": 123, "media_contract": {"frame_count": 30, "fps": {"num": 30, "den": 1}, "sample_count": 48000, "sample_rate": 48000, "decoded_sample_count": 48128, "padding": 128, "encoder_delay": 1024, "padding_policy": "decoded-minus-packet-end/1"},
                     "verification": {"hash_checked": True, "probe_checked": True, "decode_checked": True}}
         realized = self.plan(realized_artifacts=artifacts)
         self.assertEqual(realized["timeline"]["placement_state"], "realized")
         self.assertIsNotNone(self.nodes(realized)["assembly"]["semantic_key"])
         self.assertIsNone(self.nodes(realized)["finalize"]["semantic_key"])
+        bad_artifacts = copy.deepcopy(artifacts)
+        bad_artifacts["segment_av:s0"]["media_contract"].update(sample_count=1, decoded_sample_count=129)
+        with self.assertRaisesRegex(RenderContractError, "REALIZED_AUDIO_VIDEO_DRIFT"):
+            self.plan(realized_artifacts=bad_artifacts)
+        incompatible = copy.deepcopy(artifacts)
+        incompatible["segment_av:s0"]["media_contract"]["color_range"] = "pc"
+        with self.assertRaisesRegex(RenderContractError, "ASSEMBLY_MEDIA_CONTRACT_MISMATCH"):
+            self.plan(realized_artifacts=incompatible)
         artifacts["segment_av:s0"]["sha256"] = "2" * 64
         self.assertNotEqual(self.nodes(realized)["assembly"]["semantic_key"], self.nodes(self.plan(realized_artifacts=artifacts))["assembly"]["semantic_key"])
 

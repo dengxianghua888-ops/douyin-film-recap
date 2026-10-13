@@ -261,6 +261,7 @@ class FilmRecapPipeline:
             paths.extend(Path(output[key]) for key in ("preview_video", "subtitle", "edl") if output.get(key))
             if not all(output.get(key) for key in ("final_video", "preview_video", "subtitle", "edl")):
                 raise ValueError("Render did not provide the complete delivery artifact set")
+            paths.extend(Path(output[key]) for key in ("render_plan", "render_receipt") if output.get(key))
         elif stage == "delivery":
             paths.append(self.work_dir / "output" / "master.srt")
         return list(dict.fromkeys(paths))

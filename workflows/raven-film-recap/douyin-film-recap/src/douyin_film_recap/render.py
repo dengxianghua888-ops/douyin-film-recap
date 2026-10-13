@@ -10,6 +10,8 @@ import shutil
 import tempfile
 from typing import Any
 from uuid import uuid4
+import threading
+import time
 
 from PIL import ImageFont
 
@@ -61,6 +63,9 @@ class _RenderAttempt:
         parent = task_root / "render_attempts"
         _safe_directory(parent, task_root)
         self.attempt_id = uuid4().hex
+        self.task_root = task_root
+        self.ffmpeg_calls = 0
+        self.counter_lock = threading.Lock()
         self.root = parent / self.attempt_id
         self.root.mkdir(mode=0o700, exist_ok=False)
         identity = self.root.stat()
@@ -79,6 +84,8 @@ class _RenderAttempt:
         _safe_directory(path.parent, self.root)
         _reject_existing_output(path, self.protected)
 
+
+_segment_render_key: ContextVar[str | None] = ContextVar("segment_render_key", default=None)
 
 _render_attempt: ContextVar[_RenderAttempt | None] = ContextVar("render_attempt", default=None)
 
@@ -113,6 +120,14 @@ def _write_new_json(path: Path, value: Any) -> None:
         json.dump(value, handle, ensure_ascii=False, indent=2)
         handle.flush()
         os.fsync(handle.fileno())
+
+
+def _render_command(*args, **kwargs):
+    attempt = _render_attempt.get()
+    if attempt is not None:
+        with attempt.counter_lock:
+            attempt.ffmpeg_calls += 1
+    return run_command(*args, **kwargs)
 
 
 def _segment_key(segment: StoryboardSegment, config: AppConfig) -> str:
@@ -237,7 +252,7 @@ def _render_visual_piece(
         )
     else:
         args.extend(["-an", *_video_encode_args(config), output])
-    run_command(args, timeout=config.runtime.stage_timeout_sec)
+    _render_command(args, timeout=config.runtime.stage_timeout_sec)
 
 
 def _write_concat_list(paths: list[Path], output_path: Path) -> Path:
@@ -257,7 +272,7 @@ def _concat_copy(paths: list[Path], output: Path, config: AppConfig) -> None:
     temporary = output.with_name(f".{output.stem}.copy-{uuid4().hex}{output.suffix}")
     _prepare_output(temporary, paths)
     try:
-        run_command(
+        _render_command(
             [
                 "ffmpeg",
                 "-n",
@@ -281,7 +296,7 @@ def _concat_copy(paths: list[Path], output: Path, config: AppConfig) -> None:
         # Fallback re-encodes but remains deterministic when container timebases differ.
         # Keep any failed copy as evidence; the fallback gets a distinct target.
         _prepare_output(output, paths)
-        run_command(
+        _render_command(
             [
                 "ffmpeg",
                 "-n",
@@ -323,7 +338,7 @@ def _render_voiceover_segment(
         source = source_map[visual.source_id]
         available = visual.end - visual.start
         duration = min(available, remaining)
-        piece = work_dir / "clips" / "visuals" / _segment_key(segment, config) / f"v{index:03d}.mp4"
+        piece = work_dir / "clips" / "visuals" / (_segment_render_key.get() or _segment_key(segment, config)) / f"v{index:03d}.mp4"
         _render_visual_piece(
             visual,
             source,
@@ -338,7 +353,7 @@ def _render_voiceover_segment(
         raise ValueError(
             f"Voiceover visuals are {remaining:.2f}s shorter than audio: {segment.segment_id}"
         )
-    visual_base = work_dir / "clips" / "visuals" / _segment_key(segment, config) / "visual_base.mp4"
+    visual_base = work_dir / "clips" / "visuals" / (_segment_render_key.get() or _segment_key(segment, config)) / "visual_base.mp4"
     _concat_copy(pieces, visual_base, config)
     fade = min(0.03, target_duration / 4)
     _prepare_output(output, [visual_base, Path(segment.audio_file)])
@@ -387,7 +402,7 @@ def _render_voiceover_segment(
             output,
         ]
     )
-    run_command(args, timeout=config.runtime.stage_timeout_sec)
+    _render_command(args, timeout=config.runtime.stage_timeout_sec)
 
 
 def _render_original_segment(
@@ -450,7 +465,7 @@ def _render_original_segment(
         ]
     )
     _prepare_output(output, [Path(source.path)])
-    run_command(args, timeout=config.runtime.stage_timeout_sec)
+    _render_command(args, timeout=config.runtime.stage_timeout_sec)
 
 
 def _escape_subtitle_path(path: Path) -> str:
@@ -540,7 +555,7 @@ def _finalize(
             args.extend(["-vf", subtitle_filter, "-af", audio_filter, *_video_encode_args(config)])
             args.extend([*_audio_encode_args(config), "-movflags", "+faststart", final_path])
             _prepare_output(final_path, [base_video, subtitle_path])
-            result = run_command(args, timeout=config.runtime.stage_timeout_sec)
+            result = _render_command(args, timeout=config.runtime.stage_timeout_sec)
             log = (result.stderr or "") + "\n" + (result.stdout or "")
             font_lines = [line for line in log.splitlines() if any(marker in line.lower() for marker in (
                 "fontselect:", "glyph", "loading font file", "using font provider", "error opening font",
@@ -569,13 +584,13 @@ def _finalize(
                      *_video_encode_args(config)])
     args.extend([*_audio_encode_args(config), "-movflags", "+faststart", final_path])
     _prepare_output(final_path, [base_video, subtitle_path])
-    run_command(args, timeout=config.runtime.stage_timeout_sec)
+    _render_command(args, timeout=config.runtime.stage_timeout_sec)
     return burn_status
 
 
 def _make_preview(final_path: Path, preview_path: Path, config: AppConfig) -> None:
     _prepare_output(preview_path, [final_path])
-    run_command(
+    _render_command(
         [
             "ffmpeg",
             "-n",
@@ -604,23 +619,37 @@ def _make_preview(final_path: Path, preview_path: Path, config: AppConfig) -> No
     )
 
 
-def build_edl(storyboard: Storyboard) -> list[dict[str, Any]]:
-    timeline = output_timeline(storyboard)
+def build_edl(storyboard: Storyboard, *, realized_timeline: list[dict] | None = None) -> list[dict[str, Any]]:
+    timeline = output_timeline(storyboard, realized_timeline=realized_timeline)
     timeline_map = {item["segment_id"]: item for item in timeline}
+    realized_map = {item["segment_id"]: item for item in (realized_timeline or [])}
     entries: list[dict[str, Any]] = []
     for segment in storyboard.segments:
         output = timeline_map[segment.segment_id]
         source_spans = []
         cursor = float(output["start"])
-        for visual in resolved_visual_spans(segment):
+        visuals = resolved_visual_spans(segment)
+        local_cursor = 0.0
+        for visual_index, visual in enumerate(visuals):
             duration = visual.end - visual.start
+            end = cursor + duration
+            if realized_timeline is not None:
+                from .render_contracts import quantize, rational
+                entry = realized_map[segment.segment_id]
+                total_frames = entry["end_frame"] - entry["start_frame"]
+                fps = total_frames / rational(entry["duration"])
+                local_cursor += duration
+                end = (float(output["end"]) if visual_index == len(visuals) - 1 else
+                       float(output["start"]) + float(quantize(rational(local_cursor) * fps) / fps))
+                if end <= cursor or end > float(output["end"]) + 0.001:
+                    raise ValueError("EDL_REALIZED_SPAN_OUT_OF_RANGE")
             source_spans.append({
                 "source_id": visual.source_id, "start": visual.start, "end": visual.end,
-                "output_start": cursor, "output_end": cursor + duration,
+                "output_start": cursor, "output_end": end,
                 "purpose": visual.purpose, "highlight_id": visual.highlight_id,
                 "unit_id": getattr(visual, "unit_id", None),
             })
-            cursor += duration
+            cursor = end
         entries.append(
             {
                 "segment_id": segment.segment_id,
@@ -670,8 +699,13 @@ def _render_storyboard_in_attempt(
     source_map = _source_map(storyboard)
     segment_dir = work_dir / "clips" / "rendered"
     render_jobs: list[tuple[int, StoryboardSegment, Path]] = []
+    incremental = None
+    if getattr(config.render, "incremental_cache", False):
+        incremental = _prepare_incremental(storyboard, config, attempt)
+        source_map = incremental["source_map"]
     for index, segment in enumerate(storyboard.segments, start=1):
-        output = segment_dir / f"{index:04d}_{_segment_key(segment, config)}.mp4"
+        name = (incremental["nodes"][segment.segment_id]["semantic_key"] if incremental else _segment_key(segment, config))
+        output = segment_dir / f"{index:04d}_{name}.mp4"
         render_jobs.append((index, segment, output))
 
     def render_one(job: tuple[int, StoryboardSegment, Path]) -> tuple[int, Path]:
@@ -679,7 +713,9 @@ def _render_storyboard_in_attempt(
         # Worker threads do not automatically inherit ContextVar bindings.
         token = _render_attempt.set(attempt)
         try:
-            if segment.mode == "voiceover":
+            if incremental:
+                _render_incremental_segment(segment, source_map, output, work_dir, config, attempt, incremental)
+            elif segment.mode == "voiceover":
                 _render_voiceover_segment(segment, source_map, output, work_dir, config)
             else:
                 _render_original_segment(segment, source_map, output, config)
@@ -696,9 +732,20 @@ def _render_storyboard_in_attempt(
         rendered[index] = output
     segment_paths = [rendered[index] for index in sorted(rendered)]
 
+    realized_timeline = None
+    if incremental:
+        from .render_plan import compile_render_plan
+        plan = compile_render_plan(storyboard, config, **incremental["inputs"],
+            realized_artifacts=incremental["artifacts"])
+        realized_timeline = plan["timeline"]["realized"]
+        _write_new_json(work_dir / "output" / "render_plan.json", plan)
     base_video = work_dir / "output" / "base_no_subtitles.mp4"
     _concat_copy(segment_paths, base_video, config)
-    cues = build_cues(storyboard, config)
+    if incremental:
+        from .render_cache import verify_assembly_placement
+        verify_assembly_placement(base_video, realized_timeline, config.render.fps,
+                                  timeout=config.runtime.stage_timeout_sec)
+    cues = build_cues(storyboard, config, realized_timeline=realized_timeline)
     srt_path = work_dir / "subtitles" / "master.srt"
     _prepare_output(srt_path)
     with tempfile.TemporaryDirectory(prefix=".captions-", dir=srt_path.parent) as temporary:
@@ -710,8 +757,9 @@ def _render_storyboard_in_attempt(
     preview_path = work_dir / "output" / "preview.mp4"
     _make_preview(final_path, preview_path, config)
     edl_path = work_dir / "output" / "edit_decision_list.json"
-    _write_new_json(edl_path, build_edl(storyboard))
-    review_file = storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json"))
+    _write_new_json(edl_path, build_edl(storyboard, realized_timeline=realized_timeline))
+    review_file = (str(work_dir / "output" / "review_evidence.json") if incremental else
+                   storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json")))
     storyboard.output = {
         "base_video": str(base_video),
         "final_video": str(final_path),
@@ -726,4 +774,119 @@ def _render_storyboard_in_attempt(
         "subtitle_font_report": str(final_path.with_suffix(".fonts.json")) if burn_status == "applied" else None,
         "review_file": review_file,
     }
+    if incremental:
+        from .workspace import preflight
+        from .render_contracts import RenderContractError
+        if preflight(attempt.task_root)[1].resolve() != attempt.task_root.resolve():
+            raise RenderContractError("STALE_AUTHORITY")
+        receipt_path = work_dir / "output" / "render_receipt.json"
+        _write_new_json(receipt_path, {
+            "schema": "film-render-receipt/1", "attempt_id": attempt.attempt_id,
+            "authority_sha256": plan["authority"]["document_sha256"],
+            "segments": [incremental["receipts"][s.segment_id] for s in storyboard.segments],
+            "segments_planned": len(storyboard.segments),
+            "segments_executed": sum(r["action"] == "executed" for r in incremental["receipts"].values()),
+            "segments_reused": sum(r["action"] == "reused" for r in incremental["receipts"].values()),
+            "cache_bytes_published": sum(r["size"] for r in incremental["receipts"].values() if r["action"] == "executed"),
+            "ffmpeg_render_calls": attempt.ffmpeg_calls,
+            "verification_decode_calls": incremental["cache"].stats.decode_calls,
+            "verification_probe_calls": incremental["cache"].stats.probe_calls,
+            "wall_seconds": time.monotonic() - incremental["started"],
+            "wall_scope": "render-only; pipeline QC measured separately",
+            "unmeasured_metrics": ["cpu_seconds", "peak_rss", "disk_io", "finalize_wall_seconds", "pipeline_qc_wall_seconds"],
+            "finalize_executed": True, "qc_inherited": False,
+            "validation_scope": "synthetic-technical-only; real-media-validation-not-run"})
+        storyboard.output.update(render_plan=str(work_dir / "output" / "render_plan.json"),
+            render_receipt=str(receipt_path), realized_timeline=realized_timeline)
     return storyboard
+
+
+def _prepare_incremental(storyboard: Storyboard, config: AppConfig, attempt: _RenderAttempt) -> dict:
+    from .render_cache import SegmentCache, copy_new
+    from .render_contracts import RenderContractError
+    from .render_plan import collect_render_inputs, compile_render_plan
+
+    from .workspace import preflight
+    cache_root, active = preflight(attempt.task_root)
+    if active.resolve() != attempt.task_root.resolve():
+        raise RenderContractError("STALE_AUTHORITY")
+    started = time.monotonic()
+    inputs = collect_render_inputs(storyboard)
+    plan = compile_render_plan(storyboard, config, **inputs)
+    nodes = {node["segment_id"]: node for node in plan["nodes"] if node["kind"] == "segment_av"}
+    if any(node["semantic_key"] is None for node in nodes.values()):
+        raise RenderContractError("INCREMENTAL_INPUT_CONTRACT_UNVERIFIED")
+    # Freeze the bytes actually consumed; re-hashing mutable originals after a
+    # render alone would not rule out replacement-and-restore during that render.
+    snapshots = {}
+    source_map = {}
+    used = {visual.source_id for segment in storyboard.segments for visual in resolved_visual_spans(segment)}
+    for source in storyboard.sources:
+        if source.source_id not in used:
+            continue
+        identity = inputs["source_identities"][source.source_id]
+        key = identity["sha256"]
+        if key not in snapshots:
+            target = attempt.root / "inputs" / (key + Path(source.path).suffix)
+            attempt.prepare(target)
+            copy_new(Path(source.path), target, identity)
+            snapshots[key] = target
+        source_map[source.source_id] = source.model_copy(update={"path": str(snapshots[key])})
+    voices = {}
+    for segment in storyboard.segments:
+        if segment.mode != "voiceover":
+            continue
+        identity = inputs["audio_identities"][segment.segment_id]
+        key = identity["sha256"]
+        if key not in snapshots:
+            target = attempt.root / "inputs" / (key + Path(segment.audio_file).suffix)
+            attempt.prepare(target)
+            copy_new(Path(segment.audio_file), target, identity)
+            snapshots[key] = target
+        voices[segment.segment_id] = snapshots[key]
+    _write_new_json(attempt.root / "output" / "render_plan_expected.json", plan)
+    return {"inputs": inputs, "nodes": nodes, "source_map": source_map, "voices": voices,
+            "cache": SegmentCache(cache_root / "render_cache" / "segment_av_v1", timeout=config.runtime.stage_timeout_sec),
+            "artifacts": {}, "receipts": {}, "started": started,
+            "key_locks": {node["semantic_key"]: threading.Lock() for node in nodes.values()}}
+
+
+def _render_incremental_segment_locked(segment: StoryboardSegment, source_map: dict[str, SourceInfo],
+                                output: Path, work_dir: Path, config: AppConfig,
+                                attempt: _RenderAttempt, incremental: dict) -> None:
+    from .render_cache import verify_media
+    node = incremental["nodes"][segment.segment_id]
+    attempt.prepare(output)
+    actual, reasons = incremental["cache"].materialize(node, output)
+    action = "reused"
+    if actual is None:
+        action = "executed"
+        token = _segment_render_key.set(node["semantic_key"])
+        try:
+            if segment.mode == "voiceover":
+                rendering = segment.model_copy(update={"audio_file": str(incremental["voices"][segment.segment_id])})
+                _render_voiceover_segment(rendering, source_map, output, work_dir, config)
+            else:
+                _render_original_segment(segment, source_map, output, config)
+        finally:
+            _segment_render_key.reset(token)
+        actual = verify_media(output, node["params"], timeout=config.runtime.stage_timeout_sec, stats=incremental["cache"].stats)
+        actual["semantic_key"] = node["semantic_key"]
+        actual["cache_manifest"] = str(incremental["cache"].publish(node, output, actual, attempt_id=attempt.attempt_id))
+    incremental["artifacts"][node["node_id"]] = actual
+    incremental["receipts"][segment.segment_id] = {
+        "segment_id": segment.segment_id, "semantic_key": node["semantic_key"],
+        "action": action, "reason_codes": reasons if action == "executed" else ["VERIFIED_BYTES_AND_DECODE"],
+        "sha256": actual["sha256"], "size": actual["size"], "media_contract": actual["media_contract"],
+        "verification_seconds": actual["verification_seconds"], "cache_manifest": actual["cache_manifest"]}
+
+
+def _render_incremental_segment(segment: StoryboardSegment, source_map: dict[str, SourceInfo],
+                                output: Path, work_dir: Path, config: AppConfig,
+                                attempt: _RenderAttempt, incremental: dict) -> None:
+    key = incremental["nodes"][segment.segment_id]["semantic_key"]
+    # Equal local content can occur under distinct stable segment IDs. Recheck
+    # the cache after the first producer completes, without sharing write paths.
+    with incremental["key_locks"][key]:
+        _render_incremental_segment_locked(segment, source_map, output, work_dir,
+                                           config, attempt, incremental)

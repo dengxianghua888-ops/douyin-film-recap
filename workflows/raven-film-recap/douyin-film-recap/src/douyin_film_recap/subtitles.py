@@ -42,7 +42,21 @@ def resolved_visual_spans(segment: StoryboardSegment) -> list[VisualReference]:
     return resolved
 
 
-def output_timeline(storyboard: Storyboard) -> list[dict[str, float | str]]:
+def output_timeline(storyboard: Storyboard, *, realized_timeline: list[dict] | None = None) -> list[dict[str, float | str]]:
+    if realized_timeline is not None:
+        from .render_contracts import RenderContractError, rational
+        if [entry.get("segment_id") for entry in realized_timeline] != [s.segment_id for s in storyboard.segments]:
+            raise RenderContractError("REALIZED_TIMELINE_SEGMENT_MISMATCH")
+        result = []
+        end = rational(0)
+        for entry in realized_timeline:
+            start, next_end = rational(entry["start"]), rational(entry["end"])
+            if start != end or next_end <= start:
+                raise RenderContractError("REALIZED_TIMELINE_NOT_CONTIGUOUS")
+            result.append({"segment_id": entry["segment_id"], "start": float(start),
+                           "end": float(next_end), "duration": float(next_end - start)})
+            end = next_end
+        return result
     cursor = 0.0
     timeline: list[dict[str, float | str]] = []
     for segment in storyboard.segments:
@@ -203,12 +217,13 @@ def _original_cues(
     return sorted(cues, key=lambda cue: (cue.start, cue.end))
 
 
-def build_cues(storyboard: Storyboard, config: AppConfig) -> list[SubtitleCue]:
+def build_cues(storyboard: Storyboard, config: AppConfig, *, realized_timeline: list[dict] | None = None) -> list[SubtitleCue]:
     max_chars = config.render.subtitle_max_chars_per_line * config.render.subtitle_max_lines
     cues: list[SubtitleCue] = []
-    cursor = 0.0
-    for segment in storyboard.segments:
-        duration = segment_output_duration(segment)
+    timeline = output_timeline(storyboard, realized_timeline=realized_timeline)
+    for segment, placement in zip(storyboard.segments, timeline):
+        cursor = float(placement["start"])
+        duration = float(placement["duration"])
         if segment.mode == "voiceover":
             segment_cues = _cues_from_boundaries(segment, cursor, max_chars)
             if not segment_cues:
@@ -219,8 +234,11 @@ def build_cues(storyboard: Storyboard, config: AppConfig) -> list[SubtitleCue]:
                 cue.text = "\n".join(_split_text(cue.text, config.render.subtitle_max_chars_per_line))
         else:
             segment_cues = _original_cues(segment, cursor, config)
+        if realized_timeline is not None and any(
+                cue.start < cursor - 0.001 or cue.end > cursor + duration + 0.001 for cue in segment_cues):
+            from .render_contracts import RenderContractError
+            raise RenderContractError(f"CUE_OUTSIDE_REALIZED_SEGMENT: {segment.segment_id}")
         cues.extend(segment_cues)
-        cursor += duration
     return cues
 
 

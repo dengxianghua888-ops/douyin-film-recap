@@ -38,3 +38,64 @@ package with `src` on PYTHONPATH. Synthetic/unit evidence is not real-film conte
 audio listening, quality, or performance validation. The public config currently
 accepts integer FPS; rational-clock tests exercise the derived compiler's clock
 math without claiming new accepted production FPS configuration.
+
+## Opt-in whole-segment cache (I1)
+
+Set `render.incremental_cache: true` explicitly to use the verified experimental
+path. The default is false, including when ordinary `runtime.cache` is true.
+Without that setting the original full renderer path is retained. Enabling this
+option does not bypass pre-QC, post-QC, remote-send authorization or the existing
+workspace lock. It cannot initiate TTS/model requests or adopt editorial changes.
+
+Each attempt freezes independently copied source/voice bytes after validating
+full SHA/size against the storyboard. Rendered segments consume those snapshots,
+not mutable source paths. Equal keys within an attempt use singleflight and
+recheck after the first producer completes. Segment keys do not use the legacy
+attempt-wide `_segment_key`. Currently toolchain verification identifies Linux
+FFmpeg/ffprobe binaries, version/build output, transitive `ldd` library bytes and
+renderer implementation bytes. Unresolved/static/non-Linux dependency discovery
+is explicitly unverified and blocks the opt-in path; the default full path stays
+available. This is a conservative portability limitation, not a media fallback.
+
+The shared disposable cache is under the canonical existing workspace root,
+across validated generations. It is neither a project head nor a recovery source
+for editorial decisions. `render_plan.json` and `render_receipt.json` are separate
+attempt-owned audit artifacts; recovery should retain those references, not copy
+the whole regenerable cache. No eviction or user-file deletion is implemented.
+
+A reusable entry binds semantic key, renderer/toolchain identity, exact consumed
+source identities, voice dependencies, parameter digest, actual artifact SHA/size
+and media contract. Validation measures all decoded video/audio frames and audio
+packets, enforces local monotonic CFR video and continuous audio PTS, and runs a
+complete FFmpeg decode with error escalation. The contract records both decoded
+samples and packet-presentation samples, encoder skip delay and trailing padding.
+Decoded tail padding is not counted as editorial duration. Both segment and
+cumulative realized frame placements remain within one output frame of expected
+clocks; concat frame count/PTS are independently checked against that realized
+map with the same bounded shadow tolerance. Violations block this attempt rather
+than silently trimming dialogue, padding footage, or changing render strategy.
+Caption and EDL placement use the realized map. Final concat, whole-film loudness,
+subtitle generation/burning, final CFR encoding and preview still execute.
+
+Every cache read is materialized as an exclusive independent attempt copy and
+re-hashed, probed and fully decoded before adoption. Symlink parents, symlink
+objects, manifest path traversal and linked cache artifacts are rejected.
+Existing output files are never overwritten. Publishing writes/fsyncs a unique
+independent object and a pending manifest before atomically linking the immutable
+COMPLETE manifest with no-clobber semantics. Concurrent writers can publish
+separate verified entries for the same key; no winner is overwritten. Interrupted
+or corrupt artifacts remain non-adoptable and do not replace old output. There is
+no GC, so live readers cannot race eviction. This protects ordinary process and
+filesystem failures; it does not claim isolation from a hostile same-user process.
+
+Receipts report executed/reused segment counts, actual rendering FFmpeg calls,
+actual verification decode/probe calls (including rejected candidates), wall time,
+artifact identities and reason codes. They explicitly do not inherit QC. A new
+attempt always receives a fresh review-evidence path. Cache correctness or byte
+equality is not an aesthetic/content/listening review or production performance
+claim. Synthetic regression tests cover decoded full/cold/warm equivalence,
+original/voice alternation, a single changed shot, reorder, cross-generation
+reuse, identical-key parallel VO, corruption, invalid manifests/symlinks,
+independent copies, interrupted publication and concurrent immutable publication.
+Real-film, human listening, broad rational-FPS/VFR and platform coverage remain
+NOT_RUN; the feature stays default-off pending that evidence.
