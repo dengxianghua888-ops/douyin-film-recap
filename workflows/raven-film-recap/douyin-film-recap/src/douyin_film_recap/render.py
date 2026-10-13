@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import contextmanager
 from contextvars import ContextVar
 import json
@@ -17,6 +16,7 @@ from PIL import ImageFont
 from .config import AppConfig
 from .media import media_duration
 from .models import SourceInfo, Storyboard, StoryboardSegment, VisualReference
+from .parallel import run_parallel
 from .subtitles import build_cues, output_timeline, resolved_visual_spans, segment_output_duration, write_srt
 from .utils import content_fingerprint, content_identity, fingerprint_json, run_command
 
@@ -692,16 +692,8 @@ def _render_storyboard_in_attempt(
 
     rendered: dict[int, Path] = {}
     workers = max(1, min(config.runtime.max_parallel_ffmpeg, len(render_jobs) or 1))
-    if workers == 1:
-        for job in render_jobs:
-            index, output = render_one(job)
-            rendered[index] = output
-    else:
-        with ThreadPoolExecutor(max_workers=workers) as executor:
-            futures = {executor.submit(render_one, job): job[0] for job in render_jobs}
-            for future in as_completed(futures):
-                index, output = future.result()
-                rendered[index] = output
+    for index, output in run_parallel(render_jobs, render_one, max_workers=workers):
+        rendered[index] = output
     segment_paths = [rendered[index] for index in sorted(rendered)]
 
     base_video = work_dir / "output" / "base_no_subtitles.mp4"

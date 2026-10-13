@@ -12,7 +12,7 @@ from .media import media_duration
 from .models import Storyboard, StoryboardSegment
 from .prompts import shorten_narration_prompt
 from .providers import OpenAICompatibleClient
-from .send_guard import guarded_async_send
+from .send_guard import check_active_send, guarded_async_send
 from .utils import content_fingerprint, fingerprint_json, read_json, safe_slug, write_json
 
 
@@ -73,6 +73,7 @@ async def _edge_tts_stream(
             boundary="WordBoundary",
         )
         audio = bytearray()
+        check_active_send()
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
                 audio.extend(chunk["data"])

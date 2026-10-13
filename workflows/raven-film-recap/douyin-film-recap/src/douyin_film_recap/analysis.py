@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from contextvars import copy_context
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +23,7 @@ from .prompts import (
     story_chunk_prompt,
     story_global_prompt,
 )
+from .parallel import run_parallel
 from .providers import OpenAICompatibleClient
 from .utils import chunks, fingerprint_json
 
@@ -84,16 +83,11 @@ def analyze_scenes(
 
     ordered: dict[int, list[SceneAnalysisItem]] = {}
     max_workers = max(1, min(config.scene.max_scene_analysis_workers, len(groups) or 1))
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {
-            # Each task gets its own Context, sharing the scoped send session.
-            # Keys describe the stable batch, never thread completion order.
-            executor.submit(copy_context().run, analyze_group, index, list(group)): index
-            for index, group in enumerate(groups)
-        }
-        for future in as_completed(futures):
-            index, items = future.result()
-            ordered[index] = items
+    for index, items in run_parallel(
+        [(index, list(group)) for index, group in enumerate(groups)],
+        lambda job: analyze_group(*job), max_workers=max_workers,
+    ):
+        ordered[index] = items
     all_items = [item for index in sorted(ordered) for item in ordered[index]]
     return SceneAnalysisDocument(
         provider=config.models.provider,

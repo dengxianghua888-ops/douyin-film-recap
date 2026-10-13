@@ -10,7 +10,7 @@ import httpx
 from pydantic import BaseModel
 
 from .config import ModelConfig
-from .send_guard import guarded_send
+from .send_guard import check_active_send, guarded_send
 from .utils import extract_json_object
 
 T = TypeVar("T", bound=BaseModel)
@@ -112,6 +112,7 @@ class OpenAICompatibleClient:
         for fallback in range(2):
             def send():
                 with httpx.Client(timeout=self.timeout) as client:
+                    check_active_send()
                     response = client.post(
                         f"{self.base_url}/chat/completions",
                         headers=self.headers,
