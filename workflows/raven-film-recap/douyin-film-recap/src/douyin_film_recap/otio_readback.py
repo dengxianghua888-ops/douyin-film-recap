@@ -70,6 +70,15 @@ def _references(value: Any):
             yield from _references(child)
 
 
+def _capture_path(value: str | Path) -> Path:
+    path = Path(value)
+    # Reject traversal before filesystem lookup, including nonexistent parents.
+    # Resolving first could erase a symlink segment and bypass _no_links.
+    if ".." in path.parts:
+        raise x.ExchangeError("HOST_SNAPSHOT_PATH_TRAVERSAL")
+    return x._no_links(path).resolve(strict=False)
+
+
 def capture_saved_snapshot(saved_otio: str | Path, destination: str | Path, *,
                            export_package: str | Path, media_root: str | Path | None = None,
                            caption_document: str | Path | None = None,
@@ -81,19 +90,19 @@ def capture_saved_snapshot(saved_otio: str | Path, destination: str | Path, *,
     Unsupported references remain preserved in raw bytes with blocking findings.
     Companion files are opaque evidence, not implicitly parsed or adopted.
     """
-    package = x._no_links(Path(export_package))
+    package = _capture_path(export_package)
     x.verify_package(package)
     binding_bytes, binding_sha = x.read_stable(package / "export-binding.json")
     binding = x._json(binding_bytes)
-    saved = x._no_links(Path(saved_otio))
+    saved = _capture_path(saved_otio)
     raw, saved_sha = x.read_stable(saved)
     document = x._json(raw)
-    root = x._no_links(Path(destination))
+    root = _capture_path(destination)
     if root.exists():
         raise x.ExchangeError("HOST_SNAPSHOT_TARGET_EXISTS")
     if root.is_relative_to(package) or package.is_relative_to(root):
         raise x.ExchangeError("HOST_SNAPSHOT_CANNOT_MODIFY_EXPORT_PACKAGE")
-    media_root = x._no_links(Path(media_root)) if media_root is not None else saved.parent
+    media_root = _capture_path(media_root) if media_root is not None else saved.parent
     root.parent.mkdir(parents=True, exist_ok=True)
     root.mkdir(mode=0o700, exist_ok=False)
     x._write(root / "saved.otio", raw, raw=True)

@@ -117,6 +117,39 @@ class SavedReadbackTests(unittest.TestCase):
             self.assertEqual(proposal["status"], "CONFLICT" if duration else "NO_CHANGES")
             self.assertFalse(proposal["proposed_changes"])
 
+    def test_capture_rejects_traversal_before_mutating_frozen_package(self):
+        self.host.write_bytes(x.canonical(self.otio))
+        before = {p.relative_to(self.package): p.read_bytes() for p in self.package.rglob("*") if p.is_file()}
+        (self.root / "other").mkdir()
+        candidates = [self.root / "other" / ".." / "package" / "inside-snapshot",
+                      self.root / "absent" / ".." / "package" / "inside-snapshot",
+                      self.root / "other" / "..", self.package / ".." / "package" / "media" / "snapshot"]
+        for destination in candidates:
+            with self.subTest(destination=destination), self.assertRaisesRegex(x.ExchangeError, "PATH_TRAVERSAL"):
+                r.capture_saved_snapshot(self.host, destination, export_package=self.package,
+                                         media_root=self.package)
+            x.verify_package(self.package)
+        self.assertFalse((self.root / "absent").exists())
+        self.assertEqual(before, {p.relative_to(self.package): p.read_bytes()
+                                 for p in self.package.rglob("*") if p.is_file()})
+
+    def test_capture_rejects_aliased_package_and_symlink_paths(self):
+        self.host.write_bytes(x.canonical(self.otio))
+        (self.root / "other").mkdir()
+        with self.assertRaisesRegex(x.ExchangeError, "PATH_TRAVERSAL"):
+            r.capture_saved_snapshot(self.host, self.package / "inside",
+                export_package=self.root / "other" / ".." / "package", media_root=self.package)
+        alias = self.root / "alias"
+        alias.symlink_to(self.package, target_is_directory=True)
+        with self.assertRaisesRegex(x.ExchangeError, "SYMLINK_REJECTED"):
+            r.capture_saved_snapshot(self.host, alias / "inside", export_package=self.package,
+                                     media_root=self.package)
+        with self.assertRaisesRegex(x.ExchangeError, "CANNOT_MODIFY_EXPORT_PACKAGE"):
+            r.capture_saved_snapshot(self.host, self.package / "media" / "inside",
+                                     export_package=self.package, media_root=self.package)
+        x.verify_package(self.package)
+        self.assertFalse((self.package / "inside").exists())
+
     def test_confirmed_occurrence_trim_generates_preconditioned_proposal(self):
         self.video()["source_range"]["start_time"]["value"] += 1
         self.capture()

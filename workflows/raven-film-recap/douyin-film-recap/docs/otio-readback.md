@@ -117,3 +117,9 @@ overall timeline maximum is unchanged. A later snapshot that removes an added
 tail gap back to the original export is correctly unchanged relative to that
 export, not treated as a diff against the previous snapshot. No active host file
 is modified.
+
+Snapshot capture rejects `..` traversal in destination, package, saved-OTIO and
+media-root paths before creating any directory. It rejects symlink components
+before canonical containment checks. A snapshot cannot be created inside the
+frozen export package, including its media directory; rejected capture leaves
+the package's original member set and checksums intact.
