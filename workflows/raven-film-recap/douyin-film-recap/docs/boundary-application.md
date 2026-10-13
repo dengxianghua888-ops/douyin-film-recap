@@ -1,6 +1,6 @@
 # Consistent boundary adoption (B2)
 
-`boundary_apply.prepare_boundary_revision(...)` is a pure, opt-in preparation
+`boundary_apply.prepare_boundary_revision(...)` is a read-only, opt-in preparation
 call. `apply_boundary_proposal(work_dir, proposal=..., base=..., config=...,
 timebases=...)` invokes I2's existing generation transaction and repeats the full
 preparation under its lock. The immutable base is obtained with

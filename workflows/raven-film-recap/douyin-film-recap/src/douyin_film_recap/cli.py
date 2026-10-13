@@ -274,8 +274,15 @@ def apply_boundary_command(
     from .workspace import read, work_lock
     try:
         request = json.loads(proposal.read_text(encoding="utf-8"))
-        if not isinstance(request, dict) or set(request) != {"proposal", "base"}:
+        if (not isinstance(request, dict) or not {"proposal", "base"} <= set(request)
+                or set(request) - {"proposal", "base", "raw_cards", "evidence_root"}):
             raise ValueError("INVALID_BOUNDARY_APPLICATION_REQUEST")
+        raw_cards = None
+        if "raw_cards" in request:
+            from .raw_evidence import RawEvidenceCard
+            if not isinstance(request["raw_cards"], list):
+                raise ValueError("RAW_CARDS_MUST_BE_A_LIST")
+            raw_cards = [RawEvidenceCard.model_validate(row) for row in request["raw_cards"]]
         root, _ = preflight(work_dir)
         with work_lock(root):
             _, active = preflight(root)
@@ -283,7 +290,8 @@ def apply_boundary_command(
             current_timebases = collect_boundary_timebases(manifest)
             result = apply_boundary_proposal(root,
                 proposal=BoundaryProposal.model_validate(request["proposal"]), base=request["base"],
-                config=load_config(config), timebases=current_timebases)
+                config=load_config(config), timebases=current_timebases,
+                raw_cards=raw_cards, evidence_root=request.get("evidence_root"))
         typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
     except (ValueError, OSError, RuntimeError, KeyError) as exc:
         console.print(f"边界采用失败：{exc}")

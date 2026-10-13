@@ -15,7 +15,7 @@ summarized here rather than introducing another project authority.
 | B1 | Immutable cross-window boundary proposals and validation | Implemented; 11 local synthetic contract tests pass; full CI pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Implemented; 12 local adoption fixtures pass; full CI pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Implemented; 14 retrieval + 3 config fixtures pass; full CI pending |
-| V1 | Independently bound raw evidence, advisory model decisions | Pending |
+| V1 | Independently bound raw evidence, advisory model decisions | Implemented; 21 generated-media fixtures pass; real-model quality NOT_RUN |
 | X1 | Restricted one-way OTIO exchange package and explicit losses | Implemented; 8 local fixtures pass; actual host/parser acceptance NOT_RUN |
 | X2 | Saved-snapshot three-way readback proposals, no active-host writes | Implemented; 20 local readback tests pass; real-host round-trip NOT_RUN |
 
@@ -130,3 +130,17 @@ caption IDs and live-file DIVERGED detection. The snapshot proposal includes an 
 base token but does not invoke adoption or overwrite any host. It does not claim
 real-time bidirectional sync or actual-host round-trip acceptance. The official
 parser and host acceptance gaps recorded for X1 still apply.
+
+### V1 verification
+
+Twenty-one local generated-media tests pass, including full source redecoding and
+pixel/PCM verification, real observer byte consumption, independent coverage and
+modality gaps, answer-blind observations, neutral opaque labels, separate observation
+and judgment hashes, and advisory accept/reject. B2 can optionally declare approved
+raw-card hashes; required cards are reverified under the existing adoption lock.
+Absent raw cards are explicitly not_verified, and neither verified bindings nor
+model judgments certify semantic correctness or upgrade final-render QC. Real-model
+quality, film evidence recall and human AV review remain NOT_RUN. B1/B2/R1/X1/X2
+exact-commit full CI succeeded before this integration.
+
+V1 metadata isolation: observer bytes are independently re-decoded canonical media, not caller containers. Audit asset hashes and consumed-byte hashes are separate; PNG text metadata and subtitle comments cannot leak the proposed answer through the raw-input boundary. The corresponding concrete counterexample now passes.

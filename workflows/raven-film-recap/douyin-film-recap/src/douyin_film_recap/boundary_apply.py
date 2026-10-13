@@ -1,6 +1,7 @@
 """Prepare and atomically adopt consistent 07/08/09 boundary revisions.
 
-Preparation is pure and preserves the full candidate ledger. Publishing delegates
+Preparation preserves the candidate ledger; declared raw cards trigger read-only
+source redecoding. Publishing delegates
 to revision.adopt_revision's existing workspace generation transaction.
 """
 from __future__ import annotations
@@ -67,6 +68,7 @@ def prepare_boundary_revision(
     transcript: TranscriptDocument, scene_index: SceneIndex,
     scene_analysis: SceneAnalysisDocument, config: AppConfig,
     timebases: dict[str, TimebaseBinding], current_artifact_hashes: dict[str, str],
+    raw_cards: list | None = None, evidence_root: str | Path | None = None,
 ) -> PreparedBoundaryRevision:
     """Return a candidate transaction, rejecting stale/conflicting inputs unchanged."""
     if proposal.editorial_decision != "approved" or proposal.approved_proposal_hash != proposal_hash(proposal):
@@ -85,6 +87,16 @@ def prepare_boundary_revision(
     if report.validation_state != "accept":
         raise BoundaryApplyError(f"BOUNDARY_{report.validation_state.upper()}: " + "; ".join(
             f"{c.check}={c.state}" for c in report.checks if c.state != "accept"))
+    raw_binding = {"state": "not_verified", "semantic_advisory": True,
+                   "reason": "B1 evidence IDs and observations are caller-supplied; raw bytes not verified"}
+    if proposal.raw_evidence_card_hashes:
+        if raw_cards is None or evidence_root is None:
+            raise BoundaryApplyError("DECLARED_RAW_EVIDENCE_CARDS_REQUIRED")
+        from .raw_evidence import verify_boundary_raw_evidence
+        raw_binding = verify_boundary_raw_evidence(proposal, raw_cards, manifest=manifest,
+                                                  evidence_root=evidence_root)
+    elif raw_cards is not None:
+        raise BoundaryApplyError("RAW_CARDS_MUST_BE_BOUND_IN_APPROVED_PROPOSAL")
     source = next(s for s in manifest.sources if s.source_id == proposal.source_id)
     if highlights.source_fingerprints.get(source.source_id) != source.fingerprint:
         raise BoundaryApplyError("HIGHLIGHT_SOURCE_IDENTITY_CHANGED")
@@ -222,7 +234,8 @@ def prepare_boundary_revision(
     artifacts = {HIGHLIGHTS: updated.model_dump(mode="json"), PLAN: new_plan.model_dump(mode="json"),
                  BOARD: board.model_dump(mode="json")}
     artifacts[SIDECAR] = {"schema_version": "boundary-adoption/1", "proposal": proposal.model_dump(mode="json"),
-        "validation": report.model_dump(mode="json"), "evidence_revision": candidate.evidence_revision,
+        "validation": report.model_dump(mode="json"), "raw_evidence_binding": raw_binding,
+        "evidence_revision": candidate.evidence_revision,
         "base_artifact_hashes": proposal.base_artifact_hashes,
         "artifact_content_hashes": {key: fingerprint_json(value) for key, value in artifacts.items()},
         "affected_segment_ids": affected, "selection_review": selection_review,
@@ -233,7 +246,8 @@ def prepare_boundary_revision(
 
 
 def apply_boundary_proposal(work_dir: str | Path, *, proposal: BoundaryProposal,
-    base: dict, config: AppConfig, timebases: dict[str, TimebaseBinding]) -> dict:
+    base: dict, config: AppConfig, timebases: dict[str, TimebaseBinding],
+    raw_cards: list | None = None, evidence_root: str | Path | None = None) -> dict:
     """Publish through I2; repeat preparation under its lock to prevent TOCTOU."""
     from .revision import adopt_revision
     from .workspace import preflight, read, sha
@@ -252,7 +266,8 @@ def apply_boundary_proposal(work_dir: str | Path, *, proposal: BoundaryProposal,
             story_graph=StoryGraph.model_validate(read(active / "05_story_graph.json")),
             knowledge_timeline=KnowledgeTimeline.model_validate(read(active / "06_knowledge_timeline.json")))
         return prepare_boundary_revision(proposal, **inputs, config=config, timebases=timebases,
-            current_artifact_hashes={key: sha(active / key) for key in proposal.base_artifact_hashes})
+            current_artifact_hashes={key: sha(active / key) for key in proposal.base_artifact_hashes},
+            raw_cards=raw_cards, evidence_root=evidence_root)
 
     _, active = preflight(work_dir)
     prepared = prepare_at(active)

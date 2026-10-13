@@ -77,6 +77,7 @@ class BoundaryProposal(Contract):
     shot_detection_status: Literal["detected", "fallback", "mixed", "unknown"] = "unknown"
     context_range: Interval | None = None
     raw_evidence_ids: list[str] = Field(default_factory=list)
+    raw_evidence_card_hashes: dict[str, str] = Field(default_factory=dict)
     event_ids: list[str] = Field(default_factory=list)
     canonical_character_ids: list[str] = Field(default_factory=list)
     required_nodes: list[str] = Field(default_factory=list)
@@ -125,9 +126,14 @@ class BoundaryValidation(Contract):
 
 
 def proposal_hash(proposal: BoundaryProposal) -> str:
-    return fingerprint_json(proposal.model_dump(mode="json", exclude={
+    payload = proposal.model_dump(mode="json", exclude={
         "editorial_decision", "approved_proposal_hash", "proposal_content_hash",
-    }))
+    })
+    # Older B1 proposals did not carry this opt-in extension. Empty defaults do
+    # not invalidate their frozen hash or pretend they had verified raw assets.
+    if not proposal.raw_evidence_card_hashes:
+        payload.pop("raw_evidence_card_hashes", None)
+    return fingerprint_json(payload)
 
 
 def candidate_revision(candidate: HighlightCandidate) -> str:
