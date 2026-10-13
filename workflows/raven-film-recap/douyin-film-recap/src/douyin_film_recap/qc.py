@@ -504,19 +504,31 @@ def preflight_qc(
                 (visual.source_id, visual.start, visual.end, segment.segment_id, segment.allow_reuse)
             )
 
-        if (
-            segment.mode == "original"
-            and segment.audio_owner == "original_dialogue"
-            and segment.visuals
-        ):
+        if segment.mode == "original" and segment.visuals:
             visual = segment.visuals[0]
-            _, _, entry_safe, exit_safe = nearest_segment_boundaries(
-                transcript,
-                visual.source_id,
-                visual.start,
-                visual.end,
-                max_distance=0.45,
-            )
+            entry_safe = exit_safe = True
+            if segment.audio_owner == "original_dialogue":
+                _, _, entry_safe, exit_safe = nearest_segment_boundaries(
+                    transcript,
+                    visual.source_id,
+                    visual.start,
+                    visual.end,
+                    max_distance=0.45,
+                )
+            # A source track can contain speech even when action or ambience owns
+            # the segment. Check actual cue cuts independently of that label, but
+            # allow complete cues surrounded by a longer non-dialogue window.
+            cut_cues = []
+            for cue in transcript.segments:
+                if cue.source_id != visual.source_id or not cue.text.strip():
+                    continue
+                entry_cut = cue.start + 0.02 < visual.start < cue.end - 0.02
+                exit_cut = cue.start + 0.02 < visual.end < cue.end - 0.02
+                if entry_cut or exit_cut:
+                    entry_safe = entry_safe and not entry_cut
+                    exit_safe = exit_safe and not exit_cut
+                    cut_cues.append({"start": cue.start, "end": cue.end,
+                                     "entry_cut": entry_cut, "exit_cut": exit_cut})
             if not entry_safe or not exit_safe:
                 builder.add(
                     stage="pre_render",
@@ -528,7 +540,8 @@ def preflight_qc(
                     segment_id=segment.segment_id,
                     source_id=visual.source_id,
                     source_time=visual.start,
-                    evidence={"entry_safe": entry_safe, "exit_safe": exit_safe},
+                    evidence={"entry_safe": entry_safe, "exit_safe": exit_safe,
+                              "audio_owner": segment.audio_owner, "cut_cues": cut_cues},
                     next_action="移动到邻近完整句界，或改为 VO 压缩。",
                 )
 

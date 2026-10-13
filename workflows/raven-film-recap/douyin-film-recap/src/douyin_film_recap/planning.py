@@ -440,8 +440,9 @@ def _normalize_storyboard(
                 segment.text = segment.text_raw or segment.text
                 segment.planned_duration_sec = highlight.end - highlight.start
                 segment.mute_original = False
-                if highlight.must_hear_original:
-                    segment.audio_owner = "original_dialogue"
+                # Keeping the source track does not imply speech. Preserve the
+                # chosen role so action, ambience, music and silence do not acquire
+                # dialogue-only sentence-boundary requirements.
             if not segment.visuals:
                 raise ValueError(f"Original segment has no valid visual: {segment.segment_id}")
             segment.narration_job = "none"
