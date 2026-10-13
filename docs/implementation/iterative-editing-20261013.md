@@ -16,7 +16,7 @@ summarized here rather than introducing another project authority.
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Implemented; 12 local adoption fixtures pass; full CI pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Implemented; 14 retrieval + 3 config fixtures pass; full CI pending |
 | V1 | Independently bound raw evidence, advisory model decisions | Pending |
-| X1 | Restricted one-way OTIO exchange package and explicit losses | Pending |
+| X1 | Restricted one-way OTIO exchange package and explicit losses | Implemented; 8 local fixtures pass; actual host/parser acceptance NOT_RUN |
 | X2 | Saved-snapshot three-way readback proposals, no active-host writes | Pending |
 
 ## Non-negotiable boundaries
@@ -108,3 +108,15 @@ provider-token equality, total-machine-cost equality and real-film quality remai
 UNKNOWN/NOT_RUN. A retrieved candidate does not become truth or narrow the full
 manual evidence index. Default config identity is preserved. I1 and I2 exact-commit
 full CI both succeeded (runs38376556294 and38376804026).
+
+### X1 verification
+
+Eight local fixtures pass, including synthetic FFmpeg source/VO media and automatic
+full-frame ffprobe facts. A restricted one-way package contains frozen Storyboard,
+source/media hashes, occurrence identities, OTIO cuts, caption sidecars, capabilities,
+loss reports and opaque extensions. It writes a new destination only. Unsupported
+retiming/layout/effects/timebases are rejected or explicitly classified, never
+silently promoted to a native editable equivalent. Official OTIO parser and actual
+host import/save/reopen/render acceptance remain NOT_RUN; this is not yet a verified
+Kdenlive profile. No dependency was installed. X1 is independent of V1 and can be
+published while raw-evidence hardening continues.
