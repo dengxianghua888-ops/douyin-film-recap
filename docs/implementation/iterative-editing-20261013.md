@@ -11,7 +11,7 @@ summarized here rather than introducing another project authority.
 | --- | --- | --- |
 | I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local fixtures and exact-commit full CI pass |
 | I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Implemented; synthetic FFmpeg and safety fixtures pass; full CI pending |
-| I2 | Protected local revision/render-only entry using existing generation | Pending |
+| I2 | Protected local revision/render-only entry using existing generation | Implemented; 20 local fixtures plus existing regressions pass; full CI pending |
 | B1 | Immutable cross-window boundary proposals and validation | Pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Pending |
@@ -75,3 +75,15 @@ platform/FPS acceptance are NOT_RUN. The verified opt-in toolchain collector is
 currently Linux/ldd; unsupported toolchains fail closed while the default renderer
 is unchanged. I0 exact-SHA CI: e4759d429106f4f11ad0657f095e08dcb617bcd7, run38373950716,
 all three jobs succeeded.
+
+### I2 verification
+
+The minimum local scope is segment notes/title and already-analyzed VO visual
+replacement. Text/TTS, independent subtitle-display overrides, reorder and arbitrary
+original-range edits remain unsupported by this entry. Original boundary changes
+use B2. Twenty focused local tests passed; existing resumed-evidence and interruption
+regressions passed. CLI fixtures await full CI. Adoption preserves archives, rejects
+stale sources/heads/unknown or protected modifications, and switches one existing
+generation pointer. render-current retains both QC gates, forbids new remote sends,
+and leaves UNKNOWN unresolved. Ordinary run cannot silently regenerate adopted
+work; explicit from-stage or render-current is required. No true host CAS is claimed.

@@ -70,6 +70,23 @@ def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def _sync_directory(path):
+    """Make already-fsynced member/rename directory entries durable on local POSIX FS."""
+    fd = os.open(Path(path), os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
+def _sync_tree(directory):
+    for path in sorted((p for p in Path(directory).rglob("*") if p.is_dir()),
+                       key=lambda p: len(p.parts), reverse=True):
+        _sync_directory(path)
+    _sync_directory(directory)
+    _sync_directory(Path(directory).parent)
+
+
 def atomic(path, value):
     path = Path(path)
     if path.is_symlink():
@@ -82,6 +99,7 @@ def atomic(path, value):
         os.fsync(out.fileno())
     try:
         os.replace(temporary, path)
+        _sync_directory(path.parent)
     finally:
         temporary.unlink(missing_ok=True)
 
@@ -555,3 +573,120 @@ def recovery_main():
         print(json.dumps({"status": "REJECTED", "error": str(exc)}, ensure_ascii=False))
         return 2
     return 0
+
+
+def commit_generation(path, *, replacements, expected_generation, expected_pointer_sha256,
+                      validate, invalidate_from="pre_qc", binding=None, reason="", interrupt=None):
+    """Publish a complete copied generation with one existing workspace pointer swap.
+
+    ``validate`` is invoked under the existing lock both before copying and at the
+    commit boundary. Only that pointer is an authority; archives/receipts are not
+    writable revision heads. Interrupted private generations never become active.
+    """
+    from copy import deepcopy
+
+    root, _ = preflight(path)
+    with work_lock(root):
+        root, active = preflight(root)
+        generation_name = str(active.relative_to(root))
+        pointer_sha = sha(root / POINTER) if (root / POINTER).exists() else None
+        if generation_name != expected_generation or pointer_sha != expected_pointer_sha256:
+            raise WorkspaceError("REVISION_BASE_CONFLICT")
+        validate(active)
+        rows, external, unavailable = inventory(active)
+        old = read(active / "state.json")
+        if old.get("schema_version") != 2:
+            raise WorkspaceError("LEGACY_MIGRATION_REQUIRED")
+        for relative in replacements:
+            member(active, relative)
+            if relative in {"state.json", POINTER, GENERATION}:
+                raise WorkspaceError("REVISION_RESERVED_MEMBER")
+        intent = digest({"operation": "protected_revision/1", "base": generation_name,
+                         "pointer": pointer_sha, "files": rows, "replacements": replacements,
+                         "binding": binding, "invalidate_from": invalidate_from, "reason": reason})
+        archive = member(root, f".migrations/{intent}")
+        if archive.exists():
+            manifest = verify_archive(archive)
+            if manifest.get("migration_intent") != intent or manifest["files"] != rows:
+                raise WorkspaceError("REVISION_ARCHIVE_CONFLICT")
+        else:
+            required = 2 * sum(row["bytes"] for row in rows) + 16 * 1024 * 1024
+            if shutil.disk_usage(root).free < required:
+                raise WorkspaceError("MIGRATION_DISK_SPACE_INSUFFICIENT")
+            pending = member(root, f".migrations/.pending-{intent}-{os.urandom(8).hex()}")
+            pending.mkdir(parents=True, exist_ok=False)
+            for row in rows:
+                checked_copy(Path(row["original_path"]), member(pending / "files", row["path"]), row)
+            if interrupt:
+                interrupt("copied")
+            manifest = {"schema": RECOVERY_SCHEMA, "migration_intent": intent,
+                        "files": rows, "external_references_not_copied": external,
+                        "unavailable_optional_references": unavailable,
+                        "source_identity": binding or {"input_paths": old.get("input_paths", []),
+                            "input_fingerprint": old.get("input_fingerprint"),
+                            "config_fingerprint": old.get("config_fingerprint")},
+                        "recovery_bundle_sha256": None, "created_at": now(),
+                        "original_task_root": str(root), "previous_active": str(active),
+                        "scope": "byte preservation; not source/QC/creative certification"}
+            atomic(pending / "recovery-manifest.json", manifest)
+            verify_archive(pending)
+            _sync_tree(pending)
+            pending.rename(archive)
+            _sync_directory(archive.parent)
+            _sync_directory(root)
+        if interrupt:
+            interrupt("archived")
+        # A random suffix preserves incomplete attempts without overwriting them.
+        target = member(root, f".generations/{intent}-{os.urandom(8).hex()}")
+        target.mkdir(parents=True, exist_ok=False)
+        for row in rows:
+            checked_copy(member(archive / "files", row["path"]), member(target, row["path"]), row)
+        # Old gate results remain in the recovery archive, never as apparently
+        # current standalone PASSED reports beside a different authored snapshot.
+        for relative in ("10_preflight_qc.json", "11_post_render_qc.json",
+                         "output/delivery_report.md", "delivery_report.md"):
+            member(target, relative).unlink(missing_ok=True)
+        for relative, value in replacements.items():
+            atomic(member(target, relative), value)
+        state = deepcopy(old)
+        order = ["ingest", "transcript", "scenes", "scene_analysis", "story", "highlights",
+                 "plan", "storyboard", "tts", "pre_qc", "render", "post_qc", "delivery"]
+        if invalidate_from not in order:
+            raise WorkspaceError("REVISION_INVALIDATION_STAGE_INVALID")
+        for name in order[order.index(invalidate_from):]:
+            state.setdefault("stages", {})[name] = {"status": "pending"}
+        if binding:
+            for key in ("input_paths", "input_fingerprint", "config_fingerprint"):
+                state[key] = binding[key]
+        state.update(updated_at=now(), last_error=None, migration_intent=intent,
+                     recovery_manifest=str(archive / "recovery-manifest.json"))
+        atomic(target / "state.json", state)
+        atomic(target / GENERATION, {"schema": WORKSPACE_SCHEMA, "task_root": str(root),
+                                    "relative": str(target.relative_to(root))})
+        # Full generation hashes include all private members, not just the JSON head.
+        prepared = {str(p.relative_to(target)): sha(p) for p in target.rglob("*") if p.is_file()}
+        _sync_tree(target)
+        _sync_directory(root)
+        if interrupt:
+            interrupt("prepared")
+        if (sha(root / POINTER) if (root / POINTER).exists() else None) != pointer_sha:
+            raise WorkspaceError("REVISION_BASE_CONFLICT")
+        validate(active)
+        if inventory(active) != (rows, external, unavailable):
+            raise WorkspaceError("REVISION_INPUT_CHANGED")
+        if verify_archive(archive) != manifest:
+            raise WorkspaceError("REVISION_ARCHIVE_CHANGED")
+        current = {str(p.relative_to(target)): sha(p) for p in target.rglob("*") if p.is_file()}
+        if current != prepared or any(p.is_symlink() for p in target.rglob("*")):
+            raise WorkspaceError("PREPARED_GENERATION_CHANGED")
+        atomic(root / POINTER, {"schema": WORKSPACE_SCHEMA, "active": str(target.relative_to(root)),
+                               "migration_intent": intent,
+                               "recovery_manifest_sha256": sha(archive / "recovery-manifest.json")})
+        if interrupt:
+            interrupt("switched")
+        atomic(archive / "migration-status.json", {"schema": MIGRATION_SCHEMA,
+               "status": "SWITCHED", "migration_intent": intent, "operation": "protected_revision"})
+        return {"schema": "film-revision-result/1", "status": "ADOPTED",
+                "generation": str(target.relative_to(root)), "active_dir": str(target),
+                "archive": str(archive), "artifact_hashes": {name: sha(target / name) for name in replacements},
+                "qc_status": "NOT_RUN", "reason": reason}

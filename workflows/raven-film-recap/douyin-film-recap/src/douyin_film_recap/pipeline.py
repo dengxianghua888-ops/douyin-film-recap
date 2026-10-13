@@ -108,11 +108,21 @@ class FilmRecapPipeline:
         self.remote_policy = {"endpoint": self._endpoint,
             "models": [self.config.models.llm_model, self.config.models.vlm_model],
             "edge_tts": {key: getattr(self.config.tts, key) for key in ("voice", "rate", "pitch", "volume")}}
-        self.task_root, self.work_dir, self.migration = prepare(
-            self.task_root, self.binding, allow_legacy=migrate_legacy,
-            recovery_bundle=recovery_bundle,
-            recovery_bundle_sha256=recovery_bundle_sha256,
-        )
+        with work_lock(self.task_root):
+            _, previous_active = preflight(self.task_root, allow_legacy=migrate_legacy)
+            revision_path = previous_active / ".receipts/revision-adoption.json"
+            if revision_path.exists():
+                if revision_path.is_symlink() or read(revision_path).get("schema") != "film-revision-adoption/1":
+                    raise WorkspaceError("REVISION_RECEIPT_INVALID")
+                previous_state = read(previous_active / "state.json")
+                if (previous_state.get("input_fingerprint") != self.binding["input_fingerprint"] or
+                        previous_state.get("config_fingerprint") != self.binding["config_fingerprint"]):
+                    raise WorkspaceError("PROTECTED_REVISION_BINDING_CHANGED_USE_RENDER_CURRENT")
+            self.task_root, self.work_dir, self.migration = prepare(
+                self.task_root, self.binding, allow_legacy=migrate_legacy,
+                recovery_bundle=recovery_bundle,
+                recovery_bundle_sha256=recovery_bundle_sha256,
+            )
         self.store = StateStore(self.work_dir)
         with work_lock(self.task_root):
             _, active = preflight(self.task_root)
@@ -124,6 +134,155 @@ class FilmRecapPipeline:
                 input_fingerprint=input_fingerprint,
                 config_fingerprint=runtime_fingerprint,
             )
+            atomic(self.work_dir / ".receipts/config-binding.json", self._config_receipt())
+
+    def _config_receipt(self):
+        return {"schema": "film-config-binding/1", "pipeline_revision": PIPELINE_REVISION,
+                "config": self.config.model_dump(mode="json"),
+                "explicit_format_fields": sorted(self.config.format.model_fields_set),
+                "binding": self.binding, "remote_policy": self.remote_policy}
+
+    @classmethod
+    def from_current(cls, *, work_dir, config, on_update=None):
+        """Open the current authored generation without prepare()/upstream stages.
+
+        Older projects lacking the new config receipt require the exact original
+        config. A verified receipt permits render-only config changes, published
+        atomically as a new generation before rendering starts.
+        """
+        from .revision import BOARD, assert_revision_base, freeze_revision
+        from .workspace import commit_generation
+
+        root, _ = preflight(work_dir)
+        with work_lock(root):
+            _, active = preflight(root)
+            base = freeze_revision(root)
+            old = read(active / "state.json")
+            if len(old.get("input_paths", [])) != 1:
+                raise WorkspaceError("RENDER_CURRENT_SINGLE_INPUT_BINDING_REQUIRED")
+            self = cls.__new__(cls)
+            self.task_root, self.work_dir = root, active
+            self.input_path = Path(old["input_paths"][0]).expanduser().resolve()
+            self.config = config.model_copy(deep=True)
+            self._config_fingerprint = self.config.fingerprint()
+            self._endpoint = self._resolved_endpoint()
+            self._client = None
+            self.on_update = on_update or (lambda _: None)
+            self.project_name = old.get("project_name", "film")
+            self.migration = None
+            identities = [self._source_input_identity(p) for p in discover_videos(self.input_path)]
+            input_fingerprint = fingerprint_json(identities)
+            if input_fingerprint != old.get("input_fingerprint"):
+                raise WorkspaceError("SOURCE_BINDING_CHANGED")
+            context = None
+            if self.config.story.allow_external_context and self.config.project.context_file:
+                context_path = Path(self.config.project.context_file).expanduser()
+                if context_path.exists():
+                    context = content_identity(context_path)
+            runtime_fingerprint = fingerprint_json({"config": self.config.fingerprint(),
+                "pipeline_revision": PIPELINE_REVISION, "context_fingerprint": context,
+                "remote_endpoint": self._endpoint})
+            self.binding = {"schema": "film-input-binding/2", "input_paths": [str(self.input_path)],
+                "input_fingerprint": input_fingerprint, "config_fingerprint": runtime_fingerprint,
+                "sources": identities, "context_identity": context}
+            self.remote_policy = {"endpoint": self._endpoint,
+                "models": [self.config.models.llm_model, self.config.models.vlm_model],
+                "edge_tts": {key: getattr(self.config.tts, key)
+                             for key in ("voice", "rate", "pitch", "volume")}}
+            receipt_path = active / ".receipts/config-binding.json"
+            if runtime_fingerprint != old.get("config_fingerprint"):
+                if not receipt_path.is_file():
+                    raise WorkspaceError("RENDER_CURRENT_ORIGINAL_CONFIG_REQUIRED")
+                previous = read(receipt_path)
+                prior_config = AppConfig.model_validate(previous.get("config", {}))
+                prior_config.format.__pydantic_fields_set__ = set(previous.get("explicit_format_fields", []))
+                prior_binding = previous.get("binding", {})
+                verified_fingerprint = fingerprint_json({"config": prior_config.fingerprint(),
+                    "pipeline_revision": previous.get("pipeline_revision"),
+                    "context_fingerprint": prior_binding.get("context_identity"),
+                    "remote_endpoint": previous.get("remote_policy", {}).get("endpoint")})
+                comparable = self.config.model_copy(deep=True)
+                comparable.render = prior_config.render.model_copy(deep=True)
+                if (previous.get("schema") != "film-config-binding/1"
+                        or verified_fingerprint != old.get("config_fingerprint")
+                        or prior_binding.get("config_fingerprint") != old.get("config_fingerprint")
+                        or previous.get("pipeline_revision") != PIPELINE_REVISION
+                        or comparable.fingerprint() != prior_config.fingerprint()
+                        or prior_binding.get("context_identity") != context
+                        or previous.get("remote_policy") != self.remote_policy):
+                    raise WorkspaceError("RENDER_CURRENT_NON_RENDER_CONFIG_CHANGED")
+                board = read(active / BOARD)
+                board["output"] = {}
+                for segment in board["segments"]:
+                    segment.pop("rendered_file", None)
+                    segment.pop("rendered_duration_sec", None)
+                    segment["status"] = "audio_ready" if segment.get("audio_file") else "planned"
+                result = commit_generation(root,
+                    replacements={BOARD: board, ".receipts/config-binding.json": self._config_receipt(),
+                        ".receipts/revision-adoption.json": {"schema": "film-revision-adoption/1",
+                            "kind": "render_config", "base": base, "qc_status": "NOT_RUN",
+                            "semantic_and_av_review_inherited": False}},
+                    expected_generation=base["generation"], expected_pointer_sha256=base["pointer_sha256"],
+                    validate=lambda _: assert_revision_base(root, base), binding=self.binding,
+                    reason="render-only configuration change")
+                self.work_dir = Path(result["active_dir"])
+            else:
+                # Safe bootstrap: exact full runtime fingerprint was independently matched.
+                atomic(receipt_path, self._config_receipt())
+            self.store = StateStore(self.work_dir)
+            self.state = self.store.load_or_create(project_name=self.project_name,
+                input_paths=self.binding["input_paths"], input_fingerprint=input_fingerprint,
+                config_fingerprint=runtime_fingerprint)
+            self._render_current = True
+            return self
+
+    def render_only(self) -> Path:
+        """Always run both QC gates and final composition; never rebuild model/TTS stages.
+
+        No persisted remote grant is reused here. Exact send-intent results may
+        replay; new or UNKNOWN requests cannot be sent by this entry.
+        """
+        from .revision import freeze_revision
+
+        with work_lock(self.task_root):
+            _, active = preflight(self.task_root)
+            if active != self.work_dir:
+                raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+            self._assert_bound_sources()
+            self.state = self.store.load_or_create(project_name=self.project_name,
+                input_paths=self.binding["input_paths"],
+                input_fingerprint=self.binding["input_fingerprint"],
+                config_fingerprint=self.binding["config_fingerprint"])
+            if (self.state.input_fingerprint != self.binding["input_fingerprint"] or
+                    self.state.config_fingerprint != self.binding["config_fingerprint"]):
+                raise WorkspaceError("STATE_BINDING_CHANGED")
+            frozen = freeze_revision(self.task_root)
+            self._validate_visual_evidence(self._storyboard())
+            atomic(self.work_dir / ".receipts/render-current.json", {
+                "schema": "film-render-current/1", "base": frozen,
+                "stages": ["pre_qc", "render", "post_qc", "delivery"],
+                "new_remote_requests_allowed": False, "tts_regenerated": False})
+            self.store.invalidate_from(self.state, "pre_qc")
+            self._render_current = True
+            editorial = None
+            for stage in ("pre_qc", "render", "post_qc", "delivery"):
+                self._assert_bound_sources()
+                if editorial is not None and self._storyboard_identity() != editorial:
+                    raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
+                try:
+                    self._prepare_stage(stage)
+                except BaseException as exc:
+                    self._record_stage_failure(stage, exc)
+                    raise
+                if editorial is None:
+                    editorial = self._storyboard_identity()
+                scope = {"binding": self.binding, "stage": stage,
+                         "stage_inputs": self._stage_inputs(stage), "remote_policy": self.remote_policy}
+                with send_session(self.task_root, scope, authorized=False, max_requests=0):
+                    self._run_stage(stage)
+                if self._storyboard_identity() != editorial:
+                    raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
+            return self.paths["delivery"]
 
     @property
     def client(self):
@@ -327,12 +486,26 @@ class FilmRecapPipeline:
             if (self.state.input_fingerprint != self.binding["input_fingerprint"] or
                     self.state.config_fingerprint != self.binding["config_fingerprint"]):
                 raise WorkspaceError("STATE_BINDING_CHANGED")
-            if not self.config.runtime.cache:
+            revision_path = self.work_dir / ".receipts/revision-adoption.json"
+            protected_revision = revision_path.exists()
+            if protected_revision:
+                if revision_path.is_symlink() or read(revision_path).get("schema") != "film-revision-adoption/1":
+                    raise WorkspaceError("REVISION_RECEIPT_INVALID")
+                if not from_stage:
+                    raise WorkspaceError("PROTECTED_REVISION_REQUIRES_RENDER_CURRENT_OR_EXPLICIT_FROM_STAGE")
+            if not self.config.runtime.cache and not protected_revision:
                 self.store.invalidate_from(self.state, "ingest")
-            if from_stage:
-                self._adopt_manual_artifacts(from_stage)
-                self.store.invalidate_from(self.state, from_stage)
+            effective_from = from_stage
+            if protected_revision and STAGES.index(from_stage) > STAGES.index("pre_qc"):
+                effective_from = "pre_qc"  # Explicit resume still cannot bypass either QC gate.
+            if effective_from:
+                self._adopt_manual_artifacts(effective_from)
+                self.store.invalidate_from(self.state, effective_from)
             selected = list(self.store.selected_stages(until))
+            if protected_revision:
+                selected = [stage for stage in selected if STAGES.index(stage) >= STAGES.index(effective_from)]
+                if not selected:
+                    raise WorkspaceError("REVISION_UNTIL_PRECEDES_FROM_STAGE")
             grant_path = self.task_root / ".remote-authorization.json"
             grant = None
             if allow_remote:
@@ -541,11 +714,10 @@ class FilmRecapPipeline:
         return effective
 
     def _validate_visual_evidence(self, storyboard: Storyboard) -> None:
-        if any(segment.mode == "voiceover" for segment in storyboard.segments):
-            validate_storyboard_visual_evidence(
-                storyboard, self._manifest(), self._highlights(),
-                self._scene_index(), self._scene_analysis(),
-            )
+        validate_storyboard_visual_evidence(
+            storyboard, self._manifest(), self._highlights(),
+            self._scene_index(), self._scene_analysis(),
+        )
 
     def _stage_tts(self) -> Path:
         storyboard = self._storyboard()
@@ -565,7 +737,16 @@ class FilmRecapPipeline:
         except VisualEvidenceError:
             client = None  # Persist deterministic findings without opening a provider.
         else:
-            client = self.client
+            if getattr(self, "_render_current", False):
+                pipeline = self
+
+                class ReplayOnlyClient:
+                    def chat_json(self, **kwargs):
+                        return pipeline.client.chat_json(**kwargs)
+
+                client = ReplayOnlyClient()
+            else:
+                client = self.client
         report = preflight_qc(
             manifest=self._manifest(),
             transcript=self._transcript(),
@@ -586,7 +767,10 @@ class FilmRecapPipeline:
     def _stage_render(self) -> Path:
         storyboard = self._storyboard()
         self._validate_visual_evidence(storyboard)
+        before = content_fingerprint(self.paths["storyboard"])
         storyboard = render_storyboard(storyboard, self.config, self.work_dir)
+        if getattr(self, "_render_current", False) and content_fingerprint(self.paths["storyboard"]) != before:
+            raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
         write_json(self.paths["storyboard"], storyboard)
         final = Path(storyboard.output["final_video"])
         return final
@@ -623,7 +807,10 @@ class FilmRecapPipeline:
             self._say(f"[repair] render pass {attempts + 1}")
             self._clear_render_outputs()
             self._validate_visual_evidence(storyboard)
+            before = content_fingerprint(self.paths["storyboard"])
             storyboard = render_storyboard(storyboard, self.config, self.work_dir)
+            if getattr(self, "_render_current", False) and content_fingerprint(self.paths["storyboard"]) != before:
+                raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
             write_json(self.paths["storyboard"], storyboard)
             final = Path(storyboard.output["final_video"])
             self.store.pass_stage(

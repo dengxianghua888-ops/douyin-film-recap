@@ -204,3 +204,58 @@ def render_plan_command(
     except (ValueError, OSError, RuntimeError) as exc:
         console.print(f"派生计划失败：{exc}")
         raise typer.Exit(code=2) from exc
+
+
+@app.command("revision-snapshot")
+def revision_snapshot_command(
+    work_dir: Annotated[Path, typer.Argument(help="读取当前 Storyboard/generation 身份")],
+) -> None:
+    """输出局部提案所需基线，不改变作品。"""
+    from .revision import freeze_revision
+    try:
+        typer.echo(json.dumps(freeze_revision(work_dir), ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"快照读取失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("revise")
+def revise_command(
+    work_dir: Annotated[Path, typer.Argument(help="已有工作区")],
+    proposal: Annotated[Path, typer.Option("--proposal", help="含 base/artifacts/scope 的局部修订 JSON")],
+) -> None:
+    """按明确范围采用局部候选；不会生成配音、调用模型或自动渲染。"""
+    from .revision import adopt_revision
+    try:
+        request = json.loads(proposal.read_text(encoding="utf-8"))
+        if not isinstance(request, dict) or set(request) - {"base", "artifacts", "scope", "kind", "reason"}:
+            raise ValueError("INVALID_LOCAL_PROPOSAL")
+        if request.get("kind", "local") != "local":
+            raise ValueError("DOMAIN_PROPOSAL_REQUIRES_DEDICATED_VALIDATOR")
+        result = adopt_revision(work_dir, base=request["base"], artifacts=request["artifacts"],
+                                scope=request["scope"], kind="local", reason=request.get("reason", ""))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"局部修订失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("render-current")
+def render_current_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前已准备 Storyboard 的工作区")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+) -> None:
+    """只从当前作品执行 pre-QC/render/post-QC/delivery，不重跑模型或 TTS。"""
+    try:
+        pipeline = FilmRecapPipeline.from_current(work_dir=work_dir, config=load_config(config),
+            on_update=lambda message: console.print(message))
+        result = pipeline.render_only()
+        typer.echo(json.dumps({"result": str(result)}, ensure_ascii=False))
+    except StageBlocked as exc:
+        console.print(f"{exc.stage} 被质量门禁阻断")
+        for finding in exc.report.findings:
+            console.print(f"- {finding.rule_id}: {finding.message}")
+        raise typer.Exit(code=3) from exc
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"当前作品渲染失败：{exc}")
+        raise typer.Exit(code=2) from exc
