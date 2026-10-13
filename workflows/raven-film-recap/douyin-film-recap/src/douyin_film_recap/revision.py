@@ -17,6 +17,9 @@ MANIFEST = "00_source_manifest.json"
 HIGHLIGHTS = "07_highlight_candidates.json"
 PLAN = "08_recap_plan.json"
 BOUNDARY_RECEIPT = ".receipts/boundary-adoption.json"
+NARRATION_RECEIPT = ".receipts/narration-revision.json"
+NARRATION_FIELDS = frozenset({"text", "audio_file", "audio_source_duration_sec", "audio_duration_sec",
+                              "audio_speed", "tts_word_boundaries", "planned_duration_sec", "status"})
 LOCAL_FIELDS = frozenset({"title", "notes", "visuals"})
 _PROTECTION_KEYS = {"protected", "protection", "protected_fields", "protected_segments",
                     "protected_segment_ids", "protected_ranges", "content_protection", "user_protected",
@@ -206,6 +209,9 @@ def adopt_revision(work_dir, *, base, artifacts, scope, kind="local", reason="",
     elif kind == "boundary":
         if set(artifacts) != {HIGHLIGHTS, PLAN, BOARD, BOUNDARY_RECEIPT} or not callable(validator):
             raise WorkspaceError("REVISION_BOUNDARY_VALIDATION_REQUIRED")
+    elif kind == "narration":
+        if set(artifacts) != {BOARD, NARRATION_RECEIPT} or not callable(validator):
+            raise WorkspaceError("REVISION_NARRATION_VALIDATION_REQUIRED")
     else:
         raise WorkspaceError("REVISION_KIND_UNSUPPORTED")
 
@@ -223,6 +229,9 @@ def adopt_revision(work_dir, *, base, artifacts, scope, kind="local", reason="",
                 _preserve_unknown(previous, artifacts[name], model)
                 if previous != artifacts[name] and _protected(previous):
                     raise WorkspaceError("REVISION_PROTECTED_DOCUMENT")
+            validator(active, deepcopy(artifacts))
+        if kind == "narration":
+            validate_narration_fields(old, artifacts[BOARD], scope)
             validator(active, deepcopy(artifacts))
         _validate_visuals(active, artifacts)
 
@@ -242,6 +251,9 @@ def adopt_revision(work_dir, *, base, artifacts, scope, kind="local", reason="",
         if kind == "boundary":
             replacement[BOUNDARY_RECEIPT]["artifact_content_hashes"] = adopted_hashes
             replacement[BOUNDARY_RECEIPT]["status"] = "adopted"
+        if kind == "narration":
+            replacement[NARRATION_RECEIPT]["adopted_storyboard_content_hash"] = adopted_hashes[BOARD]
+            replacement[NARRATION_RECEIPT]["status"] = "adopted"
         replacement[".receipts/revision-adoption.json"] = {
             "schema": "film-revision-adoption/1", "kind": kind, "base": base,
             "scope": scope, "reason": reason, "candidate_sha256": digest(artifacts),
@@ -251,3 +263,30 @@ def adopt_revision(work_dir, *, base, artifacts, scope, kind="local", reason="",
             expected_generation=base["generation"], expected_pointer_sha256=base["pointer_sha256"],
             validate=validate, invalidate_from="highlights" if kind == "boundary" else "pre_qc",
             reason=reason, interrupt=interrupt)
+
+
+def validate_narration_fields(old, candidate, scope):
+    """Exact target-VO text/audio changes only, including trusted-domain callers."""
+    from .models import StoryboardSegment
+
+    if {k: v for k, v in old.items() if k != "segments"} != {k: v for k, v in candidate.items() if k != "segments"}:
+        raise WorkspaceError("NARRATION_TOP_LEVEL_CHANGE_UNSUPPORTED")
+    targets = set(scope.get("segment_ids", []))
+    if not targets:
+        raise WorkspaceError("NARRATION_TARGET_REQUIRED")
+    for before, after in zip(old["segments"], candidate["segments"]):
+        changes = {key for key in before.keys() | after.keys() if before.get(key) != after.get(key)}
+        if before["segment_id"] not in targets:
+            if changes:
+                raise WorkspaceError("NARRATION_UNCHANGED_SEGMENT_CHANGED")
+            continue
+        if before["mode"] != "voiceover" or after["mode"] != "voiceover":
+            raise WorkspaceError("NARRATION_VOICEOVER_TARGET_REQUIRED")
+        if not changes <= NARRATION_FIELDS:
+            raise WorkspaceError("NARRATION_FIELD_OUTSIDE_SCOPE")
+        if set(before) - set(StoryboardSegment.model_fields) - {"rendered_file", "rendered_duration_sec"}:
+            raise WorkspaceError("NARRATION_UNKNOWN_TIMING_DEPENDENCY")
+        if any(set(visual) - {"source_id", "start", "end", "purpose", "highlight_id", "unit_id", "visual_role",
+                             "evidence_revision", "source_sha256", "timebase_hash", "unit_lineage"}
+               for visual in before.get("visuals", [])):
+            raise WorkspaceError("NARRATION_UNKNOWN_TIMING_DEPENDENCY")

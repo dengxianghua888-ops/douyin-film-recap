@@ -296,3 +296,49 @@ def apply_boundary_command(
     except (ValueError, OSError, RuntimeError, KeyError) as exc:
         console.print(f"边界采用失败：{exc}")
         raise typer.Exit(code=2) from exc
+
+
+@app.command("narration-revise-plan")
+def narration_revision_plan_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前作品工作区")],
+    request: Annotated[Path, typer.Option("--request", help="含 base/edits/reason 的精确旁白修改请求")],
+) -> None:
+    """只读输出待执行计划；edits 为 segment_id 到完整新文字的映射。"""
+    from .narration_revision import prepare_narration_revision
+    try:
+        data = json.loads(request.read_text(encoding="utf-8"))
+        if not isinstance(data, dict) or set(data) - {"base", "edits", "reason"}:
+            raise ValueError("INVALID_NARRATION_REVISION_REQUEST")
+        result = prepare_narration_revision(work_dir, base=data["base"], edits=data["edits"],
+                                             reason=data.get("reason", ""))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"旁白修订计划失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("narration-revise-apply")
+def narration_revision_apply_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前作品工作区")],
+    plan: Annotated[Path, typer.Option("--plan", help="完整未改动的待执行计划")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+    allow_remote: Annotated[bool, typer.Option("--allow-remote", help="授权本计划需要的新TTS/语义检查请求")] = False,
+    max_remote_requests: Annotated[int | None, typer.Option("--max-remote-requests", min=0)] = None,
+    render: Annotated[bool, typer.Option("--render", help="采用后继续原有pre-QC/render/post-QC/delivery")] = False,
+) -> None:
+    """仅重做目标旁白；UNKNOWN不重发，视觉不足不自动改稿或补画。"""
+    from .narration_revision import execute_narration_revision
+    try:
+        result = execute_narration_revision(work_dir,
+            plan=json.loads(plan.read_text(encoding="utf-8")), config=load_config(config),
+            allow_remote=allow_remote, max_remote_requests=max_remote_requests, render=render,
+            on_update=lambda message: console.print(message))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except StageBlocked as exc:
+        console.print(f"{exc.stage} 被质量门禁阻断")
+        for finding in exc.report.findings:
+            console.print(f"- {finding.rule_id}: {finding.message}")
+        raise typer.Exit(code=3) from exc
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"旁白修订执行失败：{exc}")
+        raise typer.Exit(code=2) from exc

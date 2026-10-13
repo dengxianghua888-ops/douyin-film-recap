@@ -70,3 +70,48 @@ Ordinary `run` on an adopted revision requires an explicit `--from-stage` handof
 or the user should use `render-current`. With an explicit handoff, stages preceding
 that point are not regenerated because they happen to be pending. Rendering or
 delivery handoffs still start no later than pre-QC, preserving both QC gates.
+
+## Exact-text narration follow-through
+
+The separate `narration-revise-plan` / `narration-revise-apply` entries extend the
+minimum local visual-edit entry. They do not widen the `revise` whitelist or the
+zero-new-remote `render-current` contract.
+
+- `prepare_narration_revision(work_dir, base=..., edits={segment_id: new_text},
+  reason="...")` returns a deterministic `PENDING_TTS` plan without writing files,
+  synthesizing, editing the current board or claiming a render. The full plan is
+  required for execution; changing a field invalidates it.
+- `execute_narration_revision(work_dir, plan=..., config=..., allow_remote=False,
+  max_remote_requests=None, render=False)` regenerates only explicitly targeted
+  voiceover segments. It retains every non-target narration field and audio byte
+  (derived rendered-status/output pointers are invalidated during adoption).
+- The new text is exact. There is no automatic rewrite-model call. Existing TTS
+  provider and bounded timing adjustment are reused. If the measured new voiceover
+  exceeds the existing visual coverage, adoption is blocked; a new visual plan is
+  needed. Verified generated audio remains available for safe retry/inspection.
+- New TTS sends need explicit authorization or a saved grant for this exact plan,
+  source/config/provider binding and scope. A broad old pipeline grant is not
+  migrated. Request identity is based on the actual target/text/voice payload,
+  independently of cosmetic reason and generation metadata. An unresolved matching
+  TTS request, including from the original pipeline, blocks resubmission. Changing
+  the reason or rebasing an unrelated edit does not clear `UNKNOWN`.
+- Successful targeted audio is hash-checked, the source/base is checked again, and
+  exact-text/audio fields are adopted via the same atomic generation switch.
+  The old board/audio/output survives in the archive. Output clock, subtitles,
+  rendering, pre-QC, post-QC and delivery are invalidated; none inherits `PASSED`.
+- Default execution stops at adopted audio with `render_status: NOT_RUN`. Explicit
+  `render=True` (CLI `--render`) continues through the existing pre-QC, render,
+  post-QC and delivery stages. New semantic-QC calls require the same explicit
+  execution authorization and share its remaining local request budget. If that
+  continuation blocks, the result retains `ADOPTED_RENDER_BLOCKED`/`FAILED`, the
+  current generation and a resume instruction; it does not imply the narration
+  adoption rolled back.
+
+Validation is deliberately split. Fake-provider unit tests exercise real durable
+send guards, exact target-only mutation, recovery and cue invalidation. One local
+FFmpeg integration fixture returns actual synthesized-test MP3 bytes from that fake
+provider, measures them with real ffprobe, executes the real incremental renderer,
+checks that only the changed AV segment executes while the other is reused, and
+runs real post-render QC. Its pre-QC result is explicitly a synthetic `DEGRADED`
+fixture; it does not certify story, spoken delivery or real film quality. No remote
+provider or paid production work is used by these tests.

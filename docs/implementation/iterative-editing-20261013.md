@@ -11,7 +11,7 @@ summarized here rather than introducing another project authority.
 | --- | --- | --- |
 | I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local fixtures and exact-commit full CI pass |
 | I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Implemented; synthetic FFmpeg and safety fixtures pass; full CI pending |
-| I2 | Protected local revision/render-only entry using existing generation | Implemented; 20 local fixtures plus existing regressions pass; full CI pending |
+| I2 | Protected local revision/render-only and targeted narration entry | Implemented; 20 local revision + 14 narration tests pass; full CI pending |
 | B1 | Immutable cross-window boundary proposals and validation | Implemented; 11 local synthetic contract tests pass; full CI pending |
 | B2 | Consistent 07/08/09 adoption with stale-reference isolation | Implemented; 12 local adoption fixtures pass; full CI pending |
 | R1 | Same-budget query reranking above existing Beat-stratified baseline | Implemented; 14 retrieval + 3 config fixtures pass; full CI pending |
@@ -144,3 +144,25 @@ quality, film evidence recall and human AV review remain NOT_RUN. B1/B2/R1/X1/X2
 exact-commit full CI succeeded before this integration.
 
 V1 metadata isolation: observer bytes are independently re-decoded canonical media, not caller containers. Audit asset hashes and consumed-byte hashes are separate; PNG text metadata and subtitle comments cannot leak the proposed answer through the raw-input boundary. The corresponding concrete counterexample now passes.
+
+### I2 targeted narration follow-through
+
+The initial narrow I2 scope is extended by a separate exact-text narration plan
+and explicit execution entry. Fourteen focused tests pass, including real guarded
+fake-provider transport, target-only generation, unchanged VO bytes/fields, request
+budget zero, old/new UNKNOWN records, reason-only/rebase retry protection, cache
+replay after interruption, source/head drift and explicit render continuation.
+A real synthetic-media fixture uses actual generated MP3, ffprobe, incremental
+render and post-QC: the changed VO segment executes, the unchanged VO segment is
+reused, and longer audio moves later captions on the realized timeline. Semantic
+pre-QC is explicitly synthetic DEGRADED; this is not real-film semantic or human
+listening acceptance. No real provider was contacted or paid.
+
+The exact requested text is never silently rewritten. Insufficient existing visual
+coverage blocks adoption and retains generated audio; automatic new visuals and
+independent subtitle-display override remain outside this contract. Planning is
+read-only. Execution requires explicit remote authorization or an exact matching
+saved grant; UNKNOWN cannot be retried by changing cosmetic plan fields. The
+render-current entry still forbids new remote requests. Optional narration --render
+continues existing QC/render stages within its explicit remaining request budget.
+Adopted-but-render-blocked state is preserved with an explicit resume route.
