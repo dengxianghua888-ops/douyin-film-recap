@@ -79,3 +79,22 @@ In an existing permitted dev environment:
 ```bash
 python -m pytest -q tests/test_otio_official_parser.py
 ```
+
+## Recorded acceptance: 2026-10-13
+
+The official-parser suite was actually executed in
+[CI run 38378974343](https://github.com/dengxianghua888-ops/douyin-film-recap/actions/runs/38378974343)
+for commit `f317db6d2d2915bd96457174a639c595bf3f1750`. All three jobs succeeded.
+The film job `115234351324` logged installation of `opentimelineio-0.18.1` from
+the CPython 3.12 manylinux x86-64 wheel.
+
+The downloaded
+[film JUnit artifact 11802880930](https://github.com/dengxianghua888-ops/douyin-film-recap/actions/runs/38378974343/artifacts/11802880930)
+contains **401 tests, zero failures, zero errors and zero skips**. Each of the
+five `OfficialOTIOParserTests` named above is present with no failure/error/skip
+record. Artifact ZIP SHA-256:
+`c13cc3feea824ce93bc887787a1aba7a879631feda9da757486e8934a833523b`.
+
+This establishes native-parser fixture acceptance for that commit and version.
+It does not establish an actual NLE import/reopen/render, adopted roundtrip, or
+per-export parser validation; those boundaries above are unchanged.
