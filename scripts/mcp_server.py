@@ -120,8 +120,12 @@ def serve():
             method = message.get('method')
             if identifier is None:
                 continue  # Notifications never receive responses.
+            params = message.get('params', {})
+            if not isinstance(params, dict):
+                _response(identifier, error={'code': -32602, 'message': 'PARAMS_OBJECT_REQUIRED'})
+                continue
             if method == 'initialize':
-                requested = message.get('params', {}).get('protocolVersion')
+                requested = params.get('protocolVersion')
                 protocol = requested if requested in ('2024-11-05', '2025-03-26', '2025-06-18') else '2025-03-26'
                 _response(identifier, {'protocolVersion': protocol,
                     'capabilities': {'tools': {'listChanged': False}},
@@ -131,9 +135,12 @@ def serve():
             elif method == 'tools/list':
                 _response(identifier, {'tools': _tool_specs()})
             elif method == 'tools/call':
-                params = message.get('params') or {}
+                arguments = params.get('arguments', {})
+                if not isinstance(arguments, dict):
+                    _response(identifier, error={'code': -32602, 'message': 'TOOL_ARGUMENTS_OBJECT_REQUIRED'})
+                    continue
                 try:
-                    output = call_tool(params.get('name'), params.get('arguments') or {})
+                    output = call_tool(params.get('name'), arguments)
                     _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
                                            'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
                 except (OSError, ValueError, KeyError, TypeError) as exc:
