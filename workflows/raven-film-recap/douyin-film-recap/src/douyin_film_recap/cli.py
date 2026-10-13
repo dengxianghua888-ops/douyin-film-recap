@@ -172,3 +172,35 @@ def list_stages() -> None:
     """列出可断点运行的阶段。"""
     for index, stage in enumerate(STAGES, start=1):
         console.print(f"{index:02d}. {stage}")
+
+
+@app.command("render-plan")
+def render_plan_command(
+    work_dir: Annotated[Path, typer.Argument(help="已有工作区（只读）")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+    dry_run: Annotated[bool, typer.Option("--dry-run", help="只读派生计划，不渲染或写入作品")] = True,
+) -> None:
+    """输出派生渲染计划；候选复用不等于验证命中或 QC 通过。"""
+    from .models import Storyboard
+    from .render_plan import collect_render_inputs, compile_render_plan
+    from .workspace import sha
+
+    if not dry_run:
+        console.print("render-plan only supports --dry-run")
+        raise typer.Exit(code=2)
+    try:
+        _, active = preflight(work_dir)
+        board_path = active / "09_storyboard.json"
+        before = sha(board_path)
+        board = Storyboard.model_validate_json(board_path.read_text(encoding="utf-8"))
+        plan = compile_render_plan(
+            board, load_config(config), **collect_render_inputs(board),
+            authority_sha256=before, workspace_generation=str(active),
+        )
+        _, current = preflight(work_dir)
+        if current != active or sha(board_path) != before:
+            raise ValueError("STALE_AUTHORITY")
+        typer.echo(json.dumps(plan, ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"派生计划失败：{exc}")
+        raise typer.Exit(code=2) from exc

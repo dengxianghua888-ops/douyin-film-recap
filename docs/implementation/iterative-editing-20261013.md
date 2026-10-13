@@ -9,7 +9,7 @@ summarized here rather than introducing another project authority.
 
 | Item | Deliverable | Status |
 | --- | --- | --- |
-| I0 | Pure derived render plan, dependency keys, expected/realized timing | Pending |
+| I0 | Pure derived render plan, dependency keys, expected/realized timing | Implemented; 20 local unittest fixtures pass; CLI/full CI pending |
 | I1 | Opt-in whole-segment AV cache, verified bytes, full finalization/QC | Pending |
 | I2 | Protected local revision/render-only entry using existing generation | Pending |
 | B1 | Immutable cross-window boundary proposals and validation | Pending |
@@ -56,3 +56,7 @@ restrictions are respected.
 Initial planning commit only. Implementation and media/host acceptance are not
 claimed by this document. Subsequent item commits update this table and add exact
 checks and limitations.
+
+### I0 verification
+
+Pure planner: 20 standard-library unittest fixtures passed locally. CLI read-only/stale-authority fixtures added; full pytest and CLI execution await CI because local pytest/typer are unavailable. Python compileall passed. No media/QC or performance claim.
