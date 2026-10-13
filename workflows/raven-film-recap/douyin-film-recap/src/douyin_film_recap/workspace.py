@@ -179,14 +179,46 @@ def _refs(value):
     if isinstance(value, dict):
         for key, item in value.items():
             if key in PATH_FIELDS and isinstance(item, str) and item:
-                yield item
+                yield item, key
+            elif key == "frame_paths" and isinstance(item, list):
+                for path in item:
+                    if isinstance(path, str) and path:
+                        yield path, key
             elif key == "artifacts" and isinstance(item, dict):
-                yield from item
+                for path in item:
+                    yield path, key
             else:
                 yield from _refs(item)
     elif isinstance(value, list):
         for item in value:
             yield from _refs(item)
+
+
+def _debug_absence_reason(active, state, path, cleanup):
+    """Only recorded, regenerable scene imagery may be absent after cleanup."""
+    root = active.resolve()
+    resolved = path.resolve()
+    if not any(resolved.is_relative_to(root / name) for name in ("frames", "contact_sheets")):
+        return None
+    scenes = state.get("stages", {}).get("scenes", {})
+    recorded = {
+        str((Path(name) if Path(name).is_absolute() else active / name).resolve()): sha256
+        for name, sha256 in scenes.get("artifacts", {}).items()
+    }
+    if str(resolved) not in recorded:
+        return None
+    expected = recorded[str(resolved)]
+    if (cleanup.get("schema") == "film-debug-cleanup/1"
+            and any(row.get("path") == str(resolved) and row.get("sha256") == expected
+                    for row in cleanup.get("files", []) if isinstance(row, dict))):
+        return "recorded_regenerable_debug_cleanup"
+    # Older completed workspaces predate cleanup receipts. Preserve the missing
+    # fact rather than claim the file was reviewed or that cleanup was observed.
+    stages = state.get("stages", {})
+    if all(stages.get(name, {}).get("status") == "passed"
+           for name in ("scenes", "scene_analysis", "highlights", "delivery")):
+        return "missing_regenerable_debug_after_delivery"
+    return None
 
 
 def inventory(active):
@@ -206,6 +238,21 @@ def inventory(active):
     recorded = {}
     state = read(active / "state.json")
     external = set()
+    unavailable = {}
+    cleanup_path = member(active, ".receipts/debug-cleanup.json")
+    cleanup = read(cleanup_path) if cleanup_path.is_file() else {}
+
+    def missing_optional(path, field=None):
+        if path.exists():
+            return False
+        reason = _debug_absence_reason(active, state, path, cleanup)
+        if reason is None and field == "review_file":
+            reason = "optional_review_not_present"
+        if reason is None:
+            return False
+        key = str(path.absolute())
+        unavailable[key] = {"original_path": key, "reason": reason}
+        return True
     for stage, record in state.get("stages", {}).items():
         references = dict(record.get("artifacts", {}))
         if record.get("artifact"):
@@ -214,9 +261,15 @@ def inventory(active):
             ref = Path(path)
             if not ref.is_absolute():
                 ref = active / ref
+            if ref.absolute().is_relative_to(active.absolute()):
+                member(active, str(ref.relative_to(active)))
+            elif ref.is_symlink():
+                raise WorkspaceError("ARCHIVE_MEMBER_SYMLINK")
             recorded[str(ref.resolve())] = expected
             if ref.is_absolute() and ref.resolve().is_relative_to(active.resolve()):
                 if not ref.is_file():
+                    if missing_optional(ref):
+                        continue
                     raise WorkspaceError("REQUIRED_ARCHIVE_MEMBER_MISSING")
                 files.add(ref)
             elif stage == "ingest":
@@ -234,15 +287,22 @@ def inventory(active):
             value = read(file)
         except (ValueError, UnicodeError):
             continue  # Preserve damaged/user-edited bytes without certifying the JSON.
-        for path in _refs(value):
+        for path, field in _refs(value):
             candidate = Path(path)
             candidate = candidate if candidate.is_absolute() else active / candidate
-            if candidate.resolve().is_relative_to(active.resolve()):
+            if candidate.absolute().is_relative_to(active.absolute()):
+                member(active, str(candidate.relative_to(active)))
                 if not candidate.is_file():
+                    if missing_optional(candidate, field):
+                        continue
                     raise WorkspaceError("REQUIRED_ARCHIVE_REFERENCE_MISSING")
                 files.add(candidate)
             else:
+                if candidate.is_symlink():
+                    raise WorkspaceError("ARCHIVE_MEMBER_SYMLINK")
                 if not candidate.is_file():
+                    if missing_optional(candidate, field):
+                        continue
                     raise WorkspaceError("REQUIRED_EXTERNAL_REFERENCE_MISSING")
                 files.add(candidate)
     rows = []
@@ -259,7 +319,7 @@ def inventory(active):
         rows.append({"original_path": str(checked), "path": rel, "bytes": checked.stat().st_size,
                      "observed_sha256": actual, "recorded_sha256": recorded.get(str(checked.resolve())),
                      "sha256": actual})
-    return rows, sorted(external)
+    return rows, sorted(external), [unavailable[key] for key in sorted(unavailable)]
 
 
 def checked_copy(source, target, expected):
@@ -352,13 +412,14 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
             if not recovery_bundle:
                 raise WorkspaceError("VERIFIED_RECOVERY_BUNDLE_REQUIRED")
             recovery_sha = verify_recovery_bundle(recovery_bundle, recovery_bundle_sha256)
-        rows, external = inventory(active)
+        rows, external, unavailable = inventory(active)
         intent = digest({"state": sha(state_path), "files": rows, "binding": binding,
-                         "target_schema": 2, "migration_revision": 1})
+                         "target_schema": 2, "migration_revision": 2, "unavailable_optional": unavailable})
         archive = member(root, f".migrations/{intent}")
         if archive.exists():
             manifest = verify_archive(archive)
             if (manifest["migration_intent"] != intent or manifest["files"] != rows
+                    or manifest.get("unavailable_optional_references", []) != unavailable
                     or manifest["source_identity"] != binding
                     or manifest["recovery_bundle_sha256"] != recovery_sha):
                 raise WorkspaceError("MIGRATION_INTENT_MISMATCH")
@@ -375,10 +436,11 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
                 checked_copy(Path(row["original_path"]), member(temporary / "files", row["path"]), row)
             if interrupt:
                 interrupt("copied")
-            if inventory(active) != (rows, external):
+            if inventory(active) != (rows, external, unavailable):
                 raise WorkspaceError("MIGRATION_INPUT_CHANGED")
             manifest = {"schema": RECOVERY_SCHEMA, "migration_intent": intent, "files": rows,
                         "external_references_not_copied": external, "source_identity": binding,
+                        "unavailable_optional_references": unavailable,
                         "recovery_bundle_sha256": recovery_sha, "created_at": now(),
                         "original_task_root": str(root), "previous_active": str(active),
                         "scope": "byte preservation; not source/QC/creative certification"}
@@ -418,7 +480,7 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
         if interrupt:
             interrupt("prepared")
         # A manual JSON edit need not update state.json: recheck all observed bytes.
-        if inventory(active) != (rows, external):
+        if inventory(active) != (rows, external, unavailable):
             raise WorkspaceError("MIGRATION_INPUT_CHANGED")
         pointer_after = sha(root / POINTER) if (root / POINTER).exists() else None
         if pointer_after != pointer_before:

@@ -33,7 +33,7 @@ from .qc import post_render_qc, preflight_qc
 from .render import render_storyboard
 from .state import STAGES, StateStore
 from .send_guard import send_session
-from .workspace import WorkspaceError, atomic, preflight, prepare, read, work_lock
+from .workspace import WorkspaceError, atomic, now, preflight, prepare, read, work_lock
 from .tts import synthesize_storyboard
 from .utils import (
     content_fingerprint,
@@ -601,6 +601,22 @@ class FilmRecapPipeline:
             raise StageBlocked("post_qc", report)
         return self.paths["post_qc"]
 
+    def _cleanup_debug_artifacts(self) -> None:
+        # Persist cleanup intent before deletion so an interruption is recoverable.
+        # Required media and authored artifacts are never covered by this receipt.
+        files = []
+        for name, sha256 in self.state.stages["scenes"].artifacts.items():
+            path = Path(name).resolve()
+            if any(path.is_relative_to(self.work_dir / directory)
+                   for directory in ("frames", "contact_sheets")):
+                files.append({"path": str(path), "sha256": sha256})
+        atomic(self.work_dir / ".receipts/debug-cleanup.json", {
+            "schema": "film-debug-cleanup/1", "requested_at": now(), "files": files,
+            "reason": "runtime.keep_debug_frames=false",
+        })
+        shutil.rmtree(self.work_dir / "frames", ignore_errors=True)
+        shutil.rmtree(self.work_dir / "contact_sheets", ignore_errors=True)
+
     def _stage_delivery(self) -> Path:
         storyboard = self._storyboard()
         pre_report = QCReport.model_validate(read_json(self.paths["pre_qc"]))
@@ -695,6 +711,5 @@ class FilmRecapPipeline:
             )
         self.paths["delivery"].write_text("\n".join(lines), encoding="utf-8")
         if not self.config.runtime.keep_debug_frames:
-            shutil.rmtree(self.work_dir / "frames", ignore_errors=True)
-            shutil.rmtree(self.work_dir / "contact_sheets", ignore_errors=True)
+            self._cleanup_debug_artifacts()
         return self.paths["delivery"]
