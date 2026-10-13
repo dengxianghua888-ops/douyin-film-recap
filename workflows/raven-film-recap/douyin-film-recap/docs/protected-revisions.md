@@ -132,3 +132,14 @@ It does not exempt ordinary external files, source media, TTS audio, or newly mi
 old-generation files merely because a new cleanup receipt lists them. Regression tests
 cover three consecutive revisions, a render-configuration generation change, and these
 failure cases; neither scenes metadata nor source evidence hashes are rewritten.
+
+### Render-current snapshot binding
+
+Pre-QC preparation/checking, rendering and post-QC repair parse and hash the same
+initial storyboard bytes before running callbacks. They recheck that byte identity
+before rendering, publishing an updated board or accepting a QC report. A detected
+manual save preserves the new draft and stops the stale attempt. Repair iterations
+advance the binding only to the exact bytes this attempt published, rather than
+rehashing a later disk version and treating it as the older in-memory draft. This
+covers observed edits during preparation, validation, rendering and QC; the existing
+work lock coordinates cooperating writers, not hostile filesystem writers.

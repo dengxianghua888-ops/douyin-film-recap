@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import shutil
+import hashlib
+import json
+import stat
 import os
 import uuid
 from urllib.parse import urlsplit
@@ -33,7 +36,7 @@ from .qc import post_render_qc, preflight_qc
 from .render import render_storyboard
 from .state import STAGES, StateStore
 from .send_guard import send_session
-from .workspace import WorkspaceError, atomic, now, preflight, prepare, read, work_lock
+from .workspace import WorkspaceError, atomic, canonical, now, preflight, prepare, read, work_lock
 from .tts import synthesize_storyboard
 from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
 from .utils import (
@@ -551,9 +554,9 @@ class FilmRecapPipeline:
 
     def _prepare_stage(self, stage):
         if stage == "pre_qc":
-            storyboard = self._storyboard()
+            storyboard, snapshot = self._render_storyboard_snapshot()
             self._attach_original_cues(storyboard)
-            write_json(self.paths["storyboard"], storyboard)
+            self._publish_render_storyboard(storyboard, snapshot)
 
     def _record_stage_failure(self, stage: str, error: BaseException) -> None:
         try:
@@ -616,6 +619,41 @@ class FilmRecapPipeline:
 
     def _storyboard(self) -> Storyboard:
         return Storyboard.model_validate(read_json(self.paths["storyboard"]))
+
+    def _render_storyboard_snapshot(self):
+        """Parse and bind the same bytes before validation/repair callbacks run."""
+        if not getattr(self, "_render_current", False):
+            return self._storyboard(), None
+        path = self.paths["storyboard"]
+        with os.fdopen(os.open(path, os.O_RDONLY | os.O_NOFOLLOW), "rb") as stream:
+            before = os.fstat(stream.fileno())
+            if not stat.S_ISREG(before.st_mode):
+                raise WorkspaceError("RENDER_CURRENT_STORYBOARD_NOT_REGULAR")
+            raw = stream.read()
+            after = os.fstat(stream.fileno())
+        current = path.stat()
+        fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")
+        if any(getattr(before, field) != getattr(after, field)
+               or getattr(after, field) != getattr(current, field) for field in fields):
+            raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
+        snapshot = hashlib.sha256(raw).hexdigest()
+        return Storyboard.model_validate(json.loads(raw)), snapshot
+
+    def _assert_render_storyboard_snapshot(self, snapshot):
+        if snapshot is not None and content_fingerprint(self.paths["storyboard"]) != snapshot:
+            raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
+
+    def _publish_render_storyboard(self, storyboard, snapshot):
+        if snapshot is None:
+            write_json(self.paths["storyboard"], storyboard)
+            return None
+        value = storyboard.model_dump(mode="json")
+        # Derive the next token from exactly our published bytes, never a later
+        # disk read that could silently adopt another manual save as our base.
+        next_snapshot = hashlib.sha256(canonical(value) + b"\n").hexdigest()
+        self._assert_render_storyboard_snapshot(snapshot)
+        atomic(self.paths["storyboard"], value)
+        return next_snapshot
 
     def _stage_ingest(self) -> Path:
         manifest = build_manifest(self.input_path, self.config, self.work_dir)
@@ -731,7 +769,7 @@ class FilmRecapPipeline:
         return self.paths["storyboard"]
 
     def _stage_pre_qc(self) -> Path:
-        storyboard = self._storyboard()
+        storyboard, snapshot = self._render_storyboard_snapshot()
         try:
             self._validate_visual_evidence(storyboard)
         except VisualEvidenceError:
@@ -747,6 +785,7 @@ class FilmRecapPipeline:
                 client = ReplayOnlyClient()
             else:
                 client = self.client
+        self._assert_render_storyboard_snapshot(snapshot)
         report = preflight_qc(
             manifest=self._manifest(),
             transcript=self._transcript(),
@@ -759,19 +798,18 @@ class FilmRecapPipeline:
             scene_index=self._scene_index(),
             scene_analysis=self._scene_analysis(),
         )
+        self._assert_render_storyboard_snapshot(snapshot)
         write_json(self.paths["pre_qc"], report)
         if report.status == "BLOCKED":
             raise StageBlocked("pre_qc", report)
         return self.paths["pre_qc"]
 
     def _stage_render(self) -> Path:
-        storyboard = self._storyboard()
+        storyboard, snapshot = self._render_storyboard_snapshot()
         self._validate_visual_evidence(storyboard)
-        before = content_fingerprint(self.paths["storyboard"])
+        self._assert_render_storyboard_snapshot(snapshot)
         storyboard = render_storyboard(storyboard, self.config, self.work_dir)
-        if getattr(self, "_render_current", False) and content_fingerprint(self.paths["storyboard"]) != before:
-            raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
-        write_json(self.paths["storyboard"], storyboard)
+        self._publish_render_storyboard(storyboard, snapshot)
         final = Path(storyboard.output["final_video"])
         return final
 
@@ -780,7 +818,7 @@ class FilmRecapPipeline:
         return None
 
     def _stage_post_qc(self) -> Path:
-        storyboard = self._storyboard()
+        storyboard, snapshot = self._render_storyboard_snapshot()
         auto_repairable = {
             "MISSING_OUTPUT_REFERENCE",
             "MISSING_FINAL_VIDEO",
@@ -797,6 +835,7 @@ class FilmRecapPipeline:
                 config=self.config,
                 attempts=attempts,
             )
+            self._assert_render_storyboard_snapshot(snapshot)
             # Persist the current finding before a repair that might itself fail.
             write_json(self.paths["post_qc"], report)
             if report.status != "BLOCKED":
@@ -807,11 +846,9 @@ class FilmRecapPipeline:
             self._say(f"[repair] render pass {attempts + 1}")
             self._clear_render_outputs()
             self._validate_visual_evidence(storyboard)
-            before = content_fingerprint(self.paths["storyboard"])
+            self._assert_render_storyboard_snapshot(snapshot)
             storyboard = render_storyboard(storyboard, self.config, self.work_dir)
-            if getattr(self, "_render_current", False) and content_fingerprint(self.paths["storyboard"]) != before:
-                raise WorkspaceError("RENDER_CURRENT_STORYBOARD_CHANGED")
-            write_json(self.paths["storyboard"], storyboard)
+            snapshot = self._publish_render_storyboard(storyboard, snapshot)
             final = Path(storyboard.output["final_video"])
             self.store.pass_stage(
                 self.state, "render", artifact=str(final), fingerprint=content_fingerprint(final),
@@ -820,6 +857,7 @@ class FilmRecapPipeline:
             )
             attempts += 1
         assert report is not None
+        self._assert_render_storyboard_snapshot(snapshot)
         write_json(self.paths["post_qc"], report)
         if report.status == "BLOCKED":
             raise StageBlocked("post_qc", report)
