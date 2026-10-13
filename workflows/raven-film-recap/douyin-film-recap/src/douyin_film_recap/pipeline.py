@@ -362,8 +362,8 @@ class FilmRecapPipeline:
                 self.store.invalidate_from(self.state, stage)
                 try:
                     self._prepare_stage(stage)
-                except Exception as exc:
-                    self.store.fail(self.state, stage, exc)
+                except BaseException as exc:
+                    self._record_stage_failure(stage, exc)
                     raise
                 scope = {"binding": self.binding, "stage": stage,
                          "stage_inputs": self._stage_inputs(stage), "remote_policy": self.remote_policy}
@@ -381,11 +381,20 @@ class FilmRecapPipeline:
             self._attach_original_cues(storyboard)
             write_json(self.paths["storyboard"], storyboard)
 
+    def _record_stage_failure(self, stage: str, error: BaseException) -> None:
+        try:
+            self.store.fail(self.state, stage, error)
+        except BaseException as persistence_error:
+            # Disk/receipt failures must not disguise the original interruption.
+            error.add_note(
+                f"Could not persist {stage} failure: {type(persistence_error).__name__}: {persistence_error}"
+            )
+
     def _run_stage(self, stage: str) -> None:
         handler = getattr(self, f"_stage_{stage}")
         self._say(f"[start] {stage}")
-        self.store.start(self.state, stage)
         try:
+            self.store.start(self.state, stage)
             artifact = handler()
             self._assert_bound_sources()
             if stage in {"storyboard", "tts"}:
@@ -398,9 +407,12 @@ class FilmRecapPipeline:
                 artifacts=fingerprints, input_fingerprint=self._stage_inputs(stage),
             )
             self._say(f"[done] {stage}")
-        except Exception as exc:
-            self.store.fail(self.state, stage, exc)
-            self._say(f"[failed] {stage}: {exc}")
+        except BaseException as exc:
+            self._record_stage_failure(stage, exc)
+            try:
+                self._say(f"[failed] {stage}: {exc}")
+            except BaseException as update_error:
+                exc.add_note(f"Failure update could not be delivered: {update_error}")
             raise
 
     def _manifest(self) -> SourceManifest:
