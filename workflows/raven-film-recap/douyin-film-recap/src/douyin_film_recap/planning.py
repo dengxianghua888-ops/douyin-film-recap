@@ -215,7 +215,7 @@ def _sample_evenly(values: list[Any], count: int) -> list[Any]:
     return [values[index * (len(values) - 1) // (count - 1)] for index in range(count)]
 
 
-def _build_visual_pool(
+def _build_visual_pool_r0(
     manifest: SourceManifest,
     story: StoryBundle,
     highlights: HighlightDocument,
@@ -282,17 +282,21 @@ def _build_visual_pool(
                 "performance_moments": item.performance_moments,
                 "uncertainties": item.uncertainties,
                 "confidence": item.confidence,
+                "scene_detection": (unit.scene_detection.model_dump(mode="json")
+                                    if unit.scene_detection else None),
                 "analysis_window_only": (unit.model_extra or {}).get("analysis_window_only", False),
                 "original_shot_spans": (unit.model_extra or {}).get("original_shot_spans", unit.shot_spans),
                 "continuity_shot_ids": (unit.model_extra or {}).get("continuity_shot_ids", []),
             }
         )
+    from .boundary import highlight_reference_binding
     for highlight in highlights.candidates:
         if not highlight.selected:
             continue
         pool.append(
             {
                 "unit_id": f"highlight:{highlight.highlight_id}",
+                **highlight_reference_binding(highlight),
                 "source_id": highlight.source_id,
                 "start": highlight.start,
                 "end": highlight.end,
@@ -307,6 +311,48 @@ def _build_visual_pool(
     return pool
 
 
+
+def _build_visual_pool(
+    manifest, story, highlights, plan, config, scene_index, scene_analysis,
+    *, retrieval_report: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """R0 stays default; R1 uses its exact ordinary/highlight writer envelope."""
+    baseline = _build_visual_pool_r0(manifest, story, highlights, plan, config,
+                                     scene_index, scene_analysis)
+    method = config.format.visual_retrieval
+    if method == "r0":
+        if retrieval_report is not None:
+            from .retrieval import writer_input_bytes
+            retrieval_report.update(method="r0-beat-stratified/1",
+                ordinary_count=sum(row["evidence_type"] != "highlight" for row in baseline),
+                highlight_append_count=sum(row["evidence_type"] == "highlight" for row in baseline),
+                writer_bytes=writer_input_bytes(baseline), provider_token_budget_verified=False)
+        return baseline
+    if method != "r1":
+        raise ValueError(f"Unsupported visual retrieval method: {method}")
+    from .retrieval import build_retrieval_requests, rerank_visual_pool
+    from .visual_evidence import _scene_unit_fingerprints
+    if scene_index is None or scene_analysis is None:
+        raise ValueError("R1 requires the current complete analyzed evidence index")
+    if scene_index.source_fingerprints != {s.source_id:s.fingerprint for s in manifest.sources} or scene_analysis.unit_fingerprint not in _scene_unit_fingerprints(scene_index):
+        raise ValueError("R1 evidence index has stale source/analysis bindings")
+    expanded = config.model_copy(deep=True)
+    expanded.format.visual_pool_size = len(scene_index.units)
+    all_pool = _build_visual_pool_r0(manifest, story, highlights, plan, expanded,
+                                    scene_index, scene_analysis)
+    ordinary = [row for row in all_pool if row["evidence_type"] != "highlight"]
+    event_ids = {row["unit_id"]:[event.event_id for event in story.story_graph.events
+        if any(row["source_id"] == span.source_id and min(row["end"],span.end) > max(row["start"],span.start)
+               for span in event.source_spans)] for row in ordinary}
+    result = rerank_visual_pool(ordinary, r0_pool=baseline,
+        requests=build_retrieval_requests(plan,story), ordinary_limit=config.format.visual_pool_size,
+        exploration_fraction=config.format.visual_exploration_fraction,
+        text_byte_budget=config.format.visual_pool_text_budget, unit_event_ids=event_ids)
+    if retrieval_report is not None:
+        retrieval_report.update(result.provenance)
+    return result.pool
+
+
 def _storyboard_payload(
     project_name: str,
     manifest: SourceManifest,
@@ -316,6 +362,7 @@ def _storyboard_payload(
     config: AppConfig,
     scene_index: SceneIndex | None = None,
     scene_analysis: SceneAnalysisDocument | None = None,
+    *, retrieval_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     selected = [candidate for candidate in highlights.candidates if candidate.selected]
     minimum_segments = 3 if plan.duration_mode == "highlight" else 12
@@ -337,7 +384,8 @@ def _storyboard_payload(
         ],
         "highlights": [candidate.model_dump(mode="json") for candidate in selected],
         "visual_pool": _build_visual_pool(
-            manifest, story, highlights, plan, config, scene_index, scene_analysis
+            manifest, story, highlights, plan, config, scene_index, scene_analysis,
+            retrieval_report=retrieval_report,
         ),
         "constraints": get_plan_constraints(plan, config),
     }
@@ -355,8 +403,10 @@ def build_storyboard(
     scene_index: SceneIndex | None = None,
     scene_analysis: SceneAnalysisDocument | None = None,
 ) -> Storyboard:
+    retrieval_report: dict[str, Any] = {}
     payload = _storyboard_payload(
-        project_name, manifest, story, highlights, plan, config, scene_index, scene_analysis
+        project_name, manifest, story, highlights, plan, config, scene_index, scene_analysis,
+        retrieval_report=retrieval_report,
     )
     storyboard = client.chat_json(
         system=STORYBOARD_SYSTEM,
@@ -370,6 +420,22 @@ def build_storyboard(
     storyboard.sources = manifest.sources
     storyboard.plan_fingerprint = fingerprint_json(plan.model_dump(mode="json"))
     storyboard.target_duration_sec = plan.target_duration_sec
+    if config.format.visual_retrieval == "r1":
+        storyboard.retrieval_provenance = retrieval_report
+        rankings = retrieval_report.get("per_beat_rankings", {})
+        pool_kinds = {row["unit_id"]:row["evidence_type"] for row in payload["visual_pool"]}
+        for segment in storyboard.segments:
+            if segment.beat_id not in rankings:
+                raise ValueError(f"R1 writer returned unknown Beat: {segment.beat_id}")
+            allowed = {row["unit_id"]:row for row in rankings[segment.beat_id]}
+            for visual in segment.visuals:
+                if pool_kinds.get(visual.unit_id) == "highlight":
+                    continue  # The unchanged selected-highlight append contract.
+                row = allowed.get(visual.unit_id)
+                if row is None:
+                    raise ValueError(f"R1 visual violates Beat source/knowledge constraints: {segment.beat_id}/{visual.unit_id}")
+                if row["requires_raw_verification"] and visual.visual_role == "direct_evidence":
+                    raise ValueError("Exploration retrieval requires raw verification before direct-evidence use")
     _normalize_storyboard(
         storyboard, manifest, highlights, config,
         visual_pool=payload["visual_pool"], constraints=payload["constraints"],
@@ -401,21 +467,11 @@ def _normalize_storyboard(
                 validate_visual_reference(visual, pool_map)
                 visual.highlight_id = pool_map[visual.unit_id].get("highlight_id")
             source = source_map.get(visual.source_id)
-            if source is None:
-                continue
-            start = clamp(visual.start, 0.0, max(0.0, source.duration - 0.05))
-            end = clamp(visual.end, start + 0.05, source.duration)
-            normalized_visuals.append(
-                VisualReference(
-                    source_id=visual.source_id,
-                    start=start,
-                    end=end,
-                    purpose=visual.purpose,
-                    highlight_id=visual.highlight_id,
-                    unit_id=visual.unit_id,
-                    visual_role=visual.visual_role,
-                )
-            )
+            if source is None or visual.start < 0 or visual.end > source.duration:
+                raise ValueError(f"Visual has invalid source range: {segment.segment_id}")
+            # Preserve revision/protection/unknown metadata. Never clamp a new
+            # boundary back into an old window or discard evidence bindings.
+            normalized_visuals.append(visual.model_copy(deep=True))
         segment.visuals = normalized_visuals
         visual_highlight_ids = {
             visual.highlight_id for visual in segment.visuals if visual.highlight_id
@@ -425,6 +481,11 @@ def _normalize_storyboard(
         if segment.mode == "original":
             if segment.highlight_id and segment.highlight_id in highlight_map:
                 highlight = highlight_map[segment.highlight_id]
+                from .boundary import highlight_reference_binding, validate_highlight_reference_binding
+                binding = highlight_reference_binding(highlight)
+                if binding:
+                    for visual in segment.visuals:
+                        validate_highlight_reference_binding(visual, highlight)
                 segment.visuals = [
                     VisualReference(
                         source_id=highlight.source_id,
@@ -434,14 +495,16 @@ def _normalize_storyboard(
                         highlight_id=highlight.highlight_id,
                         unit_id=f"highlight:{highlight.highlight_id}",
                         visual_role="direct_evidence",
+                        **binding,
                     )
                 ]
                 segment.text_raw = segment.text_raw or highlight.quote
                 segment.text = segment.text_raw or segment.text
                 segment.planned_duration_sec = highlight.end - highlight.start
                 segment.mute_original = False
-                if highlight.must_hear_original:
-                    segment.audio_owner = "original_dialogue"
+                # Keeping the source track does not imply speech. Preserve the
+                # chosen role so action, ambience, music and silence do not acquire
+                # dialogue-only sentence-boundary requirements.
             if not segment.visuals:
                 raise ValueError(f"Original segment has no valid visual: {segment.segment_id}")
             segment.narration_job = "none"

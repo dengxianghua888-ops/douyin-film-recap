@@ -12,7 +12,7 @@ from .models import (
     TranscriptSegment,
     TranscriptWord,
 )
-from .utils import clamp
+from .utils import SourceChangedDuringRead, clamp, content_identity
 
 _TAG_RE = re.compile(r"<[^>]+>|\{\\[^}]+\}")
 _TOKEN_RE = re.compile(r"[\u3400-\u9fff]|[A-Za-z0-9]+(?:[-_.'’][A-Za-z0-9]+)*|[^\s]")
@@ -209,7 +209,20 @@ def build_transcript(manifest: SourceManifest, config: AppConfig) -> TranscriptD
     for source in manifest.sources:
         source_segments: list[TranscriptSegment] = []
         if source.subtitle_path:
+            subtitle_identity = content_identity(source.subtitle_path)
+            if (source.subtitle_fingerprint is not None
+                    and subtitle_identity["sha256"] != source.subtitle_fingerprint) or (
+                source.subtitle_size_bytes is not None
+                    and subtitle_identity["bytes"] != source.subtitle_size_bytes
+            ):
+                raise SourceChangedDuringRead(
+                    f"Subtitle identity changed since ingest for {source.source_id}"
+                )
             source_segments = parse_subtitle(source.subtitle_path, source.source_id)
+            if content_identity(source.subtitle_path) != subtitle_identity:
+                raise SourceChangedDuringRead(
+                    f"Subtitle changed while transcribing {source.source_id}"
+                )
             if source_segments:
                 providers.add("subtitle")
         if not source_segments and source.has_audio:

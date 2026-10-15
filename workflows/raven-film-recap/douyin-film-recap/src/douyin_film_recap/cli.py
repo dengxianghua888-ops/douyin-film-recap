@@ -172,3 +172,173 @@ def list_stages() -> None:
     """列出可断点运行的阶段。"""
     for index, stage in enumerate(STAGES, start=1):
         console.print(f"{index:02d}. {stage}")
+
+
+@app.command("render-plan")
+def render_plan_command(
+    work_dir: Annotated[Path, typer.Argument(help="已有工作区（只读）")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+    dry_run: Annotated[bool, typer.Option("--dry-run", help="只读派生计划，不渲染或写入作品")] = True,
+) -> None:
+    """输出派生渲染计划；候选复用不等于验证命中或 QC 通过。"""
+    from .models import Storyboard
+    from .render_plan import collect_render_inputs, compile_render_plan
+    from .workspace import sha
+
+    if not dry_run:
+        console.print("render-plan only supports --dry-run")
+        raise typer.Exit(code=2)
+    try:
+        _, active = preflight(work_dir)
+        board_path = active / "09_storyboard.json"
+        before = sha(board_path)
+        board = Storyboard.model_validate_json(board_path.read_text(encoding="utf-8"))
+        plan = compile_render_plan(
+            board, load_config(config), **collect_render_inputs(board),
+            authority_sha256=before, workspace_generation=str(active),
+        )
+        _, current = preflight(work_dir)
+        if current != active or sha(board_path) != before:
+            raise ValueError("STALE_AUTHORITY")
+        typer.echo(json.dumps(plan, ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"派生计划失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("revision-snapshot")
+def revision_snapshot_command(
+    work_dir: Annotated[Path, typer.Argument(help="读取当前 Storyboard/generation 身份")],
+) -> None:
+    """输出局部提案所需基线，不改变作品。"""
+    from .revision import freeze_revision
+    try:
+        typer.echo(json.dumps(freeze_revision(work_dir), ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"快照读取失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("revise")
+def revise_command(
+    work_dir: Annotated[Path, typer.Argument(help="已有工作区")],
+    proposal: Annotated[Path, typer.Option("--proposal", help="含 base/artifacts/scope 的局部修订 JSON")],
+) -> None:
+    """按明确范围采用局部候选；不会生成配音、调用模型或自动渲染。"""
+    from .revision import adopt_revision
+    try:
+        request = json.loads(proposal.read_text(encoding="utf-8"))
+        if not isinstance(request, dict) or set(request) - {"base", "artifacts", "scope", "kind", "reason"}:
+            raise ValueError("INVALID_LOCAL_PROPOSAL")
+        if request.get("kind", "local") != "local":
+            raise ValueError("DOMAIN_PROPOSAL_REQUIRES_DEDICATED_VALIDATOR")
+        result = adopt_revision(work_dir, base=request["base"], artifacts=request["artifacts"],
+                                scope=request["scope"], kind="local", reason=request.get("reason", ""))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"局部修订失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("render-current")
+def render_current_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前已准备 Storyboard 的工作区")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+) -> None:
+    """只从当前作品执行 pre-QC/render/post-QC/delivery，不重跑模型或 TTS。"""
+    try:
+        pipeline = FilmRecapPipeline.from_current(work_dir=work_dir, config=load_config(config),
+            on_update=lambda message: console.print(message))
+        result = pipeline.render_only()
+        typer.echo(json.dumps({"result": str(result)}, ensure_ascii=False))
+    except StageBlocked as exc:
+        console.print(f"{exc.stage} 被质量门禁阻断")
+        for finding in exc.report.findings:
+            console.print(f"- {finding.rule_id}: {finding.message}")
+        raise typer.Exit(code=3) from exc
+    except (ValueError, OSError, RuntimeError) as exc:
+        console.print(f"当前作品渲染失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("apply-boundary")
+def apply_boundary_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前已冻结的工作区")],
+    proposal: Annotated[Path, typer.Option("--proposal", help="包含 proposal 与 base 的边界采用请求")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+) -> None:
+    """重新核对独立来源时钟后，一次采用对应 07/08/09；不自动渲染。"""
+    from .boundary import BoundaryProposal
+    from .boundary_apply import apply_boundary_proposal, collect_boundary_timebases
+    from .models import SourceManifest
+    from .workspace import read, work_lock
+    try:
+        request = json.loads(proposal.read_text(encoding="utf-8"))
+        if (not isinstance(request, dict) or not {"proposal", "base"} <= set(request)
+                or set(request) - {"proposal", "base", "raw_cards", "evidence_root"}):
+            raise ValueError("INVALID_BOUNDARY_APPLICATION_REQUEST")
+        raw_cards = None
+        if "raw_cards" in request:
+            from .raw_evidence import RawEvidenceCard
+            if not isinstance(request["raw_cards"], list):
+                raise ValueError("RAW_CARDS_MUST_BE_A_LIST")
+            raw_cards = [RawEvidenceCard.model_validate(row) for row in request["raw_cards"]]
+        root, _ = preflight(work_dir)
+        with work_lock(root):
+            _, active = preflight(root)
+            manifest = SourceManifest.model_validate(read(active / "00_source_manifest.json"))
+            current_timebases = collect_boundary_timebases(manifest)
+            result = apply_boundary_proposal(root,
+                proposal=BoundaryProposal.model_validate(request["proposal"]), base=request["base"],
+                config=load_config(config), timebases=current_timebases,
+                raw_cards=raw_cards, evidence_root=request.get("evidence_root"))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"边界采用失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("narration-revise-plan")
+def narration_revision_plan_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前作品工作区")],
+    request: Annotated[Path, typer.Option("--request", help="含 base/edits/reason 的精确旁白修改请求")],
+) -> None:
+    """只读输出待执行计划；edits 为 segment_id 到完整新文字的映射。"""
+    from .narration_revision import prepare_narration_revision
+    try:
+        data = json.loads(request.read_text(encoding="utf-8"))
+        if not isinstance(data, dict) or set(data) - {"base", "edits", "reason"}:
+            raise ValueError("INVALID_NARRATION_REVISION_REQUEST")
+        result = prepare_narration_revision(work_dir, base=data["base"], edits=data["edits"],
+                                             reason=data.get("reason", ""))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"旁白修订计划失败：{exc}")
+        raise typer.Exit(code=2) from exc
+
+
+@app.command("narration-revise-apply")
+def narration_revision_apply_command(
+    work_dir: Annotated[Path, typer.Argument(help="当前作品工作区")],
+    plan: Annotated[Path, typer.Option("--plan", help="完整未改动的待执行计划")],
+    config: Annotated[Path, typer.Option("--config", "-c")] = Path("config.yaml"),
+    allow_remote: Annotated[bool, typer.Option("--allow-remote", help="授权本计划需要的新TTS/语义检查请求")] = False,
+    max_remote_requests: Annotated[int | None, typer.Option("--max-remote-requests", min=0)] = None,
+    render: Annotated[bool, typer.Option("--render", help="采用后继续原有pre-QC/render/post-QC/delivery")] = False,
+) -> None:
+    """仅重做目标旁白；UNKNOWN不重发，视觉不足不自动改稿或补画。"""
+    from .narration_revision import execute_narration_revision
+    try:
+        result = execute_narration_revision(work_dir,
+            plan=json.loads(plan.read_text(encoding="utf-8")), config=load_config(config),
+            allow_remote=allow_remote, max_remote_requests=max_remote_requests, render=render,
+            on_update=lambda message: console.print(message))
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False, default=str))
+    except StageBlocked as exc:
+        console.print(f"{exc.stage} 被质量门禁阻断")
+        for finding in exc.report.findings:
+            console.print(f"- {finding.rule_id}: {finding.message}")
+        raise typer.Exit(code=3) from exc
+    except (ValueError, OSError, RuntimeError, KeyError) as exc:
+        console.print(f"旁白修订执行失败：{exc}")
+        raise typer.Exit(code=2) from exc

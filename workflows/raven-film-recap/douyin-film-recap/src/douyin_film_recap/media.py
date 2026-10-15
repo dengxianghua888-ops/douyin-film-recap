@@ -4,15 +4,17 @@ import json
 import math
 import re
 import shutil
+import tempfile
+import warnings
 from pathlib import Path
 from typing import Any, Iterable
 
-import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from .config import AppConfig
 from .models import (
+    SceneDetectionMetadata,
     SceneIndex,
     SceneSignals,
     SceneUnit,
@@ -118,19 +120,26 @@ def extract_embedded_subtitle(video_path: Path, output_dir: Path) -> Path | None
     ]
     # Bitmap subtitles cannot be converted to SRT without OCR. Skip them explicitly.
     unsupported = {"hdmv_pgs_subtitle", "dvd_subtitle", "dvb_subtitle", "xsub"}
+    extraction_dir: Path | None = None
     for stream in subtitle_streams:
         if stream.get("codec_name") in unsupported:
             continue
         stream_index = stream.get("index")
         if stream_index is None:
             continue
-        output_dir.mkdir(parents=True, exist_ok=True)
-        output = output_dir / f"{safe_slug(video_path.stem)}.embedded.srt"
+        if extraction_dir is None:
+            output_dir.mkdir(parents=True, exist_ok=True)
+            # Each extraction owns a fresh directory. Re-ingest and basename/slug
+            # collisions must never replace subtitles referenced by an old manifest.
+            extraction_dir = Path(tempfile.mkdtemp(
+                prefix=f"{safe_slug(video_path.stem)}.", dir=output_dir
+            ))
+        output = extraction_dir / f"stream_{stream_index}.embedded.srt"
         try:
             run_command(
                 [
                     "ffmpeg",
-                    "-y",
+                    "-n",
                     "-v",
                     "error",
                     "-i",
@@ -173,7 +182,10 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
             fps = 30.0
         sidecar = find_sidecar_subtitle(video) if config.asr.prefer_sidecar_subtitle else None
         if sidecar is None and config.asr.prefer_embedded_subtitle:
-            sidecar = extract_embedded_subtitle(video, subtitle_cache)
+            sidecar = extract_embedded_subtitle(
+                video, subtitle_cache / f"src_{order + 1:03d}" / identity["sha256"]
+            )
+        subtitle_identity = content_identity(sidecar) if sidecar else None
         if content_identity(video) != identity:
             raise SourceChangedDuringRead("Source changed while building the media manifest")
         sources.append(
@@ -190,6 +202,8 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
                 fps=fps,
                 has_audio=any(stream.get("codec_type") == "audio" for stream in streams),
                 subtitle_path=str(sidecar) if sidecar else None,
+                subtitle_fingerprint=subtitle_identity["sha256"] if subtitle_identity else None,
+                subtitle_size_bytes=subtitle_identity["bytes"] if subtitle_identity else None,
                 order=order,
             )
         )
@@ -202,6 +216,8 @@ def build_manifest(input_path: str | Path, config: AppConfig, work_dir: Path) ->
 
 
 def _fallback_shots(duration: float, max_unit: float) -> list[tuple[float, float]]:
+    if max_unit <= 0:
+        raise ValueError("Scene max_unit_sec must be positive")
     shots: list[tuple[float, float]] = []
     start = 0.0
     while start < duration:
@@ -211,7 +227,13 @@ def _fallback_shots(duration: float, max_unit: float) -> list[tuple[float, float
     return shots
 
 
-def detect_shots(source: SourceInfo, config: AppConfig) -> list[tuple[float, float]]:
+def detect_shots_with_metadata(
+    source: SourceInfo, config: AppConfig
+) -> tuple[list[tuple[float, float]], SceneDetectionMetadata]:
+    """Keep real detector evidence distinct from fixed analysis-only windows."""
+    if config.scene.detector != "scenedetect":
+        raise ValueError(f"Unsupported scene detector: {config.scene.detector}")
+    fallback_reason = "no_usable_scenes"
     try:
         from scenedetect import ContentDetector, SceneManager, open_video
 
@@ -232,10 +254,32 @@ def detect_shots(source: SourceInfo, config: AppConfig) -> list[tuple[float, flo
             if end.get_seconds() - start.get_seconds() >= 0.08
         ]
         if shots:
-            return shots
-    except Exception:
-        pass
-    return _fallback_shots(source.duration, config.scene.max_unit_sec)
+            return shots, SceneDetectionMetadata(
+                detector_requested=config.scene.detector,
+                detector_used="scenedetect",
+                boundary_confidence="detector_estimated",
+            )
+    except ImportError as exc:
+        fallback_reason = f"missing_dependency: {type(exc).__name__}: {exc}"
+    except Exception as exc:
+        fallback_reason = f"detection_error: {type(exc).__name__}: {exc}"
+    warnings.warn(
+        f"Scene detection for {source.source_id} used fixed-interval analysis windows: "
+        f"{fallback_reason}. Shot boundaries and continuity are unknown.",
+        RuntimeWarning,
+        stacklevel=2,
+    )
+    return _fallback_shots(source.duration, config.scene.max_unit_sec), SceneDetectionMetadata(
+        detector_requested=config.scene.detector,
+        detector_used="fixed_interval",
+        fallback_reason=fallback_reason,
+        boundary_confidence="unknown",
+    )
+
+
+def detect_shots(source: SourceInfo, config: AppConfig) -> list[tuple[float, float]]:
+    """Compatibility helper; scene-index production also persists detector metadata."""
+    return detect_shots_with_metadata(source, config)[0]
 
 
 def merge_shots_to_units(
@@ -323,6 +367,8 @@ def extract_frames_batch(
     """
     if not requests:
         return []
+    import cv2
+
     capture = cv2.VideoCapture(str(video_path))
     outputs: list[Path] = []
     try:
@@ -413,6 +459,8 @@ def make_contact_sheet(
 
 
 def motion_score(frame_paths: Iterable[str | Path]) -> float:
+    import cv2
+
     frames: list[np.ndarray] = []
     for path in frame_paths:
         frame = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
@@ -438,8 +486,11 @@ def build_scene_index(
     frames_dir = work_dir / "frames"
     sheets_dir = work_dir / "contact_sheets" / "units"
     units: list[SceneUnit] = []
+    source_detection: dict[str, SceneDetectionMetadata] = {}
     for source in manifest.sources:
-        shots = detect_shots(source, config)
+        shots, detection = detect_shots_with_metadata(source, config)
+        source_detection[source.source_id] = detection
+        detected_shots = shots if detection.detector_used == "scenedetect" else []
         grouped = merge_shots_to_units(
             shots,
             min_unit=config.scene.min_unit_sec,
@@ -487,7 +538,8 @@ def build_scene_index(
                 speech_density=clamp(spec["speech_seconds"] / duration, 0.0, 1.0),
                 shot_density=clamp(
                     (len(spec["shot_group"]) / duration) / 1.5, 0.0, 1.0
-                ),
+                ) if detected_shots else 0.0,
+                shot_density_available=bool(detected_shots),
             )
             units.append(
                 SceneUnit(
@@ -496,12 +548,12 @@ def build_scene_index(
                     start=spec["start"],
                     end=spec["end"],
                     shot_spans=spec["shot_group"],
-                    original_shot_spans=[(start, end) for start, end in shots
+                    original_shot_spans=[(start, end) for start, end in detected_shots
                                          if overlap_seconds(start, end, spec["start"], spec["end"]) > 0],
                     continuity_shot_ids=[f"{source.source_id}_shot{index:05d}"
-                                         for index, (start, end) in enumerate(shots, start=1)
+                                         for index, (start, end) in enumerate(detected_shots, start=1)
                                          if overlap_seconds(start, end, spec["start"], spec["end"]) > 0],
-                    analysis_window_only=any(start < spec["start"] - 1e-6 or end > spec["end"] + 1e-6
+                    analysis_window_only=not detected_shots or any(start < spec["start"] - 1e-6 or end > spec["end"] + 1e-6
                                              for start, end in shots
                                              if overlap_seconds(start, end, spec["start"], spec["end"]) > 0),
                     transcript=spec["text"],
@@ -509,13 +561,21 @@ def build_scene_index(
                     frame_paths=spec["frame_paths"],
                     contact_sheet_path=str(contact_sheet),
                     signals=signals,
+                    scene_detection=detection,
                 )
             )
+    detectors_used = {metadata.detector_used for metadata in source_detection.values()}
     return SceneIndex(
         units=units,
         source_fingerprints={source.source_id: source.fingerprint for source in manifest.sources},
-        detector=config.scene.detector,
+        detector=(next(iter(detectors_used)) if len(detectors_used) == 1 else
+                  "mixed" if detectors_used else "unknown"),
+        source_detection=source_detection,
+        detection_status=("detected" if detectors_used == {"scenedetect"} else
+                          "fallback" if detectors_used == {"fixed_interval"} else
+                          "mixed" if detectors_used else "unknown"),
         detector_params={
+            "detector_requested": config.scene.detector,
             "content_threshold": config.scene.content_threshold,
             "min_shot_sec": config.scene.min_shot_sec,
             "min_unit_sec": config.scene.min_unit_sec,

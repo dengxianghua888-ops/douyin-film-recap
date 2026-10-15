@@ -153,11 +153,16 @@ def test_long_shot_windows_cover_source_without_exceeding_limit():
 
 
 def test_split_windows_preserve_original_shot_identity(tmp_path, app_config, monkeypatch):
+    from douyin_film_recap.models import SceneDetectionMetadata
+
     sb = board(tmp_path)
     sb.sources[0].duration = 40
     manifest = SourceManifest(sources=sb.sources, config_fingerprint='fixture')
     transcript = TranscriptDocument(provider='fixture', segments=[], source_fingerprints={'src':'fixture'})
-    monkeypatch.setattr('douyin_film_recap.media.detect_shots', lambda *args: [(0, 40)])
+    monkeypatch.setattr('douyin_film_recap.media.detect_shots_with_metadata', lambda *args: (
+        [(0, 40)], SceneDetectionMetadata(detector_requested="scenedetect",
+                                          detector_used="scenedetect",
+                                          boundary_confidence="detector_estimated")))
     monkeypatch.setattr('douyin_film_recap.media.extract_frames_batch', lambda *args: None)
     monkeypatch.setattr('douyin_film_recap.media.make_contact_sheet', lambda *args: None)
     monkeypatch.setattr('douyin_film_recap.media.motion_score', lambda *args: 0)

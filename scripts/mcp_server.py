@@ -26,13 +26,11 @@ def library_root():
 
 
 def _tool_specs():
-    # MCP ToolAnnotations are hints, not authorization or sandbox guarantees.
-    # destructiveHint/idempotentHint are immaterial for read-only tools.
     return [
         {'name': 'diagnose_installation',
+         'description': 'Read-only target-environment dependency inventory. Presence is not host or media acceptance.',
          'annotations': {'readOnlyHint': True, 'destructiveHint': False,
                          'idempotentHint': True, 'openWorldHint': False},
-         'description': 'Read-only target-environment dependency inventory. Presence is not host or media acceptance.',
          'inputSchema': {'type': 'object', 'properties': {
              'ffmpeg': {'type': 'string', 'description': 'Absolute executable path; optional.'},
              'ffprobe': {'type': 'string', 'description': 'Absolute executable path; optional.'},
@@ -40,17 +38,18 @@ def _tool_specs():
              'request': {'type': 'object', 'description': 'Optional exact local runtime request for branch-specific diagnosis.'}},
              'additionalProperties': False}},
         {'name': 'list_skills',
+         'description': 'List the local registry entries and declared layer/status. Static enumeration only.',
          'annotations': {'readOnlyHint': True, 'destructiveHint': False,
                          'idempotentHint': True, 'openWorldHint': False},
-         'description': 'List the local registry entries and declared layer/status. Static enumeration only.',
          'inputSchema': {'type': 'object', 'properties': {}, 'additionalProperties': False}},
         {'name': 'run_operation',
-         # A fresh receipt directory does not confine all effects: requests may
-         # update existing Work/provider stores and explicitly send paid calls.
-         # Directory rejection is not a replay/resume or idempotency contract.
+         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. May update existing stores or invoke external providers. No generic retry/resume guarantee; existing work directories are rejected. Requires explicit task authorization and separate authorization for paid provider calls.',
+         # This dispatcher also reaches mutable Work/Task stores and external
+         # model providers; a fresh receipt directory does not make it additive,
+         # repeatable, or confined to local entities. Use conservative hints for
+         # the complete dispatch surface, not just read-only atomic requests.
          'annotations': {'readOnlyHint': False, 'destructiveHint': True,
                          'idempotentHint': False, 'openWorldHint': True},
-         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. May update existing stores or invoke external providers. No generic retry/resume guarantee; existing work directories are rejected. Requires explicit task authorization and separate authorization for paid provider calls.',
          'inputSchema': {'type': 'object', 'properties': {
              'request': {'type': 'object', 'description': 'Exact editing_runtime request object.'},
              'work_dir': {'type': 'string', 'description': 'New absolute work directory under configured work root.'},
@@ -131,8 +130,12 @@ def serve():
             method = message.get('method')
             if identifier is None:
                 continue  # Notifications never receive responses.
+            params = message.get('params', {})
+            if not isinstance(params, dict):
+                _response(identifier, error={'code': -32602, 'message': 'PARAMS_OBJECT_REQUIRED'})
+                continue
             if method == 'initialize':
-                requested = message.get('params', {}).get('protocolVersion')
+                requested = params.get('protocolVersion')
                 protocol = requested if requested in ('2024-11-05', '2025-03-26', '2025-06-18') else '2025-03-26'
                 _response(identifier, {'protocolVersion': protocol,
                     'capabilities': {'tools': {'listChanged': False}},
@@ -142,9 +145,12 @@ def serve():
             elif method == 'tools/list':
                 _response(identifier, {'tools': _tool_specs()})
             elif method == 'tools/call':
-                params = message.get('params') or {}
+                arguments = params.get('arguments', {})
+                if not isinstance(arguments, dict):
+                    _response(identifier, error={'code': -32602, 'message': 'TOOL_ARGUMENTS_OBJECT_REQUIRED'})
+                    continue
                 try:
-                    output = call_tool(params.get('name'), params.get('arguments') or {})
+                    output = call_tool(params.get('name'), arguments)
                     _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
                                            'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
                 except (OSError, ValueError, KeyError, TypeError) as exc:

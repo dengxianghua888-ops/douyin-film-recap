@@ -9,13 +9,17 @@ from contextlib import contextmanager
 from contextvars import ContextVar
 from pathlib import Path
 from typing import Callable, Any
-from threading import RLock
+from threading import Event, RLock
 
 from .workspace import WorkspaceError, atomic, digest, member, now, preflight, read, work_lock
 
 
 class SendBlocked(RuntimeError):
     pass
+
+
+class SendCancelled(SendBlocked):
+    """A local cancellation gate, not a statement about provider acceptance."""
 
 
 _session: ContextVar = ContextVar("film_send_session", default=None)
@@ -33,12 +37,21 @@ class SendSession:
         self.ordinal = 0
         self._lock = RLock()
         self.grant = grant
+        self._cancelled = Event()
+
+    def cancel(self):
+        self._cancelled.set()
+
+    def check_cancelled(self):
+        if self._cancelled.is_set():
+            raise SendCancelled("REMOTE_SEND_CANCELLED: no new sends in this session")
 
     def _reserve(self, kind: str, payload: dict, intent_key=None):
         with self._lock:
             return self._reserve_locked(kind, payload, intent_key)
 
     def _reserve_locked(self, kind, payload, intent_key):
+        self.check_cancelled()
         policy = self.scope.get("remote_policy")
         if policy:
             if kind == "chat":
@@ -105,6 +118,17 @@ class SendSession:
         self.sent += 1
         return path, record, False
 
+    def _check_before_transport(self, path, record):
+        try:
+            self.check_cancelled()
+        except SendCancelled:
+            # We have not invoked the transport callback. Reservations still count
+            # conservatively toward the local budget; no billing claim is made.
+            record.update(status="NOT_SUBMITTED_CONFIRMED",
+                          cancellation={"at": now(), "reason": "cancelled_before_transport"})
+            atomic(path, record)
+            raise
+
     @staticmethod
     def _finish(path, record, result):
         record.update(status="SUCCEEDED", result=result, result_sha256=digest(result),
@@ -121,6 +145,7 @@ class SendSession:
         path, record, cached = self._reserve(kind, payload, intent_key)
         if cached:
             return record["result"]
+        self._check_before_transport(path, record)
         try:
             result = send()
         except BaseException as exc:
@@ -133,6 +158,7 @@ class SendSession:
         path, record, cached = self._reserve(kind, payload, intent_key)
         if cached:
             return record["result"]
+        self._check_before_transport(path, record)
         try:
             result = await send()
         except BaseException as exc:
@@ -149,8 +175,23 @@ def send_session(root, scope, *, authorized=False, max_requests=None, grant=None
         token = _session.set(session)
         try:
             yield session
+        except BaseException:
+            session.cancel()
+            raise
         finally:
             _session.reset(token)
+
+
+def cancel_active_sends():
+    current = _session.get()
+    if current is not None:
+        current.cancel()
+
+
+def check_active_send():
+    current = _session.get()
+    if current is not None:
+        current.check_cancelled()
 
 
 def guarded_send(kind, payload, send, *, intent_key=None):

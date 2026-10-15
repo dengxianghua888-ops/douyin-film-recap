@@ -119,12 +119,18 @@ def scene_batch_prompt(units: list[SceneUnit]) -> str:
                 "time_range": [round(unit.start, 3), round(unit.end, 3)],
                 "transcript": unit.transcript,
                 "signals": unit.signals.model_dump(mode="json"),
+                "scene_detection": (unit.scene_detection.model_dump(mode="json")
+                                    if unit.scene_detection else None),
+                "analysis_window_only": (unit.model_extra or {}).get("analysis_window_only", False),
+                "original_shot_spans": (unit.model_extra or {}).get("original_shot_spans", []),
+                "continuity_shot_ids": (unit.model_extra or {}).get("continuity_shot_ids", []),
                 "image_note": "图片顺序与本列表一致，每张是该 unit 的时间标注 filmstrip",
             }
         )
     return (
         "逐项分析以下连续影视单元。图片按列表顺序一一对应。"
-        "start_hint/end_hint 必须落在该 unit 的 time_range 内。\n\n"
+        "start_hint/end_hint 必须落在该 unit 的 time_range 内。"
+        "fixed_interval 只表示等长分析窗口；镜头边界和连续性未知，不能当作已检测到的剪切。\n\n"
         + json.dumps(payload, ensure_ascii=False, indent=2)
     )
 

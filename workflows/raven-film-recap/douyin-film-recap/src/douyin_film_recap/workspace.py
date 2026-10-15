@@ -29,7 +29,7 @@ RECOVERY_LAUNCHER = ('from pathlib import Path\nimport sys\n'
 KNOWN_NAMES = {"state.json", ".remote-authorization.json", "delivery_report.md", "review_evidence.json"}
 OWNED_DIRS = (".receipts", ".remote-intents", "output", "scripts", "audio")
 PATH_FIELDS = {"audio_file", "rendered_file", "final_video", "preview_video", "subtitle",
-               "edl", "review_file", "contact_sheet_path"}
+               "edl", "review_file", "contact_sheet_path", "render_plan", "render_receipt"}
 _held_roots = ContextVar("film_held_roots", default=frozenset())
 
 
@@ -70,6 +70,23 @@ def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def _sync_directory(path):
+    """Make already-fsynced member/rename directory entries durable on local POSIX FS."""
+    fd = os.open(Path(path), os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
+def _sync_tree(directory):
+    for path in sorted((p for p in Path(directory).rglob("*") if p.is_dir()),
+                       key=lambda p: len(p.parts), reverse=True):
+        _sync_directory(path)
+    _sync_directory(directory)
+    _sync_directory(Path(directory).parent)
+
+
 def atomic(path, value):
     path = Path(path)
     if path.is_symlink():
@@ -82,6 +99,7 @@ def atomic(path, value):
         os.fsync(out.fileno())
     try:
         os.replace(temporary, path)
+        _sync_directory(path.parent)
     finally:
         temporary.unlink(missing_ok=True)
 
@@ -179,14 +197,109 @@ def _refs(value):
     if isinstance(value, dict):
         for key, item in value.items():
             if key in PATH_FIELDS and isinstance(item, str) and item:
-                yield item
+                yield item, key
+            elif key == "frame_paths" and isinstance(item, list):
+                for path in item:
+                    if isinstance(path, str) and path:
+                        yield path, key
             elif key == "artifacts" and isinstance(item, dict):
-                yield from item
+                for path in item:
+                    yield path, key
             else:
                 yield from _refs(item)
     elif isinstance(value, list):
         for item in value:
             yield from _refs(item)
+
+
+def _inherited_debug_absences(active, state):
+    """Read only absence facts already pinned by this generation's recovery archive.
+
+    A copied scenes record still points to its original generation. Neither a
+    matching receipt alone nor an arbitrary missing external file is inherited.
+    """
+    root = _task_root(active)
+    if root == active.resolve():
+        return {}
+    _, current = preflight(root)
+    if current != active.resolve():
+        raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
+    pointer = read(root / POINTER)
+    intent = pointer["migration_intent"]
+    archive = member(root, f".migrations/{intent}")
+    if (state.get("migration_intent") != intent
+            or state.get("recovery_manifest") != str(archive / "recovery-manifest.json")):
+        return {}
+    manifest = verify_archive(archive)
+    previous = Path(manifest["previous_active"])
+    archived_state = read(member(archive / "files", "state.json"))
+    recorded = {
+        str((Path(name) if Path(name).is_absolute() else previous / name).resolve()): value
+        for name, value in archived_state.get("stages", {}).get("scenes", {}).get("artifacts", {}).items()
+    }
+    inherited = {}
+    for row in manifest.get("unavailable_optional_references", []):
+        if not isinstance(row, dict) or row.get("reason") not in {
+                "recorded_regenerable_debug_cleanup", "missing_regenerable_debug_after_delivery"}:
+            continue
+        path = Path(row.get("original_path", ""))
+        if not path.is_absolute() or not path.is_relative_to(root):
+            continue
+        relative = path.relative_to(root)
+        parts = relative.parts
+        # Only this task's original debug roots or an owned generation's debug
+        # roots qualify. A sibling workspace/ordinary external artifact cannot.
+        if len(parts) >= 2 and parts[0] in {"frames", "contact_sheets"}:
+            owner = root
+        elif (len(parts) >= 4 and parts[0] == ".generations"
+              and parts[2] in {"frames", "contact_sheets"}):
+            owner = member(root, str(Path(*parts[:2])))
+            if _task_root(owner) != root or not (owner / GENERATION).is_file():
+                continue
+        else:
+            continue
+        checked = member(root, str(relative))
+        key = str(checked.resolve())
+        if key in recorded:
+            inherited[key] = {"sha256": recorded[key], "reason": row["reason"]}
+    return inherited
+
+
+def _debug_absence_reason(active, state, path, cleanup, inherited=None):
+    """Only recorded, regenerable scene imagery may be absent after cleanup."""
+    root = active.resolve()
+    resolved = path.resolve()
+    local_debug = any(resolved.is_relative_to(root / name) for name in ("frames", "contact_sheets"))
+    recorded = {
+        str((Path(name) if Path(name).is_absolute() else active / name).resolve()): sha256
+        for name, sha256 in state.get("stages", {}).get("scenes", {}).get("artifacts", {}).items()
+    }
+    if str(resolved) not in recorded:
+        return None
+    expected = recorded[str(resolved)]
+    historical = (inherited or {}).get(str(resolved))
+    if not local_debug and (historical is None or historical["sha256"] != expected):
+        return None
+    if cleanup is not None:
+        cleanup_files = cleanup.get("files") if isinstance(cleanup, dict) else None
+        if (isinstance(cleanup, dict) and cleanup.get("schema") == "film-debug-cleanup/1"
+                and isinstance(cleanup_files, list)
+                and any(row.get("path") == str(resolved) and row.get("sha256") == expected
+                        for row in cleanup_files if isinstance(row, dict))):
+            return "recorded_regenerable_debug_cleanup"
+        # An explicit but mismatched receipt cannot fall back to a legacy guess.
+        return None
+    if not local_debug:
+        if historical["reason"] == "missing_regenerable_debug_after_delivery":
+            return historical["reason"]
+        return None  # Removing a recorded-cleanup receipt does not create legacy proof.
+    # Older completed workspaces predate cleanup receipts. Preserve the missing
+    # fact rather than claim the file was reviewed or that cleanup was observed.
+    stages = state.get("stages", {})
+    if all(stages.get(name, {}).get("status") == "passed"
+           for name in ("scenes", "scene_analysis", "highlights", "delivery")):
+        return "missing_regenerable_debug_after_delivery"
+    return None
 
 
 def inventory(active):
@@ -206,6 +319,27 @@ def inventory(active):
     recorded = {}
     state = read(active / "state.json")
     external = set()
+    unavailable = {}
+    cleanup_path = member(active, ".receipts/debug-cleanup.json")
+    cleanup = read(cleanup_path) if cleanup_path.is_file() else None
+    inherited_debug = None
+
+    def missing_optional(path, field=None, *, stage=None):
+        nonlocal inherited_debug
+        if path.exists():
+            return False
+        reason = None
+        if stage == "scenes" or field in {"frame_paths", "contact_sheet_path"}:
+            if inherited_debug is None and not path.resolve().is_relative_to(active.resolve()):
+                inherited_debug = _inherited_debug_absences(active, state)
+            reason = _debug_absence_reason(active, state, path, cleanup, inherited_debug)
+        if reason is None and field == "review_file":
+            reason = "optional_review_not_present"
+        if reason is None:
+            return False
+        key = str(path.absolute())
+        unavailable[key] = {"original_path": key, "reason": reason}
+        return True
     for stage, record in state.get("stages", {}).items():
         references = dict(record.get("artifacts", {}))
         if record.get("artifact"):
@@ -214,15 +348,23 @@ def inventory(active):
             ref = Path(path)
             if not ref.is_absolute():
                 ref = active / ref
+            if ref.absolute().is_relative_to(active.absolute()):
+                member(active, str(ref.relative_to(active)))
+            elif ref.is_symlink():
+                raise WorkspaceError("ARCHIVE_MEMBER_SYMLINK")
             recorded[str(ref.resolve())] = expected
             if ref.is_absolute() and ref.resolve().is_relative_to(active.resolve()):
                 if not ref.is_file():
+                    if missing_optional(ref, stage=stage):
+                        continue
                     raise WorkspaceError("REQUIRED_ARCHIVE_MEMBER_MISSING")
                 files.add(ref)
             elif stage == "ingest":
                 external.add(str(ref))  # Original sidecar/source references stay references.
             else:
                 if not ref.is_file():
+                    if missing_optional(ref, stage=stage):
+                        continue
                     raise WorkspaceError("REQUIRED_EXTERNAL_ARTIFACT_MISSING")
                 files.add(ref)  # Preserve explicitly referenced generated artifacts.
     # In-task references may include nested generated media; sources outside the task
@@ -234,15 +376,22 @@ def inventory(active):
             value = read(file)
         except (ValueError, UnicodeError):
             continue  # Preserve damaged/user-edited bytes without certifying the JSON.
-        for path in _refs(value):
+        for path, field in _refs(value):
             candidate = Path(path)
             candidate = candidate if candidate.is_absolute() else active / candidate
-            if candidate.resolve().is_relative_to(active.resolve()):
+            if candidate.absolute().is_relative_to(active.absolute()):
+                member(active, str(candidate.relative_to(active)))
                 if not candidate.is_file():
+                    if missing_optional(candidate, field):
+                        continue
                     raise WorkspaceError("REQUIRED_ARCHIVE_REFERENCE_MISSING")
                 files.add(candidate)
             else:
+                if candidate.is_symlink():
+                    raise WorkspaceError("ARCHIVE_MEMBER_SYMLINK")
                 if not candidate.is_file():
+                    if missing_optional(candidate, field):
+                        continue
                     raise WorkspaceError("REQUIRED_EXTERNAL_REFERENCE_MISSING")
                 files.add(candidate)
     rows = []
@@ -259,7 +408,7 @@ def inventory(active):
         rows.append({"original_path": str(checked), "path": rel, "bytes": checked.stat().st_size,
                      "observed_sha256": actual, "recorded_sha256": recorded.get(str(checked.resolve())),
                      "sha256": actual})
-    return rows, sorted(external)
+    return rows, sorted(external), [unavailable[key] for key in sorted(unavailable)]
 
 
 def checked_copy(source, target, expected):
@@ -352,13 +501,14 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
             if not recovery_bundle:
                 raise WorkspaceError("VERIFIED_RECOVERY_BUNDLE_REQUIRED")
             recovery_sha = verify_recovery_bundle(recovery_bundle, recovery_bundle_sha256)
-        rows, external = inventory(active)
+        rows, external, unavailable = inventory(active)
         intent = digest({"state": sha(state_path), "files": rows, "binding": binding,
-                         "target_schema": 2, "migration_revision": 1})
+                         "target_schema": 2, "migration_revision": 2, "unavailable_optional": unavailable})
         archive = member(root, f".migrations/{intent}")
         if archive.exists():
             manifest = verify_archive(archive)
             if (manifest["migration_intent"] != intent or manifest["files"] != rows
+                    or manifest.get("unavailable_optional_references", []) != unavailable
                     or manifest["source_identity"] != binding
                     or manifest["recovery_bundle_sha256"] != recovery_sha):
                 raise WorkspaceError("MIGRATION_INTENT_MISMATCH")
@@ -375,10 +525,11 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
                 checked_copy(Path(row["original_path"]), member(temporary / "files", row["path"]), row)
             if interrupt:
                 interrupt("copied")
-            if inventory(active) != (rows, external):
+            if inventory(active) != (rows, external, unavailable):
                 raise WorkspaceError("MIGRATION_INPUT_CHANGED")
             manifest = {"schema": RECOVERY_SCHEMA, "migration_intent": intent, "files": rows,
                         "external_references_not_copied": external, "source_identity": binding,
+                        "unavailable_optional_references": unavailable,
                         "recovery_bundle_sha256": recovery_sha, "created_at": now(),
                         "original_task_root": str(root), "previous_active": str(active),
                         "scope": "byte preservation; not source/QC/creative certification"}
@@ -418,7 +569,7 @@ def prepare(path, binding, *, allow_legacy=False, recovery_bundle=None,
         if interrupt:
             interrupt("prepared")
         # A manual JSON edit need not update state.json: recheck all observed bytes.
-        if inventory(active) != (rows, external):
+        if inventory(active) != (rows, external, unavailable):
             raise WorkspaceError("MIGRATION_INPUT_CHANGED")
         pointer_after = sha(root / POINTER) if (root / POINTER).exists() else None
         if pointer_after != pointer_before:
@@ -493,3 +644,120 @@ def recovery_main():
         print(json.dumps({"status": "REJECTED", "error": str(exc)}, ensure_ascii=False))
         return 2
     return 0
+
+
+def commit_generation(path, *, replacements, expected_generation, expected_pointer_sha256,
+                      validate, invalidate_from="pre_qc", binding=None, reason="", interrupt=None):
+    """Publish a complete copied generation with one existing workspace pointer swap.
+
+    ``validate`` is invoked under the existing lock both before copying and at the
+    commit boundary. Only that pointer is an authority; archives/receipts are not
+    writable revision heads. Interrupted private generations never become active.
+    """
+    from copy import deepcopy
+
+    root, _ = preflight(path)
+    with work_lock(root):
+        root, active = preflight(root)
+        generation_name = str(active.relative_to(root))
+        pointer_sha = sha(root / POINTER) if (root / POINTER).exists() else None
+        if generation_name != expected_generation or pointer_sha != expected_pointer_sha256:
+            raise WorkspaceError("REVISION_BASE_CONFLICT")
+        validate(active)
+        rows, external, unavailable = inventory(active)
+        old = read(active / "state.json")
+        if old.get("schema_version") != 2:
+            raise WorkspaceError("LEGACY_MIGRATION_REQUIRED")
+        for relative in replacements:
+            member(active, relative)
+            if relative in {"state.json", POINTER, GENERATION}:
+                raise WorkspaceError("REVISION_RESERVED_MEMBER")
+        intent = digest({"operation": "protected_revision/1", "base": generation_name,
+                         "pointer": pointer_sha, "files": rows, "replacements": replacements,
+                         "binding": binding, "invalidate_from": invalidate_from, "reason": reason})
+        archive = member(root, f".migrations/{intent}")
+        if archive.exists():
+            manifest = verify_archive(archive)
+            if manifest.get("migration_intent") != intent or manifest["files"] != rows:
+                raise WorkspaceError("REVISION_ARCHIVE_CONFLICT")
+        else:
+            required = 2 * sum(row["bytes"] for row in rows) + 16 * 1024 * 1024
+            if shutil.disk_usage(root).free < required:
+                raise WorkspaceError("MIGRATION_DISK_SPACE_INSUFFICIENT")
+            pending = member(root, f".migrations/.pending-{intent}-{os.urandom(8).hex()}")
+            pending.mkdir(parents=True, exist_ok=False)
+            for row in rows:
+                checked_copy(Path(row["original_path"]), member(pending / "files", row["path"]), row)
+            if interrupt:
+                interrupt("copied")
+            manifest = {"schema": RECOVERY_SCHEMA, "migration_intent": intent,
+                        "files": rows, "external_references_not_copied": external,
+                        "unavailable_optional_references": unavailable,
+                        "source_identity": binding or {"input_paths": old.get("input_paths", []),
+                            "input_fingerprint": old.get("input_fingerprint"),
+                            "config_fingerprint": old.get("config_fingerprint")},
+                        "recovery_bundle_sha256": None, "created_at": now(),
+                        "original_task_root": str(root), "previous_active": str(active),
+                        "scope": "byte preservation; not source/QC/creative certification"}
+            atomic(pending / "recovery-manifest.json", manifest)
+            verify_archive(pending)
+            _sync_tree(pending)
+            pending.rename(archive)
+            _sync_directory(archive.parent)
+            _sync_directory(root)
+        if interrupt:
+            interrupt("archived")
+        # A random suffix preserves incomplete attempts without overwriting them.
+        target = member(root, f".generations/{intent}-{os.urandom(8).hex()}")
+        target.mkdir(parents=True, exist_ok=False)
+        for row in rows:
+            checked_copy(member(archive / "files", row["path"]), member(target, row["path"]), row)
+        # Old gate results remain in the recovery archive, never as apparently
+        # current standalone PASSED reports beside a different authored snapshot.
+        for relative in ("10_preflight_qc.json", "11_post_render_qc.json",
+                         "output/delivery_report.md", "delivery_report.md"):
+            member(target, relative).unlink(missing_ok=True)
+        for relative, value in replacements.items():
+            atomic(member(target, relative), value)
+        state = deepcopy(old)
+        order = ["ingest", "transcript", "scenes", "scene_analysis", "story", "highlights",
+                 "plan", "storyboard", "tts", "pre_qc", "render", "post_qc", "delivery"]
+        if invalidate_from not in order:
+            raise WorkspaceError("REVISION_INVALIDATION_STAGE_INVALID")
+        for name in order[order.index(invalidate_from):]:
+            state.setdefault("stages", {})[name] = {"status": "pending"}
+        if binding:
+            for key in ("input_paths", "input_fingerprint", "config_fingerprint"):
+                state[key] = binding[key]
+        state.update(updated_at=now(), last_error=None, migration_intent=intent,
+                     recovery_manifest=str(archive / "recovery-manifest.json"))
+        atomic(target / "state.json", state)
+        atomic(target / GENERATION, {"schema": WORKSPACE_SCHEMA, "task_root": str(root),
+                                    "relative": str(target.relative_to(root))})
+        # Full generation hashes include all private members, not just the JSON head.
+        prepared = {str(p.relative_to(target)): sha(p) for p in target.rglob("*") if p.is_file()}
+        _sync_tree(target)
+        _sync_directory(root)
+        if interrupt:
+            interrupt("prepared")
+        if (sha(root / POINTER) if (root / POINTER).exists() else None) != pointer_sha:
+            raise WorkspaceError("REVISION_BASE_CONFLICT")
+        validate(active)
+        if inventory(active) != (rows, external, unavailable):
+            raise WorkspaceError("REVISION_INPUT_CHANGED")
+        if verify_archive(archive) != manifest:
+            raise WorkspaceError("REVISION_ARCHIVE_CHANGED")
+        current = {str(p.relative_to(target)): sha(p) for p in target.rglob("*") if p.is_file()}
+        if current != prepared or any(p.is_symlink() for p in target.rglob("*")):
+            raise WorkspaceError("PREPARED_GENERATION_CHANGED")
+        atomic(root / POINTER, {"schema": WORKSPACE_SCHEMA, "active": str(target.relative_to(root)),
+                               "migration_intent": intent,
+                               "recovery_manifest_sha256": sha(archive / "recovery-manifest.json")})
+        if interrupt:
+            interrupt("switched")
+        atomic(archive / "migration-status.json", {"schema": MIGRATION_SCHEMA,
+               "status": "SWITCHED", "migration_intent": intent, "operation": "protected_revision"})
+        return {"schema": "film-revision-result/1", "status": "ADOPTED",
+                "generation": str(target.relative_to(root)), "active_dir": str(target),
+                "archive": str(archive), "artifact_hashes": {name: sha(target / name) for name in replacements},
+                "qc_status": "NOT_RUN", "reason": reason}

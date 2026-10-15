@@ -45,6 +45,8 @@ class SourceInfo(ArtifactModel):
     fps: float = Field(gt=0)
     has_audio: bool = True
     subtitle_path: str | None = None
+    subtitle_fingerprint: str | None = None
+    subtitle_size_bytes: int | None = Field(default=None, ge=0)
     order: int = 0
 
 
@@ -104,6 +106,13 @@ class SceneSignals(ArtifactModel):
     audio_energy: float | None = Field(default=None, ge=0, le=1)
 
 
+class SceneDetectionMetadata(ArtifactModel):
+    detector_requested: str
+    detector_used: str
+    fallback_reason: str | None = None
+    boundary_confidence: Literal["detector_estimated", "unknown"] = "unknown"
+
+
 class SceneUnit(ArtifactModel):
     unit_id: str
     source_id: str
@@ -115,6 +124,7 @@ class SceneUnit(ArtifactModel):
     frame_paths: list[str] = Field(default_factory=list)
     contact_sheet_path: str | None = None
     signals: SceneSignals = Field(default_factory=SceneSignals)
+    scene_detection: SceneDetectionMetadata | None = None
 
     @model_validator(mode="after")
     def valid_range(self) -> "SceneUnit":
@@ -130,6 +140,8 @@ class SceneIndex(ArtifactModel):
     source_fingerprints: dict[str, str]
     detector: str
     detector_params: dict[str, Any] = Field(default_factory=dict)
+    source_detection: dict[str, SceneDetectionMetadata] = Field(default_factory=dict)
+    detection_status: Literal["detected", "fallback", "mixed", "unknown"] = "unknown"
 
 
 class SceneCharacterMention(ArtifactModel):

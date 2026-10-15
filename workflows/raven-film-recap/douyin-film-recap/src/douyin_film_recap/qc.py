@@ -17,6 +17,8 @@ from .models import (
     QCLocation,
     QCReport,
     RecapPlan,
+    SceneAnalysisDocument,
+    SceneIndex,
     SemanticQCBundle,
     SourceManifest,
     StoryBundle,
@@ -25,9 +27,10 @@ from .models import (
 )
 from .prompts import SEMANTIC_QC_SYSTEM, semantic_qc_prompt
 from .providers import OpenAICompatibleClient
-from .subtitles import build_cues, resolved_visual_spans, segment_output_duration
+from .subtitles import build_cues, output_timeline, resolved_visual_spans, segment_output_duration
 from .utils import content_fingerprint, overlap_seconds, run_command
 from .narrative_contracts import get_plan_constraints, hook_eligibility
+from .visual_evidence import VisualEvidenceError, validate_storyboard_visual_evidence
 
 
 class FindingBuilder:
@@ -176,8 +179,29 @@ def preflight_qc(
     storyboard: Storyboard,
     config: AppConfig,
     client: OpenAICompatibleClient | None = None,
+    scene_index: SceneIndex | None = None,
+    scene_analysis: SceneAnalysisDocument | None = None,
 ) -> QCReport:
     builder = FindingBuilder("pre")
+    if scene_index is not None:
+        for source_id, detection in scene_index.source_detection.items():
+            if detection.fallback_reason:
+                builder.add(stage="pre_render", severity="warning", blocking=False, deterministic=True,
+                            rule_id="SCENE_DETECTION_FALLBACK", source_id=source_id,
+                            message="镜头检测已降级为分析窗口，切点不能视为已验证的真实镜头边界。",
+                            evidence=detection.model_dump(mode="json"),
+                            next_action="复核受影响素材的镜头边界与动作连续性。")
+    visual_evidence_valid = True
+    try:
+        validate_storyboard_visual_evidence(
+            storyboard, manifest, highlights, scene_index, scene_analysis,
+        )
+    except VisualEvidenceError as exc:
+        visual_evidence_valid = False
+        builder.add(stage="pre_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="VISUAL_EVIDENCE_INVALID", segment_id=exc.segment_id,
+                    message=f"VO 画面证据无效：{exc}",
+                    next_action="修正 unit_id、来源和时间范围；新镜头需登记场景单元及其分析证据。")
     source_map = {source.source_id: source for source in manifest.sources}
     constraints = get_plan_constraints(plan, config)
     storyboard_sources = {source.source_id: source for source in storyboard.sources}
@@ -504,19 +528,31 @@ def preflight_qc(
                 (visual.source_id, visual.start, visual.end, segment.segment_id, segment.allow_reuse)
             )
 
-        if (
-            segment.mode == "original"
-            and segment.audio_owner == "original_dialogue"
-            and segment.visuals
-        ):
+        if segment.mode == "original" and segment.visuals:
             visual = segment.visuals[0]
-            _, _, entry_safe, exit_safe = nearest_segment_boundaries(
-                transcript,
-                visual.source_id,
-                visual.start,
-                visual.end,
-                max_distance=0.45,
-            )
+            entry_safe = exit_safe = True
+            if segment.audio_owner == "original_dialogue":
+                _, _, entry_safe, exit_safe = nearest_segment_boundaries(
+                    transcript,
+                    visual.source_id,
+                    visual.start,
+                    visual.end,
+                    max_distance=0.45,
+                )
+            # A source track can contain speech even when action or ambience owns
+            # the segment. Check actual cue cuts independently of that label, but
+            # allow complete cues surrounded by a longer non-dialogue window.
+            cut_cues = []
+            for cue in transcript.segments:
+                if cue.source_id != visual.source_id or not cue.text.strip():
+                    continue
+                entry_cut = cue.start + 0.02 < visual.start < cue.end - 0.02
+                exit_cut = cue.start + 0.02 < visual.end < cue.end - 0.02
+                if entry_cut or exit_cut:
+                    entry_safe = entry_safe and not entry_cut
+                    exit_safe = exit_safe and not exit_cut
+                    cut_cues.append({"start": cue.start, "end": cue.end,
+                                     "entry_cut": entry_cut, "exit_cut": exit_cut})
             if not entry_safe or not exit_safe:
                 builder.add(
                     stage="pre_render",
@@ -528,7 +564,8 @@ def preflight_qc(
                     segment_id=segment.segment_id,
                     source_id=visual.source_id,
                     source_time=visual.start,
-                    evidence={"entry_safe": entry_safe, "exit_safe": exit_safe},
+                    evidence={"entry_safe": entry_safe, "exit_safe": exit_safe,
+                              "audio_owner": segment.audio_owner, "cut_cues": cut_cues},
                     next_action="移动到邻近完整句界，或改为 VO 压缩。",
                 )
 
@@ -688,7 +725,7 @@ def preflight_qc(
                         evidence={"reason": reason, "highlight_id": hook.highlight_id})
 
     semantic_checked = False
-    if client is not None:
+    if client is not None and visual_evidence_valid:
         try:
             builder.findings.extend(
                 _semantic_qc(
@@ -876,11 +913,34 @@ def _review_coverage(storyboard: Storyboard, final_hash: str, duration: float) -
     return result
 
 
+def _checked_realized_timeline(storyboard: Storyboard, config: AppConfig):
+    """A stored output clock cannot override authored duration without bounds."""
+    realized = storyboard.output.get("realized_timeline")
+    if realized is None:
+        return None
+    actual = output_timeline(storyboard, realized_timeline=realized)
+    expected_cursor = 0.0
+    tolerance = 1.0 / config.render.fps + 1e-8
+    for segment, row in zip(storyboard.segments, actual):
+        duration = segment_output_duration(segment)
+        expected_cursor += duration
+        if (abs(float(row["duration"]) - duration) > tolerance
+                or abs(float(row["end"]) - expected_cursor) > tolerance):
+            raise ValueError("REALIZED_TIMELINE_EXCEEDS_AUTHORED_TOLERANCE")
+    return realized
+
+
 def _subtitle_delivery_checks(
     builder: FindingBuilder, storyboard: Storyboard, config: AppConfig,
     duration: float, final_hash: str,
 ) -> dict[str, Any]:
-    expected = build_cues(storyboard, config)
+    try:
+        expected = build_cues(storyboard, config,
+                              realized_timeline=_checked_realized_timeline(storyboard, config))
+    except (ValueError, TypeError, KeyError) as exc:
+        builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
+        return {"status": "not_checked", "reason": str(exc)}
     for segment in storyboard.segments:
         if segment.mode == "original" and not segment.original_cues_verified:
             builder.add(stage="post_render", severity="warning", blocking=False, deterministic=True,
@@ -987,7 +1047,14 @@ def post_render_qc(
         (stream for stream in streams if stream.get("codec_type") == "audio"), None
     )
     actual_duration = media_duration(final_path)
-    expected_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
+    try:
+        timeline = output_timeline(storyboard,
+            realized_timeline=_checked_realized_timeline(storyboard, config))
+        expected_duration = float(timeline[-1]["end"]) if timeline else 0.0
+    except (ValueError, TypeError, KeyError) as exc:
+        builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
+                    rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
+        expected_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
     if not video_stream:
         builder.add(
             stage="post_render",

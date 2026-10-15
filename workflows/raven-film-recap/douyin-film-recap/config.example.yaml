@@ -70,6 +70,10 @@ highlight:
   genre_profile: auto
 
 format:
+  # R0 is the established Beat-stratified baseline; R1 adds local text query ranking.
+  visual_retrieval: r0
+  visual_pool_text_budget: null  # UTF-8 serialized bytes, not model tokens
+  visual_exploration_fraction: 0.15
   # highlight=30–90秒；保留旧档位 short=3–6分钟、standard=6–10分钟、deep=10–20分钟。
   # series 每次仍只制作一个 Part，不会自动编译多集分章成片。
   duration_mode: auto
@@ -103,6 +107,8 @@ tts:
   min_speedup: 0.95
 
 render:
+  # Opt-in whole-segment AV reuse; finalization and QC still run in full.
+  incremental_cache: false
   width: 1080
   height: 1920
   fps: 30

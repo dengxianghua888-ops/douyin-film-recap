@@ -116,7 +116,7 @@ class StateStore:
         record.error = {"code": "SKIPPED", "message": reason}
         self.save(state)
 
-    def fail(self, state: PipelineState, stage: str, error: Exception) -> None:
+    def fail(self, state: PipelineState, stage: str, error: BaseException) -> None:
         root, active = preflight(self.work_dir)
         if active != self.work_dir.resolve():
             raise WorkspaceError("STALE_WORKSPACE_INSTANCE")
@@ -129,7 +129,7 @@ class StateStore:
             })
             self._fail(state, stage, error)
 
-    def _fail(self, state: PipelineState, stage: str, error: Exception) -> None:
+    def _fail(self, state: PipelineState, stage: str, error: BaseException) -> None:
         record = state.stages[stage]
         record.status = "failed"
         record.finished_at = utc_now()
