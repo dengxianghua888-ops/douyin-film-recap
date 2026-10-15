@@ -46,3 +46,31 @@ def test_subtitles_use_output_timeline(app_config) -> None:
     assert cues
     assert any(cue.start >= 2 for cue in cues if "危险" in cue.text)
     assert all(cue.end > cue.start for cue in cues)
+
+
+import pytest
+from pydantic import ValidationError
+from douyin_film_recap.config import RenderConfig, TTSConfig, StoryConfig, SceneConfig
+from douyin_film_recap.subtitles import _split_text
+
+
+@pytest.mark.parametrize("value", [0, -1])
+def test_invalid_subtitle_limits_fail_immediately(value):
+    for name in ("subtitle_max_chars_per_line", "subtitle_max_lines", "width", "height", "fps"):
+        with pytest.raises(ValidationError):
+            RenderConfig(**{name: value})
+    with pytest.raises(ValueError, match="positive integer"):
+        _split_text("甲乙", value)
+    with pytest.raises(ValueError, match="positive integer"):
+        _split_text("", value)
+    with pytest.raises(ValidationError):
+        StoryConfig(chunk_units=value)
+    with pytest.raises(ValidationError):
+        SceneConfig(contact_sheet_units=value)
+
+
+def test_smallest_subtitle_limit_and_speed_range():
+    assert _split_text("甲乙", 1) == ["甲", "乙"]
+    assert RenderConfig(subtitle_max_chars_per_line=1, subtitle_max_lines=1)
+    with pytest.raises(ValidationError):
+        TTSConfig(min_speedup=1.1, max_speedup=1.0)

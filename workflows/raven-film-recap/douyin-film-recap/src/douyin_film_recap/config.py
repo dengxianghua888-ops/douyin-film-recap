@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .utils import fingerprint_json
 
@@ -78,12 +78,12 @@ class SceneConfig(FlexibleModel):
     min_unit_sec: float = 4.0
     max_unit_sec: float = 16.0
     sample_frames_per_unit: int = 3
-    contact_sheet_units: int = 8
+    contact_sheet_units: int = Field(default=8, gt=0)
     max_scene_analysis_workers: int = 2
 
 
 class StoryConfig(FlexibleModel):
-    chunk_units: int = 32
+    chunk_units: int = Field(default=32, gt=0)
     character_confidence_threshold: float = 0.68
     story_confidence_threshold: float = 0.72
     allow_external_context: bool = False
@@ -130,16 +130,23 @@ class TTSConfig(FlexibleModel):
     rate: str = "+10%"
     pitch: str = "+0Hz"
     volume: str = "+0%"
-    max_speedup: float = 1.08
-    min_speedup: float = 0.95
+    max_speedup: float = Field(default=1.08, gt=0)
+    min_speedup: float = Field(default=0.95, gt=0)
+
+
+    @model_validator(mode="after")
+    def validate_speed_range(self):
+        if self.min_speedup > self.max_speedup:
+            raise ValueError("min_speedup must not exceed max_speedup")
+        return self
 
 
 class RenderConfig(FlexibleModel):
     # Opt-in until independent media/performance acceptance is recorded.
     incremental_cache: bool = False
-    width: int = 1080
-    height: int = 1920
-    fps: int = 30
+    width: int = Field(default=1080, gt=0)
+    height: int = Field(default=1920, gt=0)
+    fps: int = Field(default=30, gt=0)
     video_codec: str = "libx264"
     crf: int = 19
     preset: str = "medium"
@@ -158,8 +165,8 @@ class RenderConfig(FlexibleModel):
     subtitle_fonts_dir: str | None = None
     subtitle_font_size: int = 62
     subtitle_margin_v: int = 250
-    subtitle_max_chars_per_line: int = 16
-    subtitle_max_lines: int = 2
+    subtitle_max_chars_per_line: int = Field(default=16, gt=0)
+    subtitle_max_lines: int = Field(default=2, gt=0)
     subtitle_outline: int = 3
 
 

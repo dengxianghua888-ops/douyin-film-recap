@@ -78,6 +78,8 @@ def _visible_units(text: str) -> int:
 
 
 def _split_text(text: str, max_chars: int) -> list[str]:
+    if type(max_chars) is not int or max_chars <= 0:
+        raise ValueError("max_chars must be a positive integer")
     cleaned = re.sub(r"\s+", " ", text).strip()
     if not cleaned:
         return []
