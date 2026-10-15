@@ -19,6 +19,20 @@ python3 scripts/install_doctor.py --root "$PWD"
 - `diagnose_installation`：报告本地依赖，可传入具体 request 检查对应分支。
 - `run_operation`：接收明确的 runtime request，写入新的独占工作目录。
 
+工具通过 `tools/list` 显式声明四个布尔注解，按 [MCP ToolAnnotations 规范](https://modelcontextprotocol.io/specification/2025-11-25/schema#toolannotations) 描述实际处理器：
+
+| 工具 | readOnlyHint | destructiveHint | idempotentHint | openWorldHint |
+| --- | --- | --- | --- | --- |
+| `list_skills` | true | false | true | false |
+| `diagnose_installation` | true | false | true | false |
+| `run_operation` | false | true | false | true |
+
+前两个工具读取本地注册、绑定文件及依赖信息；诊断会运行本地工具的版本/媒体探测，不安装、下载或调用联网 Provider。只读工具的 destructiveHint 和 idempotentHint 在协议中不影响语义；重复探测的结果仍可随环境变化。
+
+`run_operation` 的工作根目录只限制本次输出目录，不是所有副作用的沙箱：请求可修改目录外既有 Work、批处理或 Provider 账本，显式联网分支可发送付费请求。因此不能声明为只读、仅新增或封闭交互。已有输出目录会被拒绝，即使上次失败并留下部分文件；换新目录是新执行，不是通用重试或恢复协议。个别分支的事件键、版本检查或 send-once 去重，不构成整个工具的幂等承诺。调用前应核实上次 receipt、既有存储状态及具体分支合同。
+
+这些注解仅是客户端提示，不替代权限、费用授权或验收。服务启动、`tools/list`、`list_skills` 和 `diagnose_installation` 不要求 `DEEPSEEK_API_KEY`；`.mcp.json` 的 `env_vars` 是可传递变量名列表，不是必填凭据声明。只有选定对应 Provider 的发送分支才要求其密钥；本地准备、读取、预算记账等分支不因此要求联网凭据。
+
 执行操作前，在客户端环境中设置 `EDITING_SKILL_WORK_ROOT` 为你选择的绝对目录。每次 `work_dir` 必须是其下尚不存在的新目录。FFmpeg 与 ffprobe 可通过 `EDITING_FFMPEG`、`EDITING_FFPROBE` 指定。不要把密钥写进仓库。
 
 `.codex-plugin/` 和 `.mcp.json` 是待验证的插件接入定义。仓库不附带已安装证明；`contracts/portable-resource-edges.md` 中的个人机器流程属于历史开发说明，不能直接复制本机路径执行。按所用客户端的实际配置方式接入此 stdio 服务。配置中的相对 `args`、`cwd` 与 `env_vars` 字段不能视为跨客户端通用格式；手动接入时使用脚本绝对路径，并按客户端支持的环境变量配置方式设置工作根目录。

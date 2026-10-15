@@ -43,7 +43,7 @@ def _tool_specs():
                          'idempotentHint': True, 'openWorldHint': False},
          'inputSchema': {'type': 'object', 'properties': {}, 'additionalProperties': False}},
         {'name': 'run_operation',
-         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. Requires explicit task authorization.',
+         'description': 'Run one existing atomic runtime request into a new directory under EDITING_SKILL_WORK_ROOT. May update existing stores or invoke external providers. No generic retry/resume guarantee; existing work directories are rejected. Requires explicit task authorization and separate authorization for paid provider calls.',
          # This dispatcher also reaches mutable Work/Task stores and external
          # model providers; a fresh receipt directory does not make it additive,
          # repeatable, or confined to local entities. Use conservative hints for
