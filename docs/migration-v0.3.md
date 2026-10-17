@@ -27,3 +27,7 @@ pip install -e ".[all]"
 原 `09_storyboard.json` 不自动转为通用 WorkDocument，恢复缓存和 QC 也不跨执行器复用。运行 Agent 明确选择一种执行路径，并读回其实际产物。
 
 通用库源码尚未形成统一许可，第三方改写材料也有独立条款，见[许可范围](../LICENSES.md)。原影视解说子集的 MIT 不自动覆盖新增目录。
+
+## 2026-10-18 更名注记（北京时间）
+
+仓库已更名为影述（Reel Scribe），当前地址为 https://github.com/dengxianghua888-ops/reel-scribe 。上文旧仓库地址是 v0.3 迁移时的历史记录。内部目录、Skill 标识、Python 包名和 CLI 命令保持不变；本文中的内部路径迁移说明仍适用。
