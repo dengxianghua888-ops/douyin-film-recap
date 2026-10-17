@@ -134,3 +134,58 @@ def test_queued_cancellation_retains_failed_receipt(tmp_path):
         assert not (tmp_path / 'not-created.sqlite3').exists()
     finally:
         runtime.RUN_CANCELLATION.reset(token)
+
+
+def test_completed_id_can_be_reused_without_erasing_new_cancel_token(monkeypatch):
+    spec = importlib.util.spec_from_file_location('mcp_reused_id_server', ROOT / 'scripts/mcp_server.py')
+    server = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(server)
+    incoming, outgoing = queue.Queue(), queue.Queue()
+    release_reply, second_started = threading.Event(), threading.Event()
+    class Input:
+        def __iter__(self):
+            while True:
+                line = incoming.get(timeout=5)
+                if line is None:
+                    return
+                yield line
+    calls = []
+    def fake_tool(name, arguments, *, cancel_event, progress):
+        calls.append(cancel_event)
+        if len(calls) == 2:
+            second_started.set()
+            assert cancel_event.wait(3)
+            return {'status': 'FAILED', 'cancelled': True}
+        return {'status': 'SUCCEEDED'}
+    first_reply = True
+    def response(identifier, result=None, error=None):
+        nonlocal first_reply
+        outgoing.put({'id': identifier, 'result': result, 'error': error})
+        if identifier == 1 and error is None and first_reply:
+            first_reply = False
+            assert release_reply.wait(3)
+    monkeypatch.setattr(server.sys, 'stdin', Input())
+    monkeypatch.setattr(server, 'call_tool', fake_tool)
+    monkeypatch.setattr(server, '_response', response)
+    worker = threading.Thread(target=server.serve)
+    worker.start()
+    def send(value):
+        incoming.put(json.dumps(value) + '\n')
+    call = {'id': 1, 'method': 'tools/call', 'params': {'name': 'run_operation'}}
+    try:
+        send(call)
+        assert outgoing.get(timeout=2)['error'] is None
+        send(call)
+        send({'id': 2, 'method': 'ping'})
+        assert outgoing.get(timeout=2)['id'] == 2  # No duplicate-ID rejection.
+        release_reply.set()
+        assert second_started.wait(2)
+        send({'method': 'notifications/cancelled', 'params': {'requestId': 1}})
+        result = outgoing.get(timeout=3)
+        assert result['id'] == 1 and result['result']['isError']
+        assert calls[0] is not calls[1] and not calls[0].is_set()
+    finally:
+        release_reply.set()
+        incoming.put(None)
+        worker.join(timeout=5)
+    assert not worker.is_alive()

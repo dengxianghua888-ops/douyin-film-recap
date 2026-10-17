@@ -138,6 +138,11 @@ def serve():
     pending = {}
     pending_lock = threading.Lock()
 
+    def release_request(identifier, cancellation):
+        with pending_lock:
+            if pending.get(identifier) is cancellation:
+                pending.pop(identifier)
+
     def execute_call(identifier, params, cancellation):
         progress_token = params.get('_meta', {}).get('progressToken') if isinstance(params.get('_meta', {}), dict) else None
         count = 0
@@ -153,13 +158,17 @@ def serve():
             output = call_tool(params.get('name'), params.get('arguments', {}),
                                cancel_event=cancellation, progress=progress)
             progress('Finished')
+            # Release before publishing the terminal reply: a client can reuse
+            # an ID immediately after reading it. Cleanup must not erase that
+            # newer request's cancellation token.
+            release_request(identifier, cancellation)
             _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
                                    'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
         except Exception as exc:  # Do not swallow KeyboardInterrupt/SystemExit.
+            release_request(identifier, cancellation)
             _response(identifier, {'content': [{'type': 'text', 'text': str(exc)}], 'isError': True})
         finally:
-            with pending_lock:
-                pending.pop(identifier, None)
+            release_request(identifier, cancellation)
 
     with ThreadPoolExecutor(max_workers=1, thread_name_prefix='mcp-operation') as executor:
         for line in sys.stdin:
