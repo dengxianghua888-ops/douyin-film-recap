@@ -7,7 +7,7 @@ python3 scripts/verify_library.py structure
 python3 scripts/install_doctor.py --root "$PWD"
 ```
 
-当前开发环境使用 Python 3.9.6；其他 Python／操作系统组合尚未全面验证。Skill 文本与注册读取不要求媒体依赖。FFmpeg／ffprobe、字体、Pillow、NumPy、ASR 等按具体操作条件使用，以诊断结果和对应合同为准，不必一次安装所有依赖。
+Python 3.9.6 仅是通用库历史开发记录，不是整库支持声明；影视子项目要求 Python >=3.11。当前自动化目标为 Ubuntu / Python 3.12；分层支持与未验证平台见 [支持矩阵](support-matrix.md)。Skill 文本与注册读取不要求媒体依赖。FFmpeg／ffprobe、字体、Pillow、NumPy、ASR 等按具体操作条件使用，以诊断结果和对应合同为准，不必一次安装所有依赖。
 
 ## MCP
 
