@@ -249,3 +249,57 @@ def test_boolean_time_rejected(sample):
     result["cues"][0]["tokens"][0]["start"] = True
     with pytest.raises(ValueError):
         import_alignment(write(), source, segments)
+
+
+@pytest.mark.parametrize("builder", ["build_portable_bundle.py", "build_codex_plugin.py"])
+def test_built_package_alignment_cli(sample, tmp_path, builder):
+    """Execute the shipped entrypoints from each relocated build, not the checkout."""
+    import os
+    from pathlib import Path
+    import subprocess
+    import sys
+    repo = Path(__file__).resolve().parents[4]
+    output = tmp_path / "built-package"
+    subprocess.run([sys.executable, str(repo / "scripts" / builder), "--out", str(output)],
+                   cwd=tmp_path, capture_output=True, text=True, check=True, timeout=120)
+    package_src = output / "workflows/raven-film-recap/douyin-film-recap/src"
+    env = {**os.environ, "PYTHONPATH": str(package_src)}
+    source, _, _, write = sample
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(SourceManifest(sources=[source], config_fingerprint="test").model_dump_json())
+    receipt = tmp_path / "producer-receipt.json"
+    receipt.write_text(json.dumps(whisper_receipt(sample)))
+    converted = tmp_path / "converted.json"
+    commands = [
+        ["convert-whisperx-alignment", "--receipt", str(receipt), "--output", str(converted)],
+        ["validate-alignment", "--manifest", str(manifest), "--source-id", source.source_id,
+         "--result", str(converted)],
+    ]
+    for args in commands:
+        process = subprocess.run([sys.executable, "-m", "douyin_film_recap", *args], cwd=tmp_path,
+                                 env=env, capture_output=True, text=True, timeout=60)
+        assert process.returncode == 0, process.stdout + process.stderr
+    assert "1 aligned cues" in process.stdout
+    # Verify the imported module itself resolves inside the built package.
+    process = subprocess.run([sys.executable, "-c", "import douyin_film_recap.alignment as a; print(a.__file__)"],
+                             cwd=tmp_path, env=env, capture_output=True, text=True, check=True, timeout=60)
+    assert str(package_src) in process.stdout
+
+
+def test_alignment_implementation_changes_enabled_config_identity(sample, app_config, monkeypatch):
+    from douyin_film_recap import config
+    source, _, _, write = sample
+    app_config.asr.alignment = AlignmentConfig(enabled=True, result_files={source.source_id: str(write())})
+    first = app_config.fingerprint()
+    original = config.content_identity
+    def changed(path):
+        result = original(path)
+        if str(path).endswith("alignment.py"):
+            result = {**result, "sha256": "0" * 64}
+        return result
+    monkeypatch.setattr(config, "content_identity", changed)
+    assert app_config.fingerprint() != first
+    app_config.asr.alignment.enabled = False
+    disabled = app_config.fingerprint()
+    monkeypatch.setattr(config, "content_identity", original)
+    assert app_config.fingerprint() == disabled

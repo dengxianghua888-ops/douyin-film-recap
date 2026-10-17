@@ -76,7 +76,8 @@ fallback reason and original imported token evidence. Adopted word scores are in
 `alignment_score`, never `probability`. Existing QC timing-source checks stay intact.
 
 The enabled configuration fingerprint includes **result file content identities**,
-not just paths. Changing result bytes, selected cues, model revision or config
+not just paths, plus an implementation digest of the alignment/parser/model/config
+source files. Changing result bytes, selected cues, model revision or config
 invalidates the existing workspace binding through the normal state machine; an
 in-flight file change is rejected. Resume requires the normal new-generation flow.
 Disabled alignment adds no model imports, file reads or network access and preserves

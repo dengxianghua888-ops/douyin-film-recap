@@ -261,7 +261,7 @@ def collect_render_inputs(storyboard: Storyboard) -> dict[str, Any]:
                      "ffprobe_sha256": content_fingerprint(ffprobe),
                      "version": run_command([ffmpeg, "-version"]).stdout,
                      "implementation_digest": digest({name: content_fingerprint(Path(__file__).with_name(name))
-                         for name in ("render.py", "render_plan.py", "render_contracts.py", "render_cache.py", "render_timeline.py", "subtitles.py")
+                         for name in ("render.py", "render_plan.py", "render_contracts.py", "render_cache.py", "render_timeline.py", "subtitles.py", "alignment.py", "asr.py", "models.py")
                          if Path(__file__).with_name(name).exists()})}
         # Binary/version alone misses dynamically linked codec/filter changes.
         # Unresolved environments remain safe dry-run plans, never reusable keys.

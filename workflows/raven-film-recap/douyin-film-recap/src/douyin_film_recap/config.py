@@ -221,6 +221,10 @@ class AppConfig(FlexibleModel):
         if not self.asr.alignment.enabled:
             data["asr"].pop("alignment", None)
         else:
+            data["asr"]["alignment"]["implementation_digest"] = fingerprint_json({
+                name: content_identity(Path(__file__).with_name(name))
+                for name in ("alignment.py", "asr.py", "models.py", "config.py")
+            })
             data["asr"]["alignment"]["content_identities"] = {
                 source: content_identity(path)
                 for source, path in sorted(self.asr.alignment.result_files.items())
