@@ -141,11 +141,7 @@ def parse_subtitle(path: str | Path, source_id: str) -> list[TranscriptSegment]:
     return parse_srt_or_vtt(path, source_id)
 
 
-def transcribe_with_faster_whisper(
-    video_path: str | Path,
-    source_id: str,
-    config: AppConfig,
-) -> list[TranscriptSegment]:
+def _load_whisper_model(config: AppConfig):
     try:
         from faster_whisper import WhisperModel
     except ImportError as exc:  # pragma: no cover - optional dependency
@@ -153,11 +149,21 @@ def transcribe_with_faster_whisper(
             "faster-whisper is not installed. Install with pip install -e '.[local-asr]'"
         ) from exc
 
-    model = WhisperModel(
+    return WhisperModel(
         config.asr.model,
         device=config.asr.device,
         compute_type=config.asr.compute_type,
     )
+
+
+def transcribe_with_faster_whisper(
+    video_path: str | Path,
+    source_id: str,
+    config: AppConfig,
+    *, model=None,
+) -> list[TranscriptSegment]:
+    if model is None:
+        model = _load_whisper_model(config)
     raw_segments, _ = model.transcribe(
         str(video_path),
         language=config.asr.language or None,
@@ -206,6 +212,9 @@ def build_transcript(manifest: SourceManifest, config: AppConfig) -> TranscriptD
     segments: list[TranscriptSegment] = []
     providers: set[str] = set()
     models: set[str] = set()
+    # Stage-local lazy ownership: subtitle-only runs load nothing; separate
+    # stages/configurations cannot retain a stale model or GPU allocation.
+    whisper_model = None
     for source in manifest.sources:
         source_segments: list[TranscriptSegment] = []
         if source.subtitle_path:
@@ -230,7 +239,10 @@ def build_transcript(manifest: SourceManifest, config: AppConfig) -> TranscriptD
                 raise NotImplementedError(
                     f"ASR provider is not implemented in the bundled runtime: {config.asr.provider}"
                 )
-            source_segments = transcribe_with_faster_whisper(source.path, source.source_id, config)
+            if whisper_model is None:
+                whisper_model = _load_whisper_model(config)
+            source_segments = transcribe_with_faster_whisper(
+                source.path, source.source_id, config, model=whisper_model)
             providers.add("faster_whisper")
             models.add(config.asr.model)
         segments.extend(source_segments)
