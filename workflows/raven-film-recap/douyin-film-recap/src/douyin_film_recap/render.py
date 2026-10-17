@@ -394,8 +394,11 @@ def _render_voiceover_segment(
         [
             "-t",
             f"{target_duration:.3f}",
-            "-c:v",
-            "copy",
+            "-vf",
+            "setpts=PTS-STARTPTS",
+            "-fps_mode",
+            "cfr",
+            *_video_encode_args(config),
             *_audio_encode_args(config),
             "-movflags",
             "+faststart",
