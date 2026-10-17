@@ -104,12 +104,15 @@ def test_default_build_navigation_and_reproducibility(source, tmp_path, builder)
     assert first['files'] == second['files']
     film = 'workflows/raven-film-recap/douyin-film-recap/'
     for relative in ('docs/alignment-import.md', 'schemas/AlignmentResult.schema.json',
-                     'src/douyin_film_recap/alignment.py', 'tests/test_alignment_import.py'):
+                     'src/douyin_film_recap/alignment.py', 'tests/test_alignment_import.py',
+                     'src/douyin_film_recap/local_alignment.py', 'tests/test_local_alignment.py',
+                     'docs/local-alignment.md'):
         for output in outputs:
             assert (output / film / relative).read_bytes() == (source / film / relative).read_bytes()
     cli = (outputs[0] / film / 'src/douyin_film_recap/cli.py').read_text()
     assert '@app.command("validate-alignment")' in cli
     assert '@app.command("convert-whisperx-alignment")' in cli
+    assert '@app.command("run-local-alignment")' in cli
     directories = {row['target'] for row in first['directory_navigation'] if row['from'] == 'README.md'}
     assert directories == DIRECTORIES
     members = {row['path'] for row in first['files']}

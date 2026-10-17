@@ -26,6 +26,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Explicit opt-in; deliberately excluded from all/default runtime. No model weights.
+local-alignment = [
+  "torch==2.8.0",
+  "transformers==4.57.1",
+  "safetensors==0.6.2",
+]
 local-asr = [
   "faster-whisper>=1.0.3,<2",
 ]

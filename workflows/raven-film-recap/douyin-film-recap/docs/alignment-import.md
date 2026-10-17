@@ -1,10 +1,11 @@
 # M1: offline alignment-result import (experimental)
 
-This release **imports existing alignment evidence**. It does not implement or run
-an acoustic forced aligner, install WhisperX/PyTorch, download models, or contact a
-service. Tests use synthetic contracts, not real speech. Chinese boundary accuracy,
-cutoff improvement, real model execution and downstream listening quality are
-**NOT_RUN**. There is no diarization.
+This import path **imports existing alignment evidence**. It does not run acoustic
+inference, install WhisperX/PyTorch, download models, or contact a service. A separate,
+explicit [local CTC producer](local-alignment.md) can execute approved local weights
+on selected cues. Its engineering tests use self-created random weights and synthetic
+audio; trained-model Chinese boundary accuracy, cutoff improvement and downstream
+listening quality remain **NOT_RUN**. There is no diarization.
 
 ## Enable only for selected existing subtitle cues
 

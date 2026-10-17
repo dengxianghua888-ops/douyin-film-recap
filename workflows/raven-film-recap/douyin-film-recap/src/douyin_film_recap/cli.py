@@ -386,3 +386,29 @@ def convert_whisperx_alignment(
         console.print(f"Conversion rejected: {exc}", markup=False)
         raise typer.Exit(2) from exc
     console.print("Converted declared native character evidence. Run validate-alignment before use.")
+
+
+@app.command("run-local-alignment")
+def run_local_alignment_command(
+    manifest: Annotated[Path, typer.Option("--manifest")],
+    source_id: Annotated[str, typer.Option("--source-id")],
+    cue_index: Annotated[list[int], typer.Option("--cue-index")],
+    model_dir: Annotated[Path, typer.Option("--model-dir")],
+    model_sha256: Annotated[str, typer.Option("--model-sha256")],
+    output: Annotated[Path, typer.Option("--output")],
+    cache_dir: Annotated[Path | None, typer.Option("--cache-dir")] = None,
+) -> None:
+    """显式本地 CPU CTC 对齐，仅处理所选字幕窗；不下载模型，不自动采用。"""
+    from .local_alignment import run_local_alignment
+    from .models import SourceManifest
+    try:
+        sources = SourceManifest.model_validate_json(manifest.read_bytes()).sources
+        source = next((item for item in sources if item.source_id == source_id), None)
+        if source is None:
+            raise ValueError("Unknown source_id")
+        result = run_local_alignment(source=source, cue_indices=cue_index, model_dir=model_dir,
+            model_sha256=model_sha256, output=output, cache_dir=cache_dir)
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    except Exception as exc:
+        console.print(f"Local alignment rejected: {exc}", markup=False)
+        raise typer.Exit(2) from exc
