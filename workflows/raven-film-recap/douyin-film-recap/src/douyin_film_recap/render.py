@@ -735,6 +735,7 @@ def _render_storyboard_in_attempt(
         rendered[index] = output
     segment_paths = [rendered[index] for index in sorted(rendered)]
 
+    clock_evidence = []
     if incremental:
         from .render_plan import compile_render_plan
         plan = compile_render_plan(storyboard, config, **incremental["inputs"],
@@ -752,7 +753,8 @@ def _render_storyboard_in_attempt(
             params["duration"] = segment_output_duration(segment)
             measured = verify_media(path, params, timeout=config.runtime.stage_timeout_sec)
             contracts[segment.segment_id] = measured["media_contract"]
-        realized_timeline = build_realized_timeline(storyboard, config.render.fps, contracts)
+            clock_evidence.append({"segment_id": segment.segment_id, "sha256": measured["sha256"], "size": measured["size"]})
+        realized_timeline = build_realized_timeline(storyboard, config.render.fps, contracts, strict_nominal=False)
     base_video = work_dir / "output" / "base_no_subtitles.mp4"
     _concat_copy(segment_paths, base_video, config)
     from .render_cache import verify_assembly_placement
@@ -775,6 +777,10 @@ def _render_storyboard_in_attempt(
                    storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json")))
     storyboard.output = {
         "realized_timeline": realized_timeline,
+        "timeline_policy": "strict-nominal/1" if incremental else "measured-segment-clock/1",
+        "segment_clock_evidence": clock_evidence,
+        "nominal_quantization_delta_sec": float(output_timeline(storyboard, realized_timeline=realized_timeline)[-1]["end"])
+            - sum(segment_output_duration(segment) for segment in storyboard.segments),
         "base_video": str(base_video),
         "final_video": str(final_path),
         "preview_video": str(preview_path),

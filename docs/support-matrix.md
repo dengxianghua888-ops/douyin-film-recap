@@ -25,7 +25,8 @@ python3 scripts/install_doctor.py --root "$PWD"
 
 升级时在独立环境解析依赖、执行同一测试矩阵，再更新约束与实际结果。
 不要把约束文件存在当作测试通过。FFmpeg / ffprobe 必须匹配实际安装，
-7.x 帧元数据与旧版差异可能导致严格来源时钟检查拒绝；不能删除严格检查来过测试。
+7.x 的 duration 与旧版 pkt_duration 字段均须提供实测整数正值；同时出现时必须一致。
+缺失、非正、非整数或冲突仍被严格拒绝，不能推测时钟来过测试。
 
 ## 许可与分发
 
@@ -33,3 +34,17 @@ python3 scripts/install_doctor.py --root "$PWD"
 第三方材料、字体、模型、FFmpeg 和 Rubber Band 另有许可及来源范围。
 打包前逐项检查 [LICENSES.md](../LICENSES.md) 和其链接的 provenance notices；
 本次没有宣称完成全部成员的再分发授权，也没有把嵌套 MIT 扩大到整库。
+
+## 渲染时钟与量化
+
+默认渲染按每段实际帧/采样时钟累计字幕和 EDL，保留名义计划偏差
+`nominal_quantization_delta_sec`。例如3个0.35秒片段在30fps各为11帧，
+总计1.1秒；0.05秒差作为量化提示，不阻断默认渲染、不截尾音、不暗改源窗。
+仍逐段严格检查音视频时钟、padding、词边界与至多1帧量化差，并检查拼接
+相对实测段时钟的偏差不超过1帧。post-QC重新验证绑定内容身份的段媒体；
+存储的时间图或policy字段不能单独充当证据。显式incremental_cache模式继续
+保留原有更严格的名义累计1帧合同，本轮没有擅自放宽。
+
+保留原声底床的VO经过AAC拼接可能引入视频时间偏移。本轮统一VO最终编码的
+PTS/CFR并升级renderer revision；此步骤增加视频重编码成本，旧缓存会失效。
+默认实测验证及post-QC读回也有额外解码成本，未作实际提速承诺。

@@ -919,6 +919,30 @@ def _checked_realized_timeline(storyboard: Storyboard, config: AppConfig):
     if realized is None:
         return None
     actual = output_timeline(storyboard, realized_timeline=realized)
+    if storyboard.output.get("timeline_policy") == "measured-segment-clock/1":
+        # Default mode reports ordinary per-segment quantization separately.
+        # Re-read the actual segment media: an output flag alone cannot relax QC.
+        from .render_cache import verify_media
+        from .render_timeline import build_realized_timeline
+        contracts = {}
+        evidence = storyboard.output.get("segment_clock_evidence", [])
+        if not isinstance(evidence, list) or [item.get("segment_id") for item in evidence] != [s.segment_id for s in storyboard.segments]:
+            raise ValueError("REALIZED_SEGMENT_EVIDENCE_MISSING")
+        for segment, bound in zip(storyboard.segments, evidence):
+            if not segment.rendered_file:
+                raise ValueError("REALIZED_SEGMENT_MEDIA_MISSING")
+            params = {name: getattr(config.render, name) for name in
+                      ("fps", "width", "height", "video_codec", "audio_codec")}
+            params["duration"] = segment_output_duration(segment)
+            measured = verify_media(Path(segment.rendered_file), params,
+                                    timeout=config.runtime.stage_timeout_sec)
+            if measured["sha256"] != bound.get("sha256") or measured["size"] != bound.get("size"):
+                raise ValueError("REALIZED_SEGMENT_MEDIA_CHANGED")
+            contracts[segment.segment_id] = measured["media_contract"]
+        measured = build_realized_timeline(storyboard, config.render.fps, contracts, strict_nominal=False)
+        if measured != realized:
+            raise ValueError("REALIZED_TIMELINE_DIFFERS_FROM_SEGMENT_MEDIA")
+        return realized
     expected_cursor = 0.0
     tolerance = 1.0 / config.render.fps + 1e-8
     for segment, row in zip(storyboard.segments, actual):
@@ -932,12 +956,13 @@ def _checked_realized_timeline(storyboard: Storyboard, config: AppConfig):
 
 def _subtitle_delivery_checks(
     builder: FindingBuilder, storyboard: Storyboard, config: AppConfig,
-    duration: float, final_hash: str,
+    duration: float, final_hash: str, *, realized_timeline=...,
 ) -> dict[str, Any]:
     try:
-        expected = build_cues(storyboard, config,
-                              realized_timeline=_checked_realized_timeline(storyboard, config))
-    except (ValueError, TypeError, KeyError) as exc:
+        if realized_timeline is ...:
+            realized_timeline = _checked_realized_timeline(storyboard, config)
+        expected = build_cues(storyboard, config, realized_timeline=realized_timeline)
+    except (OSError, RuntimeError, ValueError, TypeError, KeyError, AttributeError) as exc:
         builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
                     rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
         return {"status": "not_checked", "reason": str(exc)}
@@ -1055,12 +1080,13 @@ def post_render_qc(
     )
     actual_duration = media_duration(final_path)
     try:
-        timeline = output_timeline(storyboard,
-            realized_timeline=_checked_realized_timeline(storyboard, config))
+        checked_realized = _checked_realized_timeline(storyboard, config)
+        timeline = output_timeline(storyboard, realized_timeline=checked_realized)
         expected_duration = float(timeline[-1]["end"]) if timeline else 0.0
-    except (ValueError, TypeError, KeyError) as exc:
+    except (OSError, RuntimeError, ValueError, TypeError, KeyError, AttributeError) as exc:
         builder.add(stage="post_render", severity="error", blocking=True, deterministic=True,
                     rule_id="INVALID_REALIZED_TIMELINE", message=f"实际时间图无效：{exc}")
+        checked_realized = None
         expected_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
     if not video_stream:
         builder.add(
@@ -1130,7 +1156,15 @@ def post_render_qc(
             },
         )
 
-    subtitle_coverage = _subtitle_delivery_checks(builder, storyboard, config, actual_duration, final_hash)
+    subtitle_coverage = _subtitle_delivery_checks(builder, storyboard, config, actual_duration, final_hash,
+                                                  realized_timeline=checked_realized)
+    nominal_duration = sum(segment_output_duration(segment) for segment in storyboard.segments)
+    if abs(expected_duration - nominal_duration) > 1 / config.render.fps:
+        builder.add(stage="post_render", severity="warning", blocking=False, deterministic=True,
+                    rule_id="NOMINAL_FRAME_QUANTIZATION", message="逐段帧量化与名义计划时长存在累计差；字幕与 EDL 使用实测时间线。",
+                    evidence={"nominal_duration_sec": nominal_duration,
+                              "realized_duration_sec": expected_duration,
+                              "delta_sec": expected_duration - nominal_duration})
     review_coverage = _review_coverage(storyboard, final_hash, actual_duration)
     for kind in ("visual", "audio"):
         if review_coverage[kind]["status"] != "checked":

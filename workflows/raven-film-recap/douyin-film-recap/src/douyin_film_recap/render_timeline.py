@@ -49,7 +49,7 @@ def realized_duration(segment, contract, fps, duration):
     return actual
 
 
-def build_realized_timeline(storyboard, fps_value, contracts):
+def build_realized_timeline(storyboard, fps_value, contracts, *, strict_nominal=True):
     fps = rational(fps_value)
     cursor = expected_cursor = Fraction(0)
     timeline = []
@@ -59,6 +59,6 @@ def build_realized_timeline(storyboard, fps_value, contracts):
         timeline.append(time_entry(segment.segment_id, cursor, actual, fps))
         cursor += actual
         expected_cursor += expected
-        if abs(cursor - expected_cursor) > 1 / fps:
+        if strict_nominal and abs(cursor - expected_cursor) > 1 / fps:
             raise RenderContractError(f"REALIZED_CUMULATIVE_DRIFT: {segment.segment_id}")
     return timeline

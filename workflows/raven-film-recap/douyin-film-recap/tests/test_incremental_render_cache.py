@@ -204,6 +204,37 @@ class IncrementalCacheTests(unittest.TestCase):
         self.assertEqual(sorted(r["action"] for r in self.receipt(result)["segments"]), ["executed", "reused"])
         self.assertEqual(self.receipt(result)["segments"][0]["sha256"], self.receipt(result)["segments"][1]["sha256"])
 
+    def test_default_fractional_segments_use_measured_clock_without_nominal_rejection(self):
+        from douyin_film_recap.qc import _checked_realized_timeline, post_render_qc
+        from douyin_film_recap.render_contracts import rational
+        template = self.board.segments[0]
+        self.board.segments = []
+        for i in range(3):
+            segment = template.model_copy(deep=True)
+            segment.segment_id = f"fractional-{i}"
+            segment.visuals[0].start = i * 0.5
+            segment.visuals[0].end = i * 0.5 + 0.35
+            segment.planned_duration_sec = 0.35
+            self.board.segments.append(segment)
+        self.config.render.incremental_cache = False
+        result = render_storyboard(self.board, self.config, self.work / "default")
+        timeline = result.output["realized_timeline"]
+        self.assertEqual(timeline[-1]["end_frame"], 33)
+        self.assertEqual(float(rational(timeline[-1]["end"])), 1.1)
+        self.assertAlmostEqual(result.output["nominal_quantization_delta_sec"], 0.05)
+        edl = json.loads(Path(result.output["edl"]).read_text())
+        self.assertAlmostEqual(edl[1]["output_start"], 11 / 30)
+        self.assertEqual(_checked_realized_timeline(result, self.config), timeline)
+        report = post_render_qc(storyboard=result, config=self.config)
+        self.assertFalse(any(f.rule_id == "INVALID_REALIZED_TIMELINE" for f in report.findings))
+        self.assertTrue(any(f.rule_id == "NOMINAL_FRAME_QUANTIZATION" and not f.blocking for f in report.findings))
+        result.output["segment_clock_evidence"][0]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "REALIZED_SEGMENT_MEDIA_CHANGED"):
+            _checked_realized_timeline(result, self.config)
+        self.config.render.incremental_cache = True
+        with self.assertRaisesRegex(ValueError, "REALIZED_CUMULATIVE_DRIFT"):
+            render_storyboard(self.board, self.config, self.work / "strict")
+
     def test_voice_and_original_segments_decode(self):
         segment = self.board.segments[1]
         segment.mode, segment.audio_owner = "voiceover", "narration"
