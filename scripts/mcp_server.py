@@ -153,7 +153,7 @@ def serve():
                     output = call_tool(params.get('name'), arguments)
                     _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
                                            'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
-                except (OSError, ValueError, KeyError, TypeError) as exc:
+                except Exception as exc:  # Isolate a failed tool, not process-control signals.
                     _response(identifier, {'content': [{'type': 'text', 'text': str(exc)}], 'isError': True})
             else:
                 _response(identifier, error={'code': -32601, 'message': 'Method not found'})

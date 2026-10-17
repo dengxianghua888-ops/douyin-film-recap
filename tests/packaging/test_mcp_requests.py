@@ -227,6 +227,23 @@ class McpRequestTests(unittest.TestCase):
             self.assertEqual(output['receipt']['error'], 'UNSUPPORTED_OPERATION: not-an-operation')
             self.assertEqual(responses[1]['result'], {})
 
+    def test_corrupt_sqlite_preserves_receipt_and_ping(self):
+        with tempfile.TemporaryDirectory() as raw:
+            directory = Path(raw).resolve()
+            store = directory / 'corrupt.sqlite3'
+            store.write_bytes(b'not a database')
+            work = directory / 'failed'
+            responses = self.exchange([
+                self.call(1, 'run_operation', {'request': self.budget_request(store),
+                                             'work_dir': str(work)}),
+                {'jsonrpc': '2.0', 'id': 2, 'method': 'ping'},
+            ], env=self.child_environment(directory))
+            self.assertTrue(responses[0]['result']['isError'])
+            receipt = json.loads((work / 'receipt.json').read_text())
+            self.assertEqual(receipt['status'], 'FAILED')
+            self.assertIn('GENERATION_STORE_ERROR', receipt['error'])
+            self.assertEqual(responses[1]['result'], {})
+
     def test_invalid_params_return_errors_and_connection_continues(self):
         messages = []
         for method in ('initialize', 'tools/call', 'ping', 'tools/list'):

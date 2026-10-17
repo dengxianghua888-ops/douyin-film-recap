@@ -17,6 +17,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import signal
+import sqlite3
 import importlib.util
 import sys
 import wave
@@ -1225,7 +1226,7 @@ def run(request, directory, tools):
             receipt['status'] = 'FAILED'
             receipt['error'] = 'CANCELLED_BY_USER: partial outputs retained'
             receipt['cancelled'] = True
-        except (ContractError, OSError, KeyError, TypeError, ValueError) as exc:
+        except (ContractError, OSError, KeyError, TypeError, ValueError, sqlite3.Error) as exc:
             receipt['status'] = 'FAILED'
             receipt['error'] = str(exc)
             if str(exc).startswith(('TOOL_CANCELLED:', 'RUBBERBAND_TOOL_CANCELLED:')):
