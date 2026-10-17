@@ -68,6 +68,8 @@ class IncrementalCacheTests(unittest.TestCase):
         self.assertTrue(self.receipt(warm)["finalize_executed"])
         self.assertFalse(self.receipt(warm)["qc_inherited"])
         self.assertLess(self.receipt(warm)["ffmpeg_render_calls"], self.receipt(cold)["ffmpeg_render_calls"])
+        self.assertEqual(full.output["realized_timeline"], cold.output["realized_timeline"])
+        self.assertEqual(cold.output["realized_timeline"], warm.output["realized_timeline"])
         for stream in ("video", "audio"):
             self.assertEqual(self.decode(full.output["final_video"], stream), self.decode(cold.output["final_video"], stream))
             self.assertEqual(self.decode(cold.output["final_video"], stream), self.decode(warm.output["final_video"], stream))

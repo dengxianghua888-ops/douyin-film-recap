@@ -732,19 +732,29 @@ def _render_storyboard_in_attempt(
         rendered[index] = output
     segment_paths = [rendered[index] for index in sorted(rendered)]
 
-    realized_timeline = None
     if incremental:
         from .render_plan import compile_render_plan
         plan = compile_render_plan(storyboard, config, **incremental["inputs"],
             realized_artifacts=incremental["artifacts"])
         realized_timeline = plan["timeline"]["realized"]
         _write_new_json(work_dir / "output" / "render_plan.json", plan)
+    else:
+        # Cache policy must not determine the precision of subtitles and EDL.
+        from .render_cache import verify_media
+        from .render_timeline import build_realized_timeline
+        contracts = {}
+        for segment, path in zip(storyboard.segments, segment_paths):
+            params = {name: getattr(config.render, name) for name in
+                      ("fps", "width", "height", "video_codec", "audio_codec")}
+            params["duration"] = segment_output_duration(segment)
+            measured = verify_media(path, params, timeout=config.runtime.stage_timeout_sec)
+            contracts[segment.segment_id] = measured["media_contract"]
+        realized_timeline = build_realized_timeline(storyboard, config.render.fps, contracts)
     base_video = work_dir / "output" / "base_no_subtitles.mp4"
     _concat_copy(segment_paths, base_video, config)
-    if incremental:
-        from .render_cache import verify_assembly_placement
-        verify_assembly_placement(base_video, realized_timeline, config.render.fps,
-                                  timeout=config.runtime.stage_timeout_sec)
+    from .render_cache import verify_assembly_placement
+    verify_assembly_placement(base_video, realized_timeline, config.render.fps,
+                              timeout=config.runtime.stage_timeout_sec)
     cues = build_cues(storyboard, config, realized_timeline=realized_timeline)
     srt_path = work_dir / "subtitles" / "master.srt"
     _prepare_output(srt_path)
@@ -761,6 +771,7 @@ def _render_storyboard_in_attempt(
     review_file = (str(work_dir / "output" / "review_evidence.json") if incremental else
                    storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json")))
     storyboard.output = {
+        "realized_timeline": realized_timeline,
         "base_video": str(base_video),
         "final_video": str(final_path),
         "preview_video": str(preview_path),
