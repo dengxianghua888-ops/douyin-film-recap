@@ -1,6 +1,6 @@
-# Douyin Film Recap · 影视解说子集
+# 影述 · Reel Scribe：影视解说子集
 
-> 本入口属于 [Editing Skill Library](../../../README.md) 的[影视解说工作流](../SKILL.md)。当前 Python 候选版本为 0.3.0，工作区协议为 Schema 2；原 0.2.0 数据须显式迁移。
+> 本入口属于 [影述 · Reel Scribe](../../../README.md) 的[影视解说工作流](../SKILL.md)。当前 Python 候选版本为 0.3.0，工作区协议为 Schema 2；原 0.2.0 数据须显式迁移。
 
 > 把一部电影或一集剧，变成有证据、可修改、能交付的中文影视解说。
 
@@ -65,8 +65,8 @@ flowchart LR
 ### 1. 安装
 
 ```bash
-git clone https://github.com/dengxianghua888-ops/douyin-film-recap.git
-cd douyin-film-recap/workflows/raven-film-recap/douyin-film-recap
+git clone https://github.com/dengxianghua888-ops/reel-scribe.git
+cd reel-scribe/workflows/raven-film-recap/douyin-film-recap
 
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate

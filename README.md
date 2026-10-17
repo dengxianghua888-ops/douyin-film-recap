@@ -1,4 +1,4 @@
-# 剪辑技能库
+# 影述 · Reel Scribe
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?v=cba82ac0fa1d95c3c8c2b6d37a6390ec)](https://m8ven.ai/mcp/dengxianghua888-ops-douyin-film-recap-vpiziq?s=readme)
 
@@ -55,11 +55,11 @@ Skill 层描述任务与剪辑方法，运行中的 Agent 负责选择编辑器�
 ### 1. 获取技能库
 
 ```bash
-git clone https://github.com/dengxianghua888-ops/douyin-film-recap.git
-cd douyin-film-recap
+git clone https://github.com/dengxianghua888-ops/reel-scribe.git
+cd reel-scribe
 ```
 
-仓库沿用原影视解说项目地址，当前首页与顶层目录为通用剪辑技能库。
+仓库现名为影述（Reel Scribe）；当前首页与顶层目录为通用剪辑技能库，内部 Skill 标识、影视子目录与命令保持兼容。
 
 ### 2. 让 Agent 读取入口，再描述任务
 
@@ -118,6 +118,6 @@ flowchart LR
 
 当前为开发预览，具体编辑器接入和可执行范围请查[开发状态](docs/development-status.md)与[本地接入说明](docs/local-setup.md)。原影视解说用户可查看[路径迁移指南](docs/migration-v0.3.md)。
 
-欢迎在 [Issues](https://github.com/dengxianghua888-ops/douyin-film-recap/issues) 分享实际剪辑需求、适配经验或可复现问题。如果这套方法对你有用，可以 Star 收藏；订阅版本更新请使用 Watch → Releases。
+欢迎在 [Issues](https://github.com/dengxianghua888-ops/reel-scribe/issues) 分享实际剪辑需求、适配经验或可复现问题。如果这套方法对你有用，可以 Star 收藏；订阅版本更新请使用 Watch → Releases。
 
 **许可：** 影视解说制作子集沿用 MIT；通用库及部分参考材料有独立使用条件，商用或再分发前请查看[许可与来源说明](LICENSES.md)。
