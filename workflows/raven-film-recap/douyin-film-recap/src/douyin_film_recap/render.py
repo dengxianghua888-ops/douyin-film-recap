@@ -154,11 +154,11 @@ def _layout_filter(config: AppConfig) -> str:
             f"setsar=1,fps={fps},format=yuv420p"
         )
     return (
-        f"split=2[bg][fg];"
+        f"fps={fps},split=2[bg][fg];"
         f"[bg]scale={width}:{height}:force_original_aspect_ratio=increase,"
         f"crop={width}:{height},gblur=sigma={config.render.blur_sigma}[bg2];"
         f"[fg]scale={width}:{height}:force_original_aspect_ratio=decrease[fg2];"
-        f"[bg2][fg2]overlay=(W-w)/2:(H-h)/2,setsar=1,fps={fps},format=yuv420p"
+        f"[bg2][fg2]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p"
     )
 
 
