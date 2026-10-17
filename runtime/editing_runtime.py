@@ -18,6 +18,7 @@ import shutil
 import subprocess
 import signal
 import sqlite3
+import time
 import importlib.util
 import sys
 import wave
@@ -29,6 +30,8 @@ VERSION = '0.17.0-dev'
 # Context-local inheritance leaves ordinary operations unchanged.
 from contextvars import ContextVar
 SUBPROCESS_LOCK_FDS = ContextVar('editing_subprocess_lock_fds', default=())
+RUN_CANCELLATION = ContextVar('editing_run_cancellation', default=None)
+RUN_PROGRESS = ContextVar('editing_run_progress', default=None)
 RUN_DIRECTORY = ContextVar('editing_run_directory', default=None)
 TOOL_DIAGNOSTIC_SEQUENCE = ContextVar('editing_tool_diagnostic_sequence', default=0)
 
@@ -97,10 +100,25 @@ def owned_process(command, timeout=300, cwd=None):
                             stderr=subprocess.PIPE, cwd=cwd,
                             pass_fds=SUBPROCESS_LOCK_FDS.get(), start_new_session=True)
     reason = None
+    deadline = time.monotonic() + timeout
     try:
-        stdout, stderr = proc.communicate(timeout=timeout)
-    except (subprocess.TimeoutExpired, KeyboardInterrupt) as exc:
-        reason = 'cancelled' if isinstance(exc, KeyboardInterrupt) else 'timeout'
+        while True:
+            cancellation = RUN_CANCELLATION.get()
+            if cancellation is not None and cancellation.is_set():
+                reason = 'cancelled'
+                break
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                reason = 'timeout'
+                break
+            try:
+                stdout, stderr = proc.communicate(timeout=min(0.1, remaining))
+                break
+            except subprocess.TimeoutExpired:
+                continue
+    except KeyboardInterrupt:
+        reason = 'cancelled'
+    if reason is not None:
         try:
             os.killpg(proc.pid, signal.SIGTERM)
         except ProcessLookupError:
@@ -1211,7 +1229,15 @@ def run(request, directory, tools):
             snapshot = runtime_module_sources()
             receipt['runtime_source_snapshot'] = snapshot
             receipt['runtime_files'] = {p.name: sha256(p) for p in sorted(Path(__file__).parent.glob('*.py'))}
+            cancellation = RUN_CANCELLATION.get()
+            if cancellation is not None and cancellation.is_set():
+                raise OperationCancelled('CANCELLED_BEFORE_EXECUTION')
             receipt['tools'] = tools.doctor()
+            if cancellation is not None and cancellation.is_set():
+                raise OperationCancelled('CANCELLED_BEFORE_EXECUTION')
+            progress = RUN_PROGRESS.get()
+            if progress is not None:
+                progress('Executing operation')
             result = execute(request, directory, tools)
             for name in tuple(getattr(tools, '_identity_lock', {})):
                 tools.binary(name)

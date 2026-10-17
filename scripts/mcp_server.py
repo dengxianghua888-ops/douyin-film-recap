@@ -8,6 +8,10 @@ import json
 import os
 from pathlib import Path
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor
+
+_OUTPUT_LOCK = threading.Lock()
 
 VERSION = '0.1.0'
 NAME = 'editing-skill-library'
@@ -59,7 +63,7 @@ def _tool_specs():
     ]
 
 
-def call_tool(name, arguments):
+def call_tool(name, arguments, *, cancel_event=None, progress=None):
     if not isinstance(arguments, dict):
         raise ValueError('TOOL_ARGUMENTS_OBJECT_REQUIRED')
     root = library_root()
@@ -98,7 +102,13 @@ def call_tool(name, arguments):
         sys.path.insert(0, str(root / 'runtime'))
         try:
             import editing_runtime as runtime
-            receipt = runtime.run(request, work_dir, runtime.Tools(arguments.get('ffmpeg'), arguments.get('ffprobe')))
+            cancellation_token = runtime.RUN_CANCELLATION.set(cancel_event)
+            progress_token = runtime.RUN_PROGRESS.set(progress)
+            try:
+                receipt = runtime.run(request, work_dir, runtime.Tools(arguments.get('ffmpeg'), arguments.get('ffprobe')))
+            finally:
+                runtime.RUN_CANCELLATION.reset(cancellation_token)
+                runtime.RUN_PROGRESS.reset(progress_token)
         finally:
             sys.path.pop(0)
         return {'status': receipt['status'], 'receipt': receipt,
@@ -113,53 +123,96 @@ def _response(identifier, result=None, error=None):
         value['result'] = result
     else:
         value['error'] = error
-    sys.stdout.write(json.dumps(value, ensure_ascii=False, separators=(',', ':')) + '\n')
-    sys.stdout.flush()
+    _emit(value)
+
+
+def _emit(value):
+    with _OUTPUT_LOCK:
+        sys.stdout.write(json.dumps(value, ensure_ascii=False, separators=(',', ':')) + '\n')
+        sys.stdout.flush()
 
 
 def serve():
-    for line in sys.stdin:
-        message = None
-        if not line.strip():
-            continue
+    # One execution lane preserves store/work ordering. Protocol input remains
+    # live for ping and cancellation; output is atomic across both threads.
+    pending = {}
+    pending_lock = threading.Lock()
+
+    def execute_call(identifier, params, cancellation):
+        progress_token = params.get('_meta', {}).get('progressToken') if isinstance(params.get('_meta', {}), dict) else None
+        count = 0
+        def progress(message):
+            nonlocal count
+            if type(progress_token) not in (str, int, float):
+                return
+            count += 1
+            _emit({'jsonrpc': '2.0', 'method': 'notifications/progress', 'params': {
+                'progressToken': progress_token, 'progress': count, 'message': message}})
         try:
-            message = json.loads(line)
-            if not isinstance(message, dict):
-                raise ValueError('JSON_RPC_OBJECT_REQUIRED')
-            identifier = message.get('id')
-            method = message.get('method')
-            if identifier is None:
-                continue  # Notifications never receive responses.
-            params = message.get('params', {})
-            if not isinstance(params, dict):
-                _response(identifier, error={'code': -32602, 'message': 'PARAMS_OBJECT_REQUIRED'})
+            progress('Started; cancellation is cooperative')
+            output = call_tool(params.get('name'), params.get('arguments', {}),
+                               cancel_event=cancellation, progress=progress)
+            progress('Finished')
+            _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
+                                   'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
+        except Exception as exc:  # Do not swallow KeyboardInterrupt/SystemExit.
+            _response(identifier, {'content': [{'type': 'text', 'text': str(exc)}], 'isError': True})
+        finally:
+            with pending_lock:
+                pending.pop(identifier, None)
+
+    with ThreadPoolExecutor(max_workers=1, thread_name_prefix='mcp-operation') as executor:
+        for line in sys.stdin:
+            message = None
+            if not line.strip():
                 continue
-            if method == 'initialize':
-                requested = params.get('protocolVersion')
-                protocol = requested if requested in ('2024-11-05', '2025-03-26', '2025-06-18') else '2025-03-26'
-                _response(identifier, {'protocolVersion': protocol,
-                    'capabilities': {'tools': {'listChanged': False}},
-                    'serverInfo': {'name': NAME, 'version': VERSION}})
-            elif method == 'ping':
-                _response(identifier, {})
-            elif method == 'tools/list':
-                _response(identifier, {'tools': _tool_specs()})
-            elif method == 'tools/call':
-                arguments = params.get('arguments', {})
-                if not isinstance(arguments, dict):
-                    _response(identifier, error={'code': -32602, 'message': 'TOOL_ARGUMENTS_OBJECT_REQUIRED'})
+            try:
+                message = json.loads(line)
+                if not isinstance(message, dict):
+                    raise ValueError('JSON_RPC_OBJECT_REQUIRED')
+                identifier = message.get('id')
+                method = message.get('method')
+                params = message.get('params', {})
+                if identifier is None:
+                    if method == 'notifications/cancelled' and isinstance(params, dict):
+                        request_id = params.get('requestId')
+                        if type(request_id) in (str, int, float):
+                            with pending_lock:
+                                cancellation = pending.get(request_id)
+                                if cancellation is not None:
+                                    cancellation.set()
                     continue
-                try:
-                    output = call_tool(params.get('name'), arguments)
-                    _response(identifier, {'content': [{'type': 'text', 'text': json.dumps(output, ensure_ascii=False)}],
-                                           'isError': output.get('status') in ('FAILED', 'BUNDLE_DIAGNOSTIC_IDENTITY_FAILED')})
-                except Exception as exc:  # Isolate a failed tool, not process-control signals.
-                    _response(identifier, {'content': [{'type': 'text', 'text': str(exc)}], 'isError': True})
-            else:
-                _response(identifier, error={'code': -32601, 'message': 'Method not found'})
-        except (ValueError, TypeError, KeyError) as exc:
-            if isinstance(message, dict) and message.get('id') is not None:
-                _response(message['id'], error={'code': -32600, 'message': str(exc)})
+                if type(identifier) not in (str, int, float):
+                    raise ValueError('JSON_RPC_ID_REQUIRED')
+                if not isinstance(params, dict):
+                    _response(identifier, error={'code': -32602, 'message': 'PARAMS_OBJECT_REQUIRED'})
+                    continue
+                if method == 'initialize':
+                    requested = params.get('protocolVersion')
+                    protocol = requested if requested in ('2024-11-05', '2025-03-26', '2025-06-18') else '2025-03-26'
+                    _response(identifier, {'protocolVersion': protocol,
+                        'capabilities': {'tools': {'listChanged': False}},
+                        'serverInfo': {'name': NAME, 'version': VERSION}})
+                elif method == 'ping':
+                    _response(identifier, {})
+                elif method == 'tools/list':
+                    _response(identifier, {'tools': _tool_specs()})
+                elif method == 'tools/call':
+                    if not isinstance(params.get('arguments', {}), dict):
+                        _response(identifier, error={'code': -32602, 'message': 'TOOL_ARGUMENTS_OBJECT_REQUIRED'})
+                        continue
+                    with pending_lock:
+                        if identifier in pending or len(pending) >= 16:
+                            _response(identifier, error={'code': -32600, 'message': 'DUPLICATE_OR_TOO_MANY_PENDING_REQUESTS'})
+                            continue
+                        cancellation = threading.Event()
+                        pending[identifier] = cancellation
+                    executor.submit(execute_call, identifier, params, cancellation)
+                else:
+                    _response(identifier, error={'code': -32601, 'message': 'Method not found'})
+            except (ValueError, TypeError, KeyError) as exc:
+                if isinstance(message, dict) and message.get('id') is not None:
+                    _response(message['id'], error={'code': -32600, 'message': str(exc)})
     return 0
 
 

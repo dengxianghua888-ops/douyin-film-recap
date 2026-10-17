@@ -42,3 +42,22 @@ python3 runtime/editing_runtime.py run \
 当前 wrapper 含 macOS 接口，runtime 还要求 helper 身份绑定，因此不能把“任意编译成功”理解为支持该严格路径。1×、无声和明确选择的其他音频后端各按自己的合同执行；FFmpeg atempo 路径不继承 Rubber Band 路径的严格音频证据。
 
 Provider 代码是可选执行适配。加载、路由、列举 Skill 不要求 DeepSeek，也不要求任意生成模型。若选择联网分支，凭据、费用和请求授权由运行 Agent 处理。
+
+### MCP long operations and cancellation
+
+The stdio reader remains available for `ping` and `notifications/cancelled`
+(`params.requestId`) while tools run on one serialized execution lane. Responses
+may arrive out of order; match them by JSON-RPC ID. At most 16 tool calls are
+pending. Supply `_meta.progressToken` on `tools/call` for start/execution/finish
+notifications; these are lifecycle milestones, not a fabricated percentage.
+Cancellation is cooperative: queued runtime operations retain a FAILED cancellation
+receipt, and owned media subprocess groups are stopped and reaped. A provider
+request already in flight is not remotely cancelled or refunded by this signal;
+its ledger/result must still be reconciled. Pure Python/provider work without a
+cancellation checkpoint can finish normally. Closing stdin waits for pending
+work; it is not a cancellation request.
+
+Still-image encoding has a 120-second watchdog covering frame generation, blocked
+pipe writes and encoder completion, with a maximum 36,000 frames and 30 billion
+output pixels per request. Timeout/cancellation preserves diagnostics and partial
+outputs; it does not certify the partial file as a deliverable.

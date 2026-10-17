@@ -23,7 +23,7 @@ class McpRequestTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stderr, '')
-        return [json.loads(line) for line in result.stdout.splitlines()]
+        return sorted((json.loads(line) for line in result.stdout.splitlines()), key=lambda item: item['id'])
 
     @staticmethod
     def call(identifier, name, arguments):

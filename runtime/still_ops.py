@@ -4,6 +4,7 @@ import json,subprocess
 import os
 import signal
 import threading
+import time
 
 ENCODER_TIMEOUT_SEC = 120
 MAX_FRAMES = 36000
@@ -11,7 +12,7 @@ MAX_RENDER_PIXELS = 30_000_000_000
 
 def render_still(request,directory,tools):
     from pathlib import Path
-    from editing_runtime import exact_keys,source,require,number,sha256,write_json,ContractError,exec_tool
+    from editing_runtime import exact_keys,source,require,number,sha256,write_json,ContractError,exec_tool,RUN_CANCELLATION,OperationCancelled
     try:
         from PIL import Image, __version__ as pillow_version
     except ImportError as exc:
@@ -54,20 +55,32 @@ def render_still(request,directory,tools):
         process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.DEVNULL,stderr=err,
                                  start_new_session=True)
         expired = threading.Event()
+        finished = threading.Event()
+        cancellation = RUN_CANCELLATION.get()
+        cancelled = threading.Event()
         def stop_encoder():
-            expired.set()
+            deadline = time.monotonic() + ENCODER_TIMEOUT_SEC
+            while not finished.wait(min(0.05, max(0, deadline - time.monotonic()))):
+                if cancellation is not None and cancellation.is_set():
+                    cancelled.set()
+                    break
+                if time.monotonic() >= deadline:
+                    expired.set()
+                    break
+            if finished.is_set():
+                return
             if process.poll() is None:
                 try:
                     os.killpg(process.pid, signal.SIGKILL)
                 except ProcessLookupError:
                     pass
         # The watchdog covers blocked pipe writes, not just the final wait.
-        watchdog = threading.Timer(ENCODER_TIMEOUT_SEC, stop_encoder)
+        watchdog = threading.Thread(target=stop_encoder, name="still-encoder-watchdog")
         watchdog.daemon = True
         watchdog.start()
         try:
             for f in range(n):
-                if expired.is_set():
+                if expired.is_set() or cancelled.is_set():
                     raise subprocess.TimeoutExpired(command, ENCODER_TIMEOUT_SEC)
                 while j<len(keyframes)-2 and f>keyframes[j+1]['frame']:j+=1
                 a,b=keyframes[j:j+2];t=(f-a['frame'])/(b['frame']-a['frame'])
@@ -76,14 +89,16 @@ def render_still(request,directory,tools):
                 frame=im.resize((w,h),resample=Image.Resampling.LANCZOS,box=(x,y,x+cw,y+ch))
                 process.stdin.write(frame.tobytes());paths.append({'frame':f,'rect':[x,y,cw,ch]})
             process.stdin.close();process.wait(timeout=ENCODER_TIMEOUT_SEC)
-            if expired.is_set():
+            if expired.is_set() or cancelled.is_set():
                 raise subprocess.TimeoutExpired(command, ENCODER_TIMEOUT_SEC)
         except (BrokenPipeError,subprocess.TimeoutExpired) as exc:
             process.kill();process.wait()
+            if cancelled.is_set():
+                raise OperationCancelled('STILL_ENCODER_CANCELLED: partial outputs retained') from exc
             reason = 'STILL_ENCODER_TIMEOUT: ' if expired.is_set() else 'STILL_ENCODER_FAILED: '
             raise ContractError(reason+log.read_text(errors='replace')[-2000:]) from exc
         finally:
-            watchdog.cancel()
+            finished.set()
             watchdog.join()
             if process.poll() is None:process.kill();process.wait()
             if not process.stdin.closed:
