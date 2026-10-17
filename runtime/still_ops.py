@@ -1,6 +1,13 @@
 """Render an explicitly specified crop path over a still image; no shot design or generation."""
 from fractions import Fraction
 import json,subprocess
+import os
+import signal
+import threading
+
+ENCODER_TIMEOUT_SEC = 120
+MAX_FRAMES = 36000
+MAX_RENDER_PIXELS = 30_000_000_000
 
 def render_still(request,directory,tools):
     from pathlib import Path
@@ -12,11 +19,12 @@ def render_still(request,directory,tools):
     keys=['operation','source','frames','fps','width','height','crop_keyframes','interpolation','background_rgb','allow_upscale','input_color']
     exact_keys(request,keys,keys);asset=source(request['source'])
     require(request['input_color'] in ['srgb','bt709'],'STILL_COLOR_UNSUPPORTED')
-    n=request['frames'];require(type(n) is int and n>=2,'STILL_FRAME_COUNT_INVALID')
+    n=request['frames'];require(type(n) is int and 2<=n<=MAX_FRAMES,'STILL_FRAME_COUNT_INVALID')
     try:fps=Fraction(str(request['fps']))
     except (ValueError,ZeroDivisionError) as exc:raise ContractError('STILL_FPS_INVALID') from exc
     require(0<fps<=120,'STILL_FPS_INVALID')
     w=request['width'];h=request['height'];require(all(type(v) is int and 2<=v<=8192 and v%2==0 for v in [w,h]),'STILL_GEOMETRY_INVALID')
+    require(n*w*h<=MAX_RENDER_PIXELS,'STILL_PIXEL_BUDGET_EXCEEDED')
     require(type(request['allow_upscale']) is bool,'STILL_UPSCALE_FLAG_REQUIRED')
     require(request['interpolation'] in ['linear','smoothstep'],'STILL_INTERPOLATION_UNSUPPORTED')
     bg=request['background_rgb'];require(isinstance(bg,list) and len(bg)==3 and all(type(v) is int and 0<=v<=255 for v in bg),'STILL_BACKGROUND_INVALID')
@@ -43,20 +51,46 @@ def render_still(request,directory,tools):
         '-color_range','tv','-colorspace','bt709','-color_primaries','bt709','-color_trc','iec61966-2-1' if request['input_color']=='srgb' else 'bt709','-movflags','+faststart',str(output)]
     paths=[];j=0
     with log.open('wb') as err:
-        process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.DEVNULL,stderr=err)
+        process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.DEVNULL,stderr=err,
+                                 start_new_session=True)
+        expired = threading.Event()
+        def stop_encoder():
+            expired.set()
+            if process.poll() is None:
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+        # The watchdog covers blocked pipe writes, not just the final wait.
+        watchdog = threading.Timer(ENCODER_TIMEOUT_SEC, stop_encoder)
+        watchdog.daemon = True
+        watchdog.start()
         try:
             for f in range(n):
+                if expired.is_set():
+                    raise subprocess.TimeoutExpired(command, ENCODER_TIMEOUT_SEC)
                 while j<len(keyframes)-2 and f>keyframes[j+1]['frame']:j+=1
                 a,b=keyframes[j:j+2];t=(f-a['frame'])/(b['frame']-a['frame'])
                 if request['interpolation']=='smoothstep':t=t*t*(3-2*t)
                 x,y,cw,ch=[av+(bv-av)*t for av,bv in zip(a['rect'],b['rect'])]
                 frame=im.resize((w,h),resample=Image.Resampling.LANCZOS,box=(x,y,x+cw,y+ch))
                 process.stdin.write(frame.tobytes());paths.append({'frame':f,'rect':[x,y,cw,ch]})
-            process.stdin.close();process.wait(timeout=120)
+            process.stdin.close();process.wait(timeout=ENCODER_TIMEOUT_SEC)
+            if expired.is_set():
+                raise subprocess.TimeoutExpired(command, ENCODER_TIMEOUT_SEC)
         except (BrokenPipeError,subprocess.TimeoutExpired) as exc:
-            process.kill();process.wait();raise ContractError('STILL_ENCODER_FAILED: '+log.read_text(errors='replace')[-2000:]) from exc
+            process.kill();process.wait()
+            reason = 'STILL_ENCODER_TIMEOUT: ' if expired.is_set() else 'STILL_ENCODER_FAILED: '
+            raise ContractError(reason+log.read_text(errors='replace')[-2000:]) from exc
         finally:
+            watchdog.cancel()
+            watchdog.join()
             if process.poll() is None:process.kill();process.wait()
+            if not process.stdin.closed:
+                try:
+                    process.stdin.close()
+                except BrokenPipeError:
+                    pass
         require(process.returncode==0,'STILL_ENCODER_FAILED: '+log.read_text(errors='replace')[-2000:])
     counted=json.loads(exec_tool([tools.binary('ffprobe'),'-v','error','-select_streams','v:0','-count_frames',
         '-show_entries','stream=nb_read_frames,avg_frame_rate,width,height','-of','json',str(output)]).stdout)['streams'][0]
