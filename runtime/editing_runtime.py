@@ -241,7 +241,7 @@ class Tools:
         seek_end = float(requested_end) + 2
         result = exec_tool([binary, '-v', 'error', '-select_streams', 'v:0',
             '-read_intervals', str(seek_start) + '%' + str(seek_end), '-show_frames', '-show_entries',
-            'frame=media_type,stream_index,best_effort_timestamp,pkt_duration',
+            'frame=media_type,stream_index,best_effort_timestamp,pkt_duration,duration',
             '-of', 'json', str(path)], timeout=60)
         self.binary('ffprobe')
         frames = json.loads(result.stdout).get('frames', [])
@@ -256,7 +256,12 @@ class Tools:
             require(frame.get('media_type') == 'video' and frame.get('stream_index') == index,
                     'SOURCE_VIDEO_SELECTOR_MISMATCH')
             stamp = frame.get('best_effort_timestamp')
-            duration = frame.get('pkt_duration')
+            # FFmpeg 7 names decoded AVFrame duration `duration`; older
+            # versions expose `pkt_duration`. Never infer missing evidence.
+            duration = frame.get('duration', frame.get('pkt_duration'))
+            if 'duration' in frame and 'pkt_duration' in frame:
+                require(type(frame['pkt_duration']) is int and frame['pkt_duration'] == duration,
+                        'SOURCE_VIDEO_FRAME_DURATION_CONFLICT')
             require(type(stamp) is int and type(duration) is int,
                     'SOURCE_VIDEO_FRAME_DURATION_UNVERIFIED')
             start, length = stamp*time_base, duration*time_base
