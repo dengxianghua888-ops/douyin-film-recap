@@ -65,6 +65,7 @@ class TranscriptWord(ArtifactModel):
     text: str
     probability: float | None = Field(default=None, ge=0, le=1)
     timing_source: Literal["asr", "aligned", "estimated", "unknown"] = "unknown"
+    alignment_score: float | None = Field(default=None, allow_inf_nan=False)
 
     @model_validator(mode="after")
     def valid_range(self) -> "TranscriptWord":
@@ -81,6 +82,7 @@ class TranscriptSegment(ArtifactModel):
     speaker: str | None = None
     confidence: float | None = Field(default=None, ge=0, le=1)
     words: list[TranscriptWord] = Field(default_factory=list)
+    alignment: dict[str, Any] | None = None
 
     @model_validator(mode="after")
     def valid_range(self) -> "TranscriptSegment":

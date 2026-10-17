@@ -7,7 +7,7 @@ from typing import Any, Literal
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from .utils import fingerprint_json
+from .utils import content_identity, fingerprint_json
 
 
 class FlexibleModel(BaseModel):
@@ -59,6 +59,19 @@ class ModelConfig(FlexibleModel):
         return value
 
 
+class AlignmentConfig(BaseModel):
+    """Explicit local result import; no model loading or network access."""
+    model_config = ConfigDict(extra="forbid")
+    enabled: bool = False
+    result_files: dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def valid_import(self) -> "AlignmentConfig":
+        if self.enabled and not self.result_files:
+            raise ValueError("alignment enabled requires local result_files keyed by source_id")
+        return self
+
+
 class ASRConfig(FlexibleModel):
     provider: str = "faster_whisper"
     model: str = "large-v3"
@@ -69,6 +82,7 @@ class ASRConfig(FlexibleModel):
     prefer_embedded_subtitle: bool = True
     word_timestamps: bool = True
     beam_size: int = 5
+    alignment: AlignmentConfig = Field(default_factory=AlignmentConfig)
 
 
 class SceneConfig(FlexibleModel):
@@ -204,6 +218,13 @@ class AppConfig(FlexibleModel):
 
     def fingerprint(self) -> str:
         data = self.model_dump(mode="json")
+        if not self.asr.alignment.enabled:
+            data["asr"].pop("alignment", None)
+        else:
+            data["asr"]["alignment"]["content_identities"] = {
+                source: content_identity(path)
+                for source, path in sorted(self.asr.alignment.result_files.items())
+            }
         # Disabled opt-in scheduling must retain pre-cache workspace identity.
         if data["render"].get("incremental_cache") is False:
             data["render"].pop("incremental_cache", None)
@@ -240,4 +261,10 @@ def load_config(path: str | Path) -> AppConfig:
         raise FileNotFoundError(f"Config not found: {config_path}")
     load_dotenv_near(config_path)
     data: dict[str, Any] = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-    return AppConfig.model_validate(data)
+    config = AppConfig.model_validate(data)
+    if config.asr.alignment.enabled:
+        config.asr.alignment.result_files = {
+            source: str((config_path.parent / Path(value).expanduser()).resolve())
+            for source, value in config.asr.alignment.result_files.items()
+        }
+    return config

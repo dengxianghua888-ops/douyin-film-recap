@@ -343,6 +343,18 @@
           ],
           "title": "Timing Source",
           "type": "string"
+        },
+        "alignment_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alignment Score"
         }
       },
       "required": [

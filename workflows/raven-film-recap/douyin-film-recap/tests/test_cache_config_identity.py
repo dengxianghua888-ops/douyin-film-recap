@@ -8,6 +8,7 @@ class CacheConfigIdentityTests(unittest.TestCase):
         config = AppConfig(models={"llm_model": "unused", "vlm_model": "unused"})
         legacy = config.model_dump(mode="json")
         legacy["render"].pop("incremental_cache")
+        legacy["asr"].pop("alignment")
         for key in ("visual_retrieval", "visual_pool_text_budget", "visual_exploration_fraction"):
             legacy["format"].pop(key)
         self.assertEqual(config.fingerprint(), fingerprint_json({"config": legacy,

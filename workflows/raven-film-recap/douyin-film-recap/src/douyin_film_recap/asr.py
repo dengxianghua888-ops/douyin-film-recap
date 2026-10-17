@@ -215,6 +215,10 @@ def build_transcript(manifest: SourceManifest, config: AppConfig) -> TranscriptD
     # Stage-local lazy ownership: subtitle-only runs load nothing; separate
     # stages/configurations cannot retain a stale model or GPU allocation.
     whisper_model = None
+    alignment_files = config.asr.alignment.result_files if config.asr.alignment.enabled else {}
+    unknown_sources = set(alignment_files) - {source.source_id for source in manifest.sources}
+    if unknown_sources:
+        raise ValueError(f"Unknown alignment source IDs: {sorted(unknown_sources)}")
     for source in manifest.sources:
         source_segments: list[TranscriptSegment] = []
         if source.subtitle_path:
@@ -234,6 +238,12 @@ def build_transcript(manifest: SourceManifest, config: AppConfig) -> TranscriptD
                 )
             if source_segments:
                 providers.add("subtitle")
+                if source.source_id in alignment_files:
+                    from .alignment import import_alignment
+                    source_segments = import_alignment(
+                        alignment_files[source.source_id], source, source_segments)
+        if source.source_id in alignment_files and not source_segments:
+            raise ValueError("Alignment import requires non-empty existing subtitles")
         if not source_segments and source.has_audio:
             if config.asr.provider != "faster_whisper":
                 raise NotImplementedError(

@@ -53,6 +53,19 @@
           },
           "title": "Words",
           "type": "array"
+        },
+        "alignment": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alignment"
         }
       },
       "required": [
@@ -105,6 +118,18 @@
           ],
           "title": "Timing Source",
           "type": "string"
+        },
+        "alignment_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alignment Score"
         }
       },
       "required": [
