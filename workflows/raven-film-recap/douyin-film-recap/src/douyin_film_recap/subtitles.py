@@ -145,10 +145,13 @@ def _cues_from_boundaries(
 
     cues: list[SubtitleCue] = []
     audio_duration = segment.audio_duration_sec or segment.planned_duration_sec
-    for group in groups:
+    for index, group in enumerate(groups):
         start = output_start + float(group[0]["start"])
         end_relative = float(group[-1]["start"]) + float(group[-1]["duration"])
         end = output_start + min(audio_duration, max(end_relative, group[0]["start"] + 0.5))
+        # Minimum readability duration must never consume the following cue.
+        if index + 1 < len(groups):
+            end = min(end, output_start + float(groups[index + 1][0]["start"]))
         text = "".join(str(item["text"]) for item in group).strip()
         if end > start and text:
             cues.append(SubtitleCue(start=start, end=end, text=text))
@@ -174,8 +177,6 @@ def _distributed_cues(
         end = output_start + duration * cumulative / total
         if index == len(chunks) - 1:
             end = output_start + duration
-        if end - start < 0.35:
-            end = min(output_start + duration, start + 0.35)
         if end > start:
             cues.append(SubtitleCue(start=start, end=end, text=chunk))
     return cues

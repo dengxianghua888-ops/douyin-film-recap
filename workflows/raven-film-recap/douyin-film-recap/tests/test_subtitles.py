@@ -74,3 +74,40 @@ def test_smallest_subtitle_limit_and_speed_range():
     assert RenderConfig(subtitle_max_chars_per_line=1, subtitle_max_lines=1)
     with pytest.raises(ValidationError):
         TTSConfig(min_speedup=1.1, max_speedup=1.0)
+
+
+from douyin_film_recap.subtitles import _distributed_cues, _cues_from_boundaries
+
+
+def test_short_distributed_cues_never_extend_into_next():
+    cues = _distributed_cues("甲乙丙丁", 0, 0.4, 1)
+    assert len(cues) == 4
+    assert all(a.end <= b.start for a, b in zip(cues, cues[1:]))
+    assert cues[-1].end == 0.4
+    assert "".join(cue.text for cue in cues) == "甲乙丙丁"
+
+
+def test_fast_word_boundaries_do_not_overlap():
+    segment = StoryboardSegment(segment_id="s", beat_id="b", mode="voiceover",
+        title="测试", text="甲乙丙", planned_duration_sec=0.4,
+        audio_duration_sec=0.4, audio_owner="narration", visuals=[], notes="测试",
+        tts_word_boundaries=[{"text": text, "start": index * 0.1, "duration": 0.1}
+                             for index, text in enumerate("甲乙丙")])
+    cues = _cues_from_boundaries(segment, 1, 1)
+    assert len(cues) == 3
+    assert all(a.end <= b.start for a, b in zip(cues, cues[1:]))
+    assert cues[-1].end <= 1.4
+
+
+def test_post_qc_blocks_overlapping_caption_track(tmp_path, app_config, monkeypatch):
+    from douyin_film_recap import qc
+    from douyin_film_recap.subtitles import SubtitleCue, write_srt
+    cues = [SubtitleCue(0, 0.35, "甲"), SubtitleCue(0.1, 0.4, "乙")]
+    subtitle = write_srt(cues, tmp_path / 'overlap.srt')
+    storyboard = Storyboard(project_name="qc", sources=[], plan_fingerprint="x",
+        target_duration_sec=1, segments=[], output={"subtitle": str(subtitle)})
+    monkeypatch.setattr(qc, 'build_cues', lambda *args, **kwargs: cues)
+    builder = qc.FindingBuilder('test')
+    qc._subtitle_delivery_checks(builder, storyboard, app_config, 1, 'unused')
+    assert any(item.rule_id == 'INVALID_SUBTITLE_FILE' and item.blocking
+               and 'overlap' in item.message for item in builder.findings)

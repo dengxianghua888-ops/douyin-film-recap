@@ -962,10 +962,17 @@ def _subtitle_delivery_checks(
         if expected and not cues:
             raise ValueError("expected dialogue/narration captions are empty")
         previous_start = -1.0
+        previous_end = -1.0
         for start, end, text in cues:
             if start < previous_start or end > duration + 0.05:
                 raise ValueError("subtitle cue is unordered or outside final duration")
-            previous_start = start
+            if start < previous_end - 0.001:
+                raise ValueError("subtitle cues overlap on the single caption track")
+            previous_start, previous_end = start, end
+            if end - start < 0.35:
+                builder.add(stage="post_render", severity="warning", blocking=False, deterministic=True,
+                            rule_id="SUBTITLE_READABILITY_RISK", message="字幕展示不足 0.35 秒，需人工检查可读性。",
+                            evidence={"start": start, "end": end, "text": text})
             lines = text.splitlines()
             if len(lines) > config.render.subtitle_max_lines or any(len(line) > config.render.subtitle_max_chars_per_line for line in lines):
                 builder.add(stage="post_render", severity="warning", blocking=False, deterministic=True,
