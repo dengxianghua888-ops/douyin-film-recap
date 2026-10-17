@@ -72,3 +72,65 @@ def test_live_ping_progress_and_cancel(monkeypatch):
         incoming.put(None)
         thread.join(timeout=5)
     assert not thread.is_alive()
+
+
+def test_serialized_work_directory_guard_and_eof_drain(tmp_path):
+    import os
+    import subprocess
+    work = tmp_path / 'runs'
+    work.mkdir()
+    request = {'operation': 'generation-task', 'action': 'budget-create',
+               'store': str(tmp_path / 'ledger.sqlite3'), 'budget_key': 'shared',
+               'currency': 'USD', 'limit_micros': 100}
+    env = dict(os.environ, EDITING_SKILL_WORK_ROOT=str(work),
+               EDITING_FFMPEG=str(tmp_path / 'missing'), EDITING_FFPROBE=str(tmp_path / 'missing'))
+    messages = [{'id': i, 'method': 'tools/call', 'params': {'name': 'run_operation',
+        'arguments': {'request': request, 'work_dir': str(work / 'same')},
+        '_meta': {'progressToken': f'p{i}'}}} for i in (1, 2)]
+    result = subprocess.run([sys.executable, str(ROOT / 'scripts/mcp_server.py')],
+        input=''.join(json.dumps(m) + '\n' for m in messages), text=True,
+        capture_output=True, env=env, timeout=15)
+    assert result.returncode == 0, result.stderr
+    rows = [json.loads(line) for line in result.stdout.splitlines()]
+    replies = {row['id']: row for row in rows if 'id' in row}
+    assert set(replies) == {1, 2}  # EOF drains both, no dropped/partial JSON.
+    assert not replies[1]['result']['isError']
+    assert replies[2]['result']['isError']
+    assert 'NEW_WORK_DIR_UNDER_CONFIGURED_ROOT_REQUIRED' in replies[2]['result']['content'][0]['text']
+    assert json.loads((work / 'same/receipt.json').read_text())['status'] == 'SUCCEEDED'
+    assert any(row.get('method') == 'notifications/progress' for row in rows)
+
+
+def test_cancelling_one_owned_process_does_not_cancel_another():
+    from concurrent.futures import ThreadPoolExecutor
+    event = threading.Event()
+    def cancelled():
+        token = runtime.RUN_CANCELLATION.set(event)
+        try:
+            return runtime.owned_process([sys.executable, '-c', 'import time; time.sleep(30)'])
+        finally:
+            runtime.RUN_CANCELLATION.reset(token)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        first = pool.submit(cancelled)
+        second = pool.submit(runtime.owned_process,
+            [sys.executable, '-c', 'import time; time.sleep(.3); print("unrelated")'])
+        event.set()
+        assert first.result(timeout=4).termination_reason == 'cancelled'
+        other = second.result(timeout=4)
+        assert other.termination_reason is None and other.returncode == 0
+        assert other.stdout.strip() == 'unrelated'
+
+
+def test_queued_cancellation_retains_failed_receipt(tmp_path):
+    event = threading.Event()
+    event.set()
+    token = runtime.RUN_CANCELLATION.set(event)
+    try:
+        receipt = runtime.run({'operation': 'generation-task', 'action': 'budget-create',
+            'store': str(tmp_path / 'not-created.sqlite3'), 'budget_key': 'cancelled',
+            'currency': 'USD', 'limit_micros': 100}, tmp_path / 'run', runtime.Tools())
+        assert receipt['status'] == 'FAILED' and receipt['cancelled']
+        assert (tmp_path / 'run/receipt.json').is_file()
+        assert not (tmp_path / 'not-created.sqlite3').exists()
+    finally:
+        runtime.RUN_CANCELLATION.reset(token)
