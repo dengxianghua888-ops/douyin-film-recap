@@ -193,3 +193,29 @@ def test_mixed_pcm_narration_concat_keeps_configured_final_frame_rate(tmp_path: 
         '-show_frames', '-show_entries', 'frame=best_effort_timestamp_time', '-of', 'json', final]).stdout)['frames']
     times = [float(frame['best_effort_timestamp_time']) for frame in frames]
     assert all(b-a == pytest.approx(1/config.render.fps, abs=0.0001) for a,b in zip(times,times[1:]))
+
+
+def test_blur_layout_keeps_last_frame_before_overlay(tmp_path: Path, app_config) -> None:
+    """Normalize the input clock before framesync, including FFmpeg 6 EOF behavior."""
+    from douyin_film_recap.render import _render_original_segment
+    from douyin_film_recap.render_cache import verify_media
+    config = app_config.model_copy(deep=True)
+    config.render.width = config.render.height = 64
+    config.render.fps = 25
+    config.render.layout = "safe_fit_blur"
+    source = tmp_path / "complete-second.mp4"
+    run_command(["ffmpeg", "-n", "-v", "error", "-f", "lavfi", "-i",
+                 "testsrc2=s=64x64:r=25:d=1", "-f", "lavfi", "-i",
+                 "sine=frequency=440:sample_rate=48000:duration=1",
+                 "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", source])
+    info = SourceInfo(source_id="src", path=str(source), fingerprint="fixture",
+                      filename=source.name, duration=1, width=64, height=64, fps=25, has_audio=True)
+    segment = StoryboardSegment(segment_id="s", beat_id="b", mode="original", title="test",
+        text="test", text_raw="test", visuals=[VisualReference(source_id="src", start=0, end=1)],
+        audio_owner="original_dialogue", planned_duration_sec=1, notes="")
+    output = tmp_path / "segment.mp4"
+    _render_original_segment(segment, {"src": info}, output, config)
+    params = {name: getattr(config.render, name) for name in
+              ("fps", "width", "height", "video_codec", "audio_codec")}
+    params["duration"] = 1
+    assert verify_media(output, params)["media_contract"]["frame_count"] == 25

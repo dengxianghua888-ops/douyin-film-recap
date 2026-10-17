@@ -18,6 +18,7 @@ from .render_contracts import (PLAN_SCHEMA, PLANNER_REVISION, RENDERER_REVISION,
     ROUNDING_REVISION, RenderContractError, authority_payload, content_binding,
     digest, quantize, ratio, rational, validate_sha)
 from .subtitles import build_cues, resolved_visual_spans
+from .render_timeline import time_entry as _time_entry, realized_duration
 from .utils import content_fingerprint, content_identity, run_command
 
 # Field inventory is deliberately exhaustive; new fields require classification.
@@ -58,15 +59,6 @@ def _node(kind: str, node_id: str, params: dict, deps: list[dict], *, ready: boo
             "reason_codes": reasons or (["NOT_LOOKED_UP"] if ready else ["DEPENDENCY_UNREALIZED"])}
 
 
-def _time_entry(segment_id: str, start: Fraction, duration: Fraction, fps: Fraction) -> dict:
-    end = start + duration
-    sf, ef = quantize(start * fps), quantize(end * fps)
-    ss, es = quantize(start * 48000), quantize(end * 48000)
-    return {"segment_id": segment_id, "start": ratio(start), "end": ratio(end),
-            "duration": ratio(duration), "start_frame": sf, "end_frame": ef,
-            "start_sample": ss, "end_sample": es,
-            "frame_rounding_residual": ratio(end * fps - ef),
-            "sample_rounding_residual": ratio(end * 48000 - es)}
 
 
 def compile_render_plan(
@@ -181,33 +173,7 @@ def compile_render_plan(
                        ("hash_checked", "probe_checked", "decode_checked")):
                 raise RenderContractError(f"REALIZED_UNVERIFIED: {sid}")
             contract = dict(artifact.get("media_contract", {}))
-            frames = contract.get("frame_count")
-            if isinstance(frames, bool) or not isinstance(frames, int) or frames <= 0:
-                raise RenderContractError(f"REALIZED_FRAME_COUNT_MISSING: {sid}")
-            samples = contract.get("sample_count")
-            if isinstance(samples, bool) or not isinstance(samples, int) or samples <= 0:
-                raise RenderContractError(f"REALIZED_SAMPLE_COUNT_MISSING: {sid}")
-            if rational(contract.get("fps", 0)) != fps:
-                raise RenderContractError(f"REALIZED_FPS_MISMATCH: {sid}")
-            actual = Fraction(frames, 1) / fps
-            if contract.get("sample_rate") != 48000:
-                raise RenderContractError(f"REALIZED_SAMPLE_RATE_MISMATCH: {sid}")
-            decoded = contract.get("decoded_sample_count")
-            padding = contract.get("padding")
-            delay = contract.get("encoder_delay")
-            if (any(type(v) is not int or v < 0 for v in (decoded, padding, delay))
-                    or decoded != samples + padding or padding > 8192 or delay > 8192
-                    or contract.get("padding_policy") != "decoded-minus-packet-end/1"):
-                raise RenderContractError(f"REALIZED_AUDIO_PADDING_INVALID: {sid}")
-            if abs(Fraction(samples, 48000) - actual) > 1 / fps:
-                raise RenderContractError(f"REALIZED_AUDIO_VIDEO_DRIFT: {sid}")
-            for boundary in segment.tts_word_boundaries if segment.mode == "voiceover" else []:
-                start = rational(boundary.get("start", 0))
-                end = start + rational(boundary.get("duration", 0))
-                if start < 0 or end > Fraction(samples + 1, 48000) or start >= Fraction(samples, 48000):
-                    raise RenderContractError(f"WORD_OUTSIDE_REALIZED_AUDIO: {sid}")
-            if abs(actual - duration) > 1 / fps:
-                raise RenderContractError(f"REALIZED_DURATION_DRIFT: {sid}")
+            actual = realized_duration(segment, contract, fps, duration)
             realized.append(_time_entry(sid, realized_cursor, actual, fps))
             realized_cursor += actual
             if abs(realized_cursor - expected_cursor) > 1 / fps:
@@ -295,7 +261,7 @@ def collect_render_inputs(storyboard: Storyboard) -> dict[str, Any]:
                      "ffprobe_sha256": content_fingerprint(ffprobe),
                      "version": run_command([ffmpeg, "-version"]).stdout,
                      "implementation_digest": digest({name: content_fingerprint(Path(__file__).with_name(name))
-                         for name in ("render.py", "render_plan.py", "render_contracts.py", "render_cache.py", "subtitles.py")
+                         for name in ("render.py", "render_plan.py", "render_contracts.py", "render_cache.py", "render_timeline.py", "subtitles.py", "alignment.py", "asr.py", "models.py")
                          if Path(__file__).with_name(name).exists()})}
         # Binary/version alone misses dynamically linked codec/filter changes.
         # Unresolved environments remain safe dry-run plans, never reusable keys.

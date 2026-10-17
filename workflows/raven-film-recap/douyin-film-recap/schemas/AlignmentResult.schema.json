@@ -1,0 +1,191 @@
+{
+  "$defs": {
+    "AlignmentCue": {
+      "additionalProperties": false,
+      "properties": {
+        "cue_index": {
+          "minimum": 0,
+          "title": "Cue Index",
+          "type": "integer"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "tokens": {
+          "items": {
+            "$ref": "#/$defs/AlignmentToken"
+          },
+          "title": "Tokens",
+          "type": "array"
+        }
+      },
+      "required": [
+        "cue_index",
+        "text",
+        "start",
+        "end",
+        "tokens"
+      ],
+      "title": "AlignmentCue",
+      "type": "object"
+    },
+    "AlignmentToken": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "interpolated",
+            "missing",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score"
+        }
+      },
+      "required": [
+        "text",
+        "status"
+      ],
+      "title": "AlignmentToken",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "film-alignment/1",
+      "default": "film-alignment/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "minLength": 1,
+      "title": "Source Id",
+      "type": "string"
+    },
+    "media_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Media Sha256",
+      "type": "string"
+    },
+    "subtitle_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Subtitle Sha256",
+      "type": "string"
+    },
+    "producer": {
+      "minLength": 1,
+      "title": "Producer",
+      "type": "string"
+    },
+    "producer_revision": {
+      "minLength": 1,
+      "title": "Producer Revision",
+      "type": "string"
+    },
+    "model": {
+      "minLength": 1,
+      "title": "Model",
+      "type": "string"
+    },
+    "model_revision": {
+      "minLength": 1,
+      "title": "Model Revision",
+      "type": "string"
+    },
+    "method": {
+      "minLength": 1,
+      "title": "Method",
+      "type": "string"
+    },
+    "score_semantics": {
+      "minLength": 1,
+      "title": "Score Semantics",
+      "type": "string"
+    },
+    "provenance": {
+      "const": "producer_declared",
+      "default": "producer_declared",
+      "title": "Provenance",
+      "type": "string"
+    },
+    "cues": {
+      "items": {
+        "$ref": "#/$defs/AlignmentCue"
+      },
+      "minItems": 1,
+      "title": "Cues",
+      "type": "array"
+    }
+  },
+  "required": [
+    "source_id",
+    "media_sha256",
+    "subtitle_sha256",
+    "producer",
+    "producer_revision",
+    "model",
+    "model_revision",
+    "method",
+    "score_semantics",
+    "cues"
+  ],
+  "title": "AlignmentResult",
+  "type": "object"
+}

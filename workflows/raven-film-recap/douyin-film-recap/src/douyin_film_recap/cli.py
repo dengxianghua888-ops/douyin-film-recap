@@ -342,3 +342,73 @@ def narration_revision_apply_command(
     except (ValueError, OSError, RuntimeError, KeyError) as exc:
         console.print(f"旁白修订执行失败：{exc}")
         raise typer.Exit(code=2) from exc
+
+
+@app.command("validate-alignment")
+def validate_alignment(
+    manifest: Annotated[Path, typer.Option("--manifest")],
+    result: Annotated[Path, typer.Option("--result")],
+    source_id: Annotated[str, typer.Option("--source-id")],
+) -> None:
+    """离线核验已有对齐结果与字幕/音频身份，不加载模型或执行ASR。"""
+    from .alignment import import_alignment
+    from .asr import parse_subtitle
+    from .models import SourceManifest
+    try:
+        sources = SourceManifest.model_validate_json(manifest.read_bytes()).sources
+        source = next((item for item in sources if item.source_id == source_id), None)
+        if source is None or not source.subtitle_path:
+            raise ValueError("Source with existing subtitles required")
+        segments = import_alignment(result, source, parse_subtitle(source.subtitle_path, source_id))
+    except Exception as exc:
+        console.print(f"Alignment rejected: {exc}", markup=False)
+        raise typer.Exit(2) from exc
+    aligned = sum(bool(s.alignment and s.alignment["status"] == "aligned") for s in segments)
+    estimated = sum(bool(s.alignment and s.alignment["status"] == "estimated") for s in segments)
+    console.print(f"Validated: {aligned} aligned cues, {estimated} estimated fallback cues. "
+                  "Producer provenance is declared, not independently verified.", markup=False)
+
+
+@app.command("convert-whisperx-alignment")
+def convert_whisperx_alignment(
+    receipt: Annotated[Path, typer.Option("--receipt")],
+    output: Annotated[Path, typer.Option("--output")],
+) -> None:
+    """转换带运行时身份声明的原生字符结果；不运行WhisperX，不下载资源。"""
+    from .alignment import convert_whisperx
+    try:
+        converted = convert_whisperx(json.loads(receipt.read_text(encoding="utf-8")))
+        # Exclusive creation protects existing artifacts and source files.
+        with output.open("x", encoding="utf-8") as handle:
+            handle.write(converted.model_dump_json(indent=2))
+            handle.write("\n")
+    except Exception as exc:
+        console.print(f"Conversion rejected: {exc}", markup=False)
+        raise typer.Exit(2) from exc
+    console.print("Converted declared native character evidence. Run validate-alignment before use.")
+
+
+@app.command("run-local-alignment")
+def run_local_alignment_command(
+    manifest: Annotated[Path, typer.Option("--manifest")],
+    source_id: Annotated[str, typer.Option("--source-id")],
+    cue_index: Annotated[list[int], typer.Option("--cue-index")],
+    model_dir: Annotated[Path, typer.Option("--model-dir")],
+    model_sha256: Annotated[str, typer.Option("--model-sha256")],
+    output: Annotated[Path, typer.Option("--output")],
+    cache_dir: Annotated[Path | None, typer.Option("--cache-dir")] = None,
+) -> None:
+    """显式本地 CPU CTC 对齐，仅处理所选字幕窗；不下载模型，不自动采用。"""
+    from .local_alignment import run_local_alignment
+    from .models import SourceManifest
+    try:
+        sources = SourceManifest.model_validate_json(manifest.read_bytes()).sources
+        source = next((item for item in sources if item.source_id == source_id), None)
+        if source is None:
+            raise ValueError("Unknown source_id")
+        result = run_local_alignment(source=source, cue_indices=cue_index, model_dir=model_dir,
+            model_sha256=model_sha256, output=output, cache_dir=cache_dir)
+        typer.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    except Exception as exc:
+        console.print(f"Local alignment rejected: {exc}", markup=False)
+        raise typer.Exit(2) from exc

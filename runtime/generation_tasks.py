@@ -204,18 +204,22 @@ class GenerationStore:
 
     @contextmanager
     def _connection(self):
-        db = sqlite3.connect(str(self.path), timeout=5)
-        db.row_factory = sqlite3.Row
-        db.execute("PRAGMA foreign_keys=ON")
-        db.execute("PRAGMA busy_timeout=5000")
+        db = None
         try:
-            yield db
-            db.commit()
-        except BaseException:
-            db.rollback()
-            raise
+            db = sqlite3.connect(str(self.path), timeout=5)
+            db.row_factory = sqlite3.Row
+            db.execute("PRAGMA foreign_keys=ON")
+            try:
+                yield db
+                db.commit()
+            except BaseException:
+                db.rollback()
+                raise
+        except sqlite3.Error as exc:
+            raise GenerationError("GENERATION_STORE_ERROR: " + str(exc)) from exc
         finally:
-            db.close()
+            if db is not None:
+                db.close()
 
     @contextmanager
     def _write(self):

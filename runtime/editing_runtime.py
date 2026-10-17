@@ -17,6 +17,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import signal
+import sqlite3
+import time
 import importlib.util
 import sys
 import wave
@@ -28,6 +30,8 @@ VERSION = '0.17.0-dev'
 # Context-local inheritance leaves ordinary operations unchanged.
 from contextvars import ContextVar
 SUBPROCESS_LOCK_FDS = ContextVar('editing_subprocess_lock_fds', default=())
+RUN_CANCELLATION = ContextVar('editing_run_cancellation', default=None)
+RUN_PROGRESS = ContextVar('editing_run_progress', default=None)
 RUN_DIRECTORY = ContextVar('editing_run_directory', default=None)
 TOOL_DIAGNOSTIC_SEQUENCE = ContextVar('editing_tool_diagnostic_sequence', default=0)
 
@@ -96,10 +100,25 @@ def owned_process(command, timeout=300, cwd=None):
                             stderr=subprocess.PIPE, cwd=cwd,
                             pass_fds=SUBPROCESS_LOCK_FDS.get(), start_new_session=True)
     reason = None
+    deadline = time.monotonic() + timeout
     try:
-        stdout, stderr = proc.communicate(timeout=timeout)
-    except (subprocess.TimeoutExpired, KeyboardInterrupt) as exc:
-        reason = 'cancelled' if isinstance(exc, KeyboardInterrupt) else 'timeout'
+        while True:
+            cancellation = RUN_CANCELLATION.get()
+            if cancellation is not None and cancellation.is_set():
+                reason = 'cancelled'
+                break
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                reason = 'timeout'
+                break
+            try:
+                stdout, stderr = proc.communicate(timeout=min(0.1, remaining))
+                break
+            except subprocess.TimeoutExpired:
+                continue
+    except KeyboardInterrupt:
+        reason = 'cancelled'
+    if reason is not None:
         try:
             os.killpg(proc.pid, signal.SIGTERM)
         except ProcessLookupError:
@@ -222,7 +241,7 @@ class Tools:
         seek_end = float(requested_end) + 2
         result = exec_tool([binary, '-v', 'error', '-select_streams', 'v:0',
             '-read_intervals', str(seek_start) + '%' + str(seek_end), '-show_frames', '-show_entries',
-            'frame=media_type,stream_index,best_effort_timestamp,pkt_duration',
+            'frame=media_type,stream_index,best_effort_timestamp,pkt_duration,duration',
             '-of', 'json', str(path)], timeout=60)
         self.binary('ffprobe')
         frames = json.loads(result.stdout).get('frames', [])
@@ -237,7 +256,12 @@ class Tools:
             require(frame.get('media_type') == 'video' and frame.get('stream_index') == index,
                     'SOURCE_VIDEO_SELECTOR_MISMATCH')
             stamp = frame.get('best_effort_timestamp')
-            duration = frame.get('pkt_duration')
+            # FFmpeg 7 names decoded AVFrame duration `duration`; older
+            # versions expose `pkt_duration`. Never infer missing evidence.
+            duration = frame.get('duration', frame.get('pkt_duration'))
+            if 'duration' in frame and 'pkt_duration' in frame:
+                require(type(frame['pkt_duration']) is int and frame['pkt_duration'] == duration,
+                        'SOURCE_VIDEO_FRAME_DURATION_CONFLICT')
             require(type(stamp) is int and type(duration) is int,
                     'SOURCE_VIDEO_FRAME_DURATION_UNVERIFIED')
             start, length = stamp*time_base, duration*time_base
@@ -1210,7 +1234,15 @@ def run(request, directory, tools):
             snapshot = runtime_module_sources()
             receipt['runtime_source_snapshot'] = snapshot
             receipt['runtime_files'] = {p.name: sha256(p) for p in sorted(Path(__file__).parent.glob('*.py'))}
+            cancellation = RUN_CANCELLATION.get()
+            if cancellation is not None and cancellation.is_set():
+                raise OperationCancelled('CANCELLED_BEFORE_EXECUTION')
             receipt['tools'] = tools.doctor()
+            if cancellation is not None and cancellation.is_set():
+                raise OperationCancelled('CANCELLED_BEFORE_EXECUTION')
+            progress = RUN_PROGRESS.get()
+            if progress is not None:
+                progress('Executing operation')
             result = execute(request, directory, tools)
             for name in tuple(getattr(tools, '_identity_lock', {})):
                 tools.binary(name)
@@ -1225,7 +1257,7 @@ def run(request, directory, tools):
             receipt['status'] = 'FAILED'
             receipt['error'] = 'CANCELLED_BY_USER: partial outputs retained'
             receipt['cancelled'] = True
-        except (ContractError, OSError, KeyError, TypeError, ValueError) as exc:
+        except (ContractError, OSError, KeyError, TypeError, ValueError, sqlite3.Error) as exc:
             receipt['status'] = 'FAILED'
             receipt['error'] = str(exc)
             if str(exc).startswith(('TOOL_CANCELLED:', 'RUBBERBAND_TOOL_CANCELLED:')):

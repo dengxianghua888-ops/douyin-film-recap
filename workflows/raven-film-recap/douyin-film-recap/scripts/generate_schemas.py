@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from douyin_film_recap.alignment import AlignmentResult
 from douyin_film_recap.models import (
     CharacterRegistry,
     HighlightDocument,
@@ -19,6 +20,7 @@ from douyin_film_recap.models import (
 )
 
 MODELS = [
+    AlignmentResult,
     SourceManifest,
     TranscriptDocument,
     SceneIndex,

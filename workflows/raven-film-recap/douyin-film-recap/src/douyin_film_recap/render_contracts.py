@@ -10,7 +10,7 @@ from typing import Any, Mapping
 PLAN_SCHEMA = "film-render-plan/1"
 CACHE_SCHEMA = "film-segment-cache/1"
 PLANNER_REVISION = "segment-av-planner/1"
-RENDERER_REVISION = "segment-av-renderer/1"
+RENDERER_REVISION = "segment-av-renderer/3"
 ROUNDING_REVISION = "cumulative-nearest-half-up/1"
 CHECKER_REVISION = "full-decode-av/1"
 

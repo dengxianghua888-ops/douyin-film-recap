@@ -162,17 +162,22 @@ class DeepSeekCallStore:
 
     @contextmanager
     def _db(self):
-        db = sqlite3.connect(str(self.path), timeout=5)
-        db.row_factory = sqlite3.Row
-        db.execute("PRAGMA foreign_keys=ON")
+        db = None
         try:
-            yield db
-            db.commit()
-        except BaseException:
-            db.rollback()
-            raise
+            db = sqlite3.connect(str(self.path), timeout=5)
+            db.row_factory = sqlite3.Row
+            db.execute("PRAGMA foreign_keys=ON")
+            try:
+                yield db
+                db.commit()
+            except BaseException:
+                db.rollback()
+                raise
+        except sqlite3.Error as exc:
+            raise DeepSeekError("DEEPSEEK_STORE_ERROR: " + str(exc)) from exc
         finally:
-            db.close()
+            if db is not None:
+                db.close()
 
     def create_budget(self, key, currency, limit_micros):
         if (not isinstance(key, str) or not key or not isinstance(currency, str)

@@ -154,11 +154,11 @@ def _layout_filter(config: AppConfig) -> str:
             f"setsar=1,fps={fps},format=yuv420p"
         )
     return (
-        f"split=2[bg][fg];"
+        f"fps={fps},split=2[bg][fg];"
         f"[bg]scale={width}:{height}:force_original_aspect_ratio=increase,"
         f"crop={width}:{height},gblur=sigma={config.render.blur_sigma}[bg2];"
         f"[fg]scale={width}:{height}:force_original_aspect_ratio=decrease[fg2];"
-        f"[bg2][fg2]overlay=(W-w)/2:(H-h)/2,setsar=1,fps={fps},format=yuv420p"
+        f"[bg2][fg2]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p"
     )
 
 
@@ -394,8 +394,11 @@ def _render_voiceover_segment(
         [
             "-t",
             f"{target_duration:.3f}",
-            "-c:v",
-            "copy",
+            "-vf",
+            "setpts=PTS-STARTPTS",
+            "-fps_mode",
+            "cfr",
+            *_video_encode_args(config),
             *_audio_encode_args(config),
             "-movflags",
             "+faststart",
@@ -732,19 +735,31 @@ def _render_storyboard_in_attempt(
         rendered[index] = output
     segment_paths = [rendered[index] for index in sorted(rendered)]
 
-    realized_timeline = None
+    clock_evidence = []
     if incremental:
         from .render_plan import compile_render_plan
         plan = compile_render_plan(storyboard, config, **incremental["inputs"],
             realized_artifacts=incremental["artifacts"])
         realized_timeline = plan["timeline"]["realized"]
         _write_new_json(work_dir / "output" / "render_plan.json", plan)
+    else:
+        # Cache policy must not determine the precision of subtitles and EDL.
+        from .render_cache import verify_media
+        from .render_timeline import build_realized_timeline
+        contracts = {}
+        for segment, path in zip(storyboard.segments, segment_paths):
+            params = {name: getattr(config.render, name) for name in
+                      ("fps", "width", "height", "video_codec", "audio_codec")}
+            params["duration"] = segment_output_duration(segment)
+            measured = verify_media(path, params, timeout=config.runtime.stage_timeout_sec)
+            contracts[segment.segment_id] = measured["media_contract"]
+            clock_evidence.append({"segment_id": segment.segment_id, "sha256": measured["sha256"], "size": measured["size"]})
+        realized_timeline = build_realized_timeline(storyboard, config.render.fps, contracts, strict_nominal=False)
     base_video = work_dir / "output" / "base_no_subtitles.mp4"
     _concat_copy(segment_paths, base_video, config)
-    if incremental:
-        from .render_cache import verify_assembly_placement
-        verify_assembly_placement(base_video, realized_timeline, config.render.fps,
-                                  timeout=config.runtime.stage_timeout_sec)
+    from .render_cache import verify_assembly_placement
+    verify_assembly_placement(base_video, realized_timeline, config.render.fps,
+                              timeout=config.runtime.stage_timeout_sec)
     cues = build_cues(storyboard, config, realized_timeline=realized_timeline)
     srt_path = work_dir / "subtitles" / "master.srt"
     _prepare_output(srt_path)
@@ -761,6 +776,11 @@ def _render_storyboard_in_attempt(
     review_file = (str(work_dir / "output" / "review_evidence.json") if incremental else
                    storyboard.output.get("review_file", str(work_dir / "output" / "review_evidence.json")))
     storyboard.output = {
+        "realized_timeline": realized_timeline,
+        "timeline_policy": "strict-nominal/1" if incremental else "measured-segment-clock/1",
+        "segment_clock_evidence": clock_evidence,
+        "nominal_quantization_delta_sec": float(output_timeline(storyboard, realized_timeline=realized_timeline)[-1]["end"])
+            - sum(segment_output_duration(segment) for segment in storyboard.segments),
         "base_video": str(base_video),
         "final_video": str(final_path),
         "preview_video": str(preview_path),
